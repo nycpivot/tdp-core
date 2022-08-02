@@ -1,0 +1,1 @@
+export { CatalogPlugin } from './CatalogPlugin';

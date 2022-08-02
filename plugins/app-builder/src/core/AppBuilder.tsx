@@ -2,8 +2,6 @@ import React from 'react';
 import { Navigate, Route } from 'react-router';
 import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
-  CatalogEntityPage,
-  CatalogIndexPage,
   catalogPlugin,
 } from '@backstage/plugin-catalog';
 import {
@@ -22,7 +20,6 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { entityPage } from '../components/catalog/EntityPage';
 import { searchPage } from '../components/search/SearchPage';
 import { Root } from '../components/Root';
 
@@ -42,6 +39,8 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
+import { AppSurfaces } from './AppSurfaces';
+
 
 const apis: AnyApiFactory[] = [
   createApiFactory({
@@ -74,16 +73,12 @@ const app = createApp({
 const AppProvider = app.getProvider();
 const AppRouter = app.getRouter();
 
-const routes = (
+const routes = (surfaces: AppSurfaces) => (
   <FlatRoutes>
-    <Navigate key="/" to="catalog" />
-    <Route path="/catalog" element={<CatalogIndexPage />} />
-    <Route
-      path="/catalog/:namespace/:kind/:name"
-      element={<CatalogEntityPage />}
-    >
-      {entityPage}
-    </Route>
+    { surfaces.routeSurface.defaultRoute && (
+        <Navigate key="/" to={surfaces.routeSurface.defaultRoute}/>
+    )}
+    { ...surfaces.routeSurface.nonDefaultRoutes }
     <Route path="/docs" element={<TechDocsIndexPage />} />
     <Route
       path="/docs/:namespace/:kind/:name/*"
@@ -112,13 +107,15 @@ const routes = (
   </FlatRoutes>
 );
 
-export const AppBuilder = () => (
-  <AppProvider>
-    <AlertDisplay />
-    <OAuthRequestDialog />
-    <AppRouter>
-      <Root>{routes}</Root>
-    </AppRouter>
-  </AppProvider>
-);
+export const AppBuilder = (surfaces: AppSurfaces) => {
+    return () => (
+        <AppProvider>
+            <AlertDisplay />
+            <OAuthRequestDialog />
+            <AppRouter>
+            <Root surfaces={surfaces}>{routes(surfaces)}</Root>
+            </AppRouter>
+        </AppProvider>
+    );
+}
 
