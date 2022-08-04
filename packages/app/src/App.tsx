@@ -1,5 +1,5 @@
 import { AppBuilder, AppSurfaces } from '@internal/plugin-app-builder';
-import { CatalogPlugin } from '@internal/plugin-esback-catalog';
+import { ESBackPluginIntegration as CatalogPlugin } from '@internal/plugin-esback-catalog';
 
 // Setup
 const surfaces: AppSurfaces = new AppSurfaces()

@@ -4,12 +4,18 @@ import {
   CatalogEntityPage,
   CatalogIndexPage,
 } from '@backstage/plugin-catalog';
+import {
+  CatalogImportPage,
+} from '@backstage/plugin-catalog-import';
+import { PermissionedRoute } from '@backstage/plugin-permission-react';
+import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { SidebarItem } from '@backstage/core-components'
 import HomeIcon from '@material-ui/icons/Home'
-import { AppSurfaces } from "@internal/plugin-app-builder/src/core/AppSurfaces"
+import { AppSurfaces } from "@internal/plugin-app-builder"
+import { PluginInterface } from "@internal/plugin-plugin-interface"
 import { entityPage } from './components/EntityPage'
 
-export const CatalogPlugin = (ctx: AppSurfaces) => {
+export const CatalogPlugin: PluginInterface = (ctx: AppSurfaces) => {
     ctx.routeSurface.add(
         <Route path="/catalog" element={<CatalogIndexPage />} />
     );
@@ -19,6 +25,14 @@ export const CatalogPlugin = (ctx: AppSurfaces) => {
             {entityPage}
         </Route>
     );
+
+    ctx.routeSurface.add(
+        <PermissionedRoute
+            path="/catalog-import"
+            permission={catalogEntityCreatePermission}
+            element={<CatalogImportPage />}
+        />
+    )
 
     // ctx.routeSurface.addRouteBinder(({ bind }) => {
     //     bind(orgPlugin.externalRoutes, {

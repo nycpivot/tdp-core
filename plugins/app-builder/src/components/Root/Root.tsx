@@ -93,10 +93,9 @@ export const Root = ({ surfaces, children }: PropsWithChildren<IRoot>) => (
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
         {...surfaces.sidebarItemSurface.all}
         {/* Global nav, not org-specific */}
-        {/* <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." /> */}
+        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>

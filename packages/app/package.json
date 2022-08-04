@@ -34,6 +34,8 @@
     "@backstage/theme": "^0.2.16",
     "@internal/plugin-app-builder": "^0.1.0",
     "@internal/plugin-esback-catalog": "^0.1.0",
+    "@internal/plugin-esback-graphiql": "^0.1.0",
+    "@internal/plugin-plugin-interface": "^0.1.0",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.9.1",
     "history": "^5.0.0",
