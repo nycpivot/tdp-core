@@ -36,7 +36,7 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
-import { AppSurfaces } from './AppSurfaces';
+import { AppSurfaces, AppSurfacesContext } from './surfaces';
 
 
 const apis: AnyApiFactory[] = [
@@ -101,13 +101,15 @@ const routes = (surfaces: AppSurfaces) => (
 
 export const AppBuilder = (surfaces: AppSurfaces) => {
     return () => (
-        <AppProvider>
-            <AlertDisplay />
-            <OAuthRequestDialog />
-            <AppRouter>
-            <Root surfaces={surfaces}>{routes(surfaces)}</Root>
-            </AppRouter>
-        </AppProvider>
+        <AppSurfacesContext.Provider value={surfaces}>
+          <AppProvider>
+              <AlertDisplay />
+              <OAuthRequestDialog />
+              <AppRouter>
+              <Root surfaces={surfaces}>{routes(surfaces)}</Root>
+              </AppRouter>
+          </AppProvider>
+        </AppSurfacesContext.Provider>
     );
 }
 

@@ -16,7 +16,6 @@
 
 import React, { PropsWithChildren } from 'react';
 import { Link, makeStyles } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import MapIcon from '@material-ui/icons/MyLocation';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
@@ -42,7 +41,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { AppSurfaces } from '../../core/AppSurfaces';
+import { AppSurfaces } from '../../core/surfaces';
 
 const useSidebarLogoStyles = makeStyles({
   root: {

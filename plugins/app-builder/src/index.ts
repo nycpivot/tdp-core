@@ -1,2 +1,2 @@
-export { AppBuilder } from './core/AppBuilder';
-export { AppSurfaces } from './core/AppSurfaces';
+export * from './core/surfaces';
+export * from './core';
