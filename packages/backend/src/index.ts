@@ -17,7 +17,7 @@ import { BackendSurfaces, BackendRunner } from "@internal/plugin-esback-builder-
 // import { ESBackBackendPluginIntegration as kubernetes } from "@internal/plugin-esback-kubernetes"
 
 async function loadConfiguredPlugins(surfaces: BackendSurfaces): Promise<BackendSurfaces> {
-  const kubernetesPlugin = await import('@internal/plugin-esback-kubernetes')
+  const kubernetesPlugin = await import('@internal/plugin-esback-kubernetes-backend')
   kubernetesPlugin.ESBackBackendPluginIntegration(surfaces)
 
   return surfaces
@@ -34,9 +34,7 @@ surfaces.pluginSurface.setPlugin("search", search)
 
 // kubernetes(surfaces)
 
-BackendRunner(surfaces)
-
-// loadConfiguredPlugins(surfaces)
-//   .then(ctx => {
-//     BackendRunner(ctx)
-//   })
+loadConfiguredPlugins(surfaces)
+  .then(ctx => {
+    BackendRunner(ctx)
+  })
