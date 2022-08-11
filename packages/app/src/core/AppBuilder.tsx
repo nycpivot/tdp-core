@@ -119,8 +119,8 @@ export const loadSurfaces = async (): Promise<AppSurfaces> => {
     const { CatalogPlugin } = await import('@internal/plugin-esback-catalog')
     CatalogPlugin(surfaces)
 
-    // const graphiQLPlugin = await import('@internal/plugin-esback-graphiql')
-    // graphiQLPlugin.ESBackPluginIntegration(surfaces)
+    const { GraphiQLPlugin } = await import('@internal/plugin-esback-graphiql')
+    GraphiQLPlugin(surfaces)
 
     // const kubernetesPlugin = await import('@internal/plugin-esback-kubernetes')
     // kubernetesPlugin.ESBackAppPluginIntegration(surfaces)
