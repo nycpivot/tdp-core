@@ -11,11 +11,10 @@ import { PermissionedRoute } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { SidebarItem } from '@backstage/core-components'
 import HomeIcon from '@material-ui/icons/Home'
-import { AppSurfaces } from "@internal/plugin-app-builder"
-import { AppPluginInterface } from "@internal/plugin-plugin-interface"
+import { AppPluginInterface } from "@esback/core"
 import { entityPage } from './components/EntityPage'
 
-export const CatalogPlugin: AppPluginInterface = (ctx: AppSurfaces) => {
+export const CatalogPlugin: AppPluginInterface = (ctx) => {
     ctx.routeSurface.add(
         <Route path="/catalog" element={<CatalogIndexPage />} />
     );
