@@ -13,12 +13,13 @@ import scaffolder from './plugins/scaffolder';
 import proxy from './plugins/proxy';
 import techdocs from './plugins/techdocs';
 import search from './plugins/search';
-import { BackendSurfaces, BackendRunner } from "@internal/plugin-esback-builder-backend";
+import { BackendSurfaces } from "@esback/core";
+import { BackendRunner } from "./core/BackendRunner"
 // import { ESBackBackendPluginIntegration as kubernetes } from "@internal/plugin-esback-kubernetes"
 
 async function loadConfiguredPlugins(surfaces: BackendSurfaces): Promise<BackendSurfaces> {
-  const kubernetesPlugin = await import('@internal/plugin-esback-kubernetes-backend')
-  kubernetesPlugin.ESBackBackendPluginIntegration(surfaces)
+  // const kubernetesPlugin = await import('@internal/plugin-esback-kubernetes-backend')
+  // kubernetesPlugin.ESBackBackendPluginIntegration(surfaces)
 
   return surfaces
 }

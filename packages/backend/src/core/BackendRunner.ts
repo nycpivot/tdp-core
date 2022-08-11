@@ -13,9 +13,8 @@ import {
 } from '@backstage/backend-common';
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
-import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
-import { BackendSurfaces } from './surfaces';
+import { BackendSurfaces, PluginEnvironment } from '@esback/core';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();

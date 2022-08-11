@@ -18,8 +18,18 @@
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@backstage/core-app-api": "^1.0.4",
+    "@backstage/backend-common": "^0.14.1",
+    "@backstage/config": "^1.0.1",
+    "@types/express": "*",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.1.0",
+    "winston": "^3.2.1",
+    "node-fetch": "^2.6.7",
+    "yn": "^4.0.0"
+  },
+  "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0"
   },
   "devDependencies": {
