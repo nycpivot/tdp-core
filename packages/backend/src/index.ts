@@ -18,8 +18,8 @@ import { BackendRunner } from "./core/BackendRunner"
 // import { ESBackBackendPluginIntegration as kubernetes } from "@internal/plugin-esback-kubernetes"
 
 async function loadConfiguredPlugins(surfaces: BackendSurfaces): Promise<BackendSurfaces> {
-  // const kubernetesPlugin = await import('@internal/plugin-esback-kubernetes-backend')
-  // kubernetesPlugin.ESBackBackendPluginIntegration(surfaces)
+  const { KubernetesBackendPlugin } = await import('@internal/plugin-esback-kubernetes-backend')
+  KubernetesBackendPlugin(surfaces)
 
   return surfaces
 }
@@ -32,8 +32,6 @@ surfaces.pluginSurface.setPlugin("auth", auth)
 surfaces.pluginSurface.setPlugin("techdocs", techdocs)
 surfaces.pluginSurface.setPlugin("proxy", proxy)
 surfaces.pluginSurface.setPlugin("search", search)
-
-// kubernetes(surfaces)
 
 loadConfiguredPlugins(surfaces)
   .then(ctx => {
