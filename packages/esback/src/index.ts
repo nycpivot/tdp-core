@@ -1,4 +1,4 @@
-export { AppSurfaces, AppSurfacesContext } from './app'
+export * from './app'
 export { BackendSurfaces } from './backend'
 
 export type { PluginEnvironment } from './backend'

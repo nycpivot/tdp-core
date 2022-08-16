@@ -15,31 +15,31 @@ import { AppPluginInterface } from "@esback/core"
 import { entityPage } from './components/EntityPage'
 
 export const CatalogPlugin: AppPluginInterface = (ctx) => {
-    ctx.routeSurface.add(
-        <Route path="/catalog" element={<CatalogIndexPage />} />
-    );
+  ctx.routeSurface.add(
+    <Route path="/catalog" element={<CatalogIndexPage />} />
+  );
 
-    ctx.routeSurface.add(
-        <Route path="/catalog/:namespace/:kind/:name" element={<CatalogEntityPage />}>
-            {entityPage}
-        </Route>
-    );
+  ctx.routeSurface.add(
+    <Route path="/catalog/:namespace/:kind/:name" element={<CatalogEntityPage />}>
+      {entityPage(ctx.entityPageSurface)}
+    </Route>
+  );
 
-    ctx.routeSurface.add(
-        <PermissionedRoute
-            path="/catalog-import"
-            permission={catalogEntityCreatePermission}
-            element={<CatalogImportPage />}
-        />
-    )
+  ctx.routeSurface.add(
+    <PermissionedRoute
+      path="/catalog-import"
+      permission={catalogEntityCreatePermission}
+      element={<CatalogImportPage />}
+    />
+  )
 
-    // ctx.routeSurface.addRouteBinder(({ bind }) => {
-    //     bind(orgPlugin.externalRoutes, {
-    //         catalogIndex: catalogPlugin.routes.catalogIndex,
-    //     })
-    // })
+  // ctx.routeSurface.addRouteBinder(({ bind }) => {
+  //   bind(orgPlugin.externalRoutes, {
+  //     catalogIndex: catalogPlugin.routes.catalogIndex,
+  //   })
+  // })
 
-    ctx.sidebarItemSurface.add(
-        <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
-    )
+  ctx.sidebarItemSurface.add(
+    <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
+  )
 }
