@@ -22,7 +22,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.14.1",
+    "@backstage/backend-common": "^0.15.0",
     "@backstage/config": "^1.0.1",
     "@backstage/plugin-kubernetes-backend": "^0.7.0",
     "@types/express": "*",
