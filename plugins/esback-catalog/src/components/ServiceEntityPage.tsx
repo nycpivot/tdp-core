@@ -12,7 +12,7 @@ import {
 import { TechDocsContent } from './TechDocsContent';
 import { OverviewContent } from './OverviewContent';
 import { CicdContent } from './CicdContent';
-import { AppSurfacesContext } from '@internal/plugin-app-builder';
+import { AppSurfacesContext } from '@esback/core';
 
 export const ServiceEntityPage: React.FC = () => {
   const context = useContext(AppSurfacesContext)

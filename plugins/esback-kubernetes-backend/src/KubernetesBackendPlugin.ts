@@ -1,8 +1,7 @@
 
-import { BackendPluginInterface } from "@internal/plugin-plugin-interface";
 import { KubernetesBuilder } from '@backstage/plugin-kubernetes-backend';
 import { CatalogClient } from '@backstage/catalog-client';
-import { PluginEnvironment } from "@internal/plugin-esback-builder-backend"
+import { BackendPluginInterface, PluginEnvironment } from "@esback/core"
 import { Router } from "express";
 
 const kubernetes = async function createPlugin(
@@ -19,6 +18,6 @@ const kubernetes = async function createPlugin(
 
 // TODO Figure out if we can have frontend and backend config in the same library.
 // Right now, if the k8s backend library is added dependencies start to break
-export const ESBackBackendPluginIntegration: BackendPluginInterface = (context) => {
+export const KubernetesBackendPlugin: BackendPluginInterface = (context) => {
     context.pluginSurface.setPlugin("kubernetes", kubernetes)
 }

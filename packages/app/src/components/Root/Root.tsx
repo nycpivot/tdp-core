@@ -41,7 +41,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { AppSurfaces } from '../../core/surfaces';
+import { AppSurfaces } from '@esback/core';
 
 const useSidebarLogoStyles = makeStyles({
   root: {

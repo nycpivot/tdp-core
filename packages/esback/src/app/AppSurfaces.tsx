@@ -1,5 +1,7 @@
 import React from 'react'
-import { RouteSurface, EntityPageSurface, SidebarItemSurface } from '.'
+import { EntityPageSurface } from './EntityPageSurface'
+import { RouteSurface } from './RouteSurface'
+import { SidebarItemSurface } from './SidebarItemSurface'
 
 export class AppSurfaces {
   private readonly _entityPageSurface: EntityPageSurface

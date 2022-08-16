@@ -1,7 +1,7 @@
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
-import { PluginEnvironment } from '@internal/plugin-esback-builder-backend';
+import { PluginEnvironment } from '@esback/core';
 
 export default async function createPlugin(
   env: PluginEnvironment,

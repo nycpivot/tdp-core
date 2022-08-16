@@ -1,1 +1,1 @@
-export { ESBackPluginIntegration } from './ESBackPluginIntegration'
+export { GraphiQLPlugin } from "./GraphiQLPlugin"

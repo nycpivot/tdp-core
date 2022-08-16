@@ -1,1 +1,1 @@
-export { CatalogPlugin as ESBackPluginIntegration } from './CatalogPlugin';
+export { CatalogPlugin } from './CatalogPlugin';

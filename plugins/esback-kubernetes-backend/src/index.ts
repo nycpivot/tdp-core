@@ -1,1 +1,1 @@
-export { ESBackBackendPluginIntegration } from './ESBackBackendPluginIntegration';
+export * from "./KubernetesBackendPlugin"

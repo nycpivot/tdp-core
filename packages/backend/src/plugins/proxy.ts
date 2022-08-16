@@ -1,6 +1,6 @@
 import { createRouter } from '@backstage/plugin-proxy-backend';
 import { Router } from 'express';
-import { PluginEnvironment } from '@internal/plugin-esback-builder-backend';
+import { PluginEnvironment } from '@esback/core';
 
 export default async function createPlugin(
   env: PluginEnvironment,
