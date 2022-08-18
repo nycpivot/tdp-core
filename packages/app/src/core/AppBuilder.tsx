@@ -88,27 +88,3 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
     </AppSurfacesContext.Provider>
   );
 }
-
-export const loadSurfaces = async (): Promise<AppSurfaces> => {
-  const surfaces: AppSurfaces = new AppSurfaces()
-  surfaces.routeSurface.setDefault("catalog")
-
-  // Catalog targetting plugins need to be added before the catalog plugin
-  const { KubernetesPlugin } = await import('@internal/plugin-esback-kubernetes')
-  KubernetesPlugin(surfaces)
-
-  const { CatalogPlugin } = await import('@internal/plugin-esback-catalog')
-  CatalogPlugin(surfaces)
-
-  const { GraphiQLPlugin } = await import('@internal/plugin-esback-graphiql')
-  GraphiQLPlugin(surfaces)
-
-  const { TechRadarPlugin } = await import('@internal/plugin-esback-techradar')
-  TechRadarPlugin(surfaces)
-
-  const { TechDocsPlugin } = await import("@internal/plugin-esback-techdocs")
-  TechDocsPlugin(surfaces)
-
-  return surfaces
-} 
-

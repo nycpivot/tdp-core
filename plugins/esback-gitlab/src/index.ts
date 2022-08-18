@@ -1,0 +1,1 @@
+export { GitlabPlugin } from "./GitlabPlugin"

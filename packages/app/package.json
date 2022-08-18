@@ -30,6 +30,7 @@
     "@backstage/theme": "^0.2.16",
     "@esback/core": "^0.0.1",
     "@internal/plugin-esback-catalog": "^0.1.0",
+    "@internal/plugin-esback-gitlab": "^0.1.0",
     "@internal/plugin-esback-graphiql": "^0.1.0",
     "@internal/plugin-esback-techdocs": "^0.1.0",
     "@internal/plugin-esback-techradar": "^0.1.0",
