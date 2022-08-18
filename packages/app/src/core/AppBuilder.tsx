@@ -8,16 +8,7 @@ import {
   catalogImportPlugin,
 } from '@backstage/plugin-catalog-import';
 import { ScaffolderPage, scaffolderPlugin } from '@backstage/plugin-scaffolder';
-import { orgPlugin } from '@backstage/plugin-org';
 import { SearchPage } from '@backstage/plugin-search';
-import { TechRadarPage } from '@backstage/plugin-tech-radar';
-import {
-  TechDocsIndexPage,
-  techdocsPlugin,
-  TechDocsReaderPage,
-} from '@backstage/plugin-techdocs';
-import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
-import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { searchPage } from '../components/search/SearchPage';
 import { Root } from '../components/Root';
@@ -50,19 +41,18 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
 
   const app = createApp({
     apis,
-    bindRoutes({ bind }) {
+    bindRoutes(context) {
+      surfaces.routeSurface.routeBinders.forEach(binder => binder(context))
+
+      const { bind } = context
       bind(catalogPlugin.externalRoutes, {
         createComponent: scaffolderPlugin.routes.root,
-        viewTechDoc: techdocsPlugin.routes.docRoot,
       });
       bind(apiDocsPlugin.externalRoutes, {
         registerApi: catalogImportPlugin.routes.importPage,
       });
       bind(scaffolderPlugin.externalRoutes, {
         registerComponent: catalogImportPlugin.routes.importPage,
-      });
-      bind(orgPlugin.externalRoutes, {
-        catalogIndex: catalogPlugin.routes.catalogIndex,
       });
     },
   });
@@ -76,21 +66,8 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
           <Navigate key="/" to={surfaces.routeSurface.defaultRoute}/>
       )}
       { ...surfaces.routeSurface.nonDefaultRoutes }
-      <Route path="/docs" element={<TechDocsIndexPage />} />
-      <Route
-        path="/docs/:namespace/:kind/:name/*"
-        element={<TechDocsReaderPage />}
-      >
-        <TechDocsAddons>
-          <ReportIssue />
-        </TechDocsAddons>
-      </Route>
       <Route path="/create" element={<ScaffolderPage />} />
       <Route path="/api-docs" element={<ApiExplorerPage />} />
-      <Route
-        path="/tech-radar"
-        element={<TechRadarPage width={1500} height={800} />}
-      />
       <Route path="/search" element={<SearchPage />}>
         {searchPage}
       </Route>
@@ -125,6 +102,12 @@ export const loadSurfaces = async (): Promise<AppSurfaces> => {
 
   const { GraphiQLPlugin } = await import('@internal/plugin-esback-graphiql')
   GraphiQLPlugin(surfaces)
+
+  const { TechRadarPlugin } = await import('@internal/plugin-esback-techradar')
+  TechRadarPlugin(surfaces)
+
+  const { TechDocsPlugin } = await import("@internal/plugin-esback-techdocs")
+  TechDocsPlugin(surfaces)
 
   return surfaces
 } 

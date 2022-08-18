@@ -3,6 +3,7 @@ import { Route } from 'react-router'
 import {
   CatalogEntityPage,
   CatalogIndexPage,
+  catalogPlugin
 } from '@backstage/plugin-catalog';
 import {
   CatalogImportPage,
@@ -10,6 +11,7 @@ import {
 import { PermissionedRoute } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { SidebarItem } from '@backstage/core-components'
+import { orgPlugin } from '@backstage/plugin-org'
 import HomeIcon from '@material-ui/icons/Home'
 import { AppPluginInterface } from "@esback/core"
 import { entityPage } from './components/EntityPage'
@@ -33,11 +35,11 @@ export const CatalogPlugin: AppPluginInterface = (ctx) => {
     />
   )
 
-  // ctx.routeSurface.addRouteBinder(({ bind }) => {
-  //   bind(orgPlugin.externalRoutes, {
-  //     catalogIndex: catalogPlugin.routes.catalogIndex,
-  //   })
-  // })
+  ctx.routeSurface.addRouteBinder(({ bind }) => {
+    bind(orgPlugin.externalRoutes, {
+      catalogIndex: catalogPlugin.routes.catalogIndex,
+    })
+  })
 
   ctx.sidebarItemSurface.add(
     <SidebarItem icon={HomeIcon} to="catalog" text="Home" />

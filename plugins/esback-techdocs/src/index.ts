@@ -1,0 +1,1 @@
+export { TechDocsPlugin } from "./TechDocsPlugin"

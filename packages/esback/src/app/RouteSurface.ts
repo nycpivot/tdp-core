@@ -1,9 +1,11 @@
 import { AppRouteBinder } from "@backstage/core-app-api"
 import { ReactElement } from "react"
 
+type RouteBinder = (context: { bind: AppRouteBinder }) => void
+
 export class RouteSurface {
   private readonly _routes: ReactElement[]
-  private readonly _routeBinders: ((context: { bind: AppRouteBinder }) => void)[]
+  private readonly _routeBinders: RouteBinder[]
   private _defaultRoute?: string
 
   public constructor() {
@@ -15,7 +17,7 @@ export class RouteSurface {
     this._routes.push(route)
   }
 
-  public addRouteBinder(routeBinder: (context: { bind: AppRouteBinder }) => void) {
+  public addRouteBinder(routeBinder: RouteBinder) {
     this._routeBinders.push(routeBinder)
   }
 
@@ -33,5 +35,9 @@ export class RouteSurface {
 
   public get nonDefaultRoutes(): ReactElement[] {
     return this._routes
+  }
+
+  public get routeBinders(): RouteBinder[] {
+    return this._routeBinders
   }
 }

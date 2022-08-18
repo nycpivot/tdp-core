@@ -1,3 +1,4 @@
+
 import { DockerContainerRunner } from '@backstage/backend-common';
 import {
   createRouter,
@@ -7,9 +8,9 @@ import {
 } from '@backstage/plugin-techdocs-backend';
 import Docker from 'dockerode';
 import { Router } from 'express';
-import { PluginEnvironment } from '@esback/core';
+import { BackendPluginInterface, PluginEnvironment } from '@esback/core';
 
-export default async function createPlugin(
+const techdocs = async function createPlugin(
   env: PluginEnvironment,
 ): Promise<Router> {
   // Preparers are responsible for fetching source files for documentation.
@@ -48,4 +49,11 @@ export default async function createPlugin(
     discovery: env.discovery,
     cache: env.cache,
   });
+}
+
+
+// TODO Figure out if we can have frontend and backend config in the same library.
+// Right now, if the k8s backend library is added dependencies start to break
+export const TechDocsBackendPlugin: BackendPluginInterface = (context) => {
+  context.pluginSurface.setPlugin("techdocs", techdocs)
 }
