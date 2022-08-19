@@ -32,6 +32,7 @@
     "@internal/plugin-esback-catalog": "^0.1.0",
     "@internal/plugin-esback-gitlab": "^0.1.0",
     "@internal/plugin-esback-graphiql": "^0.1.0",
+    "@internal/plugin-esback-scaffolder": "^0.1.0",
     "@internal/plugin-esback-techdocs": "^0.1.0",
     "@internal/plugin-esback-techradar": "^0.1.0",
     "@material-ui/core": "^4.12.2",

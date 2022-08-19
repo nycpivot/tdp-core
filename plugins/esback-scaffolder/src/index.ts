@@ -1,0 +1,1 @@
+export { ScaffolderPlugin } from "./ScaffolderPlugin"

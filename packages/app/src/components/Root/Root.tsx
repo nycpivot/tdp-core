@@ -17,7 +17,6 @@
 import React, { PropsWithChildren } from 'react';
 import { Link, makeStyles } from '@material-ui/core';
 import ExtensionIcon from '@material-ui/icons/Extension';
-import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
 import { NavLink } from 'react-router-dom';
@@ -90,7 +89,6 @@ export const Root = ({ surfaces, children }: PropsWithChildren<IRoot>) => (
         {...surfaces.sidebarItemSurface.all}
         {/* Global nav, not org-specific */}
         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
         {/* End global nav */}
         <SidebarDivider />
       </SidebarGroup>
