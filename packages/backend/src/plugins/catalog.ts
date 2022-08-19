@@ -1,14 +1,13 @@
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
-import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
-import { PluginEnvironment } from '@esback/core';
+import { BackendSurfaces, PluginEnvironment } from '@esback/core';
 
-export default async function createPlugin(
-  env: PluginEnvironment,
-): Promise<Router> {
-  const builder = await CatalogBuilder.create(env);
-  builder.addProcessor(new ScaffolderEntitiesProcessor());
-  const { processingEngine, router } = await builder.build();
-  await processingEngine.start();
-  return router;
+export default function esbackCatalogPlugin(surfaces: BackendSurfaces) {
+  return async (env: PluginEnvironment): Promise<Router> => {
+    const builder = await CatalogBuilder.create(env);
+    builder.addProcessor(surfaces.catalogProcessorSurface.processors);
+    const { processingEngine, router } = await builder.build();
+    await processingEngine.start();
+    return router;
+  }
 }

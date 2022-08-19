@@ -9,7 +9,6 @@
 import app from './plugins/app';
 import auth from './plugins/auth';
 import catalog from './plugins/catalog';
-import scaffolder from './plugins/scaffolder';
 import proxy from './plugins/proxy';
 import search from './plugins/search';
 import { BackendSurfaces } from "@esback/core";
@@ -27,13 +26,12 @@ async function loadConfiguredPlugins(surfaces: BackendSurfaces): Promise<Backend
 
 const surfaces = new BackendSurfaces()
 surfaces.pluginSurface.setMainApp(app)
-surfaces.pluginSurface.setPlugin("catalog", catalog)
-surfaces.pluginSurface.setPlugin("scaffolder", scaffolder)
 surfaces.pluginSurface.setPlugin("auth", auth)
 surfaces.pluginSurface.setPlugin("proxy", proxy)
 surfaces.pluginSurface.setPlugin("search", search)
 
 loadConfiguredPlugins(surfaces)
   .then(ctx => {
+    surfaces.pluginSurface.setPlugin("catalog", catalog(ctx))
     BackendRunner(ctx)
   })
