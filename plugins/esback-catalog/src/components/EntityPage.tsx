@@ -197,6 +197,8 @@ export const entityPage = (surface: EntityPageSurface) => {
       <EntityLayout.Route path="/docs" title="Docs">
         {techdocsContent}
       </EntityLayout.Route>
+
+      {...surface.websitePageTabs}
     </EntityLayout>
   );
 
@@ -216,6 +218,8 @@ export const entityPage = (surface: EntityPageSurface) => {
       <EntityLayout.Route path="/docs" title="Docs">
         {techdocsContent}
       </EntityLayout.Route>
+
+      {...surface.defaultPageTabs}
     </EntityLayout>
   );
 
@@ -228,6 +232,8 @@ export const entityPage = (surface: EntityPageSurface) => {
       <EntitySwitch.Case if={isComponentType('website')}>
         {websiteEntityPage}
       </EntitySwitch.Case>
+
+      {...surface.componentPageCases}
 
       <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>
     </EntitySwitch>
@@ -265,6 +271,8 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
+
+      {...surface.apiPageTabs}
     </EntityLayout>
   );
 
@@ -281,6 +289,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
+      {...surface.userPageTabs}
     </EntityLayout>
   );
 
@@ -300,6 +309,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
+      {...surface.groupPageTabs}
     </EntityLayout>
   );
 
@@ -344,6 +354,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           unidirectional={false}
         />
       </EntityLayout.Route>
+      {...surface.systemPageTabs}
     </EntityLayout>
   );
 
@@ -363,6 +374,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
+      {...surface.domainPageTabs}
     </EntityLayout>
   );
 

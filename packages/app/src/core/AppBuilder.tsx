@@ -13,7 +13,6 @@ import { Root } from '../components/Root';
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
-import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import {
   ScmIntegrationsApi,
   scmIntegrationsApiRef,
@@ -34,10 +33,15 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
       factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
     }),
     ScmAuth.createDefaultApiFactory(),
+    ...surfaces.apiSurface.apis
   ];
+
+  const plugins = surfaces.pluginSurface.plugins.length > 0 ? surfaces.pluginSurface.plugins : undefined
 
   const app = createApp({
     apis,
+    components: surfaces.componentSurface.components,
+    plugins,
     bindRoutes(context) {
       surfaces.routeSurface.routeBinders.forEach(binder => binder(context))
 
@@ -65,7 +69,6 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
         {searchPage}
       </Route>
       <Route path="/settings" element={<UserSettingsPage />} />
-      <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     </FlatRoutes>
   );
 

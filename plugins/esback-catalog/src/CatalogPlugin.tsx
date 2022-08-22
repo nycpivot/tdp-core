@@ -14,18 +14,19 @@ import { SidebarItem } from '@backstage/core-components'
 import { orgPlugin } from '@backstage/plugin-org'
 import HomeIcon from '@material-ui/icons/Home'
 import { AppPluginInterface } from "@esback/core"
+import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage'
 
 export const CatalogPlugin: AppPluginInterface = (ctx) => {
   ctx.routeSurface.add(
     <Route path="/catalog" element={<CatalogIndexPage />} />
-  );
+  )
 
   ctx.routeSurface.add(
     <Route path="/catalog/:namespace/:kind/:name" element={<CatalogEntityPage />}>
       {entityPage(ctx.entityPageSurface)}
     </Route>
-  );
+  )
 
   ctx.routeSurface.add(
     <PermissionedRoute
@@ -33,6 +34,10 @@ export const CatalogPlugin: AppPluginInterface = (ctx) => {
       permission={catalogEntityCreatePermission}
       element={<CatalogImportPage />}
     />
+  )
+
+  ctx.routeSurface.add(
+    <Route path="/catalog-graph" element={<CatalogGraphPage />} />
   )
 
   ctx.routeSurface.addRouteBinder(({ bind }) => {
