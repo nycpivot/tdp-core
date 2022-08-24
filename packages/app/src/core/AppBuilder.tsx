@@ -1,10 +1,5 @@
 import React from 'react';
 import { Navigate, Route } from 'react-router';
-import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
-import {
-  catalogImportPlugin,
-} from '@backstage/plugin-catalog-import';
-import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { SearchPage } from '@backstage/plugin-search';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { searchPage } from '../components/search/SearchPage';
@@ -44,14 +39,6 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
     plugins,
     bindRoutes(context) {
       surfaces.routeSurface.routeBinders.forEach(binder => binder(context))
-
-      const { bind } = context
-      bind(apiDocsPlugin.externalRoutes, {
-        registerApi: catalogImportPlugin.routes.importPage,
-      });
-      bind(scaffolderPlugin.externalRoutes, {
-        registerComponent: catalogImportPlugin.routes.importPage,
-      });
     },
   });
 
@@ -64,7 +51,6 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
           <Navigate key="/" to={surfaces.routeSurface.defaultRoute}/>
       )}
       { ...surfaces.routeSurface.nonDefaultRoutes }
-      <Route path="/api-docs" element={<ApiExplorerPage />} />
       <Route path="/search" element={<SearchPage />}>
         {searchPage}
       </Route>

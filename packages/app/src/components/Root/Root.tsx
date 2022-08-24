@@ -16,7 +16,6 @@
 
 import React, { PropsWithChildren } from 'react';
 import { Link, makeStyles } from '@material-ui/core';
-import ExtensionIcon from '@material-ui/icons/Extension';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
 import { NavLink } from 'react-router-dom';
@@ -30,7 +29,6 @@ import {
   sidebarConfig,
   SidebarDivider,
   SidebarGroup,
-  SidebarItem,
   SidebarPage,
   SidebarSpace,
   useSidebarOpenState,
@@ -87,9 +85,6 @@ export const Root = ({ surfaces, children }: PropsWithChildren<IRoot>) => (
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
         {...surfaces.sidebarItemSurface.all}
-        {/* Global nav, not org-specific */}
-        <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-        {/* End global nav */}
         <SidebarDivider />
       </SidebarGroup>
       <SidebarSpace />

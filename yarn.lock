@@ -1825,7 +1825,7 @@
     yn "^4.0.0"
     zod "^3.11.6"
 
-"@backstage/plugin-catalog-common@^1.0.4", "@backstage/plugin-catalog-common@^1.0.5":
+"@backstage/plugin-catalog-common@^1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-common/-/plugin-catalog-common-1.0.5.tgz#0617387e52181ea347b505d00704b791eef2dcda"
   integrity sha512-dBKSBHPlohL3aHVGZLKGZfHtEnWzH1bwWCTJlqJLdiyfiRWjwtgRTIlcv2GSizYs4WZ1IW1LfDxkheR0pAW8vg==
@@ -1945,26 +1945,6 @@
     react-router "6.0.0-beta.0"
     react-use "^17.2.4"
     zen-observable "^0.8.15"
-
-"@backstage/plugin-github-actions@^0.5.7":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@backstage/plugin-github-actions/-/plugin-github-actions-0.5.8.tgz#8dead96d55db25fec39a8cfbf92ec743ff0b6666"
-  integrity sha512-MR0gfaz2jLE7m3EzeAZ0CWE+QGTgCGZISpA0LLVvI6zR9LZWkc4xriPsUTx9e2ITR9vjNKd9X+xIlj23EVmtog==
-  dependencies:
-    "@backstage/catalog-model" "^1.1.0"
-    "@backstage/core-components" "^0.11.0"
-    "@backstage/core-plugin-api" "^1.0.5"
-    "@backstage/integration" "^1.3.0"
-    "@backstage/plugin-catalog-react" "^1.1.3"
-    "@backstage/theme" "^0.2.16"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.57"
-    "@octokit/rest" "^19.0.3"
-    luxon "^3.0.0"
-    react-router "6.0.0-beta.0"
-    react-router-dom "6.0.0-beta.0"
-    react-use "^17.2.4"
 
 "@backstage/plugin-graphiql@^0.2.39":
   version "0.2.40"
@@ -2092,7 +2072,7 @@
     express-promise-router "^4.1.0"
     zod "^3.11.6"
 
-"@backstage/plugin-permission-react@^0.4.3", "@backstage/plugin-permission-react@^0.4.4":
+"@backstage/plugin-permission-react@^0.4.4":
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.4.tgz#3032d621cc9259d2d9fd4043ac01ece8b012e6c1"
   integrity sha512-dldu0yc1tQTI5SVSlS3jIB8kYd6ntWk3mKyX/8aFUt2BNBajqwBMYUOjAknXnnuNpYqxE1uVsPrZXePC7QQ/1g==
@@ -2329,7 +2309,7 @@
     react-router-dom "6.0.0-beta.0"
     react-use "^17.2.4"
 
-"@backstage/plugin-tech-radar@^0.5.14", "@backstage/plugin-tech-radar@^0.5.15":
+"@backstage/plugin-tech-radar@^0.5.15":
   version "0.5.15"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-tech-radar/-/plugin-tech-radar-0.5.15.tgz#fa620abccb04922fb98c52bfc9bfa446600ca267"
   integrity sha512-614mKxM2QMul8RL/L4T4EXL0Of6UA5+GuMAjchKdxbe4czWmez3HQbF5Pl9BB4YZknEWAfKCbrc7P/xuRoIvMg==
@@ -6231,7 +6211,6 @@ anymatch@^3.0.3, anymatch@~3.1.2:
   version "0.0.0"
   dependencies:
     "@backstage/app-defaults" "^1.0.4"
-    "@backstage/catalog-model" "^1.1.0"
     "@backstage/cli" "^0.18.0"
     "@backstage/core-app-api" "^1.0.4"
     "@backstage/core-components" "^0.11.0"
@@ -6239,22 +6218,20 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/integration-react" "^1.1.2"
     "@backstage/plugin-api-docs" "^0.8.7"
     "@backstage/plugin-catalog" "^1.4.0"
-    "@backstage/plugin-catalog-common" "^1.0.4"
-    "@backstage/plugin-catalog-graph" "^0.2.19"
     "@backstage/plugin-catalog-import" "^0.8.10"
     "@backstage/plugin-catalog-react" "^1.1.2"
-    "@backstage/plugin-github-actions" "^0.5.7"
-    "@backstage/plugin-permission-react" "^0.4.3"
     "@backstage/plugin-scaffolder" "^1.4.0"
     "@backstage/plugin-search" "^1.0.0"
     "@backstage/plugin-search-react" "^1.0.0"
-    "@backstage/plugin-tech-radar" "^0.5.14"
+    "@backstage/plugin-techdocs" "^1.3.1"
     "@backstage/plugin-user-settings" "^0.4.6"
     "@backstage/theme" "^0.2.16"
     "@esback/core" "^0.0.1"
     "@internal/plugin-esback-catalog" "^0.1.0"
     "@internal/plugin-esback-gitlab" "^0.1.0"
     "@internal/plugin-esback-graphiql" "^0.1.0"
+    "@internal/plugin-esback-kubernetes" "^0.1.0"
+    "@internal/plugin-esback-scaffolder" "^0.1.0"
     "@internal/plugin-esback-techdocs" "^0.1.0"
     "@internal/plugin-esback-techradar" "^0.1.0"
     "@material-ui/core" "^4.12.2"

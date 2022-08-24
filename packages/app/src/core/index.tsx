@@ -29,6 +29,9 @@ const loadSurfaces = async (): Promise<AppSurfaces> => {
   const { ScaffolderPlugin } = await import('@internal/plugin-esback-scaffolder')
   ScaffolderPlugin(surfaces)
 
+  const { ApiDocsPlugin } = await import('@internal/plugin-esback-api-docs')
+  ApiDocsPlugin(surfaces)
+
   return surfaces
 } 
 

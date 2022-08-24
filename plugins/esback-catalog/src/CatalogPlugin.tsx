@@ -6,7 +6,7 @@ import {
   catalogPlugin
 } from '@backstage/plugin-catalog';
 import {
-  CatalogImportPage,
+  CatalogImportPage, catalogImportPlugin,
 } from '@backstage/plugin-catalog-import';
 import { PermissionedRoute } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
@@ -16,6 +16,8 @@ import HomeIcon from '@material-ui/icons/Home'
 import { AppPluginInterface } from "@esback/core"
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage'
+import { apiDocsPlugin } from '@backstage/plugin-api-docs';
+import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 
 export const CatalogPlugin: AppPluginInterface = (ctx) => {
   ctx.routeSurface.add(
@@ -43,6 +45,18 @@ export const CatalogPlugin: AppPluginInterface = (ctx) => {
   ctx.routeSurface.addRouteBinder(({ bind }) => {
     bind(orgPlugin.externalRoutes, {
       catalogIndex: catalogPlugin.routes.catalogIndex,
+    })
+  })
+
+  ctx.routeSurface.addRouteBinder(({ bind }) => {
+    bind(apiDocsPlugin.externalRoutes, {
+      registerApi: catalogImportPlugin.routes.importPage,
+    })
+  })
+
+  ctx.routeSurface.addRouteBinder(({ bind }) => {
+    bind(scaffolderPlugin.externalRoutes, {
+      registerComponent: catalogImportPlugin.routes.importPage,
     })
   })
 
