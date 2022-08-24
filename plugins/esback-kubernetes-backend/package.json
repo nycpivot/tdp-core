@@ -23,8 +23,10 @@
   },
   "dependencies": {
     "@backstage/backend-common": "^0.15.0",
+    "@backstage/catalog-client": "1.0.4",
     "@backstage/config": "^1.0.1",
     "@backstage/plugin-kubernetes-backend": "^0.7.0",
+    "@esback/core": "^0.0.1",
     "@types/express": "*",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",

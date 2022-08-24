@@ -1344,7 +1344,7 @@
     winston "^3.2.1"
     zod "^3.9.5"
 
-"@backstage/catalog-client@^1.0.4":
+"@backstage/catalog-client@1.0.4", "@backstage/catalog-client@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-1.0.4.tgz#205169a3a19be22866ffcc94ec415ca795fe9589"
   integrity sha512-N3ko48XX8HnFCEwhFglC+rqIsy1KQpPlsPMhMYEOYeaOgw8H26SPMtv4wyFjcm9/Hadars+L3fnmQdSShECawg==
@@ -1946,6 +1946,26 @@
     react-use "^17.2.4"
     zen-observable "^0.8.15"
 
+"@backstage/plugin-github-actions@^0.5.7":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-github-actions/-/plugin-github-actions-0.5.8.tgz#8dead96d55db25fec39a8cfbf92ec743ff0b6666"
+  integrity sha512-MR0gfaz2jLE7m3EzeAZ0CWE+QGTgCGZISpA0LLVvI6zR9LZWkc4xriPsUTx9e2ITR9vjNKd9X+xIlj23EVmtog==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.0"
+    "@backstage/core-components" "^0.11.0"
+    "@backstage/core-plugin-api" "^1.0.5"
+    "@backstage/integration" "^1.3.0"
+    "@backstage/plugin-catalog-react" "^1.1.3"
+    "@backstage/theme" "^0.2.16"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    "@octokit/rest" "^19.0.3"
+    luxon "^3.0.0"
+    react-router "6.0.0-beta.0"
+    react-router-dom "6.0.0-beta.0"
+    react-use "^17.2.4"
+
 "@backstage/plugin-graphiql@^0.2.39":
   version "0.2.40"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-graphiql/-/plugin-graphiql-0.2.40.tgz#d07e3cb2999be258ba7319b90eeca8f001ae6766"
@@ -2072,7 +2092,7 @@
     express-promise-router "^4.1.0"
     zod "^3.11.6"
 
-"@backstage/plugin-permission-react@^0.4.4":
+"@backstage/plugin-permission-react@^0.4.3", "@backstage/plugin-permission-react@^0.4.4":
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.4.tgz#3032d621cc9259d2d9fd4043ac01ece8b012e6c1"
   integrity sha512-dldu0yc1tQTI5SVSlS3jIB8kYd6ntWk3mKyX/8aFUt2BNBajqwBMYUOjAknXnnuNpYqxE1uVsPrZXePC7QQ/1g==
@@ -6216,17 +6236,16 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/core-components" "^0.11.0"
     "@backstage/core-plugin-api" "^1.0.4"
     "@backstage/integration-react" "^1.1.2"
-    "@backstage/plugin-api-docs" "^0.8.7"
     "@backstage/plugin-catalog" "^1.4.0"
-    "@backstage/plugin-catalog-import" "^0.8.10"
     "@backstage/plugin-catalog-react" "^1.1.2"
-    "@backstage/plugin-scaffolder" "^1.4.0"
+    "@backstage/plugin-permission-react" "^0.4.3"
     "@backstage/plugin-search" "^1.0.0"
     "@backstage/plugin-search-react" "^1.0.0"
     "@backstage/plugin-techdocs" "^1.3.1"
     "@backstage/plugin-user-settings" "^0.4.6"
     "@backstage/theme" "^0.2.16"
     "@esback/core" "^0.0.1"
+    "@internal/plugin-esback-api-docs" "^0.1.0"
     "@internal/plugin-esback-catalog" "^0.1.0"
     "@internal/plugin-esback-gitlab" "^0.1.0"
     "@internal/plugin-esback-graphiql" "^0.1.0"

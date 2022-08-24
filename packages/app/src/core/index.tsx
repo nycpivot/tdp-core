@@ -13,6 +13,12 @@ const loadSurfaces = async (): Promise<AppSurfaces> => {
   const { KubernetesPlugin } = await import('@internal/plugin-esback-kubernetes')
   KubernetesPlugin(surfaces)
 
+  const { TechDocsPlugin } = await import('@internal/plugin-esback-techdocs')
+  TechDocsPlugin(surfaces)
+
+  const { ApiDocsPlugin } = await import('@internal/plugin-esback-api-docs')
+  ApiDocsPlugin(surfaces)
+
   // WARNING: Catalog targetting plugins need to be added before the catalog plugin
   const { CatalogPlugin } = await import('@internal/plugin-esback-catalog')
   CatalogPlugin(surfaces)
@@ -23,14 +29,8 @@ const loadSurfaces = async (): Promise<AppSurfaces> => {
   const { TechRadarPlugin } = await import('@internal/plugin-esback-techradar')
   TechRadarPlugin(surfaces)
 
-  const { TechDocsPlugin } = await import("@internal/plugin-esback-techdocs")
-  TechDocsPlugin(surfaces)
-
   const { ScaffolderPlugin } = await import('@internal/plugin-esback-scaffolder')
   ScaffolderPlugin(surfaces)
-
-  const { ApiDocsPlugin } = await import('@internal/plugin-esback-api-docs')
-  ApiDocsPlugin(surfaces)
 
   return surfaces
 } 
