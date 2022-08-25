@@ -5,17 +5,10 @@ import { buildBackstageApp } from './AppBuilder'
 
 const loadSurfaces = async (): Promise<AppSurfaces> => {
   const surfaces: AppSurfaces = new AppSurfaces()
-  surfaces.routeSurface.setDefault("catalog")
 
   const pluginExports: AppPluginExport[] = [
     (await import('@internal/plugin-esback-catalog')).default(),
-    (await import('@internal/plugin-esback-api-docs')).default(),
-    (await import('@internal/plugin-esback-gitlab')).default(),
-    (await import('@internal/plugin-esback-graphiql')).default(),
-    (await import('@internal/plugin-esback-kubernetes')).default(),
-    (await import('@internal/plugin-esback-scaffolder')).default(),
-    (await import('@internal/plugin-esback-techdocs')).default(),
-    (await import('@internal/plugin-esback-techradar')).default(),
+    // {{esback:plugin:imports}}
   ]
 
   // The entityPage surfaces need to be applied before catalog
@@ -33,6 +26,7 @@ const loadSurfaces = async (): Promise<AppSurfaces> => {
     sidebarItems && sidebarItems(surfaces.sidebarItemSurface)
   })
 
+  surfaces.routeSurface.setDefault("catalog")
   return surfaces
 } 
 
