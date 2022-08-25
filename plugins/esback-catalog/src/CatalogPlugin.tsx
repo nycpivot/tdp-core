@@ -19,48 +19,53 @@ import { entityPage } from './components/EntityPage'
 import { apiDocsPlugin } from '@backstage/plugin-api-docs';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 
-export const CatalogPlugin: AppPluginInterface = (ctx) => {
-  ctx.routeSurface.add(
-    <Route path="/catalog" element={<CatalogIndexPage />} />
-  )
+export const CatalogPlugin: AppPluginInterface = () => {
+  return {
+    routes: (routeSurface, ctx) => {
+      routeSurface.add(
+        <Route path="/catalog" element={<CatalogIndexPage />} />
+      )
 
-  ctx.routeSurface.add(
-    <Route path="/catalog/:namespace/:kind/:name" element={<CatalogEntityPage />}>
-      {entityPage(ctx.entityPageSurface)}
-    </Route>
-  )
+      routeSurface.add(
+        <Route path="/catalog/:namespace/:kind/:name" element={<CatalogEntityPage />}>
+          {entityPage(ctx.entityPageSurface)}
+        </Route>
+      )
 
-  ctx.routeSurface.add(
-    <PermissionedRoute
-      path="/catalog-import"
-      permission={catalogEntityCreatePermission}
-      element={<CatalogImportPage />}
-    />
-  )
+      routeSurface.add(
+        <PermissionedRoute
+          path="/catalog-import"
+          permission={catalogEntityCreatePermission}
+          element={<CatalogImportPage />}
+        />
+      )
 
-  ctx.routeSurface.add(
-    <Route path="/catalog-graph" element={<CatalogGraphPage />} />
-  )
+      routeSurface.add(
+        <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+      )
 
-  ctx.routeSurface.addRouteBinder(({ bind }) => {
-    bind(orgPlugin.externalRoutes, {
-      catalogIndex: catalogPlugin.routes.catalogIndex,
-    })
-  })
+      routeSurface.addRouteBinder(({ bind }) => {
+        bind(orgPlugin.externalRoutes, {
+          catalogIndex: catalogPlugin.routes.catalogIndex,
+        })
+      })
 
-  ctx.routeSurface.addRouteBinder(({ bind }) => {
-    bind(apiDocsPlugin.externalRoutes, {
-      registerApi: catalogImportPlugin.routes.importPage,
-    })
-  })
+      routeSurface.addRouteBinder(({ bind }) => {
+        bind(apiDocsPlugin.externalRoutes, {
+          registerApi: catalogImportPlugin.routes.importPage,
+        })
+      })
 
-  ctx.routeSurface.addRouteBinder(({ bind }) => {
-    bind(scaffolderPlugin.externalRoutes, {
-      registerComponent: catalogImportPlugin.routes.importPage,
-    })
-  })
-
-  ctx.sidebarItemSurface.add(
-    <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
-  )
+      routeSurface.addRouteBinder(({ bind }) => {
+        bind(scaffolderPlugin.externalRoutes, {
+          registerComponent: catalogImportPlugin.routes.importPage,
+        })
+      })
+    },
+    sidebarItems: (sidebarItemSurface) => {
+      sidebarItemSurface.add(
+        <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
+      )
+    }
+  }
 }

@@ -1,1 +1,1 @@
-export { ScaffolderPlugin } from "./ScaffolderPlugin"
+export { ScaffolderPlugin as default } from "./ScaffolderPlugin"

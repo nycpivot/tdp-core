@@ -18,33 +18,34 @@ const techdocsEntityTab = (
   </EntityLayout.Route>
 );
 
-export const TechDocsPlugin: AppPluginInterface = (ctx) => {
-  ctx.routeSurface.add(
-    <Route path="/docs" element={<TechDocsIndexPage />} />
-  );
+export const TechDocsPlugin: AppPluginInterface = () => ({
+  entityPage: (surface) => {
+    surface.addServicePageTab(techdocsEntityTab);
+    surface.addWebsitePageTab(techdocsEntityTab);
+    surface.addDefaultPageTab(techdocsEntityTab);
+  },
+  routes: (surface) => {
+    surface.add(
+      <Route path="/docs" element={<TechDocsIndexPage />} />
+    );
 
-  ctx.routeSurface.add(
-    <Route
-      path="/docs/:namespace/:kind/:name/*"
-      element={<TechDocsReaderPage />}
-    >
-      <TechDocsAddons>
-        <ReportIssue />
-      </TechDocsAddons>
-    </Route>
-  );
+    surface.add(
+      <Route
+        path="/docs/:namespace/:kind/:name/*"
+        element={<TechDocsReaderPage />}
+      >
+        <TechDocsAddons>
+          <ReportIssue />
+        </TechDocsAddons>
+      </Route>
+    );
 
-  ctx.entityPageSurface.addServicePageTab(techdocsEntityTab);
-  ctx.entityPageSurface.addWebsitePageTab(techdocsEntityTab);
-  ctx.entityPageSurface.addDefaultPageTab(techdocsEntityTab);
 
-  ctx.routeSurface.addRouteBinder(({ bind }) => {
-    bind(catalogPlugin.externalRoutes, {
-      viewTechDoc: techdocsPlugin.routes.docRoot,
+    surface.addRouteBinder(({ bind }) => {
+      bind(catalogPlugin.externalRoutes, {
+        viewTechDoc: techdocsPlugin.routes.docRoot,
+      });
     });
-  });
-
-  ctx.sidebarItemSurface.add(
-    <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-  )
-}
+  },
+  sidebarItems: (surface) => surface.add(<SidebarItem icon={LibraryBooks} to="docs" text="Docs" />)
+})

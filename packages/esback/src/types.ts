@@ -1,5 +1,6 @@
-import { AppSurfaces } from "./app/AppSurfaces";
 import { BackendSurfaces } from "./backend";
+import { AppPluginExport } from "./plugins";
 
-export type AppPluginInterface = (context: AppSurfaces) => void
+
+export type AppPluginInterface<T= {}> = (config?: T) => AppPluginExport
 export type BackendPluginInterface = (context: BackendSurfaces) => void

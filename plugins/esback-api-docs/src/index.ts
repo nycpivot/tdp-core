@@ -1,1 +1,1 @@
-export { ApiDocsPlugin } from "./ApiDocsPlugin"
+export { ApiDocsPlugin as default } from "./ApiDocsPlugin"

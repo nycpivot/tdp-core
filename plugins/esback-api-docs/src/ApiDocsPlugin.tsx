@@ -7,43 +7,41 @@ import { SidebarItem } from '@backstage/core-components';
 import { EntityLayout } from '@backstage/plugin-catalog'
 import { Grid } from '@material-ui/core';
 
-export const ApiDocsPlugin: AppPluginInterface = (ctx) => {
-  ctx.routeSurface.add(
-    <Route path="/api-docs" element={<ApiExplorerPage />} />
-  )
-
-  ctx.sidebarItemSurface.add(
-    <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-  )
-
-  ctx.entityPageSurface.addServicePageTab(
-    <EntityLayout.Route path="/api" title="API">
-      <Grid container spacing={3} alignItems="stretch">
-        <Grid item md={6}>
-          <EntityProvidedApisCard />
-        </Grid>
-        <Grid item md={6}>
-          <EntityConsumedApisCard />
-        </Grid>
-      </Grid>
-    </EntityLayout.Route>
-  )
-
-  ctx.entityPageSurface.addApiPageTab(
-    <EntityLayout.Route path="/definition" title="Definition">
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <EntityApiDefinitionCard />
-        </Grid>
-        <Grid container item md={12}>
-          <Grid item md={6}>
-            <EntityProvidingComponentsCard />
+export const ApiDocsPlugin: AppPluginInterface = () => {
+  return {
+    entityPage: (surface) => {
+      surface.addServicePageTab(
+        <EntityLayout.Route path="/api" title="API">
+          <Grid container spacing={3} alignItems="stretch">
+            <Grid item md={6}>
+              <EntityProvidedApisCard />
+            </Grid>
+            <Grid item md={6}>
+              <EntityConsumedApisCard />
+            </Grid>
           </Grid>
-          <Grid item md={6}>
-            <EntityConsumingComponentsCard />
+        </EntityLayout.Route>
+      )
+
+      surface.addApiPageTab(
+        <EntityLayout.Route path="/definition" title="Definition">
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <EntityApiDefinitionCard />
+            </Grid>
+            <Grid container item md={12}>
+              <Grid item md={6}>
+                <EntityProvidingComponentsCard />
+              </Grid>
+              <Grid item md={6}>
+                <EntityConsumingComponentsCard />
+              </Grid>
+            </Grid>
           </Grid>
-        </Grid>
-      </Grid>
-    </EntityLayout.Route>
-  )
+        </EntityLayout.Route>
+      )
+    },
+    routes: (surface) => surface.add(<Route path="/api-docs" element={<ApiExplorerPage />} />),
+    sidebarItems: (surface) => surface.add(<SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />)
+  }
 }
