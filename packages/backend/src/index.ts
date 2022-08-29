@@ -11,15 +11,15 @@ import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import proxy from './plugins/proxy';
 import search from './plugins/search';
-import { BackendSurfaces } from "@esback/core";
+import { BackendPluginInterface, BackendSurfaces } from "@esback/core";
 import { BackendRunner } from "./core/BackendRunner"
 
 async function loadConfiguredPlugins(surfaces: BackendSurfaces): Promise<BackendSurfaces> {
-  const { KubernetesBackendPlugin } = await import('@internal/plugin-esback-kubernetes-backend')
-  KubernetesBackendPlugin(surfaces)
+  const plugins: BackendPluginInterface[] = [
+    // {{esback:plugin:imports}}
+  ]
 
-  const { TechDocsBackendPlugin } = await import('@internal/plugin-esback-techdocs-backend')
-  TechDocsBackendPlugin(surfaces)
+  plugins.forEach(plugin => plugin(surfaces))
 
   return surfaces
 }

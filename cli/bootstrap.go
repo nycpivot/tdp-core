@@ -12,6 +12,11 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+var importTemplate = map[string]string{
+	"app":     "%s\n    (await import('%s')).default(),",
+	"backend": "%s\n    (await import('%s')).default,",
+}
+
 func cloneFoundation(path string) error {
 	return nil
 }
@@ -37,7 +42,7 @@ func addPlugins(path string, pkg string, plugins []PluginConfig) error {
 	importStatement := ""
 
 	for _, plugin := range plugins {
-		importStatement = fmt.Sprintf("%s\n    (await import('%s')).default(),", importStatement, plugin.Name)
+		importStatement = fmt.Sprintf(importTemplate[pkg], importStatement, plugin.Name)
 	}
 
 	return injectIntoSurface(filepath.Join(path, "packages", pkg), "{{esback:plugin:imports}}", importStatement)
@@ -121,5 +126,5 @@ func BuildNewInstance(configFile string) {
 		terminate("Error adding backend plugins:\n%s", err)
 	}
 
-	fmt.Println("Your new ESBack instance is ready, to test it out simply run:")
+	fmt.Println("Your ESBack instance has been properly configured!")
 }

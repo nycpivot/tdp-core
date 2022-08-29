@@ -1,1 +1,1 @@
-export * from "./KubernetesBackendPlugin"
+export { KubernetesBackendPlugin as default } from "./KubernetesBackendPlugin"
