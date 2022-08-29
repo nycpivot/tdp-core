@@ -6,8 +6,10 @@ import (
 	"io/fs"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -42,6 +44,10 @@ func addPlugins(path string, pkg string, plugins []PluginConfig) error {
 	importStatement := ""
 
 	for _, plugin := range plugins {
+		if !strings.HasPrefix(plugin.Name, "@internal") {
+			yarnAdd(path, pkg, plugin.Name)
+		}
+
 		importStatement = fmt.Sprintf(importTemplate[pkg], importStatement, plugin.Name)
 	}
 
@@ -51,6 +57,15 @@ func addPlugins(path string, pkg string, plugins []PluginConfig) error {
 func terminate(message string, err error) {
 	fmt.Fprintf(os.Stderr, message+"\n", err)
 	os.Exit(1)
+}
+
+func yarnAdd(path string, pkg string, library string) error {
+	yarnAdd := exec.Command("yarn", "add", "--cwd", "packages/"+pkg, library)
+
+	yarnAdd.Dir = path
+	yarnAdd.Stdout = os.Stdout
+
+	return yarnAdd.Run()
 }
 
 func injectIntoSurface(path string, surface string, code string) error {
