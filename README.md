@@ -42,9 +42,9 @@ plugins:
     - name: "@internal/plugin-esback-kubernetes-backend"
 ```
 
-And then run the bootstrap tool with `./cli/bootstrap -f esback-config.yml`.
+And then run the bootstrap tool with `go run ./cli -f esback-config.yml`.
 
-This will modify the current `packages/app/src/core/index.tsx` and `packages/backend/src/index.ts`
+This will modify the current `packages/app/src/core/plugins.ts` and `packages/backend/src/core/plugins.ts`
 files to add the configured plugins. Make sure not to add this changes to version control
 or they will become default in esback.
 
