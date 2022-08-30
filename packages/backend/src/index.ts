@@ -11,27 +11,20 @@ import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import proxy from './plugins/proxy';
 import search from './plugins/search';
-import { BackendPluginInterface, BackendSurfaces } from "@esback/core";
-import { BackendRunner } from "./core/BackendRunner"
+import { BackendSurfaces } from "@esback/core";
+import { BackendRunner, esbackPlugins } from "./core"
 
-async function loadConfiguredPlugins(surfaces: BackendSurfaces): Promise<BackendSurfaces> {
-  const plugins: BackendPluginInterface[] = [
-    // {{esback:plugin:imports}}
-  ]
+esbackPlugins()
+  .then(plugins => {
+    const surfaces = new BackendSurfaces()
 
-  plugins.forEach(plugin => plugin(surfaces))
+    surfaces.pluginSurface.setMainApp(app)
+    surfaces.pluginSurface.setPlugin("auth", auth)
+    surfaces.pluginSurface.setPlugin("proxy", proxy)
+    surfaces.pluginSurface.setPlugin("search", search)
 
-  return surfaces
-}
+    plugins.forEach(plugin => plugin(surfaces))
 
-const surfaces = new BackendSurfaces()
-surfaces.pluginSurface.setMainApp(app)
-surfaces.pluginSurface.setPlugin("auth", auth)
-surfaces.pluginSurface.setPlugin("proxy", proxy)
-surfaces.pluginSurface.setPlugin("search", search)
-
-loadConfiguredPlugins(surfaces)
-  .then(ctx => {
-    surfaces.pluginSurface.setPlugin("catalog", catalog(ctx))
-    BackendRunner(ctx)
+    surfaces.pluginSurface.setPlugin("catalog", catalog(surfaces))
+    BackendRunner(surfaces)
   })

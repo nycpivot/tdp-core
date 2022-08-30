@@ -2,13 +2,14 @@ import { AppPluginExport, AppSurfaces } from "@esback/core";
 import React from "react"
 import ReactDOM from 'react-dom';
 import { buildBackstageApp } from './AppBuilder'
+import { esbackPlugins } from "./plugins"
 
 const loadSurfaces = async (): Promise<AppSurfaces> => {
   const surfaces: AppSurfaces = new AppSurfaces()
 
   const pluginExports: AppPluginExport[] = [
     (await import('@internal/plugin-esback-catalog')).default(),
-    // {{esback:plugin:imports}}
+    ...(await esbackPlugins())
   ]
 
   // The entityPage surfaces need to be applied before catalog

@@ -1,26 +1,34 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"io/fs"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
 	"strings"
 
 	"gopkg.in/yaml.v3"
 )
 
-var importTemplate = map[string]string{
-	"app":     "%s\n    (await import('%s')).default(),",
-	"backend": "%s\n    (await import('%s')).default,",
+type TemplateConfig struct {
+	fileTemplate   string
+	pluginTemplate string
 }
 
-func cloneFoundation(path string) error {
-	return nil
+var templateConfig = map[string]*TemplateConfig{
+	"app": &TemplateConfig{
+		fileTemplate: `import { AppPluginExport } from '@esback/core';
+export const esbackPlugins = async (): Promise<AppPluginExport[]> => [
+%s]`,
+		pluginTemplate: "%s  (await import('%s')).default(),\n",
+	},
+	"backend": &TemplateConfig{
+		fileTemplate: `import { BackendPluginInterface } from '@esback/core';
+export const esbackPlugins = async (): Promise<BackendPluginInterface[]> => [
+%s]`,
+		pluginTemplate: "%s  (await import('%s')).default,\n",
+	},
 }
 
 func loadConfig(configFile string) (*EsbackConfig, error) {
@@ -41,6 +49,8 @@ func addPlugins(path string, pkg string, plugins []PluginConfig) error {
 		return nil
 	}
 
+	config := templateConfig[pkg]
+
 	importStatement := ""
 
 	for _, plugin := range plugins {
@@ -48,10 +58,11 @@ func addPlugins(path string, pkg string, plugins []PluginConfig) error {
 			yarnAdd(path, pkg, plugin.Name)
 		}
 
-		importStatement = fmt.Sprintf(importTemplate[pkg], importStatement, plugin.Name)
+		importStatement = fmt.Sprintf(config.pluginTemplate, importStatement, plugin.Name)
 	}
 
-	return injectIntoSurface(filepath.Join(path, "packages", pkg), "{{esback:plugin:imports}}", importStatement)
+	pluginFile := filepath.Join(path, "packages", pkg, "src", "core", "plugins.ts")
+	return ioutil.WriteFile(pluginFile, []byte(fmt.Sprintf(config.fileTemplate, importStatement)), 0644)
 }
 
 func terminate(message string, err error) {
@@ -66,52 +77,6 @@ func yarnAdd(path string, pkg string, library string) error {
 	yarnAdd.Stdout = os.Stdout
 
 	return yarnAdd.Run()
-}
-
-func injectIntoSurface(path string, surface string, code string) error {
-	injectDone := errors.New("code injected successfully") // due to WalkDir function it needs to be handled like an error
-	rgxstr := ".*" + regexp.QuoteMeta(surface) + ".*"
-	surfaceRgx := regexp.MustCompile(rgxstr)
-
-	err := filepath.WalkDir(path, func(currentPath string, d fs.DirEntry, err error) error {
-		if d.IsDir() && (d.Name() == "node_modules" || d.Name() == "dist") {
-			return fs.SkipDir
-		}
-
-		if !d.IsDir() {
-			f, err2 := ioutil.ReadFile(currentPath)
-
-			if err2 == nil {
-				foundSurface := surfaceRgx.Find(f)
-
-				if foundSurface != nil {
-					codeInjectionStr := string(foundSurface) + "\n" + code
-					result := surfaceRgx.ReplaceAll(f, []byte(codeInjectionStr))
-
-					err2 = ioutil.WriteFile(currentPath, result, 0644)
-
-					if err2 != nil {
-						return err2
-					}
-
-					return injectDone
-				}
-			}
-		}
-
-		return nil
-	})
-
-	// Don't propagate a successfull patch as an error
-	if err == injectDone {
-		return nil
-	}
-
-	if err == nil {
-		return fmt.Errorf("Failed to find surface %s in code base", surface)
-	}
-
-	return err
 }
 
 func BuildNewInstance(configFile string) {
