@@ -1,13 +1,13 @@
 import React from 'react'
-import { AppPluginInterface } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@esback/core"
 import { EntityLayout } from "@backstage/plugin-catalog"
-import { EntityKubernetesContent } from "@backstage/plugin-kubernetes"
+import { EntityKubernetesContent, EntityKubernetesContentProps } from "@backstage/plugin-kubernetes"
 
-export const KubernetesPlugin: AppPluginInterface = () => ({
+export const KubernetesPlugin: AppPluginInterface<RoutableConfig & EntityKubernetesContentProps> = (config) => ({
   entityPage: (surface) => {
     surface.addServicePageTab(
-      <EntityLayout.Route path="/kubernetes" title="Kubernetes">
-        <EntityKubernetesContent refreshIntervalMs={30000} />
+      <EntityLayout.Route path={`/${config?.path || "kubernetes"}`} title={config?.label || "Kubernetes"}>
+        <EntityKubernetesContent refreshIntervalMs={config?.refreshIntervalMs || 30000} />
       </EntityLayout.Route>
     )
   }

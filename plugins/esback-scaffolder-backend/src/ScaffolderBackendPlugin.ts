@@ -19,8 +19,12 @@ const scaffolder = async function createPlugin(
   });
 }
 
-export const ScaffolderBackendPlugin: BackendPluginInterface = () =>
+export const ScaffolderBackendPlugin: BackendPluginInterface = (config) =>
   (context) => {
     context.catalogProcessorSurface.addCatalogProcessor(new ScaffolderEntitiesProcessor())
-    context.pluginSurface.setPlugin("scaffolder", scaffolder)
+    context.pluginSurface.addPlugin({
+      name: "scaffolder", 
+      pluginFn: scaffolder,
+      ...config,
+    })
   }

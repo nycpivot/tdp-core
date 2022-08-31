@@ -19,12 +19,24 @@ esbackPlugins()
     const surfaces = new BackendSurfaces()
 
     surfaces.pluginSurface.setMainApp(app)
-    surfaces.pluginSurface.setPlugin("auth", auth)
-    surfaces.pluginSurface.setPlugin("proxy", proxy)
-    surfaces.pluginSurface.setPlugin("search", search)
+    surfaces.pluginSurface.addPlugin({
+      name: "auth", 
+      pluginFn: auth,
+    })
+    surfaces.pluginSurface.addPlugin({
+      name: "proxy",
+      pluginFn: proxy,
+    })
+    surfaces.pluginSurface.addPlugin({
+      name: "search",
+      pluginFn: search,
+    })
 
     plugins.forEach(plugin => plugin(surfaces))
 
-    surfaces.pluginSurface.setPlugin("catalog", catalog(surfaces))
+    surfaces.pluginSurface.addPlugin({
+      name: "catalog", 
+      pluginFn: catalog(surfaces),
+    })
     BackendRunner(surfaces)
   })

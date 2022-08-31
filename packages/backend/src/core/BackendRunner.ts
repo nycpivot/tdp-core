@@ -59,9 +59,9 @@ async function main(surfaces: BackendSurfaces) {
   const createEnv = makeCreateEnv(config);
   const apiRouter = Router();
 
-  for ( var [ pluginName, pluginFn ] of surfaces.pluginSurface.plugins.entries()) {
-    const pluginEnv = useHotMemoize(module, () => createEnv(pluginName));
-    apiRouter.use(`/${pluginName}`, await pluginFn(pluginEnv))
+  for (var plugin of surfaces.pluginSurface.plugins) {
+    const pluginEnv = useHotMemoize(module, () => createEnv(plugin.name));
+    apiRouter.use(`/${plugin.path ?? plugin.name}`, await plugin.pluginFn(pluginEnv))
   }
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback

@@ -51,8 +51,9 @@ const techdocs = async function createPlugin(
   });
 }
 
-
-// TODO Figure out if we can have frontend and backend config in the same library.
-// Right now, if the k8s backend library is added dependencies start to break
-export const TechDocsBackendPlugin: BackendPluginInterface = () => 
-  (context) => context.pluginSurface.setPlugin("techdocs", techdocs)
+export const TechDocsBackendPlugin: BackendPluginInterface = (config) => 
+  (context) => context.pluginSurface.addPlugin({
+    name: "techdocs",
+    pluginFn: techdocs,
+    ...config
+  })
