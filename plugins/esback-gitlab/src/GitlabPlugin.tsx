@@ -9,23 +9,27 @@ import {
     EntityGitlabContributorsCard,
   } from '@loblaw/backstage-plugin-gitlab';
 
-export const GitlabPlugin: AppPluginInterface = (ctx) => {
-  ctx.entityPageSurface.addServicePageTab(
-    <EntityLayout.Route if={isGitlabAvailable} path="/gitlab" title="Gitlab">
-      <EntityGitlabContent />
-    </EntityLayout.Route>
-  )
+export const GitlabPlugin: AppPluginInterface = () => {
+  return {
+    entityPage: (surface) => {
+      surface.addServicePageTab(
+        <EntityLayout.Route if={isGitlabAvailable} path="/gitlab" title="Gitlab">
+          <EntityGitlabContent />
+        </EntityLayout.Route>
+      )
 
-  ctx.entityPageSurface.addOverviewContent(
-    <EntitySwitch>
-      <EntitySwitch.Case if={isGitlabAvailable}>
-        <Grid item md={6}>
-          <EntityGitlabContributorsCard />
-        </Grid>
-        <Grid item md={6}>
-          <EntityGitlabLanguageCard />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-  )
+      surface.addOverviewContent(
+        <EntitySwitch>
+          <EntitySwitch.Case if={isGitlabAvailable}>
+            <Grid item md={6}>
+              <EntityGitlabContributorsCard />
+            </Grid>
+            <Grid item md={6}>
+              <EntityGitlabLanguageCard />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>
+      )
+    }
+  }
 }

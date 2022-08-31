@@ -1,1 +1,1 @@
-export { GraphiQLPlugin } from "./GraphiQLPlugin"
+export { GraphiQLPlugin as default } from "./GraphiQLPlugin"

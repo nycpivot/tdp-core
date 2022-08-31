@@ -1,1 +1,1 @@
-export { TechDocsPlugin } from "./TechDocsPlugin"
+export { TechDocsPlugin as default } from "./TechDocsPlugin"

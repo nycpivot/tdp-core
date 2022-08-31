@@ -1,1 +1,1 @@
-export { TechRadarPlugin } from "./TechRadarPlugin"
+export { TechRadarPlugin as default } from "./TechRadarPlugin"

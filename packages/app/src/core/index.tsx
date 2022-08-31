@@ -1,37 +1,33 @@
-import { AppSurfaces } from "@esback/core";
+import { AppPluginExport, AppSurfaces } from "@esback/core";
 import React from "react"
 import ReactDOM from 'react-dom';
 import { buildBackstageApp } from './AppBuilder'
+import { esbackPlugins } from "./plugins"
 
 const loadSurfaces = async (): Promise<AppSurfaces> => {
   const surfaces: AppSurfaces = new AppSurfaces()
+
+  const pluginExports: AppPluginExport[] = [
+    (await import('@internal/plugin-esback-catalog')).default(),
+    ...(await esbackPlugins())
+  ]
+
+  // The entityPage surfaces need to be applied before catalog
+  pluginExports.forEach(({ entityPage }) => {
+    if (entityPage) {
+      entityPage(surfaces.entityPageSurface)
+    }
+  })
+  
+  pluginExports.forEach(({apis, components, plugins, routes, sidebarItems}) => {
+    apis && apis(surfaces.apiSurface)
+    components && components(surfaces.componentSurface)
+    plugins && plugins(surfaces.pluginSurface)
+    routes && routes(surfaces.routeSurface, surfaces)
+    sidebarItems && sidebarItems(surfaces.sidebarItemSurface)
+  })
+
   surfaces.routeSurface.setDefault("catalog")
-
-  const { GitlabPlugin } = await import('@internal/plugin-esback-gitlab')
-  GitlabPlugin(surfaces)
-
-  const { KubernetesPlugin } = await import('@internal/plugin-esback-kubernetes')
-  KubernetesPlugin(surfaces)
-
-  const { TechDocsPlugin } = await import('@internal/plugin-esback-techdocs')
-  TechDocsPlugin(surfaces)
-
-  const { ApiDocsPlugin } = await import('@internal/plugin-esback-api-docs')
-  ApiDocsPlugin(surfaces)
-
-  // WARNING: Catalog targetting plugins need to be added before the catalog plugin
-  const { CatalogPlugin } = await import('@internal/plugin-esback-catalog')
-  CatalogPlugin(surfaces)
-
-  const { GraphiQLPlugin } = await import('@internal/plugin-esback-graphiql')
-  GraphiQLPlugin(surfaces)
-
-  const { TechRadarPlugin } = await import('@internal/plugin-esback-techradar')
-  TechRadarPlugin(surfaces)
-
-  const { ScaffolderPlugin } = await import('@internal/plugin-esback-scaffolder')
-  ScaffolderPlugin(surfaces)
-
   return surfaces
 } 
 

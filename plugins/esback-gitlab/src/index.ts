@@ -1,1 +1,1 @@
-export { GitlabPlugin } from "./GitlabPlugin"
+export { GitlabPlugin as default } from "./GitlabPlugin"

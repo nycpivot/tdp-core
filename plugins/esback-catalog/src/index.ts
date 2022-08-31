@@ -1,1 +1,1 @@
-export { CatalogPlugin } from './CatalogPlugin';
+export { CatalogPlugin as default } from './CatalogPlugin';
