@@ -1,3 +1,4 @@
-import { BackendPluginInterface } from '@esback/core';
-export const esbackPlugins = async (): Promise<BackendPluginInterface[]> => [
+import { BackendPluginExport } from '@esback/core';
+
+export const esbackPlugins = async (): Promise<BackendPluginExport[]> => [
 ]

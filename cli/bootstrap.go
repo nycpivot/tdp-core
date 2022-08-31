@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -11,24 +12,15 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-type TemplateConfig struct {
-	fileTemplate   string
-	pluginTemplate string
-}
+var esbackPluginsTemplate = `import { %[1]s } from '@esback/core';
+%[2]s
+export const esbackPlugins = async (): Promise<%[1]s[]> => [
+%[3]s]
+`
 
-var templateConfig = map[string]*TemplateConfig{
-	"app": &TemplateConfig{
-		fileTemplate: `import { AppPluginExport } from '@esback/core';
-export const esbackPlugins = async (): Promise<AppPluginExport[]> => [
-%s]`,
-		pluginTemplate: "%s  (await import('%s')).default(),\n",
-	},
-	"backend": &TemplateConfig{
-		fileTemplate: `import { BackendPluginInterface } from '@esback/core';
-export const esbackPlugins = async (): Promise<BackendPluginInterface[]> => [
-%s]`,
-		pluginTemplate: "%s  (await import('%s')).default,\n",
-	},
+var templateConfig = map[string]string{
+	"app":     "AppPluginExport",
+	"backend": "BackendPluginExport",
 }
 
 func loadConfig(configFile string) (*EsbackConfig, error) {
@@ -49,20 +41,31 @@ func addPlugins(path string, pkg string, plugins []PluginConfig) error {
 		return nil
 	}
 
-	config := templateConfig[pkg]
-
 	importStatement := ""
+	configObjects := ""
 
-	for _, plugin := range plugins {
+	for i, plugin := range plugins {
+		configObject := ""
 		if !strings.HasPrefix(plugin.Name, "@internal") {
 			yarnAdd(path, pkg, plugin.Name)
 		}
 
-		importStatement = fmt.Sprintf(config.pluginTemplate, importStatement, plugin.Name)
+		if len(plugin.Config) > 0 {
+			configObject = fmt.Sprintf("esbackConfig%d", i)
+			jsonConfig, err := json.Marshal(plugin.Config)
+
+			if err != nil {
+				return err
+			}
+
+			configObjects = fmt.Sprintf("%s\nconst %s = %s", configObjects, configObject, jsonConfig)
+		}
+
+		importStatement = fmt.Sprintf("%s  (await import('%s')).default(%s),\n", importStatement, plugin.Name, configObject)
 	}
 
 	pluginFile := filepath.Join(path, "packages", pkg, "src", "core", "plugins.ts")
-	return ioutil.WriteFile(pluginFile, []byte(fmt.Sprintf(config.fileTemplate, importStatement)), 0644)
+	return ioutil.WriteFile(pluginFile, []byte(fmt.Sprintf(esbackPluginsTemplate, templateConfig[pkg], configObjects, importStatement)), 0644)
 }
 
 func terminate(message string, err error) {
