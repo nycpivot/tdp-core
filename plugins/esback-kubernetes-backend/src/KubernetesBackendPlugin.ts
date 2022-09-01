@@ -16,8 +16,9 @@ const kubernetes = async function createPlugin(
   return router;
 }
 
-// TODO Figure out if we can have frontend and backend config in the same library.
-// Right now, if the k8s backend library is added dependencies start to break
-export const KubernetesBackendPlugin: BackendPluginInterface = (context) => {
-    context.pluginSurface.setPlugin("kubernetes", kubernetes)
-}
+export const KubernetesBackendPlugin: BackendPluginInterface = (config) =>
+  (context) => context.pluginSurface.addPlugin({
+    name: "kubernetes",
+    pluginFn: kubernetes,
+    ...config,
+  })

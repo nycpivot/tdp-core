@@ -18,5 +18,6 @@ type PluginSpec struct {
 }
 
 type PluginConfig struct {
-	Name string `json:"name" yaml:"name"`
+	Config map[string]interface{} `json:"config,omitempty" yaml:"config,omitempty"`
+	Name   string                 `json:"name" yaml:"name"`
 }

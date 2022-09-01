@@ -1,14 +1,14 @@
 import React from 'react'
-import { AppPluginInterface } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@esback/core"
 import { Route } from 'react-router';
 import { ScaffolderPage, scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { catalogPlugin } from '@backstage/plugin-catalog';
 import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
 import { SidebarItem } from '@backstage/core-components';
 
-export const ScaffolderPlugin: AppPluginInterface = () => ({
+export const ScaffolderPlugin: AppPluginInterface<RoutableConfig> = (config) => ({
   routes: (surface) => {
-    surface.add(<Route path="/create" element={<ScaffolderPage />} />)
+    surface.add(<Route path={`/${config?.path || "create"}`} element={<ScaffolderPage />} />)
 
     surface.addRouteBinder(({ bind }) => {
       bind(catalogPlugin.externalRoutes, {
@@ -16,5 +16,7 @@ export const ScaffolderPlugin: AppPluginInterface = () => ({
       });
     })
   },
-  sidebarItems: (surface) => surface.add(<SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />)
+  sidebarItems: (surface) => surface.add(
+    <SidebarItem icon={CreateComponentIcon} to={config?.path || "create"} text={config?.label || "Create..."} />
+  )
 })
