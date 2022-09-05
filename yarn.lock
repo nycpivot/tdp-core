@@ -6245,14 +6245,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/plugin-user-settings" "^0.4.6"
     "@backstage/theme" "^0.2.16"
     "@esback/core" "^0.0.1"
-    "@internal/plugin-esback-api-docs" "^0.1.0"
     "@internal/plugin-esback-catalog" "^0.1.0"
-    "@internal/plugin-esback-gitlab" "^0.1.0"
-    "@internal/plugin-esback-graphiql" "^0.1.0"
-    "@internal/plugin-esback-kubernetes" "^0.1.0"
-    "@internal/plugin-esback-scaffolder" "^0.1.0"
-    "@internal/plugin-esback-techdocs" "^0.1.0"
-    "@internal/plugin-esback-techradar" "^0.1.0"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     history "^5.0.0"
@@ -11128,6 +11121,11 @@ humanize-ms@^1.2.1:
   integrity sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==
   dependencies:
     ms "^2.0.0"
+
+husky@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
+  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
 
 hyphenate-style-name@^1.0.2, hyphenate-style-name@^1.0.3:
   version "1.0.4"
