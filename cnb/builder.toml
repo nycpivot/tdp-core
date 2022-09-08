@@ -1,0 +1,18 @@
+# Buildpacks to include in builder
+[[buildpacks]]
+uri = "buildpack"
+
+# Order used for detection
+[[order]]
+    # This buildpack will display build-time information (as a dependency)
+    [[order.group]]
+    id = "esback"
+    version = "0.0.1"
+
+# Stack that will be used by the builder
+[stack]
+id = "io.buildpacks.esback.stacks.bionic"
+# This image is used at runtime
+run-image = "esback-stack-runner"
+# This image is used at build-time
+build-image = "esback-stack-builder"

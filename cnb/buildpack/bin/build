@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "---> ESBACK Buildpack"
+
+layers_dir="$1"
+env_dir="$2/env"
+plan_path="$3"
+
+backstagelayer="$layers_dir/backstage"
+serverlayer="$layers_dir/server"
+
+mkdir -p "$backstagelayer"
+mkdir -p "$serverlayer"
+
+echo "---> Copying ESBACK foundation"
+cp -r /foundation/* "$backstagelayer"
+cp /foundation/.yarnrc "$backstagelayer"
+
+echo "---> Building configured backstage app"
+cd "$backstagelayer"
+yarn install && yarn tsc && yarn build
+
+echo "---> Creating exportable layer"
+echo -e '[types]\nlaunch = true' > "$layers_dir/server.toml"
+cd "$layers_dir"
+cp "$backstagelayer/yarn.lock" "$serverlayer"
+cp "$backstagelayer/package.json" "$serverlayer"
+cp -R "$backstagelayer/offline-cache" "$serverlayer"
+cp "$backstagelayer/.yarnrc" "$serverlayer"
+cp "$backstagelayer/packages/backend/dist/skeleton.tar.gz" "$serverlayer"
+cp "$backstagelayer/packages/backend/dist/bundle.tar.gz" "$serverlayer"
+cp "$backstagelayer/app-config.production.yaml" "$serverlayer"
+
+cd "$serverlayer"
+tar xzf skeleton.tar.gz && rm skeleton.tar.gz
+
+yarn install --frozen-lockfile --production && rm -rf "$(yarn cache dir)"
+
+rm -rf offline-cache | true
+tar xzf bundle.tar.gz && rm bundle.tar.gz
+
+echo "--> Making server runnable"
+cat > "$layers_dir/launch.toml" << EOL
+[[processes]]
+type = "web"
+command = "cd $serverlayer && node packages/backend --config app-config.production.yaml"
+default = true
+EOL
