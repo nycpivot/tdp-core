@@ -34,16 +34,26 @@ $ ./cnb/setup.sh
 This will create the *esback-stack-builder* and *esback-stack-runner* images locally, as
 well as an esback builder based on _cnb/builder.toml_.
 
-Once this is done, you can generate a new esback instance with pack. For example, to 
+Once this is done, you can generate a new esback instance with *pack*. For example, to 
 generate an image named *esback-test* using the esback config file under ./examples, you
 can run:
 
 ```sh
-$ pack build esback-test --builder esback-builder --buildpack cnb/buildpack --path examples
+$ pack build esback-test --builder esback-builder --buildpack ./cnb/buildpack --path examples
 ```
 
 You can then run the instance with docker:
 
 ```sh
 $ docker run --rm -p 7007:7007 esback-test
+```
+
+If needed, you an also provide a custom `app-config.yaml` file to be included in the runnable
+esback instance during the build process. To do this, make sure to add the file to the folder
+provided in the `--path` flag. e.g:
+
+```sh
+$ mkdir esback
+$ cp esback-config.yml app-config.yaml esback
+$ pack build esback-test --builder esback-builder --buildpack ./cnb/buildpack --path esback
 ```

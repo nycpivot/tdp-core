@@ -35,6 +35,7 @@
     "@backstage/plugin-techdocs-backend": "^1.2.0",
     "@esback/core": "^0.0.1",
     "@internal/plugin-esback-kubernetes-backend": "^0.1.0",
+    "@internal/plugin-esback-scaffolder-backend": "^0.1.0",
     "@internal/plugin-esback-techdocs-backend": "^0.1.0",
     "better-sqlite3": "^7.5.0",
     "dockerode": "^3.3.1",
