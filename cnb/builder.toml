@@ -13,6 +13,6 @@ uri = "buildpack"
 [stack]
 id = "io.buildpacks.esback.stacks.bionic"
 # This image is used at runtime
-run-image = "esback-stack-runner"
+run-image = "harbor-repo.vmware.com/esback/cnb-stack-runner:latest"
 # This image is used at build-time
-build-image = "esback-stack-builder"
+build-image = "harbor-repo.vmware.com/esback/cnb-stack-builder:latest"
