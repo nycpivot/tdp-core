@@ -1,0 +1,5 @@
+{
+  "name": "@esback/esback-plugin-hello-world",
+  "version": "0.0.5",
+  "main": "src/index.js"
+}
