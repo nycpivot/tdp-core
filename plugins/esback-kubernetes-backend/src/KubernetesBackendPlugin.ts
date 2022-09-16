@@ -1,7 +1,7 @@
 
 import { KubernetesBuilder } from '@backstage/plugin-kubernetes-backend';
 import { CatalogClient } from '@backstage/catalog-client';
-import { BackendPluginInterface, PluginEnvironment } from "@esback/core"
+import { BackendPluginInterface, PluginEnvironment } from "@tanzu/backstage-core"
 import { Router } from "express";
 
 const kubernetes = async function createPlugin(

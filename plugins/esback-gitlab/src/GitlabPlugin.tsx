@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppPluginInterface, RoutableConfig } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@tanzu/backstage-core"
 import { EntityLayout, EntitySwitch } from "@backstage/plugin-catalog"
 import { Grid } from '@material-ui/core';
 import {

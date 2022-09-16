@@ -26,7 +26,7 @@
     "@backstage/catalog-client": "^1.0.4",
     "@backstage/config": "^1.0.1",
     "@backstage/plugin-scaffolder-backend": "^1.4.0",
-    "@esback/core": "^0.0.1",
+    "@tanzu/backstage-core": "^0.0.1",
     "@types/express": "*",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router'
-import { AppPluginInterface, RoutableConfig } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@tanzu/backstage-core"
 import { ApiExplorerPage, EntityApiDefinitionCard, EntityConsumedApisCard, EntityConsumingComponentsCard, EntityProvidedApisCard, EntityProvidingComponentsCard } from '@backstage/plugin-api-docs'
 import ExtensionIcon from '@material-ui/icons/Extension';
 import { SidebarItem } from '@backstage/core-components';

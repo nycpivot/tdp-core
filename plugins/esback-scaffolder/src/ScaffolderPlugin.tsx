@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppPluginInterface, RoutableConfig } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@tanzu/backstage-core"
 import { Route } from 'react-router';
 import { ScaffolderPage, scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { catalogPlugin } from '@backstage/plugin-catalog';

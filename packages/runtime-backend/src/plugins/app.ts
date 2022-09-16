@@ -1,6 +1,6 @@
-import { createRouter } from '@backstage/plugin-proxy-backend';
+import { createRouter } from '@backstage/plugin-app-backend';
 import { Router } from 'express';
-import { PluginEnvironment } from '@esback/core';
+import { PluginEnvironment } from '@tanzu/backstage-core';
 
 export default async function createPlugin(
   env: PluginEnvironment,
@@ -8,6 +8,7 @@ export default async function createPlugin(
   return await createRouter({
     logger: env.logger,
     config: env.config,
-    discovery: env.discovery,
+    database: env.database,
+    appPackageName: 'app',
   });
 }

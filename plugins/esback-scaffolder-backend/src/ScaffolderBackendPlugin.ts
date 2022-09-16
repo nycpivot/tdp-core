@@ -1,7 +1,7 @@
 import { CatalogClient } from '@backstage/catalog-client';
 import { createRouter, ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
-import { BackendPluginInterface, PluginEnvironment } from '@esback/core';
+import { BackendPluginInterface, PluginEnvironment } from '@tanzu/backstage-core';
 
 const scaffolder = async function createPlugin(
   env: PluginEnvironment,

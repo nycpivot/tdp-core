@@ -13,7 +13,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { SidebarItem } from '@backstage/core-components'
 import { orgPlugin } from '@backstage/plugin-org'
 import HomeIcon from '@material-ui/icons/Home'
-import { AppPluginInterface, RoutableConfig } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@tanzu/backstage-core"
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage'
 import { apiDocsPlugin } from '@backstage/plugin-api-docs';

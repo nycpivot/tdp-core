@@ -20,7 +20,6 @@
     "lint": "backstage-cli repo lint --since origin/master",
     "lint:all": "backstage-cli repo lint",
     "prettier:check": "prettier --check .",
-    "postinstall": "husky install",
     "create-plugin": "backstage-cli create-plugin --scope internal",
     "remove-plugin": "backstage-cli remove-plugin"
   },
@@ -29,9 +28,6 @@
       "packages/*",
       "plugins/*"
     ]
-  },
-  "dependencies": {
-    "husky": "^8.0.1"
   },
   "devDependencies": {
     "@backstage/cli": "^0.18.0",

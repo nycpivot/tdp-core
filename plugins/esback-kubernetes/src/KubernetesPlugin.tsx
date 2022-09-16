@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppPluginInterface, RoutableConfig } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@tanzu/backstage-core"
 import { EntityLayout } from "@backstage/plugin-catalog"
 import { EntityKubernetesContent, EntityKubernetesContentProps } from "@backstage/plugin-kubernetes"
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Navigate, Route } from 'react-router';
-import { SearchPage } from '@backstage/plugin-search';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { searchPage } from '../components/search/SearchPage';
-import { Root } from '../components/Root';
+import { Root } from './Root';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
@@ -18,9 +16,15 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
-import { AppSurfaces, AppSurfacesContext } from '@esback/core';
+import { AppSurfaces, AppSurfacesContext } from '@tanzu/backstage-core';
+import { default as CatalogPlugin } from '@tanzu/plugin-backstage-catalog'
 
-export const buildBackstageApp = (surfaces: AppSurfaces) => {
+const mainApp = (surfaces: AppSurfaces): React.FC => {
+  // Include catalog plugin by default
+  const catalogPlugin = CatalogPlugin()
+  catalogPlugin?.routes!(surfaces.routeSurface, surfaces)
+  catalogPlugin?.sidebarItems!(surfaces.sidebarItemSurface)
+
   const apis: AnyApiFactory[] = [
     createApiFactory({
       api: scmIntegrationsApiRef,
@@ -51,9 +55,6 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
           <Navigate key="/" to={surfaces.routeSurface.defaultRoute}/>
       )}
       { ...surfaces.routeSurface.nonDefaultRoutes }
-      <Route path="/search" element={<SearchPage />}>
-        {searchPage}
-      </Route>
       <Route path="/settings" element={<UserSettingsPage />} />
     </FlatRoutes>
   );
@@ -70,3 +71,5 @@ export const buildBackstageApp = (surfaces: AppSurfaces) => {
     </AppSurfacesContext.Provider>
   );
 }
+
+export const AppRuntime = { mainApp }

@@ -35,7 +35,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { AppSurfaces } from '@esback/core';
+import { AppSurfaces } from '@tanzu/backstage-core';
 
 const useSidebarLogoStyles = makeStyles({
   root: {

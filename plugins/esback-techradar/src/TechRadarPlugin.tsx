@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
 import { SidebarItem } from '@backstage/core-components'
-import { AppPluginInterface, RoutableConfig } from "@esback/core"
+import { AppPluginInterface, RoutableConfig } from "@tanzu/backstage-core"
 import { TechRadarPage } from '@backstage/plugin-tech-radar'
 import MapIcon from '@material-ui/icons/MyLocation';
 

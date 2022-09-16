@@ -8,7 +8,7 @@ import {
 } from '@backstage/plugin-techdocs-backend';
 import Docker from 'dockerode';
 import { Router } from 'express';
-import { BackendPluginInterface, PluginEnvironment } from '@esback/core';
+import { BackendPluginInterface, PluginEnvironment } from '@tanzu/backstage-core';
 
 const techdocs = async function createPlugin(
   env: PluginEnvironment,

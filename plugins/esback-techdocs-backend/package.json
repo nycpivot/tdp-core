@@ -26,7 +26,7 @@
     "@backstage/backend-common": "^0.15.0",
     "@backstage/config": "^1.0.1",
     "@backstage/plugin-techdocs-backend": "^1.2.0",
-    "@esback/core": "^0.0.1",
+    "@tanzu/backstage-core": "^0.0.1",
     "@types/express": "*",
     "dockerode": "^3.3.1",
     "express": "^4.17.1",
