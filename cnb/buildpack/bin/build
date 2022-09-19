@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "---> ESBACK Buildpack"
+
+workdir="$(pwd)"
+layers_dir="$1"
+env_dir="$2/env"
+plan_path="$3"
+
+backstagelayer="$layers_dir/backstage"
+serverlayer="$layers_dir/server"
+
+mkdir -p "$backstagelayer"
+mkdir -p "$serverlayer"
+
+echo "---> Copying ESBACK foundation"
+cp -r /foundation/* "$backstagelayer"
+cp /foundation/.yarnrc "$backstagelayer"
+
+echo "---> Building esback instance from config"
+cd "$backstagelayer"
+./bootstrap -f "$workdir/esback-config.yml"
+yarn tsc && yarn build
+
+echo "---> Creating exportable layer"
+echo -e '[types]\nlaunch = true' > "$layers_dir/server.toml"
+cp "$backstagelayer/yarn.lock" "$backstagelayer/package.json" "$backstagelayer/.yarnrc" "$backstagelayer/app-config.production.yaml" "$serverlayer"
+cp -R "$backstagelayer/offline-cache" "$serverlayer"
+cp "$backstagelayer/packages/backend/dist/skeleton.tar.gz" "$backstagelayer/packages/backend/dist/bundle.tar.gz" "$serverlayer"
+
+cd "$serverlayer"
+tar xzf skeleton.tar.gz && rm skeleton.tar.gz
+
+yarn install --frozen-lockfile --production --offline && rm -rf "$(yarn cache dir)"
+
+rm -rf offline-cache | true
+tar xzf bundle.tar.gz && rm bundle.tar.gz
+
+configflag="--config app-config.production.yaml"
+customconfig="$workdir/app-config.yaml"
+
+if [[ -f $customconfig ]]; then
+        echo "---> Adding provided app-config.yaml file"
+        cp "$customconfig" .
+        configflag="$configflag --config app-config.yaml"
+fi
+
+echo "---> Making server runnable"
+cat > "$layers_dir/launch.toml" << EOL
+[[processes]]
+type = "web"
+command = "cd $serverlayer && node packages/backend $configflag"
+default = true
+EOL
