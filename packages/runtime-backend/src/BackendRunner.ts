@@ -14,7 +14,7 @@ import {
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
-import { BackendSurfaces, PluginEnvironment } from '@tanzu/backstage-core';
+import { BackendSurfaces, PluginEnvironment } from '@tanzu/esback-core';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();

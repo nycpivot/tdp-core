@@ -1,11 +1,3 @@
-/*
- * Hi!
- *
- * Note that this is an EXAMPLE Backstage backend. Please check the README.
- *
- * Happy hacking!
- */
-
-import { BackendRuntime } from "@tanzu/backstage-runtime-backend"
+import { BackendRuntime } from "@tanzu/esback-runtime-backend"
 
 BackendRuntime.init([])

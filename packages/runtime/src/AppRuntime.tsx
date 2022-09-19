@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Navigate, Route } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { Root } from './Root';
@@ -16,10 +17,10 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
-import { AppSurfaces, AppSurfacesContext } from '@tanzu/backstage-core';
+import { AppSurfaces, AppSurfacesContext, AppPluginExport } from '@tanzu/esback-core';
 import { default as CatalogPlugin } from '@tanzu/plugin-backstage-catalog'
 
-const mainApp = (surfaces: AppSurfaces): React.FC => {
+const getMainApp = (surfaces: AppSurfaces): React.FC => {
   // Include catalog plugin by default
   const catalogPlugin = CatalogPlugin()
   catalogPlugin?.routes!(surfaces.routeSurface, surfaces)
@@ -72,4 +73,28 @@ const mainApp = (surfaces: AppSurfaces): React.FC => {
   );
 }
 
-export const AppRuntime = { mainApp }
+export const AppRuntime = {
+  init: (pluginExports: AppPluginExport[]) => {
+    const surfaces: AppSurfaces = new AppSurfaces()
+
+    // The entityPage surfaces need to be applied before catalog
+    pluginExports.forEach(({ entityPage }) => {
+      if (entityPage) {
+        entityPage(surfaces.entityPageSurface)
+      }
+    })
+    
+    pluginExports.forEach(({apis, components, plugins, routes, sidebarItems}) => {
+      apis && apis(surfaces.apiSurface)
+      components && components(surfaces.componentSurface)
+      plugins && plugins(surfaces.pluginSurface)
+      routes && routes(surfaces.routeSurface, surfaces)
+      sidebarItems && sidebarItems(surfaces.sidebarItemSurface)
+    })
+
+    surfaces.routeSurface.setDefault("catalog")
+
+    const App = getMainApp(surfaces)
+    ReactDOM.render(<App />, document.getElementById('root'))
+  }
+}

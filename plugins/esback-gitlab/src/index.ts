@@ -1,1 +1,0 @@
-export { GitlabPlugin as default } from "./GitlabPlugin"

@@ -1,1 +1,0 @@
-export { ScaffolderBackendPlugin as default } from "./ScaffolderBackendPlugin"

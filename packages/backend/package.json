@@ -17,11 +17,7 @@
   },
   "dependencies": {
     "app": "link:../app",
-    "@tanzu/backstage-core": "^0.0.1",
-    "@tanzu/backstage-runtime-backend": "^0.0.1",
-    "@internal/plugin-esback-kubernetes-backend": "^0.1.0",
-    "@internal/plugin-esback-scaffolder-backend": "^0.1.0",
-    "@internal/plugin-esback-techdocs-backend": "^0.1.0",
+    "@tanzu/esback-runtime-backend": "^0.0.1",
     "better-sqlite3": "^7.5.0",
     "dockerode": "^3.3.1",
     "express": "^4.17.1",

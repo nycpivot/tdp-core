@@ -2,7 +2,7 @@ import app from './plugins/app';
 import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import proxy from './plugins/proxy';
-import { BackendPluginExport, BackendSurfaces } from "@tanzu/backstage-core";
+import { BackendPluginExport, BackendSurfaces } from "@tanzu/esback-core";
 import { BackendRunner } from "./BackendRunner"
 
 export const BackendRuntime = {

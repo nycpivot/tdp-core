@@ -1,1 +1,0 @@
-export { TechDocsBackendPlugin as default } from "./TechDocsBackendPlugin"
