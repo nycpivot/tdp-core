@@ -50,7 +50,7 @@ function makeCreateEnv(config: Config) {
   };
 }
 
-async function main(surfaces: BackendSurfaces) {
+export async function BackendRunner(surfaces: BackendSurfaces) {
   const config = await loadBackendConfig({
     argv: process.argv,
     logger: getRootLogger(),
@@ -81,14 +81,4 @@ async function main(surfaces: BackendSurfaces) {
     console.log(err);
     process.exit(1);
   });
-}
-
-export const BackendRunner = (surfaces: BackendSurfaces) => {
-  module.hot?.accept();
-
-  main(surfaces)
-    .catch(error => {
-      console.error(`Backend failed to start up, ${error}`);
-      process.exit(1);
-    });
 }

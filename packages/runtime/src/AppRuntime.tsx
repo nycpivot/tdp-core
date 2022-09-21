@@ -1,100 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Navigate, Route } from 'react-router';
-import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { Root } from './Root';
-
-import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
-import { createApp } from '@backstage/app-defaults';
-import { FlatRoutes } from '@backstage/core-app-api';
-import {
-  ScmIntegrationsApi,
-  scmIntegrationsApiRef,
-  ScmAuth,
-} from '@backstage/integration-react';
-import {
-  AnyApiFactory,
-  configApiRef,
-  createApiFactory,
-} from '@backstage/core-plugin-api';
-import { AppSurfaces, AppSurfacesContext, AppPluginExport } from '@tanzu/esback-core';
+import { AppSurfaces, AppPluginExport } from '@tanzu/esback-core';
 import { default as CatalogPlugin } from '@tanzu/plugin-backstage-catalog'
+import { AppRenderer } from './AppRenderer'
 
-const getMainApp = (surfaces: AppSurfaces): React.FC => {
-  // Include catalog plugin by default
-  const catalogPlugin = CatalogPlugin()
-  catalogPlugin?.routes!(surfaces.routeSurface, surfaces)
-  catalogPlugin?.sidebarItems!(surfaces.sidebarItemSurface)
+export class AppRuntime {
+  private readonly _surfaces: AppSurfaces
 
-  const apis: AnyApiFactory[] = [
-    createApiFactory({
-      api: scmIntegrationsApiRef,
-      deps: { configApi: configApiRef },
-      factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
-    }),
-    ScmAuth.createDefaultApiFactory(),
-    ...surfaces.apiSurface.apis
-  ];
+  constructor(pluginExports: AppPluginExport[]) {
+    this._surfaces = new AppSurfaces()
+    const plugins = [CatalogPlugin(), ...pluginExports]
 
-  const plugins = surfaces.pluginSurface.plugins.length > 0 ? surfaces.pluginSurface.plugins : undefined
+    this._surfaces.routeSurface.setDefault("catalog")
 
-  const app = createApp({
-    apis,
-    components: surfaces.componentSurface.components,
-    plugins,
-    bindRoutes(context) {
-      surfaces.routeSurface.routeBinders.forEach(binder => binder(context))
-    },
-  });
-
-  const AppProvider = app.getProvider();
-  const AppRouter = app.getRouter();
-
-  const routes = (
-    <FlatRoutes>
-      { surfaces.routeSurface.defaultRoute && (
-          <Navigate key="/" to={surfaces.routeSurface.defaultRoute}/>
-      )}
-      { ...surfaces.routeSurface.nonDefaultRoutes }
-      <Route path="/settings" element={<UserSettingsPage />} />
-    </FlatRoutes>
-  );
-
-  return () => (
-    <AppSurfacesContext.Provider value={surfaces}>
-      <AppProvider>
-        <AlertDisplay />
-        <OAuthRequestDialog />
-        <AppRouter>
-        <Root surfaces={surfaces}>{routes}</Root>
-        </AppRouter>
-      </AppProvider>
-    </AppSurfacesContext.Provider>
-  );
-}
-
-export const AppRuntime = {
-  init: (pluginExports: AppPluginExport[]) => {
-    const surfaces: AppSurfaces = new AppSurfaces()
-
-    // The entityPage surfaces need to be applied before catalog
-    pluginExports.forEach(({ entityPage }) => {
+    // The entityPage surfaces need to be applied before routes
+    plugins.forEach(({ entityPage }) => {
       if (entityPage) {
-        entityPage(surfaces.entityPageSurface)
+        entityPage(this._surfaces.entityPageSurface)
       }
     })
     
-    pluginExports.forEach(({apis, components, plugins, routes, sidebarItems}) => {
-      apis && apis(surfaces.apiSurface)
-      components && components(surfaces.componentSurface)
-      plugins && plugins(surfaces.pluginSurface)
-      routes && routes(surfaces.routeSurface, surfaces)
-      sidebarItems && sidebarItems(surfaces.sidebarItemSurface)
+    plugins.forEach(({apis, components, plugins, routes, sidebarItems}) => {
+      apis && apis(this._surfaces.apiSurface)
+      components && components(this._surfaces.componentSurface)
+      plugins && plugins(this._surfaces.pluginSurface)
+      routes && routes(this._surfaces.routeSurface, this._surfaces)
+      sidebarItems && sidebarItems(this._surfaces.sidebarItemSurface)
     })
 
-    surfaces.routeSurface.setDefault("catalog")
+    return this
+  }
 
-    const App = getMainApp(surfaces)
+  public render() {
+    const App = AppRenderer(this._surfaces)
     ReactDOM.render(<App />, document.getElementById('root'))
+  }
+
+  public get surfaces(): AppSurfaces {
+    return this._surfaces
   }
 }

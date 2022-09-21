@@ -3,29 +3,41 @@ import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import proxy from './plugins/proxy';
 import { BackendPluginExport, BackendSurfaces } from "@tanzu/esback-core";
-import { BackendRunner } from "./BackendRunner"
+import { BackendRunner } from './BackendRunner';
 
-export const BackendRuntime = {
-  init: (plugins: BackendPluginExport[]) => {
-    const surfaces = new BackendSurfaces()
+export class BackendRuntime {
+  private readonly _surfaces = new BackendSurfaces()
 
-    surfaces.pluginSurface.setMainApp(app)
-    surfaces.pluginSurface.addPlugin({
+  constructor(plugins: BackendPluginExport[] = []) {
+    this._surfaces.pluginSurface.setMainApp(app)
+    this._surfaces.pluginSurface.addPlugin({
       name: "auth", 
       pluginFn: auth,
     })
-    surfaces.pluginSurface.addPlugin({
+    this._surfaces.pluginSurface.addPlugin({
       name: "proxy",
       pluginFn: proxy,
     })
 
-    plugins.forEach(plugin => plugin(surfaces))
+    plugins.forEach(plugin => plugin(this._surfaces))
 
-    surfaces.pluginSurface.addPlugin({
+    this._surfaces.pluginSurface.addPlugin({
       name: "catalog", 
-      pluginFn: catalog(surfaces),
+      pluginFn: catalog(this._surfaces),
     })
-    
-    BackendRunner(surfaces)
+  }
+
+  public start() {
+    module.hot?.accept()
+
+    BackendRunner(this._surfaces)
+      .catch(error => {
+        console.error(`Backend failed to start up, ${error}`);
+        process.exit(1);
+      })
+  }
+
+  public get surfaces(): BackendSurfaces {
+    return this._surfaces
   }
 }
