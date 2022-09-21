@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppSurfaces, AppPluginExport } from '@tanzu/esback-core';
-import { default as CatalogPlugin } from '@tanzu/plugin-backstage-catalog'
+import { plugin as CatalogPlugin } from '@tanzu/plugin-backstage-catalog'
 import { AppRenderer } from './AppRenderer'
 
 export class AppRuntime {
   private readonly _surfaces: AppSurfaces
 
-  constructor(pluginExports: AppPluginExport[]) {
+  constructor(pluginExports: AppPluginExport[] = []) {
     this._surfaces = new AppSurfaces()
     const plugins = [CatalogPlugin(), ...pluginExports]
 

@@ -4,7 +4,7 @@ import { AppRuntime } from "./AppRuntime";
 
 describe('AppRuntime', () => {
   it('should apply catalog by default', () => {
-    const runtime = new AppRuntime([])
+    const runtime = new AppRuntime()
 
     const { sidebarItemSurface, routeSurface } = runtime.surfaces
     expect(sidebarItemSurface.all).toHaveLength(1)
