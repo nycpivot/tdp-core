@@ -43,7 +43,7 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
-import { EntityPageSurface } from '@tanzu/esback-core';
+import { EntityPageSurface } from '@esback/core';
 
 export const entityPage = (surface: EntityPageSurface) => { 
   const cicdContent = (

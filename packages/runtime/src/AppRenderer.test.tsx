@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import { AppRenderer } from './AppRenderer';
-import { AppSurfaces } from '@tanzu/esback-core';
+import { AppSurfaces } from '@esback/core';
 
 describe('AppRenderer', () => {
   it('should render', async () => {

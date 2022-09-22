@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppPluginExport } from "@tanzu/esback-core";
+import { AppPluginExport } from "@esback/core";
 import { AppRuntime } from "./AppRuntime";
 
 describe('AppRuntime', () => {

@@ -16,7 +16,7 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
-import { AppSurfaces, AppSurfacesContext } from '@tanzu/esback-core';
+import { AppSurfaces, AppSurfacesContext } from '@esback/core';
 
 export const AppRenderer = (surfaces: AppSurfaces): React.FC => {
   const apis: AnyApiFactory[] = [

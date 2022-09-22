@@ -1,6 +1,6 @@
 import { createRouter } from '@backstage/plugin-app-backend';
 import { Router } from 'express';
-import { PluginEnvironment } from '@tanzu/esback-core';
+import { PluginEnvironment } from '@esback/core';
 
 export default async function createPlugin(
   env: PluginEnvironment,

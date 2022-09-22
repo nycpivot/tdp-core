@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppSurfaces, AppPluginExport } from '@tanzu/esback-core';
-import { plugin as CatalogPlugin } from '@tanzu/plugin-backstage-catalog'
+import { AppSurfaces, AppPluginExport } from '@esback/core';
+import { plugin as CatalogPlugin } from '@esback/plugin-catalog'
 import { AppRenderer } from './AppRenderer'
 
 export class AppRuntime {

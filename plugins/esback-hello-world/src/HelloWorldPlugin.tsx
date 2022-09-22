@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
 import { SidebarItem } from '@backstage/core-components'
-import { AppPluginInterface } from '@tanzu/esback-core'
+import { AppPluginInterface } from '@esback/core'
 import AlarmIcon from '@material-ui/icons/Alarm'
 
 export const HelloWorldPlugin: AppPluginInterface = () => {

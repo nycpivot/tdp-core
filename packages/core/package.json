@@ -1,5 +1,5 @@
 {
-  "name": "@tanzu/esback-core",
+  "name": "@esback/core",
   "description": "Core library for esback",
   "version": "0.0.1",
   "main": "src/index.ts",

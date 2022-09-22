@@ -1,3 +1,3 @@
-import { BackendRuntime } from "@tanzu/esback-runtime-backend"
+import { BackendRuntime } from "@esback/runtime-backend"
 
 new BackendRuntime().start()
