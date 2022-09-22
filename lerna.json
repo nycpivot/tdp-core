@@ -1,8 +1,11 @@
 {
-  "packages": ["packages/*", "plugins/*"],
+  "packages": [
+    "packages/*",
+    "plugins/*"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "command": {
     "publish": {
       "registry": "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/"

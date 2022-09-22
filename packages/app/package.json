@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.1",
   "private": true,
   "bundled": true,
   "backstage": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@backstage/cli": "^0.18.0",
-    "@esback/runtime": "^0.0.1",
+    "@esback/runtime": "^0.0.1-alpha.1",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.9.1",
     "history": "^5.0.0",
