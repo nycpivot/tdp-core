@@ -1,1 +1,1 @@
-export { HelloWorldPlugin as plugin } from './HelloWorldPlugin'
+export { HelloWorldPlugin as plugin } from './HelloWorldPlugin';

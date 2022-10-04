@@ -18,7 +18,7 @@ import {
 } from '@backstage/core-plugin-api';
 import { AppSurfaces, AppSurfacesContext } from '@esback/core';
 
-export const AppRenderer = (surfaces: AppSurfaces): React.FC => {
+export const appRenderer = (surfaces: AppSurfaces): React.FC => {
   const apis: AnyApiFactory[] = [
     createApiFactory({
       api: scmIntegrationsApiRef,
@@ -26,17 +26,20 @@ export const AppRenderer = (surfaces: AppSurfaces): React.FC => {
       factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
     }),
     ScmAuth.createDefaultApiFactory(),
-    ...surfaces.apiSurface.apis
+    ...surfaces.apiSurface.apis,
   ];
 
-  const plugins = surfaces.pluginSurface.plugins.length > 0 ? surfaces.pluginSurface.plugins : undefined
+  const plugins =
+    surfaces.pluginSurface.plugins.length > 0
+      ? surfaces.pluginSurface.plugins
+      : undefined;
 
   const app = createApp({
     apis,
     components: surfaces.componentSurface.components,
     plugins,
     bindRoutes(context) {
-      surfaces.routeSurface.routeBinders.forEach(binder => binder(context))
+      surfaces.routeSurface.routeBinders.forEach(binder => binder(context));
     },
   });
 
@@ -45,10 +48,10 @@ export const AppRenderer = (surfaces: AppSurfaces): React.FC => {
 
   const routes = (
     <FlatRoutes>
-      { surfaces.routeSurface.defaultRoute && (
-          <Navigate key="/" to={surfaces.routeSurface.defaultRoute}/>
+      {surfaces.routeSurface.defaultRoute && (
+        <Navigate key="/" to={surfaces.routeSurface.defaultRoute} />
       )}
-      { ...surfaces.routeSurface.nonDefaultRoutes }
+      {...surfaces.routeSurface.nonDefaultRoutes}
       <Route path="/settings" element={<UserSettingsPage />} />
     </FlatRoutes>
   );
@@ -59,9 +62,9 @@ export const AppRenderer = (surfaces: AppSurfaces): React.FC => {
         <AlertDisplay />
         <OAuthRequestDialog />
         <AppRouter>
-        <Root surfaces={surfaces}>{routes}</Root>
+          <Root surfaces={surfaces}>{routes}</Root>
         </AppRouter>
       </AppProvider>
     </AppSurfacesContext.Provider>
   );
-}
+};

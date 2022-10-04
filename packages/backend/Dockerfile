@@ -9,7 +9,7 @@
 #
 # Once the commands have been run, you can build the image using `yarn build-image`
 
-FROM node:16-bullseye-slim
+FROM harbor-repo.vmware.com/dockerhub-proxy-cache/library/node:16.17-bullseye-slim
 
 WORKDIR /app
 

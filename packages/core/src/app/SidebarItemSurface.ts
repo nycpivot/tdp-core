@@ -1,17 +1,17 @@
-import { ReactElement } from "react"
+import { ReactElement } from 'react';
 
 export class SidebarItemSurface {
-  private readonly _items: ReactElement[]
+  private readonly _items: ReactElement[];
 
   public constructor() {
-    this._items = []
+    this._items = [];
   }
 
   public add(item: ReactElement) {
-    this._items.push(item)
+    this._items.push(item);
   }
 
   public get all(): ReactElement[] {
-    return this._items
+    return this._items;
   }
 }

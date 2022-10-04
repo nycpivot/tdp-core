@@ -1,1 +1,1 @@
-export { AppRuntime } from './AppRuntime'
+export { AppRuntime } from './AppRuntime';
