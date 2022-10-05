@@ -37,3 +37,7 @@ site
 
 # Sensitive credentials
 *-credentials.yaml
+
+# Local cypress output
+packages/app/cypress/support
+packages/app/cypress/videos
