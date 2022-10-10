@@ -1,1 +1,0 @@
-export { KubernetesBackendPlugin as default } from "./KubernetesBackendPlugin"

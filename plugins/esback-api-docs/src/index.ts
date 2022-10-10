@@ -1,1 +1,0 @@
-export { ApiDocsPlugin as default } from "./ApiDocsPlugin"

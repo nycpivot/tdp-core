@@ -1,1 +1,0 @@
-export { TechRadarPlugin as default } from "./TechRadarPlugin"

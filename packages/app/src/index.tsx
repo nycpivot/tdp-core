@@ -1,4 +1,4 @@
 import '@backstage/cli/asset-types';
-import esbackRunner from './core';
+import { AppRuntime } from '@esback/runtime'
 
-esbackRunner()
+new AppRuntime().render()

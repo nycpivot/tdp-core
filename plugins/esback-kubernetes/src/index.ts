@@ -1,1 +1,0 @@
-export { KubernetesPlugin as default } from "./KubernetesPlugin"
