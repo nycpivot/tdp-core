@@ -1,0 +1,232 @@
+# To set up this pipeline, assuming you have an esback target locally setup, run:
+# $ fly -t esback set-pipeline -p mr-check -c ci/pipeline.yml -v initial_version=0.0.0
+---
+resource_types:
+  - name: merge-request
+    type: docker-image
+    source:
+      repository: harbor-repo.vmware.com/tmc_concourse_tools/gitlab-merge-request-resource
+      tag: latest
+resources:
+  - name: version
+    type: semver
+    icon: counter
+    source:
+      driver: s3
+      bucket: esback.ci
+      key: build/esback/version/mrcheck
+      initial_version: ((initial_version))
+      access_key_id: ((aws.deprecated_access_key))
+      secret_access_key: ((aws.deprecated_access_secret))
+  - name: gitlab-mr
+    type: merge-request
+    icon: git
+    source:
+      uri: https://gitlab.eng.vmware.com/esback/core.git
+      private_token: ((gitlab.core_token))
+  - name: mr-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/esback/internal-instance
+      username: ((harbor.username))
+      password: ((harbor.token))
+  - name: node-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
+      tag: 16-buster-slim
+  - name: oci-build-task
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/vito/oci-build-task
+  # Integration tests tools
+  - name: ytt
+    type: github-release
+    icon: github
+    source:
+      owner: vmware-tanzu
+      repository: carvel-ytt
+      access_token: ((github.access_token))
+  - name: dcind-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/amidos/dcind
+      tag: 2.1.0
+  - name: cypress-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included
+      tag: 8.5.0
+
+gitlab_pipeline_failure: &gitlab_pipeline_failure
+  put: gitlab-mr
+  params:
+    repository: gitlab-mr
+    status: failed
+
+jobs:
+  - name: mark-mr-running
+    public: true
+    plan:
+      - get: gitlab-mr
+        trigger: true
+        version: every
+      - put: gitlab-mr
+        params:
+          repository: gitlab-mr
+          status: running
+    on_failure: *gitlab_pipeline_failure
+  - name: lint-and-test
+    plan:
+      - get: gitlab-mr
+        passed: [mark-mr-running]
+        trigger: true
+      - get: node-image
+      - in_parallel:
+          - task: lint
+            image: node-image
+            config:
+              platform: linux
+              inputs:
+                - name: gitlab-mr
+              run:
+                dir: gitlab-mr
+                path: bash
+                args:
+                  - -exc
+                  - |
+                    yarn install --frozen-lockfile
+                    yarn lint:all
+                    yarn prettier:check
+                    yarn tsc
+          - task: test
+            input_mapping:
+              code: gitlab-mr
+            image: node-image
+            config:
+              platform: linux
+              inputs:
+                - name: code
+              run:
+                dir: code
+                path: bash
+                args:
+                  - -exc
+                  - |
+                    yarn install --frozen-lockfile
+                    CI=true yarn test:all
+    on_failure: *gitlab_pipeline_failure
+  - name: bump
+    plan:
+      - get: gitlab-mr
+        passed: [lint-and-test]
+        trigger: true
+      - put: version
+        params:
+          pre: mrcheck
+    on_failure: *gitlab_pipeline_failure
+  - name: build
+    plan:
+      - in_parallel:
+          - do:
+              - get: gitlab-mr
+                passed: [bump]
+                trigger: true
+              - load_var: mrdata
+                file: gitlab-mr/.git/merge-request.json
+                reveal: true
+          - do:
+              - get: version
+                passed: [bump]
+                trigger: true
+              - load_var: version
+                file: version/version
+                reveal: true
+          - get: node-image
+          - get: oci-build-task
+      - task: yarn-build
+        image: node-image
+        input_mapping:
+          code: gitlab-mr
+        config:
+          platform: linux
+          inputs:
+            - name: code
+          outputs:
+            - name: built-code
+              path: code
+          run:
+            dir: code
+            path: bash
+            args:
+              - -exc
+              - |
+                yarn install --frozen-lockfile
+                yarn tsc
+                yarn build
+      - task: image-build
+        image: oci-build-task
+        privileged: true
+        config:
+          platform: linux
+          inputs:
+            - name: built-code
+          outputs:
+            - name: image
+          params:
+            CONTEXT: built-code
+            DOCKERFILE: built-code/packages/backend/Dockerfile
+          run: { path: build }
+      - put: mr-image
+        params:
+          image: image/image.tar
+          version: ((.:version))-((.:mrdata.source_branch))
+    on_failure: *gitlab_pipeline_failure
+  - name: integration-tests
+    plan:
+      - in_parallel:
+          - get: dcind-image
+          - get: ytt
+          - get: cypress-image
+            params: { format: oci }
+          - get: gitlab-mr
+            passed: [build]
+            trigger: true
+          - get: mr-image
+            params: { format: oci }
+            passed: [build]
+            trigger: true
+      - task: test
+        privileged: true
+        image: dcind-image
+        input_mapping:
+          esback-core: gitlab-mr
+          core-image: mr-image
+        config:
+          platform: linux
+          inputs:
+            - name: ytt
+            - name: cypress-image
+            - name: esback-core
+            - name: core-image
+          params:
+            DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
+          run:
+            dir: esback-core
+            path: ci/scripts/integration_tests
+    on_failure: *gitlab_pipeline_failure
+  - name: mark-mr-success
+    public: true
+    plan:
+      - get: gitlab-mr
+        passed: [lint-and-test, build, integration-tests]
+        trigger: true
+      - put: gitlab-mr
+        params:
+          repository: gitlab-mr
+          status: success
