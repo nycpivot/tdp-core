@@ -17,6 +17,7 @@ services:
     volumes:
       - .:/e2e/cypress
       - ../cypress.json:/e2e/cypress.json
+      - ./npmrc.example:/e2e/.npmrc
     depends_on:
       - esback
     environment:
