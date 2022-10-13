@@ -27,17 +27,6 @@ resources:
       repository: harbor-repo.vmware.com/esback/internal-instance
       username: ((harbor.username))
       password: ((harbor.token))
-  - name: node-image
-    type: registry-image
-    icon: docker
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
-      tag: 16-buster-slim
-  - name: oci-build-task
-    type: registry-image
-    icon: docker
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/vito/oci-build-task
   # Integration tests tools
   - name: ytt
     type: github-release
@@ -46,12 +35,6 @@ resources:
       owner: vmware-tanzu
       repository: carvel-ytt
       access_token: ((github.access_token))
-  - name: dcind-image
-    type: registry-image
-    icon: docker
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/amidos/dcind
-      tag: 2.1.0
   - name: cypress-image
     type: registry-image
     icon: docker
@@ -64,10 +47,14 @@ jobs:
     plan:
       - get: esback-core
         trigger: true
-      - set_pipeline: core-runtime
+      - set_pipeline: self
         file: esback-core/ci/pipeline.yml
         vars:
           git_branch: ((git_branch))
+          initial_version: ((initial_version))
+      - set_pipeline: mr-check
+        file: esback-core/ci/mr-check.yml
+        vars:
           initial_version: ((initial_version))
   - name: lint-and-test
     plan:
@@ -75,40 +62,13 @@ jobs:
         resource: esback-core
         passed: [reconfigure]
         trigger: true
-      - get: node-image
       - in_parallel:
           - task: lint
             attempts: 3
-            image: node-image
-            config:
-              platform: linux
-              inputs:
-                - name: code
-              run:
-                dir: code
-                path: bash
-                args:
-                  - -exc
-                  - |
-                    yarn install --frozen-lockfile
-                    yarn lint:all
-                    yarn prettier:check
-                    yarn tsc
+            file: code/ci/lint.yml
           - task: test
             attempts: 3
-            image: node-image
-            config:
-              platform: linux
-              inputs:
-                - name: code
-              run:
-                dir: code
-                path: bash
-                args:
-                  - -exc
-                  - |
-                    yarn install --frozen-lockfile
-                    CI=true yarn test:all
+            file: code/ci/unit-test.yml
   - name: bump
     plan:
       - get: esback-core
@@ -120,7 +80,8 @@ jobs:
   - name: build
     plan:
       - in_parallel:
-          - get: esback-core
+          - get: code
+            resource: esback-core
             passed: [bump]
             trigger: true
           - do:
@@ -130,39 +91,11 @@ jobs:
               - load_var: version
                 file: version/version
                 reveal: true
-          - get: node-image
-          - get: oci-build-task
       - task: yarn-build
-        image: node-image
-        config:
-          platform: linux
-          inputs:
-            - name: esback-core
-          outputs:
-            - name: built-code
-              path: esback-core
-          run:
-            dir: esback-core
-            path: bash
-            args:
-              - -exc
-              - |
-                yarn install --frozen-lockfile
-                yarn tsc
-                yarn build
+        file: code/ci/yarn-build.yml
       - task: image-build
-        image: oci-build-task
         privileged: true
-        config:
-          platform: linux
-          inputs:
-            - name: built-code
-          outputs:
-            - name: image
-          params:
-            CONTEXT: built-code
-            DOCKERFILE: built-code/packages/backend/Dockerfile
-          run: { path: build }
+        file: code/ci/image-build.yml
       - put: core-image
         params:
           image: image/image.tar
@@ -170,7 +103,6 @@ jobs:
   - name: integration-tests
     plan:
       - in_parallel:
-          - get: dcind-image
           - get: ytt
           - get: cypress-image
             params: { format: oci }
@@ -183,16 +115,7 @@ jobs:
             trigger: true
       - task: test
         privileged: true
-        image: dcind-image
-        config:
-          platform: linux
-          inputs:
-            - name: ytt
-            - name: cypress-image
-            - name: esback-core
-            - name: core-image
-          params:
-            DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
-          run:
-            dir: esback-core
-            path: ci/scripts/integration_tests
+        file: esback-core/ci/integration-tests.yml
+        input_mapping:
+          code: esback-core
+          docker-image: core-image

@@ -31,17 +31,6 @@ resources:
       repository: harbor-repo.vmware.com/esback/internal-instance
       username: ((harbor.username))
       password: ((harbor.token))
-  - name: node-image
-    type: registry-image
-    icon: docker
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
-      tag: 16-buster-slim
-  - name: oci-build-task
-    type: registry-image
-    icon: docker
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/vito/oci-build-task
   # Integration tests tools
   - name: ytt
     type: github-release
@@ -50,12 +39,6 @@ resources:
       owner: vmware-tanzu
       repository: carvel-ytt
       access_token: ((github.access_token))
-  - name: dcind-image
-    type: registry-image
-    icon: docker
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/amidos/dcind
-      tag: 2.1.0
   - name: cypress-image
     type: registry-image
     icon: docker
@@ -83,43 +66,17 @@ jobs:
     on_failure: *gitlab_pipeline_failure
   - name: lint-and-test
     plan:
-      - get: gitlab-mr
+      - get: code
+        resource: gitlab-mr
         passed: [mark-mr-running]
         trigger: true
-      - get: node-image
       - in_parallel:
           - task: lint
-            image: node-image
-            config:
-              platform: linux
-              inputs:
-                - name: gitlab-mr
-              run:
-                dir: gitlab-mr
-                path: bash
-                args:
-                  - -exc
-                  - |
-                    yarn install --frozen-lockfile
-                    yarn lint:all
-                    yarn prettier:check
-                    yarn tsc
+            attempts: 2
+            file: code/ci/lint.yml
           - task: test
-            input_mapping:
-              code: gitlab-mr
-            image: node-image
-            config:
-              platform: linux
-              inputs:
-                - name: code
-              run:
-                dir: code
-                path: bash
-                args:
-                  - -exc
-                  - |
-                    yarn install --frozen-lockfile
-                    CI=true yarn test:all
+            attempts: 2
+            file: code/ci/unit-test.yml
     on_failure: *gitlab_pipeline_failure
   - name: bump
     plan:
@@ -147,41 +104,13 @@ jobs:
               - load_var: version
                 file: version/version
                 reveal: true
-          - get: node-image
-          - get: oci-build-task
       - task: yarn-build
-        image: node-image
         input_mapping:
           code: gitlab-mr
-        config:
-          platform: linux
-          inputs:
-            - name: code
-          outputs:
-            - name: built-code
-              path: code
-          run:
-            dir: code
-            path: bash
-            args:
-              - -exc
-              - |
-                yarn install --frozen-lockfile
-                yarn tsc
-                yarn build
+        file: gitlab-mr/ci/yarn-build.yml
       - task: image-build
-        image: oci-build-task
         privileged: true
-        config:
-          platform: linux
-          inputs:
-            - name: built-code
-          outputs:
-            - name: image
-          params:
-            CONTEXT: built-code
-            DOCKERFILE: built-code/packages/backend/Dockerfile
-          run: { path: build }
+        file: gitlab-mr/ci/image-build.yml
       - put: mr-image
         params:
           image: image/image.tar
@@ -190,7 +119,6 @@ jobs:
   - name: integration-tests
     plan:
       - in_parallel:
-          - get: dcind-image
           - get: ytt
           - get: cypress-image
             params: { format: oci }
@@ -203,22 +131,10 @@ jobs:
             trigger: true
       - task: test
         privileged: true
-        image: dcind-image
+        file: gitlab-mr/ci/integration-tests.yml
         input_mapping:
-          esback-core: gitlab-mr
-          core-image: mr-image
-        config:
-          platform: linux
-          inputs:
-            - name: ytt
-            - name: cypress-image
-            - name: esback-core
-            - name: core-image
-          params:
-            DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
-          run:
-            dir: esback-core
-            path: ci/scripts/integration_tests
+          code: gitlab-mr
+          docker-image: mr-image
     on_failure: *gitlab_pipeline_failure
   - name: mark-mr-success
     public: true

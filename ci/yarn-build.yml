@@ -1,0 +1,21 @@
+---
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
+    tag: 16-buster-slim
+inputs:
+  - name: code
+outputs:
+  - name: built-code
+    path: code
+run:
+  dir: code
+  path: bash
+  args:
+    - -exc
+    - |
+      yarn install --frozen-lockfile
+      yarn tsc
+      yarn build
