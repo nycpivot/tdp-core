@@ -13,7 +13,7 @@ run:
   args:
     - -exc
     - |
-      yarn install --frozen-lockfile
+      ci/scripts/yarn_install
       yarn lint:all
       yarn prettier:check
       yarn tsc

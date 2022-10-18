@@ -13,5 +13,5 @@ run:
   args:
     - -exc
     - |
-      yarn install --frozen-lockfile
+      ci/scripts/yarn_install
       CI=true yarn test:all

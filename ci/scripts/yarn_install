@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# this script is to guarantee after yarn install, the lockfile doesn't have uncommitted changes
+
+set -euo pipefail
+
+CKSUM_BEFORE=$(cksum yarn.lock)
+yarn install
+CKSUM_AFTER=$(cksum yarn.lock)
+
+
+if [[ $CKSUM_BEFORE != $CKSUM_AFTER ]]; then
+  echo "yarn.lock has uncommitted changes after yarn install - please commit the updated yarn.lock file"
+  echo "Terminating..."
+  exit 1
+fi

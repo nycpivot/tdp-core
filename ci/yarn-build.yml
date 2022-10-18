@@ -16,6 +16,6 @@ run:
   args:
     - -exc
     - |
-      yarn install --frozen-lockfile
+      ci/scripts/yarn_install
       yarn tsc
       yarn build
