@@ -11,6 +11,7 @@ services:
     environment:
       - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
       - GITLAB_TOKEN=${GITLAB_TOKEN}
+      - GIT_BRANCH=${GIT_BRANCH}
     ports:
       - 7007:7007
   cypress:

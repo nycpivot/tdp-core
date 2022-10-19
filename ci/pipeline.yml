@@ -121,3 +121,4 @@ jobs:
           docker-image: core-image
         vars:
           gitlab_token: ((e2e.gitlab_token))
+          git_branch: ((git_branch))

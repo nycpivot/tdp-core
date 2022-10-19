@@ -13,6 +13,7 @@ inputs:
 params:
   DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
   GITLAB_TOKEN: ((gitlab_token))
+  GIT_BRANCH: ((git_branch))
 run:
   dir: code
   path: ci/scripts/integration_tests
