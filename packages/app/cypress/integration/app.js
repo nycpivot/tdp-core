@@ -1,11 +1,20 @@
 describe('App', () => {
   describe("Catalog Plugin", () => {
-    it('should render the catalog', () => {
+    beforeEach(() => {
       cy.visit('/');
+    })
+
+    it('should render the title', () => {
       cy.contains('VMware Catalog');
-      cy.contains('example-website');
-      cy.contains('tap-gui-component');
     });
+
+    it('should render the local catalog', () => {
+      cy.contains('example-website');
+    })
+
+    it('should render the gitlab catalog', () => {
+      cy.contains('tap-gui-component');
+    })
   })
 
   describe("Hello World Plugin", () => {
