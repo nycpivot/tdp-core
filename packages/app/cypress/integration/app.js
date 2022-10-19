@@ -4,6 +4,7 @@ describe('App', () => {
       cy.visit('/');
       cy.contains('VMware Catalog');
       cy.contains('example-website');
+      cy.contains('tap-gui-component');
     });
   })
 
