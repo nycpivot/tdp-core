@@ -25,6 +25,13 @@ backend:
   cache:
     store: memory
 
+integrations:
+  gitlab:
+    - host: gitlab.eng.vmware.com
+      baseUrl: https://gitlab.eng.vmware.com
+      apiBaseUrl: https://gitlab.eng.vmware.com/api/v4/
+      token: ${GITLAB_TOKEN}
+
 catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
