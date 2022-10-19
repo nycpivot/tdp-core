@@ -120,4 +120,4 @@ jobs:
           code: esback-core
           docker-image: core-image
         vars:
-          gitlab_token: ((e2e.gitlab_token))
+          gitlab_token: ((gitlab.core_token))

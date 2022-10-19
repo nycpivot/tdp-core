@@ -47,4 +47,4 @@ catalog:
       rules:
         - allow: [User, Group]
     - type: url
-      target: https://gitlab.eng.vmware.com/project-star/pstar-backstage-poc/-/blob/master/sample-catalogs/blank/components/tap-gui.yaml
+      target: https://gitlab.eng.vmware.com/esback/e2e-catalog/-/blob/main/simple/components/tap-gui.yml
