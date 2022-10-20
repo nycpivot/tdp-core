@@ -26,6 +26,10 @@ backend:
     store: memory
 
 integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+
   gitlab:
     - host: gitlab.eng.vmware.com
       baseUrl: https://gitlab.eng.vmware.com
@@ -36,6 +40,9 @@ catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
   locations:
+    - type: url
+      target: https://github.com/fouadh/foobar-backstage-component/blob/master/catalog-info.yaml
+
     - type: file
       target: /app/examples/entities.yaml
     - type: file
