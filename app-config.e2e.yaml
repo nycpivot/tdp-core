@@ -47,4 +47,4 @@ catalog:
       rules:
         - allow: [User, Group]
     - type: url
-      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/ci/data/catalog/components/tap-gui.yml
+      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/data/catalog/components/tap-gui.yml
