@@ -19,7 +19,7 @@ This document describes resources to get you familiar with working and building 
 ## Architecture Diagram
 
 For more detailed architecture diagrams check our [Miro board](https://miro.com/app/board/uXjVOpj4AGc=/?moveToWidget=3458764533901823314&cot=14).
-![alt text](architecture-diagram.jpg)
+![ESBack Architecture Diagram](architecture-diagram.jpg)
 
 ## Relevant tools and access
 
