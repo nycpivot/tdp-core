@@ -18,7 +18,7 @@ describe('App', () => {
   });
 
   describe('Hello World Plugin', () => {
-    it('should have the hello-world plugin', () => {
+    it('should render the plugin content', () => {
       cy.visit('/hello-world');
       cy.contains('Hello World!!');
     });
