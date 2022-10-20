@@ -1,0 +1,17 @@
+---
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: harbor-repo.vmware.com/dockerhub-proxy-cache/amidos/dcind
+    tag: 2.1.0
+inputs:
+  - name: ytt
+  - name: cypress-image
+  - name: code
+  - name: docker-image
+params:
+  DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
+run:
+  dir: code
+  path: ci/scripts/integration_tests

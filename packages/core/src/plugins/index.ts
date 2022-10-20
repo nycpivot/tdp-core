@@ -1,1 +1,1 @@
-export type { AppPluginExport } from "./AppPluginExport"
+export type { AppPluginExport } from './AppPluginExport';

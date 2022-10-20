@@ -1,0 +1,121 @@
+# To set up this pipeline, assuming you have an esback target locally setup, run:
+# $ fly -t esback set-pipeline -p core-runtime -c ci/pipeline.yml -v git_branch=$TARGET_BRANCH -v initial_version=0.0.0
+---
+resources:
+  - name: version
+    type: semver
+    icon: counter
+    source:
+      driver: s3
+      bucket: esback.ci
+      key: build/esback/version/((git_branch))
+      initial_version: ((initial_version))
+      access_key_id: ((aws.deprecated_access_key))
+      secret_access_key: ((aws.deprecated_access_secret))
+  - name: esback-core
+    type: git
+    icon: gitlab
+    source:
+      uri: https://gitlab.eng.vmware.com/esback/core.git
+      branch: ((git_branch))
+      username: ((gitlab.username))
+      password: ((gitlab.core_token))
+  - name: core-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/esback/internal-instance
+      username: ((harbor.username))
+      password: ((harbor.token))
+  # Integration tests tools
+  - name: ytt
+    type: github-release
+    icon: github
+    source:
+      owner: vmware-tanzu
+      repository: carvel-ytt
+      access_token: ((github.access_token))
+  - name: cypress-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included
+      tag: 8.5.0
+
+jobs:
+  - name: reconfigure
+    plan:
+      - get: esback-core
+        trigger: true
+      - set_pipeline: self
+        file: esback-core/ci/pipeline.yml
+        vars:
+          git_branch: ((git_branch))
+          initial_version: ((initial_version))
+      - set_pipeline: mr-check
+        file: esback-core/ci/mr-check.yml
+        vars:
+          initial_version: ((initial_version))
+  - name: lint-and-test
+    plan:
+      - get: code
+        resource: esback-core
+        passed: [reconfigure]
+        trigger: true
+      - in_parallel:
+          - task: lint
+            attempts: 3
+            file: code/ci/lint.yml
+          - task: test
+            attempts: 3
+            file: code/ci/unit-test.yml
+  - name: bump
+    plan:
+      - get: esback-core
+        passed: [lint-and-test]
+        trigger: true
+      - put: version
+        params:
+          pre: ((git_branch))
+  - name: build
+    plan:
+      - in_parallel:
+          - get: code
+            resource: esback-core
+            passed: [bump]
+            trigger: true
+          - do:
+              - get: version
+                passed: [bump]
+                trigger: true
+              - load_var: version
+                file: version/version
+                reveal: true
+      - task: yarn-build
+        file: code/ci/yarn-build.yml
+      - task: image-build
+        privileged: true
+        file: code/ci/image-build.yml
+      - put: core-image
+        params:
+          image: image/image.tar
+          version: ((.:version))
+  - name: integration-tests
+    plan:
+      - in_parallel:
+          - get: ytt
+          - get: cypress-image
+            params: { format: oci }
+          - get: esback-core
+            passed: [build]
+            trigger: true
+          - get: core-image
+            params: { format: oci }
+            passed: [build]
+            trigger: true
+      - task: test
+        privileged: true
+        file: esback-core/ci/integration-tests.yml
+        input_mapping:
+          code: esback-core
+          docker-image: core-image

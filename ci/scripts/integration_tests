@@ -1,0 +1,21 @@
+#!/bin/bash
+set -ex
+source /docker-lib.sh && start_docker
+mv ../ytt/ytt-linux-amd64 ./ytt && chmod +x ./ytt
+
+docker load -i ../docker-image/image.tar
+docker load -i ../cypress-image/image.tar
+
+# Tag current version of tap-gui as latest
+docker tag "$DOCKER_CI_IMAGE:$(cat ../docker-image/tag)" "esback:integration"
+
+echo "Images loaded into docker:"
+docker images
+
+# Patch docker file to use freshly built tap-gui image
+./ytt --data-value-yaml skip_build=true \
+-f ./packages/app/cypress/docker-compose.yaml > ./packages/app/cypress/docker-compose.ci.yaml
+
+echo "Running tests with docker compose"
+cd ./packages/app/cypress
+docker-compose -f ./docker-compose.ci.yaml run cypress

@@ -1,4 +1,5 @@
 import '@backstage/cli/asset-types';
-import { AppRuntime } from '@esback/runtime'
+import { AppRuntime } from '@esback/runtime';
+import { plugin as helloWorldPlugin } from '@esback/plugin-hello-world';
 
-new AppRuntime().render()
+new AppRuntime([helloWorldPlugin()]).render();

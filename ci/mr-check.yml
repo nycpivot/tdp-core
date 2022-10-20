@@ -1,0 +1,148 @@
+# To set up this pipeline, assuming you have an esback target locally setup, run:
+# $ fly -t esback set-pipeline -p mr-check -c ci/pipeline.yml -v initial_version=0.0.0
+---
+resource_types:
+  - name: merge-request
+    type: docker-image
+    source:
+      repository: harbor-repo.vmware.com/tmc_concourse_tools/gitlab-merge-request-resource
+      tag: latest
+resources:
+  - name: version
+    type: semver
+    icon: counter
+    source:
+      driver: s3
+      bucket: esback.ci
+      key: build/esback/version/mrcheck
+      initial_version: ((initial_version))
+      access_key_id: ((aws.deprecated_access_key))
+      secret_access_key: ((aws.deprecated_access_secret))
+  - name: gitlab-mr
+    type: merge-request
+    icon: git
+    source:
+      uri: https://gitlab.eng.vmware.com/esback/core.git
+      private_token: ((gitlab.core_token))
+  - name: mr-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/esback/internal-instance
+      username: ((harbor.username))
+      password: ((harbor.token))
+  # Integration tests tools
+  - name: ytt
+    type: github-release
+    icon: github
+    source:
+      owner: vmware-tanzu
+      repository: carvel-ytt
+      access_token: ((github.access_token))
+  - name: cypress-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included
+      tag: 8.5.0
+
+gitlab_pipeline_failure: &gitlab_pipeline_failure
+  put: gitlab-mr
+  params:
+    repository: gitlab-mr
+    status: failed
+
+jobs:
+  - name: mark-mr-running
+    public: true
+    plan:
+      - get: gitlab-mr
+        trigger: true
+        version: every
+      - put: gitlab-mr
+        params:
+          repository: gitlab-mr
+          status: running
+    on_failure: *gitlab_pipeline_failure
+  - name: lint-and-test
+    plan:
+      - get: code
+        resource: gitlab-mr
+        passed: [mark-mr-running]
+        trigger: true
+      - in_parallel:
+          - task: lint
+            attempts: 2
+            file: code/ci/lint.yml
+          - task: test
+            attempts: 2
+            file: code/ci/unit-test.yml
+    on_failure: *gitlab_pipeline_failure
+  - name: bump
+    plan:
+      - get: gitlab-mr
+        passed: [lint-and-test]
+        trigger: true
+      - put: version
+        params:
+          pre: mrcheck
+    on_failure: *gitlab_pipeline_failure
+  - name: build
+    plan:
+      - in_parallel:
+          - do:
+              - get: gitlab-mr
+                passed: [bump]
+                trigger: true
+              - load_var: mrdata
+                file: gitlab-mr/.git/merge-request.json
+                reveal: true
+          - do:
+              - get: version
+                passed: [bump]
+                trigger: true
+              - load_var: version
+                file: version/version
+                reveal: true
+      - task: yarn-build
+        input_mapping:
+          code: gitlab-mr
+        file: gitlab-mr/ci/yarn-build.yml
+      - task: image-build
+        privileged: true
+        file: gitlab-mr/ci/image-build.yml
+      - put: mr-image
+        params:
+          image: image/image.tar
+          version: ((.:version))-((.:mrdata.source_branch))
+    on_failure: *gitlab_pipeline_failure
+  - name: integration-tests
+    plan:
+      - in_parallel:
+          - get: ytt
+          - get: cypress-image
+            params: { format: oci }
+          - get: gitlab-mr
+            passed: [build]
+            trigger: true
+          - get: mr-image
+            params: { format: oci }
+            passed: [build]
+            trigger: true
+      - task: test
+        privileged: true
+        file: gitlab-mr/ci/integration-tests.yml
+        input_mapping:
+          code: gitlab-mr
+          docker-image: mr-image
+    on_failure: *gitlab_pipeline_failure
+  - name: mark-mr-success
+    public: true
+    plan:
+      - get: gitlab-mr
+        passed: [lint-and-test, build, integration-tests]
+        trigger: true
+      - put: gitlab-mr
+        params:
+          repository: gitlab-mr
+          status: success

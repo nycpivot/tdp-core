@@ -1,0 +1,26 @@
+#@ load("@ytt:data", "data")
+---
+version: '3.3'
+services:
+  esback:
+    #@ if/end not data.values.skip_build:
+    build:
+      context: ../../..
+      dockerfile: packages/backend/Dockerfile
+    image: esback:integration
+    environment:
+      - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
+    ports:
+      - 7007:7007
+  cypress:
+    image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
+    volumes:
+      - .:/e2e/cypress
+      - ../cypress.json:/e2e/cypress.json
+      - ./npmrc.example:/e2e/.npmrc
+    depends_on:
+      - esback
+    environment:
+      - CYPRESS_baseUrl=http://esback:7007
+    working_dir: /e2e
+    entrypoint: /bin/sh -c "npm install typescript@^4.4.3 && cypress run --browser chrome"

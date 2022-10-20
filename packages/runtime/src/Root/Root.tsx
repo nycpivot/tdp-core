@@ -72,7 +72,7 @@ const SidebarLogo = () => {
 };
 
 interface IRoot {
-  surfaces: AppSurfaces
+  surfaces: AppSurfaces;
 }
 
 export const Root = ({ surfaces, children }: PropsWithChildren<IRoot>) => (

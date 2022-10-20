@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
-import { AppRenderer } from './AppRenderer';
+import { appRenderer } from './appRenderer';
 import { AppSurfaces } from '@esback/core';
 
 describe('AppRenderer', () => {
@@ -18,7 +18,7 @@ describe('AppRenderer', () => {
       ] as any,
     };
 
-    const App = AppRenderer(new AppSurfaces())
+    const App = appRenderer(new AppSurfaces());
     const rendered = await renderWithEffects(<App />);
     expect(rendered.baseElement).toBeInTheDocument();
   });

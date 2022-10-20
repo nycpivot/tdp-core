@@ -8,7 +8,6 @@ the command `yarn backstage-cli create`, and follow the on-screen instructions.
 
 You can also check out existing plugins on [the plugin marketplace](https://backstage.io/plugins)!
 
-
 ## Publishing plugins
 
 Plugins are published to the [`esback-npm-local` registry in VMWare's private Artifactory
@@ -38,7 +37,7 @@ instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/esback-npm-lo
   ```shell
   $ export NPM_AUTH_EMAIL=<username@vmware.com>
   ```
-  
+
 ### Publishing a new version of the package
 
 This should almost certainly always happen via a CI job, and is the standard `npm publish` flow.

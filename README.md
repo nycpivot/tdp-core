@@ -9,7 +9,7 @@ Here are the main components of the esback library ecosystem:
 - packages/core: Contains the type definitions for developing esback plugin interfaces
 - packages/runtime: Objects required to run a backstage frontend
 - packages/runtime-backend: Objects required to run a backstage backend
-- plugins/*: Any officially supported Backstage plugin 
+- plugins/\*: Any officially supported Backstage plugin
 
 ## Getting started
 

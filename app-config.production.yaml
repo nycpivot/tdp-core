@@ -3,7 +3,7 @@ app:
   baseUrl: http://localhost:7007
 
 organization:
-  name: VMware  
+  name: VMware
 
 backend:
   baseUrl: http://localhost:7007
@@ -26,4 +26,4 @@ catalog:
   locations: []
 
 techdocs:
-  builder: 'external'  
+  builder: 'external'

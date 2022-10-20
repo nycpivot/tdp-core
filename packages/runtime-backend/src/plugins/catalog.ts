@@ -9,5 +9,5 @@ export default function esbackCatalogPlugin(surfaces: BackendSurfaces) {
     const { processingEngine, router } = await builder.build();
     await processingEngine.start();
     return router;
-  }
+  };
 }
