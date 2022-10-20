@@ -18,7 +18,7 @@ describe('App', () => {
 
     it('should render the github catalog', () => {
       cy.contains('github-component');
-    })
+    });
   });
 
   describe('Hello World Plugin', () => {
