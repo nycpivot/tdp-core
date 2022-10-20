@@ -9,9 +9,11 @@ services:
       dockerfile: packages/backend/Dockerfile
     image: esback:integration
     environment:
+      - NODE_TLS_REJECT_UNAUTHORIZED=0 # to skip ssl verification for our Github Enterprise
       - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
       - GITLAB_TOKEN=${GITLAB_TOKEN}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_ENTERPRISE_TOKEN=${GITHUB_ENTERPRISE_TOKEN}
       - GIT_BRANCH=${GIT_BRANCH}
     ports:
       - 7007:7007

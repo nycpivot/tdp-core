@@ -122,4 +122,5 @@ jobs:
         vars:
           gitlab_token: ((gitlab.core_token))
           github_token: ((e2e.github_token))
+          github_enterprise_token: ((e2e.github_enterprise_token))
           git_branch: ((git_branch))

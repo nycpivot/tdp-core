@@ -19,6 +19,10 @@ describe('App', () => {
     it('should render the github catalog', () => {
       cy.contains('github-component');
     });
+
+    it('should render the github enterprise catalog', () => {
+      cy.contains('pstar365');
+    });
   });
 
   describe('Hello World Plugin', () => {
