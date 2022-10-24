@@ -21,7 +21,7 @@ describe('App', () => {
     });
 
     it('should render the github enterprise catalog', () => {
-      cy.contains('pstar365');
+      cy.contains('pstar635');
     });
   });
 
