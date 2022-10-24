@@ -122,12 +122,13 @@ jobs:
           - get: ytt
           - get: cypress-image
             params: { format: oci }
-          - get: gitlab-mr
-            passed: [build]
-            trigger: true
-          - load_var: mrdata
-            file: gitlab-mr/.git/merge-request.json
-            reveal: true
+          - do:
+            - get: gitlab-mr
+              passed: [build]
+              trigger: true
+            - load_var: mrdata
+              file: gitlab-mr/.git/merge-request.json
+              reveal: true
           - get: mr-image
             params: { format: oci }
             passed: [build]
