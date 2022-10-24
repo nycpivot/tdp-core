@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import { appRenderer } from './appRenderer';
-import { AppSurfaces } from '@esback/core';
+import { SurfaceStore } from '@esback/core';
 
 describe('AppRenderer', () => {
   it('should render', async () => {
@@ -18,7 +18,7 @@ describe('AppRenderer', () => {
       ] as any,
     };
 
-    const App = appRenderer(new AppSurfaces());
+    const App = appRenderer(new SurfaceStore());
     const rendered = await renderWithEffects(<App />);
     expect(rendered.baseElement).toBeInTheDocument();
   });

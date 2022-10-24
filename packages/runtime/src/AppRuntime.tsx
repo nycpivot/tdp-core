@@ -1,36 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppSurfaces, AppPluginExport } from '@esback/core';
+import {
+  AppRouteSurface,
+  EsbackPluginInterface,
+  SurfaceStore,
+} from '@esback/core';
 import { plugin as catalogPlugin } from '@esback/plugin-catalog';
 import { appRenderer } from './appRenderer';
 
 export class AppRuntime {
-  private readonly _surfaces: AppSurfaces;
+  private readonly _surfaces: SurfaceStore;
 
-  constructor(pluginExports: AppPluginExport[] = []) {
-    this._surfaces = new AppSurfaces();
-    const appPlugins = [catalogPlugin(), ...pluginExports];
-
-    this._surfaces.routeSurface.setDefault('catalog');
-
-    // The entityPage surfaces need to be applied before routes
-    appPlugins.forEach(({ entityPage }) => {
-      if (entityPage) {
-        entityPage(this._surfaces.entityPageSurface);
-      }
-    });
-
-    appPlugins.forEach(
-      ({ apis, components, plugins, routes, sidebarItems }) => {
-        if (apis) apis(this._surfaces.apiSurface);
-        if (components) components(this._surfaces.componentSurface);
-        if (plugins) plugins(this._surfaces.pluginSurface);
-        if (routes) routes(this._surfaces.routeSurface, this._surfaces);
-        if (sidebarItems) sidebarItems(this._surfaces.sidebarItemSurface);
-      },
+  constructor(pluginExports: EsbackPluginInterface[] = []) {
+    this._surfaces = new SurfaceStore();
+    catalogPlugin()(this._surfaces);
+    this._surfaces.applyTo(AppRouteSurface, routes =>
+      routes.setDefault('catalog'),
     );
-
-    return this;
+    pluginExports.forEach(pe => pe(this._surfaces));
   }
 
   public render() {
@@ -38,7 +25,7 @@ export class AppRuntime {
     ReactDOM.render(<App />, document.getElementById('root'));
   }
 
-  public get surfaces(): AppSurfaces {
+  public get surfaces(): SurfaceStore {
     return this._surfaces;
   }
 }

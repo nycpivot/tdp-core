@@ -2,29 +2,45 @@ import app from './plugins/app';
 import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import proxy from './plugins/proxy';
-import { BackendPluginExport, BackendSurfaces } from '@esback/core';
+import {
+  BackendPluginSurface,
+  EsbackPluginInterface,
+  SurfaceStore,
+} from '@esback/core';
 import { BackendRunner } from './BackendRunner';
 
 export class BackendRuntime {
-  private readonly _surfaces = new BackendSurfaces();
+  private readonly _surfaces: SurfaceStore;
 
-  constructor(plugins: BackendPluginExport[] = []) {
-    this._surfaces.pluginSurface.setMainApp(app);
-    this._surfaces.pluginSurface.addPlugin({
-      name: 'auth',
-      pluginFn: auth,
-    });
-    this._surfaces.pluginSurface.addPlugin({
-      name: 'proxy',
-      pluginFn: proxy,
-    });
+  constructor(plugins: EsbackPluginInterface[] = []) {
+    this._surfaces = new SurfaceStore();
 
-    plugins.forEach(plugin => plugin(this._surfaces));
+    this._surfaces.applyTo(
+      BackendPluginSurface,
+      pluginSurface => {
+        pluginSurface.setMainApp(app);
+        pluginSurface.addPlugin({
+          name: 'auth',
+          pluginFn: auth,
+        });
 
-    this._surfaces.pluginSurface.addPlugin({
-      name: 'catalog',
-      pluginFn: catalog(this._surfaces),
-    });
+        pluginSurface.addPlugin({
+          name: 'auth',
+          pluginFn: auth,
+        });
+        pluginSurface.addPlugin({
+          name: 'proxy',
+          pluginFn: proxy,
+        });
+
+        plugins.forEach(plugin => plugin(this._surfaces));
+
+        pluginSurface.addPlugin({
+          name: 'catalog',
+          pluginFn: catalog(this._surfaces),
+        });
+      },
+    );
   }
 
   public start() {
@@ -36,7 +52,7 @@ export class BackendRuntime {
     });
   }
 
-  public get surfaces(): BackendSurfaces {
+  public get surfaces(): SurfaceStore {
     return this._surfaces;
   }
 }

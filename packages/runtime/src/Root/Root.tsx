@@ -35,7 +35,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { AppSurfaces } from '@esback/core';
+import { SidebarItemSurface } from '@esback/core';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -72,10 +72,10 @@ const SidebarLogo = () => {
 };
 
 interface IRoot {
-  surfaces: AppSurfaces;
+  sidebar: SidebarItemSurface;
 }
 
-export const Root = ({ surfaces, children }: PropsWithChildren<IRoot>) => (
+export const Root = ({ sidebar, children }: PropsWithChildren<IRoot>) => (
   <SidebarPage>
     <Sidebar>
       <SidebarLogo />
@@ -84,7 +84,7 @@ export const Root = ({ surfaces, children }: PropsWithChildren<IRoot>) => (
       </SidebarGroup>
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {...surfaces.sidebarItemSurface.all}
+        {...sidebar.all}
         <SidebarDivider />
       </SidebarGroup>
       <SidebarSpace />

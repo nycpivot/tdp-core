@@ -1,6 +1,6 @@
 import { AppComponents } from '@backstage/core-app-api';
 
-export class ComponentSurface {
+export class AppComponentSurface {
   private readonly _components: Partial<AppComponents>;
 
   public constructor() {

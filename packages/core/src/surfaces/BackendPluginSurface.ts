@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { PluginEnvironment } from '../PluginEnvironment';
 
 type PluginFn<T> = (env: T) => Promise<Router>;
 
@@ -8,7 +9,7 @@ interface Plugin<T> {
   pluginFn: PluginFn<T>;
 }
 
-export class PluginSurface<T> {
+export class BackendPluginSurface<T = PluginEnvironment> {
   private readonly _plugins: Array<Plugin<T>>;
   private _mainApp?: PluginFn<T>;
 

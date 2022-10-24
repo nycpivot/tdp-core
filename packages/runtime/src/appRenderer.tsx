@@ -16,9 +16,16 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
-import { AppSurfaces, AppSurfacesContext } from '@esback/core';
+import {
+  ApiSurface,
+  AppComponentSurface,
+  AppPluginSurface,
+  AppRouteSurface,
+  SidebarItemSurface,
+  SurfaceStore,
+} from '@esback/core';
 
-export const appRenderer = (surfaces: AppSurfaces): React.FC => {
+export const appRenderer = (surfaces: SurfaceStore): React.FC => {
   const apis: AnyApiFactory[] = [
     createApiFactory({
       api: scmIntegrationsApiRef,
@@ -26,20 +33,20 @@ export const appRenderer = (surfaces: AppSurfaces): React.FC => {
       factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
     }),
     ScmAuth.createDefaultApiFactory(),
-    ...surfaces.apiSurface.apis,
+    ...surfaces.getSurfaceState(ApiSurface).apis,
   ];
 
+  const pluginSurface = surfaces.getSurfaceState(AppPluginSurface);
   const plugins =
-    surfaces.pluginSurface.plugins.length > 0
-      ? surfaces.pluginSurface.plugins
-      : undefined;
+    pluginSurface.plugins.length > 0 ? pluginSurface.plugins : undefined;
 
+  const routeSurface = surfaces.getSurfaceState(AppRouteSurface);
   const app = createApp({
     apis,
-    components: surfaces.componentSurface.components,
+    components: surfaces.getSurfaceState(AppComponentSurface).components,
     plugins,
     bindRoutes(context) {
-      surfaces.routeSurface.routeBinders.forEach(binder => binder(context));
+      routeSurface.routeBinders.forEach(binder => binder(context));
     },
   });
 
@@ -48,23 +55,23 @@ export const appRenderer = (surfaces: AppSurfaces): React.FC => {
 
   const routes = (
     <FlatRoutes>
-      {surfaces.routeSurface.defaultRoute && (
-        <Navigate key="/" to={surfaces.routeSurface.defaultRoute} />
+      {routeSurface.defaultRoute && (
+        <Navigate key="/" to={routeSurface.defaultRoute} />
       )}
-      {...surfaces.routeSurface.nonDefaultRoutes}
+      {...routeSurface.nonDefaultRoutes}
       <Route path="/settings" element={<UserSettingsPage />} />
     </FlatRoutes>
   );
 
   return () => (
-    <AppSurfacesContext.Provider value={surfaces}>
-      <AppProvider>
-        <AlertDisplay />
-        <OAuthRequestDialog />
-        <AppRouter>
-          <Root surfaces={surfaces}>{routes}</Root>
-        </AppRouter>
-      </AppProvider>
-    </AppSurfacesContext.Provider>
+    <AppProvider>
+      <AlertDisplay />
+      <OAuthRequestDialog />
+      <AppRouter>
+        <Root sidebar={surfaces.getSurfaceState(SidebarItemSurface)}>
+          {routes}
+        </Root>
+      </AppRouter>
+    </AppProvider>
   );
 };

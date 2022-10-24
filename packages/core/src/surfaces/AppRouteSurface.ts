@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 
 type RouteBinder = (context: { bind: AppRouteBinder }) => void;
 
-export class RouteSurface {
+export class AppRouteSurface {
   private readonly _routes: ReactElement[];
   private readonly _routeBinders: RouteBinder[];
   private _defaultRoute?: string;
