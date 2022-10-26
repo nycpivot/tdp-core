@@ -25,6 +25,9 @@ node_modules/
 .env
 .env.test
 
+# direnv environment variables file
+.envrc
+
 # Build output
 dist
 dist-types
