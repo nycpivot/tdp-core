@@ -1,18 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Installing typescript..."
-npm install typescript@^4.4.3
+echo "Installing jq & curl..."
+apt update
+apt install -y curl jq
 echo
-echo "Typescript installed"
+echo "jq & curl installed."
 echo
 
-echo "Installing jq..."
-apt update
-apt install -y jq curl
-echo
-echo "jq installed."
-echo
 
 echo "Waiting for Bitbucket..."
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' -u esback:esback http://bitbucket:7990/rest/api/latest/projects)" != "200" ]]; do sleep 5; done
@@ -34,6 +29,4 @@ echo
 echo "Environment variables done"
 echo
 
-echo
-echo "That's All, Folks!"
-echo
+node packages/backend --config app-config.e2e.yaml
