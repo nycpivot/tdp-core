@@ -4,11 +4,12 @@ set -euo pipefail
 BASE_URL=${BASE_URL:-"http://localhost:7990"}
 PROJECT_KEY=ESBACK
 REPO=catalog
+REPO_FOLDER=${REPO_FOLDER:-"./../data/bitbucket/repo"}
 
 echo "Creating a project..."
 echo
 
-curl --request POST \
+curl --silent --request POST \
   --url "$BASE_URL/rest/api/latest/projects" \
   --user esback:esback \
   --header 'Accept: application/json' \
@@ -26,7 +27,7 @@ echo
 echo "Creating a repository..."
 echo
 
-curl --request POST \
+curl --silent --request POST \
   --url "$BASE_URL/rest/api/latest/projects/$PROJECT_KEY/repos" \
   --user esback:esback \
   --header 'Accept: application/json' \
@@ -45,10 +46,10 @@ echo
 echo "Adding a catalog in the repository..."
 echo
 
-curl --request PUT \
+curl --silent --request PUT \
   --url "$BASE_URL/rest/api/latest/projects/$PROJECT_KEY/repos/$REPO/browse/catalog-info.yaml" \
   --user esback:esback \
-  -F content=@../../data/bitbucket/repo/catalog-info.yaml \
+  -F content=@$REPO_FOLDER/catalog-info.yaml \
   -F branch=master \
   -F 'message=Add catalog info'
 
