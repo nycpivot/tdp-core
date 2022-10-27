@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-BASE_URL="http://localhost:7990"
+BASE_URL=${BASE_URL:-"http://localhost:7990"}
 PROJECT_KEY=ESBACK
 REPO=catalog
 
