@@ -119,3 +119,6 @@ jobs:
         input_mapping:
           code: esback-core
           docker-image: core-image
+        vars:
+          gitlab_token: ((gitlab.core_token))
+          git_branch: ((git_branch))

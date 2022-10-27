@@ -1,5 +1,5 @@
 # To set up this pipeline, assuming you have an esback target locally setup, run:
-# $ fly -t esback set-pipeline -p mr-check -c ci/pipeline.yml -v initial_version=0.0.0
+# $ fly -t esback set-pipeline -p mr-check -c ci/mr-check.yml -v initial_version=0.0.0
 ---
 resource_types:
   - name: merge-request
@@ -122,9 +122,13 @@ jobs:
           - get: ytt
           - get: cypress-image
             params: { format: oci }
-          - get: gitlab-mr
-            passed: [build]
-            trigger: true
+          - do:
+              - get: gitlab-mr
+                passed: [build]
+                trigger: true
+              - load_var: mrdata
+                file: gitlab-mr/.git/merge-request.json
+                reveal: true
           - get: mr-image
             params: { format: oci }
             passed: [build]
@@ -135,6 +139,9 @@ jobs:
         input_mapping:
           code: gitlab-mr
           docker-image: mr-image
+        vars:
+          gitlab_token: ((gitlab.core_token))
+          git_branch: ((.:mrdata.source_branch))
     on_failure: *gitlab_pipeline_failure
   - name: mark-mr-success
     public: true
