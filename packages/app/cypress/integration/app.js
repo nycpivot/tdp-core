@@ -15,6 +15,14 @@ describe('App', () => {
     it('should render the gitlab catalog', () => {
       cy.contains('tap-gui-component');
     });
+
+    it('should render the github catalog', () => {
+      cy.contains('github-component');
+    });
+
+    it('should render the github enterprise catalog', () => {
+      cy.contains('pstar635');
+    });
   });
 
   describe('Hello World Plugin', () => {

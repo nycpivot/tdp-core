@@ -26,6 +26,15 @@ backend:
     store: memory
 
 integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+
+    - host: cmbu-githubent01.eng.vmware.com
+      baseUrl: https://cmbu-githubent01.eng.vmware.com/
+      apiBaseUrl: https://cmbu-githubent01.eng.vmware.com/api/v3
+      token: ${GITHUB_ENTERPRISE_TOKEN}
+
   gitlab:
     - host: gitlab.eng.vmware.com
       baseUrl: https://gitlab.eng.vmware.com
@@ -48,3 +57,7 @@ catalog:
         - allow: [User, Group]
     - type: url
       target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/data/catalog/components/tap-gui.yml
+    - type: url
+      target: https://github.com/fouadh/foobar-backstage-component/blob/master/catalog-info.yaml
+    - type: url
+      target: https://cmbu-githubent01.eng.vmware.com/tap-gui/catalog/blob/main/catalog-info.yaml
