@@ -21,13 +21,15 @@ services:
       - JDBC_USER=sa
       - JDBC_PASSWORD=
     volumes:
-      - /tmp/bitbucket:/var/atlassian/application-data/bitbucket
+      - ${HOME}/.esback-e2e/bitbucket:/var/atlassian/application-data/bitbucket
   esback:
     #@ if/end not data.values.skip_build:
     build:
       context: ../../..
       dockerfile: packages/backend/Dockerfile
     image: esback:integration
+    depends_on:
+      - bitbucket
     environment:
       - NODE_TLS_REJECT_UNAUTHORIZED=0 #! to skip ssl verification for our Github Enterprise
       - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
@@ -37,6 +39,9 @@ services:
       - GIT_BRANCH=${GIT_BRANCH}
     ports:
       - 7007:7007
+    volumes:
+      - .:/e2e/cypress
+    entrypoint: /bin/sh -c /e2e/cypress/scripts/start-esback.sh
   cypress:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
     volumes:
@@ -45,7 +50,8 @@ services:
       - ./npmrc.example:/e2e/.npmrc
     depends_on:
       - esback
+      - bitbucket
     environment:
       - CYPRESS_baseUrl=http://esback:7007
     working_dir: /e2e
-    entrypoint: /bin/sh -c "npm install typescript@^4.4.3 && cypress run --browser chrome"
+    entrypoint: /bin/sh -c "/e2e/cypress/scripts/run-tests.sh"
