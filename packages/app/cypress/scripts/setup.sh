@@ -9,9 +9,15 @@ echo
 
 echo "Installing jq..."
 apt update
-apt install -y jq
+apt install -y jq curl
 echo
 echo "jq installed."
+echo
+
+echo "Waiting for Bitbucket..."
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' -u esback:esback http://bitbucket:7990/rest/api/latest/projects)" != "200" ]]; do sleep 5; done
+echo
+echo "Bitbucket ready !"
 echo
 
 echo "Running Bitbucket setup..."
