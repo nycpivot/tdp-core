@@ -15,32 +15,29 @@ export class BackendRuntime {
   constructor(plugins: EsbackPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
 
-    this._surfaces.applyTo(
-      BackendPluginSurface,
-      pluginSurface => {
-        pluginSurface.setMainApp(app);
-        pluginSurface.addPlugin({
-          name: 'auth',
-          pluginFn: auth,
-        });
+    this._surfaces.applyTo(BackendPluginSurface, pluginSurface => {
+      pluginSurface.setMainApp(app);
+      pluginSurface.addPlugin({
+        name: 'auth',
+        pluginFn: auth,
+      });
 
-        pluginSurface.addPlugin({
-          name: 'auth',
-          pluginFn: auth,
-        });
-        pluginSurface.addPlugin({
-          name: 'proxy',
-          pluginFn: proxy,
-        });
+      pluginSurface.addPlugin({
+        name: 'auth',
+        pluginFn: auth,
+      });
+      pluginSurface.addPlugin({
+        name: 'proxy',
+        pluginFn: proxy,
+      });
 
-        plugins.forEach(plugin => plugin(this._surfaces));
+      plugins.forEach(plugin => plugin(this._surfaces));
 
-        pluginSurface.addPlugin({
-          name: 'catalog',
-          pluginFn: catalog(this._surfaces),
-        });
-      },
-    );
+      pluginSurface.addPlugin({
+        name: 'catalog',
+        pluginFn: catalog(this._surfaces),
+      });
+    });
   }
 
   public start() {

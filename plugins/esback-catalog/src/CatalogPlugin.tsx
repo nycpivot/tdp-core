@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 import {
-  // CatalogEntityPage,
+  CatalogEntityPage,
   CatalogIndexPage,
   catalogPlugin,
 } from '@backstage/plugin-catalog';
@@ -21,9 +21,10 @@ import {
   SidebarItemSurface,
 } from '@esback/core';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
-// import { entityPage } from './components/EntityPage';
+import { entityPage } from './components/EntityPage';
 import { apiDocsPlugin } from '@backstage/plugin-api-docs';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
+import { EntityPageSurface } from './EntityPageSurface';
 
 interface CatalogConfig {
   disableImport?: boolean;
@@ -42,15 +43,6 @@ export const CatalogPlugin: AppPluginInterface<
   return context => {
     context.applyTo(AppRouteSurface, routes => {
       routes.add(<Route path={`/${path}`} element={<CatalogIndexPage />} />);
-
-      // routes.add(
-      //   <Route
-      //     path={`/${path}/:namespace/:kind/:name`}
-      //     element={<CatalogEntityPage />}
-      //   >
-      //     {entityPage(ctx.entityPageSurface)}
-      //   </Route>,
-      // );
 
       routes.addRouteBinder(({ bind }) => {
         bind(orgPlugin.externalRoutes, {
@@ -86,6 +78,20 @@ export const CatalogPlugin: AppPluginInterface<
         );
       }
     });
+
+    context.applyWithDeps(
+      AppRouteSurface,
+      EntityPageSurface,
+      (routes, entityPageSurface) =>
+        routes.add(
+          <Route
+            path={`/${path}/:namespace/:kind/:name`}
+            element={<CatalogEntityPage />}
+          >
+            {entityPage(entityPageSurface)}
+          </Route>,
+        ),
+    );
 
     context.applyTo(SidebarItemSurface, sidebar =>
       sidebar.add(<SidebarItem icon={HomeIcon} to={path} text={label} />),

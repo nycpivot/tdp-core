@@ -15,7 +15,7 @@ describe('AppRuntime', () => {
     const routeSurface = runtime.surfaces.getSurfaceState(AppRouteSurface);
     expect(sidebarItemSurface.all).toHaveLength(1);
     expect(routeSurface.defaultRoute).toBe('catalog');
-    expect(routeSurface.nonDefaultRoutes).toHaveLength(3);
+    expect(routeSurface.nonDefaultRoutes).toHaveLength(4);
   });
 
   it('should add catalog plugin to provided plugin list', () => {
@@ -28,9 +28,6 @@ describe('AppRuntime', () => {
     expect(
       runtime.surfaces.getSurfaceState(SidebarItemSurface).all,
     ).toHaveLength(2);
-  });
-
-  it.skip('should apply changes to entityPage surface first', () => {
   });
 
   it('should allow plugins to change default route', () => {

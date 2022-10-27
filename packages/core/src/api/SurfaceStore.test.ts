@@ -1,4 +1,4 @@
-import { EsbackSurface, SurfaceStore } from './types';
+import { EsbackSurface, SurfaceStore } from '.';
 
 class FakeSurface1 implements EsbackSurface {
   public store: string[] = [];
@@ -8,12 +8,18 @@ class FakeSurface1 implements EsbackSurface {
 }
 
 class FakeSurface2 implements EsbackSurface {
+  public count: number = 0;
+
+  setCount(count: number) {
+    this.count = count;
+  }
+
   fake() {
     return 'fake';
   }
 }
 
-describe('GenericSurface test', () => {
+describe('SurfaceStore test', () => {
   it('handles new surfaces', () => {
     const surface = new SurfaceStore();
     surface.applyTo(FakeSurface1, s => s.addStore('test'));
@@ -36,6 +42,36 @@ describe('GenericSurface test', () => {
     expect(fake1.store).toHaveLength(2);
     expect(fake1.store[0]).toBe('test');
     expect(fake1.store[1]).toBe('something');
+  });
+
+  it('handles surface dependencies independent of order', () => {
+    const surface = new SurfaceStore();
+
+    surface.applyWithDeps(FakeSurface2, FakeSurface1, (s2, s1) =>
+      s2.setCount(s1.store.length),
+    );
+
+    surface.applyTo(FakeSurface1, s => s.addStore('test1'));
+    surface.applyTo(FakeSurface1, s => s.addStore('test2'));
+
+    expect(surface.getSurfaceState(FakeSurface2).count).toBe(2);
+    expect(surface.getSurfaceState(FakeSurface1).store[0]).toBe('test1');
+    expect(surface.getSurfaceState(FakeSurface1).store[1]).toBe('test2');
+  });
+
+  it('prevents cyclic dependencies', () => {
+    const surface = new SurfaceStore();
+
+    surface.applyWithDeps(FakeSurface1, FakeSurface2, (s1, s2) =>
+      s1.addStore(s2.fake()),
+    );
+
+    const dependencyCycle = () =>
+      surface.applyWithDeps(FakeSurface2, FakeSurface1, (s2, s1) =>
+        s2.setCount(s1.store.length),
+      );
+
+    expect(dependencyCycle).toThrowError();
   });
 
   it('works asynchronusly', async () => {
