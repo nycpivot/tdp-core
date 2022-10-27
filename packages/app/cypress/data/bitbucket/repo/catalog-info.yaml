@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bitbucket-server-component
+  description: Bitbucket Server Component
+  tags:
+    - v1
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: esback

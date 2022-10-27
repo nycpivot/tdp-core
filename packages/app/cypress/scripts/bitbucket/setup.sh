@@ -48,7 +48,7 @@ echo
 curl --request PUT \
   --url "$BASE_URL/rest/api/latest/projects/$PROJECT_KEY/repos/$REPO/browse/catalog-info.yaml" \
   --user esback:esback \
-  -F content=@../repo/catalog-info.yaml \
+  -F content=@../../data/bitbucket/repo/catalog-info.yaml \
   -F branch=master \
   -F 'message=Add catalog info'
 
