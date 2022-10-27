@@ -94,13 +94,14 @@ The flow is described in the tools repo [README](https://gitlab.eng.vmware.com/e
 In short,
 
 1. Create a directory with your `esback-config.yml` file, along with an optional `app-config.yml`
+
 2. Build your Backstage instance image:
 
    ```
    pack build esback-test \
    --builder harbor-repo.vmware.com/esback/cnb-builder:0.0.1-alpha.1 \
    --pull-policy if-not-present \
-   --path example
+   --path DIRECTORY_CONTAINING_ESBACK_CONFIG_FILE
    ```
 
 3. Run the image:
