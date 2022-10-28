@@ -2,10 +2,9 @@
 set -euo pipefail
 
 BASE_URL=${BASE_URL:-"http://localhost:7990"}
-PROJECT_KEY=ESBACK
 
-curl --silent --request PUT \
-  --url "$BASE_URL/rest/access-tokens/latest/projects/$PROJECT_KEY" \
+token=$(curl --silent --request PUT \
+  --url "$BASE_URL/rest/access-tokens/latest/users/esback" \
   --user esback:esback \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
@@ -14,6 +13,8 @@ curl --silent --request PUT \
   "name": "My access token",
   "permissions": [
     "REPO_ADMIN",
-    "PROJECT_READ"
+    "PROJECT_ADMIN"
   ]
-}' | jq .token
+}' | jq .token)
+
+echo "$token" | tr -d '"'
