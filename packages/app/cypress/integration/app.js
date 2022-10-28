@@ -23,6 +23,10 @@ describe('App', () => {
     it('should render the github enterprise catalog', () => {
       cy.contains('pstar635');
     });
+
+    it('should render the bitbucket server catalog', () => {
+      cy.contains('bitbucket-server-component');
+    });
   });
 
   describe('Hello World Plugin', () => {
