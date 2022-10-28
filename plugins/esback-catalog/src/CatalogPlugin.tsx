@@ -79,7 +79,7 @@ export const CatalogPlugin: AppPluginInterface<
       }
     });
 
-    context.applyWithDeps(
+    context.applyWithDependency(
       AppRouteSurface,
       EntityPageSurface,
       (routes, entityPageSurface) =>

@@ -1,9 +1,9 @@
 import { EsbackSurface, SurfaceStore } from '.';
 
 class FakeSurface1 implements EsbackSurface {
-  public store: string[] = [];
-  addStore(s: string) {
-    this.store.push(s);
+  public readonly data: string[] = [];
+  addData(s: string) {
+    this.data.push(s);
   }
 }
 
@@ -21,54 +21,54 @@ class FakeSurface2 implements EsbackSurface {
 
 describe('SurfaceStore test', () => {
   it('handles new surfaces', () => {
-    const surface = new SurfaceStore();
-    surface.applyTo(FakeSurface1, s => s.addStore('test'));
+    const store = new SurfaceStore();
+    store.applyTo(FakeSurface1, s => s.addData('test'));
 
-    const fake1 = surface.getSurfaceState(FakeSurface1);
-    const fake2 = surface.getSurfaceState(FakeSurface2);
+    const fake1 = store.getSurfaceState(FakeSurface1);
+    const fake2 = store.getSurfaceState(FakeSurface2);
 
-    expect(fake1.store).toHaveLength(1);
-    expect(fake1.store[0]).toBe('test');
+    expect(fake1.data).toHaveLength(1);
+    expect(fake1.data[0]).toBe('test');
     expect(fake2).toBeDefined();
     expect(fake2.fake()).toBe('fake');
   });
 
   it('reuses initialized surface', () => {
-    const surface = new SurfaceStore();
-    surface.applyTo(FakeSurface1, s => s.addStore('test'));
-    surface.applyTo(FakeSurface1, s => s.addStore('something'));
+    const store = new SurfaceStore();
+    store.applyTo(FakeSurface1, s => s.addData('test'));
+    store.applyTo(FakeSurface1, s => s.addData('something'));
 
-    const fake1 = surface.getSurfaceState(FakeSurface1);
-    expect(fake1.store).toHaveLength(2);
-    expect(fake1.store[0]).toBe('test');
-    expect(fake1.store[1]).toBe('something');
+    const fake1 = store.getSurfaceState(FakeSurface1);
+    expect(fake1.data).toHaveLength(2);
+    expect(fake1.data[0]).toBe('test');
+    expect(fake1.data[1]).toBe('something');
   });
 
   it('handles surface dependencies independent of order', () => {
-    const surface = new SurfaceStore();
+    const store = new SurfaceStore();
 
-    surface.applyWithDeps(FakeSurface2, FakeSurface1, (s2, s1) =>
-      s2.setCount(s1.store.length),
+    store.applyWithDependency(FakeSurface2, FakeSurface1, (s2, s1) =>
+      s2.setCount(s1.data.length),
     );
 
-    surface.applyTo(FakeSurface1, s => s.addStore('test1'));
-    surface.applyTo(FakeSurface1, s => s.addStore('test2'));
+    store.applyTo(FakeSurface1, s => s.addData('test1'));
+    store.applyTo(FakeSurface1, s => s.addData('test2'));
 
-    expect(surface.getSurfaceState(FakeSurface2).count).toBe(2);
-    expect(surface.getSurfaceState(FakeSurface1).store[0]).toBe('test1');
-    expect(surface.getSurfaceState(FakeSurface1).store[1]).toBe('test2');
+    expect(store.getSurfaceState(FakeSurface2).count).toBe(2);
+    expect(store.getSurfaceState(FakeSurface1).data[0]).toBe('test1');
+    expect(store.getSurfaceState(FakeSurface1).data[1]).toBe('test2');
   });
 
   it('prevents cyclic dependencies', () => {
-    const surface = new SurfaceStore();
+    const store = new SurfaceStore();
 
-    surface.applyWithDeps(FakeSurface1, FakeSurface2, (s1, s2) =>
-      s1.addStore(s2.fake()),
+    store.applyWithDependency(FakeSurface1, FakeSurface2, (s1, s2) =>
+      s1.addData(s2.fake()),
     );
 
     const dependencyCycle = () =>
-      surface.applyWithDeps(FakeSurface2, FakeSurface1, (s2, s1) =>
-        s2.setCount(s1.store.length),
+      store.applyWithDependency(FakeSurface2, FakeSurface1, (s2, s1) =>
+        s2.setCount(s1.data.length),
       );
 
     expect(dependencyCycle).toThrowError();
@@ -76,18 +76,14 @@ describe('SurfaceStore test', () => {
 
   it('works asynchronusly', async () => {
     const testCase = async () => {
-      const surface = new SurfaceStore();
-
-      const isolated = async (store: SurfaceStore, v: string) => {
-        store.applyTo(FakeSurface1, s => s.addStore(v));
+      const isolated = async (store: SurfaceStore, d: string) => {
+        store.applyTo(FakeSurface1, s => s.addData(d));
       };
 
-      await Promise.all([
-        isolated(surface, 'first'),
-        isolated(surface, 'second'),
-      ]);
+      const store = new SurfaceStore();
+      await Promise.all([isolated(store, 'first'), isolated(store, 'second')]);
 
-      expect(surface.getSurfaceState(FakeSurface1).store).toHaveLength(2);
+      expect(store.getSurfaceState(FakeSurface1).data).toHaveLength(2);
     };
 
     const testRuns = [];
@@ -95,5 +91,24 @@ describe('SurfaceStore test', () => {
       testRuns.push(testCase());
     }
     return Promise.all(testRuns);
+  });
+
+  it('computes surface state only when necessary', () => {
+    const store = new SurfaceStore();
+    const modifier = jest.fn((surface: FakeSurface1) => {
+      surface.addData('test');
+    });
+
+    store.applyTo(FakeSurface1, modifier);
+
+    expect(store.getSurfaceState(FakeSurface1).data).toHaveLength(1);
+    expect(store.getSurfaceState(FakeSurface1).data).toContain('test');
+    expect(modifier).toBeCalledTimes(1);
+
+    store.applyTo(FakeSurface1, s => s.addData('test2'));
+
+    expect(store.getSurfaceState(FakeSurface1).data).toContain('test');
+    expect(store.getSurfaceState(FakeSurface1).data).toContain('test2');
+    expect(modifier).toBeCalledTimes(2);
   });
 });

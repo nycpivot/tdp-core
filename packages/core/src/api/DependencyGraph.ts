@@ -12,7 +12,7 @@ export class DependencyGraph<T = number> {
 
     for (const vertice of this._nodes.keys()) {
       if (this.isCyclicUtil(vertice, visited, recursiveStack)) {
-        this.removeEdge(src, dest);
+        this._nodes.get(src)?.delete(dest);
         return false;
       }
     }
@@ -51,18 +51,5 @@ export class DependencyGraph<T = number> {
 
     this._nodes.get(src)!.add(dest);
     return this;
-  }
-
-  private hasEdge(src: T, dest: T): boolean {
-    return this._nodes.has(src) && (this._nodes.get(src)?.has(dest) || false);
-  }
-
-  private removeEdge(srcKey: T, destKey: T) {
-    if (!this.hasEdge(srcKey, destKey)) {
-      return false;
-    }
-
-    this._nodes.get(srcKey)?.delete(destKey);
-    return true;
   }
 }

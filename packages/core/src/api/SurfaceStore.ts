@@ -4,14 +4,36 @@ import { EsbackSurface } from './EsbackSurface';
 
 type SurfaceModifier<T extends EsbackSurface> = (s: T) => void;
 
-interface SurfaceEntry<T extends EsbackSurface> {
-  id: string;
-  Surface: { new (): T };
-  modifiers: SurfaceModifier<T>[];
+class SurfaceEntry<T extends EsbackSurface> {
+  readonly id: string;
+  readonly Surface: { new (): T };
+  private readonly _modifiers: SurfaceModifier<T>[];
+  private _state: T | undefined;
+
+  constructor(id: string, surfaceClass: { new (): T }) {
+    this.id = id;
+    this.Surface = surfaceClass;
+    this._modifiers = [];
+  }
+
+  addModifier(modifier: SurfaceModifier<T>) {
+    this._state = undefined;
+    this._modifiers.push(modifier);
+  }
+
+  get state(): T {
+    if (this._state) {
+      return this._state;
+    }
+
+    this._state = new this.Surface();
+    this._modifiers.forEach(modifier => modifier(this._state!));
+    return this._state;
+  }
 }
 
 export class SurfaceStore {
-  private readonly _surfaces: SurfaceEntry<any>[] = [];
+  private readonly _entries: SurfaceEntry<any>[] = [];
   private readonly _surfaceDependencies: DependencyGraph<string> =
     new DependencyGraph();
 
@@ -19,63 +41,45 @@ export class SurfaceStore {
     surfaceClass: { new (): T },
     modifier: SurfaceModifier<T>,
   ) {
-    this.getSurfaceEntry(surfaceClass).modifiers.push(modifier);
+    this.getSurfaceEntry(surfaceClass).addModifier(modifier);
   }
 
-  // TODO: Look into the following ideas:
-  // Expose a single method instead of 2
-  // Make dest an array ?
-  public applyWithDeps<T extends EsbackSurface, U extends EsbackSurface>(
-    src: { new (): T },
-    dest: { new (): U },
+  public applyWithDependency<T extends EsbackSurface, U extends EsbackSurface>(
+    targetClass: { new (): T },
+    dependencyClass: { new (): U },
     modifier: (surface: T, dependency: U) => void,
   ) {
-    const currentSurface = this.getSurfaceEntry(src);
-    const targetSurface = this.getSurfaceEntry(dest);
+    const target = this.getSurfaceEntry(targetClass);
+    const dependency = this.getSurfaceEntry(dependencyClass);
 
-    if (
-      !this._surfaceDependencies.addDAGDependency(
-        currentSurface.id,
-        targetSurface.id,
-      )
-    ) {
+    if (!this._surfaceDependencies.addDAGDependency(target.id, dependency.id)) {
       throw new Error(
-        `Dependency cycle detected between ${src.name} and ${dest.name}`,
+        `Dependency cycle detected between ${targetClass.name} and ${dependencyClass.name}`,
       );
     }
 
-    currentSurface.modifiers.push(surface => {
-      const dep = this.getSurfaceState(dest);
-      modifier(surface, dep);
-    });
+    target.addModifier(surface =>
+      modifier(surface, this.getSurfaceState(dependencyClass)),
+    );
   }
 
-  // TODO: Store computed state
   public getSurfaceState<T extends EsbackSurface>(surfaceClass: {
     new (): T;
   }): T {
-    const entry = this.getSurfaceEntry(surfaceClass);
-    const surface = new entry.Surface();
-    entry.modifiers.forEach(m => m(surface));
-
-    return surface;
+    return this.getSurfaceEntry(surfaceClass).state;
   }
 
   private getSurfaceEntry<T extends EsbackSurface>(surfaceClass: {
     new (): T;
   }): SurfaceEntry<T> {
-    const surface = this._surfaces.find(s => s.Surface === surfaceClass);
+    const entry = this._entries.find(s => s.Surface === surfaceClass);
 
-    if (surface) {
-      return surface;
+    if (entry) {
+      return entry;
     }
 
-    const newSurface: SurfaceEntry<T> = {
-      id: uuidv4(),
-      Surface: surfaceClass,
-      modifiers: [],
-    };
-    this._surfaces.push(newSurface);
+    const newSurface = new SurfaceEntry<T>(uuidv4(), surfaceClass);
+    this._entries.push(newSurface);
     return newSurface;
   }
 }
