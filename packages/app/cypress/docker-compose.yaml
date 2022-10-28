@@ -3,7 +3,7 @@
 version: '3.3'
 services:
   bitbucket:
-    image: atlassian/bitbucket
+    image: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket:8.4.2
     ports:
       - 7990:7990
       - 7999:7999
