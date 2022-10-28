@@ -83,6 +83,12 @@ yarn dev
 
 ### Build a Backstage instance using Cloud Native Buildpacks
 
+##### Prerequisites:
+
+- [pack CLI](https://buildpacks.io/docs/tools/pack/)
+- [Docker](https://docs.docker.com/engine/install/) - might need a symlink `ln -s /Users/HOME_DIR/.docker/run/docker.sock /var/run/docker.sock`
+- `docker login harbor-repo.vmware.com`
+
 The builder image is an OCI image containing the builder cli and dependencies. The image contains everything that we provide for building a custom instance of Backstage, including plugins that we officially support. This is how customers will consume ESBack. For a detailed diagram refer to our [Miro board](https://miro.com/app/board/uXjVOpj4AGc=/).
 
 We use a custom [Cloud Native Buildpack](https://buildpacks.io/) defined in the buildpacks directory to build and output a runnable OCI image containing your custom instance of Backstage.
