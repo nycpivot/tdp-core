@@ -10,6 +10,7 @@ inputs:
   - name: cypress-image
   - name: code
   - name: docker-image
+  - name: bitbucket-image
 params:
   DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
   GITLAB_TOKEN: ((gitlab_token))
