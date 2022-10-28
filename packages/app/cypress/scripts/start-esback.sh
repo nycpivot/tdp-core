@@ -21,12 +21,12 @@ echo
 echo "Bitbucket setup done"
 echo
 
-echo "Preparing some environment variables for e2e tests..."
-bitbucket_token=(BASE_URL=http://bitbucket:7990 /e2e/cypress/scripts/bitbucket/generate-token.sh)
-export BITBUCKET_TOKEN="$bitbucket_token"
+echo "Generating Bitbucket token..."
+bitbucket_token=$(BASE_URL=http://bitbucket:7990 /e2e/cypress/scripts/bitbucket/generate-token.sh)
+echo
+echo "Generated token: $bitbucket_token"
+echo
 
-echo
-echo "Environment variables done"
-echo
+export BITBUCKET_TOKEN="$bitbucket_token"
 
 node packages/backend --config app-config.e2e.yaml
