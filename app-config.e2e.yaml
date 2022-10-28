@@ -41,6 +41,11 @@ integrations:
       apiBaseUrl: https://gitlab.eng.vmware.com/api/v4/
       token: ${GITLAB_TOKEN}
 
+  bitbucketServer:
+    - host: bitbucket:7990
+      apiBaseUrl: http://bitbucket:7990/rest/api/1.0
+      token: ${BITBUCKET_TOKEN}
+
 catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
@@ -61,3 +66,5 @@ catalog:
       target: https://github.com/fouadh/foobar-backstage-component/blob/master/catalog-info.yaml
     - type: url
       target: https://cmbu-githubent01.eng.vmware.com/tap-gui/catalog/blob/main/catalog-info.yaml
+    - type: url
+      target: http://bitbucket:7990/projects/ESBACK/repos/catalog/raw/catalog-info.yaml
