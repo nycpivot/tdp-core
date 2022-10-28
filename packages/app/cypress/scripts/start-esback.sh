@@ -8,21 +8,20 @@ echo
 echo "jq & curl installed."
 echo
 
-
 echo "Waiting for Bitbucket..."
-while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' -u esback:esback http://bitbucket:7990/rest/api/latest/projects)" != "200" ]]; do sleep 5; done
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' -u esback:esback http://$BITBUCKET_HOST/rest/api/latest/projects)" != "200" ]]; do sleep 5; done
 echo
 echo "Bitbucket ready !"
 echo
 
 echo "Running Bitbucket setup..."
-BASE_URL=http://bitbucket:7990 REPO_FOLDER=/e2e/cypress/data/bitbucket/repo /e2e/cypress/scripts/bitbucket/setup.sh
+BASE_URL=http://$BITBUCKET_HOST REPO_FOLDER=/e2e/cypress/data/bitbucket/repo /e2e/cypress/scripts/bitbucket/setup.sh
 echo
 echo "Bitbucket setup done"
 echo
 
 echo "Generating Bitbucket token..."
-bitbucket_token=$(BASE_URL=http://bitbucket:7990 /e2e/cypress/scripts/bitbucket/generate-token.sh)
+bitbucket_token=$(BASE_URL=http://$BITBUCKET_HOST /e2e/cypress/scripts/bitbucket/generate-token.sh)
 echo
 echo "Generated token: $bitbucket_token"
 echo

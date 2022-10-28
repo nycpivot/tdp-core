@@ -42,8 +42,8 @@ integrations:
       token: ${GITLAB_TOKEN}
 
   bitbucketServer:
-    - host: bitbucket:7990
-      apiBaseUrl: http://bitbucket:7990/rest/api/1.0
+    - host: ${BITBUCKET_HOST}
+      apiBaseUrl: http://${BITBUCKET_HOST}/rest/api/1.0
       token: ${BITBUCKET_TOKEN}
 
 catalog:
@@ -67,4 +67,4 @@ catalog:
     - type: url
       target: https://cmbu-githubent01.eng.vmware.com/tap-gui/catalog/blob/main/catalog-info.yaml
     - type: url
-      target: http://bitbucket:7990/projects/ESBACK/repos/catalog/raw/catalog-info.yaml
+      target: http://${BITBUCKET_HOST}/projects/ESBACK/repos/catalog/raw/catalog-info.yaml
