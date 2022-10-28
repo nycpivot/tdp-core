@@ -10,7 +10,7 @@ services:
     environment:
       - SETUP_DISPLAYNAME=esback
       - SETUP_BASEURL=http://localhost
-      - SETUP_LICENSE=${BITBUCKET_LICENSE}
+      - SETUP_LICENSE=${BITBUCKET_SERVER_LICENSE}
       - SETUP_SYSADMIN_USERNAME=esback
       - SETUP_SYSADMIN_PASSWORD=esback
       - SETUP_SYSADMIN_DISPLAYNAME=esback

@@ -16,6 +16,7 @@ params:
   GITHUB_TOKEN: ((github_token))
   GITHUB_ENTERPRISE_TOKEN: ((github_enterprise_token))
   GIT_BRANCH: ((git_branch))
+  BITBUCKET_SERVER_LICENSE: ((bitbucket_server_license))
 run:
   dir: code
   path: ci/scripts/integration_tests
