@@ -1,6 +1,4 @@
-export * from './app';
-export { BackendSurfaces } from './backend';
-
-export type { PluginEnvironment } from './backend';
+export * from './api';
+export * from './surfaces';
 export * from './types';
-export * from './plugins';
+export type { PluginEnvironment } from './PluginEnvironment';

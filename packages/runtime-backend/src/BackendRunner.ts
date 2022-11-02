@@ -14,7 +14,11 @@ import {
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
-import { BackendSurfaces, PluginEnvironment } from '@esback/core';
+import {
+  SurfaceStore,
+  PluginEnvironment,
+  BackendPluginSurface,
+} from '@esback/core';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -50,7 +54,7 @@ function makeCreateEnv(config: Config) {
   };
 }
 
-export async function BackendRunner(surfaces: BackendSurfaces) {
+export async function BackendRunner(surfaces: SurfaceStore) {
   const config = await loadBackendConfig({
     argv: process.argv,
     logger: getRootLogger(),
@@ -58,8 +62,9 @@ export async function BackendRunner(surfaces: BackendSurfaces) {
 
   const createEnv = makeCreateEnv(config);
   const apiRouter = Router();
+  const pluginSurface = surfaces.getSurfaceState(BackendPluginSurface);
 
-  for (const plugin of surfaces.pluginSurface.plugins) {
+  for (const plugin of pluginSurface.plugins) {
     const pluginEnv = useHotMemoize(module, () => createEnv(plugin.name));
     apiRouter.use(
       `/${plugin.path ?? plugin.name}`,
@@ -75,9 +80,9 @@ export async function BackendRunner(surfaces: BackendSurfaces) {
     .addRouter('/api', apiRouter);
 
   // Setup the frontend side
-  if (surfaces.pluginSurface.mainApp) {
+  if (pluginSurface.mainApp) {
     const appEnv = useHotMemoize(module, () => createEnv('app'));
-    service.addRouter('', await surfaces.pluginSurface.mainApp(appEnv));
+    service.addRouter('', await pluginSurface.mainApp(appEnv));
   }
 
   await service.start().catch(err => {

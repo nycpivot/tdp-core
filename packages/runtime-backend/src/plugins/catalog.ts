@@ -1,11 +1,17 @@
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { Router } from 'express';
-import { BackendSurfaces, PluginEnvironment } from '@esback/core';
+import {
+  SurfaceStore,
+  PluginEnvironment,
+  CatalogProcessorSurface,
+} from '@esback/core';
 
-export default function esbackCatalogPlugin(surfaces: BackendSurfaces) {
+export default function esbackCatalogPlugin(surfaces: SurfaceStore) {
   return async (env: PluginEnvironment): Promise<Router> => {
     const builder = await CatalogBuilder.create(env);
-    builder.addProcessor(surfaces.catalogProcessorSurface.processors);
+    builder.addProcessor(
+      surfaces.getSurfaceState(CatalogProcessorSurface).processors,
+    );
     const { processingEngine, router } = await builder.build();
     await processingEngine.start();
     return router;

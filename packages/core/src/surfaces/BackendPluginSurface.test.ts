@@ -1,6 +1,6 @@
-import { PluginSurface } from './PluginSurface';
+import { BackendPluginSurface } from './BackendPluginSurface';
 
-describe('PluginSurface', () => {
+describe('BackendPluginSurface', () => {
   const fakePlugin = {
     name: 'fakePlugin',
     path: '/fake',
@@ -8,7 +8,7 @@ describe('PluginSurface', () => {
   };
 
   it('should not allow plugin duplication', () => {
-    const surface = new PluginSurface();
+    const surface = new BackendPluginSurface();
     surface.addPlugin(fakePlugin);
     surface.addPlugin({ ...fakePlugin });
 
@@ -16,7 +16,7 @@ describe('PluginSurface', () => {
   });
 
   it('should remove leading forward-slash from path', () => {
-    const surface = new PluginSurface();
+    const surface = new BackendPluginSurface();
     surface.addPlugin(fakePlugin);
 
     expect(surface.plugins).toHaveLength(1);
