@@ -1,19 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
+source $(dirname "$0")/../library.sh
 
 BASE_URL=${BASE_URL:-"http://localhost:7990"}
 PROJECT_KEY=ESBACK
 REPO=catalog
 REPO_FOLDER=${REPO_FOLDER:-"./../data/bitbucket/repo"}
-
-MSG_COLOR="\e[1;32m"
-DATA_COLOR="\e[1;35m"
-RESET_MARKER="\e[0m"
-
-printMessage() {
-  echo -e "${MSG_COLOR}$1${RESET_MARKER}"
-}
 
 create_project() {
   printMessage "Checking if project already exists..."
