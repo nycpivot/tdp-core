@@ -10,6 +10,3 @@ print_message "Let's rock!"
 docker-compose rm -f -v cypress
 
 docker-compose run cypress
-
-print_message "That's All, Folks !"
-
