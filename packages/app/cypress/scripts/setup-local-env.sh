@@ -53,7 +53,7 @@ export BITBUCKET_SERVER_LICENSE=$(get_e2e_secret 'bitbucket_server_license')
 export GITHUB_ENTERPRISE_TOKEN=$(get_e2e_secret "github_enterprise_token")
 export GITHUB_TOKEN=$(get_e2e_secret "github_token")
 export GITLAB_TOKEN=$(get_gitlab_token "core_token")
-export BACKSTAGE_BASE_URL="http://esback:7007"
+export BACKSTAGE_BASE_URL="${BACKSTAGE_BASE_URL:-http://esback:7007}"
 if [[ -z "${GIT_BRANCH:-}" ]]
 then
   export GIT_BRANCH="$(current_branch)"
@@ -75,13 +75,11 @@ echo $(pwd)
 rm -rf ${HOME}/.esback-e2e/bitbucket
 cd ${DIR_PATH}/..
 echo $(pwd)
-docker-compose stop
-docker-compose rm -f -v
+docker-compose stop esback
+docker-compose stop bitbucket
+docker-compose rm -f -v esback
+docker-compose rm -f -v bitbucket
 print_message "Clean up done."
 
-# Go!
-print_message "Let's rock!"
-docker-compose run cypress
-
-print_message "That's All, Folks !"
-
+print_message "Running esback on ${BACKSTAGE_BASE_URL}..."
+docker-compose up -d esback
