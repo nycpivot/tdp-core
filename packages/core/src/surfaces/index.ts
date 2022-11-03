@@ -3,5 +3,5 @@ export * from './AppComponentSurface';
 export * from './AppPluginSurface';
 export * from './AppRouteSurface';
 export * from './BackendPluginSurface';
-export * from './CatalogProcessorSurface';
+export * from './BackendCatalogSurface';
 export * from './SidebarItemSurface';
