@@ -10,7 +10,7 @@ REPO_FOLDER=${REPO_FOLDER:-"./../data/bitbucket/repo"}
 
 create_project() {
   printMessage "Checking if project already exists..."
-  local status_code=$(curl -s -o /dev/null -u esback:esback -w ''%{http_code}'' $BASE_URL/rest/api/1.0/projects/$PROJECT_KEY)
+  local status_code=$(curl -s -o /dev/null -u esback:esback -w ''%{http_code}'' ${BASE_URL}/rest/api/1.0/projects/${PROJECT_KEY})
 
   if [[ $status_code != "200" ]]
   then
@@ -18,18 +18,18 @@ create_project() {
       echo
 
       curl --silent --request POST \
-        --url "$BASE_URL/rest/api/latest/projects" \
+        --url "${BASE_URL}/rest/api/latest/projects" \
         --user esback:esback \
         --header 'Accept: application/json' \
         --header 'Content-Type: application/json' \
         --data "{
-        \"key\": \"$PROJECT_KEY\",
+        \"key\": \"${PROJECT_KEY}\",
         \"name\": \"esback\"
       }"
 
       echo
       echo
-      printMessage "Project ${DATA_COLOR}$PROJECT_KEY created."
+      printMessage "Project ${DATA_COLOR}${PROJECT_KEY} created."
       echo
   else
     printMessage  "Project already exists."
@@ -39,7 +39,7 @@ create_project() {
 
 create_repository() {
   printMessage  "Checking if repository already exists..."
-  local status_code=$(curl -s -o /dev/null -u esback:esback -w ''%{http_code}'' $BASE_URL/rest/api/1.0/projects/$PROJECT_KEY/repos/${REPO})
+  local status_code=$(curl -s -o /dev/null -u esback:esback -w ''%{http_code}'' ${BASE_URL}/rest/api/1.0/projects/${PROJECT_KEY}/repos/${REPO})
 
   if [[ $status_code != "200" ]]
   then
@@ -47,19 +47,19 @@ create_repository() {
     echo
 
     curl --silent --request POST \
-      --url "$BASE_URL/rest/api/latest/projects/$PROJECT_KEY/repos" \
+      --url "${}BASE_URL}/rest/api/latest/projects/${PROJECT_KEY}/repos" \
       --user esback:esback \
       --header 'Accept: application/json' \
       --header 'Content-Type: application/json' \
       --data "{
       \"name\": \"catalog\",
       \"scmId\": \"git\",
-      \"slug\": \"$REPO\"
+      \"slug\": \"${REPO}\"
     }"
 
     echo
     echo
-    printMessage "Repository ${DATA_COLOR}$REPO created."
+    printMessage "Repository ${DATA_COLOR}${REPO} created."
     echo
   else
     printMessage "Repository already exists."
@@ -70,16 +70,16 @@ create_repository() {
 create_catalog() {
   printMessage "Checking if catalog already exists..."
 
-  local status_code=$(curl -s -o /dev/null -u esback:esback -w ''%{http_code}'' $BASE_URL/rest/api/1.0/projects/$PROJECT_KEY/repos/${REPO}/raw/catalog-info.yaml)
+  local status_code=$(curl -s -o /dev/null -u esback:esback -w ''%{http_code}'' ${BASE_URL}/rest/api/1.0/projects/${PROJECT_KEY}/repos/${REPO}/raw/catalog-info.yaml)
 
   if [[ $status_code != "200" ]]
   then
     printMessage "Adding a catalog in the repository..."
     echo
     curl --silent --request PUT \
-      --url "$BASE_URL/rest/api/latest/projects/$PROJECT_KEY/repos/$REPO/browse/catalog-info.yaml" \
+      --url "${}BASE_URL}/rest/api/latest/projects/${}}PROJECT_KEY/repos/${REPO}/browse/catalog-info.yaml" \
       --user esback:esback \
-      -F content=@$REPO_FOLDER/catalog-info.yaml \
+      -F content=@${REPO_FOLDER}/catalog-info.yaml \
       -F branch=master \
       -F 'message=Add catalog info'
 
