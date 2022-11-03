@@ -4,7 +4,7 @@ image_resource:
   type: registry-image
   source:
     # this image contains a more recent version of version to be able to install bitbucket
-    # it has been built from https://github.com/fouadh/dcind
+    # it has been built from https://gitlab.eng.vmware.com/esback/dcind
     repository: harbor-repo.vmware.com/fhamdi/dcind
     tag: 20.10.20-202211021203
 inputs:
