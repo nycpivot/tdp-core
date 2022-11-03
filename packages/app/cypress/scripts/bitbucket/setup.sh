@@ -64,15 +64,15 @@ commit() {
 #
 # Params: none.
 create_project() {
-  printMessage "Checking if project already exists..."
+  print_message "Checking if project already exists..."
   local status_code=$(get ${PROJECT_KEY})
 
   if [[ $status_code != "200" ]]; then
-    printMessage "Creating a project..."
+    print_message "Creating a project..."
     post "" "{\"key\": \"${PROJECT_KEY}\", \"name\": \"esback\"}"
-    printMessage "Project ${DATA_COLOR}${PROJECT_KEY} created."
+    print_message "Project ${DATA_COLOR}${PROJECT_KEY} created."
   else
-    printMessage "Project already exists."
+    print_message "Project already exists."
   fi
 }
 
@@ -81,15 +81,15 @@ create_project() {
 #
 # Params: none.
 create_repository() {
-  printMessage "Checking if repository already exists..."
+  print_message "Checking if repository already exists..."
   local status_code=$(get ${PROJECT_KEY}/repos/${REPO})
 
   if [[ $status_code != "200" ]]; then
-    printMessage "Creating a repository..."
+    print_message "Creating a repository..."
     post "${PROJECT_KEY}/repos" "{\"name\": \"catalog\", \"scmId\": \"git\", \"slug\": \"${REPO}\"}"
-    printMessage "Repository ${DATA_COLOR}${REPO} created."
+    print_message "Repository ${DATA_COLOR}${REPO} created."
   else
-    printMessage "Repository already exists."
+    print_message "Repository already exists."
   fi
 }
 
@@ -98,15 +98,15 @@ create_repository() {
 #
 # Params: none.
 create_catalog() {
-  printMessage "Checking if catalog already exists..."
+  print_message "Checking if catalog already exists..."
   local status_code=$(get ${PROJECT_KEY}/repos/${REPO}/raw/catalog-info.yaml)
 
   if [[ $status_code != "200" ]]; then
-    printMessage "Adding a catalog in the repository..."
+    print_message "Adding a catalog in the repository..."
     commit "catalog-info.yaml" "catalog-info.yaml" "Add catalog info"
-    printMessage "Catalog added"
+    print_message "Catalog added"
   else
-    printMessage "Catalog already exists."
+    print_message "Catalog already exists."
   fi
 }
 
@@ -115,4 +115,4 @@ create_project
 create_repository
 create_catalog
 
-printMessage "That's All, Folks!"
+print_message "That's All, Folks!"

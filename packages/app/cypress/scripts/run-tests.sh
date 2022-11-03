@@ -3,12 +3,12 @@ set -euo pipefail
 
 source $(dirname "$0")/library.sh
 
-printMessage "Installing typescript..."
+print_message "Installing typescript..."
 npm install typescript@^4.4.3
-printMessage "Typescript installed"
+print_message "Typescript installed"
 
-printMessage "Waiting for esback server..."
+print_message "Waiting for esback server..."
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' $CYPRESS_baseUrl)" != "200" ]]; do sleep 5; done
-printMessage "esback is ready !"
+print_message "esback is ready !"
 
 cypress run --browser chrome
