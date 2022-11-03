@@ -1,6 +1,5 @@
 import app from './plugins/app';
 import auth from './plugins/auth';
-import catalog from './plugins/catalog';
 import proxy from './plugins/proxy';
 import {
   BackendPluginSurface,
@@ -8,6 +7,7 @@ import {
   SurfaceStore,
 } from '@esback/core';
 import { BackendRunner } from './BackendRunner';
+import { plugin as catalogBackendPlugin } from '@esback/plugin-catalog-backend';
 
 export class BackendRuntime {
   private readonly _surfaces: SurfaceStore;
@@ -26,13 +26,9 @@ export class BackendRuntime {
         name: 'proxy',
         pluginFn: proxy,
       });
-
-      pluginSurface.addPlugin({
-        name: 'catalog',
-        pluginFn: catalog(this._surfaces),
-      });
-
     });
+
+    plugins.push(catalogBackendPlugin());
     plugins.forEach(plugin => plugin(this._surfaces));
   }
 
