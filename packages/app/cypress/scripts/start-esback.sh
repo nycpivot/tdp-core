@@ -14,8 +14,7 @@ echo
 
 echo -e "${MSG_COLOR}Waiting for Bitbucket...${RESET_MARKER}"
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' -u esback:esback http://$BITBUCKET_HOST/rest/api/latest/projects)" != "200" ]]; do sleep 5; done
-echo
-echo -e "${MSG_COLOR}Bitbucket ready \!${RESET_MARKER}"
+echo -e "${MSG_COLOR}Bitbucket ready !${RESET_MARKER}"
 echo
 
 echo -e "${MSG_COLOR}Running Bitbucket setup...${RESET_MARKER}"
