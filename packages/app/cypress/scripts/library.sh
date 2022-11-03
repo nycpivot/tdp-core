@@ -4,4 +4,5 @@ RESET_MARKER="\e[0m"
 
 printMessage() {
   echo -e "${MSG_COLOR}$1${RESET_MARKER}"
+  echo
 }
