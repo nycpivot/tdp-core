@@ -6,7 +6,7 @@ describe('BackendRuntime', () => {
     const { surfaces } = new BackendRuntime();
 
     expect(surfaces.getSurfaceState(BackendPluginSurface).plugins).toHaveLength(
-      3,
+      2,
     );
   });
 
