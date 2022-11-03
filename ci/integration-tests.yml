@@ -5,7 +5,7 @@ image_resource:
   source:
     # this image contains a more recent version of version to be able to install bitbucket
     # it has been built from https://gitlab.eng.vmware.com/esback/dcind
-    repository: harbor-repo.vmware.com/fhamdi/dcind
+    repository: harbor-repo.vmware.com/esback/dcind
     tag: 20.10.20-202211021203
 inputs:
   - name: ytt
