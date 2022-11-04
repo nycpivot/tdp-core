@@ -16,7 +16,7 @@ install:
 login-to-vault:
 	vault login -address=https://runway-vault-sfo.eng.vmware.com -method=ldap username=$(username)
 
-setup-e2e-docker-env: image
+e2e-docker-environment: image
 	$(MAKE) -C packages/app/cypress setup-docker-env
 
 local-e2e:
