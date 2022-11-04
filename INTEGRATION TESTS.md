@@ -34,13 +34,13 @@ This command will start a Bitbucket server, run ESBack and make it accessible on
 make e2e-docker-environment
 ```
 
-## Running the integration tests from the local folder
+## Running the integration tests locally
 
-To run the integration tests locally, you need to have a running instance of ESBack on [http://localhost:7007](http://localhost:7007).
+To run the integration tests locally (not having them running in a docker container), you need to have a running instance of ESBack on [http://localhost:7007](http://localhost:7007).
 
 You can do it as described in the Setup a local environment section or manually if you're developing on it.
 
-Then, you should be able to run the command:
+Then, you should be able to execute the tests with the command:
 
 ```shell
 make local-e2e
