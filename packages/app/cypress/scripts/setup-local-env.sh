@@ -59,17 +59,6 @@ then
   export GIT_BRANCH="$(current_branch)"
 fi
 
-print_message "Building the app..."
-yarn --cwd ${ROOT_PATH} clean
-yarn --cwd ${ROOT_PATH} install
-yarn --cwd ${ROOT_PATH} tsc
-yarn --cwd ${ROOT_PATH} build
-print_message "App built."
-
-print_message "Building the Docker image of esback..."
-docker build -t esback:integration -f ${ROOT_PATH}/packages/backend/Dockerfile ${ROOT_PATH}
-print_message "Image built."
-
 print_message "Clean up..."
 echo $(pwd)
 rm -rf ${HOME}/.esback-e2e/bitbucket
@@ -81,5 +70,5 @@ docker-compose rm -f -v esback
 docker-compose rm -f -v bitbucket
 print_message "Clean up done."
 
-print_message "Running esback on ${BACKSTAGE_BASE_URL}..."
+print_message "Running esback on ${DATA_COLOR}${BACKSTAGE_BASE_URL}..."
 docker-compose up -d esback
