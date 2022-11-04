@@ -18,7 +18,7 @@ make username=[PUT YOUR USERNAME HERE] login-to-vault
 
 You will then be prompted for your password.
 
-## Running the integration tests locally like in the pipeline
+## Running the integration tests in a docker container
 
 ```shell
 make docker-e2e
