@@ -13,9 +13,6 @@ clean:
 install:
 	yarn install
 
-pretty:
-	npx prettier --write .
-
 login-to-vault:
 	vault login -address=https://runway-vault-sfo.eng.vmware.com -method=ldap username=$(username)
 
