@@ -45,6 +45,12 @@ resources:
     source:
       repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included
       tag: 8.5.0
+  - name: bitbucket-image
+    type: registry-image
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket
+      tag: 8.4.2
 
 gitlab_pipeline_failure: &gitlab_pipeline_failure
   put: gitlab-mr
@@ -121,6 +127,8 @@ jobs:
       - in_parallel:
           - get: ytt
           - get: cypress-image
+            params: { format: oci }
+          - get: bitbucket-image
             params: { format: oci }
           - do:
               - get: gitlab-mr
