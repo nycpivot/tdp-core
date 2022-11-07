@@ -124,22 +124,60 @@ Follow the steps in the tools repo README under the [Making Changes](https://git
 
 An ESBack plugin is a thin wrapper for a Backstage plugin. It exports an instance of the AppPluginInterface or BackendPluginInterface in `src/index.ts` depending on the type of plugin. You can see a sample of a frontend ESBack plugin in `plugins/esback-hello-world`.
 
-Try the following steps to create a frontend plugin:
+##### Setup a local package registry: Verdaccio
+
+Before building a plugin, we will need a place to publish it: Verdaccio.
+We could publish our plugin directly to the Artifactory registry, but during development this could be dangerous especially when updating existing plugins.
+Verdaccio will host whatever plugins we are developing locally.
+
+1.  Install [verdaccio](https://verdaccio.org/)
+
+1.  Run Verdaccio:
+
+    ```
+    verdaccio
+    ```
+
+1.  Add user/authenticate with Verdaccio. Use any username/password you want:
+
+    ```
+    npm adduser --registry http://localhost:4873/
+    ```
+
+    At this point we can build and publish our plugin to our local Verdaccio registry.
+    When building our Backstage instance, we can point it to this registry to download the plugins.
+    Unfortunately our local registry alone doesn't contain all the necessary plugins and packages to build Backstage.
+    For this to work, we will allow Verdaccio to act as a proxy for Artifactory.
+
+1.  Running the `verdaccio` command will create a verdaccio directory under the current path. Edit the Verdaccio config located under `verdaccio/config.yaml`. Change `uplinks.npmjs.url` to `https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/`
+
+    ```
+    uplinks:
+     npmjs:
+       url: https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
+    ```
+
+1.  Restart the `verdaccio` process.
+    Now Verdiccio will attempt to serve packages/plugins that you've published locally.
+    If the package/plugin is not found, it looks for a match on Artifactory and serves that.
+
+#### Create a frontend plugin:
 
 1. To keep things simple, feel free to include all of your ui code in the ESBack plugin itself. Later, try writing a backstage plugin, publishing it, then consuming it in an ESBack plugin.
 
 1. Build your ESBack plugin. From inside of your plugin directory, run:
 
    ```
+   yarn tsc
    yarn build
    ```
 
    You can also run this command from the project root to build all packages.
 
-1. Publish your ESBack plugin. You can publish your ESBack plugin as an npm package to any registry of your choosing. To publish, run:
+1. Publish your plugin to your local Verdaccio registry by going to your plugin directory and running:
 
    ```
-   npm publish --registry <registry>
+   npm publish --registry http://localhost:4873/
    ```
 
    You can also publish all of the packages included in the repo. From the project root, run:
@@ -148,7 +186,7 @@ Try the following steps to create a frontend plugin:
    yarn run lerna publish from-package --registry <registry>
    ```
 
-   If you exclude the registry flag, the packages will be published to the registry specified in the `lerna.json` file at the project root. Production packages will be published to our [artifactory](https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/). For local development, you can use a personal registry, or a local registry like [verdaccio](https://verdaccio.org/).
+   If you exclude the registry flag, the packages will be published to the registry specified in the `lerna.json` file at the project root. Production packages will be published to our [artifactory](https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/).
 
 ### Build a Backstage instance with a custom ESBack plugin
 
@@ -158,7 +196,7 @@ Once you have a custom ESBack plugin published to a registry, follow the [Build 
 
 1. If you have published your plugin somewhere other than our artifactory, update the `bootstrap/template/.yarnrc` file to point to your registry.
 
-At this point you can use the builder cli as described in [Build a Backstage instance using the builder cli](link).
+At this point you can use the builder cli as described in [Build a Backstage instance using the builder cli](#build-a-backstage-instance-using-the-builder-cli).
 
 If you want to try this with the builder image, you will need to bake your plugin into the builder image with the following steps:
 
