@@ -55,5 +55,6 @@ services:
       - bitbucket
     environment:
       - CYPRESS_baseUrl=http://esback:7007
+      - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
     working_dir: /e2e
     entrypoint: /bin/sh -c "/e2e/cypress/scripts/run-tests.sh"
