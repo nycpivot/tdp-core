@@ -70,3 +70,42 @@ It exports an instance of the AppPluginInterface or BackendPluginInterface in `s
 You can see a sample of a frontend ESBack plugin in `plugins/esback-hello-world`.
 
 To build an ESBack plugin, follow [these steps](https://gitlab.eng.vmware.com/esback/core/-/blob/main/plugins/README.md#build-a-custom-esback-plugin).
+
+### Contributing
+
+#### Merge/Pull Requests
+
+All changes should be put on a branch and submitted as a merge request in GitLab.
+
+#### Linting
+
+To check for linting errors run:
+
+```
+yarn prettier:check
+```
+
+If there are issues run:
+
+```
+yarn prettier --write .
+```
+
+If you have already committed everything (no unstaged changes) and you are running the linter before pushing, you can use the following:
+
+```
+yarn prettier --write . && git add . && git commit --amend --no-edit
+```
+
+#### CI
+
+If your build fails or hangs:
+
+1.  Go to your merge request in GitLab and make note of your merge request id (found in the url as well as on the page).
+
+1.  Go to [the resource view on Concourse](https://runway-ci-sfo.eng.vmware.com/teams/esback/pipelines/mr-check/resources/gitlab-mr).
+
+1.  Find your merge request id in the list and expand it.
+    All the jobs for your merge request should appear and the failing job(s) should be immediately apparent.
+
+1.  Click on the failing job to drill down and view the errors/failures.
