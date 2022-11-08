@@ -1,5 +1,7 @@
 # Integration Tests
 
+Note: the commands described here have to be executed from the root of the project.
+
 ## Requirements
 
 You need the following tools on your machine:
