@@ -33,61 +33,21 @@ Confirm you have access to the following tools:
 
 ## Things to Try
 
-### Prerequisites: Backstage
+### Vanilla Backstage
 
-Get familiar with [Backstage](https://backstage.io/). One of the main pain points ESBack attempts to resolve is the manual process of adding plugins to Backstage. To feel some of this pain consider going through the Backstage [Plugin Development Guide](https://backstage.io/docs/plugins/plugin-development) and the [Adding Custom Plugin to Existing Monorepo App](https://backstage.io/docs/tutorials/quickstart-app-plugin) tutorial.
+Get familiar with [Backstage](https://backstage.io/).
+Try [setting up and running Backstage](https://backstage.io/docs/getting-started/).
+One of the main pain points ESBack attempts to resolve is the manual process of adding plugins to Backstage.
+To feel some of this pain consider going through the Backstage [Plugin Development Guide](https://backstage.io/docs/plugins/plugin-development) and the [Adding Custom Plugin to Existing Monorepo App](https://backstage.io/docs/tutorials/quickstart-app-plugin) tutorial.
 
 ### Build a Backstage instance using the builder cli
 
-The builder cli is a tool for producing custom templated instances of Backstage. It can be found in our [tools repo](https://gitlab.eng.vmware.com/esback/tools/-/tree/main/), in the [bootstrap directory](https://gitlab.eng.vmware.com/esback/tools/-/tree/main/bootstrap).
+The builder cli is a tool for producing custom templated instances of Backstage.
+It can be found in our [tools repo](https://gitlab.eng.vmware.com/esback/tools/-/tree/main/), in the [bootstrap directory](https://gitlab.eng.vmware.com/esback/tools/-/tree/main/bootstrap).
 
-You can create a custom instance of Backstage by running the following command from inside of the bootstrap directory:
-
-```
-go run . -f <path to>/esback-config.yml -t demo
-```
-
-where:
-
-`-f` is your esback config file. There is a sample esback config file under `examples/esback-config.yml`
-
-`-t` is the directory where your custom Backstage instance will be generated. If the dir does not exist, it will be created. You can also provide an optional `app-config.yaml` file by placing it inside of your `-t` directory.
-
-> **Note:** The `examples/esback-config.yml` file serves two purposes. It is a sample config file, and it is used in the build process for the builder image to specify the packages that are baked into the image and stored in the offline-cache. You can see this in the offline-cache section of the [Dockerfile](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/Dockerfile). More on the builder image build process later.
-
-> **Note:** You can also run the go command from the project root:
->
-> 1.  Add a `go.work` file at the project root with the following content:
->
->     ```
->     go 1.18
->
->     use ./bootstrap
->     ```
->
-> 1.  Now you can run the builder from the project root:
->
->     ```
->     go run ./bootstrap -f esback-config.yml -t demo
->     ```
-
-> **Note:** The builder cli is configured to pull esback packages from our artifactory by default. This is configured in the `bootstrap/template/.yarnrc` file. Update this file before running the cli if you want to pull from another registry.
-
-Your demo directory should now contain a custom instance of Backstage. To start your server, run the following from inside of the demo directory:
-
-```
-yarn install
-yarn tsc
-yarn dev
-```
+Follow the instructions for building a Backstage instance using the cli [here](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md#build-a-backstage-instance-using-the-builder-cli).
 
 ### Build a Backstage instance using Cloud Native Buildpacks
-
-##### Prerequisites:
-
-- [pack CLI](https://buildpacks.io/docs/tools/pack/)
-- [Docker](https://docs.docker.com/engine/install/) - might need a symlink `ln -s /Users/HOME_DIR/.docker/run/docker.sock /var/run/docker.sock`
-- `docker login harbor-repo.vmware.com`
 
 The builder image is an OCI image containing the builder cli and dependencies. The image contains everything that we provide for building a custom instance of Backstage, including plugins that we officially support. This is how customers will consume ESBack. For a detailed diagram refer to our [Miro board](https://miro.com/app/board/uXjVOpj4AGc=/).
 
@@ -97,24 +57,7 @@ The docker file for the builder image can be found in [here](https://gitlab.eng.
 
 The flow is described in the tools repo [README](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md).
 
-In short,
-
-1. Create a directory with your `esback-config.yml` file, along with an optional `app-config.yml`
-
-2. Build your Backstage instance image:
-
-   ```
-   pack build esback-test \
-   --builder harbor-repo.vmware.com/esback/cnb-builder:0.0.1-alpha.1 \
-   --pull-policy if-not-present \
-   --path DIRECTORY_CONTAINING_ESBACK_CONFIG_FILE
-   ```
-
-3. Run the image:
-
-   ```
-   docker run --rm -p 7007:7007 esback-test
-   ```
+Follow the instructions [found here](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md#running-locally) to build the image.
 
 ### Build the Builder Image
 
@@ -122,84 +65,8 @@ Follow the steps in the tools repo README under the [Making Changes](https://git
 
 ### Build a custom ESBack plugin
 
-An ESBack plugin is a thin wrapper for a Backstage plugin. It exports an instance of the AppPluginInterface or BackendPluginInterface in `src/index.ts` depending on the type of plugin. You can see a sample of a frontend ESBack plugin in `plugins/esback-hello-world`.
+An ESBack plugin is a thin wrapper for a Backstage plugin.
+It exports an instance of the AppPluginInterface or BackendPluginInterface in `src/index.ts` depending on the type of plugin.
+You can see a sample of a frontend ESBack plugin in `plugins/esback-hello-world`.
 
-##### Setup a local package registry: Verdaccio
-
-Before building a plugin, we will need a place to publish it: Verdaccio.
-We could publish our plugin directly to the Artifactory registry, but during development this could be dangerous especially when updating existing plugins.
-Verdaccio will host whatever plugins we are developing locally.
-
-1.  Install [verdaccio](https://verdaccio.org/)
-
-1.  Run Verdaccio:
-
-    ```
-    verdaccio
-    ```
-
-1.  Add user/authenticate with Verdaccio. Use any username/password you want:
-
-    ```
-    npm adduser --registry http://localhost:4873/
-    ```
-
-    At this point we can build and publish our plugin to our local Verdaccio registry.
-    When building our Backstage instance, we can point it to this registry to download the plugins.
-    Unfortunately our local registry alone doesn't contain all the necessary plugins and packages to build Backstage.
-    For this to work, we will allow Verdaccio to act as a proxy for Artifactory.
-
-1.  Running the `verdaccio` command will create a verdaccio directory under the current path. Edit the Verdaccio config located under `verdaccio/config.yaml`. Change `uplinks.npmjs.url` to `https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/`
-
-    ```
-    uplinks:
-     npmjs:
-       url: https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
-    ```
-
-1.  Restart the `verdaccio` process.
-    Now Verdiccio will attempt to serve packages/plugins that you've published locally.
-    If the package/plugin is not found, it looks for a match on Artifactory and serves that.
-
-#### Create a frontend plugin:
-
-1. To keep things simple, feel free to include all of your ui code in the ESBack plugin itself. Later, try writing a backstage plugin, publishing it, then consuming it in an ESBack plugin.
-
-1. Build your ESBack plugin. From inside of your plugin directory, run:
-
-   ```
-   yarn tsc
-   yarn build
-   ```
-
-   You can also run this command from the project root to build all packages.
-
-1. Publish your plugin to your local Verdaccio registry by going to your plugin directory and running:
-
-   ```
-   npm publish --registry http://localhost:4873/
-   ```
-
-   You can also publish all of the packages included in the repo. From the project root, run:
-
-   ```
-   yarn run lerna publish from-package --registry <registry>
-   ```
-
-   If you exclude the registry flag, the packages will be published to the registry specified in the `lerna.json` file at the project root. Production packages will be published to our [artifactory](https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/).
-
-### Build a Backstage instance with a custom ESBack plugin
-
-Once you have a custom ESBack plugin published to a registry, follow the [Build a Backstage instance using the builder cli](#build-a-backstage-instance-using-the-builder-cli) guide above with a few extra steps:
-
-1. Add your plugin to your `esback-config.yml` file.
-
-1. If you have published your plugin somewhere other than our artifactory, update the `bootstrap/template/.yarnrc` file to point to your registry.
-
-At this point you can use the builder cli as described in [Build a Backstage instance using the builder cli](#build-a-backstage-instance-using-the-builder-cli).
-
-If you want to try this with the builder image, you will need to bake your plugin into the builder image with the following steps:
-
-1. Follow the [Build the Builder Image](#build-the-builder-image) section above. This will rebuild the custom stack, builder and buildpack with the updated `boostrap/template.yarnrc` file pointing to your registry. If you are using a local registry, you may run into networking issues in docker. You need to make your local registry available to the docker containers.
-
-2. Follow the steps in [Build a Backstage instance using Cloud Native Buildpacks](#build-a-backstage-instance-using-cloud-native-buildpacks).
+To build an ESBack plugin, follow [these steps](https://gitlab.eng.vmware.com/esback/core/-/blob/main/plugins/README.md#build-a-custom-esback-plugin).
