@@ -1,6 +1,6 @@
 import { CatalogProcessor } from '@backstage/plugin-catalog-backend';
 
-export class CatalogProcessorSurface {
+export class BackendCatalogSurface {
   private readonly _processors: CatalogProcessor[];
 
   constructor() {
