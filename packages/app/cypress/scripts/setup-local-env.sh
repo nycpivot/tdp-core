@@ -5,7 +5,7 @@ DIR_PATH=$(dirname "$0")
 ROOT_PATH=${DIR_PATH}/../../../..
 source ${DIR_PATH}/library.sh
 
-VAULT_ADDRESS="https://runway-vault-sfo.eng.vmware.com"
+VAULT_ADDRESS="${VAULT_ADDRESS:-https://runway-vault-sfo.eng.vmware.com}"
 VAULT_BASE_PATH="runway_concourse/esback"
 VAULT_E2E_SECRETS="${VAULT_BASE_PATH}/e2e"
 VAULT_GITLAB="${VAULT_BASE_PATH}/gitlab"
