@@ -5,6 +5,7 @@ mv ../ytt/ytt-linux-amd64 ./ytt && chmod +x ./ytt
 
 docker load -i ../docker-image/image.tar
 docker load -i ../cypress-image/image.tar
+docker load -i ../bitbucket-image/image.tar
 
 # Tag current version of tap-gui as latest
 docker tag "$DOCKER_CI_IMAGE:$(cat ../docker-image/tag)" "esback:integration"

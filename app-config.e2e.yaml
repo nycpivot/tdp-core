@@ -41,6 +41,11 @@ integrations:
       apiBaseUrl: https://gitlab.eng.vmware.com/api/v4/
       token: ${GITLAB_TOKEN}
 
+  bitbucketServer:
+    - host: ${BITBUCKET_HOST}
+      apiBaseUrl: http://${BITBUCKET_HOST}/rest/api/1.0
+      token: ${BITBUCKET_TOKEN}
+
 catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
@@ -56,8 +61,10 @@ catalog:
       rules:
         - allow: [User, Group]
     - type: url
-      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/data/catalog/components/tap-gui.yml
+      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/data/gitlab/catalog/components/tap-gui.yml
     - type: url
       target: https://github.com/fouadh/foobar-backstage-component/blob/master/catalog-info.yaml
     - type: url
       target: https://cmbu-githubent01.eng.vmware.com/tap-gui/catalog/blob/main/catalog-info.yaml
+    - type: url
+      target: http://${BITBUCKET_HOST}/projects/ESBACK/repos/catalog/raw/catalog-info.yaml

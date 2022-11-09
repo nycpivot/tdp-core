@@ -2,21 +2,47 @@
 ---
 version: '3.3'
 services:
+  bitbucket:
+    image: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket:8.4.2
+    ports:
+      - 7990:7990
+      - 7999:7999
+    environment:
+      - SETUP_DISPLAYNAME=esback
+      - SETUP_BASEURL=http://localhost
+      - SETUP_LICENSE=${BITBUCKET_SERVER_LICENSE}
+      - SETUP_SYSADMIN_USERNAME=esback
+      - SETUP_SYSADMIN_PASSWORD=esback
+      - SETUP_SYSADMIN_DISPLAYNAME=esback
+      - SETUP_SYSADMIN_EMAILADDRESS=esback@example.com
+      - SETUP_COMPLETED=true
+      - JDBC_DRIVER=org.h2.Driver
+      - JDBC_URL=jdbc:h2:/var/atlassian/application-data/bitbucket/shared/data/db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      - JDBC_USER=sa
+      - JDBC_PASSWORD=
+    volumes:
+      - ${HOME}/.esback-e2e/bitbucket:/var/atlassian/application-data/bitbucket
   esback:
     #@ if/end not data.values.skip_build:
     build:
       context: ../../..
       dockerfile: packages/backend/Dockerfile
     image: esback:integration
+    depends_on:
+      - bitbucket
     environment:
       - NODE_TLS_REJECT_UNAUTHORIZED=0 #! to skip ssl verification for our Github Enterprise
       - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
+      - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
       - GITLAB_TOKEN=${GITLAB_TOKEN}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - GITHUB_ENTERPRISE_TOKEN=${GITHUB_ENTERPRISE_TOKEN}
       - GIT_BRANCH=${GIT_BRANCH}
     ports:
       - 7007:7007
+    volumes:
+      - .:/e2e/cypress
+    entrypoint: /bin/sh -c /e2e/cypress/scripts/start-esback.sh
   cypress:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
     volumes:
@@ -25,7 +51,8 @@ services:
       - ./npmrc.example:/e2e/.npmrc
     depends_on:
       - esback
+      - bitbucket
     environment:
       - CYPRESS_baseUrl=http://esback:7007
     working_dir: /e2e
-    entrypoint: /bin/sh -c "npm install typescript@^4.4.3 && cypress run --browser chrome"
+    entrypoint: /bin/sh -c "/e2e/cypress/scripts/run-tests.sh"

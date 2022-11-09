@@ -3,19 +3,23 @@ platform: linux
 image_resource:
   type: registry-image
   source:
-    repository: harbor-repo.vmware.com/dockerhub-proxy-cache/amidos/dcind
-    tag: 2.1.0
+    # this image contains a more recent version of version to be able to install bitbucket
+    # it has been built from https://gitlab.eng.vmware.com/esback/dcind
+    repository: harbor-repo.vmware.com/fhamdi/dcind
+    tag: 20.10.20-202211021203
 inputs:
   - name: ytt
   - name: cypress-image
   - name: code
   - name: docker-image
+  - name: bitbucket-image
 params:
   DOCKER_CI_IMAGE: harbor-repo.vmware.com/esback/internal-instance
   GITLAB_TOKEN: ((gitlab_token))
   GITHUB_TOKEN: ((github_token))
   GITHUB_ENTERPRISE_TOKEN: ((github_enterprise_token))
   GIT_BRANCH: ((git_branch))
+  BITBUCKET_SERVER_LICENSE: ((bitbucket_server_license))
 run:
   dir: code
   path: ci/scripts/integration_tests
