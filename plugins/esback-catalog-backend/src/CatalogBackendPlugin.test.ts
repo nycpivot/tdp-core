@@ -7,8 +7,7 @@ import {
   SurfaceStore
 } from "@esback/core";
 import {ConfigReader} from '@backstage/config';
-import {createLogger, transports} from "winston";
-import {DatabaseManager} from "@backstage/backend-common";
+import {DatabaseManager, getVoidLogger} from "@backstage/backend-common";
 import {AuthorizeResult, DefinitivePolicyDecision, PermissionEvaluator} from "@backstage/plugin-permission-common";
 import request from 'supertest';
 import express from "express";
@@ -66,7 +65,7 @@ describe("Catalog Backend Plugin", () => {
 
     const database = DatabaseManager.fromConfig(config).forPlugin("catalog");
     const env: PluginEnvironment = {
-      logger: createLogger({level: "verbose", transports: new transports.Console()}),
+      logger: getVoidLogger(),
       config: config,
       database: database,
       permissions: new class implements PermissionEvaluator {
