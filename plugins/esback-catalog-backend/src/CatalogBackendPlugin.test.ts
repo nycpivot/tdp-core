@@ -15,7 +15,48 @@ import {DeferredEntity} from "@backstage/plugin-catalog-backend";
 
 describe("Catalog Backend Plugin", () => {
   it('should return entities', async () => {
-    const plugin = CatalogBackendPlugin();
+    const router = await createPluginRouter();
+    const app = express();
+    app.use(router);
+    await waitForStitching();
+
+    const res = await request(app).get('/entities')
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveLength(1);
+    expect(res.body[0].kind).toBe("Component");
+    expect(res.body[0].metadata.name).toBe("fake-entity");
+  })
+
+  async function createPluginRouter() {
+    const plugin = createCatalogPlugin();
+    const router = await plugin.pluginFn(pluginEnvironment())
+    return router;
+  }
+
+  function createCatalogPlugin() {
+    const catalogPlugin = CatalogBackendPlugin();
+    const entityProviderPlugin = fakeEntityProviderPlugin();
+    const store = new SurfaceStore()
+    entityProviderPlugin()(store)
+    catalogPlugin(store)
+
+    const surface = store.getSurfaceState(BackendPluginSurface);
+    expect(surface.plugins.length).toBe(1)
+
+    return surface.plugins[0];
+  }
+
+  async function waitForStitching() {
+    // waiting for the catalog processor to refresh the database
+    // the polling intervall is hardcoded to 1 second in backstage (CatalogBuilder class)
+    // and doesn't seem overridable from the tests hence the usage
+    // of a timeout here (until we find a better way to trigger the
+    // entities refresh in the database)
+    await new Promise(resolve => setTimeout(resolve, 1500))
+  }
+
+  function fakeEntityProviderPlugin() {
     const entityProviderPlugin: BackendPluginInterface = () => surfaces =>
       surfaces.applyTo(BackendCatalogSurface, surface => surface.addEntityProvider({
         async connect(connection): Promise<void> {
@@ -47,13 +88,10 @@ describe("Catalog Backend Plugin", () => {
           return "fake-provider";
         }
       }))
-    const store = new SurfaceStore()
-    entityProviderPlugin()(store)
-    plugin(store)
+    return entityProviderPlugin;
+  }
 
-    const surface = store.getSurfaceState(BackendPluginSurface);
-    expect(surface.plugins.length).toBe(1)
-    const p = surface.plugins[0];
+  function pluginEnvironment(): PluginEnvironment {
     const config = new ConfigReader({
       backend: {
         database: {
@@ -63,11 +101,10 @@ describe("Catalog Backend Plugin", () => {
       }
     });
 
-    const database = DatabaseManager.fromConfig(config).forPlugin("catalog");
-    const env: PluginEnvironment = {
+    return {
       logger: getVoidLogger(),
       config: config,
-      database: database,
+      database: DatabaseManager.fromConfig(config).forPlugin("catalog"),
       permissions: new class implements PermissionEvaluator {
         authorize(requests, options) {
           const decision: DefinitivePolicyDecision = {
@@ -83,23 +120,6 @@ describe("Catalog Backend Plugin", () => {
           return Promise.resolve([decision]);
         }
       }
-    }
-
-    const router = await p.pluginFn(env)
-    const app = express();
-    app.use(router);
-
-    // waiting for the catalog processor to refresh the database
-    // the polling intervall is hardcoded to 1 second in backstage (CatalogBuilder class)
-    // and doesn't seem overridable from the tests hence the usage
-    // of a timeout here (until we find a better way to trigger the
-    // entities refresh in the database)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    const res = await request(app).get('/entities')
-    expect(res.statusCode).toBe(200);
-    expect(res.body).toHaveLength(1);
-    expect(res.body[0].kind).toBe("Component");
-    expect(res.body[0].metadata.name).toBe("fake-entity");
-  })
+    };
+  }
 })
