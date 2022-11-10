@@ -21,7 +21,7 @@ import {
 } from '@backstage/plugin-permission-common';
 import request from 'supertest';
 import express from 'express';
-import { DeferredEntity } from '@backstage/plugin-catalog-backend';
+import {DeferredEntity, EntityProvider} from '@backstage/plugin-catalog-backend';
 import { TaskScheduler } from '@backstage/backend-tasks';
 
 describe('Catalog Backend Plugin', () => {
@@ -68,40 +68,44 @@ describe('Catalog Backend Plugin', () => {
     await new Promise(resolve => setTimeout(resolve, 1500));
   }
 
+  function fakeEntityProvider(): EntityProvider {
+    return {
+      async connect(connection): Promise<void> {
+        const entity: DeferredEntity = {
+          entity: {
+            kind: 'Component',
+            apiVersion: 'backstage.io/v1alpha1',
+            metadata: {
+              name: 'fake-entity',
+              annotations: {
+                'backstage.io/managed-by-location': 'url:https://host/path',
+                'backstage.io/managed-by-origin-location':
+                  'url:https://host/path',
+              },
+            },
+            spec: {
+              type: 'website',
+              owner: 'esback',
+              lifecycle: 'test',
+            },
+          },
+        };
+        await connection.applyMutation({
+          type: 'full',
+          entities: [entity],
+        });
+        return Promise.resolve(undefined);
+      },
+      getProviderName(): string {
+        return 'fake-provider';
+      },
+    };
+  }
+
   function fakeEntityProviderPlugin() {
     const entityProviderPlugin: BackendPluginInterface = () => surfaces =>
       surfaces.applyTo(BackendCatalogSurface, surface =>
-        surface.addEntityProvider({
-          async connect(connection): Promise<void> {
-            const entity: DeferredEntity = {
-              entity: {
-                kind: 'Component',
-                apiVersion: 'backstage.io/v1alpha1',
-                metadata: {
-                  name: 'fake-entity',
-                  annotations: {
-                    'backstage.io/managed-by-location': 'url:https://host/path',
-                    'backstage.io/managed-by-origin-location':
-                      'url:https://host/path',
-                  },
-                },
-                spec: {
-                  type: 'website',
-                  owner: 'esback',
-                  lifecycle: 'test',
-                },
-              },
-            };
-            await connection.applyMutation({
-              type: 'full',
-              entities: [entity],
-            });
-            return Promise.resolve(undefined);
-          },
-          getProviderName(): string {
-            return 'fake-provider';
-          },
-        }),
+        surface.addEntityProvider(fakeEntityProvider()),
       );
     return entityProviderPlugin;
   }
