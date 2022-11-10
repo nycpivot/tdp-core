@@ -7,11 +7,18 @@ import {
   SurfaceStore
 } from "@esback/core";
 import {ConfigReader} from '@backstage/config';
-import {DatabaseManager, getVoidLogger} from "@backstage/backend-common";
+import {
+  CacheManager,
+  DatabaseManager,
+  FetchUrlReader,
+  getVoidLogger,
+  ServerTokenManager
+} from "@backstage/backend-common";
 import {AuthorizeResult, DefinitivePolicyDecision, PermissionEvaluator} from "@backstage/plugin-permission-common";
 import request from 'supertest';
 import express from "express";
 import {DeferredEntity} from "@backstage/plugin-catalog-backend";
+import {TaskScheduler} from "@backstage/backend-tasks";
 
 describe("Catalog Backend Plugin", () => {
   it('should return entities', async () => {
@@ -98,11 +105,9 @@ describe("Catalog Backend Plugin", () => {
       }
     });
 
-    return {
-      logger: getVoidLogger(),
-      config: config,
-      database: DatabaseManager.fromConfig(config).forPlugin("catalog"),
-      permissions: new class implements PermissionEvaluator {
+    function permissionEvaluator() {
+      return new class implements PermissionEvaluator {
+        // @ts-ignore
         authorize(requests, options) {
           const decision: DefinitivePolicyDecision = {
             result: AuthorizeResult.ALLOW
@@ -110,13 +115,29 @@ describe("Catalog Backend Plugin", () => {
           return Promise.resolve([decision]);
         }
 
+        // @ts-ignore
         authorizeConditional(requests, options) {
           const decision: DefinitivePolicyDecision = {
             result: AuthorizeResult.ALLOW
           };
           return Promise.resolve([decision]);
         }
-      }
+      };
+    }
+
+    return {
+      logger: getVoidLogger(),
+      config: config,
+      database: DatabaseManager.fromConfig(config).forPlugin("catalog"),
+      permissions: permissionEvaluator(),
+      cache: CacheManager.fromConfig(config).forPlugin("catalog"),
+      discovery: {
+        getBaseUrl: jest.fn(),
+        getExternalBaseUrl: jest.fn()
+      },
+      reader: new FetchUrlReader(),
+      scheduler: TaskScheduler.fromConfig(config).forPlugin("catalog"),
+      tokenManager: ServerTokenManager.noop(),
     };
   }
 })
