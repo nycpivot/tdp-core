@@ -1,5 +1,5 @@
 import { BackendCatalogSurface, BackendPluginInterface } from '@esback/core';
-import { CustomEntityProvider } from './EntityProvider';
+import { CustomEntityProvider } from './CustomEntityProvider';
 
 export const CatalogEntityProviderPlugin: BackendPluginInterface =
   () => surfaces => {
