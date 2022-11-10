@@ -15,7 +15,7 @@ import {DeferredEntity} from "@backstage/plugin-catalog-backend";
 
 describe("Catalog Backend Plugin", () => {
   it('should return entities', async () => {
-    const router = await createPluginRouter();
+    const router = await createPluginRouter([fakeEntityProviderPlugin()]);
     const app = express();
     app.use(router);
     await waitForStitching();
@@ -28,22 +28,19 @@ describe("Catalog Backend Plugin", () => {
     expect(res.body[0].metadata.name).toBe("fake-entity");
   })
 
-  async function createPluginRouter() {
-    const plugin = createCatalogPlugin();
+  async function createPluginRouter(catalogInternalPlugins: BackendPluginInterface[]) {
+    const plugin = createCatalogPlugin(catalogInternalPlugins);
     const router = await plugin.pluginFn(pluginEnvironment())
     return router;
   }
 
-  function createCatalogPlugin() {
+  function createCatalogPlugin(catalogInternalPlugins: BackendPluginInterface[]) {
     const catalogPlugin = CatalogBackendPlugin();
-    const entityProviderPlugin = fakeEntityProviderPlugin();
-    const store = new SurfaceStore()
-    entityProviderPlugin()(store)
+    const store = new SurfaceStore();
+    catalogInternalPlugins.forEach(p => p()(store));
     catalogPlugin(store)
 
     const surface = store.getSurfaceState(BackendPluginSurface);
-    expect(surface.plugins.length).toBe(1)
-
     return surface.plugins[0];
   }
 
