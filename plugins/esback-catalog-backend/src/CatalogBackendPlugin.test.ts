@@ -4,12 +4,10 @@ import { createApp } from './fixtures';
 import {
   BackendCatalogSurface,
   BackendPluginInterface,
+  CatalogProcessorBuilder,
   EntityProviderBuilder,
 } from '@esback/core';
-import {
-  CatalogProcessor,
-  DeferredEntity,
-} from '@backstage/plugin-catalog-backend';
+import { DeferredEntity } from '@backstage/plugin-catalog-backend';
 import {
   CatalogProcessorEmit,
   LocationSpec,
@@ -79,6 +77,7 @@ describe('Catalog Backend Plugin', () => {
   describe('Catalog Processors', () => {
     it('should return components and locations', async () => {
       const app = await createApp([fakeCatalogProcessorPlugin()], {
+        entityName: 'fake-processor-entity',
         catalog: {
           locations: [
             {
@@ -103,44 +102,46 @@ describe('Catalog Backend Plugin', () => {
     function fakeCatalogProcessorPlugin() {
       const catalogProcessorPlugin: BackendPluginInterface = () => surfaces =>
         surfaces.applyTo(BackendCatalogSurface, surface =>
-          surface.addCatalogProcessor(fakeCatalogProcessor()),
+          surface.addCatalogProcessorBuilder(fakeCatalogProcessorBuilder()),
         );
       return catalogProcessorPlugin;
     }
 
-    function fakeCatalogProcessor(): CatalogProcessor {
-      return {
-        getProcessorName(): string {
-          return 'fake-processor';
+    function fakeCatalogProcessorBuilder(): CatalogProcessorBuilder {
+      return env => [
+        {
+          getProcessorName(): string {
+            return 'fake-processor';
+          },
+
+          async readLocation(
+            location: LocationSpec,
+            _optional: boolean,
+            emit: CatalogProcessorEmit,
+          ): Promise<boolean> {
+            if (location.type !== 'fake-processor') {
+              return false;
+            }
+
+            const entity: Entity = {
+              apiVersion: 'backstage.io/v1alpha1',
+              kind: 'Component',
+              metadata: {
+                name: env.config.get('entityName'),
+              },
+              spec: {
+                type: 'service',
+                lifecycle: 'experimental',
+                owner: 'guests',
+              },
+            };
+
+            emit(processingResult.entity(location, entity));
+
+            return true;
+          },
         },
-
-        async readLocation(
-          location: LocationSpec,
-          _optional: boolean,
-          emit: CatalogProcessorEmit,
-        ): Promise<boolean> {
-          if (location.type !== 'fake-processor') {
-            return false;
-          }
-
-          const entity: Entity = {
-            apiVersion: 'backstage.io/v1alpha1',
-            kind: 'Component',
-            metadata: {
-              name: 'fake-processor-entity',
-            },
-            spec: {
-              type: 'service',
-              lifecycle: 'experimental',
-              owner: 'guests',
-            },
-          };
-
-          emit(processingResult.entity(location, entity));
-
-          return true;
-        },
-      };
+      ];
     }
   });
 });
