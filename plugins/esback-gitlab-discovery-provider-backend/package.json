@@ -23,6 +23,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
+    "@esback/core": "^0.0.1-alpha.1",
     "@backstage/backend-common": "^0.15.0",
     "@backstage/config": "^1.0.1",
     "@backstage/plugin-catalog-backend-module-gitlab": "^0.1.8",
