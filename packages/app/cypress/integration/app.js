@@ -27,6 +27,18 @@ describe('App', () => {
     it('should render the bitbucket server catalog', () => {
       cy.contains('bitbucket-server-component');
     });
+
+    describe('Custom entity provider plugin', () => {
+      it('should render custom provider entity', () => {
+        cy.contains('Custom Entity Provider Entity');
+      });
+    });
+
+    describe('Custom processor plugin', () => {
+      it('should render custom processor entity', () => {
+        cy.contains('Custom Processor Entity');
+      });
+    });
   });
 
   describe('Hello World Plugin', () => {
