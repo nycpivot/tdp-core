@@ -34,10 +34,13 @@ import {
   LocationSpec,
   processingResult,
 } from '@backstage/plugin-catalog-node';
+import { JsonObject } from '@backstage/types';
 
 describe('Catalog Backend Plugin', () => {
   it('should return entities from entity providers', async () => {
-    const app = await createApp([fakeEntityProviderPlugin()]);
+    const app = await createApp([fakeEntityProviderPlugin()], {
+      entityName: 'fake-provider-entity',
+    });
 
     const res = await request(app).get('/entities');
 
@@ -48,20 +51,34 @@ describe('Catalog Backend Plugin', () => {
   });
 
   it('should return entities from catalog processors', async () => {
-    const app = await createApp([fakeCatalogProcessorPlugin()]);
+    const app = await createApp([fakeCatalogProcessorPlugin()], {
+      catalog: {
+        locations: [
+          {
+            type: 'fake-processor',
+            target: 'fake-target',
+          },
+        ],
+      },
+    });
 
     const res = await request(app).get('/entities');
 
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveLength(2);
-    expect(res.body[0].kind).toBe('Component');
-    expect(res.body[0].metadata.name).toBe('fake-processor-entity');
-    expect(res.body[1].kind).toBe('Location');
+    const components = res.body.filter((e: Entity) => e.kind === 'Component');
+    expect(components).toHaveLength(1);
+    expect(components[0].metadata.name).toBe('fake-processor-entity');
+    const locations = res.body.filter((e: Entity) => e.kind === 'Location');
+    expect(locations).toHaveLength(1);
   });
 });
 
-async function createApp(plugins: (() => EsbackPluginInterface)[]) {
-  const router = await createPluginRouter(plugins);
+async function createApp(
+  plugins: (() => EsbackPluginInterface)[],
+  extraConfig: JsonObject,
+) {
+  const router = await createPluginRouter(plugins, extraConfig);
   const app = express();
   app.use(router);
   await waitForStitching();
@@ -70,9 +87,10 @@ async function createApp(plugins: (() => EsbackPluginInterface)[]) {
 
 async function createPluginRouter(
   catalogInternalPlugins: BackendPluginInterface[],
+  extraConfig: JsonObject,
 ) {
   const plugin = createCatalogPlugin(catalogInternalPlugins);
-  const router = await plugin.pluginFn(pluginEnvironment());
+  const router = await plugin.pluginFn(pluginEnvironment(extraConfig));
   return router;
 }
 
@@ -182,23 +200,15 @@ function fakeCatalogProcessorPlugin() {
   return catalogProcessorPlugin;
 }
 
-function pluginEnvironment(): PluginEnvironment {
+function pluginEnvironment(extraConfig: JsonObject): PluginEnvironment {
   const config = new ConfigReader({
-    entityName: 'fake-provider-entity',
-    catalog: {
-      locations: [
-        {
-          type: 'fake-processor',
-          target: 'fake-target',
-        },
-      ],
-    },
     backend: {
       database: {
         client: 'better-sqlite3',
         connection: ':memory:',
       },
     },
+    ...extraConfig,
   });
 
   function permissionEvaluator() {
