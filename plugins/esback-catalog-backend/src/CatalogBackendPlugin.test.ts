@@ -1,13 +1,13 @@
 import request from 'supertest';
-import { Entity } from '@backstage/catalog-model';
-import { createApp } from './fixtures';
+import {Entity} from '@backstage/catalog-model';
+import {createApp} from './fixtures';
 import {
   BackendCatalogSurface,
   BackendPluginInterface,
   CatalogProcessorBuilder,
   EntityProviderBuilder,
 } from '@esback/core';
-import { DeferredEntity } from '@backstage/plugin-catalog-backend';
+import {DeferredEntity} from '@backstage/plugin-catalog-backend';
 import {
   CatalogProcessorEmit,
   LocationSpec,
@@ -38,7 +38,7 @@ describe('Catalog Backend Plugin', () => {
     }
 
     function fakeEntityProviderBuilder(): EntityProviderBuilder {
-      return env => [
+      return env => (
         {
           async connect(connection): Promise<void> {
             const entity: DeferredEntity = {
@@ -69,8 +69,8 @@ describe('Catalog Backend Plugin', () => {
           getProviderName(): string {
             return 'fake-provider';
           },
-        },
-      ];
+        }
+      );
     }
   });
 
@@ -108,8 +108,7 @@ describe('Catalog Backend Plugin', () => {
     }
 
     function fakeCatalogProcessorBuilder(): CatalogProcessorBuilder {
-      return env => [
-        {
+      return env => ({
           getProcessorName(): string {
             return 'fake-processor';
           },
@@ -140,8 +139,8 @@ describe('Catalog Backend Plugin', () => {
 
             return true;
           },
-        },
-      ];
+        }
+      );
     }
   });
 });

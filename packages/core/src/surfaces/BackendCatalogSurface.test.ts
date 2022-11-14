@@ -1,6 +1,6 @@
-import { BackendCatalogSurface } from './BackendCatalogSurface';
-import { ConfigReader } from '@backstage/config';
-import { FetchUrlReader, getVoidLogger } from '@backstage/backend-common';
+import {BackendCatalogSurface} from './BackendCatalogSurface';
+import {ConfigReader} from '@backstage/config';
+import {FetchUrlReader, getVoidLogger} from '@backstage/backend-common';
 
 describe('BackendCatalogSurface', () => {
   it('should build entity providers', () => {
@@ -27,7 +27,7 @@ describe('BackendCatalogSurface', () => {
 });
 
 function entityProviderBuilder(providerName: string) {
-  const entityProvider = {
+  return () => ({
     connect(): Promise<void> {
       return Promise.resolve(undefined);
     },
@@ -35,25 +35,19 @@ function entityProviderBuilder(providerName: string) {
     getProviderName(): string {
       return providerName;
     },
-  };
-  const entityProviderBuilder = () => {
-    return [entityProvider];
-  };
-  return entityProviderBuilder;
+  });
 }
 
 function catalogProcessorBuilder(processorName: string) {
-  return () => [
-    {
-      getProcessorName(): string {
-        return processorName;
-      },
-
-      async readLocation(): Promise<boolean> {
-        return true;
-      },
+  return () => ({
+    getProcessorName(): string {
+      return processorName;
     },
-  ];
+
+    async readLocation(): Promise<boolean> {
+      return true;
+    },
+  });
 }
 
 function fakePluginEnvironment() {
