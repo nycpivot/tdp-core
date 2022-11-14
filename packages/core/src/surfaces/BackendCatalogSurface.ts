@@ -2,7 +2,7 @@ import {
   CatalogProcessor,
   EntityProvider,
 } from '@backstage/plugin-catalog-backend';
-import {PluginEnvironment} from "../PluginEnvironment";
+import { PluginEnvironment } from '../PluginEnvironment';
 
 type EntityProviderBuilder = (env: PluginEnvironment) => EntityProvider[];
 
@@ -38,6 +38,6 @@ export class BackendCatalogSurface {
   }
 
   buildProviders(env: PluginEnvironment): EntityProvider[] {
-    return this._providerBuilders.map(b => b(env)).flat()
+    return this._providerBuilders.map(b => b(env)).flat();
   }
 }

@@ -21,7 +21,10 @@ import {
 } from '@backstage/plugin-permission-common';
 import request from 'supertest';
 import express from 'express';
-import {DeferredEntity, EntityProvider} from '@backstage/plugin-catalog-backend';
+import {
+  DeferredEntity,
+  EntityProvider,
+} from '@backstage/plugin-catalog-backend';
 import { TaskScheduler } from '@backstage/backend-tasks';
 
 describe('Catalog Backend Plugin', () => {
