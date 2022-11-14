@@ -24,3 +24,13 @@ local-e2e:
 
 docker-e2e: image
 	$(MAKE) -C packages/app/cypress docker-tests
+
+login-to-concourse:
+	fly -t esback login -c https://runway-ci-sfo.eng.vmware.com -n esback
+
+create-pipeline:
+	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
+	fly -t esback set-pipeline -p "$(name)" -c ci/pipeline.yml -v git_branch=$(branch) -v initial_version=0.0.0
+
+destroy-pipeline:
+	fly -t esback destroy-pipeline -p "$(name)"
