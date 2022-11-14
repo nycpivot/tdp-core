@@ -68,3 +68,5 @@ catalog:
       target: https://cmbu-githubent01.eng.vmware.com/tap-gui/catalog/blob/main/catalog-info.yaml
     - type: url
       target: http://${BITBUCKET_HOST}/projects/ESBACK/repos/catalog/raw/catalog-info.yaml
+    - type: system-x
+      target: 'non empty string'

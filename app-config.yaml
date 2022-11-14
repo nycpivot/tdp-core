@@ -92,9 +92,9 @@ catalog:
       rules:
         - allow: [User, Group]
 
-    ## Uncomment when using @esback/plugin-catalog-processor
-    # - type: system-x
-    #   target: "non empty string"
+    # Uncomment when using @esback/plugin-catalog-processor
+    - type: system-x
+      target: 'non empty string'
 
     ## Uncomment these lines to add more example data
     # - type: url
