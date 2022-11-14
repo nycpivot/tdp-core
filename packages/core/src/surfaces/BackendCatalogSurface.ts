@@ -10,12 +10,10 @@ export type EntityProviderBuilder = (
 
 export class BackendCatalogSurface {
   private readonly _processors: CatalogProcessor[];
-  private readonly _providers: EntityProvider[];
   private readonly _providerBuilders: EntityProviderBuilder[];
 
   constructor() {
     this._processors = [];
-    this._providers = [];
     this._providerBuilders = [];
   }
 
@@ -23,16 +21,15 @@ export class BackendCatalogSurface {
     this._processors.push(processor);
   }
 
+  // TODO Kept for backwards compatibility but might be deprecated if a
+  // big proportion of entity providers need the plugin environment to
+  // be created.
   public addEntityProvider(provider: EntityProvider) {
-    this._providers.push(provider);
+    this.addEntityProviderBuilder(() => [provider]);
   }
 
   public get processors(): CatalogProcessor[] {
     return this._processors;
-  }
-
-  public get providers(): EntityProvider[] {
-    return this._providers;
   }
 
   addEntityProviderBuilder(builder: EntityProviderBuilder) {
