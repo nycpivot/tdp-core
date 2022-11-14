@@ -8,12 +8,18 @@ export type EntityProviderBuilder = (
   env: PluginEnvironment,
 ) => EntityProvider[];
 
+export type CatalogProcessorBuilder = (
+  env: PluginEnvironment,
+) => CatalogProcessor[];
+
 export class BackendCatalogSurface {
   private readonly _processors: CatalogProcessor[];
+  private readonly _processorBuilders: CatalogProcessorBuilder[];
   private readonly _providerBuilders: EntityProviderBuilder[];
 
   constructor() {
     this._processors = [];
+    this._processorBuilders = [];
     this._providerBuilders = [];
   }
 
@@ -38,5 +44,13 @@ export class BackendCatalogSurface {
 
   buildProviders(env: PluginEnvironment): EntityProvider[] {
     return this._providerBuilders.map(b => b(env)).flat();
+  }
+
+  addCatalogProcessorBuilder(builder: CatalogProcessorBuilder) {
+    this._processorBuilders.push(builder);
+  }
+
+  buildProcessors(env: PluginEnvironment) {
+    return this._processorBuilders.map(b => b(env)).flat();
   }
 }

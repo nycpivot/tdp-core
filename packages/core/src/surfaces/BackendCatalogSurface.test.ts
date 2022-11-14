@@ -13,6 +13,17 @@ describe('BackendCatalogSurface', () => {
     expect(providers).toHaveLength(1);
     expect(providers[0].getProviderName()).toBe(providerName);
   });
+
+  it('should build catalog processors', () => {
+    const processorName = 'fake-processor-name';
+    const surface = new BackendCatalogSurface();
+    surface.addCatalogProcessorBuilder(catalogProcessorBuilder(processorName));
+
+    const processors = surface.buildProcessors(fakePluginEnvironment());
+
+    expect(processors).toHaveLength(1);
+    expect(processors[0].getProcessorName()).toBe(processorName);
+  });
 });
 
 function entityProviderBuilder(providerName: string) {
@@ -29,6 +40,20 @@ function entityProviderBuilder(providerName: string) {
     return [entityProvider];
   };
   return entityProviderBuilder;
+}
+
+function catalogProcessorBuilder(processorName: string) {
+  return () => [
+    {
+      getProcessorName(): string {
+        return processorName;
+      },
+
+      async readLocation(): Promise<boolean> {
+        return true;
+      },
+    },
+  ];
 }
 
 function fakePluginEnvironment() {
