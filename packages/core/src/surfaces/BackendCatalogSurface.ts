@@ -4,7 +4,9 @@ import {
 } from '@backstage/plugin-catalog-backend';
 import { PluginEnvironment } from '../PluginEnvironment';
 
-type EntityProviderBuilder = (env: PluginEnvironment) => EntityProvider[];
+export type EntityProviderBuilder = (
+  env: PluginEnvironment,
+) => EntityProvider[];
 
 export class BackendCatalogSurface {
   private readonly _processors: CatalogProcessor[];
