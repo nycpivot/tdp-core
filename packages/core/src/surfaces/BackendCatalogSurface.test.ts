@@ -1,6 +1,6 @@
-import {BackendCatalogSurface} from './BackendCatalogSurface';
-import {ConfigReader} from '@backstage/config';
-import {FetchUrlReader, getVoidLogger} from '@backstage/backend-common';
+import { BackendCatalogSurface } from './BackendCatalogSurface';
+import { ConfigReader } from '@backstage/config';
+import { FetchUrlReader, getVoidLogger } from '@backstage/backend-common';
 
 describe('BackendCatalogSurface', () => {
   it('should build entity providers', () => {

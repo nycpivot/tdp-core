@@ -1,13 +1,13 @@
 import request from 'supertest';
-import {Entity} from '@backstage/catalog-model';
-import {createApp} from './fixtures';
+import { Entity } from '@backstage/catalog-model';
+import { createApp } from './fixtures';
 import {
   BackendCatalogSurface,
   BackendPluginInterface,
   CatalogProcessorBuilder,
   EntityProviderBuilder,
 } from '@esback/core';
-import {DeferredEntity} from '@backstage/plugin-catalog-backend';
+import { DeferredEntity } from '@backstage/plugin-catalog-backend';
 import {
   CatalogProcessorEmit,
   LocationSpec,
@@ -38,39 +38,37 @@ describe('Catalog Backend Plugin', () => {
     }
 
     function fakeEntityProviderBuilder(): EntityProviderBuilder {
-      return env => (
-        {
-          async connect(connection): Promise<void> {
-            const entity: DeferredEntity = {
-              entity: {
-                kind: 'Component',
-                apiVersion: 'backstage.io/v1alpha1',
-                metadata: {
-                  name: env.config.get('entityName'),
-                  annotations: {
-                    'backstage.io/managed-by-location': 'url:https://host/path',
-                    'backstage.io/managed-by-origin-location':
-                      'url:https://host/path',
-                  },
-                },
-                spec: {
-                  type: 'website',
-                  owner: 'esback',
-                  lifecycle: 'test',
+      return env => ({
+        async connect(connection): Promise<void> {
+          const entity: DeferredEntity = {
+            entity: {
+              kind: 'Component',
+              apiVersion: 'backstage.io/v1alpha1',
+              metadata: {
+                name: env.config.get('entityName'),
+                annotations: {
+                  'backstage.io/managed-by-location': 'url:https://host/path',
+                  'backstage.io/managed-by-origin-location':
+                    'url:https://host/path',
                 },
               },
-            };
-            await connection.applyMutation({
-              type: 'full',
-              entities: [entity],
-            });
-            return Promise.resolve(undefined);
-          },
-          getProviderName(): string {
-            return 'fake-provider';
-          },
-        }
-      );
+              spec: {
+                type: 'website',
+                owner: 'esback',
+                lifecycle: 'test',
+              },
+            },
+          };
+          await connection.applyMutation({
+            type: 'full',
+            entities: [entity],
+          });
+          return Promise.resolve(undefined);
+        },
+        getProviderName(): string {
+          return 'fake-provider';
+        },
+      });
     }
   });
 
@@ -109,38 +107,37 @@ describe('Catalog Backend Plugin', () => {
 
     function fakeCatalogProcessorBuilder(): CatalogProcessorBuilder {
       return env => ({
-          getProcessorName(): string {
-            return 'fake-processor';
-          },
+        getProcessorName(): string {
+          return 'fake-processor';
+        },
 
-          async readLocation(
-            location: LocationSpec,
-            _optional: boolean,
-            emit: CatalogProcessorEmit,
-          ): Promise<boolean> {
-            if (location.type !== 'fake-processor') {
-              return false;
-            }
+        async readLocation(
+          location: LocationSpec,
+          _optional: boolean,
+          emit: CatalogProcessorEmit,
+        ): Promise<boolean> {
+          if (location.type !== 'fake-processor') {
+            return false;
+          }
 
-            const entity: Entity = {
-              apiVersion: 'backstage.io/v1alpha1',
-              kind: 'Component',
-              metadata: {
-                name: env.config.get('entityName'),
-              },
-              spec: {
-                type: 'service',
-                lifecycle: 'experimental',
-                owner: 'guests',
-              },
-            };
+          const entity: Entity = {
+            apiVersion: 'backstage.io/v1alpha1',
+            kind: 'Component',
+            metadata: {
+              name: env.config.get('entityName'),
+            },
+            spec: {
+              type: 'service',
+              lifecycle: 'experimental',
+              owner: 'guests',
+            },
+          };
 
-            emit(processingResult.entity(location, entity));
+          emit(processingResult.entity(location, entity));
 
-            return true;
-          },
-        }
-      );
+          return true;
+        },
+      });
     }
   });
 });
