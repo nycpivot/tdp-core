@@ -1,5 +1,5 @@
 {
-  "name": "backstage-plugin-esback-gitlab-discovery-provider-backend",
+  "name": "@esback/plugin-gitlab-backend",
   "version": "0.0.1-alpha.1",
   "main": "src/index.ts",
   "types": "src/index.ts",

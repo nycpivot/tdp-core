@@ -19,6 +19,7 @@
     "@esback/runtime-backend": "^0.0.1-alpha.1",
     "@esback/plugin-catalog-entity-provider": "^0.0.1-alpha.1",
     "@esback/plugin-catalog-processor": "^0.0.1-alpha.1",
+    "@esback/plugin-gitlab-backend": "^0.0.1-alpha.1",
     "app": "link:../app",
     "backstage-plugin-esback-gitlab-discovery-provider-backend": "^0.0.1-alpha.1",
     "better-sqlite3": "^7.5.0",
