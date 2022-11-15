@@ -13,7 +13,7 @@ describe('App', () => {
     });
 
     it('should render the gitlab catalog', () => {
-      cy.contains('tap-gui-component');
+      cy.contains('gitlab-integration-component');
     });
 
     it('should render the github catalog', () => {
