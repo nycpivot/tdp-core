@@ -1,5 +1,6 @@
 SHELL = /bin/bash
 concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
+vault_endpoint ?= "https://runway-vault-sfo.eng.vmware.com"
 
 build: clean install
 	yarn tsc
@@ -15,7 +16,7 @@ install:
 	yarn install
 
 login-to-vault:
-	vault login -address=https://runway-vault-sfo.eng.vmware.com -method=ldap username=$(username)
+	vault login -address=$(vault_endpoint) -method=ldap username=$(username)
 
 e2e-docker-environment: image
 	$(MAKE) -C packages/app/cypress setup-docker-env
