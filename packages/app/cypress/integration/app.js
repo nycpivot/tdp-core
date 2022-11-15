@@ -17,7 +17,7 @@ describe('App', () => {
     });
 
     it('should render the github catalog', () => {
-      cy.contains('github-component');
+      cy.contains('github-integration-component');
     });
 
     it('should render the github enterprise catalog', () => {
