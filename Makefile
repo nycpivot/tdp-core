@@ -18,7 +18,7 @@ install:
 login-to-vault:
 	vault login -address=$(vault_endpoint) -method=ldap username=$(username)
 
-e2e-docker-environment: image
+e2e-environment: image
 	$(MAKE) -C packages/app/cypress setup-docker-env
 
 local-e2e:
