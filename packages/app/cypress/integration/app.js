@@ -51,6 +51,16 @@ describe('App', () => {
     });
   });
 
+  describe('Gitlab Backend Plugin', () => {
+    beforeEach(() => {
+      cy.visit('/');
+    });
+
+    it('should render the component from the provider', () => {
+      cy.contains('gitlab-provider-component');
+    });
+  });
+
   describe('Hello World Plugin', () => {
     it('should render the plugin content', () => {
       cy.visit('/hello-world');
