@@ -1,4 +1,5 @@
 SHELL = /bin/bash
+concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
 
 build: clean install
 	yarn tsc
@@ -26,7 +27,7 @@ docker-e2e: image
 	$(MAKE) -C packages/app/cypress docker-tests
 
 login-to-concourse:
-	fly -t esback login -c https://runway-ci-sfo.eng.vmware.com -n esback
+	fly -t esback login -c $(concourse_endpoint) -n esback
 
 create-pipeline:
 	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
