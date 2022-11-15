@@ -79,3 +79,5 @@ catalog:
       target: http://${BITBUCKET_HOST}/projects/ESBACK/repos/catalog/raw/catalog-info.yaml
     - type: system-x
       target: 'non empty string'
+    - type: gitlab-discovery
+      target: https://gitlab.eng.vmware.com/esback/blob/${GIT_BRANCH}/packages/app/cypress/data/gitlab/catalog/components/gitlab-processor-component.yml
