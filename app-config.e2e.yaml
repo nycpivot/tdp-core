@@ -74,7 +74,7 @@ catalog:
     - type: url
       target: https://github.com/fouadh/foobar-backstage-component/blob/master/catalog-info.yaml
     - type: url
-      target: https://cmbu-githubent01.eng.vmware.com/tap-gui/catalog/blob/main/catalog-info.yaml
+      target: https://cmbu-githubent01.eng.vmware.com/tap-gui/esback-e2e/blob/main/github-enterprise-integration-component
     - type: url
       target: http://${BITBUCKET_HOST}/projects/ESBACK/repos/catalog/raw/bitbucket-server-integration-component.yaml
     - type: system-x

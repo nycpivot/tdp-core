@@ -21,7 +21,7 @@ describe('App', () => {
     });
 
     it('should render the github enterprise catalog', () => {
-      cy.contains('pstar635');
+      cy.contains('github-enterprise-integration-component');
     });
 
     it('should render the bitbucket server catalog', () => {
