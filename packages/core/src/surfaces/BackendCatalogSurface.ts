@@ -21,20 +21,6 @@ export class BackendCatalogSurface {
     this._providerBuilders = [];
   }
 
-  // TODO Kept for backwards compatibility but might be deprecated if a
-  // big proportion of catalog processors need the plugin environment to
-  // be created.
-  public addCatalogProcessor(processor: CatalogProcessor) {
-    this.addCatalogProcessorBuilder(() => processor);
-  }
-
-  // TODO Kept for backwards compatibility but might be deprecated if a
-  // big proportion of entity providers need the plugin environment to
-  // be created.
-  public addEntityProvider(provider: EntityProvider) {
-    this.addEntityProviderBuilder(() => provider);
-  }
-
   addCatalogProcessorBuilder(builder: CatalogProcessorBuilder) {
     this._processorBuilders.push(builder);
   }
