@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: bitbucket-server-component
+  name: bitbucket-server-integration-component
   description: Bitbucket Server Component
   tags:
     - v1
