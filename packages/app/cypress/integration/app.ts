@@ -24,10 +24,6 @@ describe('App', () => {
       cy.contains('github-enterprise-integration-component');
     });
 
-    it('should render the bitbucket server catalog', () => {
-      cy.contains('bitbucket-server-integration-component');
-    });
-
     describe('Custom entity provider plugin', () => {
       it('should render custom provider entity', () => {
         cy.contains('Custom Entity Provider Entity');

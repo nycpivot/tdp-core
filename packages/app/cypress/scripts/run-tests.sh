@@ -9,4 +9,4 @@ print_message "esback is ready !"
 
 print_message "bitbucket is on: ${BITBUCKET_HOST}!"
 
-BITBUCKET_HOST=${BITBUCKET_HOST} npx cypress run --browser chrome
+CYPRESS_BITBUCKET_HOST=${BITBUCKET_HOST} npx cypress run --browser chrome

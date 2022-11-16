@@ -82,8 +82,6 @@ catalog:
       target: https://github.com/fouadh/foobar-backstage-component/blob/master/github-integration-component.yml
     - type: url
       target: https://cmbu-githubent01.eng.vmware.com/tap-gui/esback-e2e/blob/main/github-enterprise-integration-component.yml
-    - type: url
-      target: http://${BITBUCKET_HOST}/projects/ESBACK/repos/catalog/raw/bitbucket-server-integration-component.yaml
     - type: system-x
       target: 'non empty string'
     - type: gitlab-discovery
