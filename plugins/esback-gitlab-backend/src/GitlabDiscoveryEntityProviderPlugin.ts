@@ -1,5 +1,8 @@
 import { BackendCatalogSurface, BackendPluginInterface } from '@esback/core';
-import { GitlabDiscoveryEntityProvider } from '@backstage/plugin-catalog-backend-module-gitlab';
+import {
+  GitlabDiscoveryEntityProvider,
+  GitLabDiscoveryProcessor,
+} from '@backstage/plugin-catalog-backend-module-gitlab';
 
 export const GitlabDiscoveryEntityProviderPlugin: BackendPluginInterface =
   () => surfaces => {
@@ -12,6 +15,10 @@ export const GitlabDiscoveryEntityProviderPlugin: BackendPluginInterface =
             timeout: { minutes: 3 },
           }),
         }),
+      );
+
+      surface.addCatalogProcessorBuilder(env =>
+        GitLabDiscoveryProcessor.fromConfig(env.config, { logger: env.logger }),
       );
     });
   };

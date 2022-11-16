@@ -99,11 +99,11 @@ create_repository() {
 # Params: none.
 create_catalog() {
   print_message "Checking if catalog already exists..."
-  local status_code=$(get ${PROJECT_KEY}/repos/${REPO}/raw/catalog-info.yaml)
+  local status_code=$(get ${PROJECT_KEY}/repos/${REPO}/raw/bitbucket-server-integration-component.yaml)
 
   if [[ $status_code != "200" ]]; then
     print_message "Adding a catalog in the repository..."
-    commit "catalog-info.yaml" "catalog-info.yaml" "Add catalog info"
+    commit "bitbucket-server-integration-component.yaml" "bitbucket-server-integration-component.yaml" "Add catalog info"
     print_message "Catalog added"
   else
     print_message "Catalog already exists."

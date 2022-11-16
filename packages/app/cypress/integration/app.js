@@ -13,19 +13,19 @@ describe('App', () => {
     });
 
     it('should render the gitlab catalog', () => {
-      cy.contains('tap-gui-component');
+      cy.contains('gitlab-integration-component');
     });
 
     it('should render the github catalog', () => {
-      cy.contains('github-component');
+      cy.contains('github-integration-component');
     });
 
     it('should render the github enterprise catalog', () => {
-      cy.contains('pstar635');
+      cy.contains('github-enterprise-integration-component');
     });
 
     it('should render the bitbucket server catalog', () => {
-      cy.contains('bitbucket-server-component');
+      cy.contains('bitbucket-server-integration-component');
     });
 
     describe('Custom entity provider plugin', () => {
@@ -48,6 +48,10 @@ describe('App', () => {
 
     it('should render the component from the provider', () => {
       cy.contains('gitlab-provider-component');
+    });
+
+    it('should render the component from the processor', () => {
+      cy.contains('gitlab-processor-component');
     });
   });
 
