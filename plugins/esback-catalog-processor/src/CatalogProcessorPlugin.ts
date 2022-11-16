@@ -4,6 +4,6 @@ import { CustomProcessor } from './CustomProcessor';
 export const CatalogProcessorPlugin: BackendPluginInterface =
   () => surfaces => {
     surfaces.applyTo(BackendCatalogSurface, surface => {
-      surface.addCatalogProcessor(new CustomProcessor());
+      surface.addCatalogProcessorBuilder(() => new CustomProcessor());
     });
   };

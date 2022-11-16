@@ -4,6 +4,6 @@ import { CustomEntityProvider } from './CustomEntityProvider';
 export const CatalogEntityProviderPlugin: BackendPluginInterface =
   () => surfaces => {
     surfaces.applyTo(BackendCatalogSurface, surface => {
-      surface.addEntityProvider(new CustomEntityProvider());
+      surface.addEntityProviderBuilder(() => new CustomEntityProvider());
     });
   };

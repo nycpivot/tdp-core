@@ -30,10 +30,10 @@ It should build the application and its Docker image and then run the integratio
 
 ## Setup a local environment
 
-This command will start a Bitbucket server, run ESBack and make it accessible on [http://localhost:7007](http://localhost:7007)
+This command will start a Bitbucket server, run ESBack using the e2e configuration and make it accessible on [http://localhost:7007](http://localhost:7007)
 
 ```shell
-make e2e-docker-environment
+make e2e-environment
 ```
 
 ## Running the integration tests locally

@@ -2,29 +2,38 @@ import {
   CatalogProcessor,
   EntityProvider,
 } from '@backstage/plugin-catalog-backend';
+import { PluginEnvironment } from '../PluginEnvironment';
+
+export type EntityProviderBuilder = (
+  env: PluginEnvironment,
+) => EntityProvider[] | EntityProvider;
+
+export type CatalogProcessorBuilder = (
+  env: PluginEnvironment,
+) => CatalogProcessor[] | CatalogProcessor;
 
 export class BackendCatalogSurface {
-  private readonly _processors: CatalogProcessor[];
-  private readonly _providers: EntityProvider[];
+  private readonly _processorBuilders: CatalogProcessorBuilder[];
+  private readonly _providerBuilders: EntityProviderBuilder[];
 
   constructor() {
-    this._processors = [];
-    this._providers = [];
+    this._processorBuilders = [];
+    this._providerBuilders = [];
   }
 
-  public addCatalogProcessor(processor: CatalogProcessor) {
-    this._processors.push(processor);
+  addCatalogProcessorBuilder(builder: CatalogProcessorBuilder) {
+    this._processorBuilders.push(builder);
   }
 
-  public addEntityProvider(provider: EntityProvider) {
-    this._providers.push(provider);
+  addEntityProviderBuilder(builder: EntityProviderBuilder) {
+    this._providerBuilders.push(builder);
   }
 
-  public get processors(): CatalogProcessor[] {
-    return this._processors;
+  buildProviders(env: PluginEnvironment): EntityProvider[] {
+    return this._providerBuilders.map(b => b(env)).flat();
   }
 
-  public get providers(): EntityProvider[] {
-    return this._providers;
+  buildProcessors(env: PluginEnvironment) {
+    return this._processorBuilders.map(b => b(env)).flat();
   }
 }

@@ -6,8 +6,8 @@ import { PluginEnvironment, BackendCatalogSurface } from '@esback/core';
 const catalog = (surface: BackendCatalogSurface) => {
   return async (env: PluginEnvironment): Promise<Router> => {
     const builder = await CatalogBuilder.create(env);
-    builder.addEntityProvider(surface.providers);
-    builder.addProcessor(surface.processors);
+    builder.addEntityProvider(surface.buildProviders(env));
+    builder.addProcessor(surface.buildProcessors(env));
     const { processingEngine, router } = await builder.build();
     await processingEngine.start();
     return router;
