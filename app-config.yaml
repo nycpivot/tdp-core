@@ -92,7 +92,7 @@ catalog:
       rules:
         - allow: [User, Group]
 
-    # Uncomment when using @esback/plugin-catalog-processor
+    # this location type is processed by @esback/plugin-catalog-processor
     - type: system-x
       target: 'non empty string'
 
