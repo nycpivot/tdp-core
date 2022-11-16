@@ -22,5 +22,5 @@ e2e-docker-environment: image
 local-e2e:
 	$(MAKE) -C packages/app/cypress local-tests
 
-docker-e2e:
+docker-e2e: image
 	$(MAKE) -C packages/app/cypress docker-tests
