@@ -1,4 +1,3 @@
-import * as BitbucketServer from "@atlassian/bitbucket-server"
 import axios from 'axios'
 
 describe("Bitbucket Server", () => {
@@ -8,11 +7,6 @@ describe("Bitbucket Server", () => {
       target: `http://${Cypress.env('BITBUCKET_HOST')}/projects/ESBACK/repos/catalog/raw/bitbucket-server-integration-component.yaml`
     })
 
-    const bitbucket = new BitbucketServer({
-      baseUrl: `http://${Cypress.env('BITBUCKET_HOST')}`
-    })
-
-    bitbucket.authenticate({ type: 'basic', username: 'esback', password: 'esback' })
     cy.visit('/');
     cy.contains('bitbucket-server-component');
   });
