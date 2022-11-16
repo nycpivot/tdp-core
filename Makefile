@@ -21,6 +21,7 @@ login-to-vault:
 e2e-environment: image
 	$(MAKE) -C packages/app/cypress setup-docker-env
 
+local-e2e: export BITBUCKET_HOST = localhost:7990
 local-e2e:
 	$(MAKE) -C packages/app/cypress local-tests
 
