@@ -2,20 +2,21 @@ import {faker} from '@faker-js/faker'
 
 describe("Bitbucket Server", () => {
   beforeEach(async () => {
-    cy.log('Creating bitbucket token')
-    cy.log('bitbucket url: ' + `http://${Cypress.env('BITBUCKET_HOST')}/rest/api/latest/projects`)
-
     const project = {
       key: faker.random.alpha({count: 5, casing: 'upper'}),
       name: faker.random.alphaNumeric(10)
     }
 
+    cy.log("Creating project...")
     await new Cypress.Promise((resolve, reject) => cy.request(
       {
         method: 'POST',
         url: `http://${Cypress.env('BITBUCKET_HOST')}/rest/api/latest/projects`,
+        auth: {
+          user: 'esback',
+          pass: 'esback'
+        },
         headers: {
-          'Authorization': 'Basic ZXNiYWNrOmVzYmFjaw==',
           'User-Agent': 'test-agent',
         },
         body: project
@@ -30,40 +31,46 @@ describe("Bitbucket Server", () => {
       scmId: "git"
     }
 
-    cy.request(
+    cy.log("Creating repository...")
+    await new Cypress.Promise((resolve, reject) => cy.request(
       {
         method: 'POST',
         url: `http://${Cypress.env('BITBUCKET_HOST')}/rest/api/latest/projects/${project.key}/repos`,
+        auth: {
+          user: 'esback',
+          pass: 'esback'
+        },
         headers: {
-          Authorization: 'Basic ZXNiYWNrOmVzYmFjaw==',
           'User-Agent': 'test-agent',
         },
         body: repo
       }
-    )
+    ).then(() => resolve()))
 
     cy.log("repository " + repo.name + " created (slug: " + repo.slug + ")")
 
-
-
-    const token = await new Cypress.Promise((resolve) => cy.request({
-      method: 'PUT',
-      url: `http://${Cypress.env('BITBUCKET_HOST')}/rest/access-tokens/1.0/users/esback`,
-      headers: {
-        Authorization: 'Basic ZXNiYWNrOmVzYmFjaw=='
-      },
-      body: {
-        expiryDays: 2154,
-        name: "super token",
-        permissions: [
-          "REPO_ADMIN",
-          "PROJECT_ADMIN"
-        ]
+    cy.log("Pushing catalog file...")
+    const data = new FormData()
+    data.append("branch", "master")
+    data.append("message", "my catalog")
+    data.append("content", "hello world")
+    await new Cypress.Promise((resolve, reject) => cy.request(
+      {
+        method: 'PUT',
+        url: `http://${Cypress.env('BITBUCKET_HOST')}/rest/api/latest/projects/${project.key}/repos/${repo.name}/browse/hello.txt`,
+        auth: {
+          user: 'esback',
+          pass: 'esback'
+        },
+        headers: {
+          'User-Agent': 'test-agent',
+          'Content-Type': 'multipart/form-data'
+        },
+        body: data
       }
-    }).then((response) => resolve(response.body.token)))
+    ).then(() => resolve()))
 
-    cy.log("token: " + token)
-
+    cy.log('Catalog file pushed to repository')
   })
 
   it('should render the bitbucket server catalog', async () => {
