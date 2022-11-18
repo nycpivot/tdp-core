@@ -6414,7 +6414,7 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
   version "17.0.18"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react-dom/-/react-dom-17.0.18.tgz#8f7af38f5d9b42f79162eea7492e5a1caff70dc2"
   integrity sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==
@@ -9473,6 +9473,11 @@ csstype@^3.0.2, csstype@^3.0.6:
   version "3.1.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
+
+cypress-wait-until@^1.7.2:
+  version "1.7.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cypress-wait-until/-/cypress-wait-until-1.7.2.tgz#7f534dd5a11c89b65359e7a0210f20d3dfc22107"
+  integrity sha512-uZ+M8/MqRcpf+FII/UZrU7g1qYZ4aVlHcgyVopnladyoBrpoaMJ4PKZDrdOJ05H5RHbr7s9Tid635X3E+ZLU/Q==
 
 cypress@^9.7.0:
   version "9.7.0"
