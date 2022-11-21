@@ -48,6 +48,7 @@ services:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
     volumes:
       - .:/e2e/cypress
+      - ./package.docker-compose.json:/e2e/package.json
       - ../cypress.json:/e2e/cypress.json
       - ./npmrc.example:/e2e/.npmrc
     depends_on:
@@ -57,4 +58,4 @@ services:
       - CYPRESS_baseUrl=http://esback:7007
       - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
     working_dir: /e2e
-    entrypoint: /bin/sh -c "/e2e/cypress/scripts/run-tests.sh"
+    entrypoint: /bin/sh -c "yarn install;/e2e/cypress/scripts/run-tests.sh"
