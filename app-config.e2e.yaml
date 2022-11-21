@@ -98,3 +98,11 @@ techdocs:
     local:
       # (Optional). Set this to specify where the generated documentation is stored.
       publishDirectory: '/techdocs'
+
+esback:
+  catalog:
+    providers:
+      github:
+        orgEntity:
+          id: production
+          orgUrl: 'https://cmbu-githubent01.eng.vmware.com/esback'
