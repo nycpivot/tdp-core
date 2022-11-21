@@ -43,6 +43,7 @@ services:
     volumes:
       - .:/e2e/cypress
       - ../../../examples/techdocs/output:/techdocs
+      - ./scripts:/scripts
     entrypoint: /bin/sh -c /e2e/cypress/scripts/start-esback.sh
   cypress:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
