@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-source $(dirname "$0")/setup-local-env.sh
+source $(dirname "$0")/setup-env.sh
 
 # Go!
 
