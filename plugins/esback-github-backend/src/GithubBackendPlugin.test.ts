@@ -23,8 +23,8 @@ describe('GithubBackendPlugin', () => {
     const catalogSurface = store.getSurfaceState(BackendCatalogSurface);
     const providers = catalogSurface.buildProviders(fakePluginEnvironment());
 
-    expect(mockEntityProvider).toBeCalled();
-    expect(mockOrgProvider).not.toBeCalled();
+    expect(mockEntityProvider).toHaveBeenCalled();
+    expect(mockOrgProvider).not.toHaveBeenCalled();
     expect(providers).toHaveLength(1);
   });
 
@@ -50,8 +50,8 @@ describe('GithubBackendPlugin', () => {
       fakePluginEnvironment(fakeConfig),
     );
 
-    expect(mockEntityProvider).toBeCalled();
-    expect(mockOrgProvider).toBeCalled();
+    expect(mockEntityProvider).toHaveBeenCalled();
+    expect(mockOrgProvider).toHaveBeenCalled();
     expect(providers).toHaveLength(2);
   });
 });

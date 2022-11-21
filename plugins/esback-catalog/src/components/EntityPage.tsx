@@ -109,7 +109,7 @@ export const entityPage = (surface: EntityPageSurface) => {
       <Grid item md={8} xs={12}>
         <EntityHasSubcomponentsCard variant="gridItem" />
       </Grid>
-      {...surface.overviewContent}
+      {surface.overviewContent}
     </Grid>
   );
 
@@ -134,7 +134,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
-      {...surface.servicePageTabs}
+      {surface.servicePageTabs}
     </EntityLayout>
   );
 
@@ -159,7 +159,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
-      {...surface.websitePageTabs}
+      {surface.websitePageTabs}
     </EntityLayout>
   );
 
@@ -176,7 +176,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         {overviewContent}
       </EntityLayout.Route>
 
-      {...surface.defaultPageTabs}
+      {surface.defaultPageTabs}
     </EntityLayout>
   );
 
@@ -190,7 +190,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         {websiteEntityPage}
       </EntitySwitch.Case>
 
-      {...surface.componentPageCases}
+      {surface.componentPageCases}
 
       <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>
     </EntitySwitch>
@@ -213,7 +213,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
-      {...surface.apiPageTabs}
+      {surface.apiPageTabs}
     </EntityLayout>
   );
 
@@ -230,7 +230,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-      {...surface.userPageTabs}
+      {surface.userPageTabs}
     </EntityLayout>
   );
 
@@ -250,7 +250,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-      {...surface.groupPageTabs}
+      {surface.groupPageTabs}
     </EntityLayout>
   );
 
@@ -292,7 +292,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           unidirectional={false}
         />
       </EntityLayout.Route>
-      {...surface.systemPageTabs}
+      {surface.systemPageTabs}
     </EntityLayout>
   );
 
@@ -312,7 +312,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-      {...surface.domainPageTabs}
+      {surface.domainPageTabs}
     </EntityLayout>
   );
 

@@ -71,7 +71,7 @@ describe('SurfaceStore test', () => {
         s2.setCount(s1.data.length),
       );
 
-    expect(dependencyCycle).toThrowError();
+    expect(dependencyCycle).toThrow();
   });
 
   it('works asynchronusly', async () => {
@@ -103,12 +103,12 @@ describe('SurfaceStore test', () => {
 
     expect(store.getSurfaceState(FakeSurface1).data).toHaveLength(1);
     expect(store.getSurfaceState(FakeSurface1).data).toContain('test');
-    expect(modifier).toBeCalledTimes(1);
+    expect(modifier).toHaveBeenCalledTimes(1);
 
     store.applyTo(FakeSurface1, s => s.addData('test2'));
 
     expect(store.getSurfaceState(FakeSurface1).data).toContain('test');
     expect(store.getSurfaceState(FakeSurface1).data).toContain('test2');
-    expect(modifier).toBeCalledTimes(2);
+    expect(modifier).toHaveBeenCalledTimes(2);
   });
 });
