@@ -51,8 +51,8 @@ function reloadPageUntilElementVisible(query: () => JQuery<HTMLElement>) {
       .then(() => query())
       .then((result) => result.length === 1);
   }, {
-    interval: 2000,
-    timeout: 30000,
+    interval: 3000,
+    timeout: 60000,
     verbose: true
   });
 }
