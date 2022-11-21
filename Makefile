@@ -1,4 +1,5 @@
 SHELL = /bin/bash
+username ?= $(shell whoami)
 concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
 vault_endpoint ?= "https://runway-vault-sfo.eng.vmware.com"
 
@@ -16,6 +17,7 @@ install:
 	yarn install
 
 login-to-vault:
+	@echo "Login as $(username)"
 	vault login -address=$(vault_endpoint) -method=ldap username=$(username)
 
 e2e-environment: image
