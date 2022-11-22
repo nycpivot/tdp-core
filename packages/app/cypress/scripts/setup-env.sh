@@ -2,13 +2,9 @@
 set -euo pipefail
 
 DIR_PATH=$(dirname "$0")
-ROOT_PATH=${DIR_PATH}/../../../..
 source ${DIR_PATH}/library.sh
 
 VAULT_ADDR="${VAULT_ADDR:-https://runway-vault-sfo.eng.vmware.com}"
-VAULT_BASE_PATH="runway_concourse/esback"
-VAULT_E2E_SECRETS="${VAULT_BASE_PATH}/e2e"
-VAULT_GITLAB="${VAULT_BASE_PATH}/gitlab"
 
 if ! command -v vault &> /dev/null
 then
@@ -17,39 +13,16 @@ fi
 
 vault_token=$(VAULT_ADDR="${VAULT_ADDR}" vault token lookup | grep -w id | awk '{print $2}')
 
-#
-# Retrieve an e2e secret from vault
-#
-# Params
-# ------
-#  $1 the name of the secret to retrieve
-get_e2e_secret() {
-  value=$(vault read -address=${VAULT_ADDR} ${VAULT_E2E_SECRETS} -format=json | jq -r ".data.\"${1}\"")
-  if [[ "$value" == "null" ]]
-  then
-    fail "Secret ${1} not found."
-  fi
-  echo $value
-}
-
-get_gitlab_token() {
-  value=$(vault read -address=${VAULT_ADDR} ${VAULT_GITLAB} -format=json | jq -r ".data.\"${1}\"")
-    if [[ "$value" == "null" ]]
-    then
-      fail "Secret ${1} not found."
-    fi
-    echo $value
-}
-
 current_branch() {
   echo $(git rev-parse --abbrev-ref HEAD)
 }
 
 # Setup environment
-export BITBUCKET_SERVER_LICENSE=$(get_e2e_secret 'bitbucket_server_license')
-export GITHUB_ENTERPRISE_TOKEN=$(get_e2e_secret "github_enterprise_token")
-export GITHUB_TOKEN=$(get_e2e_secret "github_token")
-export GITLAB_TOKEN=$(get_gitlab_token "core_token")
+export BITBUCKET_SERVER_LICENSE=$(VAULT_ADDR=${VAULT_ADDR} VAULT_TOKEN=${vault_token} npx ts-node ${DIR_PATH}/src/vault/readSecret.ts runway_concourse/esback/e2e bitbucket_server_license)
+export GITHUB_ENTERPRISE_TOKEN=$(VAULT_ADDR=${VAULT_ADDR} VAULT_TOKEN=${vault_token} npx ts-node ${DIR_PATH}/src/vault/readSecret.ts runway_concourse/esback/e2e github_enterprise_token)
+export GITHUB_TOKEN=$(VAULT_ADDR=${VAULT_ADDR} VAULT_TOKEN=${vault_token} npx ts-node ${DIR_PATH}/src/vault/readSecret.ts runway_concourse/esback/e2e github_token)
+export GITLAB_TOKEN=$(VAULT_ADDR=${VAULT_ADDR} VAULT_TOKEN=${vault_token} npx ts-node ${DIR_PATH}/src/vault/readSecret.ts runway_concourse/esback/gitlab core_token)
+
 export BACKSTAGE_BASE_URL="${BACKSTAGE_BASE_URL:-http://esback:7007}"
 if [[ -z "${GIT_BRANCH:-}" ]]
 then
