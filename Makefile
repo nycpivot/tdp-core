@@ -21,7 +21,7 @@ login-to-vault:
 	vault login -address=$(vault_endpoint) -method=ldap username=$(username)
 
 e2e-environment: image
-	$(MAKE) -C packages/app/cypress setup-docker-env
+	$(MAKE) -C packages/app/cypress start-containers
 
 local-e2e: export BITBUCKET_HOST = localhost:7990
 local-e2e:

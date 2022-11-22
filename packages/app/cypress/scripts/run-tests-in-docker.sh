@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-source $(dirname "$0")/setup-env.sh
+source $(dirname "$0")/start-containers.sh
 
 # Go!
 
