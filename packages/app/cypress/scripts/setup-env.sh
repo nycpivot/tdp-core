@@ -5,20 +5,17 @@ DIR_PATH=$(dirname "$0")
 ROOT_PATH=${DIR_PATH}/../../../..
 source ${DIR_PATH}/library.sh
 
-VAULT_ADDRESS="${VAULT_ADDRESS:-https://runway-vault-sfo.eng.vmware.com}"
+VAULT_ADDR="${VAULT_ADDR:-https://runway-vault-sfo.eng.vmware.com}"
 VAULT_BASE_PATH="runway_concourse/esback"
 VAULT_E2E_SECRETS="${VAULT_BASE_PATH}/e2e"
 VAULT_GITLAB="${VAULT_BASE_PATH}/gitlab"
 
 if ! command -v vault &> /dev/null
 then
-  fail "Please install vault in your environment and login to the esback vault at this address: ${DATA_COLOR}${VAULT_ADDRESS}."
+  fail "Please install vault in your environment and login to the esback vault at this address: ${DATA_COLOR}${VAULT_ADDR}."
 fi
 
-if ! command -v jq &> /dev/null
-then
-  fail "Please install jq in your environment."
-fi
+vault_token=$(VAULT_ADDR="${VAULT_ADDR}" vault token lookup | grep -w id | awk '{print $2}')
 
 #
 # Retrieve an e2e secret from vault
@@ -27,7 +24,7 @@ fi
 # ------
 #  $1 the name of the secret to retrieve
 get_e2e_secret() {
-  value=$(vault read -address=${VAULT_ADDRESS} ${VAULT_E2E_SECRETS} -format=json | jq -r ".data.\"${1}\"")
+  value=$(vault read -address=${VAULT_ADDR} ${VAULT_E2E_SECRETS} -format=json | jq -r ".data.\"${1}\"")
   if [[ "$value" == "null" ]]
   then
     fail "Secret ${1} not found."
@@ -36,7 +33,7 @@ get_e2e_secret() {
 }
 
 get_gitlab_token() {
-  value=$(vault read -address=${VAULT_ADDRESS} ${VAULT_GITLAB} -format=json | jq -r ".data.\"${1}\"")
+  value=$(vault read -address=${VAULT_ADDR} ${VAULT_GITLAB} -format=json | jq -r ".data.\"${1}\"")
     if [[ "$value" == "null" ]]
     then
       fail "Secret ${1} not found."
