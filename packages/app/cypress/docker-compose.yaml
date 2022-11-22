@@ -52,9 +52,6 @@ services:
       - ./package.docker-compose.json:/e2e/package.json
       - ../cypress.json:/e2e/cypress.json
       - ./npmrc.example:/e2e/.npmrc
-    depends_on:
-      - esback
-      - bitbucket
     environment:
       - CYPRESS_baseUrl=http://esback:7007
       - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}

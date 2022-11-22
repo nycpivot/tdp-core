@@ -19,4 +19,5 @@ docker images
 
 echo "Running tests with docker compose"
 cd ./packages/app/cypress
+docker-compose up -d esback
 docker-compose -f ./docker-compose.ci.yaml run cypress

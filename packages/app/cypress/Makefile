@@ -1,14 +1,22 @@
 SHELL := /bin/bash
 
+check_env:
+ifndef VAULT_ADDR
+	$(error Please define VAULT_ADDR in your environment)
+endif
+ifndef BACKSTAGE_BASE_URL
+	$(error Please define BACKSTAGE_BASE_URL in your environment)
+endif
 
-docker-tests:
-	./scripts/run-tests-in-docker.sh
+start-containers: check_env
+	yarn --cwd scripts start-containers
 
-start-containers:
-	BACKSTAGE_BASE_URL=http://localhost:7007 ./scripts/start-containers.sh
+docker-tests: start-containers
+	docker-compose rm -f -v cypress
+	docker-compose run cypress
 
 local-tests:
-	CYPRESS_baseUrl=http://localhost:3000 ./scripts/run-tests.sh
+	CYPRESS_baseUrl=http://localhost:7007 ./scripts/run-tests.sh
 
 open-cypress-local:
-	$(shell CYPRESS_baseUrl=http://localhost:3000 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open)
+	$(shell CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open)
