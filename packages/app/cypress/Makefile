@@ -16,7 +16,8 @@ docker-tests: start-containers
 	docker-compose run cypress
 
 local-tests:
-	CYPRESS_baseUrl=http://localhost:7007 ./scripts/run-tests.sh
+	#CYPRESS_BITBUCKET_HOST=localhost:7990 npx ts-node ./scripts/src/wait-until-esback-ready.ts
+	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress run --browser chrome
 
 open-cypress-local:
-	$(shell CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open)
+	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open

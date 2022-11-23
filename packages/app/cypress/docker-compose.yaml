@@ -56,4 +56,4 @@ services:
       - CYPRESS_baseUrl=http://esback:7007
       - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
     working_dir: /e2e
-    entrypoint: /bin/sh -c "yarn install;/e2e/cypress/scripts/run-tests.sh"
+    entrypoint: /bin/sh -c "yarn install;yarn wait-until-esback-ready;yarn run-tests"

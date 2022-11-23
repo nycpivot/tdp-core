@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {sleepUntil, checkIfServerIsReady} from "../sleepUntil";
 
 const host = process.env.BITBUCKET_HOST;
 const auth = {
@@ -23,39 +24,11 @@ async function generateToken(): Promise<string> {
   return response.data.token
 }
 
-const sleepUntil = async (f: () => Promise<boolean>, timeoutMs: number) => {
-  return new Promise((resolve, reject) => {
-    const timeWas = new Date().getTime();
-    const wait = setInterval(async function() {
-      const ready = await f()
-      if (ready) {
-        clearInterval(wait);
-        resolve(undefined);
-      } else if (new Date().getTime() - timeWas > timeoutMs) { // Timeout
-        process.stderr.write(`rejected after ${new Date().getTime() - timeWas} ms\n`);
-        clearInterval(wait);
-        reject();
-      }
-    }, 5000);
-  });
-}
-
 async function bitbucketServerIsReady(): Promise<boolean> {
-  try {
-    const response = await axios.get(`http://${host}/status`)
-    if (response.status === 200) {
-      if (response.data.state === "RUNNING") {
-        return true
-      }
-    }
-  } catch (e) {
-    process.stderr.write(`Bitbucket Server apparently not ready yet: ${e}\n`)
-  }
-
-  return false
+  return checkIfServerIsReady(`http://${host}/status`, (response) => response.status === 200 && response.data.state === "RUNNING")
 }
 
-sleepUntil(bitbucketServerIsReady, 5*60*1000)
+sleepUntil(bitbucketServerIsReady, 5 * 60 * 1000)
   .then(generateToken)
   .then(token => process.stdout.write(token))
   .catch(error => process.stderr.write(error.toString()))
