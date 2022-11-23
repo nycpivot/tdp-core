@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { execSync } from 'child_process';
 
 export namespace Git {

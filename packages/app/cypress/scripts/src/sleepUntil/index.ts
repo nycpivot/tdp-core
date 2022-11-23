@@ -6,7 +6,7 @@ export const sleepUntil = async (
 ) => {
   return new Promise((resolve, reject) => {
     const timeWas = new Date().getTime();
-    const wait = setInterval(async function () {
+    const wait = setInterval(async () => {
       const ready = await f();
       if (ready) {
         clearInterval(wait);

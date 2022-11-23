@@ -1,4 +1,5 @@
 import * as nv from 'node-vault';
+// eslint-disable-next-line no-restricted-imports
 import { execSync } from 'child_process';
 
 function checkVaultAddressIsDefined() {

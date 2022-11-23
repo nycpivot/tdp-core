@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-restricted-imports
 import { execSync, ExecSyncOptions } from 'child_process';
+// eslint-disable-next-line no-restricted-imports
 import fs from 'fs';
 
 export namespace DockerCompose {

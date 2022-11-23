@@ -45,6 +45,7 @@ function reloadPageUntilElementVisible(query: () => JQuery<HTMLElement>) {
         cy.log('Component already there');
         return true;
       }
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
       return cy
         .reload()
         .wait(2000)
