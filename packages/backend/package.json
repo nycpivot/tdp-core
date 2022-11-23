@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "main": "dist/index.cjs.js",
   "types": "src/index.ts",
   "private": true,
@@ -16,10 +16,10 @@
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
-    "@esback/runtime-backend": "^0.0.1-alpha.1",
-    "@esback/plugin-catalog-entity-provider": "^0.0.1-alpha.1",
-    "@esback/plugin-catalog-processor": "^0.0.1-alpha.1",
-    "@esback/plugin-gitlab-backend": "^0.0.1-alpha.1",
+    "@esback/plugin-catalog-entity-provider": "^0.0.1-alpha.2",
+    "@esback/plugin-catalog-processor": "^0.0.1-alpha.2",
+    "@esback/plugin-gitlab-backend": "^0.0.1-alpha.2",
+    "@esback/runtime-backend": "^0.0.1-alpha.2",
     "app": "link:../app",
     "better-sqlite3": "^7.5.0",
     "dockerode": "^3.3.1",
