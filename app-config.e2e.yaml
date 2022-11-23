@@ -52,7 +52,7 @@ catalog:
       esback:
         host: gitlab.eng.vmware.com
         group: esback
-        entityFilename: packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-provider-component.yml
+        entityFilename: packages/app/cypress/data/gitlab/catalog/components/gitlab-provider-component.yml
         schedule:
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
