@@ -2,7 +2,7 @@ import {execSync} from "child_process";
 import {Vault} from "./vault";
 import fs from "fs"
 import {checkIfServerIsReady, sleepUntil} from "./sleepUntil";
-import {generateToken} from "./bitbucket-server/generateToken";
+import {generateToken} from "./bitbucket-server";
 
 async function startContainers() {
   const vaultAddress = process.env.VAULT_ADDR
@@ -42,6 +42,7 @@ async function startContainers() {
     cwd: `${__dirname}/../..`
   })
 
+  process.stdout.write("Waiting for Bitbucket Server to be ready (it might take a while)...")
   await sleepUntil(bitbucketServerIsReady, 5 * 60 * 1000)
   const token = await generateToken("http://localhost:7990", {
     username: "esback",

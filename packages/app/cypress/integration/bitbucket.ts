@@ -7,9 +7,7 @@ describe("Bitbucket Server", () => {
 
 
     const catalogName = `${faker.random.alpha(10)}.yml`
-    // we make the component start with `a` so that it shows up at the top of the list
-    // making it visible by cypress.
-    const componentName = `a${faker.random.alpha(10)}`
+    const componentName = `bitbucket-server-${faker.random.alpha(5)}`
     let content = `
 apiVersion: backstage.io/v1alpha1
 kind: Component
