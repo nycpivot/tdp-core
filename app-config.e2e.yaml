@@ -52,7 +52,7 @@ catalog:
       esback:
         host: gitlab.eng.vmware.com
         group: esback
-        entityFilename: packages/app/cypress/data/gitlab/catalog/components/gitlab-provider-component.yml
+        entityFilename: packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-provider-component.yml
         schedule:
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -77,7 +77,7 @@ catalog:
       rules:
         - allow: [User, Group]
     - type: url
-      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/data/gitlab/catalog/components/gitlab-integration-component.yml
+      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-integration-component.yml
     - type: url
       target: https://github.com/fouadh/foobar-backstage-component/blob/master/github-integration-component.yml
     - type: url
@@ -85,7 +85,7 @@ catalog:
     - type: system-x
       target: 'non empty string'
     - type: gitlab-discovery
-      target: https://gitlab.eng.vmware.com/esback/blob/${GIT_BRANCH}/packages/app/cypress/data/gitlab/catalog/components/gitlab-processor-component.yml
+      target: https://gitlab.eng.vmware.com/esback/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-processor-component.yml
 
 techdocs:
   builder: 'external' # Alternatives - 'external'

@@ -1,38 +1,28 @@
 import {faker} from '@faker-js/faker'
 
 describe("Bitbucket Server", () => {
-  it('should render the bitbucket server catalog', () => {
+  let componentName: string
+
+  beforeEach(() => {
     const project = createProject()
     const repo = createRepository(project);
-
-
     const catalogName = `${faker.random.alpha(10)}.yml`
-    const componentName = `bitbucket-server-${faker.random.alpha(5)}`
-    let content = `
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: bitbucket-server-integration-component
-  description: Bitbucket Server Component
-  tags:
-    - v1
-spec:
-  type: service
-  lifecycle: production
-  owner: default-team
-  system: esback
-    `
-    content = content.replace("bitbucket-server-integration-component", componentName)
 
-    commitContent(project, repo, catalogName, {
-      name: catalogName,
-      branch: "master",
-      message: "my e2e catalog",
-      content: content
-    });
+    componentName = `bitbucket-server-${faker.random.alpha(5)}`
 
-    addCatalogLocation(project, repo, `http://bitbucket:7990/projects/${project.key}/repos/${repo.name}/raw/${catalogName}`);
+    cy.fixture('bitbucket-server/component.yaml').then(content => {
+      const newContent = content.replace("bitbucket-server-integration-component", componentName)
+      commitContent(project, repo, catalogName, {
+        name: catalogName,
+        branch: "master",
+        message: "my e2e catalog",
+        content: newContent
+      });
+      addCatalogLocation(project, repo, `http://bitbucket:7990/projects/${project.key}/repos/${repo.name}/raw/${catalogName}`);
+    })
+  })
 
+  it('should render the bitbucket server catalog', () => {
     cy.visit('/')
     reloadPageUntilElementVisible(() => Cypress.$(`td:contains(${componentName})`));
     cy.contains(componentName).should("be.visible")
@@ -47,7 +37,7 @@ function reloadPageUntilElementVisible(query: () => JQuery<HTMLElement>) {
     }
     return cy
       .reload()
-      .wait(3000)
+      .wait(2000)
       .then(() => query())
       .then((result) => result.length === 1);
   }, {
