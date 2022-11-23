@@ -28,12 +28,11 @@ services:
       context: ../../..
       dockerfile: packages/backend/Dockerfile
     image: esback:integration
-    depends_on:
-      - bitbucket
     environment:
       - NODE_TLS_REJECT_UNAUTHORIZED=0 #! to skip ssl verification for our Github Enterprise
       - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
       - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
+      - BITBUCKET_TOKEN=${BITBUCKET_TOKEN}
       - GITLAB_TOKEN=${GITLAB_TOKEN}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - GITHUB_ENTERPRISE_TOKEN=${GITHUB_ENTERPRISE_TOKEN}
@@ -41,9 +40,7 @@ services:
     ports:
       - 7007:7007
     volumes:
-      - .:/e2e/cypress
       - ../../../examples/techdocs/output:/techdocs
-      - ./scripts:/scripts
     entrypoint: /bin/sh -c /e2e/cypress/scripts/start-esback.sh
   cypress:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
@@ -56,4 +53,4 @@ services:
       - CYPRESS_baseUrl=http://esback:7007
       - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
     working_dir: /e2e
-    entrypoint: /bin/sh -c "yarn install;yarn wait-until-esback-ready;yarn run-tests"
+    entrypoint: /bin/sh -c "yarn install;yarn run-tests"
