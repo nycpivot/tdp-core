@@ -13,6 +13,13 @@ docker-tests: start-containers
 	docker-compose rm -f -v cypress
 	docker-compose run cypress
 
+start-containers-with-current-environment:
+	yarn --cwd scripts --silent start-containers
+
+docker-tests-with-current-environment: start-containers-with-current-environment
+	docker-compose rm -f -v cypress
+	docker-compose run cypress
+
 local-tests:
 	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress run --browser chrome
 
