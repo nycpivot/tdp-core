@@ -18,17 +18,18 @@ clean-containers: delete-esback delete-bitbucket
 
 bitbucket:
 	eval `yarn --cwd scripts --silent build-environment bitbucket` && \
-  docker compose up -d bitbucket
+  docker-compose up -d bitbucket
 
 esback:
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
 	@eval `yarn --cwd scripts --silent build-environment esback` && \
-	BITBUCKET_TOKEN=$(token) docker compose up -d esback
+	BITBUCKET_TOKEN=$(token) docker-compose up -d esback
 
 start-containers: check_env clean-containers bitbucket esback
 
 docker-tests: export BACKSTAGE_BASE_URL=http://esback:7007
-docker-tests: start-containers
+docker-tests:
+	$(MAKE) start-containers
 	docker-compose rm -f -v cypress
 	docker-compose run cypress
 
@@ -41,9 +42,9 @@ open-cypress-local:
 
 # Pipelines commands
 start-containers-with-current-environment:
-	docker compose up -d bitbucket
+	docker-compose up -d bitbucket
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
-	BITBUCKET_TOKEN=$(token) docker compose up -d esback
+	BITBUCKET_TOKEN=$(token) docker-compose up -d esback
 
 docker-tests-with-current-environment: start-containers-with-current-environment
 	docker-compose rm -f -v cypress

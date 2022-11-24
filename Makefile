@@ -1,12 +1,7 @@
 SHELL = /bin/bash
 username ?= $(shell whoami)
 concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
-vault_endpoint ?= "https://runway-vault-sfo.eng.vmware.com"
-
-check_vault:
-ifndef VAULT_ADDR
-	$(error Please define VAULT_ADDR in your environment)
-endif
+VAULT_ADDR ?= "https://runway-vault-sfo.eng.vmware.com"
 
 build: clean install
 	yarn tsc
@@ -21,19 +16,19 @@ clean:
 install:
 	yarn install
 
-login-to-vault: check_vault
+login-to-vault:
 	@echo "Login as $(username)"
 	vault login -address=${VAULT_ADDR} -method=ldap username=$(username)
 
 e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007
-e2e-environment: check_vault image
-	$(MAKE) -C packages/app/cypress start-containers
+e2e-environment: image
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 local-e2e:
 	$(MAKE) -C packages/app/cypress local-tests
 
-docker-e2e: check_vault image
-	$(MAKE) -C packages/app/cypress docker-tests
+docker-e2e: image
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
 
 login-to-concourse:
 	fly -t esback login -c $(concourse_endpoint) -n esback
