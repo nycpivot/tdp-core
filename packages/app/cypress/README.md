@@ -15,10 +15,16 @@ You need the following tools on your machine:
 Before running any command, you need to be logged in to vault. This can be done with the command:
 
 ```shell
-make username=[PUT YOUR USERNAME HERE] login-to-vault
+make login-to-vault
 ```
 
 You will then be prompted for your password.
+
+By default, the command will use your current shell's user to connect to vault. If you need to specify another user, use the following command instead:
+
+```shell
+make login-to-vault username=[PUT YOUR USERNAME HERE] 
+```
 
 ## Running the integration tests in a docker container
 
@@ -26,23 +32,29 @@ You will then be prompted for your password.
 make docker-e2e
 ```
 
-It should build the application and its Docker image and then run the integration tests in a docker container as close as the pipeline would do.
+This command will:
+
+- build the application docker image
+- build an environment for running the integration tests
+- run the integration tests in a docker container
+
+It is very similar to what the pipeline does to run the tests.
 
 ## Setup a local environment
 
-This command will start a Bitbucket server, run ESBack using the e2e configuration and make it accessible on [http://localhost:7007](http://localhost:7007)
+It is possible to build an environment that is identical to the one used by the integration tests in the pipeline.
 
 ```shell
 make e2e-environment
 ```
 
+A Bitbucket server will be available at [http://localhost:7990](http://localhost:7990).
+
+ESBack will be available at [http://localhost:7007](http://localhost:7007).
+
 ## Running the integration tests locally
 
-To run the integration tests locally (not having them running in a docker container), you need to have a running instance of ESBack on [http://localhost:7007](http://localhost:7007).
-
-You can do it as described in the Setup a local environment section or manually if you're developing on it.
-
-Then, you should be able to execute the tests with the command:
+Once you have an environment ready, you can run the integration tests locally:
 
 ```shell
 make local-e2e
