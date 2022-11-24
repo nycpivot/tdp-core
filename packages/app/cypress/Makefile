@@ -1,15 +1,13 @@
 SHELL := /bin/bash
 
 check_env:
-ifndef VAULT_ADDR
-	$(error Please define VAULT_ADDR in your environment)
-endif
 ifndef BACKSTAGE_BASE_URL
 	$(error Please define BACKSTAGE_BASE_URL in your environment)
 endif
 
 start-containers: check_env
-	yarn --cwd scripts start-containers
+	eval `yarn --cwd scripts --silent build-environment` && \
+	yarn --cwd scripts --silent start-containers
 
 docker-tests: start-containers
 	docker-compose rm -f -v cypress

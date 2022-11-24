@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start-containers": "ts-node src/start-containers.ts"
+    "start-containers": "ts-node src/start-containers.ts",
+    "build-environment": "ts-node src/build-environment.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
