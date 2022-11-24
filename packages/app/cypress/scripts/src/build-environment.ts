@@ -1,12 +1,17 @@
 import { Vault } from './vault';
 import { Git } from './git';
 
-async function buildEnvironment() {
+async function buildEnvironment(server: string) {
   const vault = Vault.build();
+  if (server === 'bitbucket') {
+    return {
+      BITBUCKET_SERVER_LICENSE: await vault.readE2ESecret(
+        'bitbucket_server_license',
+      ),
+    };
+  }
+
   return {
-    BITBUCKET_SERVER_LICENSE: await vault.readE2ESecret(
-      'bitbucket_server_license',
-    ),
     GITHUB_ENTERPRISE_TOKEN: await vault.readE2ESecret(
       'github_enterprise_token',
     ),
@@ -22,4 +27,13 @@ function shellFormat(env: any) {
   }
 }
 
-buildEnvironment().then(env => shellFormat(env));
+if (process.argv.length !== 3) {
+  process.stderr.write(
+    'Provide which environment server you are interested in.',
+  );
+  process.exit(1);
+}
+
+const server = process.argv[2];
+
+buildEnvironment(server).then(env => shellFormat(env));

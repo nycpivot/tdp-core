@@ -3,8 +3,8 @@ import { checkIfServerIsReady, sleepUntil } from '../sleepUntil';
 
 export namespace BitbucketServer {
   export async function generateToken(): Promise<string> {
-    process.stdout.write(
-      'Waiting for Bitbucket Server to be ready (it might take a while)...',
+    process.stderr.write(
+      'Waiting for Bitbucket Server to be ready (it might take a while)...\n',
     );
     await waitUntilReady();
 

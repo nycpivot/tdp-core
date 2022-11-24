@@ -29,11 +29,9 @@ e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007
 e2e-environment: check_vault image
 	$(MAKE) -C packages/app/cypress start-containers
 
-local-e2e: export BITBUCKET_HOST = localhost:7990
 local-e2e:
 	$(MAKE) -C packages/app/cypress local-tests
 
-docker-e2e: export BACKSTAGE_BASE_URL=http://esback:7007
 docker-e2e: check_vault image
 	$(MAKE) -C packages/app/cypress docker-tests
 

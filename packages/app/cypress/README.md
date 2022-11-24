@@ -23,7 +23,7 @@ You will then be prompted for your password.
 By default, the command will use your current shell's user to connect to vault. If you need to specify another user, use the following command instead:
 
 ```shell
-make login-to-vault username=[PUT YOUR USERNAME HERE] 
+make login-to-vault username=[PUT YOUR USERNAME HERE]
 ```
 
 ## Running the integration tests in a docker container

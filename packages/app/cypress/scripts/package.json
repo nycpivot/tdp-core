@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start-containers": "ts-node src/start-containers.ts",
-    "build-environment": "ts-node src/build-environment.ts"
+    "build-environment": "ts-node src/build-environment.ts",
+    "generate-bitbucket-server-token": "ts-node src/generate-bitbucket-server-token.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
