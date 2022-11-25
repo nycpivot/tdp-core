@@ -1,7 +1,11 @@
-import { BackendPluginInterface, BackendPluginSurface } from '@esback/core';
+import {
+  BackendPluginInterface,
+  BackendPluginSurface,
+  PluginEnvironment,
+  BackendCatalogSurface,
+} from '@esback/core';
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { Router } from 'express';
-import { PluginEnvironment, BackendCatalogSurface } from '@esback/core';
 
 const catalog = (surface: BackendCatalogSurface) => {
   return async (env: PluginEnvironment): Promise<Router> => {
