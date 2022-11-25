@@ -1,0 +1,51 @@
+{
+  "config": {
+    "indexing": "full",
+    "lang": ["en"],
+    "min_search_length": 3,
+    "prebuild_index": false,
+    "separator": "[\\s\\-]+"
+  },
+  "docs": [
+    {
+      "location": "",
+      "text": "Example Techdocs \u00b6 Example Techdocs",
+      "title": "Example Techdocs"
+    },
+    {
+      "location": "#example-techdocs",
+      "text": "Example Techdocs",
+      "title": "Example Techdocs"
+    },
+    {
+      "location": "example_section_1/page-1/",
+      "text": "Example Page 1 \u00b6",
+      "title": "First Page"
+    },
+    {
+      "location": "example_section_1/page-1/#example-page-1",
+      "text": "",
+      "title": "Example Page 1"
+    },
+    {
+      "location": "example_section_1/page-2/",
+      "text": "Example Page 2 \u00b6",
+      "title": "Second Page"
+    },
+    {
+      "location": "example_section_1/page-2/#example-page-2",
+      "text": "",
+      "title": "Example Page 2"
+    },
+    {
+      "location": "example_section_2/page-3/",
+      "text": "Example Page 3 \u00b6",
+      "title": "Third Page"
+    },
+    {
+      "location": "example_section_2/page-3/#example-page-3",
+      "text": "",
+      "title": "Example Page 3"
+    }
+  ]
+}
