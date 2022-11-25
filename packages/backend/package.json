@@ -16,8 +16,8 @@
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
-    "@esback/plugin-catalog-entity-provider": "^0.0.1-alpha.2",
-    "@esback/plugin-catalog-processor": "^0.0.1-alpha.2",
+    "@esback/plugin-test-entity-provider": "^0.0.1-alpha.2",
+    "@esback/plugin-test-entity-processor": "^0.0.1-alpha.2",
     "@esback/plugin-gitlab-backend": "^0.0.1-alpha.2",
     "@esback/runtime-backend": "^0.0.1-alpha.2",
     "app": "link:../app",
