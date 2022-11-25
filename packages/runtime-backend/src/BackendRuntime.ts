@@ -8,12 +8,16 @@ import {
 } from '@esback/core';
 import { BackendRunner } from './BackendRunner';
 import { plugin as catalogBackendPlugin } from '@esback/plugin-catalog-backend';
+import { plugin as techdocsBackendPlugin } from '@esback/plugin-techdocs-backend';
 
 export class BackendRuntime {
   private readonly _surfaces: SurfaceStore;
 
   constructor(plugins: EsbackPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
+
+    catalogBackendPlugin()(this._surfaces);
+    techdocsBackendPlugin()(this._surfaces);
 
     this._surfaces.applyTo(BackendPluginSurface, pluginSurface => {
       pluginSurface.setMainApp(app);
@@ -28,7 +32,6 @@ export class BackendRuntime {
       });
     });
 
-    plugins.push(catalogBackendPlugin());
     plugins.forEach(plugin => plugin(this._surfaces));
   }
 
