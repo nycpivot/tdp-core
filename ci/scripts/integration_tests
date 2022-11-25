@@ -21,4 +21,5 @@ echo "Running tests with docker compose"
 cd ./packages/app/cypress
 apk add yarn
 yarn --cwd scripts install
+cat Makefile
 make docker-tests-with-current-environment

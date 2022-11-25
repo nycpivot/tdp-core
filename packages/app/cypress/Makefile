@@ -42,6 +42,7 @@ open-cypress-local:
 
 # Pipelines commands
 start-containers-with-current-environment:
+	ls -la
 	docker-compose up -d bitbucket
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
 	BITBUCKET_TOKEN=$(token) docker-compose up -d esback
