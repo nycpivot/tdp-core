@@ -41,12 +41,17 @@ open-cypress-local:
 	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open
 
 # Pipelines commands
-start-containers-with-current-environment:
-	ls -la
-	docker-compose up -d bitbucket
-	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
-	BITBUCKET_TOKEN=$(token) docker-compose up -d esback
+pipeline-bitbucket:
+	@echo "Starting bitbucket"
+	docker-compose -f ./docker-compose.ci.yaml up -d bitbucket
 
-docker-tests-with-current-environment: start-containers-with-current-environment
-	docker-compose rm -f -v cypress
-	docker-compose run cypress
+pipeline-esback:
+	@echo "Starting esback"
+	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
+	BITBUCKET_TOKEN=$(token) docker-compose -f ./docker-compose.ci.yaml up -d esback
+
+pipeline-start-containers: pipeline-bitbucket pipeline-esback
+
+pipeline-tests: pipeline-start-containers
+	@echo "Running pipeline tests"
+	docker-compose -f ./docker-compose.ci.yaml run cypress
