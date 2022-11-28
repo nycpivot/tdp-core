@@ -1,1 +1,1 @@
-export { CatalogEntityProviderPlugin as plugin } from './CatalogEntityProviderPlugin';
+export { TestEntityProviderPlugin as plugin } from './TestEntityProviderPlugin';
