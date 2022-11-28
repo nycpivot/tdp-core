@@ -1,6 +1,7 @@
 # Techdocs
 
 This directory contains:
+
 - docs: contains md files for generating techdocs
 - mkdocs.yaml: instructions for building techdocs
 - output: contains pre-built sample techdocs
