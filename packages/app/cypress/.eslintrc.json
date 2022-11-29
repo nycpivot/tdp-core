@@ -1,5 +1,5 @@
 {
-  "plugins": ["cypress"],
+  "plugins": ["cypress", "todo-format"],
   "extends": ["plugin:cypress/recommended"],
   "rules": {
     "jest/expect-expect": [
@@ -16,6 +16,7 @@
         "peerDependencies": true,
         "bundledDependencies": true
       }
-    ]
+    ],
+    "todo-format/todo-format": "error"
   }
 }
