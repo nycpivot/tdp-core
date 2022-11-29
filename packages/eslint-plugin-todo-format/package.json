@@ -9,8 +9,7 @@
     "lint": "eslint -c .eslintrc.js '{**/*,*}.{js,ts}'",
     "test": "jest"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/eslint": "^8.4.2",
     "@types/estree": "^0.0.50",

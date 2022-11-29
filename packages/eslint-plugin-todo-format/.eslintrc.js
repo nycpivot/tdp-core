@@ -11,16 +11,10 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:prettier/recommended',
     'plugin:promise/recommended',
-    'plugin:regexp/all'
+    'plugin:regexp/all',
   ],
-  ignorePatterns: [
-      "dist/",
-      "coverage/",
-      ".eslintrc.js",
-      "jest.config.js"
-  ],
-  overrides: [
-  ],
+  ignorePatterns: ['dist/', 'coverage/', '.eslintrc.js', 'jest.config.js'],
+  overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -40,7 +34,7 @@ module.exports = {
           order: 'asc',
           caseInsensitive: false,
         },
-      }
+      },
     ],
-  }
+  },
 }
