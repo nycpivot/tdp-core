@@ -18,7 +18,9 @@ import './commands';
 declare global {
   namespace Cypress {
     interface Chainable {
-      reloadPageUntilElementVisible(query: () => JQuery<HTMLElement>): Chainable<Element>
+      reloadPageUntilElementVisible(
+        query: () => JQuery<HTMLElement>,
+      ): Chainable<Element>;
     }
   }
 }
