@@ -1,5 +1,5 @@
 export namespace Catalog {
-  export function addCatalogLocation(path: string) {
+  export function addCatalogLocation(type: string, target: string) {
     cy.request({
       method: 'POST',
       url: `/api/catalog/locations`,
@@ -8,8 +8,8 @@ export namespace Catalog {
         'Content-Type': 'application/json',
       },
       body: {
-        type: 'url',
-        target: path,
+        type: type,
+        target: target,
       },
     }).then(() => {
       cy.log('file added to repository');

@@ -56,6 +56,7 @@ describe('Catalog Plugin', () => {
           content: newContent,
         });
         Catalog.addCatalogLocation(
+          'url',
           `http://bitbucket:7990/projects/${project.key}/repos/${repo.name}/raw/${catalogName}`,
         );
       });
