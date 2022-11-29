@@ -11,13 +11,13 @@ import { appRenderer } from './appRenderer';
 export class AppRuntime {
   private readonly _surfaces: SurfaceStore;
 
-  constructor(pluginExports: EsbackPluginInterface[] = []) {
+  constructor(plugins: EsbackPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
     catalogPlugin()(this._surfaces);
     this._surfaces.applyTo(AppRouteSurface, routes =>
       routes.setDefault('catalog'),
     );
-    pluginExports.forEach(pe => pe(this._surfaces));
+    plugins.forEach(plugin => plugin(this._surfaces));
   }
 
   public render() {
