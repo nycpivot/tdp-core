@@ -1,5 +1,5 @@
 {
-  "name": "@esback/plugin-catalog-entity-provider",
+  "name": "@esback/plugin-catalog-test-entity-processor",
   "version": "0.0.1-alpha.2",
   "main": "src/index.ts",
   "types": "src/index.ts",
@@ -22,7 +22,8 @@
   "dependencies": {
     "@backstage/catalog-model": "^1.1.2",
     "@backstage/plugin-catalog-node": "^1.2.0",
-    "@esback/core": "^0.0.1-alpha.2"
+    "@esback/core": "^0.0.1-alpha.2",
+    "yaml": "^2.1.3"
   },
   "devDependencies": {
     "@backstage/cli": "^0.18.0",
