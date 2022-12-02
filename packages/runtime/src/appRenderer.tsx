@@ -58,7 +58,7 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
       {routeSurface.defaultRoute && (
         <Navigate key="/" to={routeSurface.defaultRoute} />
       )}
-      {...routeSurface.nonDefaultRoutes}
+      {routeSurface.nonDefaultRoutes}
       <Route path="/settings" element={<UserSettingsPage />} />
     </FlatRoutes>
   );

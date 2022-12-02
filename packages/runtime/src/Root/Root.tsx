@@ -84,7 +84,7 @@ export const Root = ({ sidebar, children }: PropsWithChildren<IRoot>) => (
       </SidebarGroup>
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {...sidebar.all}
+        {sidebar.all}
         <SidebarDivider />
       </SidebarGroup>
       <SidebarSpace />

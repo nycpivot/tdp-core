@@ -56,6 +56,13 @@ catalog:
         schedule:
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
+    github:
+      esback:
+        host: cmbu-githubent01.eng.vmware.com
+        organization: 'esback'
+        catalogPath: '/catalog-info.yaml'
+        filters:
+          branch: 'main'
   rules:
     - allow: [Component, System, API, Resource, Location]
   locations:
@@ -91,3 +98,11 @@ techdocs:
     local:
       # (Optional). Set this to specify where the generated documentation is stored.
       publishDirectory: '/techdocs'
+
+esback:
+  catalog:
+    providers:
+      github:
+        orgEntity:
+          id: production
+          orgUrl: 'https://cmbu-githubent01.eng.vmware.com/esback'
