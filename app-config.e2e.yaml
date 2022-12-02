@@ -81,3 +81,13 @@ catalog:
       target: 'non empty string'
     - type: gitlab-discovery
       target: https://gitlab.eng.vmware.com/esback/blob/${GIT_BRANCH}/packages/app/cypress/data/gitlab/catalog/components/gitlab-processor-component.yml
+
+techdocs:
+  builder: 'external' # Alternatives - 'external'
+  generator:
+    runIn: 'docker' # Alternatives - 'local'
+  publisher:
+    type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
+    local:
+      # (Optional). Set this to specify where the generated documentation is stored.
+      publishDirectory: '/techdocs'

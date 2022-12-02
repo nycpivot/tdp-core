@@ -7,18 +7,18 @@ import {
 import { AppRuntime } from './AppRuntime';
 
 describe('AppRuntime', () => {
-  it('should apply catalog by default', () => {
+  it('should apply default plugins (catalog, techdocs)', () => {
     const runtime = new AppRuntime();
 
     const sidebarItemSurface =
       runtime.surfaces.getSurfaceState(SidebarItemSurface);
     const routeSurface = runtime.surfaces.getSurfaceState(AppRouteSurface);
-    expect(sidebarItemSurface.all).toHaveLength(1);
+    expect(sidebarItemSurface.all).toHaveLength(2);
     expect(routeSurface.defaultRoute).toBe('catalog');
-    expect(routeSurface.nonDefaultRoutes).toHaveLength(4);
+    expect(routeSurface.nonDefaultRoutes).toHaveLength(6);
   });
 
-  it('should add catalog plugin to provided plugin list', () => {
+  it('should add default plugins (catalog, techdocs) to provided plugin list', () => {
     const fakePlugin: EsbackPluginInterface = context =>
       context.applyTo(SidebarItemSurface, surface =>
         surface.add(<>Fake Item</>),
@@ -27,7 +27,7 @@ describe('AppRuntime', () => {
     const runtime = new AppRuntime([fakePlugin]);
     expect(
       runtime.surfaces.getSurfaceState(SidebarItemSurface).all,
-    ).toHaveLength(2);
+    ).toHaveLength(3);
   });
 
   it('should allow plugins to change default route', () => {

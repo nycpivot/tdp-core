@@ -1,0 +1,12 @@
+site_name: 'ESBack'
+site_description: 'Example Techdocs'
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Example Section 1:
+      - First Page: 'example_section_1/page-1.md'
+      - Second Page: 'example_section_1/page-2.md'
+  - Example Section 2:
+      - Third Page: 'example_section_2/page-3.md'

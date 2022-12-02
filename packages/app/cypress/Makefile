@@ -8,4 +8,4 @@ setup-docker-env:
 	BACKSTAGE_BASE_URL=http://localhost:7007 ./scripts/setup-local-env.sh
 
 local-tests:
-	CYPRESS_baseUrl=http://localhost:7007 ./scripts/run-tests.sh
+	CYPRESS_baseUrl=http://localhost:3000 ./scripts/run-tests.sh
