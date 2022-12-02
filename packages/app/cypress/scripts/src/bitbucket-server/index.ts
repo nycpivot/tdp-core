@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { checkIfServerIsReady, sleepUntil } from '../sleepUntil';
+import { checkIfServerIsReady, retry } from '../sleepUntil';
 
 export namespace BitbucketServer {
   export async function generateToken(): Promise<string> {
@@ -33,11 +33,14 @@ export namespace BitbucketServer {
   }
 }
 
+const FIVE_MINUTES = 5 * 60 * 1000;
+
 async function waitUntilReady() {
-  await sleepUntil(bitbucketServerIsReady, 5 * 60 * 1000);
+  const now = new Date();
+  await retry(bitbucketServerIsReady, new Date(now.getTime() + FIVE_MINUTES));
 }
 
-async function bitbucketServerIsReady(): Promise<boolean> {
+async function bitbucketServerIsReady(): Promise<void> {
   return checkIfServerIsReady(
     `http://localhost:7990/status`,
     response => response.status === 200 && response.data.state === 'RUNNING',

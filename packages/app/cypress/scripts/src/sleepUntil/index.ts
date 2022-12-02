@@ -1,45 +1,69 @@
 import axios from 'axios';
 
-export const sleepUntil = async (
-  f: () => Promise<boolean>,
-  timeoutMs: number,
+const asyncCallWithTimeout = async (
+  asyncPromise: Promise<void>,
+  timeLimit: number,
 ) => {
-  return new Promise((resolve, reject) => {
-    const timeWas = new Date().getTime();
-    const wait = setInterval(async () => {
-      const ready = await f();
-      if (ready) {
-        clearInterval(wait);
-        resolve(undefined);
-      } else if (new Date().getTime() - timeWas > timeoutMs) {
-        // Timeout
-        process.stderr.write(
-          `rejected after ${new Date().getTime() - timeWas} ms\n`,
-        );
-        clearInterval(wait);
-        reject();
-      }
-    }, 5000);
+  let timeoutHandle: NodeJS.Timeout;
+
+  const timeoutPromise = new Promise<boolean>((_resolve, reject) => {
+    timeoutHandle = setTimeout(
+      () => reject(new Error('Async call timeout limit reached')),
+      timeLimit,
+    );
+  });
+
+  return Promise.race([asyncPromise, timeoutPromise]).then(result => {
+    clearTimeout(timeoutHandle);
+    return result;
   });
 };
 
+export async function retry(
+  operation: () => Promise<void>,
+  until: Date,
+  interval = 10000,
+): Promise<any> {
+  return await operation().catch(async error => {
+    const now = new Date();
+    const timeLeft = until.getTime() - now.getTime();
+    if (timeLeft > 0) {
+      process.stderr.write(
+        `[Time left: ${timeLeft / 1000} seconds]: ${error.message}\n`,
+      );
+      await pause(interval);
+      return retry(operation, until, interval);
+    }
+    throw new Error('Timeout reached');
+  });
+}
+
+function pause(delay: number) {
+  return new Promise(resolve => setTimeout(resolve, delay));
+}
 type validateResponse = (response: { data: any; status: number }) => boolean;
 
 export const checkIfServerIsReady = async (
   endpoint: string,
   validator: validateResponse,
-): Promise<boolean> => {
+): Promise<void> => {
   try {
     const response = await axios.get(endpoint);
-    return validator({
+    const ready = validator({
       data: response.data,
       status: response.status,
     });
+    if (ready) {
+      return Promise.resolve();
+    }
+    return Promise.reject(
+      new Error(
+        `Server not ready yet. Response: ${response.status} - ${response.statusText}`,
+      ),
+    );
   } catch (e) {
-    process.stderr.write(
-      `Server apparently not ready yet at address ${endpoint}: ${e}\n`,
+    return Promise.reject(
+      new Error(`Server apparently not ready yet at address ${endpoint}: ${e}`),
     );
   }
-
-  return false;
 };
