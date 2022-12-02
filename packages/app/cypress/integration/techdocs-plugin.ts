@@ -23,4 +23,4 @@ describe('Techdocs Plugin', () => {
       '/docs/default/Component/example-website',
     );
   });
-})
+});
