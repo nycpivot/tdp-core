@@ -34,10 +34,10 @@ docker-tests:
 	docker-compose run cypress
 
 local-tests:
-	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress run --browser chrome
+	CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress run --browser chrome
 
 open-cypress-local:
-	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open
+	CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open
 
 # Pipelines commands
 pipeline-bitbucket:

@@ -25,10 +25,10 @@ e2e-environment: image
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 local-e2e:
-	$(MAKE) -C packages/app/cypress local-tests
+	CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress local-tests
 
 open-cypress:
-	$(MAKE) -C packages/app/cypress open-cypress-local
+	CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress open-cypress-local
 
 docker-e2e: image
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
