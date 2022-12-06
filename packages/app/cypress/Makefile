@@ -33,7 +33,6 @@ docker-tests:
 	docker-compose rm -f -v cypress
 	docker-compose run cypress
 
-local-tests: export BITBUCKET_HOST = localhost:7990
 local-tests:
 	CYPRESS_baseUrl=http://localhost:7007 CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress run --browser chrome
 
