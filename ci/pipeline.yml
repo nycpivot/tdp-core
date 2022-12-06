@@ -162,7 +162,7 @@ jobs:
           params:
             ESBACK_VERSION: ((.:version))
             GIT_BRANCH: ((git_branch))
-            NPM_REGISTRY: https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local
+            NPM_REGISTRY: artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local
             NPM_TOKEN: ((artifactory.NPM_AUTH_TOKEN))
           run:
             dir: built-code
