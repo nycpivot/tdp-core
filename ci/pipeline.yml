@@ -142,7 +142,7 @@ jobs:
             trigger: true
           - do:
               - get: version
-                passed: [integration-tests]
+                passed: [build]
                 trigger: true
               - load_var: version
                 file: version/version
