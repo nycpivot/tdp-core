@@ -109,3 +109,10 @@ If your build fails or hangs:
     All the jobs for your merge request should appear and the failing job(s) should be immediately apparent.
 
 1.  Click on the failing job to drill down and view the errors/failures.
+
+##### Common CI failures
+
+Occasionally the build will fail due to network issues, or other flaky reasons.
+If the build fails for one of these reasons, retrigger the build.
+
+1.  Failure to push an image to harbor with 401 response.
