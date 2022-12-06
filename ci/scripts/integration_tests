@@ -19,4 +19,6 @@ docker images
 
 echo "Running tests with docker compose"
 cd ./packages/app/cypress
-docker-compose -f ./docker-compose.ci.yaml run cypress
+apk add yarn
+yarn --cwd scripts install
+make pipeline-tests

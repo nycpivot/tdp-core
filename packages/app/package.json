@@ -30,7 +30,9 @@
     "cross-env": "^7.0.0",
     "cypress": "^9.7.0",
     "eslint-plugin-cypress": "^2.10.3",
-    "start-server-and-test": "^1.10.11"
+    "start-server-and-test": "^1.10.11",
+    "cypress-wait-until": "^1.7.2",
+    "@faker-js/faker": "^7.6.0"
   },
   "scripts": {
     "start": "backstage-cli package start",

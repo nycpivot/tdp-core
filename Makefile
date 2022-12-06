@@ -1,6 +1,8 @@
 SHELL = /bin/bash
+username ?= $(shell whoami)
 concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
-vault_endpoint ?= "https://runway-vault-sfo.eng.vmware.com"
+VAULT_ADDR ?= "https://runway-vault-sfo.eng.vmware.com"
+CYPRESS_baseUrl ?= "http://localhost:3000"
 
 build: clean install
 	yarn tsc
@@ -16,16 +18,21 @@ install:
 	yarn install
 
 login-to-vault:
-	vault login -address=$(vault_endpoint) -method=ldap username=$(username)
+	@echo "Login as $(username)"
+	vault login -address=${VAULT_ADDR} -method=ldap username=$(username)
 
+e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007
 e2e-environment: image
-	$(MAKE) -C packages/app/cypress setup-docker-env
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 local-e2e:
-	$(MAKE) -C packages/app/cypress local-tests
+	CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress local-tests
+
+open-cypress:
+	CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress open-cypress-local
 
 docker-e2e: image
-	$(MAKE) -C packages/app/cypress docker-tests
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
 
 login-to-concourse:
 	fly -t esback login -c $(concourse_endpoint) -n esback
