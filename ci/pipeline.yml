@@ -133,3 +133,49 @@ jobs:
           github_enterprise_token: ((e2e.github_enterprise_token))
           git_branch: ((git_branch))
           bitbucket_server_license: ((e2e.bitbucket_server_license))
+  - name: publish
+    plan:
+      - in_parallel:
+          - get: code
+            resource: esback-core
+            passed: [integration-tests]
+            trigger: true
+          - do:
+              - get: version
+                passed: [integration-tests]
+                trigger: true
+              - load_var: version
+                file: version/version
+                reveal: true
+      - task: yarn-build
+        file: code/ci/yarn-build.yml
+      - task: lerna-publish
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
+              tag: 16-buster-slim
+          inputs:
+            - name: built-code
+          params:
+            ESBACK_VERSION: ((.:version))
+            GIT_BRANCH: ((git_branch))
+            NPM_REGISTRY: https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local
+            NPM_TOKEN: ((artifactory.NPM_AUTH_TOKEN))
+          run:
+            dir: built-code
+            path: bash
+            args:
+              - -exc
+              - |
+                ci/scripts/yarn_install
+                apt update && apt install git-all --yes
+                npm set "//$NPM_REGISTRY/:_authToken" $NPM_TOKEN
+                git checkout "$GIT_BRANCH"
+                yarn run lerna version "$ESBACK_VERSION" --no-push --yes
+                yarn run lerna publish from-package --yes
+      - put: esback-core
+        params:
+          tag: version/version
