@@ -179,3 +179,4 @@ jobs:
       - put: esback-core
         params:
           tag: version/version
+          only_tag: true
