@@ -7,6 +7,7 @@ import {
 } from '@esback/core';
 import { plugin as catalogPlugin } from '@esback/plugin-catalog';
 import { plugin as techdocsPlugin } from '@esback/plugin-techdocs';
+import { plugin as searchPlugin } from '@esback/plugin-search';
 import { appRenderer } from './appRenderer';
 
 export class AppRuntime {
@@ -17,6 +18,7 @@ export class AppRuntime {
 
     catalogPlugin()(this._surfaces);
     techdocsPlugin()(this._surfaces);
+    searchPlugin()(this._surfaces);
 
     this._surfaces.applyTo(AppRouteSurface, routes =>
       routes.setDefault('catalog'),

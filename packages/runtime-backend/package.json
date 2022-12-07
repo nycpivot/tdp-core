@@ -32,7 +32,8 @@
     "@backstage/plugin-proxy-backend": "^0.2.28",
     "@esback/core": "^0.0.1-alpha.2",
     "@esback/plugin-catalog-backend": "^0.0.1-alpha.2",
-    "@esback/plugin-techdocs-backend": "^0.0.1-alpha.1"
+    "@esback/plugin-techdocs-backend": "^0.0.1-alpha.1",
+    "@esback/plugin-search-backend": "^0.0.1-alpha.1"
   },
   "peerDependencies": {
     "dockerode": "^3.3.1",

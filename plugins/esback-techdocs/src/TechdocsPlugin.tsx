@@ -11,7 +11,6 @@ import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import {
   TechDocsIndexPage,
   techdocsPlugin,
-  TechDocsReaderLayout,
   TechDocsReaderPage,
 } from '@backstage/plugin-techdocs';
 import { catalogPlugin } from '@backstage/plugin-catalog';
@@ -30,11 +29,7 @@ export const TechdocsPlugin: AppPluginInterface<RoutableConfig> = config => {
       routes.add(
         <Route
           path={`/${path}/:namespace/:kind/:name/*`}
-          element={
-            <TechDocsReaderPage>
-              <TechDocsReaderLayout withSearch={false} />
-            </TechDocsReaderPage>
-          }
+          element={<TechDocsReaderPage />}
         />,
       );
 

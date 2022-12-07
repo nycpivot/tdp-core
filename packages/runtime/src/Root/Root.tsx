@@ -23,7 +23,6 @@ import {
   Settings as SidebarSettings,
   UserSettingsSignInAvatar,
 } from '@backstage/plugin-user-settings';
-import { SidebarSearchModal } from '@backstage/plugin-search';
 import {
   Sidebar,
   sidebarConfig,
@@ -34,7 +33,6 @@ import {
   useSidebarOpenState,
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import { SidebarItemSurface } from '@esback/core';
 
 const useSidebarLogoStyles = makeStyles({
@@ -79,9 +77,7 @@ export const Root = ({ sidebar, children }: PropsWithChildren<IRoot>) => (
   <SidebarPage>
     <Sidebar>
       <SidebarLogo />
-      <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
-        <SidebarSearchModal />
-      </SidebarGroup>
+      {...sidebar.topItems}
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
         {sidebar.all}

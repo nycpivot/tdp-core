@@ -9,6 +9,7 @@ import {
 import { BackendRunner } from './BackendRunner';
 import { plugin as catalogBackendPlugin } from '@esback/plugin-catalog-backend';
 import { plugin as techdocsBackendPlugin } from '@esback/plugin-techdocs-backend';
+import { plugin as searchBackendPlugin } from '@esback/plugin-search-backend';
 
 export class BackendRuntime {
   private readonly _surfaces: SurfaceStore;
@@ -18,6 +19,7 @@ export class BackendRuntime {
 
     catalogBackendPlugin()(this._surfaces);
     techdocsBackendPlugin()(this._surfaces);
+    searchBackendPlugin()(this._surfaces);
 
     this._surfaces.applyTo(BackendPluginSurface, pluginSurface => {
       pluginSurface.setMainApp(app);
