@@ -7,7 +7,7 @@ import {
 import { AppRuntime } from './AppRuntime';
 
 describe('AppRuntime', () => {
-  it('should apply default plugins (catalog, techdocs)', () => {
+  it('should apply default plugins (catalog, techdocs, search)', () => {
     const runtime = new AppRuntime();
 
     const sidebarItemSurface =
@@ -15,7 +15,7 @@ describe('AppRuntime', () => {
     const routeSurface = runtime.surfaces.getSurfaceState(AppRouteSurface);
     expect(sidebarItemSurface.all).toHaveLength(2);
     expect(routeSurface.defaultRoute).toBe('catalog');
-    expect(routeSurface.nonDefaultRoutes).toHaveLength(6);
+    expect(routeSurface.nonDefaultRoutes).toHaveLength(7);
   });
 
   it('should add default plugins (catalog, techdocs) to provided plugin list', () => {
