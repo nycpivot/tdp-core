@@ -5,6 +5,9 @@ ifndef BACKSTAGE_BASE_URL
 	$(error Please define BACKSTAGE_BASE_URL in your environment)
 endif
 
+install_scripts:
+	cd scripts && yarn
+
 delete-esback:
 	docker-compose stop esback
 	docker-compose rm -fv esback
@@ -25,7 +28,7 @@ esback:
 	@eval `yarn --cwd scripts --silent build-environment esback` && \
 	BITBUCKET_TOKEN=$(token) docker-compose up -d esback
 
-start-containers: check_env clean-containers bitbucket esback
+start-containers: check_env install_scripts clean-containers bitbucket esback
 
 docker-tests: export BACKSTAGE_BASE_URL=http://esback:7007
 docker-tests:
