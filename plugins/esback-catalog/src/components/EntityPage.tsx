@@ -44,6 +44,13 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 import { EntityPageSurface } from '../EntityPageSurface';
+import {
+  EntityApiDefinitionCard,
+  EntityConsumedApisCard,
+  EntityConsumingComponentsCard,
+  EntityProvidedApisCard,
+  EntityProvidingComponentsCard,
+} from '@backstage/plugin-api-docs';
 
 export const entityPage = (surface: EntityPageSurface) => {
   const cicdContent = (
@@ -121,6 +128,17 @@ export const entityPage = (surface: EntityPageSurface) => {
 
       <EntityLayout.Route path="/ci-cd" title="CI/CD">
         {cicdContent}
+      </EntityLayout.Route>
+
+      <EntityLayout.Route path="/api" title="API">
+        <Grid container spacing={3} alignItems="stretch">
+          <Grid item md={6}>
+            <EntityProvidedApisCard />
+          </Grid>
+          <Grid item md={6}>
+            <EntityConsumedApisCard />
+          </Grid>
+        </Grid>
       </EntityLayout.Route>
 
       <EntityLayout.Route path="/dependencies" title="Dependencies">
@@ -201,14 +219,26 @@ export const entityPage = (surface: EntityPageSurface) => {
       <EntityLayout.Route path="/" title="Overview">
         <Grid container spacing={3}>
           {entityWarningContent}
-          <Grid item md={6}>
+          <Grid item xs={12} md={6}>
             <EntityAboutCard />
           </Grid>
-          <Grid item md={6} xs={12}>
-            <EntityCatalogGraphCard variant="gridItem" height={400} />
+          <Grid container>
+            <Grid item md={12}>
+              <Grid item xs={12} md={6}>
+                <EntityProvidingComponentsCard />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <EntityConsumingComponentsCard />
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item md={4} xs={12}>
-            <EntityLinksCard />
+        </Grid>
+      </EntityLayout.Route>
+
+      <EntityLayout.Route path="/definition" title="Definition">
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <EntityApiDefinitionCard />
           </Grid>
         </Grid>
       </EntityLayout.Route>

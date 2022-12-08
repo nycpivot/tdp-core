@@ -19,7 +19,18 @@ spec:
   lifecycle: experimental
   owner: guests
   system: examples
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-service
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
   providesApis: [example-grpc-api]
+  consumesApis: [example-openapi-api]
 ---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
 apiVersion: backstage.io/v1alpha1
@@ -41,3 +52,27 @@ spec:
     message ExampleMessage {
       string example = 1;
     };
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: example-openapi-api
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  definition: |
+    openapi: 3.0.0
+    info:
+      version: 1.0.0
+      title: Sample API
+      description: A sample API to illustrate OpenAPI concepts
+    paths:
+      /list:
+        get:
+          description: Returns a list of stuff
+          responses:
+            '200':
+              description: Successful response
