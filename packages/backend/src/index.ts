@@ -3,10 +3,12 @@ import { plugin as catalogTestEntityProviderPlugin } from '@esback/plugin-catalo
 import { plugin as catalogTestEntityProcessorPlugin } from '@esback/plugin-catalog-test-entity-processor';
 import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-backend';
 import { plugin as githubPlugin } from '@esback/plugin-github-backend';
+import { plugin as kubernetesPlugin } from '@esback/plugin-kubernetes-backend';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
   catalogTestEntityProcessorPlugin(),
   gitlabPlugin(),
   githubPlugin(),
+  kubernetesPlugin(),
 ]).start();

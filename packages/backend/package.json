@@ -21,6 +21,7 @@
     "@esback/plugin-gitlab-backend": "^0.0.1-alpha.2",
     "@esback/runtime-backend": "^0.0.1-alpha.2",
     "@esback/plugin-github-backend": "^0.0.1-alpha.1",
+    "@esback/plugin-kubernetes-backend": "^0.0.1-alpha.1",
     "app": "link:../app",
     "better-sqlite3": "^7.5.0",
     "dockerode": "^3.3.1",
