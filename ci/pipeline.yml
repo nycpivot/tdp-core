@@ -159,6 +159,8 @@ jobs:
               tag: 16-buster-slim
           inputs:
             - name: built-code
+          outputs:
+            - name: built-code
           params:
             ESBACK_VERSION: ((.:version))
             GIT_BRANCH: ((git_branch))
@@ -178,5 +180,6 @@ jobs:
                 yarn run lerna publish from-package --yes
       - put: esback-core
         params:
+          repository: built-code
           tag: version/version
           only_tag: true
