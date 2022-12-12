@@ -6,11 +6,11 @@ import {
 
 import { CatalogClient } from '@backstage/catalog-client';
 import { Router } from 'express';
-import {KubernetesBuilder} from '@backstage/plugin-kubernetes-backend';
+import { KubernetesBuilder } from '@backstage/plugin-kubernetes-backend';
 
 const createPlugin = () => {
   return async (env: PluginEnvironment): Promise<Router> => {
-    const catalogApi = new CatalogClient({discoveryApi: env.discovery});
+    const catalogApi = new CatalogClient({ discoveryApi: env.discovery });
 
     const { router } = await KubernetesBuilder.createBuilder({
       logger: env.logger,
@@ -19,8 +19,8 @@ const createPlugin = () => {
     }).build();
 
     return router;
-  }
-}
+  };
+};
 
 export const KubernetesBackendPlugin: BackendPluginInterface = () => surfaces =>
   surfaces.applyTo(BackendPluginSurface, surface => {
