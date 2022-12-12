@@ -1,11 +1,11 @@
-import {AppPluginInterface, AppRouteSurface} from "@esback/core";
-import {Route} from "react-router";
-import {AppLiveViewPage} from "@esback/plugin-app-live-view"
+import { AppPluginInterface, AppRouteSurface } from '@esback/core';
+import { Route } from 'react-router';
+import { AppLiveViewPage } from '@esback/plugin-app-live-view';
 
 export const AppLiveViewPlugin: AppPluginInterface = () => context => {
-  context.applyTo(AppRouteSurface, (surface) => {
+  context.applyTo(AppRouteSurface, surface => {
     surface.add(
-      <Route path="/app-live-view" element={<AppLiveViewPage />}></Route>
-    )
-  })
-}
+      <Route path="/app-live-view" element={<AppLiveViewPage />}></Route>,
+    );
+  });
+};
