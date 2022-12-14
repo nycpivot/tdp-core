@@ -4,7 +4,7 @@ import { plugin as catalogTestEntityProcessorPlugin } from '@esback/plugin-catal
 import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-backend';
 import { plugin as githubPlugin } from '@esback/plugin-github-backend';
 import { plugin as kubernetesPlugin } from '@esback/plugin-kubernetes-backend';
-import { plugin as kubernetesLoggingPlugin } from '@esback/plugin-kubernetes-logging-backend-interface';
+import { plugin as kubernetesLoggingPlugin } from '@esback/plugin-kubernetes-logging-backend';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),

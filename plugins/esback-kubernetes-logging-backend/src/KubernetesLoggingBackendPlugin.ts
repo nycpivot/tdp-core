@@ -1,5 +1,5 @@
 import { CatalogClient } from '@backstage/catalog-client';
-import { createRouter } from '@esback/plugin-kubernetes-logging-backend';
+import { createRouter } from '@esback/kubernetes-logging-backend';
 import { Router } from 'express';
 import {
   BackendPluginInterface,
