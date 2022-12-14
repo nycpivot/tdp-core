@@ -108,3 +108,28 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+
+kubernetes:
+  customResources:
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'configurations'
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'revisions'
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'routes'
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'services'
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: config
+      clusters:
+        - url: http://127.0.0.1:61007
+          name: host
+          authProvider: serviceAccount
+          serviceAccountToken:
+          skipTLSVerify: true
