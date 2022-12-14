@@ -17,6 +17,7 @@ resources:
     icon: gitlab
     source:
       uri: https://gitlab.eng.vmware.com/esback/core.git
+      fetch_tags: false
       branch: ((git_branch))
       username: ((gitlab.username))
       password: ((gitlab.core_token))
@@ -180,6 +181,6 @@ jobs:
                 yarn run lerna publish from-package --yes
       - put: esback-core
         params:
-          repository: built-code
+          repository: code
           tag: version/version
           only_tag: true
