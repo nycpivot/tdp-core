@@ -217,20 +217,23 @@ export const entityPage = (surface: EntityPageSurface) => {
   const apiPage = (
     <EntityLayout>
       <EntityLayout.Route path="/" title="Overview">
-        <Grid container spacing={3}>
+        <Grid container direction="row" spacing={3}>
           {entityWarningContent}
-          <Grid item xs={12} md={6}>
-            <EntityAboutCard />
-          </Grid>
-          <Grid container>
-            <Grid item md={12}>
-              <Grid item xs={12} md={6}>
-                <EntityProvidingComponentsCard />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <EntityConsumingComponentsCard />
+          <Grid container item>
+            <Grid item md={6} xs={12}>
+              <EntityAboutCard variant="fullHeight" />
+            </Grid>
+            <Grid container item md={6} xs={12}>
+              <Grid item md={12} xs={12}>
+                <EntityLinksCard />
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <EntityProvidingComponentsCard />
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <EntityConsumingComponentsCard />
           </Grid>
         </Grid>
       </EntityLayout.Route>
