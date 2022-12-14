@@ -64,7 +64,18 @@ catalog:
         filters:
           branch: 'main'
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow:
+        [
+          Component,
+          Domain,
+          System,
+          API,
+          Group,
+          User,
+          Resource,
+          Location,
+          Template,
+        ]
   locations:
     - type: file
       target: /app/examples/entities.yaml
@@ -86,6 +97,10 @@ catalog:
       target: 'non empty string'
     - type: gitlab-discovery
       target: https://gitlab.eng.vmware.com/esback/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-processor-component.yml
+    - type: url
+      target: https://github.com/sample-accelerators/tanzu-java-web-app/blob/main/catalog/catalog-info.yaml
+    - type: url
+      target: https://github.com/tanzu-demo/tap-gui-catalogs/blob/main/blank/catalog-info.yaml
 
 techdocs:
   builder: 'external' # Alternatives - 'external'
@@ -104,3 +119,114 @@ esback:
         orgEntity:
           id: production
           orgUrl: 'https://cmbu-githubent01.eng.vmware.com/esback'
+
+kubernetes:
+  customResources:
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'configurations'
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'revisions'
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'routes'
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'services'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clusterconfigtemplates'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clusterdeliveries'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clusterdeploymenttemplates'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clusterimagetemplates'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clusterruntemplates'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clustersourcetemplates'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clustersupplychains'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'clustertemplates'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'deliverables'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'runnables'
+    - group: 'carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'workloads'
+    - group: 'source.toolkit.fluxcd.io'
+      apiVersion: 'v1beta1'
+      plural: 'gitrepositories'
+    - group: 'conventions.carto.run'
+      apiVersion: 'v1alpha1'
+      plural: 'podintents'
+    - group: 'kpack.io'
+      apiVersion: 'v1alpha2'
+      plural: 'images'
+    - group: 'kpack.io'
+      apiVersion: 'v1alpha2'
+      plural: 'builds'
+    - group: 'scanning.apps.tanzu.vmware.com'
+      apiVersion: 'v1beta1'
+      plural: 'sourcescans'
+    - group: 'scanning.apps.tanzu.vmware.com'
+      apiVersion: 'v1beta1'
+      plural: 'scanpolicies'
+    - group: 'scanning.apps.tanzu.vmware.com'
+      apiVersion: 'v1beta1'
+      plural: 'imagescans'
+    - group: 'scanning.apps.tanzu.vmware.com'
+      apiVersion: 'v1beta1'
+      plural: 'scantemplates'
+    - group: 'source.apps.tanzu.vmware.com'
+      apiVersion: 'v1alpha1'
+      plural: 'imagerepositories'
+    - group: 'tekton.dev'
+      apiVersion: 'v1beta1'
+      plural: 'pipelineruns'
+    - group: 'tekton.dev'
+      apiVersion: 'v1beta1'
+      plural: 'taskruns'
+    - group: 'kappctrl.k14s.io'
+      apiVersion: 'v1alpha1'
+      plural: 'apps'
+    - group: 'networking.internal.knative.dev'
+      apiVersion: 'v1alpha1'
+      plural: 'serverlessservices'
+    - group: 'autoscaling.internal.knative.dev'
+      apiVersion: 'v1alpha1'
+      plural: 'podautoscalers'
+    - group: 'source.apps.tanzu.vmware.com'
+      apiVersion: 'v1alpha1'
+      plural: 'mavenartifacts'
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: config
+      clusters:
+        - url: ${GKE_CONTROL_PLANE_ENDPOINT}
+          name: gke-cluster
+          authProvider: serviceAccount
+          serviceAccountToken: ${GKE_SERVICE_ACCOUNT_TOKEN}
+          skipTLSVerify: true
+          skipMetricsLookup: true
+
+proxy:
+  '/app-live-view':
+    target: ${GKE_APP_LIVE_VIEW_ENDPOINT}
+    changeOrigin: true
+    headers:
+      X-Custom-Source: project-star
