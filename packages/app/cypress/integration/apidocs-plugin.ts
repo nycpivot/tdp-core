@@ -21,4 +21,9 @@ describe('API Docs Plugin', () => {
     cy.contains('example-grpc-api');
     cy.contains('example-openapi-api');
   });
+
+  it('should render any external hyperlinks for the API', () => {
+    cy.visit('/catalog/default/api/example-grpc-api');
+    cy.contains('http://www.example.com');
+  });
 });

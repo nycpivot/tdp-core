@@ -37,6 +37,8 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: example-grpc-api
+  links:
+    - url: http://www.example.com
 spec:
   type: grpc
   lifecycle: experimental
