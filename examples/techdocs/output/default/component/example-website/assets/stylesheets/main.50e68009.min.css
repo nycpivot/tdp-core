@@ -4107,7 +4107,11 @@ html .md-typeset :is(.admonition-title, summary):last-child {
   mask-size: contain;
 }
 .md-typeset
-  :-webkit-any(.admonition, details):-webkit-any(.warning, .caution, .attention) {
+  :-webkit-any(.admonition, details):-webkit-any(
+    .warning,
+    .caution,
+    .attention
+  ) {
   border-color: #ff9100;
 }
 .md-typeset

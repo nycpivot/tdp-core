@@ -59,3 +59,11 @@ Once you have an environment ready, you can run the integration tests locally:
 ```shell
 make local-e2e
 ```
+
+## GKE Cluster
+
+In order to test the kubernetes integration, we are using [a dedicated GKE cluster](https://console.cloud.google.com/kubernetes/clusters/details/us-central1-a/esback-gke-01/details?hl=fr&project=tap-activation-program). TAP has been
+installed on this cluster thanks to [the multi-cloud-testing project](https://gitlab.eng.vmware.com/project-star/multi-cloud-testing).
+
+The credentials used to connect to this cluster can be found [in the vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/gke). The service account used to connect to the cluster is `tap-gui`
+that is available in the `tap-gui` namespace.

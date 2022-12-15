@@ -41,4 +41,8 @@ export class Vault {
   readGitlabSecret(key: string): Promise<string> {
     return this.read('runway_concourse/esback/gitlab', key);
   }
+
+  readGkeSecret(key: string): Promise<string> {
+    return this.read('runway_concourse/esback/gke', key);
+  }
 }

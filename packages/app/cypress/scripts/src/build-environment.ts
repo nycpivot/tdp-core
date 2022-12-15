@@ -23,6 +23,15 @@ async function buildEnvironment(serverType: ServerType) {
         GITHUB_TOKEN: await vault.readE2ESecret('github_token'),
         GITLAB_TOKEN: await vault.readGitlabSecret('core_token'),
         GIT_BRANCH: Git.currentBranch(),
+        GKE_CONTROL_PLANE_ENDPOINT: await vault.readGkeSecret(
+          'control_plane_endpoint',
+        ),
+        GKE_APP_LIVE_VIEW_ENDPOINT: await vault.readGkeSecret(
+          'app_live_view_endpoint',
+        ),
+        GKE_SERVICE_ACCOUNT_TOKEN: await vault.readGkeSecret(
+          'service_account_token',
+        ),
       };
     default:
       throw new Error(`Unknown server ${serverType}`);

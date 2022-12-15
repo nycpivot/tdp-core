@@ -134,6 +134,9 @@ jobs:
           github_enterprise_token: ((e2e.github_enterprise_token))
           git_branch: ((git_branch))
           bitbucket_server_license: ((e2e.bitbucket_server_license))
+          gke_control_plane_endpoint: ((gke.control_plane_endpoint))
+          gke_app_live_view_endpoint: ((gke.app_live_view_endpoint))
+          gke_service_account_token: ((gke.service_account_token))
   - name: publish
     plan:
       - in_parallel:
