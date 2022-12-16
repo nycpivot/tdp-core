@@ -176,10 +176,10 @@ jobs:
             args:
               - -exc
               - |
-                ci/scripts/yarn_install
                 apt update && apt install git-all --yes
                 npm set "//$NPM_REGISTRY/:_authToken" $NPM_TOKEN
                 git checkout "$GIT_BRANCH"
+                yarn config set unsafe-perm true
                 yarn run lerna version "$ESBACK_VERSION" --no-push --yes
                 yarn run lerna publish from-package --yes
       - put: esback-core
