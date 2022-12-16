@@ -1,6 +1,8 @@
+import { Authentication } from '../support/authentication';
+
 describe('Gitlab Backend Plugin', () => {
   beforeEach(() => {
-    cy.visit('/');
+    Authentication.guestLogin();
   });
 
   it('should render the component from the provider', () => {

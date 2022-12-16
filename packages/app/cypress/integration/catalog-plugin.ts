@@ -1,8 +1,13 @@
 import { Bitbucket } from '../support/bitbucket';
 import { faker } from '@faker-js/faker';
 import { Catalog } from '../support/catalog';
+import { Authentication } from '../support/authentication';
 
 describe('Catalog Plugin', () => {
+  beforeEach(() => {
+    Authentication.guestLogin();
+  });
+
   it('should render the title', () => {
     cy.visit('/');
     cy.contains('VMware Catalog');

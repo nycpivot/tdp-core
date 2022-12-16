@@ -1,6 +1,8 @@
+import { Authentication } from '../support/authentication';
+
 describe("Esback's Github Plugin", () => {
   beforeEach(() => {
-    cy.visit('/');
+    Authentication.guestLogin();
   });
 
   it('should render components from org repositories', () => {

@@ -1,4 +1,10 @@
+import { Authentication } from '../support/authentication';
+
 describe('Techdocs Plugin', () => {
+  beforeEach(() => {
+    Authentication.guestLogin();
+  });
+
   it('should render a link to the docs in the sidebar', () => {
     cy.visit('/');
     cy.contains('div[data-testid="sidebar-root"]', 'Docs');
