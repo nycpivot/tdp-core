@@ -1,5 +1,4 @@
 import app from './plugins/app';
-import auth from './plugins/auth';
 import proxy from './plugins/proxy';
 import {
   BackendPluginSurface,
@@ -10,6 +9,7 @@ import { BackendRunner } from './BackendRunner';
 import { plugin as catalogBackendPlugin } from '@esback/plugin-catalog-backend';
 import { plugin as techdocsBackendPlugin } from '@esback/plugin-techdocs-backend';
 import { plugin as searchBackendPlugin } from '@esback/plugin-search-backend';
+import { plugin as authBackendPlugin } from '@esback/plugin-auth-backend';
 
 export class BackendRuntime {
   private readonly _surfaces: SurfaceStore;
@@ -20,13 +20,10 @@ export class BackendRuntime {
     catalogBackendPlugin()(this._surfaces);
     techdocsBackendPlugin()(this._surfaces);
     searchBackendPlugin()(this._surfaces);
+    authBackendPlugin()(this._surfaces);
 
     this._surfaces.applyTo(BackendPluginSurface, pluginSurface => {
       pluginSurface.setMainApp(app);
-      pluginSurface.addPlugin({
-        name: 'auth',
-        pluginFn: auth,
-      });
 
       pluginSurface.addPlugin({
         name: 'proxy',
