@@ -10,10 +10,8 @@ import {
   defaultAuthProviderFactories,
 } from '@backstage/plugin-auth-backend';
 
-const createPlugin = function (
-  signInProviderSurface: SignInProviderResolverSurface,
-) {
-  return async function (env: PluginEnvironment): Promise<Router> {
+const createPlugin = (signInProviderSurface: SignInProviderResolverSurface) => {
+  return async (env: PluginEnvironment): Promise<Router> => {
     return await createRouter({
       logger: env.logger,
       config: env.config,

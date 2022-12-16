@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@backstage/plugin-catalog-backend": "^1.3.0",
+    "@backstage/plugin-auth-backend": "^0.17.1",
     "@esback/core": "^0.0.1-alpha.2",
     "@esback/plugin-auth-backend": "^0.0.1-alpha.1",
     "express": "^4.17.1"
