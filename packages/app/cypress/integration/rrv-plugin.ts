@@ -1,6 +1,8 @@
+import { Authentication } from '../support/authentication';
+
 describe('RRV Plugin', () => {
   beforeEach(() => {
-    cy.visit('/');
+    Authentication.guestLogin();
   });
 
   it('should render the runtime resources and the pod logs', () => {

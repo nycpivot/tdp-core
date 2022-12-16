@@ -1,4 +1,10 @@
+import { Authentication } from '../support/authentication';
+
 describe('Search Plugin', () => {
+  beforeEach(() => {
+    Authentication.guestLogin();
+  });
+
   it('displays the search page', () => {
     cy.visit('/search');
     cy.contains('Results per page:');
