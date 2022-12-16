@@ -1,19 +1,4 @@
-import {
-  AuthProviderConfig,
-  AuthResolverContext,
-} from '@backstage/plugin-auth-backend';
-import { Config } from '@backstage/config';
-import winston from 'winston';
-
-export type SignInProvider = {
-  options: {
-    providerId: string;
-    globalConfig: AuthProviderConfig;
-    config: Config;
-    logger: winston.Logger;
-    resolverContext: AuthResolverContext;
-  };
-};
+export type SignInProvider = {};
 
 export class SignInProviderResolverSurface {
   private _signInProvidersResolvers = {};

@@ -19,7 +19,6 @@ export const AzureAuthBackendPlugin: BackendPluginInterface =
                   },
                 });
               },
-              // resolver: providers.github.resolvers.usernameMatchingUserEntityName(),
             },
           }),
         });
