@@ -9,7 +9,7 @@ export const LoginPlugin: AppPluginInterface = () => {
       AppComponentSurface,
       LoginSurface,
       (appComponentSurface, loginSurface) => {
-        if(loginSurface.allProviders().length > 0) {
+        if (loginSurface.allProviders().length > 0) {
           appComponentSurface.add('SignInPage', props => {
             return (
               <SignInPage {...props} providers={loginSurface.allProviders()} />

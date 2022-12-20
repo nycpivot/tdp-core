@@ -13,7 +13,6 @@ RUN tar xzf skeleton.tar.gz && rm skeleton.tar.gz
 RUN yarn install --frozen-lockfile --production --network-timeout 300000 && rm -rf "$(yarn cache dir)"
 
 COPY packages/backend/dist/bundle.tar.gz app-config.e2e.yaml ./
-COPY examples /app/examples
 RUN tar xzf bundle.tar.gz && rm bundle.tar.gz
 
 CMD ["node", "packages/backend", "--config", "app-config.e2e.yaml"]

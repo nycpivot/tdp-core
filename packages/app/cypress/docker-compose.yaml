@@ -44,6 +44,7 @@ services:
       - 7007:7007
     volumes:
       - ../../../examples/techdocs/output:/techdocs
+      - ../../../examples:/app/examples
   cypress:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
     volumes:
