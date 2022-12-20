@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Git is required for lerna publish
+apt update && apt install git-all --yes
+
+npm set "//$NPM_REGISTRY/:_authToken" $NPM_TOKEN
+git checkout "$GIT_BRANCH"
+
+# This line is required for lerna to be able to run the
+# prepack and postpack tasks when publishing
+yarn config set unsafe-perm true
+
+# Make sure that the version we are about to publish doesn't
+# exits in the npm registry
+
+core_versions=$(yarn info --silent "@esback/core" versions)
+if [[ "$core_versions" == *"$ESBACK_VERSION"* ]]; then
+        echo "Version $ESBACK_VERSION already exists in the npm registry"
+        exit 1
+fi
+
+yarn run lerna version "$ESBACK_VERSION" --no-push --yes
+yarn run lerna publish from-package --yes

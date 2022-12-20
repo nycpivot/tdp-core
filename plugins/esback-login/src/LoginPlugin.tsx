@@ -9,14 +9,13 @@ export const LoginPlugin: AppPluginInterface = () => {
       AppComponentSurface,
       LoginSurface,
       (appComponentSurface, loginSurface) => {
-        // TODO: ESBACK-151 - uncomment if we want to allow
-        // if(loginSurface.allProviders().length > 0) {
-        appComponentSurface.add('SignInPage', props => {
-          return (
-            <SignInPage {...props} providers={loginSurface.allProviders()} />
-          );
-        });
-        // }
+        if(loginSurface.allProviders().length > 0) {
+          appComponentSurface.add('SignInPage', props => {
+            return (
+              <SignInPage {...props} providers={loginSurface.allProviders()} />
+            );
+          });
+        }
       },
     );
   };
