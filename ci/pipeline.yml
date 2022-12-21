@@ -155,6 +155,8 @@ jobs:
         file: code/ci/yarn-build.yml
       - task: lerna-publish
         file: code/ci/publish.yml
+        vars:
+          git_branch: ((git_branch))
       - put: esback-core
         params:
           repository: code
