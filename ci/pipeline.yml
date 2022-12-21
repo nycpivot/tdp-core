@@ -147,7 +147,6 @@ jobs:
           - do:
               - get: version
                 passed: [build]
-                trigger: true
               - load_var: version
                 file: version/version
                 reveal: true
