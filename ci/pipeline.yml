@@ -154,7 +154,7 @@ jobs:
       - task: yarn-build
         file: code/ci/yarn-build.yml
       - task: lerna-publish
-        file: built-code/ci/publish.yml
+        file: code/ci/publish.yml
       - put: esback-core
         params:
           repository: code
