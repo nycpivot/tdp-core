@@ -137,6 +137,9 @@ jobs:
           gke_control_plane_endpoint: ((gke.control_plane_endpoint))
           gke_app_live_view_endpoint: ((gke.app_live_view_endpoint))
           gke_service_account_token: ((gke.service_account_token))
+          gke_oidc_control_plane_endpoint: ((gke_oidc.control_plane_endpoint))
+          gke_oidc_client_id: ((gke_oidc.client_id))
+          gke_oidc_client_secret: ((gke_oidc.client_secret))
   - name: publish
     plan:
       - in_parallel:

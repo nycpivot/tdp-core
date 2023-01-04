@@ -223,6 +223,11 @@ kubernetes:
           serviceAccountToken: ${GKE_SERVICE_ACCOUNT_TOKEN}
           skipTLSVerify: true
           skipMetricsLookup: true
+        - url: ${GKE_OIDC_CONTROL_PLANE_ENDPOINT}
+          name: esback-oidc
+          authProvider: google
+          skipTLSVerify: true
+          skipMetricsLookup: false
 
 proxy:
   '/app-live-view':
@@ -230,3 +235,10 @@ proxy:
     changeOrigin: true
     headers:
       X-Custom-Source: project-star
+
+auth:
+  providers:
+    google:
+      development:
+        clientId: ${GKE_OIDC_CLIENT_ID}
+        clientSecret: ${GKE_OIDC_CLIENT_SECRET}

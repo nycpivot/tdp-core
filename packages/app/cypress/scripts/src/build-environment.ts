@@ -32,6 +32,15 @@ async function buildEnvironment(serverType: ServerType) {
         GKE_SERVICE_ACCOUNT_TOKEN: await vault.readGkeSecret(
           'service_account_token',
         ),
+        GKE_OIDC_CONTROL_PLANE_ENDPOINT: await vault.readGkeOidcSecret(
+          'control_plane_endpoint',
+        ),
+        GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret(
+          'client_id',
+        ),
+        GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret(
+          'client_secret',
+        ),
       };
     default:
       throw new Error(`Unknown server ${serverType}`);

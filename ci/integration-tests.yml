@@ -23,6 +23,9 @@ params:
   GKE_CONTROL_PLANE_ENDPOINT: ((gke_control_plane_endpoint))
   GKE_APP_LIVE_VIEW_ENDPOINT: ((gke_app_live_view_endpoint))
   GKE_SERVICE_ACCOUNT_TOKEN: ((gke_service_account_token))
+  GKE_OIDC_CONTROL_PLANE_ENDPOINT: ((gke_oidc_control_plane_endpoint))
+  GKE_OIDC_CLIENT_ID: ((gke_oidc_client_id))
+  GKE_OIDC_CLIENT_SECRET: ((gke_oidc_client_secret))
 run:
   dir: code
   path: ci/scripts/integration_tests

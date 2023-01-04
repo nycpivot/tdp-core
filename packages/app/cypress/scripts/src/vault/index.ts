@@ -45,4 +45,8 @@ export class Vault {
   readGkeSecret(key: string): Promise<string> {
     return this.read('runway_concourse/esback/gke', key);
   }
+
+  readGkeOidcSecret(key: string) {
+    return this.read('runway_concourse/esback/gke_oidc', key);
+  }
 }
