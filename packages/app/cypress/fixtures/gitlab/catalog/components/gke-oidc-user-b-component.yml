@@ -3,7 +3,8 @@ kind: Component
 metadata:
   name: gke-user-b-nginx
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app=nginx'
+    'backstage.io/kubernetes-namespace': 'user-b'
+    'backstage.io/kubernetes-label-selector': 'owner=userb'
 spec:
   type: service
   lifecycle: production
