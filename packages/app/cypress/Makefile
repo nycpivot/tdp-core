@@ -34,6 +34,7 @@ docker-tests: export BACKSTAGE_BASE_URL=http://esback:7007
 docker-tests:
 	$(MAKE) start-containers
 	docker-compose rm -f -v cypress
+	@eval `yarn --cwd scripts --silent build-environment cypress` && \
 	docker-compose run cypress
 
 local-tests:
