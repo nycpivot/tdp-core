@@ -42,19 +42,19 @@ describe('RRV Plugin', () => {
 
   describe('rbac', () => {
     beforeEach(() => {
-      cy.viewport(1000, 1000)
-    })
+      cy.viewport(1000, 1000);
+    });
 
     it('should show k8s resources for user A', () => {
       cy.contains(/gke-user-a-nginx/i).click();
       cy.contains(/runtime resources/i).click();
       cy.contains(/usera-server/i).should('be.visible');
-    })
+    });
 
     it('should not show k8s resources for user B', () => {
       cy.contains(/gke-user-b-nginx/i).click();
       cy.contains(/runtime resources/i).click();
       cy.contains(/userb-server/i).should('not.exist');
-    })
-  })
+    });
+  });
 });

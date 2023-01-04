@@ -36,18 +36,16 @@ async function buildEnvironment(serverType: ServerType) {
         GKE_OIDC_CONTROL_PLANE_ENDPOINT: await vault.readGkeOidcSecret(
           'control_plane_endpoint',
         ),
-        GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret(
-          'client_id',
-        ),
-        GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret(
-          'client_secret',
-        ),
+        GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret('client_id'),
+        GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret('client_secret'),
       };
     case ServerType.cypress:
       return {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
-        CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret('google_user_a_refresh_token')
-      }
+        CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
+          'google_user_a_refresh_token',
+        ),
+      };
     default:
       throw new Error(`Unknown server ${serverType}`);
   }
@@ -66,5 +64,6 @@ if (process.argv.length !== 3) {
   process.exit(1);
 }
 
-const server: ServerType = ServerType[process.argv[2] as keyof typeof ServerType];
+const server: ServerType =
+  ServerType[process.argv[2] as keyof typeof ServerType];
 buildEnvironment(server).then(env => shellFormat(env));
