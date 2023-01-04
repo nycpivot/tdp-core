@@ -26,6 +26,7 @@ params:
   GKE_OIDC_CONTROL_PLANE_ENDPOINT: ((gke_oidc_control_plane_endpoint))
   GKE_OIDC_CLIENT_ID: ((gke_oidc_client_id))
   GKE_OIDC_CLIENT_SECRET: ((gke_oidc_client_secret))
+  GOOGLE_USER_A_REFRESH_TOKEN: ((google_user_a_refresh_token))
 run:
   dir: code
   path: ci/scripts/integration_tests
