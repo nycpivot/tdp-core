@@ -11,6 +11,7 @@ import { plugin as searchPlugin } from '@esback/plugin-search';
 import { plugin as apiDocsPlugin } from '@esback/plugin-api-docs';
 import { plugin as loginPlugin } from '@esback/plugin-login';
 import { appRenderer } from './appRenderer';
+import './style/clarity.css';
 
 export class AppRuntime {
   private readonly _surfaces: SurfaceStore;

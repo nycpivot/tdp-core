@@ -1,0 +1,217 @@
+/*!
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ *
+ * Clarity v@VERSION | MIT license | https://github.com/vmware/clarity
+ *
+ */
+
+/* stylelint-disable-next-line meowtec/no-px */
+/* stylelint-disable */
+/* stylelint-enable */
+/* stylelint-disable-next-line meowtec/no-px */
+/* stylelint-disable */
+/* stylelint-enable */
+:root {
+  --clr-color-neutral-0: white;
+  --clr-color-neutral-50: #fafafa;
+  --clr-color-neutral-100: #f2f2f2;
+  --clr-color-neutral-200: #e8e8e8;
+  --clr-color-neutral-300: #dedede;
+  --clr-color-neutral-400: #cccccc;
+  --clr-color-neutral-500: #b3b3b3;
+  --clr-color-neutral-600: #8c8c8c;
+  --clr-color-neutral-700: #666666;
+  --clr-color-neutral-800: #454545;
+  --clr-color-neutral-900: #333333;
+  --clr-color-neutral-1000: black;
+  --clr-color-on-neutral-0: black;
+  --clr-color-on-neutral-50: black;
+  --clr-color-on-neutral-100: black;
+  --clr-color-on-neutral-200: black;
+  --clr-color-on-neutral-300: black;
+  --clr-color-on-neutral-400: black;
+  --clr-color-on-neutral-500: black;
+  --clr-color-on-neutral-600: white;
+  --clr-color-on-neutral-700: white;
+  --clr-color-on-neutral-800: white;
+  --clr-color-on-neutral-900: white;
+  --clr-color-on-neutral-1000: white;
+  --clr-color-action-50: #e3f5fc;
+  --clr-color-action-100: #c8eaf9;
+  --clr-color-action-200: #9bd8f3;
+  --clr-color-action-300: #79c6e6;
+  --clr-color-action-400: #49aeda;
+  --clr-color-action-500: #179bd3;
+  --clr-color-action-600: #0072a3;
+  --clr-color-action-700: #00648f;
+  --clr-color-action-800: #00567a;
+  --clr-color-action-900: #004b6b;
+  --clr-color-action-1000: #00364d;
+  --clr-color-on-action-50: black;
+  --clr-color-on-action-100: black;
+  --clr-color-on-action-200: black;
+  --clr-color-on-action-300: black;
+  --clr-color-on-action-400: black;
+  --clr-color-on-action-500: black;
+  --clr-color-on-action-600: white;
+  --clr-color-on-action-700: white;
+  --clr-color-on-action-800: white;
+  --clr-color-on-action-900: white;
+  --clr-color-on-action-1000: white;
+  --clr-color-secondary-action-50: #f7e6ff;
+  --clr-color-secondary-action-100: #e6caf1;
+  --clr-color-secondary-action-200: #d2aae4;
+  --clr-color-secondary-action-300: #c090d5;
+  --clr-color-secondary-action-400: #af73c9;
+  --clr-color-secondary-action-500: #9e57bc;
+  --clr-color-secondary-action-600: #8a39ac;
+  --clr-color-secondary-action-700: #781d9f;
+  --clr-color-secondary-action-800: #680094;
+  --clr-color-secondary-action-900: #4f0070;
+  --clr-color-secondary-action-1000: #320047;
+  --clr-color-on-secondary-action-50: black;
+  --clr-color-on-secondary-action-100: black;
+  --clr-color-on-secondary-action-200: black;
+  --clr-color-on-secondary-action-300: black;
+  --clr-color-on-secondary-action-400: black;
+  --clr-color-on-secondary-action-500: white;
+  --clr-color-on-secondary-action-600: white;
+  --clr-color-on-secondary-action-700: white;
+  --clr-color-on-secondary-action-800: white;
+  --clr-color-on-secondary-action-900: white;
+  --clr-color-on-secondary-action-1000: white;
+  --clr-color-danger-50: #fff2f0;
+  --clr-color-danger-100: #feddd7;
+  --clr-color-danger-200: #fcc5bb;
+  --clr-color-danger-300: #f59e8f;
+  --clr-color-danger-400: #f27963;
+  --clr-color-danger-500: #f35e44;
+  --clr-color-danger-600: #f52d0a;
+  --clr-color-danger-700: #db2100;
+  --clr-color-danger-800: #c21d00;
+  --clr-color-danger-900: #991700;
+  --clr-color-danger-1000: #660f00;
+  --clr-color-on-danger-50: black;
+  --clr-color-on-danger-100: black;
+  --clr-color-on-danger-200: black;
+  --clr-color-on-danger-300: black;
+  --clr-color-on-danger-400: black;
+  --clr-color-on-danger-500: black;
+  --clr-color-on-danger-600: black;
+  --clr-color-on-danger-700: white;
+  --clr-color-on-danger-800: white;
+  --clr-color-on-danger-900: white;
+  --clr-color-on-danger-1000: white;
+  --clr-color-warning-50: #fffae6;
+  --clr-color-warning-100: #fff4c7;
+  --clr-color-warning-200: #ffeea8;
+  --clr-color-warning-300: #fee272;
+  --clr-color-warning-400: #f8cf2a;
+  --clr-color-warning-500: #efc006;
+  --clr-color-warning-600: #e6b000;
+  --clr-color-warning-700: #d69a00;
+  --clr-color-warning-800: #ad7600;
+  --clr-color-warning-900: #8f5a00;
+  --clr-color-warning-1000: #613200;
+  --clr-color-on-warning-50: black;
+  --clr-color-on-warning-100: black;
+  --clr-color-on-warning-200: black;
+  --clr-color-on-warning-300: black;
+  --clr-color-on-warning-400: black;
+  --clr-color-on-warning-500: black;
+  --clr-color-on-warning-600: black;
+  --clr-color-on-warning-700: black;
+  --clr-color-on-warning-800: black;
+  --clr-color-on-warning-900: black;
+  --clr-color-on-warning-1000: white;
+  --clr-color-success-50: #dff0d0;
+  --clr-color-success-100: #bce49a;
+  --clr-color-success-200: #73dc1e;
+  --clr-color-success-300: #68c71a;
+  --clr-color-success-400: #5eb715;
+  --clr-color-success-500: #5aa220;
+  --clr-color-success-600: #4b970c;
+  --clr-color-success-700: #3c8500;
+  --clr-color-success-800: #306b00;
+  --clr-color-success-900: #255200;
+  --clr-color-success-1000: #1e4200;
+  --clr-color-on-success-50: black;
+  --clr-color-on-success-100: black;
+  --clr-color-on-success-200: black;
+  --clr-color-on-success-300: black;
+  --clr-color-on-success-400: black;
+  --clr-color-on-success-500: black;
+  --clr-color-on-success-600: black;
+  --clr-color-on-success-700: white;
+  --clr-color-on-success-800: white;
+  --clr-color-on-success-900: white;
+  --clr-color-on-success-1000: white;
+}
+
+:root {
+  --clr-global-borderradius: 0.15rem;
+  --clr-global-borderwidth: 0.05rem;
+  --clr-global-app-background: #fafafa;
+  --clr-global-selection-color: #d8e3e9;
+  --clr-global-on-selection-color: black;
+  --clr-global-hover-color: #e8e8e8;
+  --clr-global-content-header-font-color: black;
+  --clr-global-font-color: #666666;
+  --clr-global-success-color: #5aa220;
+  --clr-global-error-color: #c21d00;
+  --clr-close-color--normal: #8c8c8c;
+  --clr-close-color--normal-opacity: 0.2;
+  --clr-close-color--hover: black;
+  --clr-close-color--hover-opacity: 0.5;
+  --clr-popover-box-shadow-color: rgba(140, 140, 140, 0.25);
+}
+
+:root {
+  --clr-font: Metropolis, Avenir Next, Helvetica Neue, Arial, sans-serif;
+  --clr-display-font: var(--clr-font);
+  --clr-font-weight-light: 200;
+  --clr-font-weight-regular: 400;
+  --clr-font-weight-semibold: 500;
+  --clr-font-weight-bold: 600;
+  --clr-font-weight-extrabold: 600;
+  --clr-h1-color: var(--clr-global-content-header-font-color);
+  --clr-h1-font-weight: var(--clr-font-weight-light);
+  --clr-h1-font-family: var(--clr-display-font);
+  --clr-h2-color: var(--clr-global-content-header-font-color);
+  --clr-h2-font-weight: var(--clr-font-weight-light);
+  --clr-h2-font-family: var(--clr-display-font);
+  --clr-h3-color: var(--clr-global-content-header-font-color);
+  --clr-h3-font-weight: var(--clr-font-weight-light);
+  --clr-h3-font-family: var(--clr-display-font);
+  --clr-h4-color: var(--clr-global-content-header-font-color);
+  --clr-h4-font-weight: var(--clr-font-weight-light);
+  --clr-h4-font-family: var(--clr-display-font);
+  --clr-h5-color: var(--clr-global-font-color);
+  --clr-h5-font-weight: var(--clr-font-weight-regular);
+  --clr-h5-font-family: var(--clr-display-font);
+  --clr-h6-color: var(--clr-color-neutral-900);
+  --clr-h6-font-weight: var(--clr-font-weight-semibold);
+  --clr-h6-font-family: var(--clr-display-font);
+  --clr-p0-color: var(--clr-global-font-color);
+  --clr-p0-font-weight: var(--clr-font-weight-light);
+  --clr-p1-color: var(--clr-global-font-color);
+  --clr-p1-font-weight: var(--clr-font-weight-regular);
+  --clr-p2-color: var(--clr-global-font-color);
+  --clr-p2-font-weight: var(--clr-font-weight-semibold);
+  --clr-p3-color: var(--clr-global-font-color);
+  --clr-p3-font-weight: var(--clr-font-weight-regular);
+  --clr-p4-color: var(--clr-global-font-color);
+  --clr-p4-font-weight: var(--clr-font-weight-bold);
+  --clr-p5-color: var(--clr-global-font-color);
+  --clr-p5-font-weight: var(--clr-font-weight-regular);
+  --clr-p6-color: var(--clr-global-font-color);
+  --clr-p6-font-weight: var(--clr-font-weight-bold);
+  --clr-p7-color: var(--clr-global-font-color);
+  --clr-p7-font-weight: var(--clr-font-weight-regular);
+  --clr-p8-color: var(--clr-global-font-color);
+  --clr-p8-font-weight: var(--clr-font-weight-regular);
+}
+
+/*# sourceMappingURL=clr-ui.css.map */

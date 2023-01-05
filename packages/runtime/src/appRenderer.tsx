@@ -7,9 +7,9 @@ import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
 import {
+  ScmAuth,
   ScmIntegrationsApi,
   scmIntegrationsApiRef,
-  ScmAuth,
 } from '@backstage/integration-react';
 import {
   AnyApiFactory,
@@ -24,6 +24,8 @@ import {
   SidebarItemSurface,
   SurfaceStore,
 } from '@esback/core';
+import { ClarityLight } from './theme/ClarityLight';
+import { ClarityDark } from './theme/ClarityDark';
 
 export const appRenderer = (surfaces: SurfaceStore): React.FC => {
   const apis: AnyApiFactory[] = [
@@ -43,6 +45,7 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
   const routeSurface = surfaces.getSurfaceState(AppRouteSurface);
   const app = createApp({
     apis,
+    themes: [ClarityLight, ClarityDark],
     components: surfaces.getSurfaceState(AppComponentSurface).components,
     plugins,
     bindRoutes(context) {
