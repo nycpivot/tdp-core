@@ -10,4 +10,8 @@ export namespace Authentication {
       Cypress.env('GOOGLE_USER_A_REFRESH_TOKEN'),
     );
   }
+
+  export function googleLogout() {
+    cy.clearCookie('google-refresh-token');
+  }
 }

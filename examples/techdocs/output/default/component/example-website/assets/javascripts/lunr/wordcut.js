@@ -258,7 +258,7 @@
               },
             };
             module.exports = WordcutDict;
-          }.call(this, '/dist/tmp'));
+          }).call(this, '/dist/tmp');
         },
         { glob: 16, path: 22 },
       ],
@@ -1961,7 +1961,7 @@
                 return !!(item.gmatcher && item.gmatcher.match(path));
               });
             }
-          }.call(this, require('_process')));
+          }).call(this, require('_process'));
         },
         { _process: 24, minimatch: 20, path: 22, 'path-is-absolute': 23 },
       ],
@@ -2729,7 +2729,7 @@
 
               return cb(null, c, stat);
             };
-          }.call(this, require('_process')));
+          }).call(this, require('_process'));
         },
         {
           './common.js': 15,
@@ -3203,7 +3203,7 @@
             GlobSync.prototype._makeAbs = function (f) {
               return common.makeAbs(this, f);
             };
-          }.call(this, require('_process')));
+          }).call(this, require('_process'));
         },
         {
           './common.js': 15,
@@ -3274,7 +3274,7 @@
               for (var i = 0; i < length; i++) array[i] = args[i];
               return array;
             }
-          }.call(this, require('_process')));
+          }).call(this, require('_process'));
         },
         { _process: 24, once: 21, wrappy: 29 },
       ],
@@ -4558,7 +4558,7 @@
                     if (start < 0) start = str.length + start;
                     return str.substr(start, len);
                   };
-          }.call(this, require('_process')));
+          }).call(this, require('_process'));
         },
         { _process: 24 },
       ],
@@ -4586,7 +4586,7 @@
             module.exports = process.platform === 'win32' ? win32 : posix;
             module.exports.posix = posix;
             module.exports.win32 = win32;
-          }.call(this, require('_process')));
+          }).call(this, require('_process'));
         },
         { _process: 24 },
       ],
@@ -6506,7 +6506,7 @@
                 return _;
               });
             }
-          }.call(this));
+          }).call(this);
         },
         {},
       ],
@@ -7201,7 +7201,7 @@
             function hasOwnProperty(obj, prop) {
               return Object.prototype.hasOwnProperty.call(obj, prop);
             }
-          }.call(
+          }).call(
             this,
             require('_process'),
             typeof global !== 'undefined'
@@ -7211,7 +7211,7 @@
               : typeof window !== 'undefined'
               ? window
               : {},
-          ));
+          );
         },
         { './support/isBuffer': 27, _process: 24, inherits: 26 },
       ],

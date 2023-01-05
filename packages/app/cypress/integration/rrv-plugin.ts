@@ -41,13 +41,18 @@ describe('RRV Plugin', () => {
   });
 
   describe('rbac', () => {
-    beforeEach(() => {
-      cy.viewport(1000, 1000);
+    it('should require login when not authenticated', () => {
+      Authentication.googleLogout();
+      cy.contains(/gke-user-a-nginx/i).click();
+      cy.contains(/runtime resources/i).click();
+      cy.contains(/login required/i).should('be.visible');
+      cy.contains(/usera-server/i).should('not.exist');
     });
 
     it('should show k8s resources for user A', () => {
       cy.contains(/gke-user-a-nginx/i).click();
       cy.contains(/runtime resources/i).click();
+      cy.contains(/login required/i).should('not.exist');
       cy.contains(/usera-server/i).should('be.visible');
     });
 
