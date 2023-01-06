@@ -6,13 +6,13 @@ import {
   createThemeOverrides as createBackstageOverrides,
 } from '@backstage/theme';
 import { ComponentsProps } from '@material-ui/core/styles/props';
-import { HeaderClassKey } from '../components/Header/Header';
-import { LogoIconClassKey } from '../components/Header/LogoIcon';
+import { LogoIconClassKey } from '../Header/LogoIcon';
 import { Overrides } from '@material-ui/core/styles/overrides';
-import { RootClassKey } from '../components/Root/Root';
-import { SidebarClassKey } from '../components/Sidebar/Sidebar';
-import { SidebarPageClassKey } from '../components/Sidebar/SidebarPage';
+import { RootClassKey } from '../Root/Root';
+import { SidebarClassKey } from '../Sidebar/Sidebar';
+import { SidebarPageClassKey } from '../Sidebar/SidebarPage';
 import { StyleRules } from '@material-ui/core/styles/withStyles';
+import { HeaderClassKey } from '../Header/Header';
 
 type MaterialUILabOverrides = {
   [Name in keyof LabComponentNameToClassKey]?: Partial<
@@ -259,6 +259,9 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       },
       open: {
         width: 'var(--expanded-width)',
+      },
+      buttonItem: {
+        padding: 'var(--padding)',
       },
     },
 

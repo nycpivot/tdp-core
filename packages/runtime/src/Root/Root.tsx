@@ -14,85 +14,82 @@
  * limitations under the License.
  */
 
-import React, { PropsWithChildren } from 'react';
-import { Link, makeStyles } from '@material-ui/core';
-import LogoFull from './LogoFull';
-import LogoIcon from './LogoIcon';
-import { NavLink } from 'react-router-dom';
+import React, { PropsWithChildren, useRef } from 'react';
 import {
-  Settings as SidebarSettings,
-  UserSettingsSignInAvatar,
-} from '@backstage/plugin-user-settings';
-import {
-  Sidebar,
-  sidebarConfig,
-  SidebarDivider,
-  SidebarGroup,
-  SidebarPage,
-  SidebarSpace,
-  useSidebarOpenState,
-} from '@backstage/core-components';
-import MenuIcon from '@material-ui/icons/Menu';
+  Button,
+  StandardProps,
+  StyleRulesCallback,
+  Theme,
+  withStyles,
+} from '@material-ui/core';
+import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
 import { SidebarItemSurface } from '@esback/core';
+import { ClaritySidebarPage } from '../Sidebar/SidebarPage';
+import { ClaritySidebar } from '../Sidebar/Sidebar';
+import { BackstageTheme } from '@backstage/theme';
+import './styles.css';
 
-const useSidebarLogoStyles = makeStyles({
-  root: {
-    width: sidebarConfig.drawerWidthClosed,
-    height: 3 * sidebarConfig.logoHeight,
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'center',
-    marginBottom: -14,
-  },
-  link: {
-    width: sidebarConfig.drawerWidthClosed,
-    marginLeft: 24,
-  },
-});
+interface IRoot
+  extends StandardProps<React.HTMLAttributes<HTMLDivElement>, RootClassKey> {
+  sidebar: SidebarItemSurface;
+}
 
-const SidebarLogo = () => {
-  const classes = useSidebarLogoStyles();
-  const { isOpen } = useSidebarOpenState();
+const Root = ({ sidebar, children, classes }: PropsWithChildren<IRoot>) => {
+  const skipToContentRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={classes.root}>
-      <Link
-        component={NavLink}
-        to="/"
-        underline="none"
-        className={classes.link}
-        aria-label="Home"
-      >
-        {isOpen ? <LogoFull /> : <LogoIcon />}
-      </Link>
+    <div className={classes?.root}>
+      <div ref={skipToContentRef} className="skip-to-content">
+        <Button
+          variant="contained"
+          className="skip-button"
+          onClick={() => contentRef.current?.focus({ preventScroll: true })}
+        >
+          Go to content
+        </Button>
+      </div>
+      <ClaritySidebarPage>
+        <ClaritySidebar>
+          {...sidebar.topItems}
+          {...sidebar.all}
+          <SidebarSettings />
+        </ClaritySidebar>
+        {/* eslint-disable */}
+        <div
+          className={classes?.content}
+          ref={contentRef}
+          tabIndex={0}
+          data-testid="root-content"
+        >
+          {children}
+        </div>
+      </ClaritySidebarPage>
     </div>
   );
 };
 
-interface IRoot {
-  sidebar: SidebarItemSurface;
-}
+export type RootClassKey = 'root' | 'content';
 
-export const Root = ({ sidebar, children }: PropsWithChildren<IRoot>) => (
-  <SidebarPage>
-    <Sidebar>
-      <SidebarLogo />
-      {...sidebar.topItems}
-      <SidebarDivider />
-      <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {sidebar.all}
-        <SidebarDivider />
-      </SidebarGroup>
-      <SidebarSpace />
-      <SidebarDivider />
-      <SidebarGroup
-        label="Settings"
-        icon={<UserSettingsSignInAvatar />}
-        to="/settings"
-      >
-        <SidebarSettings />
-      </SidebarGroup>
-    </Sidebar>
-    {children}
-  </SidebarPage>
-);
+export interface RootProps
+  extends StandardProps<React.HTMLAttributes<HTMLDivElement>, RootClassKey> {}
+
+const styles: StyleRulesCallback<BackstageTheme, RootProps, RootClassKey> = (
+  _: BackstageTheme,
+) => ({
+  root: {},
+  content: {
+    width: '100%',
+    '& > div:first-child': {
+      height: 'calc(100vh - 69.5px)',
+    },
+    '& header': {
+      boxShadow: 'none',
+    },
+  },
+});
+
+export const ClarityRoot = withStyles<RootClassKey>(
+  styles as StyleRulesCallback<Theme, RootProps, RootClassKey>,
+  { name: 'ClarityRoot' },
+)(Root);

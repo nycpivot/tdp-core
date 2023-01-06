@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Route } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { Root } from './Root';
+import { ClarityRoot } from './Root';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
@@ -71,9 +71,9 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
       <AlertDisplay />
       <OAuthRequestDialog />
       <AppRouter>
-        <Root sidebar={surfaces.getSurfaceState(SidebarItemSurface)}>
+        <ClarityRoot sidebar={surfaces.getSurfaceState(SidebarItemSurface)}>
           {routes}
-        </Root>
+        </ClarityRoot>
       </AppRouter>
     </AppProvider>
   );

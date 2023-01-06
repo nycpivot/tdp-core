@@ -8,8 +8,6 @@ import React from 'react';
 import { Route } from 'react-router';
 import { SearchPage, SidebarSearchModal } from '@backstage/plugin-search';
 import { searchPage } from './components/SearchPage';
-import { SidebarGroup } from '@backstage/core-components';
-import SearchIcon from '@material-ui/icons/Search';
 
 export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
   const { path } = {
@@ -27,11 +25,7 @@ export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
     });
 
     context.applyTo(SidebarItemSurface, sidebar => {
-      sidebar.addTopItem(
-        <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
-          <SidebarSearchModal />
-        </SidebarGroup>,
-      );
+      sidebar.addTopItem(<SidebarSearchModal />);
     });
   };
 };

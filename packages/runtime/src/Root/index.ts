@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { Root } from './Root';
+export { ClarityRoot } from './Root';

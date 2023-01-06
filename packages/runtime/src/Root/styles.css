@@ -1,0 +1,14 @@
+.skip-to-content {
+  position: fixed;
+  top: 12px;
+  left: auto;
+  right: 1rem;
+}
+.skip-button {
+  opacity: 0.01;
+  transform: translateY(-200%);
+}
+.skip-button:focus {
+  opacity: 1;
+  transform: translateY(0);
+}
