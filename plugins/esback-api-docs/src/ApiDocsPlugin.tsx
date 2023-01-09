@@ -23,7 +23,9 @@ export const ApiDocsPlugin: AppPluginInterface<RoutableConfig> = config => {
     });
 
     context.applyTo(SidebarItemSurface, sidebar =>
-      sidebar.add(<SidebarItem icon={Extension} to={path} text={label} />),
+      sidebar.addMainItem(
+        <SidebarItem icon={Extension} to={path} text={label} />,
+      ),
     );
   };
 };

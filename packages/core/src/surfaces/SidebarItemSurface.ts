@@ -1,24 +1,24 @@
 import { ReactElement } from 'react';
 
 export class SidebarItemSurface {
-  private readonly _items: ReactElement[];
+  private readonly _mainItems: ReactElement[];
   private readonly _topItems: ReactElement[];
 
   public constructor() {
-    this._items = [];
+    this._mainItems = [];
     this._topItems = [];
   }
 
-  public add(item: ReactElement) {
-    this._items.push(item);
+  public addMainItem(item: ReactElement) {
+    this._mainItems.push(item);
   }
 
   public addTopItem(item: ReactElement) {
     this._topItems.push(item);
   }
 
-  public get all(): ReactElement[] {
-    return this._items;
+  public get mainItems(): ReactElement[] {
+    return this._mainItems;
   }
 
   public get topItems(): ReactElement[] {

@@ -52,7 +52,7 @@ const Root = ({ sidebar, children, classes }: PropsWithChildren<IRoot>) => {
       <ClaritySidebarPage>
         <ClaritySidebar>
           {...sidebar.topItems}
-          {...sidebar.all}
+          {...sidebar.mainItems}
           <SidebarSettings />
         </ClaritySidebar>
         {/* eslint-disable */}

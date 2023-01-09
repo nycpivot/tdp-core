@@ -14,6 +14,8 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
   );
 
   context.applyTo(SidebarItemSurface, sidebar =>
-    sidebar.add(<SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />),
+    sidebar.addMainItem(
+      <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />,
+    ),
   );
 };
