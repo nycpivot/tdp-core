@@ -51,6 +51,7 @@ import {
   EntityProvidedApisCard,
   EntityProvidingComponentsCard,
 } from '@backstage/plugin-api-docs';
+import apiPluginOverrides from '../theme/apiPluginOverrides';
 
 export const entityPage = (surface: EntityPageSurface) => {
   const cicdContent = (
@@ -214,7 +215,7 @@ export const entityPage = (surface: EntityPageSurface) => {
     </EntitySwitch>
   );
 
-  const apiPage = (
+  const ApiPage = () => (
     <EntityLayout>
       <EntityLayout.Route path="/" title="Overview">
         <Grid container direction="row" spacing={3}>
@@ -240,7 +241,7 @@ export const entityPage = (surface: EntityPageSurface) => {
 
       <EntityLayout.Route path="/definition" title="Definition">
         <Grid container spacing={3}>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={apiPluginOverrides().container}>
             <EntityApiDefinitionCard />
           </Grid>
         </Grid>
@@ -352,7 +353,7 @@ export const entityPage = (surface: EntityPageSurface) => {
   return (
     <EntitySwitch>
       <EntitySwitch.Case if={isKind('component')} children={componentPage} />
-      <EntitySwitch.Case if={isKind('api')} children={apiPage} />
+      <EntitySwitch.Case if={isKind('api')} children={<ApiPage />} />
       <EntitySwitch.Case if={isKind('group')} children={groupPage} />
       <EntitySwitch.Case if={isKind('user')} children={userPage} />
       <EntitySwitch.Case if={isKind('system')} children={systemPage} />
