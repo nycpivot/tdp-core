@@ -227,6 +227,11 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         minHeight: 'var(--cds-global-space-7, 1rem)',
         minWidth: 'var(--cds-global-space-7, 1rem)',
       },
+      highlightable: {
+        '&:hover': {
+          background: 'var(--cds-alias-object-interaction-background-hover)',
+        },
+      },
       selected: {
         '--background':
           'var(--cds-alias-object-interaction-background-selected, var(--cds-global-color-blue-50, #e6f7ff))',
