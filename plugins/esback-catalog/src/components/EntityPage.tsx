@@ -51,7 +51,10 @@ import {
   EntityProvidedApisCard,
   EntityProvidingComponentsCard,
 } from '@backstage/plugin-api-docs';
-import apiPluginOverrides from '../theme/apiPluginOverrides';
+import {
+  apiPluginOverrides,
+  orgPluginOverrides,
+} from '../theme/apiPluginOverrides';
 
 export const entityPage = (surface: EntityPageSurface) => {
   const cicdContent = (

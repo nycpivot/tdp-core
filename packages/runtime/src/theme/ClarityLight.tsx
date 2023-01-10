@@ -16,34 +16,17 @@ const theme = createTheme({
   },
   primary: {
     main: 'hsl(198, 100%, 34%)', // --cds-alias-status-info
-    dark: 'hsl(198, 100%, 27%)', // --cds-alias-status-info-shade
-    light: 'hsl(198, 100%, 95%)', // --cds-alias-status-info-tint
-  },
-  secondary: {
-    main: '#8A39AC',
-    dark: '#680094',
-    light: '#AF73C9',
   },
   error: {
     main: 'hsl(9, 100%, 44%)', // --cds-alias-status-danger
-    // dark: 'hsl(9, 100%, 38%)', // --cds-alias-status-danger-shade
-    dark: 'hsl(9, 100%, 28%)', // --cds-alias-status-danger-dark
-    light: 'hsl(9, 100%, 97%)', // --cds-alias-status-danger-tint
   },
   warning: {
     main: 'hsl(40, 100%, 59%)', // --cds-alias-status-warning
-    // dark: 'hsl(39, 100%, 50%)', // --cds-alias-status-warning-shade
-    dark: 'hsl(37, 100%, 32%)', // --cds-alias-status-warning-dark
-    light: 'hsl(41, 100%, 92%)', // --cds-alias-status-warning-tint
   },
   info: {
-    dark: 'hsl(198, 100%, 27%)', // --cds-alias-status-info-shade
-    light: 'hsl(198, 100%, 95%)', // --cds-alias-status-info-tint
     main: 'hsl(198, 100%, 34%)', // --cds-alias-status-info
   },
   success: {
-    dark: 'hsl(93, 80%, 23%)', // --cds-alias-status-success-shade
-    light: 'hsl(93, 80%, 94%)', // --cds-alias-status-success-tint
     main: 'hsl(93, 80%, 28%)', // --cds-alias-status-success
   },
   grey: {
@@ -58,12 +41,6 @@ const theme = createTheme({
     700: 'hsl(0, 0%, 40%)',
     800: 'hsl(0, 0%, 27%)',
     900: 'hsl(0, 0%, 20%)',
-  },
-  text: {
-    primary: 'hsl(0, 0%, 0%)', // --cds-global-typography-color-500
-    secondary: 'hsl(198, 28%, 18%)', // --cds-global-typography-color-400
-    disabled: 'hsl(198, 14%, 36%)', // --cds-global-typography-color-200
-    hint: 'hsl(198, 14%, 36%)', // --cds-global-typography-color-200
   },
   background: {
     paper: 'hsl(0, 0%, 100%)', // --cds-alias-object-container-background

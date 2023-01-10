@@ -17,7 +17,7 @@ export const createTheme = (
     colors: [paletteOptions.grey?.['50'] ?? ''], // --clr-global-app-background = #fafafa
     shape: shapes.round,
     backgroundImage: '',
-    fontColor: paletteOptions.text?.primary ?? '',
+    fontColor: '#000',
   };
 
   const themeOptions: BackstageThemeOptions = {

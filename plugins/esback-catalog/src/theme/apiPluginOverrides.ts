@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-const apiPluginOverrides = makeStyles(theme => ({
+export const apiPluginOverrides = makeStyles(theme => ({
   container: {
     // Swagger UI customizations
     '& .swagger-ui': {
@@ -365,4 +365,10 @@ const apiPluginOverrides = makeStyles(theme => ({
   },
 }));
 
-export default apiPluginOverrides;
+export const orgPluginOverrides = makeStyles(theme => ({
+  ownership: {
+    '& a > div': {
+      color: theme.palette.text.primary,
+    },
+  },
+}));

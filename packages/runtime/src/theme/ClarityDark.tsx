@@ -16,44 +16,22 @@ const theme = createTheme({
   },
   primary: {
     main: 'hsl(198, 100%, 59%)', // --cds-alias-status-info
-    dark: 'hsl(198, 100%, 34%)', // --cds-alias-status-info-shade
-    light: 'hsl(198, 100%, 34%)', // --cds-alias-status-info-tint
-  },
-  secondary: {
-    main: '#D2AAE4',
-    dark: '#D2AAE4',
-    light: '#D2AAE4',
-    contrastText: PURE_BLACK,
   },
   error: {
     main: 'hsl(9, 100%, 65%)', // --cds-alias-status-danger
-    // dark: 'hsl(9, 100%, 44%)', // --cds-alias-status-danger-shade
-    dark: 'hsl(9, 100%, 38%)', // --cds-alias-status-danger-dark
-    light: 'hsl(9, 100%, 44%)', // --cds-alias-status-danger-tint
   },
   warning: {
     main: 'hsl(41, 100%, 70%)', // --cds-alias-status-warning
-    // dark: 'hsl(40, 100%, 59%)', // --cds-alias-status-warning-shade
-    dark: 'hsl(40, 100%, 59%)', // --cds-alias-status-warning-dark
-    light: 'hsl(40, 100%, 59%)', // --cds-alias-status-warning-tint
   },
   info: {
     main: 'hsl(198, 100%, 59%)', // --cds-alias-status-info
-    dark: 'hsl(198, 100%, 34%)', // --cds-alias-status-info-shade
-    light: 'hsl(198, 100%, 34%)', // --cds-alias-status-info-tint
   },
   success: {
-    dark: 'hsl(93, 80%, 28%)', // --cds-alias-status-success-shade
-    light: 'hsl(93, 80%, 28%)', // --cds-alias-status-success-tint
     main: 'hsl(93, 80%, 44%)', // --cds-alias-status-success
   },
   background: {
     paper: 'hsl(198, 28%, 18%)', // --cds-alias-object-container-background
     default: 'hsl(198, 30%, 15%)', // --cds-alias-object-app-background
-  },
-  text: {
-    primary: TAP_UI_KIT_DARK_PALETTE.text,
-    secondary: TAP_UI_KIT_DARK_PALETTE.text,
   },
   grey: {
     // --cds-global-color-gray-???
@@ -86,9 +64,9 @@ const theme = createTheme({
   textVerySubtle: '#DEDEDE',
   textSubtle: TAP_UI_KIT_DARK_PALETTE.text,
   highlight: '#666666',
-  errorBackground: '#FAFAFA',
-  warningBackground: '#D69A00',
-  infoBackground: '#E8E8E8',
+  errorBackground: 'hsl(9, 100%, 65%)', // --cds-alias-status-danger
+  warningBackground: 'hsl(41, 100%, 70%)', // --cds-alias-status-warning
+  infoBackground: 'hsl(198, 100%, 59%)', // --cds-alias-status-info
   errorText: '#C21D00',
   infoText: '#004B6B',
   warningText: '#000000',

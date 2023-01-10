@@ -6,13 +6,13 @@ import {
   createThemeOverrides as createBackstageOverrides,
 } from '@backstage/theme';
 import { ComponentsProps } from '@material-ui/core/styles/props';
-import { LogoIconClassKey } from '../Header/LogoIcon';
+import { HeaderClassKey } from '../components/Header/Header';
+import { LogoIconClassKey } from '../components/Header/LogoIcon';
 import { Overrides } from '@material-ui/core/styles/overrides';
-import { RootClassKey } from '../Root/Root';
-import { SidebarClassKey } from '../Sidebar/Sidebar';
-import { SidebarPageClassKey } from '../Sidebar/SidebarPage';
+import { RootClassKey } from '../components/Root/Root';
+import { SidebarClassKey } from '../components/Sidebar/Sidebar';
+import { SidebarPageClassKey } from '../components/Sidebar/SidebarPage';
 import { StyleRules } from '@material-ui/core/styles/withStyles';
-import { HeaderClassKey } from '../Header/Header';
 
 type MaterialUILabOverrides = {
   [Name in keyof LabComponentNameToClassKey]?: Partial<
@@ -170,11 +170,12 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       },
     },
 
-    ClarityRoot: {
-      root: {
-        '& span > svg > path.rc-progress-line-path': {
-          stroke: `${theme.palette.primary.main} !important`,
-        },
+    BackstageHeader: {
+      title: {
+        color: 'var(--color)',
+      },
+      subtitle: {
+        color: 'var(--color)',
       },
     },
 
@@ -211,7 +212,11 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         minHeight: 'var(--line-height)',
         padding: 'var(--padding)',
         textDecoration: 'none',
-
+      },
+      buttonItem: {
+        padding: 'var(--padding)',
+      },
+      highlightable: {
         '&:hover': {
           background: 'var(--cds-alias-object-interaction-background-hover)',
         },
@@ -226,11 +231,6 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         width: 'var(--cds-global-space-7, 1rem)',
         minHeight: 'var(--cds-global-space-7, 1rem)',
         minWidth: 'var(--cds-global-space-7, 1rem)',
-      },
-      highlightable: {
-        '&:hover': {
-          background: 'var(--cds-alias-object-interaction-background-hover)',
-        },
       },
       selected: {
         '--background':
@@ -265,40 +265,8 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       open: {
         width: 'var(--expanded-width)',
       },
-      buttonItem: {
-        padding: 'var(--padding)',
-      },
     },
 
-    //
-    // Header
-    //
-
-    BackstageHeader: {
-      breadcrumb: {
-        ...theme.typography.overline,
-      },
-      subtitle: {
-        color: 'inherit',
-
-        // invalidate properties we no longer want MUI to control
-        lineHeight: '',
-      },
-      title: {
-        fontSize: 'var(--cds-global-typography-title-font-size)',
-        lineHeight: 'var(--cds-global-typography-title-line-height)',
-        letterSpacing: 'var(--cds-global-typography-title-letter-spacing)',
-        fontWeight: 'var(--cds-global-typography-title-font-weight)' as any,
-      },
-      type: {
-        ...theme.typography.subtitle2,
-      },
-    },
-    // BackstageSidebarItem: {
-    //   label: {
-    //     fontWeight: 500,
-    //   },
-    // },
     BackstageGauge: {
       overlay: {
         color: theme.palette.textContrast,
@@ -503,9 +471,6 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       flexContainer: {
         borderBottom: '1px solid var(--cds-alias-object-border-color)',
       },
-      // flexContainerVertical: {
-      //   borderBottom: 'none'
-      // },
       indicator: {
         backgroundColor:
           'var(--cds-alias-object-interaction-background-highlight)',
@@ -517,7 +482,6 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       root: {
         fontSize: '100%',
         fontWeight: 'var(--cds-global-typography-body-font-weight)' as any,
-        // marginRight: 'var(--cds-global-space-9)',
         minHeight: 'var(--cds-alias-object-interaction-touch-target)',
         // Set '!important' to overcome the @media setting.
         // override of minWidth should be done in that @media.
@@ -549,29 +513,18 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
 
     MuiButtonBase: {
       root: {
-        '--background':
-          'var(--cds-alias-status-info, var(--cds-global-color-blue-700, #0079ad))',
-        '--box-shadow-color':
-          'var(--cds-alias-object-opacity-100, rgba(0, 0, 0, 0.2))',
-        '--border-radius': 'var(--cds-alias-object-border-radius-100, 0.25rem)',
         '--border-width': 'var(--cds-alias-object-border-width-100, 0.0625rem)',
-        '--border-color': 'var(--background)',
-        '--color':
-          'var(--cds-global-typography-color-100, var(--cds-global-color-white, white))',
         '--font-size': 'var(--cds-global-typography-font-size-2, 0.75rem)',
         '--padding':
           'calc(var(--cds-global-space-6, 0.75rem) - var(--border-width))',
         '--height': 'var(--cds-global-space-11, 2.25rem)',
         '--min-width': 'var(--cds-global-space-13, 4rem)',
-        '--text-decoration': 'none',
         '--font-weight':
           'var(--cds-global-typography-font-weight-semibold, 600)',
         '--font-family':
           'var(--cds-global-typography-font-family, "Clarity City", "Avenir Next", sans-serif)',
-        '--text-transform': 'uppercase',
         '--letter-spacing': '0.12em',
 
-        borderColor: 'var(--border-color)',
         display: 'inline-flex',
         fontWeight: 'var(--font-weight)' as any,
         height: 'var(--height)',
@@ -585,13 +538,6 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
 
     MuiButton: {
       root: {
-        color: 'var(--color)',
-        borderColor: 'var(--border-color)',
-        borderRadius: 'var(--border-radius)',
-        borderStyle: 'solid',
-        borderWidth: 'var(--border-width)',
-        boxShadowColor:
-          'var(--cds-alias-object-opacity-100, rgba(0, 0, 0, 0.2))',
         fontSize: 'var(--cds-global-typography-font-size-2, 0.75rem)',
         fontWeight: 'var(--font-weight)' as any,
         letterSpacing: '0.12em',
@@ -602,23 +548,8 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         '&:focus-visible': {
           outline: '1px dotted ButtonText',
         },
-
-        '&:hover': {
-          backgroundColor: 'transparent',
-        },
-
-        '&:disabled': {
-          '--background':
-            'var(--cds-alias-status-disabled-tint, var(--cds-global-color-construction-200, #cbd4d8))',
-          '--border-color':
-            'var(--cds-alias-status-disabled-tint, var(--cds-global-color-construction-200, #cbd4d8))',
-          '--box-shadow-color':
-            'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
-        },
       },
       contained: {
-        color: 'var(--color)',
-        backgroundColor: 'var(--background)',
         boxShadow: 'none',
 
         // MUI uses a class, instead of a pseudo element. Strange.
@@ -628,57 +559,14 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         },
 
         '&:hover, &:active': {
-          backgroundColor: 'var(--background)',
           boxShadow: 'none',
-          filter: 'brightness(90%)',
         },
-
-        '&:disabled': {
-          backgroundColor: 'var(--background)',
-          color: 'var(--color)',
-        },
-      },
-      containedPrimary: {
-        color: 'var(--cds-global-typography-color-100)',
-        backgroundColor: 'var(--cds-alias-status-info)',
-
-        '&:hover': {
-          backgroundColor: 'var(--background)',
-        },
-      },
-      colorInherit: {
-        // Clarity does not provide this level of flexibility, so we void out
-        // this class.
-        // Ideally we shouldn't be placing this class where we don't want
-        // it. We wouldn't have to void it and could use the class as intended
-        // when appropriate.
-        color: '',
-        borderColor: '',
       },
       sizeSmall: {
         '--height': 'var(--cds-global-space-9)',
       },
       text: {
-        '--background': 'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
-        '--border-color': 'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
-        '--color':
-          'var(--cds-alias-status-info, var(--cds-global-color-blue-700, #0079ad))',
-        '--box-shadow-color':
-          'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
-
         padding: 'var(--padding)',
-
-        '&:disabled': {
-          '--border-color':
-            'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
-        },
-      },
-      textPrimary: {
-        color: 'var(--color)',
-
-        '&:hover': {
-          backgroundColor: 'transparent',
-        },
       },
       textSizeSmall: {
         fontSize: 'var(--cds-global-typography-font-size-2, 0.75rem)',
@@ -686,27 +574,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
           'var(--cds-global-space-4, 0.375rem) var(--cds-global-space-6, 0.75rem)',
       },
       outlined: {
-        '--border-color':
-          'var(--cds-alias-status-info, var(--cds-global-color-blue-700, #0079ad))',
-
-        color:
-          'var(--cds-alias-status-info, var(--cds-global-color-blue-700, #0079ad))',
-        borderColor: 'var(--border-color)',
         padding: 'var(--padding)',
-
-        '&:hover, &:active': {
-          backgroundColor:
-            'var(--cds-alias-object-interaction-background-hover)',
-        },
-
-        '&:disabled': {
-          '--background': 'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
-          '--color':
-            'var(--cds-alias-status-disabled, var(--cds-global-color-construction-300, #aeb8bc))',
-
-          borderColor: 'var(--border-color)',
-          // color: 'var(--color)',
-        },
       },
       outlinedSizeSmall: {
         '--padding':
@@ -721,14 +589,11 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
 
     MuiIconButton: {
       root: {
-        '--border-color': 'var(--cds-alias-object-opacity-0, rgba(0, 0, 0, 0))',
         '--min-width': 0,
         '--padding':
           'calc(var(--cds-global-space-6, 0.75rem) - var(--border-width)) calc(var(--cds-global-space-6, 0.75rem) - var(--cds-global-space-2, 0.125rem) - var(--border-width))',
 
-        borderRadius: 'var(--border-radius)',
         borderStyle: 'solid',
-        borderWidth: 'var(--border-width)',
         fontSize: 'var(--font-size)',
         padding: 'var(--padding)',
         width: 'var(--height)',
@@ -968,7 +833,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       // Brute force the 3 different types of MUI alerts to all match Clarity's
       // single style. We may decide to support different alert varients in the
       // future.
-      // Setting each of the overrides to a single definition would be really nice (e.g.: `standardError` = `filledError` = `outlinedError`: { ... })
+      // setting each of the overrides to a single definition would be really nice (e.g.: `standardError` = `filledError` = `outlinedError`: { ... })
       filledError: {
         '--background':
           'var(--cds-alias-status-danger, var(--cds-global-color-red-700, #e02200))',
@@ -1133,23 +998,6 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         paddingLeft: 'var(--cds-global-layout-space-md, 1rem)',
         whiteSpace: 'nowrap',
 
-        // this override should target a class, instead of an element, but
-        // it's not clear how to do that yet.
-        // '& > button': {
-        //   color: 'var(--action-text-color)',
-        //   fontSize: 'var(--font-size)',
-        //   fontWeight: 'var(--font-weight)',
-        //   height: 'var(--action-size)',
-        //   letterSpacing: 'normal',
-        //   lineHeight: '1em',
-        //   textDecoration: 'underline',
-        //   textTransform: 'none',
-
-        //   '&:hover': {
-        //     textDecoration: 'underline'
-        //   },
-        // },
-
         '& .MuiButton-text': {
           '--color': 'var(--action-text-color)',
 
@@ -1209,34 +1057,9 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
     MuiSwitch: {
       switchBase: {
         width: 'auto',
-        borderRadius: '25px',
       },
     },
 
-    BackstageDependencyGraphEdge: {
-      path: {
-        color: theme.palette.navigation.color,
-        stroke: theme.palette.navigation.color,
-      },
-    },
-    BackstageDependencyGraphDefaultLabel: {
-      text: {
-        fill: theme.palette.navigation.color,
-        color: theme.palette.navigation.color,
-      },
-    },
-    BackstageDependencyGraphNode: {
-      node: {
-        '& text': {
-          fill: theme.palette.grey[100],
-          color: theme.palette.grey[100],
-        },
-        '& a': {
-          fill: theme.palette.grey[100],
-          color: theme.palette.grey[100],
-        },
-      },
-    },
     PluginCatalogSystemDiagramCard: {
       domainNode: {
         fill: theme.palette.secondary.main,
