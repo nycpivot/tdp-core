@@ -7,7 +7,7 @@ describe('Techdocs Plugin', () => {
 
   it('should render a link to the docs in the sidebar', () => {
     cy.visit('/');
-    cy.contains('div[data-testid="sidebar-root"]', 'Docs');
+    cy.get('[aria-label="Docs"]').should('be.visible');
   });
 
   it('should render the index page for techdocs', () => {

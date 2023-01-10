@@ -7,7 +7,7 @@ describe('API Docs Plugin', () => {
 
   it('should render a link to the APIs in the sidebar', () => {
     cy.visit('/');
-    cy.contains('div[data-testid="sidebar-root"]', 'API');
+    cy.get('[aria-label="APIs"]').should('be.visible');
   });
 
   it('should render the index page for APIs', () => {
