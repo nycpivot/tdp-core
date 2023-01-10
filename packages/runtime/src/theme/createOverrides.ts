@@ -515,7 +515,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         // marginRight: 'var(--cds-global-space-9)',
         minHeight: 'var(--cds-alias-object-interaction-touch-target)',
         // Set '!important' to overcome the @media setting.
-        // TODO: override of minWidth should be done in that @media.
+        // override of minWidth should be done in that @media.
         minWidth: 'unset !important',
         padding: '0 var(--cds-global-space-6)',
         textTransform: 'unset',
@@ -644,7 +644,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       colorInherit: {
         // Clarity does not provide this level of flexibility, so we void out
         // this class.
-        // TODO: Ideally we shouldn't be placing this class where we don't want
+        // Ideally we shouldn't be placing this class where we don't want
         // it. We wouldn't have to void it and could use the class as intended
         // when appropriate.
         color: '',
@@ -963,7 +963,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       // Brute force the 3 different types of MUI alerts to all match Clarity's
       // single style. We may decide to support different alert varients in the
       // future.
-      // TODO: setting each of the overrides to a single definition would be really nice (e.g.: `standardError` = `filledError` = `outlinedError`: { ... })
+      // Setting each of the overrides to a single definition would be really nice (e.g.: `standardError` = `filledError` = `outlinedError`: { ... })
       filledError: {
         '--background':
           'var(--cds-alias-status-danger, var(--cds-global-color-red-700, #e02200))',
@@ -1128,7 +1128,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         paddingLeft: 'var(--cds-global-layout-space-md, 1rem)',
         whiteSpace: 'nowrap',
 
-        // TODO: this override should target a class, instead of an element, but
+        // this override should target a class, instead of an element, but
         // it's not clear how to do that yet.
         // '& > button': {
         //   color: 'var(--action-text-color)',

@@ -33,7 +33,6 @@ const styles: StyleRulesCallback<
 });
 
 // Stolen directly from a live Tanzu site using the Web Inspector
-// TODO: Figure out how to source this
 const LogoIcon = (props: LogoIconProps) => {
   return (
     <span className={props.classes?.root}>
