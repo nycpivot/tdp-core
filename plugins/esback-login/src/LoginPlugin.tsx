@@ -10,6 +10,7 @@ export const LoginPlugin: AppPluginInterface = () => {
       AppComponentSurface,
       LoginSurface,
       (appComponentSurface, loginSurface) => {
+        // TODO: ESBACK-163 - needs test for case when there are no login providers
         if (loginSurface.hasProviders()) {
           appComponentSurface.add('SignInPage', props => {
             const enabledProviders = loginSurface.enabledProviders(
@@ -18,6 +19,7 @@ export const LoginPlugin: AppPluginInterface = () => {
             if (enabledProviders.length > 0) {
               return <SignInPage {...props} providers={enabledProviders} />;
             }
+            // TODO: ESBACK-163 - needs test for case when there are login providers, but none are configured
             return (
               <div
                 style={{
@@ -28,7 +30,7 @@ export const LoginPlugin: AppPluginInterface = () => {
                 }}
               >
                 No configured authentication providers. Please configure at
-                least one in your app-config.yaml
+                least one.
               </div>
             );
           });
