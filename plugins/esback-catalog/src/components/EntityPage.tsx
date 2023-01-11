@@ -51,7 +51,6 @@ import {
   EntityProvidedApisCard,
   EntityProvidingComponentsCard,
 } from '@backstage/plugin-api-docs';
-import { apiPluginOverrides } from '../theme/apiPluginOverrides';
 
 export const entityPage = (surface: EntityPageSurface) => {
   const cicdContent = (
@@ -241,7 +240,7 @@ export const entityPage = (surface: EntityPageSurface) => {
 
       <EntityLayout.Route path="/definition" title="Definition">
         <Grid container spacing={3}>
-          <Grid item xs={12} className={apiPluginOverrides().container}>
+          <Grid item xs={12}>
             <EntityApiDefinitionCard />
           </Grid>
         </Grid>
