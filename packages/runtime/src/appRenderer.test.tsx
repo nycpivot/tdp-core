@@ -24,7 +24,7 @@ describe('AppRenderer', () => {
         id: 'theme',
         title: 'dummy theme',
         variant: 'light',
-        Provider(props: { children: React.ReactNode }): JSX.Element | null {
+        Provider(): JSX.Element | null {
           return null;
         },
       });
