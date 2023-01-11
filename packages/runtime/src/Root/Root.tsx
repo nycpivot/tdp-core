@@ -28,6 +28,7 @@ import { ClaritySidebarPage } from '../Sidebar/SidebarPage';
 import { ClaritySidebar } from '../Sidebar/Sidebar';
 import { BackstageTheme } from '@backstage/theme';
 import './styles.css';
+import { ClarityHeader } from '../Header/Header';
 
 interface IRoot
   extends StandardProps<React.HTMLAttributes<HTMLDivElement>, RootClassKey> {
@@ -49,6 +50,7 @@ const Root = ({ sidebar, children, classes }: PropsWithChildren<IRoot>) => {
           Go to content
         </Button>
       </div>
+      <ClarityHeader />
       <ClaritySidebarPage>
         <ClaritySidebar>
           {...sidebar.topItems}
