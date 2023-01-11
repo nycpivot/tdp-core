@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navigate, Route } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { ClarityRoot } from './Root';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
@@ -21,7 +20,6 @@ import {
   AppComponentSurface,
   AppPluginSurface,
   AppRouteSurface,
-  SidebarItemSurface,
   SurfaceStore,
   ThemeSurface,
 } from '@esback/core';
@@ -68,15 +66,16 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
     </FlatRoutes>
   );
 
+  const rootBuilder = themeSurface.rootBuilder();
+  if (!rootBuilder) {
+    throw new Error('No root builder available in theme');
+  }
+
   return () => (
     <AppProvider>
       <AlertDisplay />
       <OAuthRequestDialog />
-      <AppRouter>
-        <ClarityRoot sidebar={surfaces.getSurfaceState(SidebarItemSurface)}>
-          {routes}
-        </ClarityRoot>
-      </AppRouter>
+      <AppRouter>{rootBuilder(routes)}</AppRouter>
     </AppProvider>
   );
 };
