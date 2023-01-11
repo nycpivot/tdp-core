@@ -12,7 +12,6 @@ import { plugin as apiDocsPlugin } from '@esback/plugin-api-docs';
 import { plugin as loginPlugin } from '@esback/plugin-login';
 import { plugin as themePlugin } from '@esback/plugin-clarity-theme';
 import { appRenderer } from './appRenderer';
-import './style/clarity.css';
 
 export class AppRuntime {
   private readonly _surfaces: SurfaceStore;

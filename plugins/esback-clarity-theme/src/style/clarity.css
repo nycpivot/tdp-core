@@ -7,7 +7,3 @@
 
 @import '@cds/core/styles/module.tokens.css';
 @import '@cds/city/css/bundles/default.css';
-
-body {
-  background: red !important;
-}
