@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: gke-user-a-nginx
+  annotations:
+    'backstage.io/kubernetes-namespace': 'user-a'
+    'backstage.io/kubernetes-label-selector': 'owner=usera'
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: esback

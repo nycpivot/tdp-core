@@ -20,7 +20,7 @@ delete-bitbucket:
 clean-containers: delete-esback delete-bitbucket
 
 bitbucket:
-	eval `yarn --cwd scripts --silent build-environment bitbucket` && \
+	eval `yarn --cwd scripts --silent build-environment bitbucketServer` && \
   docker-compose up -d bitbucket
 
 esback:
@@ -34,13 +34,16 @@ docker-tests: export BACKSTAGE_BASE_URL=http://esback:7007
 docker-tests:
 	$(MAKE) start-containers
 	docker-compose rm -f -v cypress
+	@eval `yarn --cwd scripts --silent build-environment cypress` && \
 	docker-compose run cypress
 
 local-tests:
-	CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress run --browser chrome
+	@eval `yarn --cwd scripts --silent build-environment cypress` && \
+	npx cypress run --browser chrome
 
 open-cypress-local:
-	CYPRESS_BITBUCKET_HOST=localhost:7990 npx cypress open
+	@eval `yarn --cwd scripts --silent build-environment cypress` && \
+	npx cypress open
 
 # Pipelines commands
 pipeline-bitbucket:

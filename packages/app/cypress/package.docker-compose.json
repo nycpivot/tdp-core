@@ -7,6 +7,6 @@
     "@faker-js/faker": "^7.6.0"
   },
   "scripts": {
-    "run-tests": "CYPRESS_BITBUCKET_HOST=bitbucket:7990 CYPRESS_baseUrl=http://esback:7007 npx cypress run --browser chrome"
+    "run-tests": "npx cypress run --browser chrome"
   }
 }

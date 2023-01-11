@@ -3,6 +3,7 @@ import { Authentication } from '../support/authentication';
 describe('RRV Plugin', () => {
   beforeEach(() => {
     Authentication.guestLogin();
+    Authentication.googleUserALogin();
   });
 
   it('should render the runtime resources and the pod logs', () => {
@@ -37,5 +38,28 @@ describe('RRV Plugin', () => {
       .children('td')
       .last()
       .contains(/spring boot/i);
+  });
+
+  describe('rbac', () => {
+    it('should require login when not authenticated', () => {
+      Authentication.googleLogout();
+      cy.contains(/gke-user-a-nginx/i).click();
+      cy.contains(/runtime resources/i).click();
+      cy.contains(/login required/i).should('be.visible');
+      cy.contains(/usera-server/i).should('not.exist');
+    });
+
+    it('should show k8s resources for user A', () => {
+      cy.contains(/gke-user-a-nginx/i).click();
+      cy.contains(/runtime resources/i).click();
+      cy.contains(/login required/i).should('not.exist');
+      cy.contains(/usera-server/i).should('be.visible');
+    });
+
+    it('should not show k8s resources for user B', () => {
+      cy.contains(/gke-user-b-nginx/i).click();
+      cy.contains(/runtime resources/i).click();
+      cy.contains(/userb-server/i).should('not.exist');
+    });
   });
 });

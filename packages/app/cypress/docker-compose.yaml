@@ -40,6 +40,9 @@ services:
       - GKE_CONTROL_PLANE_ENDPOINT=${GKE_CONTROL_PLANE_ENDPOINT}
       - GKE_APP_LIVE_VIEW_ENDPOINT=${GKE_APP_LIVE_VIEW_ENDPOINT}
       - GKE_SERVICE_ACCOUNT_TOKEN=${GKE_SERVICE_ACCOUNT_TOKEN}
+      - GKE_OIDC_CONTROL_PLANE_ENDPOINT=${GKE_OIDC_CONTROL_PLANE_ENDPOINT}
+      - GKE_OIDC_CLIENT_ID=${GKE_OIDC_CLIENT_ID}
+      - GKE_OIDC_CLIENT_SECRET=${GKE_OIDC_CLIENT_SECRET}
     ports:
       - 7007:7007
     volumes:
@@ -54,6 +57,7 @@ services:
       - ./npmrc.example:/e2e/.npmrc
     environment:
       - CYPRESS_baseUrl=http://esback:7007
-      - BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
+      - CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN=${CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN}
+      - CYPRESS_BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
     working_dir: /e2e
     entrypoint: /bin/sh -c "yarn install;yarn run-tests"
