@@ -23,9 +23,8 @@ import {
   AppRouteSurface,
   SidebarItemSurface,
   SurfaceStore,
+  ThemeSurface,
 } from '@esback/core';
-import { ClarityLight } from './theme/ClarityLight';
-import { ClarityDark } from './theme/ClarityDark';
 
 export const appRenderer = (surfaces: SurfaceStore): React.FC => {
   const apis: AnyApiFactory[] = [
@@ -43,9 +42,12 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
     pluginSurface.plugins.length > 0 ? pluginSurface.plugins : undefined;
 
   const routeSurface = surfaces.getSurfaceState(AppRouteSurface);
+
+  const themeSurface = surfaces.getSurfaceState(ThemeSurface);
+
   const app = createApp({
     apis,
-    themes: [ClarityLight, ClarityDark],
+    themes: themeSurface.themes(),
     components: surfaces.getSurfaceState(AppComponentSurface).components,
     plugins,
     bindRoutes(context) {

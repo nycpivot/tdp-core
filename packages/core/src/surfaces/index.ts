@@ -5,3 +5,4 @@ export * from './AppRouteSurface';
 export * from './BackendPluginSurface';
 export * from './BackendCatalogSurface';
 export * from './SidebarItemSurface';
+export * from './ThemeSurface';
