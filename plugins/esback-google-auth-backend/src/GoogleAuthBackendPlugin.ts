@@ -10,15 +10,7 @@ export const GoogleAuthBackendPlugin: BackendPluginInterface =
         signInProviderResolverSurface.add({
           google: providers.google.create({
             signIn: {
-              resolver(_, ctx) {
-                const userRef = 'user:default/guest';
-                return ctx.issueToken({
-                  claims: {
-                    sub: userRef,
-                    ent: [userRef],
-                  },
-                });
-              },
+              resolver: signInProviderResolverSurface.signInAsGuestResolver(),
             },
           }),
         });

@@ -5,6 +5,10 @@ export namespace Authentication {
   }
 
   export function googleUserALogin() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'google-auth-provider',
+    );
     cy.setCookie(
       'google-refresh-token',
       Cypress.env('GOOGLE_USER_A_REFRESH_TOKEN'),
