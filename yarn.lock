@@ -3850,6 +3850,24 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@braintree/sanitize-url/-/sanitize-url-6.0.0.tgz#fe364f025ba74f6de6c837a84ef44bdb1d61e68f"
   integrity sha512-mgmE7XBYY/21erpzhexk4Cj1cyTQ9LzvnTxtzM17BJ7ERMNE6W72mQRo0I1Ud8eFJ+RVVIcBNhLFZ3GX4XFz5w==
 
+"@cds/city@^1.1.0":
+  version "1.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@cds/city/-/city-1.1.0.tgz#5b7323750d3d64671ce2e3a804bcf260fbea1154"
+  integrity sha512-S9K+Q39BGOghyLHmR0Wdcmu1i1noSUk8HcvMj+3IaohZw02WFd99aPTQDHJeseXrXZP3CNovaSlePI0R11NcFg==
+
+"@cds/core@5.6.4":
+  version "5.6.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@cds/core/-/core-5.6.4.tgz#f101eb71eb7656516b476ec74659c6bee961bcf6"
+  integrity sha512-OOOBd7hPgj0FitJYnUVkSq7VdaAwz48nTCUvxyuwG/x0VeRnfrAR+YQMU1AKd6FkoRgZ+Q1uDtycdlvDAbMnrg==
+  dependencies:
+    lit "^2.1.3"
+    ramda "^0.28.0"
+    tslib "^2.3.1"
+  optionalDependencies:
+    "@cds/city" "^1.1.0"
+    "@types/resize-observer-browser" "^0.1.5"
+    modern-normalize "1.1.0"
+
 "@changesets/types@^4.0.1":
   version "4.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@changesets/types/-/types-4.1.0.tgz#fb8f7ca2324fd54954824e864f9a61a82cb78fe0"
@@ -5864,6 +5882,11 @@
   dependencies:
     "@lezer/common" "^1.0.0"
 
+"@lit/reactive-element@^1.3.0", "@lit/reactive-element@^1.5.0":
+  version "1.5.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@lit/reactive-element/-/reactive-element-1.5.0.tgz#344cc33f2d1491d094b8ef824a9fe31d150d2375"
+  integrity sha512-fQh9FDK0LPTwDk+0HhSZEtb8K0LTN1wXerwpGrWA+a8tWulYRDLI4vQDWp4GOIsewn0572KYV/oZ3+492D7osA==
+
 "@manypkg/find-root@^1.1.0":
   version "1.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@manypkg/find-root/-/find-root-1.1.0.tgz#a62d8ed1cd7e7d4c11d9d52a8397460b5d4ad29f"
@@ -7692,6 +7715,11 @@
     "@types/tough-cookie" "*"
     form-data "^2.5.0"
 
+"@types/resize-observer-browser@^0.1.5":
+  version "0.1.7"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/resize-observer-browser/-/resize-observer-browser-0.1.7.tgz#294aaadf24ac6580b8fbd1fe3ab7b59fe85f9ef3"
+  integrity sha512-G9eN0Sn0ii9PWQ3Vl72jDPgeJwRWhv2Qk/nQkJuWmRmOB4HX3/BhD5SE1dZs/hzPZL/WKnvF0RHdTSG54QJFyg==
+
 "@types/resolve@1.17.1":
   version "1.17.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/resolve/-/resolve-1.17.1.tgz#3afd6ad8967c77e4376c598a82ddd58f46ec45d6"
@@ -7821,7 +7849,7 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/tough-cookie/-/tough-cookie-4.0.2.tgz#6286b4c7228d58ab7866d19716f3696e03a09397"
   integrity sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==
 
-"@types/trusted-types@*":
+"@types/trusted-types@*", "@types/trusted-types@^2.0.2":
   version "2.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/trusted-types/-/trusted-types-2.0.2.tgz#fc25ad9943bcac11cceb8168db4f275e0e72e756"
   integrity sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==
@@ -16872,6 +16900,30 @@ listr2@^3.8.3:
     through "^2.3.8"
     wrap-ansi "^7.0.0"
 
+lit-element@^3.2.0:
+  version "3.2.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lit-element/-/lit-element-3.2.2.tgz#d148ab6bf4c53a33f707a5168e087725499e5f2b"
+  integrity sha512-6ZgxBR9KNroqKb6+htkyBwD90XGRiqKDHVrW/Eh0EZ+l+iC+u+v+w3/BA5NGi4nizAVHGYvQBHUDuSmLjPp7NQ==
+  dependencies:
+    "@lit/reactive-element" "^1.3.0"
+    lit-html "^2.2.0"
+
+lit-html@^2.2.0, lit-html@^2.5.0:
+  version "2.5.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lit-html/-/lit-html-2.5.0.tgz#9d4c0bb3652a6b10bc4ccdb627dfa9eff1215474"
+  integrity sha512-bLHosg1XL3JRUcKdSVI0sLCs0y1wWrj2sqqAN3cZ7bDDPNgmDHH29RV48x6Wz3ZmkxIupaE+z7uXSZ/pXWAO1g==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+
+lit@^2.1.3:
+  version "2.5.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lit/-/lit-2.5.0.tgz#3a425d69ff8483effb2026957b86ae45de0bc51a"
+  integrity sha512-DtnUP6vR3l4Q8nRPPNBD+UxbAhwJPeky+OVbi3pdgMqm0g57xFSl1Sj64D1rIB+nVNdiVVg8YxB0hqKjvdadZA==
+  dependencies:
+    "@lit/reactive-element" "^1.5.0"
+    lit-element "^3.2.0"
+    lit-html "^2.5.0"
+
 load-json-file@^4.0.0:
   version "4.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/load-json-file/-/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"
@@ -18106,6 +18158,11 @@ mock-fs@^5.1.0:
   version "5.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/mock-fs/-/mock-fs-5.2.0.tgz#3502a9499c84c0a1218ee4bf92ae5bf2ea9b2b5e"
   integrity sha512-2dF2R6YMSZbpip1V1WHKGLNjr/k48uQClqMVb5H3MOvwc9qhYis3/IWbj02qIg/Y8MDXKFF4c5v0rxx2o6xTZw==
+
+modern-normalize@1.1.0:
+  version "1.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/modern-normalize/-/modern-normalize-1.1.0.tgz#da8e80140d9221426bd4f725c6e11283d34f90b7"
+  integrity sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==
 
 modify-values@^1.0.0:
   version "1.0.1"
@@ -20315,6 +20372,11 @@ raf-schd@^4.0.2:
   version "4.0.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
   integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
+
+ramda@^0.28.0:
+  version "0.28.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
+  integrity sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==
 
 randexp@^0.5.3:
   version "0.5.3"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import { appRenderer } from './appRenderer';
-import { SurfaceStore } from '@esback/core';
+import { SurfaceStore, ThemeSurface } from '@esback/core';
 
 describe('AppRenderer', () => {
   it('should render', async () => {
@@ -18,7 +18,19 @@ describe('AppRenderer', () => {
       ] as any,
     };
 
-    const App = appRenderer(new SurfaceStore());
+    const store = new SurfaceStore();
+    store.applyTo(ThemeSurface, surface => {
+      surface.addTheme({
+        id: 'theme',
+        title: 'dummy theme',
+        variant: 'light',
+        Provider(): JSX.Element | null {
+          return null;
+        },
+      });
+      surface.setRootBuilder(children => <div>{children}</div>);
+    });
+    const App = appRenderer(store);
     const rendered = await renderWithEffects(<App />);
     expect(rendered.baseElement).toBeInTheDocument();
   });

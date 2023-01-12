@@ -1,15 +1,14 @@
 import React from 'react';
 import { Navigate, Route } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { Root } from './Root';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
 import {
+  ScmAuth,
   ScmIntegrationsApi,
   scmIntegrationsApiRef,
-  ScmAuth,
 } from '@backstage/integration-react';
 import {
   AnyApiFactory,
@@ -21,8 +20,8 @@ import {
   AppComponentSurface,
   AppPluginSurface,
   AppRouteSurface,
-  SidebarItemSurface,
   SurfaceStore,
+  ThemeSurface,
 } from '@esback/core';
 
 export const appRenderer = (surfaces: SurfaceStore): React.FC => {
@@ -41,8 +40,12 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
     pluginSurface.plugins.length > 0 ? pluginSurface.plugins : undefined;
 
   const routeSurface = surfaces.getSurfaceState(AppRouteSurface);
+
+  const themeSurface = surfaces.getSurfaceState(ThemeSurface);
+
   const app = createApp({
     apis,
+    themes: themeSurface.themes(),
     components: surfaces.getSurfaceState(AppComponentSurface).components,
     plugins,
     bindRoutes(context) {
@@ -58,20 +61,21 @@ export const appRenderer = (surfaces: SurfaceStore): React.FC => {
       {routeSurface.defaultRoute && (
         <Navigate key="/" to={routeSurface.defaultRoute} />
       )}
-      {routeSurface.nonDefaultRoutes}
+      {...routeSurface.nonDefaultRoutes}
       <Route path="/settings" element={<UserSettingsPage />} />
     </FlatRoutes>
   );
+
+  const rootBuilder = themeSurface.rootBuilder();
+  if (!rootBuilder) {
+    throw new Error('No root builder available in theme');
+  }
 
   return () => (
     <AppProvider>
       <AlertDisplay />
       <OAuthRequestDialog />
-      <AppRouter>
-        <Root sidebar={surfaces.getSurfaceState(SidebarItemSurface)}>
-          {routes}
-        </Root>
-      </AppRouter>
+      <AppRouter>{rootBuilder(routes)}</AppRouter>
     </AppProvider>
   );
 };

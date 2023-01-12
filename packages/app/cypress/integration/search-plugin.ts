@@ -12,13 +12,13 @@ describe('Search Plugin', () => {
 
   it('displays the search modal', () => {
     cy.visit('/');
-    cy.contains('Search').click();
-    cy.get('[role="dialog"]');
+    cy.get('[aria-label="Search"]').click();
+    cy.get('[role="dialog"]').should('be.visible');
   });
 
   it('retains search terms on transition from modal to full search page', () => {
     cy.visit('/');
-    cy.contains('Search').click();
+    cy.get('[aria-label="Search"]').click();
 
     cy.get('[role="dialog"]')
       .first()

@@ -94,7 +94,9 @@ export const CatalogPlugin: AppPluginInterface<
     );
 
     context.applyTo(SidebarItemSurface, sidebar =>
-      sidebar.add(<SidebarItem icon={HomeIcon} to={path} text={label} />),
+      sidebar.addMainItem(
+        <SidebarItem icon={HomeIcon} to={path} text={label} />,
+      ),
     );
   };
 };

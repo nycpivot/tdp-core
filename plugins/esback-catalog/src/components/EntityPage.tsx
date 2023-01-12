@@ -214,7 +214,7 @@ export const entityPage = (surface: EntityPageSurface) => {
     </EntitySwitch>
   );
 
-  const apiPage = (
+  const ApiPage = () => (
     <EntityLayout>
       <EntityLayout.Route path="/" title="Overview">
         <Grid container direction="row" spacing={3}>
@@ -352,7 +352,7 @@ export const entityPage = (surface: EntityPageSurface) => {
   return (
     <EntitySwitch>
       <EntitySwitch.Case if={isKind('component')} children={componentPage} />
-      <EntitySwitch.Case if={isKind('api')} children={apiPage} />
+      <EntitySwitch.Case if={isKind('api')} children={<ApiPage />} />
       <EntitySwitch.Case if={isKind('group')} children={groupPage} />
       <EntitySwitch.Case if={isKind('user')} children={userPage} />
       <EntitySwitch.Case if={isKind('system')} children={systemPage} />

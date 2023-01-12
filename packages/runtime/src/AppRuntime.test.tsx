@@ -13,7 +13,7 @@ describe('AppRuntime', () => {
     const sidebarItemSurface =
       runtime.surfaces.getSurfaceState(SidebarItemSurface);
     const routeSurface = runtime.surfaces.getSurfaceState(AppRouteSurface);
-    expect(sidebarItemSurface.all).toHaveLength(3);
+    expect(sidebarItemSurface.mainItems).toHaveLength(3);
     expect(routeSurface.defaultRoute).toBe('catalog');
     expect(routeSurface.nonDefaultRoutes).toHaveLength(8);
   });
@@ -21,12 +21,12 @@ describe('AppRuntime', () => {
   it('should add default plugins (catalog, techdocs, api) to provided plugin list', () => {
     const fakePlugin: EsbackPluginInterface = context =>
       context.applyTo(SidebarItemSurface, surface =>
-        surface.add(<>Fake Item</>),
+        surface.addMainItem(<>Fake Item</>),
       );
 
     const runtime = new AppRuntime([fakePlugin]);
     expect(
-      runtime.surfaces.getSurfaceState(SidebarItemSurface).all,
+      runtime.surfaces.getSurfaceState(SidebarItemSurface).mainItems,
     ).toHaveLength(4);
   });
 

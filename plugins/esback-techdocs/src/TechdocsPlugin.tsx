@@ -41,7 +41,9 @@ export const TechdocsPlugin: AppPluginInterface<RoutableConfig> = config => {
     });
 
     context.applyTo(SidebarItemSurface, sidebar =>
-      sidebar.add(<SidebarItem icon={LibraryBooks} to={path} text={label} />),
+      sidebar.addMainItem(
+        <SidebarItem icon={LibraryBooks} to={path} text={label} />,
+      ),
     );
   };
 };
