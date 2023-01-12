@@ -24,4 +24,8 @@ export class ThemeSurface {
   public themes(): AppTheme[] {
     return this._themes;
   }
+
+  isNotConfigured() {
+    return this._themes.length === 0 || !this._rootBuilder;
+  }
 }

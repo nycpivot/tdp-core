@@ -4,6 +4,7 @@ import {
   AppRouteSurface,
   EsbackPluginInterface,
   SurfaceStore,
+  ThemeSurface,
 } from '@esback/core';
 import { plugin as catalogPlugin } from '@esback/plugin-catalog';
 import { plugin as techdocsPlugin } from '@esback/plugin-techdocs';
@@ -19,17 +20,21 @@ export class AppRuntime {
   constructor(plugins: EsbackPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
 
-    themePlugin()(this._surfaces);
     catalogPlugin()(this._surfaces);
     techdocsPlugin()(this._surfaces);
     searchPlugin()(this._surfaces);
     apiDocsPlugin()(this._surfaces);
     loginPlugin()(this._surfaces);
-
     this._surfaces.applyTo(AppRouteSurface, routes =>
       routes.setDefault('catalog'),
     );
+
     plugins.forEach(plugin => plugin(this._surfaces));
+
+    const themeSurface = this._surfaces.getSurfaceState(ThemeSurface);
+    if (themeSurface.isNotConfigured()) {
+      themePlugin()(this._surfaces);
+    }
   }
 
   public render() {
