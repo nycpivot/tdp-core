@@ -4,5 +4,6 @@
   "pluginsFile": false,
   "retries": 3,
   "viewportWidth": 2400,
-  "viewportHeight": 2000
+  "viewportHeight": 2000,
+  "chromeWebSecurity": false
 }
