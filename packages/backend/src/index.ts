@@ -6,6 +6,7 @@ import { plugin as githubPlugin } from '@esback/plugin-github-backend';
 import { plugin as kubernetesPlugin } from '@esback/plugin-kubernetes-backend';
 import { plugin as kubernetesLoggingPlugin } from '@esback/plugin-kubernetes-logging-backend';
 import { plugin as azureAuthBackendPlugin } from '@esback/plugin-azure-auth-backend';
+import { plugin as googleAuthBackendPlugin } from '@esback/plugin-google-auth-backend';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
@@ -15,4 +16,5 @@ new BackendRuntime([
   kubernetesPlugin(),
   kubernetesLoggingPlugin(),
   azureAuthBackendPlugin(),
+  googleAuthBackendPlugin(),
 ]).start();
