@@ -242,6 +242,10 @@ proxy:
 
 auth:
   providers:
+    gitlab:
+      development:
+        clientId: foo
+        clientSecret: bar
     google:
       development:
         clientId: ${GKE_OIDC_CLIENT_ID}
