@@ -11,12 +11,8 @@ export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with Azure OAuth',
         apiRef: microsoftAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => {
-        const optionalMicrosoftConfig = configApi.getOptional(
-          'auth.providers.microsoft',
-        );
-        return optionalMicrosoftConfig !== undefined;
-      },
+      enabled: (configApi: ConfigApi) =>
+        configApi.has('auth.providers.microsoft'),
     });
   });
 };
