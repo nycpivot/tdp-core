@@ -51,6 +51,9 @@ async function buildEnvironment(serverType: ServerType) {
         CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
           'google_user_a_refresh_token',
         ),
+        CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
+          'bitbucket_john_doe_refresh_token',
+        ),
       };
     default:
       throw new Error(`Unknown server ${serverType}`);
