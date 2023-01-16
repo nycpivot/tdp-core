@@ -145,7 +145,7 @@ jobs:
           auth0_domain: ((auth0.domain))
           auth0_refresh_token: ((e2e.auth0_refresh_token))
           google_user_a_refresh_token: ((e2e.google_user_a_refresh_token))
-          bitbucket_john_doe_refresh_token: ((bitbucket_john_doe_refresh_token))
+          bitbucket_john_doe_refresh_token: ((e2e.bitbucket_john_doe_refresh_token))
   - name: publish
     plan:
       - in_parallel:
