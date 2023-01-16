@@ -38,6 +38,9 @@ async function buildEnvironment(serverType: ServerType) {
         ),
         GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret('client_id'),
         GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret('client_secret'),
+        AUTH0_CLIENT_ID: await vault.readAuth0Secret('client_id'),
+        AUTH0_CLIENT_SECRET: await vault.readAuth0Secret('client_secret'),
+        AUTH0_DOMAIN: await vault.readAuth0Secret('domain'),
       };
     case ServerType.cypress:
       return {

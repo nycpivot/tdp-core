@@ -159,6 +159,9 @@ jobs:
           gke_oidc_control_plane_endpoint: ((gke_oidc.control_plane_endpoint))
           gke_oidc_client_id: ((gke_oidc.client_id))
           gke_oidc_client_secret: ((gke_oidc.client_secret))
+          auth0_client_id: ((auth0.client_id))
+          auth0_client_secret: ((auth0.client_secret))
+          auth0_domain: ((auth0.domain))
           auth0_refresh_token: ((e2e.auth0_refresh_token))
           google_user_a_refresh_token: ((e2e.google_user_a_refresh_token))
     on_failure: *gitlab_pipeline_failure

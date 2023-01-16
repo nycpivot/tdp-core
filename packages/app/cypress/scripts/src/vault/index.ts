@@ -49,4 +49,8 @@ export class Vault {
   readGkeOidcSecret(key: string) {
     return this.read('runway_concourse/esback/gke_oidc', key);
   }
+
+  async readAuth0Secret(key: string) {
+    return this.read('runway_concourse/esback/auth0', key);
+  }
 }
