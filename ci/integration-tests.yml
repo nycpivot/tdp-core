@@ -19,6 +19,8 @@ params:
   GITHUB_TOKEN: ((github_token))
   GITHUB_ENTERPRISE_TOKEN: ((github_enterprise_token))
   GIT_BRANCH: ((git_branch))
+  BITBUCKET_CLIENT_ID: ((bitbucket_client_id))
+  BITBUCKET_CLIENT_SECRET: ((bitbucket_client_secret))
   BITBUCKET_SERVER_LICENSE: ((bitbucket_server_license))
   GKE_CONTROL_PLANE_ENDPOINT: ((gke_control_plane_endpoint))
   GKE_APP_LIVE_VIEW_ENDPOINT: ((gke_app_live_view_endpoint))
