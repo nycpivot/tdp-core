@@ -57,6 +57,7 @@ services:
       - ./npmrc.example:/e2e/.npmrc
     environment:
       - CYPRESS_baseUrl=http://esback:7007
+      - CYPRESS_AUTH0_REFRESH_TOKEN=${CYPRESS_AUTH0_REFRESH_TOKEN}
       - CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN=${CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN}
       - CYPRESS_BITBUCKET_HOST=${BITBUCKET_HOST:-bitbucket:7990}
     working_dir: /e2e

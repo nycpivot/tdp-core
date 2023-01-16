@@ -42,6 +42,9 @@ async function buildEnvironment(serverType: ServerType) {
     case ServerType.cypress:
       return {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
+        CYPRESS_AUTH0_REFRESH_TOKEN: await vault.readE2ESecret(
+          'auth0_refresh_token',
+        ),
         CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
           'google_user_a_refresh_token',
         ),
