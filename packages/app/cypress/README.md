@@ -68,6 +68,15 @@ installed on this cluster thanks to [the multi-cloud-testing project](https://gi
 The credentials used to connect to this cluster can be found [in the vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/gke). The service account used to connect to the cluster is `tap-gui`
 that is available in the `tap-gui` namespace.
 
+## Authentication to Auth0 in the tests
+
+In order to test Auth0 login, an Auth0 account has been created with the user `esback.e2e@gmail.com` account. The credentials
+for this user can be found in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e) under
+the `john_doe_password` key.
+
+A refresh token is used and stored in a cookie to emulate an authentication. The Auth0 account has been configured so that
+this token should not expire.
+
 ## Authentication to Google in the tests
 
 In order to test k8s rbac features, an external Google user has been created. Its email address is `esback.e2e.usera@gmail.com` and its password can be found in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
