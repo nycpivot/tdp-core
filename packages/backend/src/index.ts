@@ -8,6 +8,7 @@ import { plugin as kubernetesLoggingPlugin } from '@esback/plugin-kubernetes-log
 import { plugin as azureAuthBackendPlugin } from '@esback/plugin-azure-auth-backend';
 import { plugin as gitlabAuthBackendPlugin } from '@esback/plugin-gitlab-auth-backend';
 import { plugin as googleAuthBackendPlugin } from '@esback/plugin-google-auth-backend';
+import { plugin as bitbucketAuthBackendPlugin } from '@esback/plugin-bitbucket-auth-backend';
 import { plugin as auth0BackendPlugin } from '@esback/plugin-auth0-auth-backend';
 
 new BackendRuntime([
@@ -20,5 +21,6 @@ new BackendRuntime([
   azureAuthBackendPlugin(),
   gitlabAuthBackendPlugin(),
   googleAuthBackendPlugin(),
+  bitbucketAuthBackendPlugin(),
   auth0BackendPlugin(),
 ]).start();
