@@ -35,9 +35,9 @@ params:
   OKTA_CLIENT_SECRET: ((okta_client_secret))
   OKTA_AUDIENCE: ((okta_audience))
   CYPRESS_AUTH0_REFRESH_TOKEN: ((auth0_refresh_token))
-  CYPRESS_OKTA_REFRESH: ((okta_refresh_token))
-  CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: ((google_user_a_refresh_token))
   CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: ((bitbucket_john_doe_refresh_token))
+  CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: ((google_user_a_refresh_token))
+  CYPRESS_OKTA_REFRESH_TOKEN: ((okta_refresh_token))
 run:
   dir: code
   path: ci/scripts/integration_tests
