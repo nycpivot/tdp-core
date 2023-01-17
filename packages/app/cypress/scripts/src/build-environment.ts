@@ -18,6 +18,9 @@ async function buildEnvironment(serverType: ServerType) {
       };
     case ServerType.esback:
       return {
+        OKTA_CLIENT_ID: await vault.readOktaSecret('client_id'),
+        OKTA_CLIENT_SECRET: await vault.readOktaSecret('client_secret'),
+        OKTA_AUDIENCE: await vault.readOktaSecret('audience'),
         GITHUB_ENTERPRISE_TOKEN: await vault.readE2ESecret(
           'github_enterprise_token',
         ),
@@ -49,14 +52,17 @@ async function buildEnvironment(serverType: ServerType) {
     case ServerType.cypress:
       return {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
+        CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
+          'bitbucket_john_doe_refresh_token',
+        ),
         CYPRESS_AUTH0_REFRESH_TOKEN: await vault.readE2ESecret(
           'auth0_refresh_token',
         ),
         CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
           'google_user_a_refresh_token',
         ),
-        CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
-          'bitbucket_john_doe_refresh_token',
+        CYPRESS_OKTA_REFRESH_TOKEN: await vault.readE2ESecret(
+          'okta_refresh_token',
         ),
       };
     default:

@@ -261,3 +261,8 @@ auth:
       development:
         clientId: ${GKE_OIDC_CLIENT_ID}
         clientSecret: ${GKE_OIDC_CLIENT_SECRET}
+    okta:
+      development:
+        clientId: ${OKTA_CLIENT_ID}
+        clientSecret: ${OKTA_CLIENT_SECRET}
+        audience: ${OKTA_AUDIENCE}
