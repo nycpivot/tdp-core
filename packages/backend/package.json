@@ -21,6 +21,7 @@
     "@esback/plugin-gitlab-backend": "^0.0.1-alpha.2",
     "@esback/plugin-okta-auth-backend": "^0.0.1-alpha.1",
     "@esback/plugin-azure-auth-backend": "^0.0.1-alpha.1",
+    "@esback/plugin-github-auth-backend": "^0.0.1-alpha.1",
     "@esback/plugin-gitlab-auth-backend": "^0.0.1-alpha.1",
     "@esback/plugin-google-auth-backend": "^0.0.1-alpha.1",
     "@esback/plugin-auth0-auth-backend": "^0.0.1-alpha.1",

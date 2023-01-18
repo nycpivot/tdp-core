@@ -5,6 +5,7 @@ import { plugin as rrvPlugin } from '@esback/plugin-rrv';
 import { plugin as appLiveViewPlugin } from '@esback/plugin-app-live-view';
 import { plugin as oktaAuthPlugin } from '@esback/plugin-okta-auth';
 import { plugin as azureAuthPlugin } from '@esback/plugin-azure-auth';
+import { plugin as githubAuthPlugin } from '@esback/plugin-github-auth';
 import { plugin as gitlabAuthPlugin } from '@esback/plugin-gitlab-auth';
 import { plugin as googleAuthPlugin } from '@esback/plugin-google-auth';
 import { plugin as auth0AuthPlugin } from '@esback/plugin-auth0-auth';
@@ -17,6 +18,7 @@ new AppRuntime([
   appLiveViewPlugin(),
   oktaAuthPlugin(),
   azureAuthPlugin(),
+  githubAuthPlugin(),
   gitlabAuthPlugin(),
   auth0AuthPlugin(),
   bitbucketAuthPlugin(),
