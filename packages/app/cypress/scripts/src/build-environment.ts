@@ -38,10 +38,16 @@ async function buildEnvironment(serverType: ServerType) {
         ),
         GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret('client_id'),
         GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret('client_secret'),
+        AUTH0_CLIENT_ID: await vault.readAuth0Secret('client_id'),
+        AUTH0_CLIENT_SECRET: await vault.readAuth0Secret('client_secret'),
+        AUTH0_DOMAIN: await vault.readAuth0Secret('domain'),
       };
     case ServerType.cypress:
       return {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
+        CYPRESS_AUTH0_REFRESH_TOKEN: await vault.readE2ESecret(
+          'auth0_refresh_token',
+        ),
         CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
           'google_user_a_refresh_token',
         ),

@@ -4,6 +4,14 @@ export namespace Authentication {
     cy.get('button').contains('Enter').click();
   }
 
+  export function auth0Login() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'auth0-auth-provider',
+    );
+    cy.setCookie('auth0-refresh-token', Cypress.env('AUTH0_REFRESH_TOKEN'));
+  }
+
   export function googleUserALogin() {
     window.localStorage.setItem(
       '@backstage/core:SignInPage:provider',
