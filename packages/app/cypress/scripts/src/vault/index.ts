@@ -34,6 +34,10 @@ export class Vault {
       .then(secret => Promise.resolve(secret.data[key]));
   }
 
+  async readOktaSecret(key: string) {
+    return this.read('runway_concourse/esback/okta', key);
+  }
+
   readE2ESecret(key: string): Promise<string> {
     return this.read('runway_concourse/esback/e2e', key);
   }

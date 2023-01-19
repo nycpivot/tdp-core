@@ -5,6 +5,7 @@ import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-backend';
 import { plugin as githubPlugin } from '@esback/plugin-github-backend';
 import { plugin as kubernetesPlugin } from '@esback/plugin-kubernetes-backend';
 import { plugin as kubernetesLoggingPlugin } from '@esback/plugin-kubernetes-logging-backend';
+import { plugin as oktaAuthBackendPlugin } from '@esback/plugin-okta-auth-backend';
 import { plugin as azureAuthBackendPlugin } from '@esback/plugin-azure-auth-backend';
 import { plugin as gitlabAuthBackendPlugin } from '@esback/plugin-gitlab-auth-backend';
 import { plugin as googleAuthBackendPlugin } from '@esback/plugin-google-auth-backend';
@@ -18,6 +19,7 @@ new BackendRuntime([
   githubPlugin(),
   kubernetesPlugin(),
   kubernetesLoggingPlugin(),
+  oktaAuthBackendPlugin(),
   azureAuthBackendPlugin(),
   gitlabAuthBackendPlugin(),
   googleAuthBackendPlugin(),
