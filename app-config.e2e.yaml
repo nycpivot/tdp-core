@@ -51,8 +51,8 @@ catalog:
     gitlab:
       esback:
         host: gitlab.eng.vmware.com
-        group: esback
-        entityFilename: packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-provider-component.yml
+        group: esback/fixtures
+        entityFilename: catalog-info.yaml
         schedule:
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -88,19 +88,19 @@ catalog:
       rules:
         - allow: [User, Group]
     - type: url
-      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-integration-component.yml
+      target: https://gitlab.eng.vmware.com/esback/fixtures/gke-user-a-nginx/-/blob/main/catalog-info.yaml
     - type: url
-      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gke-oidc-user-a-component.yml
+      target: https://gitlab.eng.vmware.com/esback/fixtures/gke-user-b-nginx/-/blob/main/catalog_info.yaml
     - type: url
-      target: https://gitlab.eng.vmware.com/esback/core/-/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gke-oidc-user-b-component.yml
+      target: https://gitlab.eng.vmware.com/esback/fixtures/gitlab-integration-component/-/blob/main/catalog-info.yaml
+    - type: gitlab-discovery
+      target: https://gitlab.eng.vmware.com/esback/fixtures/gitlab-processor-component/-/blob/main/catalog-info.yaml
     - type: url
       target: https://github.com/fouadh/foobar-backstage-component/blob/master/github-integration-component.yml
     - type: url
       target: https://cmbu-githubent01.eng.vmware.com/tap-gui/esback-e2e/blob/main/github-enterprise-integration-component.yml
     - type: system-x
       target: 'non empty string'
-    - type: gitlab-discovery
-      target: https://gitlab.eng.vmware.com/esback/blob/${GIT_BRANCH}/packages/app/cypress/fixtures/gitlab/catalog/components/gitlab-processor-component.yml
     - type: url
       target: https://github.com/sample-accelerators/tanzu-java-web-app/blob/main/catalog/catalog-info.yaml
     - type: url
