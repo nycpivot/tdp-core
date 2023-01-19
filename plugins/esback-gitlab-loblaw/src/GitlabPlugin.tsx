@@ -32,11 +32,19 @@ export const GitlabPlugin: AppPluginInterface = () => context => {
       surface.addOverviewContent(
         <EntitySwitch>
           <EntitySwitch.Case if={isGitlabAvailable}>
-            <Grid item md={12}>
+            <Grid item md={4}>
               <EntityGitlabContributorsCard />
+            </Grid>
+            <Grid item md={4}>
               <EntityGitlabLanguageCard />
+            </Grid>
+            <Grid item md={4}>
               <EntityGitlabMergeRequestStatsCard />
+            </Grid>
+            <Grid item md={12}>
               <EntityGitlabPipelinesTable />
+            </Grid>
+            <Grid item md={12}>
               <EntityGitlabMergeRequestsTable />
             </Grid>
           </EntitySwitch.Case>
