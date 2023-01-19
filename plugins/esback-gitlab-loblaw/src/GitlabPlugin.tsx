@@ -30,19 +30,17 @@ export const GitlabPlugin: AppPluginInterface = () => context => {
       );
 
       surface.addOverviewContent(
-        <Grid container spacing={3} alignItems="stretch">
-          <EntitySwitch>
-            <EntitySwitch.Case if={isGitlabAvailable}>
-              <Grid item md={6}>
-                <EntityGitlabContributorsCard />
-                <EntityGitlabLanguageCard />
-                <EntityGitlabMergeRequestStatsCard />
-                <EntityGitlabPipelinesTable />
-                <EntityGitlabMergeRequestsTable />
-              </Grid>
-            </EntitySwitch.Case>
-          </EntitySwitch>
-        </Grid>,
+        <EntitySwitch>
+          <EntitySwitch.Case if={isGitlabAvailable}>
+            <Grid item md={12}>
+              <EntityGitlabContributorsCard />
+              <EntityGitlabLanguageCard />
+              <EntityGitlabMergeRequestStatsCard />
+              <EntityGitlabPipelinesTable />
+              <EntityGitlabMergeRequestsTable />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>,
       );
     },
   );
