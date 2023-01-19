@@ -5,7 +5,7 @@ describe('Okta Auth plugin', () => {
     cy.visit('/');
     cy.contains(/sign in with okta/i);
     cy.contains('li', /okta/i)
-      .contains(/sign in/i)
+      .contains('button', /sign in/i)
       .should('be.visible');
   });
 
