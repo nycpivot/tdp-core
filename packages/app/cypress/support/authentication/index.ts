@@ -26,4 +26,15 @@ export namespace Authentication {
   export function googleLogout() {
     cy.clearCookie('google-refresh-token');
   }
+
+  export function bitbucketLogin() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'bitbucket-auth-provider',
+    );
+    cy.setCookie(
+      'bitbucket-refresh-token',
+      Cypress.env('BITBUCKET_JOHN_DOE_REFRESH_TOKEN'),
+    );
+  }
 }

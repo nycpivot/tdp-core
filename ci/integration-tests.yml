@@ -19,6 +19,8 @@ params:
   GITHUB_TOKEN: ((github_token))
   GITHUB_ENTERPRISE_TOKEN: ((github_enterprise_token))
   GIT_BRANCH: ((git_branch))
+  BITBUCKET_CLIENT_ID: ((bitbucket_client_id))
+  BITBUCKET_CLIENT_SECRET: ((bitbucket_client_secret))
   BITBUCKET_SERVER_LICENSE: ((bitbucket_server_license))
   GKE_CONTROL_PLANE_ENDPOINT: ((gke_control_plane_endpoint))
   GKE_APP_LIVE_VIEW_ENDPOINT: ((gke_app_live_view_endpoint))
@@ -31,6 +33,7 @@ params:
   AUTH0_DOMAIN: ((auth0_domain))
   CYPRESS_AUTH0_REFRESH_TOKEN: ((auth0_refresh_token))
   CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: ((google_user_a_refresh_token))
+  CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: ((bitbucket_john_doe_refresh_token))
 run:
   dir: code
   path: ci/scripts/integration_tests

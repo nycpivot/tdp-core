@@ -24,6 +24,10 @@ async function buildEnvironment(serverType: ServerType) {
         GITHUB_TOKEN: await vault.readE2ESecret('github_token'),
         GITLAB_TOKEN: await vault.readGitlabSecret('core_token'),
         GIT_BRANCH: Git.currentBranch(),
+        BITBUCKET_CLIENT_ID: await vault.readBitbucketSecret('client_id'),
+        BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(
+          'client_secret',
+        ),
         GKE_CONTROL_PLANE_ENDPOINT: await vault.readGkeSecret(
           'control_plane_endpoint',
         ),
@@ -50,6 +54,9 @@ async function buildEnvironment(serverType: ServerType) {
         ),
         CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
           'google_user_a_refresh_token',
+        ),
+        CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
+          'bitbucket_john_doe_refresh_token',
         ),
       };
     default:

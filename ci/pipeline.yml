@@ -133,6 +133,8 @@ jobs:
           github_token: ((e2e.github_token))
           github_enterprise_token: ((e2e.github_enterprise_token))
           git_branch: ((git_branch))
+          bitbucket_client_id: ((bitbucket.client_id))
+          bitbucket_client_secret: ((bitbucket.client_secret))
           bitbucket_server_license: ((e2e.bitbucket_server_license))
           gke_control_plane_endpoint: ((gke.control_plane_endpoint))
           gke_app_live_view_endpoint: ((gke.app_live_view_endpoint))
@@ -145,6 +147,7 @@ jobs:
           auth0_domain: ((auth0.domain))
           auth0_refresh_token: ((e2e.auth0_refresh_token))
           google_user_a_refresh_token: ((e2e.google_user_a_refresh_token))
+          bitbucket_john_doe_refresh_token: ((e2e.bitbucket_john_doe_refresh_token))
   - name: publish
     plan:
       - in_parallel:

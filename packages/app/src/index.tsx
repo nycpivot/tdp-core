@@ -7,6 +7,7 @@ import { plugin as azureAuthPlugin } from '@esback/plugin-azure-auth';
 import { plugin as gitlabAuthPlugin } from '@esback/plugin-gitlab-auth';
 import { plugin as googleAuthPlugin } from '@esback/plugin-google-auth';
 import { plugin as auth0AuthPlugin } from '@esback/plugin-auth0-auth';
+import { plugin as bitbucketAuthPlugin } from '@esback/plugin-bitbucket-auth';
 import { plugin as guestAuthPlugin } from '@esback/plugin-guest-auth';
 
 new AppRuntime([
@@ -15,7 +16,8 @@ new AppRuntime([
   appLiveViewPlugin(),
   azureAuthPlugin(),
   gitlabAuthPlugin(),
-  googleAuthPlugin(),
   auth0AuthPlugin(),
+  bitbucketAuthPlugin(),
+  googleAuthPlugin(),
   guestAuthPlugin(),
 ]).render();
