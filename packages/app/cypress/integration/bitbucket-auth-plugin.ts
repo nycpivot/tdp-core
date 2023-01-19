@@ -5,7 +5,7 @@ describe('Bitbucket Auth Plugin', () => {
     cy.visit('/');
     cy.contains(/sign in with bitbucket oauth/i);
     cy.contains('li', /bitbucket/i)
-      .contains(/sign in/i)
+      .contains('button', /sign in/i)
       .should('be.visible');
   });
 
