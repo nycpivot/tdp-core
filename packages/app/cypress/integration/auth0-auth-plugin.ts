@@ -5,7 +5,7 @@ describe('Auth0 Plugin', () => {
     cy.visit('/');
     cy.contains(/sign in with auth0/i);
     cy.contains('li', /auth0/i)
-      .contains(/sign in/i)
+      .contains('button', /sign in/i)
       .should('be.visible');
   });
 
