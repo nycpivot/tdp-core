@@ -16,8 +16,8 @@ new AppRuntime([
   appLiveViewPlugin(),
   azureAuthPlugin(),
   gitlabAuthPlugin(),
-  googleAuthPlugin(),
   auth0AuthPlugin(),
-  guestAuthPlugin(),
   bitbucketAuthPlugin(),
+  googleAuthPlugin(),
+  guestAuthPlugin(),
 ]).render();
