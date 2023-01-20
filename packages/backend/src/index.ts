@@ -12,6 +12,7 @@ import { plugin as gitlabAuthBackendPlugin } from '@esback/plugin-gitlab-auth-ba
 import { plugin as googleAuthBackendPlugin } from '@esback/plugin-google-auth-backend';
 import { plugin as bitbucketAuthBackendPlugin } from '@esback/plugin-bitbucket-auth-backend';
 import { plugin as auth0BackendPlugin } from '@esback/plugin-auth0-auth-backend';
+import { plugin as oneLoginBackendPlugin } from '@esback/plugin-onelogin-auth-backend';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
@@ -27,4 +28,5 @@ new BackendRuntime([
   googleAuthBackendPlugin(),
   bitbucketAuthBackendPlugin(),
   auth0BackendPlugin(),
+  oneLoginBackendPlugin(),
 ]).start();
