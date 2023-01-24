@@ -257,6 +257,10 @@ auth:
       development:
         clientId: foo
         clientSecret: bar
+    github:
+      development:
+        clientId: ${GITHUB_APP_CLIENT_ID}
+        clientSecret: ${GITHUB_APP_CLIENT_SECRET}
     google:
       development:
         clientId: ${GKE_OIDC_CLIENT_ID}

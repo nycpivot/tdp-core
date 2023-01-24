@@ -34,6 +34,17 @@ export namespace Authentication {
     );
   }
 
+  export function githubLogin() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'github-auth-provider',
+    );
+    cy.setCookie(
+      'github-refresh-token',
+      Cypress.env('GITHUB_USER_REFRESH_TOKEN'),
+    );
+  }
+
   export function googleLogout() {
     cy.clearCookie('google-refresh-token');
   }

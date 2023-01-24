@@ -48,6 +48,10 @@ async function buildEnvironment(serverType: ServerType) {
         AUTH0_CLIENT_ID: await vault.readAuth0Secret('client_id'),
         AUTH0_CLIENT_SECRET: await vault.readAuth0Secret('client_secret'),
         AUTH0_DOMAIN: await vault.readAuth0Secret('domain'),
+        GITHUB_APP_CLIENT_ID: await vault.readE2ESecret('github_app_client_id'),
+        GITHUB_APP_CLIENT_SECRET: await vault.readE2ESecret(
+          'github_app_client_secret',
+        ),
       };
     case ServerType.cypress:
       return {
@@ -63,6 +67,9 @@ async function buildEnvironment(serverType: ServerType) {
         ),
         CYPRESS_OKTA_REFRESH_TOKEN: await vault.readE2ESecret(
           'okta_refresh_token',
+        ),
+        CYPRESS_GITHUB_USER_REFRESH_TOKEN: await vault.readE2ESecret(
+          'github_user_refresh_token',
         ),
       };
     default:

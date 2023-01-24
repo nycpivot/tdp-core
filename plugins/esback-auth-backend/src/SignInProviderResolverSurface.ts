@@ -1,6 +1,5 @@
 import {
   AuthResolverContext,
-  OAuthResult,
   SignInInfo,
   SignInResolver,
 } from '@backstage/plugin-auth-backend';
@@ -21,8 +20,8 @@ export class SignInProviderResolverSurface {
     return this._signInProvidersResolvers;
   }
 
-  public signInAsGuestResolver(): SignInResolver<OAuthResult> {
-    return (_: SignInInfo<OAuthResult>, ctx: AuthResolverContext) => {
+  public signInAsGuestResolver<TAuthResult>(): SignInResolver<TAuthResult> {
+    return (_: SignInInfo<TAuthResult>, ctx: AuthResolverContext) => {
       const userRef = 'user:default/guest'; // Must be a full entity reference
       return ctx.issueToken({
         claims: {
