@@ -10,7 +10,9 @@ import {
   defaultAuthProviderFactories,
 } from '@backstage/plugin-auth-backend';
 
-const createPlugin = (signInProviderSurface: SignInProviderResolverSurface) => {
+const createPlugin = (
+  signInProviderResolverSurface: SignInProviderResolverSurface,
+) => {
   return async (env: PluginEnvironment): Promise<Router> => {
     return await createRouter({
       logger: env.logger,
@@ -38,7 +40,7 @@ const createPlugin = (signInProviderSurface: SignInProviderResolverSurface) => {
         // your own, see the auth documentation for more details:
         //
         //   https://backstage.io/docs/auth/identity-resolver
-        ...signInProviderSurface.allSignInProviders(),
+        ...signInProviderResolverSurface.allSignInProviders(),
       },
     });
   };

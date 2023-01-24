@@ -5,6 +5,7 @@ import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-loblaw';
 import { plugin as rrvPlugin } from '@esback/plugin-rrv';
 import { plugin as appLiveViewPlugin } from '@esback/plugin-app-live-view';
 import { plugin as oktaAuthPlugin } from '@esback/plugin-okta-auth';
+import { plugin as oidcAuthPlugin } from '@esback/plugin-oidc-auth';
 import { plugin as azureAuthPlugin } from '@esback/plugin-azure-auth';
 import { plugin as githubAuthPlugin } from '@esback/plugin-github-auth';
 import { plugin as gitlabAuthPlugin } from '@esback/plugin-gitlab-auth';
@@ -20,6 +21,7 @@ new AppRuntime([
   rrvPlugin(),
   appLiveViewPlugin(),
   oktaAuthPlugin(),
+  oidcAuthPlugin(),
   azureAuthPlugin(),
   githubAuthPlugin(),
   gitlabAuthPlugin(),

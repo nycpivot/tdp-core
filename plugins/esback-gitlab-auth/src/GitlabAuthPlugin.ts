@@ -11,7 +11,7 @@ export const GitlabAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with GitLab',
         apiRef: gitlabAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.gitlab'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.gitlab'), // TODO: ESBACK-163 - needs test for case when config does not exist
     });
   });
 };

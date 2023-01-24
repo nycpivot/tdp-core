@@ -12,7 +12,7 @@ export const BitbucketAuthPlugin: BackendPluginInterface = () => surfaces => {
         apiRef: bitbucketAuthApiRef,
       },
       enabled: (configApi: ConfigApi) =>
-        configApi.has('auth.providers.bitbucket'),
+        configApi.has('auth.providers.bitbucket'), // TODO: ESBACK-163 - needs test for case when config does not exist
     });
   });
 };
