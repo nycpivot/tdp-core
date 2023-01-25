@@ -17,17 +17,21 @@ export const GitlabPlugin: AppPluginInterface = () => context => {
   context.applyWithDependency(
     AppRouteSurface,
     EntityPageSurface,
-    // @ts-ignore routes that is not used
+    // @ts-expect-error: TS6133
     (routes, surface) => {
-      surface.addServicePageTab(
+      const component = (
         <EntityLayout.Route
           if={isGitlabAvailable}
           path="/gitlab"
           title="Gitlab"
         >
           <EntityGitlabContent />
-        </EntityLayout.Route>,
+        </EntityLayout.Route>
       );
+
+      surface.addDefaultPageTab(component);
+      surface.addServicePageTab(component);
+      surface.addWebsitePageTab(component);
 
       surface.addOverviewContent(
         <EntitySwitch>
