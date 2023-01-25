@@ -265,6 +265,11 @@ auth:
       development:
         clientId: ${GKE_OIDC_CLIENT_ID}
         clientSecret: ${GKE_OIDC_CLIENT_SECRET}
+    onelogin:
+      development:
+        clientId: foo
+        clientSecret: bar
+        issuer: baz
     okta:
       development:
         clientId: ${OKTA_CLIENT_ID}
