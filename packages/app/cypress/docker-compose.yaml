@@ -2,6 +2,18 @@
 ---
 version: '3.3'
 services:
+  openldap:
+    image: docker.io/bitnami/openldap:2.6.3
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    environment:
+      - LDAP_ROOT=o=tap-activation
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=admin
+    volumes:
+      - './fixtures/ldap/ldifs:/ldifs'
+      - './fixtures/ldap/overlays:/schemas'
   bitbucket:
     image: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket:8.4.2
     ports:
@@ -28,6 +40,8 @@ services:
       context: ../../..
       dockerfile: packages/backend/Dockerfile
     image: esback:integration
+    depends_on:
+      - openldap
     environment:
       - NODE_TLS_REJECT_UNAUTHORIZED=0 #! to skip ssl verification for our Github Enterprise
       - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}

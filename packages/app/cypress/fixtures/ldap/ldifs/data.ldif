@@ -1,0 +1,56 @@
+dn: o=tap-activation
+o: tap-activation
+objectclass: organization
+
+dn: ou=people,o=tap-activation
+changetype: add
+ou: People
+objectclass: organizationalUnit
+
+dn: ou=teams,o=tap-activation
+changetype: add
+ou: Teams
+objectclass: organizationalUnit
+
+dn: uid=alice,ou=people,o=tap-activation
+changetype: add
+cn: Alice Aston
+givenName: Alice
+sn: Aston
+uid: alice
+mail: alice@vmware.com
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: uid=bob,ou=people,o=tap-activation
+changetype: add
+cn: Bob Barlow
+givenName: Robert
+sn: Barlow
+uid: bob
+mail: bob@vmware.com
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: uid=carol,ou=people,o=tap-activation
+changetype: add
+cn: Carol Catlet
+givenName: Carol
+sn: Catlet
+uid: carol
+mail: carol@vmware.com
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=tanzu-portal-builder,ou=teams,o=tap-activation
+changetype: add
+cn: tanzu-portal-builder
+objectclass: groupOfNames
+member: uid=alice,ou=people,o=tap-activation
+member: uid=bob,ou=people,o=tap-activation
+
+dn: cn=tap-gui,ou=teams,o=tap-activation
+changetype: add
+cn: tap-gui
+objectclass: groupOfNames
+member: uid=carol,ou=people,o=tap-activation

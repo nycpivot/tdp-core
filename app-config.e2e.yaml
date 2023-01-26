@@ -47,6 +47,14 @@ integrations:
       token: ${BITBUCKET_TOKEN}
 
 catalog:
+  processors:
+    ldapOrg:
+      providers:
+        - target: ldap://openldap:1389
+          users:
+            dn: ou=people,o=tap-activation
+          groups:
+            dn: ou=teams,o=tap-activation
   providers:
     gitlab:
       esback:
@@ -77,6 +85,10 @@ catalog:
           Template,
         ]
   locations:
+    - type: ldap-org
+      target: ldap://openldap:1389
+      rules:
+        - allow: [User, Group]
     - type: file
       target: /app/examples/entities.yaml
     - type: file
