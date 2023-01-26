@@ -11,6 +11,7 @@
     "@esback/plugin-rrv": "^0.0.1-alpha.1",
     "@esback/plugin-app-live-view": "^0.0.1-alpha.1",
     "@esback/plugin-okta-auth": "^0.0.1-alpha.1",
+    "@esback/plugin-oidc-auth": "^0.0.1-alpha.1",
     "@esback/plugin-azure-auth": "^0.0.1-alpha.1",
     "@esback/plugin-github-auth": "^0.0.1-alpha.1",
     "@esback/plugin-gitlab-auth": "^0.0.1-alpha.1",

@@ -13,36 +13,36 @@ import {
   ProfileInfoApi,
   SessionApi,
 } from '@backstage/core-plugin-api';
-import { OAuth2 } from '@backstage/core-app-api';
 import { LoginSurface } from '@esback/plugin-login';
+import { OAuth2 } from '@backstage/core-app-api';
 
-export const auth0AuthApiRef: ApiRef<
+export const oidcAuthApiRef: ApiRef<
   OAuthApi &
     OpenIdConnectApi &
     ProfileInfoApi &
     BackstageIdentityApi &
     SessionApi
 > = createApiRef({
-  id: 'esback.auth.auth0',
+  id: 'esback.auth.oidc',
 });
 
-export const Auth0Plugin: BackendPluginInterface = () => surfaces => {
+export const OidcAuthPlugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
       config: {
-        id: 'auth0-auth-provider',
-        title: 'Auth0',
-        message: 'Sign in with Auth0',
-        apiRef: auth0AuthApiRef,
+        id: 'oidc-auth-provider',
+        title: 'OIDC',
+        message: 'Sign in with a custom OIDC',
+        apiRef: oidcAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.auth0'), // TODO: ESBACK-163 - needs test for case when config does not exist
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.oidc'), // TODO: ESBACK-163 - needs test for case when config does not exist
     });
   });
 
   surfaces.applyTo(ApiSurface, surface => {
     surface.add(
       createApiFactory({
-        api: auth0AuthApiRef,
+        api: oidcAuthApiRef,
         deps: {
           discoveryApi: discoveryApiRef,
           oauthRequestApi: oauthRequestApiRef,
@@ -53,11 +53,11 @@ export const Auth0Plugin: BackendPluginInterface = () => surfaces => {
             discoveryApi,
             oauthRequestApi,
             provider: {
-              id: 'auth0',
-              title: 'Auth0',
+              id: 'oidc',
+              title: 'OIDC',
               icon: () => null,
             },
-            defaultScopes: ['openid', 'email', 'profile', 'offline_access'],
+            defaultScopes: ['openid', 'email', 'profile'],
             environment: configApi.getOptionalString('auth.environment'),
           }),
       }),

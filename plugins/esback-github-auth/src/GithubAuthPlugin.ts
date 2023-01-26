@@ -11,7 +11,7 @@ export const GithubAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with GitHub',
         apiRef: githubAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.github'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.github'), // TODO: ESBACK-163 - needs test for case when config does not exist
     });
   });
 };

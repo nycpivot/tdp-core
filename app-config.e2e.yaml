@@ -270,6 +270,11 @@ auth:
         clientId: foo
         clientSecret: bar
         issuer: baz
+    oidc:
+      development:
+        metadataUrl: https://gitlab.eng.vmware.com/.well-known/openid-configuration
+        clientId: foo
+        clientSecret: bar
     okta:
       development:
         clientId: ${OKTA_CLIENT_ID}

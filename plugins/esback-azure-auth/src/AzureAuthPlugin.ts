@@ -12,7 +12,7 @@ export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
         apiRef: microsoftAuthApiRef,
       },
       enabled: (configApi: ConfigApi) =>
-        configApi.has('auth.providers.microsoft'),
+        configApi.has('auth.providers.microsoft'), // TODO: ESBACK-163 - needs test for case when config does not exist
     });
   });
 };
