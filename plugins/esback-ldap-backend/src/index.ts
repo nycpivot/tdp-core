@@ -1,1 +1,2 @@
-export { LdapPlugin as plugin, LdapSurface } from './LdapPlugin';
+export { LdapPlugin as plugin } from './LdapPlugin';
+export { LdapSurface } from './LdapSurface';
