@@ -15,6 +15,7 @@ import { plugin as bitbucketAuthBackendPlugin } from '@esback/plugin-bitbucket-a
 import { plugin as auth0BackendPlugin } from '@esback/plugin-auth0-auth-backend';
 import { plugin as oneLoginBackendPlugin } from '@esback/plugin-onelogin-auth-backend';
 import { plugin as ldapBackendPlugin } from '@esback/plugin-ldap-backend';
+import { plugin as ldapTransformersPlugin } from '@esback/plugin-ldap-test-transformers';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
@@ -33,4 +34,5 @@ new BackendRuntime([
   auth0BackendPlugin(),
   oneLoginBackendPlugin(),
   ldapBackendPlugin(),
+  ldapTransformersPlugin(),
 ]).start();
