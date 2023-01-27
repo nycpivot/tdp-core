@@ -15,6 +15,9 @@ describe('LDAP Plugin', () => {
     cy.contains(/alice/i).click();
     cy.contains(/alice aston/i).should('be.visible');
     cy.contains(/alice@vmware.com/i).should('be.visible');
+    cy.contains(/description added by custom user transformer/i).should(
+      'be.visible',
+    );
 
     cy.contains(/tanzu-portal-builder/i).click();
 
@@ -28,5 +31,10 @@ describe('LDAP Plugin', () => {
     cy.get('[role=listbox]').contains(/group/i).click();
     cy.contains(/tap-gui/i).should('be.visible');
     cy.contains(/tanzu-portal-builder/i).should('be.visible');
+
+    cy.contains(/tanzu-portal-builder/i).click();
+    cy.contains(/description added by custom group transformer/i).should(
+      'be.visible',
+    );
   });
 });
