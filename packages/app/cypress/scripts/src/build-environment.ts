@@ -1,5 +1,4 @@
 import { Vault } from './vault';
-import { Git } from './git';
 
 enum ServerType {
   bitbucketServer,
@@ -26,7 +25,6 @@ async function buildEnvironment(serverType: ServerType) {
         ),
         GITHUB_TOKEN: await vault.readE2ESecret('github_token'),
         GITLAB_TOKEN: await vault.readGitlabSecret('fixtures_token'),
-        GIT_BRANCH: Git.currentBranch(),
         BITBUCKET_CLIENT_ID: await vault.readBitbucketSecret('client_id'),
         BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(
           'client_secret',
