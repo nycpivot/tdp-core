@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@backstage/core-components": "^0.12.3",
-    "@backstage/plugin-catalog-backend-module-ldap": "^0.3",
+    "@backstage/plugin-catalog-backend-module-ldap": "^0.5.8",
     "@esback/core": "^0.0.1-alpha.2"
   },
   "devDependencies": {
