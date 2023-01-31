@@ -94,7 +94,7 @@ catalog:
     - type: ldap-org
       target: ldap://openldap:1389
       rules:
-        - allow: [ User, Group ]
+        - allow: [User, Group]
     - type: file
       target: /app/examples/entities.yaml
     - type: file
