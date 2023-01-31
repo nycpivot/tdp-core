@@ -19,6 +19,7 @@
     "@esback/plugin-catalog-test-entity-provider": "^0.0.1-alpha.2",
     "@esback/plugin-catalog-test-entity-processor": "^0.0.1-alpha.2",
     "@esback/plugin-gitlab-backend": "^0.0.1-alpha.2",
+    "@esback/plugin-azure-devops-backend": "^0.0.1-alpha.1",
     "@esback/plugin-okta-auth-backend": "^0.0.1-alpha.1",
     "@esback/plugin-oidc-auth-backend": "^0.0.1-alpha.1",
     "@esback/plugin-azure-auth-backend": "^0.0.1-alpha.1",

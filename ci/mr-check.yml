@@ -150,6 +150,7 @@ jobs:
         vars:
           gitlab_token: ((gitlab.fixtures_token))
           github_token: ((e2e.github_token))
+          azure_token: ((e2e.azure_token))
           github_enterprise_token: ((e2e.github_enterprise_token))
           auth0_client_id: ((auth0.client_id))
           auth0_client_secret: ((auth0.client_secret))
