@@ -24,6 +24,7 @@ async function buildEnvironment(serverType: ServerType) {
           'github_enterprise_token',
         ),
         GITHUB_TOKEN: await vault.readE2ESecret('github_token'),
+        AZURE_TOKEN: await vault.readE2ESecret('azure_token'),
         GITLAB_TOKEN: await vault.readGitlabSecret('fixtures_token'),
         BITBUCKET_CLIENT_ID: await vault.readBitbucketSecret('client_id'),
         BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(

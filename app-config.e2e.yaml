@@ -26,6 +26,10 @@ backend:
     store: memory
 
 integrations:
+  azure:
+    - host: dev.azure.com
+      token: ${AZURE_TOKEN}
+
   github:
     - host: github.com
       token: ${GITHUB_TOKEN}
@@ -85,10 +89,12 @@ catalog:
           Template,
         ]
   locations:
+    - type: azure-discovery
+      target: https://dev.azure.com/tap-activation/tanzu-portal-builder
     - type: ldap-org
       target: ldap://openldap:1389
       rules:
-        - allow: [User, Group]
+        - allow: [ User, Group ]
     - type: file
       target: /app/examples/entities.yaml
     - type: file
