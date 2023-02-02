@@ -180,3 +180,15 @@ jobs:
           repository: code
           tag: version/version
           only_tag: true
+  - name: update-dev-env
+    plan:
+      - get: code
+        resource: esback-core
+        passed: [build]
+        trigger: true
+      - task: write-kubeconfig-file
+        file: code/ci/write-kubeconfig-file.yml
+        vars:
+          kubeconfig: ((calatrava-env-dev.kubeconfig))
+      - task: restart-k8s-deployment
+        file: code/ci/restart-k8s-deployment.yml
