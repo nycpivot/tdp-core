@@ -1,0 +1,15 @@
+---
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: harbor-repo.vmware.com/dockerhub-proxy-cache/bitnami/kubectl
+inputs:
+  - name: output
+    path: /.kube
+run:
+  path: bash
+  args:
+    - -exec
+    - |
+      kubectl rollout restart deployment/server -n esback
