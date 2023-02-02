@@ -28,6 +28,7 @@ resources:
       repository: harbor-repo.vmware.com/esback/internal-instance
       username: ((harbor.username))
       password: ((harbor.token))
+      tag: latest
   # Integration tests tools
   - name: ytt
     type: github-release
