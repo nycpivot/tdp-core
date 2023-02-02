@@ -18,6 +18,8 @@
   "dependencies": {
     "@esback/plugin-catalog-test-entity-provider": "^0.0.1-alpha.2",
     "@esback/plugin-catalog-test-entity-processor": "^0.0.1-alpha.2",
+    "@esback/plugin-microsoft-graph-org-reader-processor": "^0.0.1-alpha.1",
+    "@esback/plugin-microsoft-graph-org-reader-processor-test-transformers": "^0.0.1-alpha.1",
     "@esback/plugin-gitlab-backend": "^0.0.1-alpha.2",
     "@esback/plugin-azure-devops-backend": "^0.0.1-alpha.1",
     "@esback/plugin-okta-auth-backend": "^0.0.1-alpha.1",
@@ -45,7 +47,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.21.1",
+    "@backstage/cli": "^0.22.1",
     "@types/dockerode": "^3.3.0",
     "@types/express": "^4.17.6",
     "@types/express-serve-static-core": "^4.17.5",

@@ -1,6 +1,7 @@
 import { BackendRuntime } from '@esback/runtime-backend';
 import { plugin as catalogTestEntityProviderPlugin } from '@esback/plugin-catalog-test-entity-provider';
 import { plugin as catalogTestEntityProcessorPlugin } from '@esback/plugin-catalog-test-entity-processor';
+import { plugin as microsoftGraphOrgReaderProcessorPlugin } from '@esback/plugin-microsoft-graph-org-reader-processor';
 import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-backend';
 import { plugin as azureDevOpsPlugin } from '@esback/plugin-azure-devops-backend';
 import { plugin as githubPlugin } from '@esback/plugin-github-backend';
@@ -17,10 +18,13 @@ import { plugin as auth0BackendPlugin } from '@esback/plugin-auth0-auth-backend'
 import { plugin as oneLoginBackendPlugin } from '@esback/plugin-onelogin-auth-backend';
 import { plugin as ldapBackendPlugin } from '@esback/plugin-ldap-backend';
 import { plugin as ldapTransformersPlugin } from '@esback/plugin-ldap-test-transformers';
+import { plugin as microsoftGraphOrgReaderProcessorTestTransformersPlugin } from '@esback/plugin-microsoft-graph-org-reader-processor-test-transformers';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
   catalogTestEntityProcessorPlugin(),
+  microsoftGraphOrgReaderProcessorPlugin(),
+  microsoftGraphOrgReaderProcessorTestTransformersPlugin(),
   gitlabPlugin(),
   azureDevOpsPlugin(),
   githubPlugin(),

@@ -59,6 +59,15 @@ catalog:
             dn: ou=people,o=tap-activation
           groups:
             dn: ou=teams,o=tap-activation
+    microsoftGraphOrg:
+      providers:
+        - target: https://graph.microsoft.com/v1.0
+          authority: https://login.microsoftonline.com
+          tenantId: ${AZURE_TENANT_ID}
+          clientId: ${AZURE_CLIENT_ID}
+          clientSecret: ${AZURE_CLIENT_SECRET}
+          userFilter: displayName eq 'Benjamin Smith'
+          groupFilter: displayName eq 'dap-build'
   providers:
     gitlab:
       esback:
@@ -89,6 +98,8 @@ catalog:
           Template,
         ]
   locations:
+    - type: microsoft-graph-org
+      target: https://graph.microsoft.com/v1.0
     - type: azure-discovery
       target: https://dev.azure.com/tap-activation/tanzu-portal-builder
     - type: ldap-org
