@@ -14,6 +14,7 @@ export const GuestAuthPlugin: BackendPluginInterface = () => surfaces => {
           ? false
           : optionalAllowGuestAccess.valueOf();
       },
+      authProviderKey: 'guest',
     });
   });
 };

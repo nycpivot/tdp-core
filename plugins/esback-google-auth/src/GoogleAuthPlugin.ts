@@ -11,7 +11,8 @@ export const GoogleAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with Google OAuth',
         apiRef: googleAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.google'), // TODO: ESBACK-163 - needs test for case when config does not exist
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.google'),
+      authProviderKey: 'google'
     });
   });
 };

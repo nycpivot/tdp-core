@@ -11,8 +11,8 @@ export const OneLoginAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with OneLogin',
         apiRef: oneloginAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) =>
-        configApi.has('auth.providers.onelogin'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.onelogin'),
+      authProviderKey: 'onelogin'
     });
   });
 };

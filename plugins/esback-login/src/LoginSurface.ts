@@ -6,6 +6,7 @@ export type ProviderConfig = 'guest' | 'custom' | SignInProviderConfig;
 export type Provider = {
   config: ProviderConfig;
   enabled: (configApi: ConfigApi) => boolean;
+  authProviderKey: string;
 };
 
 export class LoginSurface {
@@ -20,8 +21,25 @@ export class LoginSurface {
   }
 
   public enabledProviders(configAPI: ConfigApi): ProviderConfig[] {
-    return this._providers
-      .filter((provider: Provider) => provider.enabled(configAPI))
-      .map((provider: Provider) => provider.config);
+    const configuredProviders = this._providers.filter((provider: Provider) => provider.enabled(configAPI))
+    return configuredProviders
+      .map((provider: Provider) => {
+        const loginConfig = configAPI.getOptionalConfig(`auth.loginPage.${provider.authProviderKey}`)
+        if (this.isSignInProviderConfig(provider.config) && loginConfig !== undefined) {
+          return {
+            id: loginConfig.getOptionalString('id') || provider.config.id,
+            title: loginConfig.getOptionalString('title') || provider.config.title,
+            message:
+              loginConfig.getOptionalString('message') || provider.config.message,
+            apiRef: provider.config.apiRef,
+          };
+        } else {
+          return provider.config
+        }
+      });
+  }
+
+  private isSignInProviderConfig(providerConfig: ProviderConfig): providerConfig is SignInProviderConfig {
+    return (providerConfig as SignInProviderConfig).id !== undefined;
   }
 }
