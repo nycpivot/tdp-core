@@ -33,9 +33,9 @@ export class LoginSurface {
               loginConfig.getOptionalString('message') || provider.config.message,
             apiRef: provider.config.apiRef,
           };
-        } else {
-          return provider.config
         }
+
+        return provider.config
       });
   }
 
