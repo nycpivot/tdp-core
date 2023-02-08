@@ -26,14 +26,14 @@
   "dependencies": {
     "@esback/core": "^0.0.1-alpha.2",
     "@esback/kubernetes-logging-backend": "0.1.0",
-    "@backstage/catalog-client": "^1.1.2",
+    "@backstage/catalog-client": "^1.3.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.21.1",
-    "@backstage/core-app-api": "^1.0.4",
-    "@backstage/dev-utils": "^1.0.4",
-    "@backstage/test-utils": "^1.1.2",
+    "@backstage/cli": "^0.22.1",
+    "@backstage/core-app-api": "^1.4.0",
+    "@backstage/dev-utils": "^1.0.11",
+    "@backstage/test-utils": "^1.2.4",
     "@types/jest": "*",
     "@types/node": "*",
     "cross-fetch": "^3.1.5",
