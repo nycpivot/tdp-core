@@ -11,7 +11,7 @@ export const BitbucketAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with Bitbucket OAuth',
         apiRef: bitbucketAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.bitbucket'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.bitbucket'), // TODO: ESBACK-163 - needs test for case when config does not exist
       authProviderKey: 'bitbucket'
     });
   });

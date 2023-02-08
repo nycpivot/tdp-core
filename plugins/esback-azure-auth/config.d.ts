@@ -1,6 +1,6 @@
 import { LoginPageConfig } from "@esback/plugin-login";
 
-interface AzureLoginPageConfig extends LoginPageConfig {
+export class AzureLoginPageConfig implements LoginPageConfig {
   /**
   * @visibility frontend
   */

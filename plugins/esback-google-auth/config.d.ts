@@ -1,6 +1,6 @@
 import { LoginPageConfig } from "@esback/plugin-login";
 
-interface GoogleLoginPageConfig extends LoginPageConfig {
+export class GoogleLoginPageConfig implements LoginPageConfig {
   /**
   * @visibility frontend
   */

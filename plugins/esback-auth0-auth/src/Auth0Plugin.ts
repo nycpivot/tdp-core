@@ -35,7 +35,7 @@ export const Auth0Plugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with Auth0',
         apiRef: auth0AuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.auth0'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.auth0'), // TODO: ESBACK-163 - needs test for case when config does not exist
       authProviderKey: 'auth0'
     });
   });

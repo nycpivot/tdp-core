@@ -1,6 +1,6 @@
 import { LoginPageConfig } from "@esback/plugin-login";
 
-interface OktaLoginPageConfig extends LoginPageConfig {
+export class OktaLoginPageConfig implements LoginPageConfig {
   /**
   * @visibility frontend
   */

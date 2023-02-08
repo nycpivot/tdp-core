@@ -1,6 +1,6 @@
 import { LoginPageConfig } from "@esback/plugin-login";
 
-interface BitbucketLoginPageConfig extends LoginPageConfig {
+export class BitbucketLoginPageConfig implements LoginPageConfig {
   /**
   * @visibility frontend
   */

@@ -11,7 +11,7 @@ export const OktaAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with Okta OAuth',
         apiRef: oktaAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.okta'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.okta'), // TODO: ESBACK-163 - needs test for case when config does not exist
       authProviderKey: 'okta'
     });
   });

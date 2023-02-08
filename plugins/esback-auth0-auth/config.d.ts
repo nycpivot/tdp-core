@@ -1,6 +1,6 @@
 import { LoginPageConfig } from "@esback/plugin-login";
 
-interface Auth0LoginPageConfig extends LoginPageConfig {
+export class Auth0LoginPageConfig implements LoginPageConfig {
   /**
   * @visibility frontend
   */

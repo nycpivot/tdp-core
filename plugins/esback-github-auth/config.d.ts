@@ -1,6 +1,6 @@
 import { LoginPageConfig } from "@esback/plugin-login";
 
-interface GithubLoginPageConfig extends LoginPageConfig {
+export class GithubLoginPageConfig implements LoginPageConfig {
   /**
   * @visibility frontend
   */

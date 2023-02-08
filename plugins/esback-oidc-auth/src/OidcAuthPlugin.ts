@@ -35,7 +35,7 @@ export const OidcAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with a custom OIDC',
         apiRef: oidcAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.oidc'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.oidc'), // TODO: ESBACK-163 - needs test for case when config does not exist
       authProviderKey: 'oidc'
     });
   });

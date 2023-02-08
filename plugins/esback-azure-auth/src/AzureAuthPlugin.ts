@@ -11,7 +11,7 @@ export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
         message: 'Sign in with Azure OAuth',
         apiRef: microsoftAuthApiRef,
       },
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.microsoft'),
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.microsoft'), // TODO: ESBACK-163 - needs test for case when config does not exist
       authProviderKey: 'microsoft'
     });
   });
