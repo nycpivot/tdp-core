@@ -1,0 +1,46 @@
+{
+  "name": "@esback/plugin-supply-chain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.esm.js",
+    "types": "dist/index.d.ts"
+  },
+  "backstage": {
+    "role": "frontend-plugin"
+  },
+  "scripts": {
+    "build": "backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack"
+  },
+  "dependencies": {
+    "@esback/core": "^0.0.1-alpha.2",
+    "@backstage/core-components": "^0.12.0",
+    "@material-ui/icons": "^4.9.1",
+    "react-router": "6.0.0-beta.0",
+    "@tint/plugin-supply-chain": "1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.21.1",
+    "@backstage/core-app-api": "^1.0.4",
+    "@backstage/dev-utils": "^1.0.4",
+    "@backstage/test-utils": "^1.1.2",
+    "@types/jest": "*",
+    "@types/node": "*",
+    "cross-fetch": "^3.1.5",
+    "msw": "^0.44.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
