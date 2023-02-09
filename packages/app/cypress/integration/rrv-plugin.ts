@@ -22,8 +22,7 @@ describe('RRV Plugin', () => {
       .should('be.visible');
   });
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should render the app live view', () => {
+  it('should render the app live view', () => {
     cy.contains(/tanzu-java-web-app/i).click();
     cy.contains(/runtime resources/i).click();
     cy.contains('tr', /pod/i)
