@@ -1,5 +1,5 @@
 import { SignInProviderConfig } from '@backstage/core-components';
-import { LoginSurface, Provider } from './LoginSurface';
+import { LoginSurface, customizeAuthProviderConfig } from './LoginSurface';
 import { MockConfigApi } from '@backstage/test-utils';
 import { createApiRef } from '@backstage/core-plugin-api';
 
@@ -15,9 +15,9 @@ describe('LoginSurface', () => {
       const loginSurface = new LoginSurface();
 
       loginSurface.add({
-        config: 'guest',
+        config: () => 'guest',
         enabled: () => true,
-        authProviderKey: 'guest'
+        authProviderKey: 'guest',
       });
 
       expect(loginSurface.hasProviders()).toEqual(true);
@@ -25,56 +25,12 @@ describe('LoginSurface', () => {
   });
 
   describe('enabledProviders', () => {
-    it('returns the provider configs with custom message and title specified in auth:loginPage:provider', () => {
-      const loginSurface = new LoginSurface();
-      const mockProviderConfig: SignInProviderConfig = {
-        id: 'test-mock-auth-provider',
-        title: 'original title',
-        message: 'original message',
-        apiRef: createApiRef({
-          id: 'esback.auth.mock',
-        })
-      }
-
-      const mockProvider: Provider = {
-        config: mockProviderConfig,
-        enabled: () => true,
-        authProviderKey: 'mock'
-      }
-
-      const mockAppConfig = new MockConfigApi({
-        app: { baseUrl: 'https://example.com' },
-        auth: {
-          loginPage: {
-            mock: {
-              id: 'modified-mock-auth-provider',
-              title: 'custom title',
-              message: 'custom message'
-            }
-          }
-        },
-      });
-
-      loginSurface.add(mockProvider);
-
-      const enabledProviders = loginSurface.enabledProviders(mockAppConfig)
-
-      expect(enabledProviders).toEqual([{
-        id: 'modified-mock-auth-provider',
-        title: 'custom title',
-        message: 'custom message',
-        apiRef: createApiRef({
-          id: 'esback.auth.mock',
-        })
-      }])
-    });
-
     it('returns the provider configs for enabled providers', () => {
       const loginSurface = new LoginSurface();
       loginSurface.add({
-        config: 'guest',
+        config: () => 'guest',
         enabled: () => true,
-        authProviderKey: 'guest'
+        authProviderKey: 'guest',
       });
       const mockConfig = new MockConfigApi({
         app: { baseUrl: 'https://example.com' },
@@ -86,9 +42,9 @@ describe('LoginSurface', () => {
     it('does not return provider configs for providers that are not enabled', () => {
       const loginSurface = new LoginSurface();
       loginSurface.add({
-        config: 'guest',
+        config: () => 'guest',
         enabled: () => false,
-        authProviderKey: 'guest'
+        authProviderKey: 'guest',
       });
       const mockConfig = new MockConfigApi({
         app: { baseUrl: 'https://example.com' },
@@ -96,5 +52,62 @@ describe('LoginSurface', () => {
 
       expect(loginSurface.enabledProviders(mockConfig)).toEqual([]);
     });
+  });
+});
+
+describe('customizeAuthProviderConfig', () => {
+  let mockDefaultConfig: SignInProviderConfig;
+
+  beforeAll(() => {
+    mockDefaultConfig = {
+      id: 'test-mock-auth-provider',
+      title: 'original title',
+      message: 'original message',
+      apiRef: createApiRef({
+        id: 'esback.auth.mock',
+      }),
+    };
+  });
+
+  it('returns the default values when there are no customized values provided in app config', () => {
+    const expectedConfig = {
+      id: 'test-mock-auth-provider',
+      title: 'original title',
+      message: 'original message',
+    };
+
+    const mockAppConfig = new MockConfigApi({
+      app: { baseUrl: 'https://example.com' },
+      auth: {
+        loginPage: {},
+      },
+    });
+
+    expect(
+      customizeAuthProviderConfig(mockAppConfig, mockDefaultConfig, 'mock'),
+    ).toEqual(expectedConfig);
+  });
+
+  it('returns customized values when they are provided in app config', () => {
+    const expectedConfig = {
+      id: 'modified-mock-auth-provider',
+      title: 'custom title',
+      message: 'custom message',
+    };
+
+    const mockAppConfig = new MockConfigApi({
+      app: { baseUrl: 'https://example.com' },
+      auth: {
+        loginPage: {
+          mock: {
+            ...expectedConfig,
+          },
+        },
+      },
+    });
+
+    expect(
+      customizeAuthProviderConfig(mockAppConfig, mockDefaultConfig, 'mock'),
+    ).toEqual(expectedConfig);
   });
 });

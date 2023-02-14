@@ -1,18 +1,23 @@
 import { BackendPluginInterface } from '@esback/core';
 import { ConfigApi, googleAuthApiRef } from '@backstage/core-plugin-api';
 import { LoginSurface } from '@esback/plugin-login';
+import { customizeAuthProviderConfig } from '@esback/plugin-login/src/LoginSurface';
 
 export const GoogleAuthPlugin: BackendPluginInterface = () => surfaces => {
+  const defaultConfig = {
+    id: 'google-auth-provider',
+    title: 'Google',
+    message: 'Sign in with Google OAuth',
+  };
+
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
-      config: {
-        id: 'google-auth-provider',
-        title: 'Google',
-        message: 'Sign in with Google OAuth',
+      config: (configApi: ConfigApi) => ({
+        ...customizeAuthProviderConfig(configApi, defaultConfig, 'google'),
         apiRef: googleAuthApiRef,
-      },
+      }),
       enabled: (configApi: ConfigApi) => configApi.has('auth.providers.google'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'google'
+      authProviderKey: 'google',
     });
   });
 };

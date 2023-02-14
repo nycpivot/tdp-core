@@ -309,3 +309,7 @@ auth:
         clientId: ${OKTA_CLIENT_ID}
         clientSecret: ${OKTA_CLIENT_SECRET}
         audience: ${OKTA_AUDIENCE}
+  loginPage:
+    oidc:
+      title: 'custom OIDC provider'
+      message: 'customized in appconfig.e2e.yaml'

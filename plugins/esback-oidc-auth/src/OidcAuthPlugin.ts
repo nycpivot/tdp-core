@@ -15,6 +15,7 @@ import {
 } from '@backstage/core-plugin-api';
 import { LoginSurface } from '@esback/plugin-login';
 import { OAuth2 } from '@backstage/core-app-api';
+import { customizeAuthProviderConfig } from '@esback/plugin-login/src/LoginSurface';
 
 export const oidcAuthApiRef: ApiRef<
   OAuthApi &
@@ -27,16 +28,20 @@ export const oidcAuthApiRef: ApiRef<
 });
 
 export const OidcAuthPlugin: BackendPluginInterface = () => surfaces => {
+  const defaultConfig = {
+    id: 'oidc-auth-provider',
+    title: 'OIDC',
+    message: 'Sign in with a custom OIDC',
+  };
+
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
-      config: {
-        id: 'oidc-auth-provider',
-        title: 'OIDC',
-        message: 'Sign in with a custom OIDC',
+      config: (configApi: ConfigApi) => ({
+        ...customizeAuthProviderConfig(configApi, defaultConfig, 'oidc'),
         apiRef: oidcAuthApiRef,
-      },
+      }),
       enabled: (configApi: ConfigApi) => configApi.has('auth.providers.oidc'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'oidc'
+      authProviderKey: 'oidc',
     });
   });
 
