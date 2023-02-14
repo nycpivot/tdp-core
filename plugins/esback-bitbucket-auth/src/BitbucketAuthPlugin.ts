@@ -7,8 +7,8 @@ export const BitbucketAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'bitbucket-auth-provider',
     title: 'Bitbucket',
-    message: 'Sign in with Bitbucket OAuth'
-  }
+    message: 'Sign in with Bitbucket OAuth',
+  };
 
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
@@ -16,8 +16,9 @@ export const BitbucketAuthPlugin: BackendPluginInterface = () => surfaces => {
         ...customizeAuthProviderConfig(configApi, defaultConfig, 'onelogin'),
         apiRef: bitbucketAuthApiRef,
       }),
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.bitbucket'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'bitbucket'
+      enabled: (configApi: ConfigApi) =>
+        configApi.has('auth.providers.bitbucket'), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: 'bitbucket',
     });
   });
 };

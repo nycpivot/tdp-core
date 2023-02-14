@@ -16,8 +16,9 @@ export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
         ...customizeAuthProviderConfig(configApi, defaultConfig, 'microsoft'),
         apiRef: microsoftAuthApiRef,
       }),
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.microsoft'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'microsoft'
+      enabled: (configApi: ConfigApi) =>
+        configApi.has('auth.providers.microsoft'), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: 'microsoft',
     });
   });
 };

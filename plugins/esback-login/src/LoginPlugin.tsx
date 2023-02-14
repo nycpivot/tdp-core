@@ -12,7 +12,12 @@ export const LoginPlugin: AppPluginInterface = () => {
         // TODO: ESBACK-163 - needs test for case when there are no login providers
         if (loginSurface.hasProviders()) {
           appComponentSurface.add('SignInPage', props => {
-            return <SignInPageWrapper onSignInSuccess={props.onSignInSuccess} loginSurface={loginSurface} />
+            return (
+              <SignInPageWrapper
+                onSignInSuccess={props.onSignInSuccess}
+                loginSurface={loginSurface}
+              />
+            );
           });
         }
       },

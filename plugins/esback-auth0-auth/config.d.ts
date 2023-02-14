@@ -1,29 +1,25 @@
-import { LoginPageConfig } from "@esback/plugin-login";
-
-export class Auth0LoginPageConfig implements LoginPageConfig {
-  /**
-  * @visibility frontend
-  */
-  id?: string;
-
-  /**
-  * @visibility frontend
-  */
-  title?: string;
-
-  /**
-  * @visibility frontend
-  */
-  message?: string;
-}
-
 export interface Config {
   auth?: {
-  /**
-  * @visibility frontend
-  */
+    /**
+     * @visibility frontend
+     */
     loginPage?: {
-      auth0?: Auth0LoginPageConfig
-    }
+      auth0?: {
+        /**
+         * @visibility frontend
+         */
+        id?: string;
+
+        /**
+         * @visibility frontend
+         */
+        title?: string;
+
+        /**
+         * @visibility frontend
+         */
+        message?: string;
+      };
+    };
   };
 }

@@ -7,7 +7,7 @@ export const GithubAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'github-auth-provider',
     title: 'GitHub',
-    message: 'Sign in with GitHub'
+    message: 'Sign in with GitHub',
   };
 
   surfaces.applyTo(LoginSurface, surface => {

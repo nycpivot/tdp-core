@@ -7,7 +7,7 @@ export const OktaAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'okta-auth-provider',
     title: 'Okta',
-    message: 'Sign in with Okta OAuth'
+    message: 'Sign in with Okta OAuth',
   };
 
   surfaces.applyTo(LoginSurface, surface => {
@@ -17,7 +17,7 @@ export const OktaAuthPlugin: BackendPluginInterface = () => surfaces => {
         apiRef: oktaAuthApiRef,
       }),
       enabled: (configApi: ConfigApi) => configApi.has('auth.providers.okta'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'okta'
+      authProviderKey: 'okta',
     });
   });
 };
