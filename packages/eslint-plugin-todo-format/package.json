@@ -1,10 +1,9 @@
 {
-  "name": "eslint-plugin-todo-format",
-  "description": "Validates format of TODO comments",
-  "version": "0.1.0",
+  "name": "@esback/eslint-plugin",
+  "description": "Validates code format",
+  "version": "0.1.0-alpha.3",
   "license": "Apache-2.0",
   "main": "dist/index.js",
-  "private": true,
   "scripts": {
     "build": "tsup index.ts --no-splitting",
     "lint": "eslint -c .eslintrc.js '{**/*,*}.{js,ts}'",
