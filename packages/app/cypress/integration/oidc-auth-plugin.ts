@@ -9,6 +9,8 @@ describe('OIDC Auth Plugins', () => {
           win.location.href = url;
         }).as('popup');
       });
+      cy.contains('custom OIDC provider');
+      cy.contains('customized in appconfig.e2e.yaml');
       cy.contains('li', 'OIDC').find('button').click();
       cy.get('@popup').should('be.called');
       cy.contains('VMware GitLab Enterprise Edition');

@@ -1,8 +1,7 @@
 import React from 'react';
 import { AppComponentSurface, AppPluginInterface } from '@esback/core';
-import { SignInPage } from '@backstage/core-components';
 import { LoginSurface } from './LoginSurface';
-import { configApiRef, useApi } from '@backstage/core-plugin-api';
+import { SignInPageWrapper } from './SignInPageWrapper';
 
 export const LoginPlugin: AppPluginInterface = () => {
   return context => {
@@ -13,25 +12,11 @@ export const LoginPlugin: AppPluginInterface = () => {
         // TODO: ESBACK-163 - needs test for case when there are no login providers
         if (loginSurface.hasProviders()) {
           appComponentSurface.add('SignInPage', props => {
-            const enabledProviders = loginSurface.enabledProviders(
-              useApi(configApiRef), // eslint-disable-line react-hooks/rules-of-hooks
-            );
-            if (enabledProviders.length > 0) {
-              return <SignInPage {...props} providers={enabledProviders} />;
-            }
-            // TODO: ESBACK-163 - needs test for case when there are login providers, but none are configured
             return (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                }}
-              >
-                No configured authentication providers. Please configure at
-                least one.
-              </div>
+              <SignInPageWrapper
+                onSignInSuccess={props.onSignInSuccess}
+                loginSurface={loginSurface}
+              />
             );
           });
         }

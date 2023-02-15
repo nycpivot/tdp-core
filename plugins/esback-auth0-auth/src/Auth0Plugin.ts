@@ -15,6 +15,7 @@ import {
 } from '@backstage/core-plugin-api';
 import { OAuth2 } from '@backstage/core-app-api';
 import { LoginSurface } from '@esback/plugin-login';
+import { customizeAuthProviderConfig } from '@esback/plugin-login/src/LoginSurface';
 
 export const auth0AuthApiRef: ApiRef<
   OAuthApi &
@@ -27,15 +28,20 @@ export const auth0AuthApiRef: ApiRef<
 });
 
 export const Auth0Plugin: BackendPluginInterface = () => surfaces => {
+  const defaultConfig = {
+    id: 'auth0-auth-provider',
+    title: 'Auth0',
+    message: 'Sign in with Auth0',
+  };
+
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
-      config: {
-        id: 'auth0-auth-provider',
-        title: 'Auth0',
-        message: 'Sign in with Auth0',
+      config: (configApi: ConfigApi) => ({
+        ...customizeAuthProviderConfig(configApi, defaultConfig, 'auth0'),
         apiRef: auth0AuthApiRef,
-      },
+      }),
       enabled: (configApi: ConfigApi) => configApi.has('auth.providers.auth0'), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: 'auth0',
     });
   });
 
