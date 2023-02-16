@@ -13,9 +13,11 @@ import {
   ProfileInfoApi,
   SessionApi,
 } from '@backstage/core-plugin-api';
-import { LoginSurface } from '@esback/plugin-login';
+import {
+  LoginSurface,
+  customizeAuthProviderConfig,
+} from '@esback/plugin-login';
 import { OAuth2 } from '@backstage/core-app-api';
-import { customizeAuthProviderConfig } from '@esback/plugin-login/src/LoginSurface';
 
 export const oidcAuthApiRef: ApiRef<
   OAuthApi &

@@ -1,2 +1,2 @@
 export { LoginPlugin as plugin } from './LoginPlugin';
-export { LoginSurface } from './LoginSurface';
+export { LoginSurface, customizeAuthProviderConfig } from './LoginSurface';
