@@ -103,6 +103,9 @@ catalog:
     - type: microsoft-graph-org
       target: https://graph.microsoft.com/v1.0
 
+    - type: s3-discovery
+      target: https://tpb-aws-s3-discovery-processor.dev.s3.us-east-1.amazonaws.com/
+
     ## Uncomment these lines to add more example data
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
