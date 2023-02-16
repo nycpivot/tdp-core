@@ -54,6 +54,10 @@ async function buildEnvironment(serverType: ServerType) {
         GITHUB_APP_CLIENT_SECRET: await vault.readE2ESecret(
           'github_app_client_secret',
         ),
+        AWS_ACCESS_KEY_ID: await vault.readE2ESecret('aws_access_key_id'),
+        AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
+          'aws_secret_access_key',
+        ),
       };
     case ServerType.cypress:
       return {
