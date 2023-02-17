@@ -14,8 +14,8 @@ import {
   SessionApi,
 } from '@backstage/core-plugin-api';
 import {
-  LoginSurface,
   customizeAuthProviderConfig,
+  LoginSurface,
 } from '@esback/plugin-login';
 import { OAuth2 } from '@backstage/core-app-api';
 
