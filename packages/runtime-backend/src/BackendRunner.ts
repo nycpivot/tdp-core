@@ -62,7 +62,7 @@ export async function BackendRunner(surfaces: SurfaceStoreInterface) {
 
   const createEnv = makeCreateEnv(config);
   const apiRouter = Router();
-  const pluginSurface = surfaces.getSurfaceState(BackendPluginSurface);
+  const pluginSurface = surfaces.findSurface(BackendPluginSurface);
 
   for (const plugin of pluginSurface.plugins) {
     const pluginEnv = useHotMemoize(module, () => createEnv(plugin.name));

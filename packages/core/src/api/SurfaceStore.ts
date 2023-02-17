@@ -42,7 +42,7 @@ export interface SurfaceStoreInterface {
     dependencyClass: { new (): U },
     modifier: (surface: T, dependency: U) => void,
   ): void;
-  getSurfaceState<T extends EsbackSurface>(surfaceClass: { new (): T }): T;
+  findSurface<T extends EsbackSurface>(surfaceClass: { new (): T }): T;
 }
 
 export class SurfaceStore implements SurfaceStoreInterface {
@@ -72,13 +72,11 @@ export class SurfaceStore implements SurfaceStoreInterface {
     }
 
     target.addModifier(surface =>
-      modifier(surface, this.getSurfaceState(dependencyClass)),
+      modifier(surface, this.findSurface(dependencyClass)),
     );
   }
 
-  public getSurfaceState<T extends EsbackSurface>(surfaceClass: {
-    new (): T;
-  }): T {
+  public findSurface<T extends EsbackSurface>(surfaceClass: { new (): T }): T {
     return this.getSurfaceEntry(surfaceClass).state;
   }
 

@@ -32,21 +32,21 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
       factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
     }),
     ScmAuth.createDefaultApiFactory(),
-    ...surfaces.getSurfaceState(ApiSurface).apis,
+    ...surfaces.findSurface(ApiSurface).apis,
   ];
 
-  const pluginSurface = surfaces.getSurfaceState(AppPluginSurface);
+  const pluginSurface = surfaces.findSurface(AppPluginSurface);
   const plugins =
     pluginSurface.plugins.length > 0 ? pluginSurface.plugins : undefined;
 
-  const routeSurface = surfaces.getSurfaceState(AppRouteSurface);
+  const routeSurface = surfaces.findSurface(AppRouteSurface);
 
-  const themeSurface = surfaces.getSurfaceState(ThemeSurface);
+  const themeSurface = surfaces.findSurface(ThemeSurface);
 
   const app = createApp({
     apis,
     themes: themeSurface.themes(),
-    components: surfaces.getSurfaceState(AppComponentSurface).components,
+    components: surfaces.findSurface(AppComponentSurface).components,
     plugins,
     bindRoutes(context) {
       routeSurface.routeBinders.forEach(binder => binder(context));

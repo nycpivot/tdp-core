@@ -32,7 +32,7 @@ export class AppRuntime {
 
     plugins.forEach(plugin => plugin(this._surfaces));
 
-    const themeSurface = this._surfaces.getSurfaceState(ThemeSurface);
+    const themeSurface = this._surfaces.findSurface(ThemeSurface);
     if (themeSurface.isNotConfigured()) {
       themePlugin()(this._surfaces);
     }
