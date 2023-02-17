@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aws-s3-discovery-processor-integration-component
+  description: AwsS3DiscoveryProcessor Component
+  tags:
+    - v1
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: esback

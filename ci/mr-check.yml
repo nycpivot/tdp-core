@@ -177,6 +177,8 @@ jobs:
           github_app_client_id: ((e2e.github_app_client_id))
           github_app_client_secret: ((e2e.github_app_client_secret))
           github_user_refresh_token: ((e2e.github_user_refresh_token))
+          aws_access_key_id: ((e2e.aws_access_key_id))
+          aws_secret_access_key: ((e2e.aws_secret_access_key))
     on_failure: *gitlab_pipeline_failure
   - name: mark-mr-success
     public: true

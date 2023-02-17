@@ -7,6 +7,7 @@ describe('RRV Plugin', () => {
   });
 
   it('should render the runtime resources and the pod logs', () => {
+    cy.get('[placeholder=Filter]').type('tap-gui');
     cy.contains(/tap-gui-component/i).click();
     cy.contains(/runtime resources/i).click();
     cy.contains('tr', /pod/i)

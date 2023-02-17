@@ -2,6 +2,7 @@ import { BackendRuntime } from '@esback/runtime-backend';
 import { plugin as catalogTestEntityProviderPlugin } from '@esback/plugin-catalog-test-entity-provider';
 import { plugin as catalogTestEntityProcessorPlugin } from '@esback/plugin-catalog-test-entity-processor';
 import { plugin as microsoftGraphOrgReaderProcessorPlugin } from '@esback/plugin-microsoft-graph-org-reader-processor';
+import { plugin as awsS3DiscoveryProcessorPlugin } from '@esback/plugin-aws-s3-discovery-processor';
 import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-backend';
 import { plugin as azureDevOpsPlugin } from '@esback/plugin-azure-devops-backend';
 import { plugin as githubPlugin } from '@esback/plugin-github-backend';
@@ -24,6 +25,7 @@ new BackendRuntime([
   catalogTestEntityProviderPlugin(),
   catalogTestEntityProcessorPlugin(),
   microsoftGraphOrgReaderProcessorPlugin(),
+  awsS3DiscoveryProcessorPlugin(),
   microsoftGraphOrgReaderProcessorTestTransformersPlugin(),
   gitlabPlugin(),
   azureDevOpsPlugin(),
