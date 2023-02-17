@@ -20,11 +20,11 @@ import {
   AppComponentSurface,
   AppPluginSurface,
   AppRouteSurface,
-  SurfaceStore,
+  SurfaceStoreInterface,
   ThemeSurface,
 } from '@esback/core';
 
-export const appRenderer = (surfaces: SurfaceStore): React.FC => {
+export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const apis: AnyApiFactory[] = [
     createApiFactory({
       api: scmIntegrationsApiRef,

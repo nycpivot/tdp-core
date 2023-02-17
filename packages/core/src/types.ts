@@ -1,11 +1,11 @@
-import { SurfaceStore } from './api';
+import { SurfaceStoreInterface } from './api';
 
 export interface RoutableConfig {
   path?: string;
   label?: string;
 }
 
-export type EsbackPluginInterface = (context: SurfaceStore) => void;
+export type EsbackPluginInterface = (context: SurfaceStoreInterface) => void;
 
 export type AppPluginInterface<T = {}> = (config?: T) => EsbackPluginInterface;
 

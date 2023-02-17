@@ -15,7 +15,7 @@ import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import {
-  SurfaceStore,
+  SurfaceStoreInterface,
   PluginEnvironment,
   BackendPluginSurface,
 } from '@esback/core';
@@ -54,7 +54,7 @@ function makeCreateEnv(config: Config) {
   };
 }
 
-export async function BackendRunner(surfaces: SurfaceStore) {
+export async function BackendRunner(surfaces: SurfaceStoreInterface) {
   const config = await loadBackendConfig({
     argv: process.argv,
     logger: getRootLogger(),
