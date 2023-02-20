@@ -15,7 +15,7 @@ export const ThemePlugin: AppPluginInterface = () => {
       surface.addTheme(ClarityLight);
       surface.addTheme(ClarityDark);
       surface.setRootBuilder(children => (
-        <ClarityRoot sidebar={context.getSurfaceState(SidebarItemSurface)}>
+        <ClarityRoot sidebar={context.findSurface(SidebarItemSurface)}>
           {children}
         </ClarityRoot>
       ));

@@ -38,7 +38,7 @@ export const ThemePlugin: AppPluginInterface = () => {
       surface.addTheme(BackstageLight);
       surface.addTheme(BackstageDark);
       surface.setRootBuilder(children => (
-        <Root sidebar={context.getSurfaceState(SidebarItemSurface)}>
+        <Root sidebar={context.findSurface(SidebarItemSurface)}>
           {children}
         </Root>
       ));

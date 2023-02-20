@@ -20,7 +20,7 @@ describe('GithubBackendPlugin', () => {
     const store = new SurfaceStore();
     GithubBackendPlugin()(store);
 
-    const catalogSurface = store.getSurfaceState(BackendCatalogSurface);
+    const catalogSurface = store.findSurface(BackendCatalogSurface);
     const providers = catalogSurface.buildProviders(fakePluginEnvironment());
 
     expect(mockEntityProvider).toHaveBeenCalled();
@@ -45,7 +45,7 @@ describe('GithubBackendPlugin', () => {
     const store = new SurfaceStore();
     GithubBackendPlugin()(store);
 
-    const catalogSurface = store.getSurfaceState(BackendCatalogSurface);
+    const catalogSurface = store.findSurface(BackendCatalogSurface);
     const providers = catalogSurface.buildProviders(
       fakePluginEnvironment(fakeConfig),
     );

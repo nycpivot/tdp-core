@@ -1,7 +1,9 @@
 import { BackendPluginInterface } from '@esback/core';
 import { ConfigApi, githubAuthApiRef } from '@backstage/core-plugin-api';
-import { LoginSurface } from '@esback/plugin-login';
-import { customizeAuthProviderConfig } from '@esback/plugin-login/src/LoginSurface';
+import {
+  LoginSurface,
+  customizeAuthProviderConfig,
+} from '@esback/plugin-login';
 
 export const GithubAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {

@@ -24,8 +24,8 @@ describe('SurfaceStore test', () => {
     const store = new SurfaceStore();
     store.applyTo(FakeSurface1, s => s.addData('test'));
 
-    const fake1 = store.getSurfaceState(FakeSurface1);
-    const fake2 = store.getSurfaceState(FakeSurface2);
+    const fake1 = store.findSurface(FakeSurface1);
+    const fake2 = store.findSurface(FakeSurface2);
 
     expect(fake1.data).toHaveLength(1);
     expect(fake1.data[0]).toBe('test');
@@ -38,7 +38,7 @@ describe('SurfaceStore test', () => {
     store.applyTo(FakeSurface1, s => s.addData('test'));
     store.applyTo(FakeSurface1, s => s.addData('something'));
 
-    const fake1 = store.getSurfaceState(FakeSurface1);
+    const fake1 = store.findSurface(FakeSurface1);
     expect(fake1.data).toHaveLength(2);
     expect(fake1.data[0]).toBe('test');
     expect(fake1.data[1]).toBe('something');
@@ -54,9 +54,9 @@ describe('SurfaceStore test', () => {
     store.applyTo(FakeSurface1, s => s.addData('test1'));
     store.applyTo(FakeSurface1, s => s.addData('test2'));
 
-    expect(store.getSurfaceState(FakeSurface2).count).toBe(2);
-    expect(store.getSurfaceState(FakeSurface1).data[0]).toBe('test1');
-    expect(store.getSurfaceState(FakeSurface1).data[1]).toBe('test2');
+    expect(store.findSurface(FakeSurface2).count).toBe(2);
+    expect(store.findSurface(FakeSurface1).data[0]).toBe('test1');
+    expect(store.findSurface(FakeSurface1).data[1]).toBe('test2');
   });
 
   it('prevents cyclic dependencies', () => {
@@ -83,7 +83,7 @@ describe('SurfaceStore test', () => {
       const store = new SurfaceStore();
       await Promise.all([isolated(store, 'first'), isolated(store, 'second')]);
 
-      expect(store.getSurfaceState(FakeSurface1).data).toHaveLength(2);
+      expect(store.findSurface(FakeSurface1).data).toHaveLength(2);
     };
 
     const testRuns = [];
@@ -101,14 +101,14 @@ describe('SurfaceStore test', () => {
 
     store.applyTo(FakeSurface1, modifier);
 
-    expect(store.getSurfaceState(FakeSurface1).data).toHaveLength(1);
-    expect(store.getSurfaceState(FakeSurface1).data).toContain('test');
+    expect(store.findSurface(FakeSurface1).data).toHaveLength(1);
+    expect(store.findSurface(FakeSurface1).data).toContain('test');
     expect(modifier).toHaveBeenCalledTimes(1);
 
     store.applyTo(FakeSurface1, s => s.addData('test2'));
 
-    expect(store.getSurfaceState(FakeSurface1).data).toContain('test');
-    expect(store.getSurfaceState(FakeSurface1).data).toContain('test2');
+    expect(store.findSurface(FakeSurface1).data).toContain('test');
+    expect(store.findSurface(FakeSurface1).data).toContain('test2');
     expect(modifier).toHaveBeenCalledTimes(2);
   });
 });

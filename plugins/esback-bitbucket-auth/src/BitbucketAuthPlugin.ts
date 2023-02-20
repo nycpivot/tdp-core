@@ -1,7 +1,9 @@
 import { BackendPluginInterface } from '@esback/core';
 import { ConfigApi, bitbucketAuthApiRef } from '@backstage/core-plugin-api';
-import { LoginSurface } from '@esback/plugin-login';
-import { customizeAuthProviderConfig } from '@esback/plugin-login/src/LoginSurface';
+import {
+  LoginSurface,
+  customizeAuthProviderConfig,
+} from '@esback/plugin-login';
 
 export const BitbucketAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {

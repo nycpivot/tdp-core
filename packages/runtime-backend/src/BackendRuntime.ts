@@ -3,6 +3,7 @@ import proxy from './plugins/proxy';
 import {
   BackendPluginSurface,
   EsbackPluginInterface,
+  SurfaceStoreInterface,
   SurfaceStore,
 } from '@esback/core';
 import { BackendRunner } from './BackendRunner';
@@ -12,7 +13,7 @@ import { plugin as searchBackendPlugin } from '@esback/plugin-search-backend';
 import { plugin as authBackendPlugin } from '@esback/plugin-auth-backend';
 
 export class BackendRuntime {
-  private readonly _surfaces: SurfaceStore;
+  private readonly _surfaces: SurfaceStoreInterface;
 
   constructor(plugins: EsbackPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
@@ -43,7 +44,7 @@ export class BackendRuntime {
     });
   }
 
-  public get surfaces(): SurfaceStore {
+  public get surfaces(): SurfaceStoreInterface {
     return this._surfaces;
   }
 }

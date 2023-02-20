@@ -10,9 +10,8 @@ describe('AppRuntime', () => {
   it('should apply default plugins (catalog, techdocs, search, api)', () => {
     const runtime = new AppRuntime();
 
-    const sidebarItemSurface =
-      runtime.surfaces.getSurfaceState(SidebarItemSurface);
-    const routeSurface = runtime.surfaces.getSurfaceState(AppRouteSurface);
+    const sidebarItemSurface = runtime.surfaces.findSurface(SidebarItemSurface);
+    const routeSurface = runtime.surfaces.findSurface(AppRouteSurface);
     expect(sidebarItemSurface.mainItems).toHaveLength(3);
     expect(routeSurface.defaultRoute).toBe('catalog');
     expect(routeSurface.nonDefaultRoutes).toHaveLength(8);
@@ -26,7 +25,7 @@ describe('AppRuntime', () => {
 
     const runtime = new AppRuntime([fakePlugin]);
     expect(
-      runtime.surfaces.getSurfaceState(SidebarItemSurface).mainItems,
+      runtime.surfaces.findSurface(SidebarItemSurface).mainItems,
     ).toHaveLength(4);
   });
 
@@ -35,7 +34,7 @@ describe('AppRuntime', () => {
       context.applyTo(AppRouteSurface, surface => surface.setDefault('test'));
 
     const runtime = new AppRuntime([fakePlugin]);
-    expect(runtime.surfaces.getSurfaceState(AppRouteSurface).defaultRoute).toBe(
+    expect(runtime.surfaces.findSurface(AppRouteSurface).defaultRoute).toBe(
       'test',
     );
   });

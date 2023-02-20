@@ -32,7 +32,20 @@ class SurfaceEntry<T extends EsbackSurface> {
   }
 }
 
-export class SurfaceStore {
+export interface SurfaceStoreInterface {
+  applyTo<T extends EsbackSurface>(
+    surfaceClass: { new (): T },
+    modifier: SurfaceModifier<T>,
+  ): void;
+  applyWithDependency<T extends EsbackSurface, U extends EsbackSurface>(
+    targetClass: { new (): T },
+    dependencyClass: { new (): U },
+    modifier: (surface: T, dependency: U) => void,
+  ): void;
+  findSurface<T extends EsbackSurface>(surfaceClass: { new (): T }): T;
+}
+
+export class SurfaceStore implements SurfaceStoreInterface {
   private readonly _entries: SurfaceEntry<any>[] = [];
   private readonly _surfaceDependencies: DependencyGraph<string> =
     new DependencyGraph();
@@ -59,13 +72,11 @@ export class SurfaceStore {
     }
 
     target.addModifier(surface =>
-      modifier(surface, this.getSurfaceState(dependencyClass)),
+      modifier(surface, this.findSurface(dependencyClass)),
     );
   }
 
-  public getSurfaceState<T extends EsbackSurface>(surfaceClass: {
-    new (): T;
-  }): T {
+  public findSurface<T extends EsbackSurface>(surfaceClass: { new (): T }): T {
     return this.getSurfaceEntry(surfaceClass).state;
   }
 

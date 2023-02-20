@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "@backstage/no-undeclared-imports": "off"
+  }
+}

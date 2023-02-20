@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {
   AppRouteSurface,
   EsbackPluginInterface,
+  SurfaceStoreInterface,
   SurfaceStore,
   ThemeSurface,
 } from '@esback/core';
@@ -15,7 +16,7 @@ import { plugin as themePlugin } from '@esback/plugin-clarity-theme';
 import { appRenderer } from './appRenderer';
 
 export class AppRuntime {
-  private readonly _surfaces: SurfaceStore;
+  private readonly _surfaces: SurfaceStoreInterface;
 
   constructor(plugins: EsbackPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
@@ -31,7 +32,7 @@ export class AppRuntime {
 
     plugins.forEach(plugin => plugin(this._surfaces));
 
-    const themeSurface = this._surfaces.getSurfaceState(ThemeSurface);
+    const themeSurface = this._surfaces.findSurface(ThemeSurface);
     if (themeSurface.isNotConfigured()) {
       themePlugin()(this._surfaces);
     }
@@ -42,7 +43,7 @@ export class AppRuntime {
     ReactDOM.render(<App />, document.getElementById('root'));
   }
 
-  public get surfaces(): SurfaceStore {
+  public get surfaces(): SurfaceStoreInterface {
     return this._surfaces;
   }
 }
