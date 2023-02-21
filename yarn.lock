@@ -4619,14 +4619,6 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==
 
-"@esback/api-commons@0.1.0":
-  version "0.1.0"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/api-commons/-/@esback/api-commons-0.1.0.tgz#559e344dcaa48a0dccf19fa7c53ff681e39532e3"
-  integrity sha512-PtldfPu8lm7dDFrV52b21Ed7nGSfoICPMHoTY8Gi59tStpjTqQ6OYatboHjZCCmX3Zg2WeVVbWgPk4FdqrTyOw==
-  dependencies:
-    "@backstage/core-plugin-api" "^1.0.2"
-    react "^17.0.2"
-
 "@esback/app-live-view@0.1.1-alpha.1":
   version "0.1.1-alpha.1"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/app-live-view/-/@esback/app-live-view-0.1.1-alpha.1.tgz#609c6eb091fc1b8bfed7869ccddacb7e8f0a23f4"
@@ -4654,6 +4646,25 @@
     react-router-dom "6.0.0-beta.0"
     react-use "^17.2.4"
     recharts "^2.1.6"
+
+"@esback/core@^0.0.2-main.37":
+  version "0.0.2-main.37"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/core/-/@esback/core-0.0.2-main.37.tgz#220bf66bbb04de9930d1aaf4595f4b9a69153b76"
+  integrity sha512-oYlWl7TX94WTLzopzk9qS/z17nNLReWjtpQ39OOCNHWN3oLjX2Y/bMAWAsYGqtkycJYzU1cu4Od9K0jxHLnK0Q==
+  dependencies:
+    "@backstage/backend-common" "^0.18.1"
+    "@backstage/backend-tasks" "^0.4.2"
+    "@backstage/config" "^1.0.6"
+    "@backstage/core-app-api" "^1.4.0"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@backstage/plugin-catalog-backend" "^1.7.1"
+    "@backstage/plugin-permission-common" "^0.7.3"
+    "@backstage/theme" "^0.2.16"
+    "@types/express" "*"
+    "@types/uuid" "^8.3.4"
+    express "^4.17.1"
+    uuid "^9.0.0"
+    winston "^3.2.1"
 
 "@esback/kubernetes-logging-backend@0.1.0":
   version "0.1.0"
@@ -4698,6 +4709,16 @@
     react-use "^17.3.2"
     uuid "^8.3.2"
 
+"@esback/plugin-auth0-auth@^0.0.2-main.36":
+  version "0.0.2-main.37"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/plugin-auth0-auth/-/@esback/plugin-auth0-auth-0.0.2-main.37.tgz#b1a3641ce3784c95114f2b95695db909f4c4167e"
+  integrity sha512-wHFZE7fx/nL1ByxYBL8byMB6O2ddMsxwMF1gROgYYVoTuZ4agBmm6RU1XdZH3qFXT0ydlnjbNcZbnqGGtXdfeg==
+  dependencies:
+    "@backstage/core-app-api" "^1.4.0"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@esback/core" "^0.0.2-main.37"
+    "@esback/plugin-login" "^0.0.2-main.37"
+
 "@esback/plugin-gitlab-loblaw@^0.0.3-main.5":
   version "0.0.3-main.13"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/plugin-gitlab-loblaw/-/@esback/plugin-gitlab-loblaw-0.0.3-main.13.tgz#83a166f6b50c7505d023fbd36b058eb73a4344af"
@@ -4707,10 +4728,43 @@
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
     "@material-ui/core" "^4.12.2"
 
-"@esback/rrv@0.1.1-alpha.3":
-  version "0.1.1-alpha.3"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/rrv/-/@esback/rrv-0.1.1-alpha.3.tgz#c3603f05c535396d269d748b0acf8f4e4d7a6628"
-  integrity sha512-wiEAU1a7BxxHgApW7fkr+FYe6SIBdAucWXXjG+TbCzMq04/nfQImbReMhDnb1H1bJ4Mt/Bq2T6OtztDVpTg9SA==
+"@esback/plugin-login@^0.0.2-main.37":
+  version "0.0.2-main.37"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/plugin-login/-/@esback/plugin-login-0.0.2-main.37.tgz#f155b737ba09f7b341b0bd27c591f905f2485080"
+  integrity sha512-bIVBjGMIqCXZqMcDXAELT8Fy2mFMnK/1Vh4zrXw95fdK1UDEpgXkmS5EpNRLLLR3aAziavFO28yxArTIn6dBTw==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.5"
+    "@backstage/core-components" "^0.12.3"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@backstage/plugin-api-docs" "^0.8.14"
+    "@backstage/plugin-catalog" "^1.7.2"
+    "@backstage/plugin-catalog-common" "^1.0.10"
+    "@backstage/plugin-catalog-graph" "^0.2.26"
+    "@backstage/plugin-catalog-import" "^0.9.4"
+    "@backstage/plugin-github-actions" "^0.5.14"
+    "@backstage/plugin-org" "^0.6.4"
+    "@backstage/plugin-permission-react" "^0.4.9"
+    "@backstage/plugin-scaffolder" "^1.10.1"
+    "@backstage/plugin-techdocs" "^1.4.3"
+    "@esback/core" "^0.0.2-main.37"
+    "@material-ui/core" "^4.9.13"
+    "@material-ui/icons" "^4.9.1"
+    react-router "6.0.0-beta.0"
+
+"@esback/plugin-oidc-auth@^0.0.2-main.36":
+  version "0.0.2-main.37"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/plugin-oidc-auth/-/@esback/plugin-oidc-auth-0.0.2-main.37.tgz#5b525ab8e835e0dbd6fd23344fabb4f98d84dd6d"
+  integrity sha512-QHMLSYKPqGkElz6lKB3cog2uB8VXMe0PfE1hLXDh0FL0FxRJvxBeEu9dpDI7rXcLghKmZgSHnr8cP08FOJjpuw==
+  dependencies:
+    "@backstage/core-app-api" "^1.4.0"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@esback/core" "^0.0.2-main.37"
+    "@esback/plugin-login" "^0.0.2-main.37"
+
+"@esback/rrv@0.1.1-alpha.6":
+  version "0.1.1-alpha.6"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/rrv/-/@esback/rrv-0.1.1-alpha.6.tgz#faaca81cd2c6b8ba593ad4c84377845d84a18035"
+  integrity sha512-de2ayKviq3BX2EUm+VQW+CDfUlxrpXAypX6tInU4fiLO0W/WiVmhYU7vfk3jFdEhT978+KPsJJ1iar1+3zMeQw==
   dependencies:
     "@backstage/catalog-model" "^1.0.2"
     "@backstage/core-app-api" "^1.0.2"
@@ -4722,9 +4776,10 @@
     "@backstage/theme" "^0.2.10"
     "@date-io/core" "^1.3.13"
     "@date-io/moment" "1.x"
-    "@esback/api-commons" "0.1.0"
     "@esback/app-live-view" "0.1.1-alpha.1"
     "@esback/kubernetes-orm" "0.1.0"
+    "@esback/plugin-auth0-auth" "^0.0.2-main.36"
+    "@esback/plugin-oidc-auth" "^0.0.2-main.36"
     "@esback/tap-components" "^0.1.0"
     "@kubernetes-models/apimachinery" "^0.2.0"
     "@kubernetes-models/base" "^3.0.0"
