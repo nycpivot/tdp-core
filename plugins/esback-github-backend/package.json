@@ -21,13 +21,13 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/plugin-catalog-backend-module-github": "^0.2.4",
+    "@backstage/plugin-catalog-backend-module-github": "^0.2.5",
     "@esback/core": "^0.0.1-alpha.1"
   },
   "devDependencies": {
-    "@backstage/backend-common": "^0.18.1",
-    "@backstage/cli": "^0.22.1",
-    "@backstage/test-utils": "^1.2.4",
+    "@backstage/backend-common": "^0.18.2",
+    "@backstage/cli": "^0.22.3",
+    "@backstage/test-utils": "^1.2.5",
     "@types/jest": "*",
     "@types/node": "*",
     "cross-fetch": "^3.1.5",

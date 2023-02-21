@@ -14,8 +14,10 @@ import {
   SessionApi,
 } from '@backstage/core-plugin-api';
 import { OAuth2 } from '@backstage/core-app-api';
-import { LoginSurface } from '@esback/plugin-login';
-import { customizeAuthProviderConfig } from '@esback/plugin-login';
+import {
+  customizeAuthProviderConfig,
+  LoginSurface,
+} from '@esback/plugin-login';
 
 export const auth0AuthApiRef: ApiRef<
   OAuthApi &
