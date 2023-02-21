@@ -1,1 +1,1 @@
-export { OidcAuthPlugin as plugin } from './OidcAuthPlugin';
+export { OidcAuthPlugin as plugin, oidcAuthApiRef } from './OidcAuthPlugin';
