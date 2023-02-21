@@ -137,6 +137,7 @@ instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/esback-npm-lo
 This should almost certainly always happen via a CI job, and is the standard `npm publish` flow.
 
 - Bump plugin version in its `package.json`.
+- From the plugin directory, run `yarn build`.
 - From the plugin directory, run `npm publish`.
 
 That's it.
