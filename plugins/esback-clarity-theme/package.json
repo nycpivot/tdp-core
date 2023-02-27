@@ -41,9 +41,5 @@
   "files": [
     "dist",
     "style"
-  ],
-  "exports": {
-    ".": "./src/index.ts",
-    "./styles.css": "./style/clarity.css"
-  }
+  ]
 }

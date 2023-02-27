@@ -16,7 +16,7 @@ import { plugin as bitbucketAuthPlugin } from '@esback/plugin-bitbucket-auth';
 import { plugin as oneLoginAuthPlugin } from '@esback/plugin-onelogin-auth';
 import { plugin as guestAuthPlugin } from '@esback/plugin-guest-auth';
 
-import '@esback/plugin-clarity-theme/styles.css';
+import '@esback/plugin-clarity-theme/style/clarity.css';
 
 new AppRuntime([
   themePlugin(),
