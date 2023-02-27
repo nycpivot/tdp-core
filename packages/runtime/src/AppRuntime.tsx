@@ -12,7 +12,7 @@ import { plugin as techdocsPlugin } from '@esback/plugin-techdocs';
 import { plugin as searchPlugin } from '@esback/plugin-search';
 import { plugin as apiDocsPlugin } from '@esback/plugin-api-docs';
 import { plugin as loginPlugin } from '@esback/plugin-login';
-import { plugin as themePlugin } from '@esback/plugin-clarity-theme';
+import { plugin as themePlugin } from '@esback/plugin-backstage-theme';
 import { appRenderer } from './appRenderer';
 
 export class AppRuntime {
