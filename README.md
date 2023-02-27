@@ -25,6 +25,7 @@ $ yarn dev
 This should open up a backstage instance running on port 7007/3000 (backend/frontend)
 with only the [software catalog](https://backstage.io/docs/features/software-catalog/software-catalog-overview)
 enabled.
+<<<<<<< HEAD
 
 ## Extracting TPB Plugins
 
@@ -224,3 +225,5 @@ Write a plugin interface that defines how their plugin is integrated into TPB.
 ## Publishing your plugin
 
 Submit MR against the Core [repo](https://gitlab.eng.vmware.com/esback/core) that includes their new plugin interface.
+=======
+>>>>>>> d32f0f1 (Revert "plugin extraction guide [ESBACK-107]")
