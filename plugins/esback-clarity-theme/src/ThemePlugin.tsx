@@ -7,7 +7,6 @@ import React from 'react';
 import { ClarityDark } from './ClarityDark';
 import { ClarityLight } from './ClarityLight';
 import { ClarityRoot } from './Root';
-import './style/clarity.css';
 
 export const ThemePlugin: AppPluginInterface = () => {
   return context => {

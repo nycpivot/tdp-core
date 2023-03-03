@@ -1,5 +1,6 @@
 import '@backstage/cli/asset-types';
 import { AppRuntime } from '@esback/runtime';
+import { plugin as themePlugin } from '@esback/plugin-clarity-theme';
 import { plugin as helloWorldPlugin } from '@esback/plugin-hello-world';
 import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-loblaw';
 import { plugin as rrvPlugin } from '@esback/plugin-rrv';
@@ -15,7 +16,10 @@ import { plugin as bitbucketAuthPlugin } from '@esback/plugin-bitbucket-auth';
 import { plugin as oneLoginAuthPlugin } from '@esback/plugin-onelogin-auth';
 import { plugin as guestAuthPlugin } from '@esback/plugin-guest-auth';
 
+import '@esback/plugin-clarity-theme/style/clarity.css';
+
 new AppRuntime([
+  themePlugin(),
   helloWorldPlugin(),
   gitlabPlugin(),
   rrvPlugin(),
