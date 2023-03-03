@@ -28,29 +28,31 @@ enabled.
 
 ## Extracting TPB Plugins
 
-To extract the plugin source code from the TPB by cloning our [monorepo](https://gitlab.eng.vmware.com/esback/core) into its own repo in order to make individual contributions. 
+To extract the plugin source code from the TPB by cloning our [monorepo](https://gitlab.eng.vmware.com/esback/core) into its own repo in order to make individual contributions.
 
-``` git clone git@gitlab.eng.vmware.com:esback/core.git ```
+`git clone git@gitlab.eng.vmware.com:esback/core.git`
 
-If you want to create a new plugin, you can use the Backstage [documentation](https://backstage.io/docs/plugins/create-a-plugin/). When the installation is completed, all the plugin code will live in a folder which you can move from the monorepo and use it as an individual project. But first, you want to make sure your new plugin has the correct configuration. 
+If you want to create a new plugin, you can use the Backstage [documentation](https://backstage.io/docs/plugins/create-a-plugin/). When the installation is completed, all the plugin code will live in a folder which you can move from the monorepo and use it as an individual project. But first, you want to make sure your new plugin has the correct configuration.
 
-1.	An app-config.yaml is required in order to run the plugin folder as a standalone project, you can also provide an app-config.local.yaml file. If required by the plugin, you must provide any additional configuration like kubernetes or proxy setup. You should use the TBP app-config.yaml file in order to configure the plugin.
+1. An app-config.yaml is required in order to run the plugin folder as a standalone project, you can also provide an app-config.local.yaml file. If required by the plugin, you must provide any additional configuration like kubernetes or proxy setup. You should use the TBP app-config.yaml file in order to configure the plugin.
 2. It is recommended to change the package name since it comes with the default @internal prefix
 3. Update the package.json dependencies to add the plugin dependency provided by the TPB monorepo and required for the plugin.
 4. Add the TPB tsconfig.json file.
 5. Now you should be able to initialize the repo by executing git init
-6.	From here you can run the plugin by executing yarn start inside the plugins folder
+6. From here you can run the plugin by executing yarn start inside the plugins folder
 
-If the plugin already exists in TPB. You still need make sure the plugin runs properly by executing yarn start inside the plugin folder before moving the plugin into its own project. 
-1.	When executing yarn start inside the plugin folder it creates a DevApp, this DevApp will have the plugin registered and then mounted in the router. This setup is found inside the plugin’s dev/index.tsx file. 
-2.	Once the plugin is running properly in isolation it is safe to copy it to a different folder.
-3.	From here, we will need to make sure we have the proper TPB configuration. Make sure your existing plugins have the same app-config.yaml and app-config.local.yaml from TPB.
+If the plugin already exists in TPB. You still need make sure the plugin runs properly by executing yarn start inside the plugin folder before moving the plugin into its own project.
+
+1. When executing yarn start inside the plugin folder it creates a DevApp, this DevApp will have the plugin registered and then mounted in the router. This setup is found inside the plugin’s dev/index.tsx file.
+2. Once the plugin is running properly in isolation it is safe to copy it to a different folder.
+3. From here, we will need to make sure we have the proper TPB configuration. Make sure your existing plugins have the same app-config.yaml and app-config.local.yaml from TPB.
 
 ## Surfaces
 
 ### Adding the plugin to the Sidebar
 
-You can add your plugin to the main side bar in order to have access to it from TPB. Navigate to ```packages/app/src/components/Root/Root.tsx``` and add a SidebarItem to the ClaritySidebar component, eg:
+You can add your plugin to the main side bar in order to have access to it from TPB. Navigate to `packages/app/src/components/Root/Root.tsx` and add a SidebarItem to the ClaritySidebar component, eg:
+
 ```
 const Root = (props: PropsWithChildren<RootProps>) => (
   <div className={props.classes?.root}>
@@ -69,7 +71,7 @@ const Root = (props: PropsWithChildren<RootProps>) => (
 
 ### Integrate the plugin into the Software Catalog
 
-The Software Catalog is available to browse at /catalog. The source of truth for the components in your software catalog are metadata YAML files stored in source control. Since we already have the plugin, to integrate our plugin to the Software Catalog we need to read entities from within our plugin. You can access the currently selected entity using the backstage api ```useEntity```. For example,
+The Software Catalog is available to browse at /catalog. The source of truth for the components in your software catalog are metadata YAML files stored in source control. Since we already have the plugin, to integrate our plugin to the Software Catalog we need to read entities from within our plugin. You can access the currently selected entity using the backstage api `useEntity`. For example,
 
 ```
 import { useEntity } from '@backstage/plugin-catalog-react';
@@ -81,7 +83,7 @@ export const MyPluginEntityContent = () => {
 };
 ```
 
-Internally ```useEntity``` makes use of react [Contexts](https://reactjs.org/docs/context.html). The entity context is provided by the entity page into which your plugin will be embedded.
+Internally `useEntity` makes use of react [Contexts](https://reactjs.org/docs/context.html). The entity context is provided by the entity page into which your plugin will be embedded.
 
 After you are able to read the entities from within your plugin, you will need to integrate the plugin and embed it in the entities page. To begin, you will need to import your plugin in the entities page. Located at packages/app/src/components/Catalog/EntityPage.tsx from the root package of your backstage app.
 
@@ -139,7 +141,7 @@ const systemPage = (
 );
 ```
 
-For more information, please visit this [link](https://backstage.io/docs/plugins/integrating-plugin-into-software-catalog). 
+For more information, please visit this [link](https://backstage.io/docs/plugins/integrating-plugin-into-software-catalog).
 
 ### Adding the plugin to the routes
 
@@ -200,18 +202,20 @@ This extension can then be imported and used in the app as follow, typically pla
 
 To run the builder follow the steps in this [guide]().
 
-## Packaging and publishing 
+## Packaging and publishing
 
-After we have our plugin extracted, we are going to package the plugin and publish it internally to Artifactory. Most plugins share common libraries that currently live inside the packages folder and that need to be published to our npm registry. 
+After we have our plugin extracted, we are going to package the plugin and publish it internally to Artifactory. Most plugins share common libraries that currently live inside the packages folder and that need to be published to our npm registry.
 
-1.	Since these libraries are self-contained it should be pretty straightforward to publish them after adding the following config to the package.json
+1. Since these libraries are self-contained it should be pretty straightforward to publish them after adding the following config to the package.json
+
 ```
 "publishConfig": {
-“registry":” https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/” 
+“registry":” https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/”
 },
 ```
-2.	Provide a local repository to the npm publish command
-```npm publish –registry https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/```
+
+2. Provide a local repository to the npm publish command
+   `npm publish –registry https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/`
 
 ## Add plugin interface
 
@@ -220,6 +224,3 @@ Write a plugin interface that defines how their plugin is integrated into TPB.
 ## Publishing your plugin
 
 Submit MR against the Core [repo](https://gitlab.eng.vmware.com/esback/core) that includes their new plugin interface.
-
-
-
