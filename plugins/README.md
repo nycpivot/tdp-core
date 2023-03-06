@@ -104,8 +104,37 @@ Once you have a custom ESBack plugin published to a registry, follow the [Build 
 
 ## Publishing plugins
 
-Plugins are published to the [`esback-npm-local` registry in VMWare's private Artifactory
-instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/esback-npm-local).
+Plugins are published to the [`tpb-npm-local` registry in VMWare's private Artifactory
+instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/tpb-npm-local).
+
+### Artifactory access
+
+#### Verify your access to Artifactory
+
+- Go to [https://adam.vmware.com/](https://adam.vmware.com/)
+- Click the `Search` link in the navigation and search for your VMware username
+- In the results check the box next to your username, then click the `Member Of` link
+- In the list of memberships, filter by the string `g.build.artifactory`
+- You should see that you have a `g.build.artifactory.users` membership
+- Verify this works by going to [https://artifactory.eng.vmware.com/](https://artifactory.eng.vmware.com/) and clicking the `Log in` link
+- If your access to Artifactory is set up correctly, you will be able to log in
+
+#### Request access to Artifactory
+
+- If you do not have the correct membership or are unable to log in to Artifactory, go to [https://accessnow.vmware.com/](https://accessnow.vmware.com/)
+- Click on the `Request Access` tile/link
+- Under the applications filter by `Artifactory` then click the `Add to Cart` button
+- Continue to the checkout page and choose `Artifactory Users` from the list of `Available Groups`
+- Submit the request, and wait for approval and execution
+
+#### Request write permission to the TPB Artifactory registry
+
+- If you have just gotten access to Artifactory or are receiving 403 responses when trying to publish a package you will need write access granted for the registry
+- Go to [https://servicedesk.eng.vmware.com/servicedesk/customer/portal/12/create/1337](https://servicedesk.eng.vmware.com/servicedesk/customer/portal/12/create/1337)
+- For `Repo Name` enter `tpb-npm-local`
+- Select `WRITE/Deploy` for the `Type of Access`
+- Choose your username from the `Permission Requested For` search
+- Submit the request and wait for it to be processed
 
 ### Specifying credentials
 
