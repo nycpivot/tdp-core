@@ -7,6 +7,12 @@ resource_types:
     source:
       repository: harbor-repo.vmware.com/tmc_concourse_tools/gitlab-merge-request-resource
       tag: latest
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cfcommunity/slack-notification-resource
+      tag: latest
+
 resources:
   - name: version
     type: semver
@@ -51,12 +57,29 @@ resources:
     source:
       repository: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket
       tag: 8.4.2
+  - name: slack-alert
+    type: slack-notification
+    icon: slack
+    source:
+      url: ((slack.webhook_url))
+
+slack_failure_notification: &slack_failure_notification
+  put: slack-alert
+  params:
+    text: |
+      There was a failure in the *$BUILD_PIPELINE_NAME* pipeline.
+      <https://runway-ci-sfo.eng.vmware.com/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|Click here!>
 
 gitlab_pipeline_failure: &gitlab_pipeline_failure
   put: gitlab-mr
   params:
     repository: gitlab-mr
     status: failed
+
+on_failure_notification: &on_failure_notification
+  do:
+    - *gitlab_pipeline_failure
+    - *slack_failure_notification
 
 jobs:
   - name: mark-mr-running
@@ -69,7 +92,8 @@ jobs:
         params:
           repository: gitlab-mr
           status: running
-    on_failure: *gitlab_pipeline_failure
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: lint-and-test
     plan:
       - get: code
@@ -83,7 +107,8 @@ jobs:
           - task: test
             attempts: 2
             file: code/ci/unit-test.yml
-    on_failure: *gitlab_pipeline_failure
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: bump
     plan:
       - get: gitlab-mr
@@ -92,7 +117,8 @@ jobs:
       - put: version
         params:
           pre: mrcheck
-    on_failure: *gitlab_pipeline_failure
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: build
     plan:
       - in_parallel:
@@ -121,7 +147,8 @@ jobs:
         params:
           image: image/image.tar
           version: ((.:version))-((.:mrdata.source_branch))
-    on_failure: *gitlab_pipeline_failure
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: integration-tests
     plan:
       - in_parallel:
@@ -179,7 +206,8 @@ jobs:
           github_user_refresh_token: ((e2e.github_user_refresh_token))
           aws_access_key_id: ((e2e.aws_access_key_id))
           aws_secret_access_key: ((e2e.aws_secret_access_key))
-    on_failure: *gitlab_pipeline_failure
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: mark-mr-success
     public: true
     plan:
@@ -190,3 +218,5 @@ jobs:
         params:
           repository: gitlab-mr
           status: success
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
