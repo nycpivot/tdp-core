@@ -63,23 +63,17 @@ resources:
     source:
       url: ((slack.webhook_url))
 
-slack_failure_notification: &slack_failure_notification
-  put: slack-alert
-  params:
-    text: |
-      There was a failure in the *$BUILD_PIPELINE_NAME* pipeline.
-      <https://runway-ci-sfo.eng.vmware.com/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|Click here!>
-
-gitlab_pipeline_failure: &gitlab_pipeline_failure
-  put: gitlab-mr
-  params:
-    repository: gitlab-mr
-    status: failed
-
 on_failure_notification: &on_failure_notification
   do:
-    - *slack_failure_notification
-    - *gitlab_pipeline_failure
+    - put: slack-alert
+      params:
+        text: |
+          There was a failure in the *$BUILD_PIPELINE_NAME* pipeline.
+          <https://runway-ci-sfo.eng.vmware.com/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|Click here!>
+    - put: gitlab-mr
+      params:
+        repository: gitlab-mr
+        status: failed
 
 jobs:
   - name: mark-mr-running
