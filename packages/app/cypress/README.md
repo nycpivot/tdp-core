@@ -42,7 +42,7 @@ It is very similar to what the pipeline does to run the tests.
 
 ## Setup a local environment
 
-It is possible to build an environment that is identical to the one used by the integration tests in the pipeline.
+It is possible to build an environment (Docker containers) that is identical to the one used by the integration tests in the pipeline.
 
 ```shell
 make e2e-environment
@@ -54,10 +54,16 @@ ESBack will be available at [http://localhost:7007](http://localhost:7007).
 
 ## Running the integration tests locally
 
-Once you have an environment ready, you can run the integration tests locally:
+Once you have an environment ready, you can run all the integration tests locally:
 
 ```shell
-make local-e2e
+make local-e2e CYPRESS_baseUrl=http://localhost:7007
+```
+
+Or if you want to run a specific integration test using Cypress' UI against the environment:
+
+```shell
+make open-cypress CYPRESS_baseUrl=http://localhost:7007
 ```
 
 ## GKE Cluster
