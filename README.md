@@ -21,13 +21,7 @@ $ yarn install
 $ yarn tsc
 $ yarn dev
 ```
-       
-   
 
-  
-
-   
- 
 This should open up a backstage instance running on port 7007/3000 (backend/frontend)
 with only the [software catalog](https://backstage.io/docs/features/software-catalog/software-catalog-overview)
 enabled.
