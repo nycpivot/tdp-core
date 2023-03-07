@@ -78,8 +78,8 @@ gitlab_pipeline_failure: &gitlab_pipeline_failure
 
 on_failure_notification: &on_failure_notification
   do:
-    - *gitlab_pipeline_failure
     - *slack_failure_notification
+    - *gitlab_pipeline_failure
 
 jobs:
   - name: mark-mr-running
