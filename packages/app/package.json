@@ -15,7 +15,7 @@
     "@esback/plugin-bitbucket-auth": "^0.0.1-alpha.1",
     "@esback/plugin-github-auth": "^0.0.1-alpha.1",
     "@esback/plugin-gitlab-auth": "^0.0.1-alpha.1",
-    "@esback/plugin-gitlab-loblaw": "^0.0.3-main.5",
+    "@esback/plugin-gitlab-loblaw": "0.0.3-main.13",
     "@esback/plugin-google-auth": "^0.0.1-alpha.1",
     "@esback/plugin-guest-auth": "^0.0.1-alpha.1",
     "@esback/plugin-hello-world": "^0.0.1-alpha.2",
