@@ -1,6 +1,13 @@
 # To set up this pipeline, assuming you have an esback target locally setup, run:
 # $ fly -t esback set-pipeline -p core-runtime -c ci/pipeline.yml -v git_branch=$TARGET_BRANCH -v initial_version=0.0.0
 ---
+resource_types:
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cfcommunity/slack-notification-resource
+      tag: latest
+
 resources:
   - name: version
     type: semver
@@ -49,6 +56,18 @@ resources:
     source:
       repository: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket
       tag: 8.4.2
+  - name: slack-alert
+    type: slack-notification
+    icon: slack
+    source:
+      url: ((slack.webhook_url))
+
+on_failure_notification: &on_failure_notification
+  put: slack-alert
+  params:
+    text: |
+      There was a failure in the *$BUILD_PIPELINE_NAME* pipeline.
+      <https://runway-ci-sfo.eng.vmware.com/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|Click here!>
 
 jobs:
   - name: reconfigure
@@ -64,6 +83,8 @@ jobs:
         file: esback-core/ci/mr-check.yml
         vars:
           initial_version: ((initial_version))
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: lint-and-test
     plan:
       - get: code
@@ -77,6 +98,8 @@ jobs:
           - task: test
             attempts: 3
             file: code/ci/unit-test.yml
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: bump
     plan:
       - get: esback-core
@@ -85,6 +108,8 @@ jobs:
       - put: version
         params:
           pre: ((git_branch))
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: build
     plan:
       - in_parallel:
@@ -108,6 +133,8 @@ jobs:
         params:
           image: image/image.tar
           version: ((.:version))
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: integration-tests
     plan:
       - in_parallel:
@@ -161,6 +188,8 @@ jobs:
           github_user_refresh_token: ((e2e.github_user_refresh_token))
           aws_access_key_id: ((e2e.aws_access_key_id))
           aws_secret_access_key: ((e2e.aws_secret_access_key))
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: publish
     plan:
       - in_parallel:
@@ -185,6 +214,8 @@ jobs:
           repository: code
           tag: version/version
           only_tag: true
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
   - name: update-dev-env
     plan:
       - get: code
@@ -197,3 +228,5 @@ jobs:
           kubeconfig: ((calatrava-env-dev.kubeconfig))
       - task: restart-k8s-deployment
         file: code/ci/restart-k8s-deployment.yml
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification

@@ -34,9 +34,6 @@ open-cypress:
 docker-e2e: image
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
 
-login-to-concourse:
-	fly -t esback login -c $(concourse_endpoint) -n esback
-
 create-pipeline:
 	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
 	fly -t esback set-pipeline -p "$(name)" -c ci/pipeline.yml -v git_branch=$(branch) -v initial_version=0.0.0
