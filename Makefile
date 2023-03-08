@@ -19,6 +19,24 @@ clean:
 install:
 	yarn install
 
+lint:
+	yarn lint:all
+
+fix-lint:
+	yarn lint:all --fix
+
+check-prettier:
+	yarn prettier:check
+
+prettier:
+	yarn prettier --write .
+
+test:
+	yarn test:all
+
+start:
+	yarn dev
+
 login-to-vault:
 	@echo "Login as $(username)"
 	vault login -address=${VAULT_ADDR} -method=ldap username=$(username)
