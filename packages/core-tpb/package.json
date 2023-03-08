@@ -1,6 +1,6 @@
 {
   "name": "@tpb/core",
-  "description": "Core library for esback",
+  "description": "Core library for TPB",
   "version": "0.0.1-alpha.2",
   "main": "src/index.ts",
   "types": "src/index.ts",
