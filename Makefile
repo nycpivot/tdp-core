@@ -57,6 +57,7 @@ docker-e2e: image
 create-pipeline:
 	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
 	fly -t esback set-pipeline -p "$(name)" -c ci/pipeline.yml -v git_branch=$(branch) -v initial_version=0.0.0
+	fly -t esback unpause-pipeline -p "$(name)"
 
 destroy-pipeline:
 	fly -t esback destroy-pipeline -p "$(name)"
