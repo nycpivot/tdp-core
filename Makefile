@@ -4,9 +4,11 @@ concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
 VAULT_ADDR ?= "https://runway-vault-sfo.eng.vmware.com"
 CYPRESS_baseUrl ?= "http://localhost:3000"
 
-build: clean install
-	yarn tsc
+build: clean install compile
 	yarn build
+
+compile:
+	yarn tsc
 
 image: build
 	docker build -t esback:integration -f packages/backend/Dockerfile .
