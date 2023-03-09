@@ -4098,29 +4098,6 @@
     uuid "^9.0.0"
     winston "^3.2.1"
 
-"@esback/kubernetes-logging-backend@0.1.0":
-  version "0.1.0"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/kubernetes-logging-backend/-/@esback/kubernetes-logging-backend-0.1.0.tgz#4a0c25fbec4c5175e10f39cc10224e5cf23d75f5"
-  integrity sha512-1zBQA3O8pO9t5jvgKScoiIROhBXnWKn4NxptMrkzT69VQ+PQPxlE1BVsRDYx4PYX/Tv9fP0vnPnm3GSCxeNe7g==
-  dependencies:
-    "@backstage/backend-common" "^0.15.1"
-    "@backstage/catalog-client" "^1.1.2"
-    "@backstage/config" "^1.0.0"
-    "@backstage/plugin-kubernetes-backend" "^0.7.2"
-    "@google-cloud/container" "^3.0.0"
-    "@kubernetes/client-node" "^0.16.3"
-    "@types/aws4" "^1.5.1"
-    "@types/express" "^4.17.13"
-    aws-sdk "^2.840.0"
-    aws4 "^1.11.0"
-    cross-fetch "^3.1.5"
-    express "^4.17.1"
-    express-promise-router "^4.1.0"
-    http-status-codes "^2.1.4"
-    uuid "^8.3.2"
-    winston "^3.2.1"
-    yn "^4.0.0"
-
 "@esback/kubernetes-orm@0.1.0", "@esback/kubernetes-orm@^0.1.0":
   version "0.1.0"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@esback/kubernetes-orm/-/@esback/kubernetes-orm-0.1.0.tgz#c0ceddc367d674b6f9cd7cdc0ddb380741c31a82"
@@ -7084,6 +7061,29 @@
   version "2.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
+
+"@tpb/kubernetes-logging-backend@^0.1.1":
+  version "0.1.1"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/kubernetes-logging-backend/-/@tpb/kubernetes-logging-backend-0.1.1.tgz#ef7a6e4c164228d1802d16206dad9932dabf5cc5"
+  integrity sha512-4qorO8Efua7Lq+in/uH1Re7C4KiMDJ1OExyFiFgoE4gjCkowp8fVQJnZI/G/cghUu+8xg5ipYEQ1lKTI/J8f/g==
+  dependencies:
+    "@backstage/backend-common" "^0.15.1"
+    "@backstage/catalog-client" "^1.1.2"
+    "@backstage/config" "^1.0.0"
+    "@backstage/plugin-kubernetes-backend" "^0.7.2"
+    "@google-cloud/container" "^3.0.0"
+    "@kubernetes/client-node" "^0.16.3"
+    "@types/aws4" "^1.5.1"
+    "@types/express" "^4.17.13"
+    aws-sdk "^2.840.0"
+    aws4 "^1.11.0"
+    cross-fetch "^3.1.5"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    http-status-codes "^2.1.4"
+    uuid "^8.3.2"
+    winston "^3.2.1"
+    yn "^4.0.0"
 
 "@trendyol-js/openstack-swift-sdk@^0.0.5":
   version "0.0.5"
