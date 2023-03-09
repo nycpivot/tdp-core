@@ -38,20 +38,24 @@ start:
 	yarn dev
 
 login-to-vault:
-	@echo "Login as $(username)"
-	vault login -address=${VAULT_ADDR} -method=ldap username=$(username)
+ifeq (, $(findstring expire_time, $(shell vault token lookup -address ${VAULT_ADDR} 2>/dev/null | grep expire_time)))
+	@echo "Let's connect to Vault"
+	@vault login -address=${VAULT_ADDR} -method=ldap username=$(username)
+else
+	@echo "Already logged in to vault"
+endif
 
 e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007
-e2e-environment: image
+e2e-environment: image login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
-local-e2e:
+local-e2e: login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress local-tests
 
-open-cypress:
+open-cypress: login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress open-cypress-local
 
-docker-e2e: image
+docker-e2e: image login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
 
 create-pipeline:
