@@ -89,9 +89,10 @@ To start the application in development mode:
 make start
 ```
 
-The equivalent `yarn` command is:
+The equivalent `yarn` commands are:
 
 ```shell
+yarn install
 yarn dev
 ```
 

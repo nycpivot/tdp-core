@@ -34,7 +34,7 @@ prettier:
 test:
 	yarn test:all
 
-start:
+start: install
 	yarn dev
 
 login-to-vault:
