@@ -53,7 +53,7 @@ catalog:
   processors:
     ldapOrg:
       providers:
-        - target: ldap://openldap:1389
+        - target: ${LDAP_ENDPOINT}
           users:
             dn: ou=people,o=tap-activation
           groups:
@@ -102,7 +102,7 @@ catalog:
     - type: azure-discovery
       target: https://dev.azure.com/tap-activation/tanzu-portal-builder
     - type: ldap-org
-      target: ldap://openldap:1389
+      target: ${LDAP_ENDPOINT}
       rules:
         - allow: [User, Group]
     - type: file

@@ -33,6 +33,8 @@ async function buildEnvironment(serverType: ServerType) {
         BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(
           'client_secret',
         ),
+        BITBUCKET_HOST: process.env.BITBUCKET_HOST || 'bitbucket:7990',
+        LDAP_ENDPOINT: process.env.LDAP_ENDPOINT || 'ldap://openldap:1389',
         GKE_CONTROL_PLANE_ENDPOINT: await vault.readGkeSecret(
           'control_plane_endpoint',
         ),

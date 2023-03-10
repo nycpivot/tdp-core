@@ -8,20 +8,30 @@ endif
 install_scripts:
 	cd scripts && yarn
 
-delete-esback:
+stop-esback:
 	docker-compose stop esback
+
+delete-esback: stop-esback
 	docker-compose rm -fv esback
 
-delete-bitbucket:
+stop-bitbucket:
 	docker-compose stop bitbucket
+
+delete-bitbucket: stop-bitbucket
 	docker-compose rm -fv bitbucket
 	rm -rf ${HOME}/.esback-e2e/bitbucket
+
+stop-ldap-server:
+	docker-compose stop openldap
 
 clean-containers: delete-esback delete-bitbucket
 
 bitbucket:
 	eval `yarn --cwd scripts --silent build-environment bitbucketServer` && \
   docker-compose up -d bitbucket
+
+ldap-server:
+	docker-compose up -d openldap
 
 esback:
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
