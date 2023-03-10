@@ -66,10 +66,11 @@ create-pipeline:
 destroy-pipeline:
 	fly -t esback destroy-pipeline -p "$(name)"
 
-setup: login-to-vault start-bitbucket-server
+setup: login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) LDAP_ENDPOINT="ldap://localhost:1389" yarn --cwd packages/app/cypress/scripts --silent build-environment esback > .envrc
 	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
 	@echo "export BITBUCKET_TOKEN=$(token)" >> .envrc
+	@echo "export NODE_TLS_REJECT_UNAUTHORIZED=0" >> .envrc
 	@echo "The environment variables have been stored in the .envrc file. Please copy the contents of the app-config.e2e.yaml into your app-config.local.yaml file if you want to make use of them."
 
 start-bitbucket-server: stop-bitbucket-server
