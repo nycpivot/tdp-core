@@ -62,7 +62,9 @@ describe('Catalog Plugin', () => {
         });
         Catalog.addCatalogLocation(
           'url',
-          `http://bitbucket:7990/projects/${project.key}/repos/${repo.name}/raw/${catalogName}`,
+          `http://${Cypress.env('BITBUCKET_CATALOG_PREFIX')}/projects/${
+            project.key
+          }/repos/${repo.name}/raw/${catalogName}`,
         );
       });
     });

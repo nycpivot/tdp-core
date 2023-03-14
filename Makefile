@@ -49,14 +49,20 @@ e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007
 e2e-environment: image login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
-local-e2e: login-to-vault
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress local-tests
-
-open-cypress: login-to-vault
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress open-cypress-local
-
 docker-e2e: image login-to-vault
-	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
+
+docker-local-e2e: login-to-vault
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress local-tests
+
+dev-e2e: login-to-vault
+	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress local-tests
+
+open-docker-cypress: login-to-vault
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress open-cypress-local
+
+open-dev-cypress: login-to-vault
+	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress open-cypress-local
 
 create-pipeline:
 	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
@@ -73,6 +79,10 @@ setup: login-to-vault
 	@echo "export APP_FOLDER='../..'" >> .envrc
 	@echo "The environment variables have been stored in the .envrc file. Please copy the contents of the app-config.e2e.yaml into your app-config.local.yaml file if you want to make use of them."
 
+bitbucket-token:
+	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
+	@echo $(token)
+
 start-bitbucket-server: stop-bitbucket-server
 	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress bitbucket
 
@@ -83,6 +93,9 @@ start-dependencies: start-bitbucket-server start-ldap-server
 
 stop-bitbucket-server:
 	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress stop-bitbucket
+
+delete-bitbucket-server:
+	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress delete-bitbucket
 
 stop-ldap-server:
 	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress stop-ldap-server

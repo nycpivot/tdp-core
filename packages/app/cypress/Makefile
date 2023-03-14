@@ -45,15 +45,15 @@ docker-tests:
 	$(MAKE) start-containers
 	docker-compose rm -f -v cypress
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \
-	docker-compose run cypress
+	CYPRESS_ESBACK_BACKEND_URL="" docker-compose run cypress
 
 local-tests:
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \
-	npx cypress run --browser chrome
+	CYPRESS_ESBACK_BACKEND_URL=http://localhost:7007 npx cypress run --browser chrome
 
 open-cypress-local:
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \
-	npx cypress open
+	CYPRESS_ESBACK_BACKEND_URL=http://localhost:7007 npx cypress open
 
 # Pipelines commands
 pipeline-bitbucket:

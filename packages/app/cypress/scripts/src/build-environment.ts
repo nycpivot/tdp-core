@@ -65,6 +65,8 @@ async function buildEnvironment(serverType: ServerType) {
     case ServerType.cypress:
       return {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
+        CYPRESS_BITBUCKET_CATALOG_PREFIX:
+          process.env.BITBUCKET_CATALOG_PREFIX || 'bitbucket:7990',
         CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
           'bitbucket_john_doe_refresh_token',
         ),
