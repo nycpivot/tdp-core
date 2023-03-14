@@ -77,6 +77,7 @@ setup: login-to-vault
 	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
 	@echo "export BITBUCKET_TOKEN=$(token)" >> .envrc
 	@echo "export APP_FOLDER='../..'" >> .envrc
+	@echo "export TECHDOCS_FOLDER='../../examples/techdocs/output'" >> .envrc
 	@echo "The environment variables have been stored in the .envrc file. Please copy the contents of the app-config.e2e.yaml into your app-config.local.yaml file if you want to make use of them."
 
 bitbucket-token:

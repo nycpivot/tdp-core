@@ -74,6 +74,7 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - LDAP_ENDPOINT=${LDAP_ENDPOINT:-ldap://openldap:1389}
       - APP_FOLDER=/app
+      - TECHDOCS_FOLDER=/techdocs
     ports:
       - 7007:7007
     volumes:

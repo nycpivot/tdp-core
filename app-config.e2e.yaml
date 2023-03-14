@@ -144,7 +144,7 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
     local:
       # (Optional). Set this to specify where the generated documentation is stored.
-      publishDirectory: '/techdocs'
+      publishDirectory: ${TECHDOCS_FOLDER}
 
 esback:
   catalog:
