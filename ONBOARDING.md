@@ -73,13 +73,27 @@ To build an ESBack plugin, follow [these steps](https://gitlab.eng.vmware.com/es
 
 ### Contributing
 
+#### Merge/Pull Requests
+
+All changes should be put on a branch and submitted as a merge request in GitLab.
+
+#### Make commands
+
 We have `make` commands that wrap most of the commands we are using in our everyday work. It is not required to use them and you can use `yarn` scripts instead if you prefer and when it is possible.
 
 If you are using the `make` commands, you can also benefit from the autocompletion to avoid typing the whole command.
 
-#### Merge/Pull Requests
+To get the list of available commands with a short description, run:
 
-All changes should be put on a branch and submitted as a merge request in GitLab.
+```shell
+make
+```
+
+or
+
+```shell
+make help
+```
 
 #### Running the application
 
@@ -102,12 +116,6 @@ To build the whole thing:
 
 ```shell
 make build
-```
-
-or even shorter:
-
-```shell
-make
 ```
 
 This command will clean the distribution folders, install the dependencies, compile the code and generate the build.

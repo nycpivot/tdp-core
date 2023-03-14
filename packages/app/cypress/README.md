@@ -15,10 +15,56 @@ When running one of the following commands, you might be prompted to login to Va
 
 Just enter you vault password when asked for it.
 
-## Running the integration tests in a docker container
+## Running the app and the integration tests locally
+
+If you want to configure your local environment to run the integration tests against it, here is what you can do:
+
+Start the dependencies required for the tests:
 
 ```shell
-make docker-e2e
+make start-dependencies
+```
+
+Setup your environment:
+
+```shell
+make setup
+```
+
+This command will generate an `.envrc` file that you can source with `direnv` or manually. This file contains all the variables that are needed to run the integration tests.
+
+Copy the contents of the `app-config.e2e.yaml` file into you `app-config.local.yaml` file.
+
+Start your local app:
+
+```shell
+make start
+```
+
+Now, you can either run all the integration tests:
+
+```shell
+make dev-e2e
+```
+
+Or run a specific test:
+
+```shell
+make dev-specific-test test=hello-world-plugin
+```
+
+Or open the Cypress UI:
+
+```shell
+make open-dev-e2e
+```
+
+(this is the recommanded way to update or write new integration tests)
+
+## Deploying the app in Docker and Running the integration tests in Docker
+
+```shell
+make docker-docker-e2e
 ```
 
 This command will:
@@ -29,52 +75,36 @@ This command will:
 
 It is very similar to what the pipeline does to run the tests.
 
-## Setup a local environment
+## Deploying the app in Docker and Running the integration tests locally
 
-It is possible to build an environment (Docker containers) that is identical to the one used by the integration tests in the pipeline.
+To build, deploy and run the app in Docker, execute the following command:
 
 ```shell
 make e2e-environment
 ```
 
+It will also run the dependencies needed by the app for the tests (Bitbucker and Ldap servers).
+
 A Bitbucket server will be available at [http://localhost:7990](http://localhost:7990).
 
-ESBack will be available at [http://localhost:7007](http://localhost:7007).
+The Ldap server will be listening at ldap://localhost:1389.
 
-## Running the integration tests locally
+ESBack will be running at [http://localhost:7007](http://localhost:7007).
+
+### Running the integration tests locally
 
 Once you have an environment ready, you can run all the integration tests locally:
 
 ```shell
-make local-e2e
+make docker-local-e2e
 ```
 
-By default, Cypress will try to test a server at the `http://localhost:3000` address but you can override it if you want:
+### Running a specific test
+
+To run a specific test, use the following command:
 
 ```shell
-make local-e2e CYPRESS_baseUrl=http://localhost:7007
-```
-
-## Writing integration tests
-
-The recommended way to write integration tests with Cypress is to run your development environment first:
-
-```
-make start
-```
-
-And then, open the Cypress UI with the following command:
-
-```shell
-make open-cypress
-```
-
-Select the integration test you are working on and make your modifications in the code. Cypress will reload and rerun your integration tests after your updates.
-
-If you need the Cypress UI for a server at another address than `http://localhost:3000`, you can use this command to open it:
-
-```shell
-make open-cypress CYPRESS_baseUrl=http://localhost:7007
+make docker-local-specific-test test=hello-world-plugin
 ```
 
 ## Secrets
