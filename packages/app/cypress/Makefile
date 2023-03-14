@@ -45,7 +45,7 @@ docker-tests:
 	$(MAKE) start-containers
 	docker-compose rm -f -v cypress
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \
-	CYPRESS_ESBACK_BACKEND_URL="" docker-compose run cypress
+	docker-compose run cypress
 
 local-tests:
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \

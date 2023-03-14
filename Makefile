@@ -50,7 +50,7 @@ e2e-environment: image login-to-vault
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 docker-docker-e2e: image login-to-vault
-	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
 
 docker-local-e2e: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress local-tests
