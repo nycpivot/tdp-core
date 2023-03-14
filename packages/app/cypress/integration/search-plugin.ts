@@ -26,7 +26,7 @@ describe('Search Plugin', () => {
         cy.get('input[type="text"][aria-label="Search"]').type(
           'example-website',
         );
-        cy.get('a[href*="search"]').click();
+        cy.contains('View Full Results').click();
       });
 
     cy.url().should('include', '/search');
