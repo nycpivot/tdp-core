@@ -51,6 +51,10 @@ local-tests:
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \
 	CYPRESS_ESBACK_BACKEND_URL=http://localhost:7007 npx cypress run --browser chrome
 
+specific-test:
+	@eval `yarn --cwd scripts --silent build-environment cypress` && \
+	CYPRESS_ESBACK_BACKEND_URL=http://localhost:7007 npx cypress run --browser chrome --spec "cypress/integration/$(test).ts"
+
 open-cypress-local:
 	@eval `yarn --cwd scripts --silent build-environment cypress` && \
 	CYPRESS_ESBACK_BACKEND_URL=http://localhost:7007 npx cypress open

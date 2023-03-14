@@ -58,6 +58,9 @@ docker-local-e2e: login-to-vault
 dev-e2e: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress local-tests
 
+dev-specific-test: login-to-vault
+	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress specific-test test=$(test)
+
 open-docker-cypress: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress open-cypress-local
 
@@ -73,7 +76,7 @@ destroy-pipeline:
 	fly -t esback destroy-pipeline -p "$(name)"
 
 setup: login-to-vault
-	VAULT_ADDR=$(VAULT_ADDR) LDAP_ENDPOINT="ldap://localhost:1389" yarn --cwd packages/app/cypress/scripts --silent build-environment esback > .envrc
+	VAULT_ADDR=$(VAULT_ADDR) LDAP_ENDPOINT="ldap://localhost:1389" BITBUCKET_HOST="localhost:7990" yarn --cwd packages/app/cypress/scripts --silent build-environment esback > .envrc
 	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
 	@echo "export BITBUCKET_TOKEN=$(token)" >> .envrc
 	@echo "export APP_FOLDER='../..'" >> .envrc
