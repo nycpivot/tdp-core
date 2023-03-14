@@ -4,7 +4,7 @@ concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
 VAULT_ADDR ?= "https://runway-vault-sfo.eng.vmware.com"
 CYPRESS_baseUrl ?= "http://localhost:3000"
 
-build: clean install compile
+build: clean install compile lint check-prettier
 	yarn build
 
 compile:
