@@ -58,13 +58,16 @@ docker-local-e2e: login-to-vault
 dev-e2e: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress local-tests
 
+docker-local-specific-test: login-to-vault
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress specific-test test=$(test)
+
 dev-specific-test: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress specific-test test=$(test)
 
-open-docker-cypress: login-to-vault
+open-docker-local-e2e: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress open-cypress-local
 
-open-dev-cypress: login-to-vault
+open-dev-e2e: login-to-vault
 	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress open-cypress-local
 
 create-pipeline:
