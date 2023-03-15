@@ -7,11 +7,6 @@ resource_types:
     source:
       repository: harbor-repo.vmware.com/tmc_concourse_tools/gitlab-merge-request-resource
       tag: latest
-  - name: slack-notification
-    type: docker-image
-    source:
-      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cfcommunity/slack-notification-resource
-      tag: latest
 
 resources:
   - name: version
@@ -57,23 +52,12 @@ resources:
     source:
       repository: harbor-repo.vmware.com/dockerhub-proxy-cache/atlassian/bitbucket
       tag: 8.4.2
-  - name: slack-alert
-    type: slack-notification
-    icon: slack
-    source:
-      url: ((slack.webhook_url))
 
 on_failure_notification: &on_failure_notification
-  do:
-    - put: slack-alert
-      params:
-        text: |
-          There was a failure in the *$BUILD_PIPELINE_NAME* pipeline.
-          <https://runway-ci-sfo.eng.vmware.com/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|Click here!>
-    - put: gitlab-mr
-      params:
-        repository: gitlab-mr
-        status: failed
+  put: gitlab-mr
+  params:
+    repository: gitlab-mr
+    status: failed
 
 jobs:
   - name: mark-mr-running
