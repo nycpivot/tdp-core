@@ -1,7 +1,6 @@
 # To set up this pipeline, assuming you have an esback target locally setup, run:
 # $ fly -t esback set-pipeline -p mr-check -c ci/mr-check.yml -v initial_version=0.0.0
 ---
-
 resource_types:
   - name: merge-request
     type: docker-image
