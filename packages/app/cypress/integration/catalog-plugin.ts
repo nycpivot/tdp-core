@@ -18,6 +18,12 @@ describe('Catalog Plugin', () => {
     cy.contains('example-website');
   });
 
+  it('should register entities', () => {
+    cy.visit('/');
+    cy.contains(/register entity/i).click();
+    cy.contains(/register an existing component/i);
+  });
+
   describe('Gitlab integration', () => {
     it('should render the gitlab catalog', () => {
       cy.visit('/');
