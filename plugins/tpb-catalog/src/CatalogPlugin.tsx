@@ -60,12 +60,6 @@ export const CatalogPlugin: AppPluginInterface<
         );
 
         routes.addRouteBinder(({ bind }) => {
-          bind(apiDocsPlugin.externalRoutes, {
-            registerApi: catalogImportPlugin.routes.importPage,
-          });
-        });
-
-        routes.addRouteBinder(({ bind }) => {
           bind(scaffolderPlugin.externalRoutes, {
             registerComponent: catalogImportPlugin.routes.importPage,
           });
