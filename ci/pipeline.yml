@@ -1,5 +1,5 @@
 # To set up this pipeline, assuming you have an esback target locally setup, run:
-# $ fly -t esback set-pipeline -p core-runtime -c ci/pipeline.yml -v git_branch=$TARGET_BRANCH -v initial_version=0.0.0
+# $ make create-pipeline name=$PIPELINE_NAME
 ---
 resource_types:
   - name: slack-notification

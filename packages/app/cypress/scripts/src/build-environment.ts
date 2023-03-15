@@ -33,6 +33,8 @@ async function buildEnvironment(serverType: ServerType) {
         BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(
           'client_secret',
         ),
+        BITBUCKET_HOST: process.env.BITBUCKET_HOST || 'bitbucket:7990',
+        LDAP_ENDPOINT: process.env.LDAP_ENDPOINT || 'ldap://openldap:1389',
         GKE_CONTROL_PLANE_ENDPOINT: await vault.readGkeSecret(
           'control_plane_endpoint',
         ),
@@ -58,10 +60,13 @@ async function buildEnvironment(serverType: ServerType) {
         AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
           'aws_secret_access_key',
         ),
+        NODE_TLS_REJECT_UNAUTHORIZED: 0,
       };
     case ServerType.cypress:
       return {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
+        CYPRESS_BITBUCKET_CATALOG_PREFIX:
+          process.env.BITBUCKET_CATALOG_PREFIX || 'bitbucket:7990',
         CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
           'bitbucket_john_doe_refresh_token',
         ),

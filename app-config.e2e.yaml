@@ -53,7 +53,7 @@ catalog:
   processors:
     ldapOrg:
       providers:
-        - target: ldap://openldap:1389
+        - target: ${LDAP_ENDPOINT}
           users:
             dn: ou=people,o=tap-activation
           groups:
@@ -102,17 +102,17 @@ catalog:
     - type: azure-discovery
       target: https://dev.azure.com/tap-activation/tanzu-portal-builder
     - type: ldap-org
-      target: ldap://openldap:1389
+      target: ${LDAP_ENDPOINT}
       rules:
         - allow: [User, Group]
     - type: file
-      target: /app/examples/entities.yaml
+      target: ${APP_FOLDER}/examples/entities.yaml
     - type: file
-      target: /app/examples/template/template.yaml
+      target: ${APP_FOLDER}/examples/template/template.yaml
       rules:
         - allow: [Template]
     - type: file
-      target: /app/examples/org.yaml
+      target: ${APP_FOLDER}/examples/org.yaml
       rules:
         - allow: [User, Group]
     - type: url
@@ -144,7 +144,7 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
     local:
       # (Optional). Set this to specify where the generated documentation is stored.
-      publishDirectory: '/techdocs'
+      publishDirectory: ${TECHDOCS_FOLDER}
 
 esback:
   catalog:

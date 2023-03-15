@@ -7,29 +7,64 @@ Note: the commands described here have to be executed from the root of the proje
 You need the following tools on your machine:
 
 - [vault](https://www.vaultproject.io/)
-- [jq](https://stedolan.github.io/jq/)
 - [docker and docker-compose](https://www.docker.com/)
 
 ## Login to Vault
 
-Before running any command, you need to be logged in to vault. This can be done with the command:
+When running one of the following commands, you might be prompted to login to Vault if you are not already authenticated or if your token has expired.
+
+Just enter you vault password when asked for it.
+
+## Running the app and the integration tests locally
+
+If you want to configure your local environment to run the integration tests against it, here is what you can do:
+
+Start the dependencies required for the tests:
 
 ```shell
-make login-to-vault
+make start-dependencies
 ```
 
-You will then be prompted for your password.
-
-By default, the command will use your current shell's user to connect to vault. If you need to specify another user, use the following command instead:
+Setup your environment:
 
 ```shell
-make login-to-vault username=[PUT YOUR USERNAME HERE]
+make setup
 ```
 
-## Running the integration tests in a docker container
+This command will generate an `.envrc` file that you can source with `direnv` or manually. This file contains all the variables that are needed to run the integration tests.
+
+Copy the contents of the `app-config.e2e.yaml` file into you `app-config.local.yaml` file.
+
+Start your local app:
 
 ```shell
-make docker-e2e
+make start
+```
+
+Now, you can either run all the integration tests:
+
+```shell
+make dev-e2e
+```
+
+Or run a specific test:
+
+```shell
+make dev-specific-test test=hello-world-plugin
+```
+
+Or open the Cypress UI:
+
+```shell
+make open-dev-e2e
+```
+
+(this is the recommanded way to update or write new integration tests)
+
+## Deploying the app in Docker and Running the integration tests in Docker
+
+```shell
+make docker-docker-e2e
 ```
 
 This command will:
@@ -40,31 +75,172 @@ This command will:
 
 It is very similar to what the pipeline does to run the tests.
 
-## Setup a local environment
+## Deploying the app in Docker and Running the integration tests locally
 
-It is possible to build an environment (Docker containers) that is identical to the one used by the integration tests in the pipeline.
+To build, deploy and run the app in Docker, execute the following command:
 
 ```shell
 make e2e-environment
 ```
 
+It will also run the dependencies needed by the app for the tests (Bitbucker and Ldap servers).
+
 A Bitbucket server will be available at [http://localhost:7990](http://localhost:7990).
 
-ESBack will be available at [http://localhost:7007](http://localhost:7007).
+The Ldap server will be listening at ldap://localhost:1389.
 
-## Running the integration tests locally
+ESBack will be running at [http://localhost:7007](http://localhost:7007).
+
+### Running the integration tests locally
 
 Once you have an environment ready, you can run all the integration tests locally:
 
 ```shell
-make local-e2e CYPRESS_baseUrl=http://localhost:7007
+make docker-local-e2e
 ```
 
-Or if you want to run a specific integration test using Cypress' UI against the environment:
+### Running a specific test
+
+To run a specific test, use the following command:
 
 ```shell
-make open-cypress CYPRESS_baseUrl=http://localhost:7007
+make docker-local-specific-test test=hello-world-plugin
 ```
+
+## Secrets
+
+Our tests require secrets that are stored in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/list/esback/).
+
+If one of your tests needs the usage of a new secret, you will need to configure it at **four or six** different locations!
+
+1. The [main pipeline](../../ci/pipeline.yml)
+
+Look for the `integration-tests` job and the `vars` section of the `test` task and add your variable here.
+
+2. The [merge request pipeline](../../ci/mr-check.yml)
+
+Look for the `integration-tests` job and the `vars` section of the `test` task and add your variable here. The added variable should be exactly the same as in step 1.
+
+3. The [build environment script](./scripts/src/build-environment.ts)
+
+- Look for the `buildEnvironment` function
+- Read the secret with the help the `vault` object
+- Save its value in an environment variable related to the location where it will be used: Bitbucket server, the esback server or Cypress.
+
+The name of the environment variable must match the name that will be used in the context you define it.
+
+- For the Bitbucket server context, it must match an environment variable in the docker-compose configuration for the `bitbucket` service (step 5)
+- For the esback server context, it must match an environment variable in the docker-compose configuration for the `esback` service (step 5)
+- For the cypress context, it must match the environment variable that will be used in the tests
+
+4. The [tools pipeline](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/ci/pipeline.yml)
+
+Look for the `integration-tests` job and the `params` section of the `test` task and add your variable here.
+
+5. Eventually the [docker compose configuration file](./docker-compose.yaml) if this secret is needed by the server
+
+Add a new environment variable to the service that needs it. The value of this environment variable is another variable that will be set in the next step.
+
+6. If you did the previous step, you will also need to update the [pipeline integration script file](../../ci/integration-tests.yml)
+
+- Look for the `params` section
+- Add the variable: its name must match the value you define in the previous step and its value must match the name of the secret that has been defined in the pipeline.
+
+### A full example
+
+Let's go through an example to see all these steps in action. Let say that we want to add a new property in our `app-config.yaml` file that requires a token from some third party.
+
+Here is how our `app-config.yaml` file would look like:
+
+```yaml
+# ...
+foo:
+  bar: ${FOO_TOKEN}
+# ...
+```
+
+0. In Vault, I create a secret with the value of the token. The name of this secret is `e2e.foo_token`
+
+1. Main pipeline
+
+I add a new entry in the `integration-tests` job `vars` section:
+
+```yaml
+  - name: integration-tests
+        # ...
+      - task: test
+        # ...
+        vars:
+          # ...
+          foo_token: ((e2e.foo_token))
+          # ...
+```
+
+2. I do exactly the same in the merge request pipeline:
+
+```yaml
+  - name: integration-tests
+        # ...
+      - task: test
+        # ...
+        vars:
+          # ...
+          foo_token: ((e2e.foo_token))
+          # ...
+```
+
+3. In the build environment script, I add the environment variable that will store the secret.
+
+In that case, this variable will be used in the `esback` context:
+
+```typescript
+case ServerType.esback:
+  return {
+    // ...
+    FOO_TOKEN: await vault.readE2ESecret('foo_token'),
+    // ...
+  }
+```
+
+Note that the name matches the variable name in the `app_config.yaml` file.
+
+4. I update the tools pipeline:
+
+```yaml
+  - name: integration-tests
+        # ...
+      - task: test
+        # ...
+        params:
+          # ...
+          FOO_TOKEN: ((e2e.foo_token))
+          # ...
+```
+
+Note that here, we are also naming the param with the name that is used in the `app_config.yaml` file.
+
+5. I update the docker compose configuration file:
+
+```yaml
+esback:
+  # ...
+  environment:
+    # ...
+    - FOO_TOKEN = ${FOO_TOKEN}
+```
+
+This `${FOO_TOKEN}` value will be defined in the next step.
+
+6. I update the pipeline integration tests configuration:
+
+```yaml
+params:
+  FOO_TOKEN: ((foo_token))
+```
+
+This is here that we do the mapping between the pipeline secret name (step 1) and the environment variable defined in step 5.
+
+There is a [JIRA ticket](https://jira.eng.vmware.com/browse/ESBACK-214) that hopefully would simplify this heavy process once implemented.
 
 ## GKE Cluster
 

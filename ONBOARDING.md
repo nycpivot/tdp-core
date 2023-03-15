@@ -77,38 +77,160 @@ To build an ESBack plugin, follow [these steps](https://gitlab.eng.vmware.com/es
 
 All changes should be put on a branch and submitted as a merge request in GitLab.
 
+#### Make commands
+
+We have `make` commands that wrap most of the commands we are using in our everyday work. It is not required to use them and you can use `yarn` scripts instead if you prefer and when it is possible.
+
+If you are using the `make` commands, you can also benefit from the autocompletion to avoid typing the whole command.
+
+To get the list of available commands with a short description, run:
+
+```shell
+make
+```
+
+or
+
+```shell
+make help
+```
+
+#### Running the application
+
+To start the application in development mode:
+
+```shell
+make start
+```
+
+The equivalent `yarn` commands are:
+
+```shell
+yarn install
+yarn dev
+```
+
+#### Building
+
+To build the whole thing:
+
+```shell
+make build
+```
+
+This command will clean the distribution folders, install the dependencies, compile the code and generate the build.
+
+The equivalent `yarn` commands are:
+
+```shell
+yarn clean
+yarn install
+yarn tsc
+yarn build
+```
+
+##### Compiling
+
+To compile the typescript code, run:
+
+```shell
+make compile
+```
+
+The equivalent `yarn` command is:
+
+```shell
+yarn tsc
+```
+
 #### Linting
 
 To check for linting errors run:
 
+```shell
+make lint
 ```
+
+The equivalent `yarn` command is:
+
+```shell
+yarn lint:all
+```
+
+To fix lint errors run:
+
+```shell
+make fix-lint
+```
+
+The equivalent `yarn` command is:
+
+```shell
+yarn lint:all --fix
+```
+
+Not all lint errors can be fixed with this command: sometimes, you will have to fix them manually.
+
+To check for formatting errors run:
+
+```shell
+make check-prettier
+```
+
+The equivalent `yarn` command is:
+
+```shell
 yarn prettier:check
 ```
 
-If there are issues run:
+If there are formatting issues run:
 
+```shell
+make prettier
 ```
-yarn prettier --write .
+
+The equivalent `yarn` command is:
+
+```shell
+yarn prettify
 ```
 
 If you have already committed everything (no unstaged changes) and you are running the linter before pushing, you can use the following:
 
-```
-yarn prettier --write . && git add . && git commit --amend --no-edit
+```shell
+make prettier && git add . && git commit --amend --no-edit
 ```
 
+#### Testing
+
+To run the unit tests:
+
+```shell
+make test
+```
+
+The equivalent `yarn` command is:
+
+```shell
+yarn test:all
+```
+
+To run the integration tests, please refer to [this document](./packages/app/cypress/README.md).
+
 #### CI
+
+A [slack channel](https://vmware.slack.com/archives/C04TDJATVPS) is dedicated to the pipelines failures. Please be sure to be invited to it so that you can be notified of errors.
 
 If your build fails or hangs:
 
 1.  Go to your merge request in GitLab and make note of your merge request id (found in the url as well as on the page).
 
-1.  Go to [the resource view on Concourse](https://runway-ci-sfo.eng.vmware.com/teams/esback/pipelines/mr-check/resources/gitlab-mr).
+2.  Go to [the resource view on Concourse](https://runway-ci-sfo.eng.vmware.com/teams/esback/pipelines/mr-check/resources/gitlab-mr).
 
-1.  Find your merge request id in the list and expand it.
+3.  Find your merge request id in the list and expand it.
     All the jobs for your merge request should appear and the failing job(s) should be immediately apparent.
 
-1.  Click on the failing job to drill down and view the errors/failures.
+4.  Click on the failing job to drill down and view the errors/failures.
 
 ##### Common CI failures
 
@@ -116,3 +238,93 @@ Occasionally the build will fail due to network issues, or other flaky reasons.
 If the build fails for one of these reasons, retrigger the build.
 
 1.  Failure to push an image to harbor with 401 response.
+
+#### Updating the pipeline
+
+If you are working on updating our pipeline, you might want to create your own to avoid pausing or breaking the existing one specially if you are doing heavy changes.
+
+Here is one way of how to do it:
+
+1. First, comment out the sections that might conflict with the existing pipeline
+
+This is ususally one or more of these sections:
+
+- the reconfigure section if you want to avoid auto-reconfiguration of our pipelines during your tests
+
+```yaml
+- name: reconfigure
+  plan:
+    - get: esback-core
+      trigger: true
+#      - set_pipeline: self
+#        file: esback-core/ci/pipeline.yml
+#        vars:
+#          git_branch: ((git_branch))
+#          initial_version: ((initial_version))
+#      - set_pipeline: mr-check
+#        file: esback-core/ci/mr-check.yml
+#        vars:
+#          initial_version: ((initial_version))
+```
+
+- the deployment in the dev environment
+
+```yaml
+- name: update-dev-env
+  plan:
+    - get: code
+      resource: esback-core
+      passed: [build]
+      trigger: true
+#      - task: write-kubeconfig-file
+#        file: code/ci/write-kubeconfig-file.yml
+#        vars:
+#          kubeconfig: ((calatrava-env-dev.kubeconfig))
+#      - task: restart-k8s-deployment
+#        file: code/ci/restart-k8s-deployment.yml
+```
+
+- the publication of new artefacts in our Artifactory
+
+```yaml
+- name: publish
+  plan:
+    - in_parallel:
+        - get: code
+          resource: esback-core
+          passed: [integration-tests]
+          trigger: true
+        - do:
+            - get: version
+              passed: [build]
+            - load_var: version
+              file: version/version
+              reveal: true
+#      - task: yarn-build
+#        file: code/ci/yarn-build.yml
+#      - task: lerna-publish
+#        file: code/ci/publish.yml
+#        vars:
+#          git_branch: ((git_branch))
+#      - put: esback-core
+#        params:
+#          repository: code
+#          tag: version/version
+#          only_tag: true
+```
+
+Of course, if you are working on updating on of these sections, you might not comment them.
+
+2. Switch to the branch used to implement your updates: **do not remain on the `main` branch**.
+
+3. Then, you can use the following command to create a new pipeline:
+
+```shell
+make create-pipeline name=esback-123
+```
+
+4. Once you're done with your pipeline, you can delete it with this command:
+
+```shell
+make descroy-pipeline name=esback-123
+```

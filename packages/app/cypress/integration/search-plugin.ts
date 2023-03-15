@@ -12,13 +12,13 @@ describe('Search Plugin', () => {
 
   it('displays the search modal', () => {
     cy.visit('/');
-    cy.get('[aria-label="Search"]').click();
+    cy.get('[aria-label="Search"]').first().click();
     cy.get('[role="dialog"]').should('be.visible');
   });
 
   it('retains search terms on transition from modal to full search page', () => {
     cy.visit('/');
-    cy.get('[aria-label="Search"]').click();
+    cy.get('[aria-label="Search"]').first().click();
 
     cy.get('[role="dialog"]')
       .first()
@@ -26,7 +26,7 @@ describe('Search Plugin', () => {
         cy.get('input[type="text"][aria-label="Search"]').type(
           'example-website',
         );
-        cy.get('a[href*="search"]').click();
+        cy.contains('View Full Results').click();
       });
 
     cy.url().should('include', '/search');
