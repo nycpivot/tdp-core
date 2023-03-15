@@ -7,7 +7,6 @@ import {
 } from '@backstage/plugin-catalog';
 import {
   CatalogImportPage,
-  DefaultImportPage,
   catalogImportPlugin,
 } from '@backstage/plugin-catalog-import';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
@@ -25,6 +24,7 @@ import { entityPage } from './components/EntityPage';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { EntityPageSurface } from './EntityPageSurface';
 import { CustomCatalogPage } from './components/CustomCatalogPage';
+import { DefaultImportPage } from './components/CatalogImport/DefaultImportPage';
 
 interface CatalogConfig {
   disableImport?: boolean;

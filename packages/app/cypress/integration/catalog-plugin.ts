@@ -22,6 +22,7 @@ describe('Catalog Plugin', () => {
     cy.visit('/');
     cy.contains(/register entity/i).click();
     cy.contains(/register an existing component/i);
+    cy.contains(/tanzu network/i);
   });
 
   describe('Gitlab integration', () => {
