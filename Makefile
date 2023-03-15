@@ -44,7 +44,7 @@ test:	## # Run the unit tests.
 start: install	## # Run the server locally in dev mode.
 	yarn dev
 
-login-to-vault:	## # Log in to Vault if not yet already.
+login-to-vault:	# Log in to Vault if not yet already.
 ifeq (, $(findstring expire_time, $(shell vault token lookup -address ${VAULT_ADDR} 2>/dev/null | grep expire_time)))
 	@echo "Let's connect to Vault"
 	@vault login -address=${VAULT_ADDR} -method=ldap username=$(username)
