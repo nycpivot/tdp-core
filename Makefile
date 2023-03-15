@@ -85,7 +85,8 @@ create-pipeline:	## # Create a Concourse pipeline for your current branch. Provi
 destroy-pipeline: ## # Destroy a Concourse pipeline. Provide the name of the pipeline with the name variable.
 	fly -t esback destroy-pipeline -p "$(name)"
 
-setup: login-to-vault ## # Create an .envrc file that can be sourced with the variables used in the e2e tests. Useful if you want to run your dev environment with the same config than the e2e environment.
+setup: install login-to-vault ## # Create an .envrc file that can be sourced with the variables used in the e2e tests. Useful if you want to run your dev environment with the same config than the e2e environment.
+	$(MAKE) -C packages/app/cypress install_scripts
 	VAULT_ADDR=$(VAULT_ADDR) LDAP_ENDPOINT="ldap://localhost:1389" BITBUCKET_HOST="localhost:7990" yarn --cwd packages/app/cypress/scripts --silent build-environment esback > .envrc
 	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
 	@echo "export BITBUCKET_TOKEN=$(token)" >> .envrc
