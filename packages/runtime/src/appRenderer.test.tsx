@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import { appRenderer } from './appRenderer';
-import { SurfaceStore, ThemeSurface } from '@esback/core';
+import { SurfaceStore, ThemeSurface } from '@tpb/core';
 
 describe('AppRenderer', () => {
   it('should render', async () => {

@@ -1,8 +1,8 @@
 function createPackageConfig(dir) {
   return require('@backstage/cli/config/eslint-factory')(dir, {
-    plugins: ['@esback'],
+    plugins: ['@tpb'],
     rules: {
-      '@esback/todo-format': 'error',
+      '@tpb/todo-format': 'error',
     },
   });
 }

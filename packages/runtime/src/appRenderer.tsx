@@ -22,7 +22,7 @@ import {
   AppRouteSurface,
   SurfaceStoreInterface,
   ThemeSurface,
-} from '@esback/core';
+} from '@tpb/core';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const apis: AnyApiFactory[] = [

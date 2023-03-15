@@ -5,12 +5,12 @@ import {
   EsbackPluginInterface,
   SurfaceStoreInterface,
   SurfaceStore,
-} from '@esback/core';
+} from '@tpb/core';
 import { BackendRunner } from './BackendRunner';
-import { plugin as catalogBackendPlugin } from '@esback/plugin-catalog-backend';
-import { plugin as techdocsBackendPlugin } from '@esback/plugin-techdocs-backend';
-import { plugin as searchBackendPlugin } from '@esback/plugin-search-backend';
-import { plugin as authBackendPlugin } from '@esback/plugin-auth-backend';
+import { plugin as catalogBackendPlugin } from '@tpb/plugin-catalog-backend';
+import { plugin as techdocsBackendPlugin } from '@tpb/plugin-techdocs-backend';
+import { plugin as searchBackendPlugin } from '@tpb/plugin-search-backend';
+import { plugin as authBackendPlugin } from '@tpb/plugin-auth-backend';
 
 export class BackendRuntime {
   private readonly _surfaces: SurfaceStoreInterface;

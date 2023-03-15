@@ -3,7 +3,7 @@ import {
   EsbackPluginInterface,
   AppRouteSurface,
   SidebarItemSurface,
-} from '@esback/core';
+} from '@tpb/core';
 import { AppRuntime } from './AppRuntime';
 
 describe('AppRuntime', () => {

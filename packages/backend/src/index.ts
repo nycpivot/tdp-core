@@ -1,25 +1,25 @@
-import { BackendRuntime } from '@esback/runtime-backend';
-import { plugin as catalogTestEntityProviderPlugin } from '@esback/plugin-catalog-test-entity-provider';
-import { plugin as catalogTestEntityProcessorPlugin } from '@esback/plugin-catalog-test-entity-processor';
-import { plugin as microsoftGraphOrgReaderProcessorPlugin } from '@esback/plugin-microsoft-graph-org-reader-processor';
-import { plugin as awsS3DiscoveryProcessorPlugin } from '@esback/plugin-aws-s3-discovery-processor';
-import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-backend';
-import { plugin as azureDevOpsPlugin } from '@esback/plugin-azure-devops-backend';
-import { plugin as githubPlugin } from '@esback/plugin-github-backend';
-import { plugin as kubernetesPlugin } from '@esback/plugin-kubernetes-backend';
-import { plugin as kubernetesLoggingPlugin } from '@esback/plugin-kubernetes-logging-backend';
-import { plugin as oidcAuthBackendPlugin } from '@esback/plugin-oidc-auth-backend';
-import { plugin as oktaAuthBackendPlugin } from '@esback/plugin-okta-auth-backend';
-import { plugin as azureAuthBackendPlugin } from '@esback/plugin-azure-auth-backend';
-import { plugin as githubAuthBackendPlugin } from '@esback/plugin-github-auth-backend';
-import { plugin as gitlabAuthBackendPlugin } from '@esback/plugin-gitlab-auth-backend';
-import { plugin as googleAuthBackendPlugin } from '@esback/plugin-google-auth-backend';
-import { plugin as bitbucketAuthBackendPlugin } from '@esback/plugin-bitbucket-auth-backend';
-import { plugin as auth0BackendPlugin } from '@esback/plugin-auth0-auth-backend';
-import { plugin as oneLoginBackendPlugin } from '@esback/plugin-onelogin-auth-backend';
-import { plugin as ldapBackendPlugin } from '@esback/plugin-ldap-backend';
-import { plugin as ldapTransformersPlugin } from '@esback/plugin-ldap-test-transformers';
-import { plugin as microsoftGraphOrgReaderProcessorTestTransformersPlugin } from '@esback/plugin-microsoft-graph-org-reader-processor-test-transformers';
+import { BackendRuntime } from '@tpb/runtime-backend';
+import { plugin as catalogTestEntityProviderPlugin } from '@tpb/plugin-catalog-test-entity-provider';
+import { plugin as catalogTestEntityProcessorPlugin } from '@tpb/plugin-catalog-test-entity-processor';
+import { plugin as microsoftGraphOrgReaderProcessorPlugin } from '@tpb/plugin-microsoft-graph-org-reader-processor';
+import { plugin as awsS3DiscoveryProcessorPlugin } from '@tpb/plugin-aws-s3-discovery-processor';
+import { plugin as gitlabPlugin } from '@tpb/plugin-gitlab-backend';
+import { plugin as azureDevOpsPlugin } from '@tpb/plugin-azure-devops-backend';
+import { plugin as githubPlugin } from '@tpb/plugin-github-backend';
+import { plugin as kubernetesPlugin } from '@tpb/plugin-kubernetes-backend';
+import { plugin as kubernetesLoggingPlugin } from '@tpb/plugin-kubernetes-logging-backend';
+import { plugin as oidcAuthBackendPlugin } from '@tpb/plugin-oidc-auth-backend';
+import { plugin as oktaAuthBackendPlugin } from '@tpb/plugin-okta-auth-backend';
+import { plugin as azureAuthBackendPlugin } from '@tpb/plugin-azure-auth-backend';
+import { plugin as githubAuthBackendPlugin } from '@tpb/plugin-github-auth-backend';
+import { plugin as gitlabAuthBackendPlugin } from '@tpb/plugin-gitlab-auth-backend';
+import { plugin as googleAuthBackendPlugin } from '@tpb/plugin-google-auth-backend';
+import { plugin as bitbucketAuthBackendPlugin } from '@tpb/plugin-bitbucket-auth-backend';
+import { plugin as auth0BackendPlugin } from '@tpb/plugin-auth0-auth-backend';
+import { plugin as oneLoginBackendPlugin } from '@tpb/plugin-onelogin-auth-backend';
+import { plugin as ldapBackendPlugin } from '@tpb/plugin-ldap-backend';
+import { plugin as ldapTransformersPlugin } from '@tpb/plugin-ldap-test-transformers';
+import { plugin as microsoftGraphOrgReaderProcessorTestTransformersPlugin } from '@tpb/plugin-microsoft-graph-org-reader-processor-test-transformers';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
