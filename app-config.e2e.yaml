@@ -106,13 +106,13 @@ catalog:
       rules:
         - allow: [User, Group]
     - type: file
-      target: /app/examples/entities.yaml
+      target: ${APP_FOLDER}/examples/entities.yaml
     - type: file
-      target: /app/examples/template/template.yaml
+      target: ${APP_FOLDER}/examples/template/template.yaml
       rules:
         - allow: [Template]
     - type: file
-      target: /app/examples/org.yaml
+      target: ${APP_FOLDER}/examples/org.yaml
       rules:
         - allow: [User, Group]
     - type: url
