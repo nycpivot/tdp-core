@@ -1,6 +1,6 @@
 # This app-config file is used to configure the internally publish TPB instance,
 # used for acceptance testing. It is expected that this instance will be run with
-# docker compose
+# docker compose.
 app:
   title: Esback Test Instance
   baseUrl: ${BACKSTAGE_BASE_URL}
