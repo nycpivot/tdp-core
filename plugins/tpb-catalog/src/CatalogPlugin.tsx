@@ -18,7 +18,7 @@ import {
   AppRouteSurface,
   RoutableConfig,
   SidebarItemSurface,
-} from '@esback/core';
+} from '@tpb/core';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
