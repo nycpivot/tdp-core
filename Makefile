@@ -52,9 +52,8 @@ else
 	@echo "Already logged in to vault"
 endif
 
-e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007 ## # Build a whole docker environment where you can run the docker-local e2e tests.
-e2e-environment: image login-to-vault
-	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
+e2e-environment: image login-to-vault  ## # Build a whole docker environment where you can run the docker-local e2e tests.
+	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 docker-docker-e2e: image login-to-vault	## # Build a whole docker environment and run the e2e tests in a docker container like the pipeline.
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
