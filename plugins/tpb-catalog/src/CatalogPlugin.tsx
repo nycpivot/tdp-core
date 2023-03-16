@@ -9,7 +9,6 @@ import {
   CatalogImportPage,
   catalogImportPlugin,
 } from '@backstage/plugin-catalog-import';
-import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { SidebarItem } from '@backstage/core-components';
 import { orgPlugin } from '@backstage/plugin-org';
 import HomeIcon from '@material-ui/icons/Home';
@@ -56,11 +55,7 @@ export const CatalogPlugin: AppPluginInterface<
 
       if (!config?.disableImport) {
         routes.add(
-          <Route
-            path="/catalog-import"
-            permission={catalogEntityCreatePermission}
-            element={<CatalogImportPage />}
-          >
+          <Route path="/catalog-import" element={<CatalogImportPage />}>
             <DefaultImportPage />
           </Route>,
         );

@@ -11,6 +11,7 @@ import {
 } from '@backstage/core-components';
 import { configApiRef, useApi, useRouteRef } from '@backstage/core-plugin-api';
 import {
+  EntityKindPicker,
   EntityLifecyclePicker,
   EntityListProvider,
   EntityOwnerPicker,
@@ -20,14 +21,7 @@ import {
   UserListPicker,
 } from '@backstage/plugin-catalog-react';
 import React from 'react';
-import {
-  CatalogKindHeader,
-  CatalogTable,
-  FilteredEntityLayout,
-  EntityListContainer,
-  FilterContainer,
-  catalogPlugin,
-} from '@backstage/plugin-catalog';
+import { CatalogTable, catalogPlugin } from '@backstage/plugin-catalog';
 
 export type EntityRow = {
   entity: Entity;
@@ -61,7 +55,7 @@ export const CustomCatalogPage = ({
     <PageWithHeader title={`${orgName} Catalog`} themeId="home">
       <EntityListProvider>
         <Content>
-          <ContentHeader titleComponent={<CatalogKindHeader />}>
+          <ContentHeader titleComponent={<EntityKindPicker />}>
             <CreateButton
               title="Register Entity"
               to={createComponentLink && createComponentLink()}
