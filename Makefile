@@ -106,12 +106,12 @@ start-ldap-server: stop-ldap-server # Stop the ldap server docker container.
 start-dependencies: start-bitbucket-server start-ldap-server ## # Start the e2e dependencies (bitbucket & ldap servers). Useful if you want to setup a dev environment like in the e2e.
 
 stop-bitbucket-server: # Stop the bitbucket server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress stop-bitbucket
+	$(MAKE) -C packages/app/cypress stop-bitbucket
 
 delete-bitbucket-server: # Delete the bitbucket server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress delete-bitbucket
+	$(MAKE) -C packages/app/cypress delete-bitbucket
 
 stop-ldap-server: # Stop the ldap server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress stop-ldap-server
+	$(MAKE) -C packages/app/cypress stop-ldap-server
 
 stop-dependencies: stop-bitbucket-server stop-ldap-server ## # Stop the e2e dependencies (bitbucket & ldap servers).
