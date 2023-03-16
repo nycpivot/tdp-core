@@ -52,9 +52,8 @@ else
 	@echo "Already logged in to vault"
 endif
 
-e2e-environment: export BACKSTAGE_BASE_URL=http://localhost:7007 ## # Build a whole docker environment where you can run the docker-local e2e tests.
-e2e-environment: image login-to-vault
-	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
+e2e-environment: image login-to-vault  ## # Build a whole docker environment where you can run the docker-local e2e tests.
+	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 docker-docker-e2e: image login-to-vault	## # Build a whole docker environment and run the e2e tests in a docker container like the pipeline.
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
@@ -99,20 +98,26 @@ bitbucket-token: ## # Generate a bitbucket token.
 	@echo $(token)
 
 start-bitbucket-server: stop-bitbucket-server # Start the bitbucket server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress bitbucket
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress bitbucket
 
 start-ldap-server: stop-ldap-server # Stop the ldap server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress ldap-server
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress ldap-server
 
 start-dependencies: start-bitbucket-server start-ldap-server ## # Start the e2e dependencies (bitbucket & ldap servers). Useful if you want to setup a dev environment like in the e2e.
 
 stop-bitbucket-server: # Stop the bitbucket server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress stop-bitbucket
+	$(MAKE) -C packages/app/cypress stop-bitbucket
 
 delete-bitbucket-server: # Delete the bitbucket server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress delete-bitbucket
+	$(MAKE) -C packages/app/cypress delete-bitbucket
 
 stop-ldap-server: # Stop the ldap server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress stop-ldap-server
+	$(MAKE) -C packages/app/cypress stop-ldap-server
+
+start-esback-server: login-to-vault # Start the esback docker container.
+	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress esback
+
+stop-esback-server: # Stop the esback docker container
+	$(MAKE) -C packages/app/cypress stop-esback
 
 stop-dependencies: stop-bitbucket-server stop-ldap-server ## # Stop the e2e dependencies (bitbucket & ldap servers).
