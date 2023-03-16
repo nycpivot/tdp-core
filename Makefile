@@ -98,10 +98,10 @@ bitbucket-token: ## # Generate a bitbucket token.
 	@echo $(token)
 
 start-bitbucket-server: stop-bitbucket-server # Start the bitbucket server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress bitbucket
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress bitbucket
 
 start-ldap-server: stop-ldap-server # Stop the ldap server docker container.
-	VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=$(CYPRESS_baseUrl) $(MAKE) -C packages/app/cypress ldap-server
+	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress ldap-server
 
 start-dependencies: start-bitbucket-server start-ldap-server ## # Start the e2e dependencies (bitbucket & ldap servers). Useful if you want to setup a dev environment like in the e2e.
 
@@ -113,5 +113,11 @@ delete-bitbucket-server: # Delete the bitbucket server docker container.
 
 stop-ldap-server: # Stop the ldap server docker container.
 	$(MAKE) -C packages/app/cypress stop-ldap-server
+
+start-esback-server: login-to-vault # Start the esback docker container.
+	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress esback
+
+stop-esback-server: # Stop the esback docker container
+	$(MAKE) -C packages/app/cypress stop-esback
 
 stop-dependencies: stop-bitbucket-server stop-ldap-server ## # Stop the e2e dependencies (bitbucket & ldap servers).
