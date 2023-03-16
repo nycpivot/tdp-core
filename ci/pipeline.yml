@@ -1,4 +1,4 @@
-# To set up this pipeline, assuming you have an esback target locally setup, run:
+# To set up this pipeline, assuming you have an TPB target locally setup, run:
 # $ make create-pipeline name=$PIPELINE_NAME
 ---
 resource_types:

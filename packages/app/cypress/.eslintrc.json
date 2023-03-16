@@ -1,5 +1,5 @@
 {
-  "plugins": ["cypress", "@esback"],
+  "plugins": ["cypress", "@tpb"],
   "extends": ["plugin:cypress/recommended"],
   "rules": {
     "jest/expect-expect": [
@@ -17,6 +17,6 @@
         "bundledDependencies": true
       }
     ],
-    "@esback/todo-format": "error"
+    "@tpb/todo-format": "error"
   }
 }

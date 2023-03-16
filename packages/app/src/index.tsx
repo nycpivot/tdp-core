@@ -1,22 +1,22 @@
 import '@backstage/cli/asset-types';
-import { AppRuntime } from '@esback/runtime';
-import { plugin as themePlugin } from '@esback/plugin-clarity-theme';
-import { plugin as helloWorldPlugin } from '@esback/plugin-hello-world';
-import { plugin as gitlabPlugin } from '@esback/plugin-gitlab-loblaw';
-import { plugin as rrvPlugin } from '@esback/plugin-rrv';
-import { plugin as appLiveViewPlugin } from '@esback/plugin-app-live-view';
-import { plugin as oktaAuthPlugin } from '@esback/plugin-okta-auth';
-import { plugin as oidcAuthPlugin } from '@esback/plugin-oidc-auth';
-import { plugin as azureAuthPlugin } from '@esback/plugin-azure-auth';
-import { plugin as githubAuthPlugin } from '@esback/plugin-github-auth';
-import { plugin as gitlabAuthPlugin } from '@esback/plugin-gitlab-auth';
-import { plugin as googleAuthPlugin } from '@esback/plugin-google-auth';
-import { plugin as auth0AuthPlugin } from '@esback/plugin-auth0-auth';
-import { plugin as bitbucketAuthPlugin } from '@esback/plugin-bitbucket-auth';
-import { plugin as oneLoginAuthPlugin } from '@esback/plugin-onelogin-auth';
-import { plugin as guestAuthPlugin } from '@esback/plugin-guest-auth';
+import { AppRuntime } from '@tpb/runtime';
+import { plugin as themePlugin } from '@tpb/plugin-clarity-theme';
+import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world';
+import { plugin as gitlabPlugin } from '@tpb/plugin-gitlab-loblaw';
+import { plugin as rrvPlugin } from '@tpb/plugin-rrv';
+import { plugin as appLiveViewPlugin } from '@tpb/plugin-app-live-view';
+import { plugin as oktaAuthPlugin } from '@tpb/plugin-okta-auth';
+import { plugin as oidcAuthPlugin } from '@tpb/plugin-oidc-auth';
+import { plugin as azureAuthPlugin } from '@tpb/plugin-azure-auth';
+import { plugin as githubAuthPlugin } from '@tpb/plugin-github-auth';
+import { plugin as gitlabAuthPlugin } from '@tpb/plugin-gitlab-auth';
+import { plugin as googleAuthPlugin } from '@tpb/plugin-google-auth';
+import { plugin as auth0AuthPlugin } from '@tpb/plugin-auth0-auth';
+import { plugin as bitbucketAuthPlugin } from '@tpb/plugin-bitbucket-auth';
+import { plugin as oneLoginAuthPlugin } from '@tpb/plugin-onelogin-auth';
+import { plugin as guestAuthPlugin } from '@tpb/plugin-guest-auth';
 
-import '@esback/plugin-clarity-theme/style/clarity.css';
+import '@tpb/plugin-clarity-theme/style/clarity.css';
 
 new AppRuntime([
   themePlugin(),

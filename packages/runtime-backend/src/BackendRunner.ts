@@ -18,7 +18,7 @@ import {
   SurfaceStoreInterface,
   PluginEnvironment,
   BackendPluginSurface,
-} from '@esback/core';
+} from '@tpb/core';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();

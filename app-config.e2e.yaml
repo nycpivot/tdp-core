@@ -1,4 +1,4 @@
-# This app-config file is used to configure the internally publish esback instance,
+# This app-config file is used to configure the internally publish TPB instance,
 # used for acceptance testing. It is expected that this instance will be run with
 # docker compose
 app:

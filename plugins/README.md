@@ -12,7 +12,7 @@ You can also check out existing plugins on [the plugin marketplace](https://back
 
 An ESBack plugin is a thin wrapper for a Backstage plugin.
 It exports an instance of the AppPluginInterface or BackendPluginInterface in `src/index.ts` depending on the type of plugin.
-You can see a sample of a frontend ESBack plugin in `esback-hello-world`.
+You can see a sample of a frontend TPB plugin in `tpb-hello-world`.
 
 ### Setup a local package registry: Verdaccio
 
@@ -140,7 +140,7 @@ instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/tpb-npm-local
 
 - Create an `.npmrc` file in the plugin's root directory (_not_ the project root directory) with the following content:
   ```
-  @esback:registry = https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
+  @tpb:registry = https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
   //artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/:_authToken=${NPM_AUTH_TOKEN}
   email = ${NPM_AUTH_EMAIL}
   ```

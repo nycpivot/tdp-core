@@ -125,7 +125,7 @@ Look for the `integration-tests` job and the `vars` section of the `test` task a
 
 - Look for the `buildEnvironment` function
 - Read the secret with the help the `vault` object
-- Save its value in an environment variable related to the location where it will be used: Bitbucket server, the esback server or Cypress.
+- Save its value in an environment variable related to the location where it will be used: Bitbucket server, the TPB server or Cypress.
 
 The name of the environment variable must match the name that will be used in the context you define it.
 

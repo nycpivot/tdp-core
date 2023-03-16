@@ -15,7 +15,7 @@ yarn config set unsafe-perm true
 # Make sure that the version we are about to publish doesn't
 # exits in the npm registry
 
-core_versions=$(yarn info --silent "@esback/core" versions)
+core_versions=$(yarn info --silent "@tpb/core" versions)
 if [[ "$core_versions" == *"$ESBACK_VERSION"* ]]; then
         echo "Version $ESBACK_VERSION already exists in the npm registry"
         exit 1

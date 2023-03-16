@@ -20,7 +20,7 @@ services:
       - 7990:7990
       - 7999:7999
     environment:
-      - SETUP_DISPLAYNAME=esback
+      - SETUP_DISPLAYNAME=TPB
       - SETUP_BASEURL=http://localhost
       - SETUP_LICENSE=${BITBUCKET_SERVER_LICENSE}
       - SETUP_SYSADMIN_USERNAME=esback

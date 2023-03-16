@@ -1,4 +1,4 @@
-import { BackendPluginSurface } from '@esback/core';
+import { BackendPluginSurface } from '@tpb/core';
 import { BackendRuntime } from './BackendRuntime';
 
 describe('BackendRuntime', () => {
