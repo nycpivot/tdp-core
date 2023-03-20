@@ -12,8 +12,8 @@ outputs:
 params:
   ESBACK_VERSION: ((.:version))
   GIT_BRANCH: ((git_branch))
-  NPM_REGISTRY: artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local
-  NPM_TOKEN: ((artifactory.NPM_AUTH_TOKEN))
+  NPM_REGISTRY: artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local
+  NPM_TOKEN: ((artifactory.NPM_TPB_AUTH_TOKEN))
 run:
   dir: built-code
   path: ci/scripts/publish
