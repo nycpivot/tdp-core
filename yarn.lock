@@ -6811,10 +6811,10 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
 
-"@tpb/app-live-view@^0.1.5":
-  version "0.1.5"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/app-live-view/-/@tpb/app-live-view-0.1.5.tgz#61bc42c03388df35c4d5a977698e011405c85767"
-  integrity sha512-zSqOz0RFrqVkhkIp8oxR8QEmgczYuLOadaYPE697MLVT5zQXniWDUwfs28Sx+7zVVIYlzTQg5D5WMrNJ00pnPA==
+"@tpb/app-live-view@^0.1.6":
+  version "0.1.6"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/app-live-view/-/@tpb/app-live-view-0.1.6.tgz#79fb56bfc62fd90c5172c9f7134e6e58cf652073"
+  integrity sha512-pKF6AfNTeiF7tceaYNCLWID/4Po3KRLK7F5yobVEfkWauZOOwbmRvGQkwWWxpv9O7wzW8MgksoAc55MZx6P6rA==
   dependencies:
     "@backstage/config" "^1.0.1"
     "@backstage/core-components" "^0.12.0"
@@ -6824,7 +6824,7 @@
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.57"
-    "@tpb/kubernetes-orm" "^0.1.1"
+    "@tpb/kubernetes-orm" "^0.1.2"
     axios "^0.24.0"
     eslint "^8.16.0"
     file-saver "^2.0.5"
@@ -6839,10 +6839,10 @@
     react-use "^17.2.4"
     recharts "^2.1.6"
 
-"@tpb/core@^0.0.2-main.54", "@tpb/core@^0.0.2-main.57":
-  version "0.0.2-main.57"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.57.tgz#9eba8e091838711d1bdc3c01b1471d250197a0ce"
-  integrity sha512-STQLcmptNDfZRNa/Gs4v5B1sxlde2qlXucvtJKB0qixEgs83aGAIag1qyHtDmIfua7d70I6EnSAUsTww+L/XdQ==
+"@tpb/core@^0.0.2-main.61":
+  version "0.0.2-main.61"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.61.tgz#5e77b0faf495b7ab249af4ec19051fd1595923cb"
+  integrity sha512-IkAAXIkjU80c8iOPO6/IL72Ojrn+9CFo2c/kr/o3lwVQKq+mr0/cnlNcsk0lQzf2SK6/P3FRenOwaeep5DRxOg==
   dependencies:
     "@backstage/backend-common" "^0.18.2"
     "@backstage/backend-tasks" "^0.4.3"
@@ -6858,10 +6858,10 @@
     uuid "^9.0.0"
     winston "^3.2.1"
 
-"@tpb/kubernetes-logging-backend@^0.1.1":
-  version "0.1.1"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/kubernetes-logging-backend/-/@tpb/kubernetes-logging-backend-0.1.1.tgz#ef7a6e4c164228d1802d16206dad9932dabf5cc5"
-  integrity sha512-4qorO8Efua7Lq+in/uH1Re7C4KiMDJ1OExyFiFgoE4gjCkowp8fVQJnZI/G/cghUu+8xg5ipYEQ1lKTI/J8f/g==
+"@tpb/kubernetes-logging-backend@^0.1.2":
+  version "0.1.2"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/kubernetes-logging-backend/-/@tpb/kubernetes-logging-backend-0.1.2.tgz#eb0a46e814d5e1687ef0e9d24849d96eca81df93"
+  integrity sha512-vrL7ixsXdxQ7UY1QyhcnKwJPkyQsqXRdzb3+rqe/2Z7ZQn/+6oyC7sikw6w+xGUMNJ8jcF6sDF/E0GgHBsUBxA==
   dependencies:
     "@backstage/backend-common" "^0.15.1"
     "@backstage/catalog-client" "^1.1.2"
@@ -6881,10 +6881,10 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@tpb/kubernetes-orm@^0.1.1":
-  version "0.1.1"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/kubernetes-orm/-/@tpb/kubernetes-orm-0.1.1.tgz#10ba22e28a7fd881253d66ac12af9e9a8bbc207d"
-  integrity sha512-QLOnwsJoEMdJ/bin50mDpBdxbirl46eXxRfI9MJVMeedd8hfERK+47Hw1phDoen3IaDArBvAtZNZ+aKrIjNYZw==
+"@tpb/kubernetes-orm@^0.1.2":
+  version "0.1.2"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/kubernetes-orm/-/@tpb/kubernetes-orm-0.1.2.tgz#b81764e92f0010b5a094d235849d146a0f083e53"
+  integrity sha512-2TFEGvv3nxWHnkqdb4YUDHcrm15QOEOLCCNFKqKZASt2rRd0FZN4k8s9b5kTMXEOxYiiYqqsW89sslEfJpvuhg==
   dependencies:
     "@backstage/catalog-model" "^1.0.2"
     "@backstage/core-plugin-api" "^1.0.2"
@@ -6901,29 +6901,29 @@
     react-use "^17.3.2"
     uuid "^8.3.2"
 
-"@tpb/plugin-auth0-auth@^0.0.2-main.54":
-  version "0.0.2-main.57"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/plugin-auth0-auth/-/@tpb/plugin-auth0-auth-0.0.2-main.57.tgz#340a67b6b14641b925dc9d2ddf5091d2b2bcfc15"
-  integrity sha512-qcuRkTgqjQMUDU8KvE9ilpO9bnfTrjidYIDQWX1R2ajjsDMUqgJueFScUr1v78au+KY0dROM1i/N+HppuIVfEg==
+"@tpb/plugin-auth0-auth@^0.0.2-main.61":
+  version "0.0.2-main.61"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-auth0-auth/-/@tpb/plugin-auth0-auth-0.0.2-main.61.tgz#2f651c2d21137ee7ec90ed0c029a55513579b72b"
+  integrity sha512-bneerUw9lrlIvelxKlUQ8XAE1tm3P3cUuNHvZH9pUXs/JwT3R830lme/oolJswk+TnyeM5XGVjMYnyTiPFhLeQ==
   dependencies:
     "@backstage/core-app-api" "^1.5.0"
     "@backstage/core-plugin-api" "^1.4.0"
-    "@tpb/core" "^0.0.2-main.57"
-    "@tpb/plugin-login" "^0.0.2-main.57"
+    "@tpb/core" "^0.0.2-main.61"
+    "@tpb/plugin-login" "^0.0.2-main.61"
 
-"@tpb/plugin-gitlab-loblaw@^0.0.16":
-  version "0.0.16"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.16.tgz#af055c1853fca52ea4a24dc97d323add16840629"
-  integrity sha512-0ABcxhioNObq/yhuw48Q4KUp47/eLPC4e4hWfBJuvfGf2KJwTFRhbO5v+6x7xZ+E/CcGoMEj3nxMoyIM2VqpKw==
+"@tpb/plugin-gitlab-loblaw@^0.0.18":
+  version "0.0.18"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.18.tgz#c82b7074b81d4bab6b23d49a2946d7286061d20b"
+  integrity sha512-xrVcU6ZrWT3mcq86QXM4/GpS2eaooGiT6hI6Y7sWhg0iWQhzWVl0ZgZz9UgmnGHPV5oAIOGKrctO3NNRJm/Ffg==
   dependencies:
     "@backstage/plugin-catalog" "^1.4.0"
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
     "@material-ui/core" "^4.12.2"
 
-"@tpb/plugin-login@^0.0.2-main.54", "@tpb/plugin-login@^0.0.2-main.57":
-  version "0.0.2-main.57"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/plugin-login/-/@tpb/plugin-login-0.0.2-main.57.tgz#d1217e6b343841d69aac1394fd4fd3699c66247d"
-  integrity sha512-N90YryQPce75X2T9Db3vGvbuvnIN6lnW5FwcV0X+sagP17AgGwhB4RFIvW4/UBQMEolq60PKjYuo6CVEtVbuZg==
+"@tpb/plugin-login@^0.0.2-main.61":
+  version "0.0.2-main.61"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-login/-/@tpb/plugin-login-0.0.2-main.61.tgz#4e586a315950c5bb7627bc93d2ba5954f9b0a78b"
+  integrity sha512-ATiyM2Wk1rSqXXKsQ5J668Tni4d81tDC2WSFYf98DEPFb2Q49UMaPRNYFMle75PhHVtUZcYAnm6ARaiumkcs/g==
   dependencies:
     "@backstage/catalog-model" "^1.2.0"
     "@backstage/core-components" "^0.12.4"
@@ -6940,23 +6940,23 @@
     "@backstage/plugin-techdocs" "^1.5.0"
     "@material-ui/core" "^4.9.13"
     "@material-ui/icons" "^4.9.1"
-    "@tpb/core" "^0.0.2-main.57"
+    "@tpb/core" "^0.0.2-main.61"
     react-router "6.0.0-beta.0"
 
-"@tpb/plugin-oidc-auth@0.0.2-main.54":
-  version "0.0.2-main.54"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/plugin-oidc-auth/-/@tpb/plugin-oidc-auth-0.0.2-main.54.tgz#fc7a71cbb4863f1dd96b2d2b3fd9ab2b2dddefd5"
-  integrity sha512-3N5dX30GSTZ/OR9z8QfnyN6jzmxDrGn5mPaNgGRVOuMINLlLjiDUtF1NjDoplrzQMM/Lr2bkK3TE70wIJIX4UQ==
+"@tpb/plugin-oidc-auth@0.0.2-main.61":
+  version "0.0.2-main.61"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-oidc-auth/-/@tpb/plugin-oidc-auth-0.0.2-main.61.tgz#92d1f7e3fef6e91f2406c235b1dffa00da0978b9"
+  integrity sha512-/MRBiyqsO6xhnlK9HfkzR2QadU7dejoIXpZQD/Je9QHbVuZEpEIc+k2ApV/RE0RAEfutZsG2UBlQHtVIRNlQTQ==
   dependencies:
     "@backstage/core-app-api" "^1.5.0"
     "@backstage/core-plugin-api" "^1.4.0"
-    "@tpb/core" "^0.0.2-main.54"
-    "@tpb/plugin-login" "^0.0.2-main.54"
+    "@tpb/core" "^0.0.2-main.61"
+    "@tpb/plugin-login" "^0.0.2-main.61"
 
-"@tpb/rrv@^0.1.2-alpha.3":
-  version "0.1.2-alpha.3"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.3.tgz#4d77e40599b1fa3c81733879afad42c4df13d11b"
-  integrity sha512-kn/qvoke8AGbWZGtMokPY51H0GSnJ60WWuE2MYqmcZfxff7aunLv55QJ6FIAghE6frXSycYVLZTwaRW9lkOHOQ==
+"@tpb/rrv@^0.1.2-alpha.4":
+  version "0.1.2-alpha.4"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.4.tgz#571b4f1460cf52d2bdf4d413f1be403cfb319d90"
+  integrity sha512-koZ4HUjXWZUHjZ+X6FFI29gz5Qt1OIfe5ySVZ21Z47BU+ODHoTCklmGiC0UhCVfpccC2CWnpsmjjc3oAmxQglg==
   dependencies:
     "@backstage/catalog-model" "^1.0.2"
     "@backstage/core-app-api" "^1.0.2"
@@ -6978,11 +6978,11 @@
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "^4.0.0-alpha.60"
     "@material-ui/pickers" "^3.3.10"
-    "@tpb/app-live-view" "^0.1.5"
-    "@tpb/kubernetes-orm" "^0.1.1"
-    "@tpb/plugin-auth0-auth" "^0.0.2-main.54"
-    "@tpb/plugin-oidc-auth" "0.0.2-main.54"
-    "@tpb/tap-components" "0.1.1"
+    "@tpb/app-live-view" "^0.1.6"
+    "@tpb/kubernetes-orm" "^0.1.2"
+    "@tpb/plugin-auth0-auth" "^0.0.2-main.61"
+    "@tpb/plugin-oidc-auth" "0.0.2-main.61"
+    "@tpb/tap-components" "0.1.2"
     http-status-codes "^2.1.4"
     js-yaml "^4.1.0"
     kubernetes-models "^3.0.0"
@@ -6996,10 +6996,10 @@
     react-use "^16.1.0"
     uuid "^8.3.2"
 
-"@tpb/tap-components@0.1.1":
-  version "0.1.1"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/@tpb/tap-components/-/@tpb/tap-components-0.1.1.tgz#9b2b20947dd70e2c78134b92191f3bda6d15d552"
-  integrity sha512-rvFMvOpwkXqYCCoJ52dN5QnVcIQ3I4vo4bInSszmMYR4tcp5ZFlLHmlYOaUtC9w1iQ0Z3mg59snpBmzLvcgABg==
+"@tpb/tap-components@0.1.2":
+  version "0.1.2"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/tap-components/-/@tpb/tap-components-0.1.2.tgz#b972c1860a7c8fff4cca82e9c1ba723c9833367f"
+  integrity sha512-jbCT84uz/6UstPYQvtBoJL4htWBfMEBazGXnMR9tY9BGU9YAhzE1Ne7iI6ZiPI7lByAvdv8B/A2F4WaA8g+A+w==
   dependencies:
     clsx "^1.1.1"
     ring-buffer-ts "^1.0.3"
@@ -8459,7 +8459,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-clarity-theme" "^0.0.1-alpha.2"
     "@tpb/plugin-github-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-gitlab-auth" "^0.0.1-alpha.2"
-    "@tpb/plugin-gitlab-loblaw" "^0.0.16"
+    "@tpb/plugin-gitlab-loblaw" "^0.0.18"
     "@tpb/plugin-google-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-guest-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-hello-world" "^0.0.1-alpha.3"
