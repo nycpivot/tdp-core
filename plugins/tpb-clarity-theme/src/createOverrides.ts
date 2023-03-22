@@ -177,6 +177,9 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
       subtitle: {
         color: 'var(--color)',
       },
+      type: {
+        color: 'var(--color)',
+      },
     },
 
     ClaritySidebar: {
