@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
-    "start": "yarn workspace backend start",
+    "start": "yarn workspace app start",
     "start-backend": "yarn workspace backend start",
     "build": "backstage-cli repo build --all",
     "build-image": "yarn workspace backend build-image",
