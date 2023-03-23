@@ -1046,7 +1046,7 @@ const createClarityOverrides = (theme: BackstageTheme): ClarityOverrides => {
         verticalAlign: 'middle',
       },
       fontSizeSmall: {
-        fontSize: 'var(--cds-global-space-7)',
+        fontSize: 'var(--cds-global-space-7) !important',
       },
       fontSizeLarge: {
         fontSize: 'var(--cds-global-space-11)',
