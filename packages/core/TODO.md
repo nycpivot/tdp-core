@@ -1,6 +1,6 @@
-# Esback Core library
+# TPB Core library
 
-Core interfaces used for esback plugins. This should be published to an
+Core interfaces used for TPB plugins. This should be published to an
 easily accessible npm registry.
 
 ## TODO

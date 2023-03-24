@@ -1,12 +1,12 @@
 # Onboarding
 
-This document describes resources to get you familiar with working and building the ESBack project. It is meant to evolve along with the project. If you find any outdate information, or something you found useful during your onboarding that is not included here, please feel free to update the doc.
+This document describes resources to get you familiar with working and building the TPB project. It is meant to evolve along with the project. If you find any outdate information, or something you found useful during your onboarding that is not included here, please feel free to update the doc.
 
 ## Relevant Reading
 
 [Backstage Enterprise Support Strategy Review](https://docs.google.com/document/d/1QxMhHVxsPnMXBCJQgE9_U0oXKjzyScLqm7B1lyEP8qw/edit) - Start here. It’s a high-level overview of the business objectives
 
-[Taxonomy of core ESBack terminology](https://docs.google.com/document/d/1x8_1eq8yyBzwq4r_twzPzI3pdDPrqWkh3c1xs9Ya8Uc/edit)
+[Taxonomy of core TPB terminology](https://docs.google.com/document/d/1x8_1eq8yyBzwq4r_twzPzI3pdDPrqWkh3c1xs9Ya8Uc/edit)
 
 [Enterprise Supported Backstage Architecture Review](https://docs.google.com/document/d/1jBpTVpg8ABavhVUzDKTri-LbdNE4pLpxQRtljMEDC84/edit) - High-level review of the project architecture
 
@@ -19,16 +19,16 @@ This document describes resources to get you familiar with working and building 
 ## Architecture Diagram
 
 For more detailed architecture diagrams check our [Miro board](https://miro.com/app/board/uXjVOpj4AGc=/?moveToWidget=3458764533901823314&cot=14).
-![ESBack Architecture Diagram](architecture-diagram.jpg)
+![TPB Architecture Diagram](architecture-diagram.jpg)
 
 ## Relevant tools and access
 
 Confirm you have access to the following tools:
 
-- [The Gitlab esback group](https://gitlab.eng.vmware.com/esback), and all the projects contained within (Builder, Core, Decisions, Foundation, Plugins, and Tools)
+- [The Gitlab TPB group](https://gitlab.eng.vmware.com/esback), and all the projects contained within (Builder, Core, Decisions, Foundation, Plugins, and Tools)
 - [Our Runway pipeline](https://runway-ci-sfo.eng.vmware.com/)
 - [Our Runway vault instance](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/list/esback/)
-- [Esback project in Harbor](https://harbor-repo.vmware.com/harbor/projects/3358050/repositories)
+- [TPB project in Harbor](https://harbor-repo.vmware.com/harbor/projects/3358050/repositories)
 - [Artifactory](https://artifactory.eng.vmware.com/ui/repos/tree/General/esback-npm-local) - it is public to view, but you will need permissions to push to it
 
 ## Things to Try
@@ -37,7 +37,7 @@ Confirm you have access to the following tools:
 
 Get familiar with [Backstage](https://backstage.io/).
 Try [setting up and running Backstage](https://backstage.io/docs/getting-started/).
-One of the main pain points ESBack attempts to resolve is the manual process of adding plugins to Backstage.
+One of the main pain points TPB attempts to resolve is the manual process of adding plugins to Backstage.
 To feel some of this pain consider going through the Backstage [Plugin Development Guide](https://backstage.io/docs/plugins/plugin-development) and the [Adding Custom Plugin to Existing Monorepo App](https://backstage.io/docs/tutorials/quickstart-app-plugin) tutorial.
 
 ### Build a Backstage instance using the builder cli
@@ -49,7 +49,7 @@ Follow the instructions for building a Backstage instance using the cli [here](h
 
 ### Build a Backstage instance using Cloud Native Buildpacks
 
-The builder image is an OCI image containing the builder cli and dependencies. The image contains everything that we provide for building a custom instance of Backstage, including plugins that we officially support. This is how customers will consume ESBack. For a detailed diagram refer to our [Miro board](https://miro.com/app/board/uXjVOpj4AGc=/).
+The builder image is an OCI image containing the builder cli and dependencies. The image contains everything that we provide for building a custom instance of Backstage, including plugins that we officially support. This is how customers will consume TPB. For a detailed diagram refer to our [Miro board](https://miro.com/app/board/uXjVOpj4AGc=/).
 
 We use a custom [Cloud Native Buildpack](https://buildpacks.io/) defined in the buildpacks directory to build and output a runnable OCI image containing your custom instance of Backstage.
 
@@ -63,13 +63,13 @@ Follow the instructions [found here](https://gitlab.eng.vmware.com/esback/tools/
 
 Follow the steps in the tools repo README under the [Making Changes](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md#making-changes) section.
 
-### Build a custom ESBack plugin
+### Build a custom TPB plugin
 
-An ESBack plugin is a thin wrapper for a Backstage plugin.
+An TPB plugin is a thin wrapper for a Backstage plugin.
 It exports an instance of the AppPluginInterface or BackendPluginInterface in `src/index.ts` depending on the type of plugin.
-You can see a sample of a frontend ESBack plugin in `plugins/esback-hello-world`.
+You can see a sample of a frontend TPB plugin in `plugins/tpb-hello-world`.
 
-To build an ESBack plugin, follow [these steps](https://gitlab.eng.vmware.com/esback/core/-/blob/main/plugins/README.md#build-a-custom-esback-plugin).
+To build an TPB plugin, follow [these steps](https://gitlab.eng.vmware.com/esback/core/-/blob/main/plugins/README.md#build-a-custom-esback-plugin).
 
 ### Contributing
 
