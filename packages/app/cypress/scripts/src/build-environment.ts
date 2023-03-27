@@ -11,8 +11,11 @@ async function buildEnvironment(serverType: ServerType) {
   switch (serverType) {
     case ServerType.bitbucketServer:
       return {
+        // TODO: ESBACK-214 - Use this BITBUCKET_SERVER_LICENSE_KEY environment variable to select the key based
+        // on the context (local dev or pipeline)
         BITBUCKET_SERVER_LICENSE: await vault.readE2ESecret(
-          'bitbucket_server_license',
+          process.env.BITBUCKET_SERVER_LICENSE_KEY ||
+            'bitbucket_server_license_dev',
         ),
       };
     case ServerType.esback:

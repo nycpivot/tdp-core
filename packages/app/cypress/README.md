@@ -25,6 +25,17 @@ Start the dependencies required for the tests:
 make start-dependencies
 ```
 
+The integration tests depend on:
+
+- a Bitbucket server
+- a Ldap server
+
+Both are executed in docker containers after running this command.
+
+The Bitbucket server license keys are stored in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
+
+There is one key for local development environment named `bitbucket_server_license_dev` and one for the pipelines called `bitbucket_server_license`.
+
 Setup your environment:
 
 ```shell
