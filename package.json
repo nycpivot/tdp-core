@@ -6,23 +6,24 @@
     "node": "14 || 16"
   },
   "scripts": {
-    "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
-    "start": "yarn workspace app start",
-    "start-backend": "yarn workspace backend start",
     "build": "backstage-cli repo build --all",
     "build-image": "yarn workspace backend build-image",
-    "tsc": "tsc",
-    "tsc:full": "tsc --skipLibCheck false --incremental false",
     "clean": "backstage-cli clean && lerna run clean",
+    "create-plugin": "backstage-cli create-plugin --scope internal",
+    "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
     "diff": "lerna run diff --",
-    "test": "lerna run test",
-    "test:all": "lerna run test -- --coverage",
     "lint": "backstage-cli repo lint --since origin/main",
     "lint:all": "backstage-cli repo lint",
     "prettier:check": "prettier --check .",
-    "create-plugin": "backstage-cli create-plugin --scope internal",
+    "prettify": "prettier --write .",
+    "purge": "find . -type d -name node_modules -prune -print0 | xargs -0 rm -rf",
     "remove-plugin": "backstage-cli remove-plugin",
-    "prettify": "prettier --write ."
+    "start": "yarn workspace app start",
+    "start-backend": "yarn workspace backend start",
+    "test": "lerna run test",
+    "test:all": "lerna run test -- --coverage",
+    "tsc": "tsc",
+    "tsc:full": "tsc --skipLibCheck false --incremental false"
   },
   "workspaces": {
     "packages": [
