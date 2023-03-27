@@ -22,7 +22,7 @@ const createPlugin = () => {
   };
 };
 
-export const KubernetesLoggingBackendPlugin: BackendPluginInterface =
+export const KubernetesCustomApisPlugin: BackendPluginInterface =
   () => surfaces =>
     surfaces.applyTo(BackendPluginSurface, surface => {
       surface.addPlugin({

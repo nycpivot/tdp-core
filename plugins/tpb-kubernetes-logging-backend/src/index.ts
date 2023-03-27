@@ -1,1 +1,1 @@
-export { KubernetesLoggingBackendPlugin as plugin } from './KubernetesLoggingBackendPlugin';
+export { KubernetesCustomApisPlugin as plugin } from './KubernetesCustomApisPlugin';
