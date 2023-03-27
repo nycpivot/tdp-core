@@ -10,7 +10,16 @@ import AlarmIcon from '@material-ui/icons/Alarm';
 
 export const HelloWorldPlugin: AppPluginInterface = () => context => {
   context.applyTo(AppRouteSurface, routes =>
-    routes.add(<Route path="/hello-world" element={<h1>Hello World!!</h1>} />),
+    routes.add(
+      <Route
+        path="/hello-world"
+        element={
+          <div>
+            <h1>Hello World!!</h1>
+          </div>
+        }
+      />,
+    ),
   );
 
   context.applyTo(SidebarItemSurface, sidebar =>
