@@ -7,7 +7,7 @@ import { plugin as gitlabPlugin } from '@tpb/plugin-gitlab-backend';
 import { plugin as azureDevOpsPlugin } from '@tpb/plugin-azure-devops-backend';
 import { plugin as githubPlugin } from '@tpb/plugin-github-backend';
 import { plugin as kubernetesPlugin } from '@tpb/plugin-kubernetes-backend';
-import { plugin as kubernetesLoggingPlugin } from '@tpb/plugin-k8s-custom-apis-backend';
+import { plugin as kubernetesCustomApisPlugin } from '@tpb/plugin-k8s-custom-apis-backend';
 import { plugin as oidcAuthBackendPlugin } from '@tpb/plugin-oidc-auth-backend';
 import { plugin as oktaAuthBackendPlugin } from '@tpb/plugin-okta-auth-backend';
 import { plugin as azureAuthBackendPlugin } from '@tpb/plugin-azure-auth-backend';
@@ -31,7 +31,7 @@ new BackendRuntime([
   azureDevOpsPlugin(),
   githubPlugin(),
   kubernetesPlugin(),
-  kubernetesLoggingPlugin(),
+  kubernetesCustomApisPlugin(),
   oidcAuthBackendPlugin(),
   oktaAuthBackendPlugin(),
   azureAuthBackendPlugin(),
