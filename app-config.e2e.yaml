@@ -2,7 +2,7 @@
 # used for acceptance testing. It is expected that this instance will be run with
 # docker compose
 app:
-  title: Esback Test Instance
+  title: TPB Test Instance
   baseUrl: ${BACKSTAGE_BASE_URL}
 
 organization:

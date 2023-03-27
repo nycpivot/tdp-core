@@ -1,5 +1,5 @@
 app:
-  title: Esback Production Instance
+  title: TPB Production Instance
   baseUrl: http://localhost:7007
 
 organization:

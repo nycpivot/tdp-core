@@ -8,9 +8,9 @@ the command `yarn backstage-cli create`, and follow the on-screen instructions.
 
 You can also check out existing plugins on [the plugin marketplace](https://backstage.io/plugins)!
 
-## Build a custom ESBack plugin
+## Build a custom TPB plugin
 
-An ESBack plugin is a thin wrapper for a Backstage plugin.
+An TPB plugin is a thin wrapper for a Backstage plugin.
 It exports an instance of the AppPluginInterface or BackendPluginInterface in `src/index.ts` depending on the type of plugin.
 You can see a sample of a frontend TPB plugin in `tpb-hello-world`.
 
@@ -55,10 +55,10 @@ Verdaccio will host whatever plugins we are developing locally.
 
 ### Create a frontend plugin:
 
-1.  To keep things simple, feel free to include all of your ui code in the ESBack plugin itself.
-    Later, try writing a backstage plugin, publishing it, then consuming it in an ESBack plugin.
+1.  To keep things simple, feel free to include all of your ui code in the TPB plugin itself.
+    Later, try writing a backstage plugin, publishing it, then consuming it in an TPB plugin.
 
-1.  Build your ESBack plugin. From inside of your plugin directory, run:
+1.  Build your TPB plugin. From inside of your plugin directory, run:
 
     ```
     yarn tsc
@@ -83,9 +83,9 @@ Verdaccio will host whatever plugins we are developing locally.
     If you exclude the registry flag, the packages will be published to the registry specified in the `lerna.json` file at the project root.
     Production packages will be published to our [artifactory](https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/).
 
-### Build a Backstage instance with a custom ESBack plugin
+### Build a Backstage instance with a custom TPB plugin
 
-Once you have a custom ESBack plugin published to a registry, follow the [Build a Backstage instance using the builder cli](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md#build-a-backstage-instance-using-the-builder-cli) guide above with a few extra steps:
+Once you have a custom TPB plugin published to a registry, follow the [Build a Backstage instance using the builder cli](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md#build-a-backstage-instance-using-the-builder-cli) guide above with a few extra steps:
 
 1.  Add your plugin to your `esback-config.yml` file.
 

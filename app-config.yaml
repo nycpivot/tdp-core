@@ -1,5 +1,5 @@
 app:
-  title: Esback Dev Instance
+  title: TPB Dev Instance
   baseUrl: http://localhost:3000
 
 organization:

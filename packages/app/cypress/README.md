@@ -100,7 +100,7 @@ A Bitbucket server will be available at [http://localhost:7990](http://localhost
 
 The Ldap server will be listening at ldap://localhost:1389.
 
-ESBack will be running at [http://localhost:7007](http://localhost:7007).
+TPB will be running at [http://localhost:7007](http://localhost:7007).
 
 ### Running the integration tests locally
 
@@ -141,7 +141,7 @@ Look for the `integration-tests` job and the `vars` section of the `test` task a
 The name of the environment variable must match the name that will be used in the context you define it.
 
 - For the Bitbucket server context, it must match an environment variable in the docker-compose configuration for the `bitbucket` service (step 5)
-- For the esback server context, it must match an environment variable in the docker-compose configuration for the `esback` service (step 5)
+- For the TPB server context, it must match an environment variable in the docker-compose configuration for the `esback` service (step 5)
 - For the cypress context, it must match the environment variable that will be used in the tests
 
 4. The [tools pipeline](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/ci/pipeline.yml)
@@ -202,7 +202,7 @@ I add a new entry in the `integration-tests` job `vars` section:
 
 3. In the build environment script, I add the environment variable that will store the secret.
 
-In that case, this variable will be used in the `esback` context:
+In that case, this variable will be used in the `tpb` context:
 
 ```typescript
 case ServerType.esback:
