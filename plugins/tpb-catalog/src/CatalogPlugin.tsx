@@ -9,8 +9,6 @@ import {
   CatalogImportPage,
   catalogImportPlugin,
 } from '@backstage/plugin-catalog-import';
-import { PermissionedRoute } from '@backstage/plugin-permission-react';
-import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { SidebarItem } from '@backstage/core-components';
 import { orgPlugin } from '@backstage/plugin-org';
 import HomeIcon from '@material-ui/icons/Home';
@@ -22,9 +20,12 @@ import {
 } from '@tpb/core';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage';
-import { apiDocsPlugin } from '@backstage/plugin-api-docs';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { EntityPageSurface } from './EntityPageSurface';
+import { CustomCatalogPage } from './components/CustomCatalogPage';
+import { DefaultImportPage } from './components/CatalogImport/DefaultImportPage';
+import { PermissionedRoute } from '@backstage/plugin-permission-react';
+import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
 interface CatalogConfig {
   disableImport?: boolean;
@@ -42,7 +43,11 @@ export const CatalogPlugin: AppPluginInterface<
 
   return context => {
     context.applyTo(AppRouteSurface, routes => {
-      routes.add(<Route path={`/${path}`} element={<CatalogIndexPage />} />);
+      routes.add(
+        <Route path={`/${path}`} element={<CatalogIndexPage />}>
+          <CustomCatalogPage />
+        </Route>,
+      );
 
       routes.addRouteBinder(({ bind }) => {
         bind(orgPlugin.externalRoutes, {
@@ -53,21 +58,23 @@ export const CatalogPlugin: AppPluginInterface<
       if (!config?.disableImport) {
         routes.add(
           <PermissionedRoute
-            path="/catalog-import"
             permission={catalogEntityCreatePermission}
+            path="/catalog-import"
             element={<CatalogImportPage />}
-          />,
+          >
+            <DefaultImportPage />
+          </PermissionedRoute>,
         );
-
-        routes.addRouteBinder(({ bind }) => {
-          bind(apiDocsPlugin.externalRoutes, {
-            registerApi: catalogImportPlugin.routes.importPage,
-          });
-        });
 
         routes.addRouteBinder(({ bind }) => {
           bind(scaffolderPlugin.externalRoutes, {
             registerComponent: catalogImportPlugin.routes.importPage,
+          });
+        });
+
+        routes.addRouteBinder(({ bind }) => {
+          bind(catalogPlugin.externalRoutes, {
+            createComponent: catalogImportPlugin.routes.importPage,
           });
         });
       }

@@ -32,4 +32,11 @@ describe('API Docs Plugin', () => {
     cy.visit('/catalog/default/api/example-grpc-api');
     cy.contains('http://www.example.com');
   });
+
+  it('should not render the register existing api button', () => {
+    cy.get('[aria-label="APIs"]').click();
+    cy.get('[role="button"]')
+      .contains(/register existing api/i)
+      .should('not.exist');
+  });
 });
