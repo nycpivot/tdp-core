@@ -2,7 +2,7 @@ import app from './plugins/app';
 import proxy from './plugins/proxy';
 import {
   BackendPluginSurface,
-  EsbackPluginInterface,
+  TpbPluginInterface,
   SurfaceStoreInterface,
   SurfaceStore,
 } from '@tpb/core';
@@ -15,7 +15,7 @@ import { plugin as authBackendPlugin } from '@tpb/plugin-auth-backend';
 export class BackendRuntime {
   private readonly _surfaces: SurfaceStoreInterface;
 
-  constructor(plugins: EsbackPluginInterface[] = []) {
+  constructor(plugins: TpbPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
 
     catalogBackendPlugin()(this._surfaces);

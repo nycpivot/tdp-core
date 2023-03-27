@@ -1,13 +1,13 @@
-import { EsbackSurface, SurfaceStore } from '.';
+import { TpbSurface, SurfaceStore } from '.';
 
-class FakeSurface1 implements EsbackSurface {
+class FakeSurface1 implements TpbSurface {
   public readonly data: string[] = [];
   addData(s: string) {
     this.data.push(s);
   }
 }
 
-class FakeSurface2 implements EsbackSurface {
+class FakeSurface2 implements TpbSurface {
   public count: number = 0;
 
   setCount(count: number) {

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   AppRouteSurface,
-  EsbackPluginInterface,
+  TpbPluginInterface,
   SurfaceStoreInterface,
   SurfaceStore,
   ThemeSurface,
@@ -18,7 +18,7 @@ import { appRenderer } from './appRenderer';
 export class AppRuntime {
   private readonly _surfaces: SurfaceStoreInterface;
 
-  constructor(plugins: EsbackPluginInterface[] = []) {
+  constructor(plugins: TpbPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
 
     catalogPlugin()(this._surfaces);

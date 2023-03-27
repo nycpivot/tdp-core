@@ -1,10 +1,10 @@
 import { DependencyGraph } from './DependencyGraph';
 import { v4 as uuidv4 } from 'uuid';
-import { EsbackSurface } from './EsbackSurface';
+import { TpbSurface } from './TpbSurface';
 
-type SurfaceModifier<T extends EsbackSurface> = (s: T) => void;
+type SurfaceModifier<T extends TpbSurface> = (s: T) => void;
 
-class SurfaceEntry<T extends EsbackSurface> {
+class SurfaceEntry<T extends TpbSurface> {
   readonly id: string;
   readonly Surface: { new (): T };
   private readonly _modifiers: SurfaceModifier<T>[];
@@ -33,16 +33,16 @@ class SurfaceEntry<T extends EsbackSurface> {
 }
 
 export interface SurfaceStoreInterface {
-  applyTo<T extends EsbackSurface>(
+  applyTo<T extends TpbSurface>(
     surfaceClass: { new (): T },
     modifier: SurfaceModifier<T>,
   ): void;
-  applyWithDependency<T extends EsbackSurface, U extends EsbackSurface>(
+  applyWithDependency<T extends TpbSurface, U extends TpbSurface>(
     targetClass: { new (): T },
     dependencyClass: { new (): U },
     modifier: (surface: T, dependency: U) => void,
   ): void;
-  findSurface<T extends EsbackSurface>(surfaceClass: { new (): T }): T;
+  findSurface<T extends TpbSurface>(surfaceClass: { new (): T }): T;
 }
 
 export class SurfaceStore implements SurfaceStoreInterface {
@@ -50,14 +50,14 @@ export class SurfaceStore implements SurfaceStoreInterface {
   private readonly _surfaceDependencies: DependencyGraph<string> =
     new DependencyGraph();
 
-  public applyTo<T extends EsbackSurface>(
+  public applyTo<T extends TpbSurface>(
     surfaceClass: { new (): T },
     modifier: SurfaceModifier<T>,
   ) {
     this.getSurfaceEntry(surfaceClass).addModifier(modifier);
   }
 
-  public applyWithDependency<T extends EsbackSurface, U extends EsbackSurface>(
+  public applyWithDependency<T extends TpbSurface, U extends TpbSurface>(
     targetClass: { new (): T },
     dependencyClass: { new (): U },
     modifier: (surface: T, dependency: U) => void,
@@ -76,11 +76,11 @@ export class SurfaceStore implements SurfaceStoreInterface {
     );
   }
 
-  public findSurface<T extends EsbackSurface>(surfaceClass: { new (): T }): T {
+  public findSurface<T extends TpbSurface>(surfaceClass: { new (): T }): T {
     return this.getSurfaceEntry(surfaceClass).state;
   }
 
-  private getSurfaceEntry<T extends EsbackSurface>(surfaceClass: {
+  private getSurfaceEntry<T extends TpbSurface>(surfaceClass: {
     new (): T;
   }): SurfaceEntry<T> {
     const entry = this._entries.find(s => s.Surface === surfaceClass);
