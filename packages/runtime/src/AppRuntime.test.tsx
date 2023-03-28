@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  EsbackPluginInterface,
+  TpbPluginInterface,
   AppRouteSurface,
   SidebarItemSurface,
 } from '@tpb/core';
@@ -18,7 +18,7 @@ describe('AppRuntime', () => {
   });
 
   it('should add default plugins (catalog, techdocs, api) to provided plugin list', () => {
-    const fakePlugin: EsbackPluginInterface = context =>
+    const fakePlugin: TpbPluginInterface = context =>
       context.applyTo(SidebarItemSurface, surface =>
         surface.addMainItem(<>Fake Item</>),
       );
@@ -30,7 +30,7 @@ describe('AppRuntime', () => {
   });
 
   it('should allow plugins to change default route', () => {
-    const fakePlugin: EsbackPluginInterface = context =>
+    const fakePlugin: TpbPluginInterface = context =>
       context.applyTo(AppRouteSurface, surface => surface.setDefault('test'));
 
     const runtime = new AppRuntime([fakePlugin]);

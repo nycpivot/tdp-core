@@ -54,7 +54,7 @@ Our surfaces consists of a few distinct groups of functionalities we can individ
 
 ### SidebarItemSurface
 
-You can add your plugin to the main side bar in order to have access to it from TPB. Navigate to `Plugin.ts` and add a SidebarItemSurface to your plugin. First you will need to import the SidebarItemSurface library `import { SidebarItemSurface } from '@esback/core';`, eg:
+You can add your plugin to the main side bar in order to have access to it from TPB. Navigate to `Plugin.ts` and add a SidebarItemSurface to your plugin. First you will need to import the SidebarItemSurface library `import { SidebarItemSurface } from '@tpb/core';`, eg:
 
 ```
 context.applyTo(SidebarItemSurface, sidebar =>
@@ -66,7 +66,7 @@ context.applyTo(SidebarItemSurface, sidebar =>
 
 ### LoginSurface
 
-To use the LoginSurface, in your Auth plugins, first import the library `import { LoginSurface } from '@esback/plugin-login';` to your Plugin.ts. Then we proceed to as the surface as shown below:
+To use the LoginSurface, in your Auth plugins, first import the library `import { LoginSurface } from '@tpb/plugin-login';` to your Plugin.ts. Then we proceed to as the surface as shown below:
 
 ```
 surfaces.applyTo(LoginSurface, surface => {
@@ -86,7 +86,7 @@ surfaces.applyTo(LoginSurface, surface => {
 Similar as the LoginSurface, the ApiSurface should look something like:
 
 ```
-import { ApiSurface } from '@esback/core';
+import { ApiSurface } from '@tpb/core';
 ...
 
 surfaces.applyTo(ApiSurface, surface => {
@@ -118,7 +118,7 @@ surfaces.applyTo(ApiSurface, surface => {
 ### BackendCatalogSurface
 
 ```
-import { BackendCatalogSurface } from '@esback/core';
+import { BackendCatalogSurface } from '@tpb/core';
 
 ...
 
@@ -186,7 +186,7 @@ export const MicrosoftGraphOrgReaderProcessorPlugin: BackendPluginInterface =
 ### SignInProviderResolverSurface
 
 ```
-import { SignInProviderResolverSurface } from '@esback/plugin-auth-backend';
+import { SignInProviderResolverSurface } from '@tpb/plugin-auth-backend';
 
 ...
 
@@ -206,7 +206,7 @@ export const OidcAuthBackendPlugin: BackendPluginInterface = () => store => {
 ### LdapSurface
 
 ```
-import { LdapSurface } from '@esback/plugin-ldap-backend';
+import { LdapSurface } from '@tpb/plugin-ldap-backend';
 
 ...
 
@@ -247,7 +247,7 @@ export const LdapTransformersPlugin: BackendPluginInterface =
 ### AppRouteSurface
 
 ```
-import { AppRouteSurface } from '@esback/core';
+import { AppRouteSurface } from '@tpb/core';
 
 ...
 
@@ -261,7 +261,7 @@ export const AppLiveViewPlugin: AppPluginInterface = () => context => {
 ### AppComponentSurface
 
 ```
-import { AppComponentSurface } from '@esback/core';
+import { AppComponentSurface } from '@tpb/core';
 
 ...
 
@@ -292,7 +292,7 @@ export const LoginPlugin: AppPluginInterface = () => {
 ### ThemeSurface
 
 ```
-import { ThemeSurface } from '@esback/core';
+import { ThemeSurface } from '@tpb/core';
 
 ...
 
@@ -340,12 +340,12 @@ After we have our plugin extracted, we are going to package the plugin and publi
 
 ```
 "publishConfig": {
-“registry":” https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/”
+“registry":” https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/”
 },
 ```
 
 2. Provide a local repository to the npm publish command
-   `npm publish –registry https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/`
+   `npm publish –registry https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/`
 
 ## Add plugin interface
 

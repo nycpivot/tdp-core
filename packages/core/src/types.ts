@@ -5,9 +5,9 @@ export interface RoutableConfig {
   label?: string;
 }
 
-export type EsbackPluginInterface = (context: SurfaceStoreInterface) => void;
+export type TpbPluginInterface = (context: SurfaceStoreInterface) => void;
 
-export type AppPluginInterface<T = {}> = (config?: T) => EsbackPluginInterface;
+export type AppPluginInterface<T = {}> = (config?: T) => TpbPluginInterface;
 
 interface BackendPluginConfig {
   name?: string;
@@ -16,4 +16,4 @@ interface BackendPluginConfig {
 
 export type BackendPluginInterface<T = {}> = (
   config?: T & BackendPluginConfig,
-) => EsbackPluginInterface;
+) => TpbPluginInterface;

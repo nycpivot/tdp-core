@@ -41,12 +41,12 @@ Verdaccio will host whatever plugins we are developing locally.
 
 1.  Running the `verdaccio` command will create a verdaccio directory under the current path.
     Edit the Verdaccio config located under `verdaccio/config.yaml`.
-    Change `uplinks.npmjs.url` to `https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/`:
+    Change `uplinks.npmjs.url` to `https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/`:
 
     ```
     uplinks:
      npmjs:
-       url: https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
+       url: https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/
     ```
 
 1.  Restart the `verdaccio` process.
@@ -81,7 +81,7 @@ Verdaccio will host whatever plugins we are developing locally.
     ```
 
     If you exclude the registry flag, the packages will be published to the registry specified in the `lerna.json` file at the project root.
-    Production packages will be published to our [artifactory](https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/).
+    Production packages will be published to our [artifactory](https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/).
 
 ### Build a Backstage instance with a custom TPB plugin
 
@@ -140,17 +140,17 @@ instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/tpb-npm-local
 
 - Create an `.npmrc` file in the plugin's root directory (_not_ the project root directory) with the following content:
   ```
-  @tpb:registry = https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
-  //artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/:_authToken=${NPM_AUTH_TOKEN}
+  @tpb:registry = https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/
+  //artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/:_authToken=${NPM_AUTH_TOKEN}
   email = ${NPM_AUTH_EMAIL}
   ```
 - Provision an auth token by logging into Artifactory:
   ```shell
-  $ npm login --registry=https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/
+  $ npm login --registry=https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/
   Username: <VMWare username (without @vmware.com)>
   Password: <your SSO password>
   Email: (this IS public) <username@vmware.com>
-  Logged in as <VMWare username> on https://artifactory.eng.vmware.com/artifactory/api/npm/esback-npm-local/.
+  Logged in as <VMWare username> on https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/.
   ```
 - Extract the auth token from `${HOME}/.npmrc` (for whatever reason NPM does not write this to the directory-local `.npmrc`, but the global `.npmrc` instead) and export as an environment variable:
   ```shell

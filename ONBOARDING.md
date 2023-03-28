@@ -29,7 +29,7 @@ Confirm you have access to the following tools:
 - [Our Runway pipeline](https://runway-ci-sfo.eng.vmware.com/)
 - [Our Runway vault instance](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/list/esback/)
 - [TPB project in Harbor](https://harbor-repo.vmware.com/harbor/projects/3358050/repositories)
-- [Artifactory](https://artifactory.eng.vmware.com/ui/repos/tree/General/esback-npm-local) - it is public to view, but you will need permissions to push to it
+- [Artifactory](https://artifactory.eng.vmware.com/ui/repos/tree/General/tpb-npm-local) - it is public to view, but you will need permissions to push to it
 
 ## Things to Try
 
