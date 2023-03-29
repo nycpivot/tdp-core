@@ -1,5 +1,5 @@
 import { CatalogClient } from '@backstage/catalog-client';
-import { createRouter } from '@tpb/kubernetes-logging-backend';
+import { createRouter } from '@tpb/k8s-custom-apis-backend';
 import { Router } from 'express';
 import {
   BackendPluginInterface,
@@ -22,7 +22,7 @@ const createPlugin = () => {
   };
 };
 
-export const KubernetesLoggingBackendPlugin: BackendPluginInterface =
+export const KubernetesCustomApisPlugin: BackendPluginInterface =
   () => surfaces =>
     surfaces.applyTo(BackendPluginSurface, surface => {
       surface.addPlugin({
