@@ -4,7 +4,7 @@ import {
   GitHubOrgEntityProvider,
 } from '@backstage/plugin-catalog-backend-module-github';
 
-const ESBACK_CONFIG_PATH = 'esback.catalog.providers.github';
+const ESBACK_CONFIG_PATH = 'tpb.catalog.providers.github';
 
 export const GithubBackendPlugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(BackendCatalogSurface, catalog => {
