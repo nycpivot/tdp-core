@@ -1,5 +1,5 @@
 {
-  "name": "@tpb/plugin-k8s-custom-apis-backend",
+  "name": "@tpb/plugin-kubernetes-custom-apis-backend",
   "version": "0.0.1-alpha.2",
   "main": "src/index.ts",
   "types": "src/index.ts",

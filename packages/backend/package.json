@@ -35,7 +35,7 @@
     "@tpb/runtime-backend": "^0.0.1-alpha.3",
     "@tpb/plugin-github-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-kubernetes-backend": "^0.0.1-alpha.2",
-    "@tpb/plugin-k8s-custom-apis-backend": "^0.0.1-alpha.2",
+    "@tpb/plugin-kubernetes-custom-apis-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-ldap-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-ldap-test-transformers": "^0.0.1-alpha.2",
     "app": "link:../app",
