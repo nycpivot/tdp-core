@@ -37,8 +37,8 @@ export namespace Bitbucket {
         project.key
       }/repos/${repo.name}/browse/${fc.name}`,
       auth: {
-        user: 'esback',
-        pass: 'esback',
+        user: 'tpb',
+        pass: 'tpb',
       },
       headers: {
         'User-Agent': 'test-agent',
@@ -63,8 +63,8 @@ export namespace Bitbucket {
         project.key
       }/repos`,
       auth: {
-        user: 'esback',
-        pass: 'esback',
+        user: 'tpb',
+        pass: 'tpb',
       },
       headers: {
         'User-Agent': 'test-agent',
@@ -86,8 +86,8 @@ export namespace Bitbucket {
       method: 'POST',
       url: `http://${Cypress.env('BITBUCKET_HOST')}/rest/api/latest/projects`,
       auth: {
-        user: 'esback',
-        pass: 'esback',
+        user: 'tpb',
+        pass: 'tpb',
       },
       headers: {
         'User-Agent': 'test-agent',

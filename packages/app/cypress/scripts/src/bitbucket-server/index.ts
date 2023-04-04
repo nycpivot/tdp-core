@@ -9,7 +9,7 @@ export namespace BitbucketServer {
     await waitUntilReady();
 
     const response = await axios.put(
-      `http://localhost:7990/rest/access-tokens/latest/users/esback`,
+      `http://localhost:7990/rest/access-tokens/latest/users/tpb`,
       {
         expiryDays: 2154,
         name: 'an e2e token',
@@ -17,8 +17,8 @@ export namespace BitbucketServer {
       },
       {
         auth: {
-          username: 'esback',
-          password: 'esback',
+          username: 'tpb',
+          password: 'tpb',
         },
       },
     );

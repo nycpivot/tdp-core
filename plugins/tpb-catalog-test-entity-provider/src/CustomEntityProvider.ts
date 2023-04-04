@@ -41,7 +41,7 @@ export class CustomEntityProvider implements EntityProvider {
         type: 'service',
         lifecycle: 'experimental',
         owner: 'guests',
-        system: 'esback',
+        system: 'tpb',
       },
     };
 
