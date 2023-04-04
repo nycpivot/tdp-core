@@ -141,7 +141,7 @@ Look for the `integration-tests` job and the `vars` section of the `test` task a
 The name of the environment variable must match the name that will be used in the context you define it.
 
 - For the Bitbucket server context, it must match an environment variable in the docker-compose configuration for the `bitbucket` service (step 5)
-- For the TPB server context, it must match an environment variable in the docker-compose configuration for the `esback` service (step 5)
+- For the TPB server context, it must match an environment variable in the docker-compose configuration for the `tpb` service (step 5)
 - For the cypress context, it must match the environment variable that will be used in the tests
 
 4. The [tools pipeline](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/ci/pipeline.yml)
@@ -205,7 +205,7 @@ I add a new entry in the `integration-tests` job `vars` section:
 In that case, this variable will be used in the `tpb` context:
 
 ```typescript
-case ServerType.esback:
+case ServerType.tpb:
   return {
     // ...
     FOO_TOKEN: await vault.readE2ESecret('foo_token'),
@@ -233,7 +233,7 @@ Note that here, we are also naming the param with the name that is used in the `
 5. I update the docker compose configuration file:
 
 ```yaml
-esback:
+tpb:
   # ...
   environment:
     # ...

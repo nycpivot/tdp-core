@@ -2,7 +2,7 @@ import { Vault } from './vault';
 
 enum ServerType {
   bitbucketServer,
-  esback,
+  tpb,
   cypress,
 }
 
@@ -18,7 +18,7 @@ async function buildEnvironment(serverType: ServerType) {
             'bitbucket_server_license_dev',
         ),
       };
-    case ServerType.esback:
+    case ServerType.tpb:
       return {
         OKTA_CLIENT_ID: await vault.readOktaSecret('client_id'),
         OKTA_CLIENT_SECRET: await vault.readOktaSecret('client_secret'),

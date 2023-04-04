@@ -18,7 +18,7 @@ compile: ## # Compile the typescript code.
 	yarn tsc
 
 image: build	## # Build a docker image of the whole app.
-	docker build -t esback:integration -f packages/backend/Dockerfile .
+	docker build -t tpb:integration -f packages/backend/Dockerfile .
 
 clean: ## # Clean everything.
 	yarn clean
@@ -86,7 +86,7 @@ destroy-pipeline: ## # Destroy a Concourse pipeline. Provide the name of the pip
 
 setup: install login-to-vault ## # Create an .envrc file that can be sourced with the variables used in the e2e tests. Useful if you want to run your dev environment with the same config than the e2e environment.
 	$(MAKE) -C packages/app/cypress install_scripts
-	VAULT_ADDR=$(VAULT_ADDR) LDAP_ENDPOINT="ldap://localhost:1389" BITBUCKET_HOST="localhost:7990" yarn --cwd packages/app/cypress/scripts --silent build-environment esback > .envrc
+	VAULT_ADDR=$(VAULT_ADDR) LDAP_ENDPOINT="ldap://localhost:1389" BITBUCKET_HOST="localhost:7990" yarn --cwd packages/app/cypress/scripts --silent build-environment tpb > .envrc
 	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
 	@echo "export BITBUCKET_TOKEN=$(token)" >> .envrc
 	@echo "export APP_FOLDER='../..'" >> .envrc
@@ -114,10 +114,10 @@ delete-bitbucket-server: # Delete the bitbucket server docker container.
 stop-ldap-server: # Stop the ldap server docker container.
 	$(MAKE) -C packages/app/cypress stop-ldap-server
 
-start-esback-server: login-to-vault # Start the esback docker container.
-	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress esback
+start-tpb-server: login-to-vault # Start the tpb docker container.
+	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress tpb
 
-stop-esback-server: # Stop the esback docker container
-	$(MAKE) -C packages/app/cypress stop-esback
+stop-tpb-server: # Stop the tpb docker container
+	$(MAKE) -C packages/app/cypress stop-tpb
 
 stop-dependencies: stop-bitbucket-server stop-ldap-server ## # Stop the e2e dependencies (bitbucket & ldap servers).

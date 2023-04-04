@@ -8,23 +8,23 @@ endif
 install_scripts:
 	cd scripts && yarn
 
-stop-esback:
-	docker-compose stop esback
+stop-tpb:
+	docker-compose stop tpb
 
-delete-esback: stop-esback
-	docker-compose rm -fv esback
+delete-tpb: stop-tpb
+	docker-compose rm -fv tpb
 
 stop-bitbucket:
 	docker-compose stop bitbucket
 
 delete-bitbucket: stop-bitbucket
 	docker-compose rm -fv bitbucket
-	rm -rf ${HOME}/.esback-e2e/bitbucket
+	rm -rf ${HOME}/.tpb-e2e/bitbucket
 
 stop-ldap-server:
 	docker-compose stop openldap
 
-clean-containers: delete-esback delete-bitbucket
+clean-containers: delete-tpb delete-bitbucket
 
 bitbucket:
 	eval `yarn --cwd scripts --silent build-environment bitbucketServer` && \
@@ -33,14 +33,14 @@ bitbucket:
 ldap-server:
 	docker-compose up -d openldap
 
-esback:
+tpb:
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
-	@eval `yarn --cwd scripts --silent build-environment esback` && \
-	BITBUCKET_TOKEN=$(token) docker-compose up -d esback
+	@eval `yarn --cwd scripts --silent build-environment tpb` && \
+	BITBUCKET_TOKEN=$(token) docker-compose up -d tpb
 
-start-containers: check_env install_scripts clean-containers bitbucket esback
+start-containers: check_env install_scripts clean-containers bitbucket tpb
 
-docker-tests: export BACKSTAGE_BASE_URL=http://esback:7007
+docker-tests: export BACKSTAGE_BASE_URL=http://tpb:7007
 docker-tests:
 	$(MAKE) start-containers
 	docker-compose rm -f -v cypress
@@ -64,12 +64,12 @@ pipeline-bitbucket:
 	@echo "Starting bitbucket"
 	docker-compose -f ./docker-compose.ci.yaml up -d bitbucket
 
-pipeline-esback:
+pipeline-tpb:
 	@echo "Starting tpb"
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
-	BITBUCKET_TOKEN=$(token) docker-compose -f ./docker-compose.ci.yaml up -d esback
+	BITBUCKET_TOKEN=$(token) docker-compose -f ./docker-compose.ci.yaml up -d tpb
 
-pipeline-start-containers: pipeline-bitbucket pipeline-esback
+pipeline-start-containers: pipeline-bitbucket pipeline-tpb
 
 pipeline-tests: pipeline-start-containers
 	@echo "Running pipeline tests"

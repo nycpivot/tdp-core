@@ -23,28 +23,28 @@ services:
       - SETUP_DISPLAYNAME=TPB
       - SETUP_BASEURL=http://localhost
       - SETUP_LICENSE=${BITBUCKET_SERVER_LICENSE}
-      - SETUP_SYSADMIN_USERNAME=esback
-      - SETUP_SYSADMIN_PASSWORD=esback
-      - SETUP_SYSADMIN_DISPLAYNAME=esback
-      - SETUP_SYSADMIN_EMAILADDRESS=esback@example.com
+      - SETUP_SYSADMIN_USERNAME=tpb
+      - SETUP_SYSADMIN_PASSWORD=tpb
+      - SETUP_SYSADMIN_DISPLAYNAME=tpb
+      - SETUP_SYSADMIN_EMAILADDRESS=tpb@example.com
       - SETUP_COMPLETED=true
       - JDBC_DRIVER=org.h2.Driver
       - JDBC_URL=jdbc:h2:/var/atlassian/application-data/bitbucket/shared/data/db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
       - JDBC_USER=sa
       - JDBC_PASSWORD=
     volumes:
-      - ${HOME}/.esback-e2e/bitbucket:/var/atlassian/application-data/bitbucket
-  esback:
+      - ${HOME}/.tpb-e2e/bitbucket:/var/atlassian/application-data/bitbucket
+  tpb:
     #@ if/end not data.values.skip_build:
     build:
       context: ../../..
       dockerfile: packages/backend/Dockerfile
-    image: esback:integration
+    image: tpb:integration
     depends_on:
       - openldap
     environment:
       - NODE_TLS_REJECT_UNAUTHORIZED=0 #! to skip ssl verification for our Github Enterprise
-      - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://esback:7007}
+      - BACKSTAGE_BASE_URL=${BACKSTAGE_BASE_URL:-http://tpb:7007}
       - BITBUCKET_HOST=bitbucket:7990
       - BITBUCKET_TOKEN=${BITBUCKET_TOKEN}
       - OKTA_CLIENT_ID=${OKTA_CLIENT_ID}
@@ -88,7 +88,7 @@ services:
       - ../cypress.json:/e2e/cypress.json
       - ./npmrc.example:/e2e/.npmrc
     environment:
-      - CYPRESS_baseUrl=http://esback:7007
+      - CYPRESS_baseUrl=http://tpb:7007
       - CYPRESS_AUTH0_REFRESH_TOKEN=${CYPRESS_AUTH0_REFRESH_TOKEN}
       - CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN=${CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN}
       - CYPRESS_BITBUCKET_HOST=bitbucket:7990
@@ -96,6 +96,6 @@ services:
       - CYPRESS_OKTA_REFRESH_TOKEN=${CYPRESS_OKTA_REFRESH_TOKEN}
       - CYPRESS_GITHUB_USER_REFRESH_TOKEN=${CYPRESS_GITHUB_USER_REFRESH_TOKEN}
       - CYPRESS_BITBUCKET_CATALOG_PREFIX=bitbucket:7990
-      - CYPRESS_ESBACK_BACKEND_URL=http://esback:7007
+      - CYPRESS_ESBACK_BACKEND_URL=http://tpb:7007
     working_dir: /e2e
     entrypoint: /bin/sh -c "yarn install;yarn run-tests"

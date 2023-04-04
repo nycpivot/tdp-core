@@ -8,7 +8,7 @@ docker load -i ../cypress-image/image.tar
 docker load -i ../bitbucket-image/image.tar
 
 # Tag current version of tap-gui as latest
-docker tag "$DOCKER_CI_IMAGE:$(cat ../docker-image/tag)" "esback:integration"
+docker tag "$DOCKER_CI_IMAGE:$(cat ../docker-image/tag)" "tpb:integration"
 
 echo "Images loaded into docker:"
 docker images

@@ -38,7 +38,7 @@ export class CustomProcessor implements CatalogProcessor {
         type: 'service',
         lifecycle: 'experimental',
         owner: 'guests',
-        system: 'esback',
+        system: 'tpb',
       },
     };
 
