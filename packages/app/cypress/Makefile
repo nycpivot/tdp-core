@@ -65,7 +65,7 @@ pipeline-bitbucket:
 	docker-compose -f ./docker-compose.ci.yaml up -d bitbucket
 
 pipeline-esback:
-	@echo "Starting esback"
+	@echo "Starting tpb"
 	$(eval token="$(shell yarn --cwd scripts --silent generate-bitbucket-server-token)")
 	BITBUCKET_TOKEN=$(token) docker-compose -f ./docker-compose.ci.yaml up -d esback
 

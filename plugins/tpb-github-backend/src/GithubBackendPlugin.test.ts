@@ -30,7 +30,7 @@ describe('GithubBackendPlugin', () => {
 
   it('Adds org processor when configured', () => {
     const fakeConfig = new MockConfigApi({
-      esback: {
+      tpb: {
         catalog: {
           providers: {
             github: {

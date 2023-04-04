@@ -1,5 +1,5 @@
 export interface Config {
-  esback?: {
+  tpb?: {
     catalog?: {
       providers?: {
         github?: {
