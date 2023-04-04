@@ -12,6 +12,6 @@ describe('Auth0 Plugin', () => {
   it('should display user email in the settings', () => {
     Authentication.auth0Login();
     cy.visit('/settings');
-    cy.contains('esback.e2e@vmware.com');
+    cy.contains('svc.tpb@vmware.com');
   });
 });

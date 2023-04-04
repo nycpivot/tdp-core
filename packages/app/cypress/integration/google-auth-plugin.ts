@@ -10,8 +10,8 @@ describe('Google Auth Plugin', () => {
   });
 
   it('should display user email in the settings', () => {
-    Authentication.googleUserALogin();
+    Authentication.googleSvcTpbLogin();
     cy.visit('/settings');
-    cy.contains('esback.e2e.usera@gmail.com').should('be.visible');
+    cy.contains('svc.tpb@vmware.com').should('be.visible');
   });
 });

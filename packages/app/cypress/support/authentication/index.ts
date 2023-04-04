@@ -9,7 +9,10 @@ export namespace Authentication {
       '@backstage/core:SignInPage:provider',
       'auth0-auth-provider',
     );
-    cy.setCookie('auth0-refresh-token', Cypress.env('AUTH0_REFRESH_TOKEN'));
+    cy.setCookie(
+      'auth0-refresh-token',
+      Cypress.env('AUTH0_SVC_TPB_REFRESH_TOKEN'),
+    );
   }
 
   export function bitbucketLogin() {
@@ -19,18 +22,18 @@ export namespace Authentication {
     );
     cy.setCookie(
       'bitbucket-refresh-token',
-      Cypress.env('BITBUCKET_JOHN_DOE_REFRESH_TOKEN'),
+      Cypress.env('BITBUCKET_SVC_TPB_REFRESH_TOKEN'),
     );
   }
 
-  export function googleUserALogin() {
+  export function googleSvcTpbLogin() {
     window.localStorage.setItem(
       '@backstage/core:SignInPage:provider',
       'google-auth-provider',
     );
     cy.setCookie(
       'google-refresh-token',
-      Cypress.env('GOOGLE_USER_A_REFRESH_TOKEN'),
+      Cypress.env('GOOGLE_SVC_TPB_REFRESH_TOKEN'),
     );
   }
 
@@ -41,7 +44,7 @@ export namespace Authentication {
     );
     cy.setCookie(
       'github-refresh-token',
-      Cypress.env('GITHUB_USER_REFRESH_TOKEN'),
+      Cypress.env('GITHUB_SVC_TPB_REFRESH_TOKEN'),
     );
   }
 
@@ -54,6 +57,9 @@ export namespace Authentication {
       '@backstage/core:SignInPage:provider',
       'okta-auth-provider',
     );
-    cy.setCookie('okta-refresh-token', Cypress.env('OKTA_REFRESH_TOKEN'));
+    cy.setCookie(
+      'okta-refresh-token',
+      Cypress.env('OKTA_SVC_TPB_REFRESH_TOKEN'),
+    );
   }
 }

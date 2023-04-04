@@ -11,7 +11,7 @@ describe('GitHub Auth Plugins', () => {
       });
       cy.contains('li', 'GitHub').find('button').click();
       cy.get('@popup').should('be.called');
-      cy.contains('esback e2e');
+      cy.contains('Tanzu Portal Builder');
     });
   });
 
@@ -19,7 +19,7 @@ describe('GitHub Auth Plugins', () => {
     it('should display user email in the settings', () => {
       Authentication.githubLogin();
       cy.visit('/settings');
-      cy.contains('esbacke2e');
+      cy.contains('svctpb');
     });
   });
 });
