@@ -2,7 +2,6 @@ import * as webpack from 'webpack';
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as generate from 'generate-file-webpack-plugin'
-import {PortalBuilderPlugin} from "./src/index";
 
 // File to generate
 // package.json
@@ -47,7 +46,6 @@ const config: webpack.Configuration = {
           'registry "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/"\n'
       }
     ),
-    new PortalBuilderPlugin(),
   ],
 };
 
