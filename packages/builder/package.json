@@ -13,7 +13,8 @@
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
-    "portal": "webpack --config portal.config.ts"
+    "portal": "NODE_ENV=production webpack --config portal.config.ts",
+    "dev-portal": "webpack --config portal.config.ts"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

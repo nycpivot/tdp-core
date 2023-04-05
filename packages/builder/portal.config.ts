@@ -5,18 +5,20 @@ import * as generate from 'generate-file-webpack-plugin'
 import {PortalBuilderPlugin} from "./src/index";
 
 // File to generate
-// .yarnrc
 // package.json
 // yarn.lock ?
 
 // File to replace if provided as inputs
 // app-config.yaml
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const config: webpack.Configuration = {
   entry: path.resolve(__dirname, 'src/entrypoint.js'),
   output: {
     path: path.resolve(__dirname, 'portal'),
   },
+  mode: isProduction ? 'production' : 'development',
   plugins: [
     new CopyPlugin({
       patterns: [
@@ -41,7 +43,8 @@ const config: webpack.Configuration = {
     generate(
       {
         file: '.yarnrc',
-        content: 'registry "http://localhost:4873"'
+        content: isProduction ? 'registry "http://localhost:4873"' : '"@tpb:registry" "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/"\n' +
+          'registry "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/"\n'
       }
     ),
     new PortalBuilderPlugin(),
