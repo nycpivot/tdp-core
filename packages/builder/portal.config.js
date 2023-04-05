@@ -5,7 +5,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 // Files to copy
 // app-config.yaml
-// tsconfig.json
 
 // File to generate
 // .yarnrc
@@ -26,6 +25,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, '../app/public'),
           to: 'packages/app/public',
+        },
+        {
+          from: path.resolve(__dirname, '../../tsconfig.json'),
+          to: 'tsconfig.json',
         },
         {
           from: path.resolve(__dirname, '../../backstage.json'),
