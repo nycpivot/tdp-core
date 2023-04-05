@@ -1,5 +1,6 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+import * as webpack from 'webpack';
+import * as path from 'path';
+import * as CopyPlugin from 'copy-webpack-plugin';
 
 // File to generate
 // .yarnrc
@@ -9,7 +10,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 // File to replace if provided as inputs
 // app-config.yaml
 
-module.exports = {
+const config: webpack.Configuration = {
   entry: path.resolve(__dirname, 'src/entrypoint.js'),
   output: {
     path: path.resolve(__dirname, 'portal'),
@@ -37,3 +38,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;

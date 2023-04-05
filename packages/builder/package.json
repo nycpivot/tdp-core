@@ -13,11 +13,16 @@
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
-    "portal": "webpack --config portal.config.js"
+    "portal": "webpack --config portal.config.ts"
   },
   "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/webpack": "^5.28.1",
     "copy-webpack-plugin": "^11.0.0",
     "generate-file-webpack-plugin": "^1.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3",
+    "webpack": "^5.77.0",
     "webpack-cli": "^5.0.1"
   }
 }
