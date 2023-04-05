@@ -1,7 +1,8 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
-import * as generate from 'generate-file-webpack-plugin'
+import * as generate from 'generate-file-webpack-plugin';
+import * as fs from 'fs';
 
 // File to generate
 // package.json
@@ -39,13 +40,12 @@ const config: webpack.Configuration = {
         },
       ],
     }),
-    generate(
-      {
-        file: '.yarnrc',
-        content: isProduction ? 'registry "http://localhost:4873"' : '"@tpb:registry" "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/"\n' +
-          'registry "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/"\n'
-      }
-    ),
+    generate({
+      file: '.yarnrc',
+      content: isProduction
+        ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
+        : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
+    }),
   ],
 };
 
