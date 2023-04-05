@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
-import { PortalBuilderPlugin } from './src/index';
+import {PortalBuilderPlugin} from "./src/index";
 
 // File to generate
 // .yarnrc
