@@ -74,17 +74,20 @@ jobs:
     on_error: *on_failure_notification
   - name: lint-and-test
     plan:
-      - get: code
-        resource: gitlab-mr
+      - get: gitlab-mr
         passed: [mark-mr-running]
         trigger: true
       - in_parallel:
           - task: lint
             attempts: 2
-            file: code/ci/lint.yml
+            input_mapping:
+              code: gitlab-mr
+            file: gitlab-mr/ci/lint.yml
           - task: test
             attempts: 2
-            file: code/ci/unit-test.yml
+            input_mapping:
+              code: gitlab-mr
+            file: gitlab-mr/ci/unit-test.yml
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: bump
