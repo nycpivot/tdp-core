@@ -1,6 +1,7 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
+import * as generate from 'generate-file-webpack-plugin'
 import {PortalBuilderPlugin} from "./src/index";
 
 // File to generate
@@ -37,6 +38,12 @@ const config: webpack.Configuration = {
         },
       ],
     }),
+    generate(
+      {
+        file: '.yarnrc',
+        content: 'registry "http://localhost:4873"'
+      }
+    ),
     new PortalBuilderPlugin(),
   ],
 };
