@@ -1,10 +1,5 @@
 const path = require('path');
-const fs = require('fs');
-const generate = require('generate-file-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
-// Files to copy
-// app-config.yaml
 
 // File to generate
 // .yarnrc
@@ -33,6 +28,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, '../../backstage.json'),
           to: 'backstage.json',
+        },
+        {
+          from: path.resolve(__dirname, '../../app-config.yaml'),
+          to: 'app-config.yaml',
         },
       ],
     }),
