@@ -4,3 +4,4 @@ coverage
 .vscode
 lerna.json
 *.local.yaml
+techdocs
