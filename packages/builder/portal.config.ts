@@ -16,14 +16,14 @@ function buildAppIndex(config: {}) {
   return {
     app: {
       plugins: [
-        {
-          name: '@tpb/my-plugin-1',
-          version: '^1.2.3',
-        },
-        {
-          name: '@tpb/my-plugin-2',
-          version: '^3.2.1',
-        },
+        // {
+        //   name: '@tpb/my-plugin-1',
+        //   version: '^1.2.3',
+        // },
+        // {
+        //   name: '@tpb/my-plugin-2',
+        //   version: '^3.2.1',
+        // },
       ],
     },
   };
@@ -57,6 +57,10 @@ export default env => {
           {
             from: path.resolve(__dirname, '../app/public'),
             to: 'packages/app/public',
+          },
+          {
+            from: path.resolve(__dirname, '../../package.json'),
+            to: 'package.json',
           },
           {
             from: path.resolve(__dirname, '../../tsconfig.json'),
