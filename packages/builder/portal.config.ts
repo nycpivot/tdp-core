@@ -11,42 +11,41 @@ import * as fs from 'fs';
 // File to replace if provided as inputs
 // app-config.yaml
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-const config: webpack.Configuration = {
-  entry: path.resolve(__dirname, 'src/entrypoint.js'),
-  output: {
-    path: path.resolve(__dirname, 'portal'),
-  },
-  mode: isProduction ? 'production' : 'development',
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, '../app/public'),
-          to: 'packages/app/public',
-        },
-        {
-          from: path.resolve(__dirname, '../../tsconfig.json'),
-          to: 'tsconfig.json',
-        },
-        {
-          from: path.resolve(__dirname, '../../backstage.json'),
-          to: 'backstage.json',
-        },
-        {
-          from: path.resolve(__dirname, '../../app-config.yaml'),
-          to: 'app-config.yaml',
-        },
-      ],
-    }),
-    generate({
-      file: '.yarnrc',
-      content: isProduction
-        ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
-        : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
-    }),
-  ],
+export default (env) => {
+  const isProduction = env.production;
+  return {
+    entry: path.resolve(__dirname, 'src/entrypoint.js'),
+    output: {
+      path: path.resolve(__dirname, 'portal'),
+    },
+    mode: isProduction ? 'production' : 'development',
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, '../app/public'),
+            to: 'packages/app/public',
+          },
+          {
+            from: path.resolve(__dirname, '../../tsconfig.json'),
+            to: 'tsconfig.json',
+          },
+          {
+            from: path.resolve(__dirname, '../../backstage.json'),
+            to: 'backstage.json',
+          },
+          {
+            from: path.resolve(__dirname, '../../app-config.yaml'),
+            to: 'app-config.yaml',
+          },
+        ],
+      }),
+      generate({
+        file: '.yarnrc',
+        content: isProduction
+          ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
+          : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
+      }),
+    ],
+  }
 };
-
-export default config;
