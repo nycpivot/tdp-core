@@ -17,8 +17,12 @@ function buildAppIndex(config: {}) {
     app: {
       plugins: [
         {
-          name: '@tpb/my-plugin',
+          name: '@tpb/my-plugin-1',
           version: '^1.2.3',
+        },
+        {
+          name: '@tpb/my-plugin-2',
+          version: '^3.2.1',
         },
       ],
     },
@@ -47,6 +51,10 @@ export default env => {
       new CopyPlugin({
         patterns: [
           {
+            from: path.resolve(__dirname, '../app/.eslintrc.js'),
+            to: 'packages/app/.eslintrc.js',
+          },
+          {
             from: path.resolve(__dirname, '../app/public'),
             to: 'packages/app/public',
           },
@@ -71,9 +79,17 @@ export default env => {
           : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
       }),
       generate({
-        file: 'packages/app/index.ts',
+        file: 'packages/app/src/index.ts',
         content: () => {
           return template('assets/packages/app/index.hbs')(
+            buildAppIndex(config),
+          );
+        },
+      }),
+      generate({
+        file: 'packages/app/package.json',
+        content: () => {
+          return template('assets/packages/app/package.json.hbs')(
             buildAppIndex(config),
           );
         },
