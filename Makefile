@@ -125,3 +125,9 @@ stop-tpb-server: # Stop the tpb docker container
 	$(MAKE) -C packages/app/cypress stop-tpb
 
 stop-dependencies: stop-bitbucket-server stop-ldap-server ## # Stop the e2e dependencies (bitbucket & ldap servers).
+
+portal: ## # Build a prod-ready portal
+	yarn --cwd ./packages/builder portal
+
+dev-portal: ## # Build a portal
+	yarn --cwd ./packages/builder dev-portal
