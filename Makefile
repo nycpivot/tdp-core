@@ -3,6 +3,7 @@ username ?= $(shell whoami)
 concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
 VAULT_ADDR ?= "https://runway-vault-sfo.eng.vmware.com"
 CYPRESS_baseUrl ?= "http://localhost:3000"
+portal_outdir = "./portal"
 
 .PHONY: help
 help: ## # Display this help.
@@ -127,7 +128,7 @@ stop-tpb-server: # Stop the tpb docker container
 stop-dependencies: stop-bitbucket-server stop-ldap-server ## # Stop the e2e dependencies (bitbucket & ldap servers).
 
 portal: ## # Build a prod-ready portal
-	yarn --cwd ./packages/builder portal
+	yarn --cwd ./packages/builder portal --env output_folder=$(portal_outdir)
 
 dev-portal: ## # Build a portal
-	yarn --cwd ./packages/builder dev-portal
+	yarn --cwd ./packages/builder dev-portal --env output_folder=$(portal_outdir)
