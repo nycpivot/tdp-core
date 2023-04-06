@@ -1,8 +1,9 @@
-import * as webpack from 'webpack';
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as generate from 'generate-file-webpack-plugin';
 import * as fs from 'fs';
+import { Parser } from 'yaml';
+import { compile } from 'handlebars';
 
 // File to generate
 // package.json
@@ -11,8 +12,31 @@ import * as fs from 'fs';
 // File to replace if provided as inputs
 // app-config.yaml
 
-export default (env) => {
+function buildAppIndex(config: {}) {
+  return {
+    app: {
+      plugins: [
+        {
+          name: '@tpb/my-plugin',
+          version: '^1.2.3',
+        },
+      ],
+    },
+  };
+}
+
+const template = file => {
+  return compile(fs.readFileSync(path.resolve(__dirname, file)).toString());
+};
+
+export default env => {
   const isProduction = env.production;
+  const configFile = env.tpb_config;
+  let config = {};
+  if (configFile) {
+    config = new Parser().parse(configFile);
+  }
+  const appIndex = buildAppIndex(config);
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
@@ -46,6 +70,14 @@ export default (env) => {
           ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
           : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
       }),
+      generate({
+        file: 'packages/app/index.ts',
+        content: () => {
+          return template('assets/packages/app/index.hbs')(
+            buildAppIndex(config),
+          );
+        },
+      }),
     ],
-  }
+  };
 };
