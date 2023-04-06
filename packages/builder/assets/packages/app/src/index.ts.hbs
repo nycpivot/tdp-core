@@ -1,8 +1,6 @@
 import '@backstage/cli/asset-types'; import { AppRuntime } from '@tpb/runtime';
-
 {{#each app.plugins}}
-  import { plugin as plugin{{@index}}
-  } from '{{this.name}}';
+import { plugin as plugin{{@index}} } from '{{this.name}}';
 {{/each}}
 
 new AppRuntime([

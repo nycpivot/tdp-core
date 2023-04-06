@@ -14,7 +14,7 @@ import { compile } from 'handlebars';
 
 function buildAppIndex(config: {}) {
   return {
-    app: {
+    backend: {
       plugins: [
         // {
         //   name: '@tpb/my-plugin-1',
@@ -36,6 +36,7 @@ const template = file => {
 export default env => {
   const isProduction = env.production;
   const configFile = env.tpb_config;
+  const outputFolder = env.output_folder || 'portal';
   let config = {};
   if (configFile) {
     config = new Parser().parse(configFile);
@@ -44,7 +45,7 @@ export default env => {
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: path.resolve(__dirname, 'portal'),
+      path: path.resolve(__dirname, outputFolder),
     },
     mode: isProduction ? 'production' : 'development',
     plugins: [
@@ -53,6 +54,10 @@ export default env => {
           {
             from: path.resolve(__dirname, '../app/.eslintrc.js'),
             to: 'packages/app/.eslintrc.js',
+          },
+          {
+            from: path.resolve(__dirname, '../backend/.eslintrc.js'),
+            to: 'packages/backend/.eslintrc.js',
           },
           {
             from: path.resolve(__dirname, '../app/public'),
@@ -94,6 +99,22 @@ export default env => {
         file: 'packages/app/package.json',
         content: () => {
           return template('assets/packages/app/package.json.hbs')(
+            buildAppIndex(config),
+          );
+        },
+      }),
+      generate({
+        file: 'packages/backend/src/index.ts',
+        content: () => {
+          return template('assets/packages/backend/src/index.ts.hbs')(
+            buildAppIndex(config),
+          );
+        },
+      }),
+      generate({
+        file: 'packages/backend/package.json',
+        content: () => {
+          return template('assets/packages/backend/package.json.hbs')(
             buildAppIndex(config),
           );
         },

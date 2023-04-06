@@ -8,7 +8,7 @@
     },
     "dependencies": {
         {{#each app.plugins}}
-        "{{this.name}}": "{{this.version}}"{{#unless @last}},{{/unless}}
+        "{{this.name}}": "{{this.version}}",
         {{/each}}
         "@backstage/cli": "^0.22.3",
         "@material-ui/core": "^4.12.2",
