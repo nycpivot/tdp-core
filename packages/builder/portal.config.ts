@@ -81,7 +81,7 @@ export default env => {
       generate({
         file: 'packages/app/src/index.ts',
         content: () => {
-          return template('assets/packages/app/index.hbs')(
+          return template('assets/packages/app/index.ts.hbs')(
             buildAppIndex(config),
           );
         },
