@@ -55,27 +55,32 @@ export class TpbConfiguration {
   resolve(): ResolvedTpbConfiguration {
     const resolvedConfig: ResolvedTpbConfiguration = {
       app: {
-        plugins: this._config.app.plugins.map(p => ({
-          name: p.name,
-          version: this._versionResolver(p.name),
-        })),
+        plugins: this.resolvePlugins(this._config.app.plugins),
       },
       backend: {
-        plugins: this._config.backend.plugins.map(p => ({
-          name: p.name,
-          version: this._versionResolver(p.name),
-        })),
+        plugins: this.resolvePlugins(this._config.backend.plugins),
       },
     };
 
     if (this._config.theme) {
       resolvedConfig.theme = {
         name: this._config.theme.name,
-        version: this._versionResolver(this._config.theme.name),
+        version: this.resolvePluginVersion(this._config.theme.name),
         stylesheet: this._config.theme.stylesheet,
       };
     }
 
     return resolvedConfig;
+  }
+
+  private resolvePluginVersion(pluginName: string) {
+    return this._versionResolver(pluginName);
+  }
+
+  private resolvePlugins(plugins: { name: string; version?: string }[]) {
+    return plugins.map(p => ({
+      name: p.name,
+      version: this.resolvePluginVersion(p.name),
+    }));
   }
 }
