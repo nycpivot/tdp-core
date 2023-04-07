@@ -54,6 +54,7 @@ export class TpbConfiguration {
   }
 
   resolve(): ResolvedTpbConfiguration {
+    console.log('-> resolving plugins...');
     if (this._resolvedConfig) {
       return this._resolvedConfig;
     }
@@ -73,6 +74,8 @@ export class TpbConfiguration {
         stylesheet: this._config.app.theme.stylesheet,
       };
     }
+
+    console.log('config ->', JSON.stringify(this._resolvedConfig));
 
     return this._resolvedConfig;
   }
