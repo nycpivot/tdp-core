@@ -7,13 +7,6 @@ import { compile } from 'handlebars';
 import { TpbConfiguration } from './src/TpbConfiguration';
 import { yarnResolver } from './src/version_resolver';
 
-// File to generate
-// package.json
-// yarn.lock ?
-
-// File to replace if provided as inputs
-// app-config.yaml
-
 const template = file => {
   return compile(fs.readFileSync(path.resolve(__dirname, file)).toString());
 };
@@ -23,9 +16,10 @@ export default env => {
   const configFile =
     env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
   const outputFolder = env.output_folder || 'portal';
+  const yarnRcFolder = env.yarnrc_folder || outputFolder;
   const config = new TpbConfiguration(
     parseYaml(fs.readFileSync(configFile).toString('utf-8')),
-    yarnResolver(outputFolder),
+    yarnResolver(yarnRcFolder),
   );
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
