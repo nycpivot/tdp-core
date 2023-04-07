@@ -7,10 +7,22 @@ type UnresolvedTpbConfiguration = {
       version?: string;
     }[];
   };
+  backend: {
+    plugins: {
+      name: string;
+      version?: string;
+    }[];
+  };
 };
 
 type ResolvedTpbConfiguration = {
   app: {
+    plugins: {
+      name: string;
+      version: string;
+    }[];
+  };
+  backend: {
     plugins: {
       name: string;
       version: string;
@@ -34,6 +46,12 @@ export class TpbConfiguration {
     return {
       app: {
         plugins: this._config.app.plugins.map(p => ({
+          name: p.name,
+          version: this._versionResolver(p.name),
+        })),
+      },
+      backend: {
+        plugins: this._config.backend.plugins.map(p => ({
           name: p.name,
           version: this._versionResolver(p.name),
         })),
