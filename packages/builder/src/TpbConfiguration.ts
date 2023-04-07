@@ -1,6 +1,11 @@
 import { VersionResolver } from './version_resolver';
 
 type UnresolvedTpbConfiguration = {
+  theme?: {
+    name: string;
+    version?: string;
+    stylesheet?: string;
+  };
   app: {
     plugins: {
       name: string;
@@ -16,6 +21,11 @@ type UnresolvedTpbConfiguration = {
 };
 
 type ResolvedTpbConfiguration = {
+  theme?: {
+    name: string;
+    version: string;
+    stylesheet?: string;
+  };
   app: {
     plugins: {
       name: string;
@@ -43,7 +53,7 @@ export class TpbConfiguration {
   }
 
   resolve(): ResolvedTpbConfiguration {
-    return {
+    const resolvedConfig: ResolvedTpbConfiguration = {
       app: {
         plugins: this._config.app.plugins.map(p => ({
           name: p.name,
@@ -57,5 +67,15 @@ export class TpbConfiguration {
         })),
       },
     };
+
+    if (this._config.theme) {
+      resolvedConfig.theme = {
+        name: this._config.theme.name,
+        version: this._versionResolver(this._config.theme.name),
+        stylesheet: this._config.theme.stylesheet,
+      };
+    }
+
+    return resolvedConfig;
   }
 }

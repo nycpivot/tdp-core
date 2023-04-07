@@ -3,6 +3,10 @@ import { TpbConfiguration } from './TpbConfiguration';
 describe('TPB configuration', () => {
   it('resolves plugin versions', () => {
     const config = {
+      theme: {
+        name: 'theme',
+        stylesheet: 'theme.css',
+      },
       app: {
         plugins: [
           {
@@ -30,6 +34,7 @@ describe('TPB configuration', () => {
       appPlugin2: '2',
       backendPlugin1: '3',
       backendPlugin2: '4',
+      theme: '5',
     };
 
     const tpbConfig = new TpbConfiguration(config, name => versions[name]);
@@ -37,6 +42,11 @@ describe('TPB configuration', () => {
     const resolvedConfig = tpbConfig.resolve();
 
     expect(resolvedConfig).toEqual({
+      theme: {
+        name: 'theme',
+        version: '5',
+        stylesheet: 'theme.css',
+      },
       app: {
         plugins: [
           {
