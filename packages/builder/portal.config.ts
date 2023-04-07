@@ -11,6 +11,85 @@ const template = file => {
   return compile(fs.readFileSync(path.resolve(__dirname, file)).toString());
 };
 
+const prepareData = (
+  appConfigPath: string,
+  isProduction: boolean,
+  config: TpbConfiguration,
+) => {
+  return {
+    fileContents: [
+      {
+        file: '.yarnrc',
+        content: isProduction
+          ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
+          : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
+      },
+      {
+        file: 'packages/app/src/index.ts',
+        content: () => {
+          return template('assets/packages/app/src/index.ts.hbs')(
+            config.resolve(),
+          );
+        },
+      },
+      {
+        file: 'packages/app/package.json',
+        content: () => {
+          return template('assets/packages/app/package.json.hbs')(
+            config.resolve(),
+          );
+        },
+      },
+      {
+        file: 'packages/backend/src/index.ts',
+        content: () => {
+          return template('assets/packages/backend/src/index.ts.hbs')(
+            config.resolve(),
+          );
+        },
+      },
+      {
+        file: 'packages/backend/package.json',
+        content: () => {
+          return template('assets/packages/backend/package.json.hbs')(
+            config.resolve(),
+          );
+        },
+      },
+    ],
+    filesToCopy: [
+      {
+        from: path.resolve(__dirname, '../app/.eslintrc.js'),
+        to: 'packages/app/.eslintrc.js',
+      },
+      {
+        from: path.resolve(__dirname, '../backend/.eslintrc.js'),
+        to: 'packages/backend/.eslintrc.js',
+      },
+      {
+        from: path.resolve(__dirname, '../app/public'),
+        to: 'packages/app/public',
+      },
+      {
+        from: path.resolve(__dirname, '../../package.json'),
+        to: 'package.json',
+      },
+      {
+        from: path.resolve(__dirname, '../../tsconfig.json'),
+        to: 'tsconfig.json',
+      },
+      {
+        from: path.resolve(__dirname, '../../backstage.json'),
+        to: 'backstage.json',
+      },
+      {
+        from: appConfigPath,
+        to: 'app-config.yaml',
+      },
+    ],
+  };
+};
+
 export default env => {
   const isProduction = env.production;
   const configFile =
@@ -23,6 +102,9 @@ export default env => {
     parseYaml(fs.readFileSync(configFile).toString('utf-8')),
     yarnResolver(yarnRcFolder),
   );
+
+  const data = prepareData(appConfig, isProduction, config);
+
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
@@ -31,75 +113,11 @@ export default env => {
     mode: isProduction ? 'production' : 'development',
     plugins: [
       new CopyPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, '../app/.eslintrc.js'),
-            to: 'packages/app/.eslintrc.js',
-          },
-          {
-            from: path.resolve(__dirname, '../backend/.eslintrc.js'),
-            to: 'packages/backend/.eslintrc.js',
-          },
-          {
-            from: path.resolve(__dirname, '../app/public'),
-            to: 'packages/app/public',
-          },
-          {
-            from: path.resolve(__dirname, '../../package.json'),
-            to: 'package.json',
-          },
-          {
-            from: path.resolve(__dirname, '../../tsconfig.json'),
-            to: 'tsconfig.json',
-          },
-          {
-            from: path.resolve(__dirname, '../../backstage.json'),
-            to: 'backstage.json',
-          },
-          {
-            from: appConfig,
-            to: 'app-config.yaml',
-          },
-        ],
+        patterns: data.filesToCopy,
       }),
-      generate({
-        file: '.yarnrc',
-        content: isProduction
-          ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
-          : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
-      }),
-      generate({
-        file: 'packages/app/src/index.ts',
-        content: () => {
-          return template('assets/packages/app/src/index.ts.hbs')(
-            config.resolve(),
-          );
-        },
-      }),
-      generate({
-        file: 'packages/app/package.json',
-        content: () => {
-          return template('assets/packages/app/package.json.hbs')(
-            config.resolve(),
-          );
-        },
-      }),
-      generate({
-        file: 'packages/backend/src/index.ts',
-        content: () => {
-          return template('assets/packages/backend/src/index.ts.hbs')(
-            config.resolve(),
-          );
-        },
-      }),
-      generate({
-        file: 'packages/backend/package.json',
-        content: () => {
-          return template('assets/packages/backend/package.json.hbs')(
-            config.resolve(),
-          );
-        },
-      }),
+      ...data.fileContents.map(f =>
+        generate({ file: f.file, content: f.content }),
+      ),
     ],
   };
 };
