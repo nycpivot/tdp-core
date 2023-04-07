@@ -73,4 +73,27 @@ describe('TPB configuration', () => {
       },
     });
   });
+
+  it('caches the version', () => {
+    const calls = {
+      count: 0,
+    };
+    const config = {
+      app: {
+        plugins: [{ name: 'bar' }],
+      },
+      backend: {
+        plugins: [],
+      },
+    };
+    const tpbConfig = new TpbConfiguration(config, () => {
+      calls.count++;
+      return 'foo';
+    });
+
+    tpbConfig.resolve();
+    tpbConfig.resolve();
+
+    expect(calls.count).toEqual(1);
+  });
 });

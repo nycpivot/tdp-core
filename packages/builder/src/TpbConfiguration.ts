@@ -43,6 +43,7 @@ type ResolvedTpbConfiguration = {
 export class TpbConfiguration {
   private readonly _config: UnresolvedTpbConfiguration;
   private readonly _versionResolver: VersionResolver;
+  private _resolvedConfig?: ResolvedTpbConfiguration;
 
   constructor(
     config: UnresolvedTpbConfiguration,
@@ -53,7 +54,10 @@ export class TpbConfiguration {
   }
 
   resolve(): ResolvedTpbConfiguration {
-    const resolvedConfig: ResolvedTpbConfiguration = {
+    if (this._resolvedConfig) {
+      return this._resolvedConfig;
+    }
+    this._resolvedConfig = {
       app: {
         plugins: this.resolvePlugins(this._config.app.plugins),
       },
@@ -63,14 +67,14 @@ export class TpbConfiguration {
     };
 
     if (this._config.theme) {
-      resolvedConfig.theme = {
+      this._resolvedConfig.theme = {
         name: this._config.theme.name,
         version: this.resolvePluginVersion(this._config.theme.name),
         stylesheet: this._config.theme.stylesheet,
       };
     }
 
-    return resolvedConfig;
+    return this._resolvedConfig;
   }
 
   private resolvePluginVersion(pluginName: string) {
