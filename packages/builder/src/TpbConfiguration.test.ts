@@ -3,11 +3,11 @@ import { TpbConfiguration } from './TpbConfiguration';
 describe('TPB configuration', () => {
   it('resolves plugin versions', () => {
     const config = {
-      theme: {
-        name: 'theme',
-        stylesheet: 'theme.css',
-      },
       app: {
+        theme: {
+          name: 'theme',
+          stylesheet: 'theme.css',
+        },
         plugins: [
           {
             name: 'appPlugin1',
@@ -42,12 +42,12 @@ describe('TPB configuration', () => {
     const resolvedConfig = tpbConfig.resolve();
 
     expect(resolvedConfig).toEqual({
-      theme: {
-        name: 'theme',
-        version: '5',
-        stylesheet: 'theme.css',
-      },
       app: {
+        theme: {
+          name: 'theme',
+          version: '5',
+          stylesheet: 'theme.css',
+        },
         plugins: [
           {
             name: 'appPlugin1',

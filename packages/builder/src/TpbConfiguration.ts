@@ -1,12 +1,12 @@
 import { VersionResolver } from './version_resolver';
 
 type UnresolvedTpbConfiguration = {
-  theme?: {
-    name: string;
-    version?: string;
-    stylesheet?: string;
-  };
   app: {
+    theme?: {
+      name: string;
+      version?: string;
+      stylesheet?: string;
+    };
     plugins: {
       name: string;
       version?: string;
@@ -21,12 +21,12 @@ type UnresolvedTpbConfiguration = {
 };
 
 type ResolvedTpbConfiguration = {
-  theme?: {
-    name: string;
-    version: string;
-    stylesheet?: string;
-  };
   app: {
+    theme?: {
+      name: string;
+      version: string;
+      stylesheet?: string;
+    };
     plugins: {
       name: string;
       version: string;
@@ -66,11 +66,11 @@ export class TpbConfiguration {
       },
     };
 
-    if (this._config.theme) {
-      this._resolvedConfig.theme = {
-        name: this._config.theme.name,
-        version: this.resolvePluginVersion(this._config.theme.name),
-        stylesheet: this._config.theme.stylesheet,
+    if (this._config.app.theme) {
+      this._resolvedConfig.app.theme = {
+        name: this._config.app.theme.name,
+        version: this.resolvePluginVersion(this._config.app.theme.name),
+        stylesheet: this._config.app.theme.stylesheet,
       };
     }
 
