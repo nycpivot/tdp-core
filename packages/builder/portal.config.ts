@@ -17,6 +17,8 @@ export default env => {
     env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
   const outputFolder = env.output_folder || 'portal';
   const yarnRcFolder = env.yarnrc_folder || outputFolder;
+  const appConfig =
+    env.app_config || path.resolve(__dirname, 'conf/app-config.yaml');
   const config = new TpbConfiguration(
     parseYaml(fs.readFileSync(configFile).toString('utf-8')),
     yarnResolver(yarnRcFolder),
@@ -55,7 +57,7 @@ export default env => {
             to: 'backstage.json',
           },
           {
-            from: path.resolve(__dirname, '../../app-config.yaml'),
+            from: appConfig,
             to: 'app-config.yaml',
           },
         ],
