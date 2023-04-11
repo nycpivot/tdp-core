@@ -80,42 +80,41 @@ export class PortalConfiguration {
     ];
   }
 
+  private templateGenerator(template, output) {
+    return {
+      file: output,
+      content: () => this._tpbConfig.generate(readFileContent(template)),
+    };
+  }
+
+  private contentGenerator(filePath, output) {
+    return {
+      file: output,
+      content: readFileContent(filePath),
+    };
+  }
+
   get fileGenerators() {
     return [
-      {
-        file: '.yarnrc',
-        content: this._isProduction
-          ? fs.readFileSync(resolvePath('assets/.yarnrc'))
-          : fs.readFileSync(resolvePath('../../../.yarnrc')),
-      },
-      {
-        file: 'packages/app/src/index.ts',
-        content: () =>
-          this._tpbConfig.generate(
-            readFileContent('assets/packages/app/src/index.ts.hbs'),
-          ),
-      },
-      {
-        file: 'packages/app/package.json',
-        content: () =>
-          this._tpbConfig.generate(
-            readFileContent('assets/packages/app/package.json.hbs'),
-          ),
-      },
-      {
-        file: 'packages/backend/src/index.ts',
-        content: () =>
-          this._tpbConfig.generate(
-            readFileContent('assets/packages/backend/src/index.ts.hbs'),
-          ),
-      },
-      {
-        file: 'packages/backend/package.json',
-        content: () =>
-          this._tpbConfig.generate(
-            readFileContent('assets/packages/backend/package.json.hbs'),
-          ),
-      },
+      this._isProduction
+        ? this.contentGenerator('assets/.yarnrc', '.yarnrc')
+        : this.contentGenerator('../../../.yarnrc', '.yarnrc'),
+      this.templateGenerator(
+        'assets/packages/app/src/index.ts.hbs',
+        'packages/app/src/index.ts',
+      ),
+      this.templateGenerator(
+        'assets/packages/app/package.json.hbs',
+        'packages/app/package.json',
+      ),
+      this.templateGenerator(
+        'assets/packages/backend/src/index.ts.hbs',
+        'packages/backend/src/index.ts',
+      ),
+      this.templateGenerator(
+        'assets/packages/backend/package.json.hbs',
+        'packages/backend/package.json',
+      ),
     ];
   }
 
