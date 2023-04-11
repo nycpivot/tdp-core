@@ -6,9 +6,12 @@ import {
   PortalConfiguration,
 } from './src/PortalConfiguration';
 
+const resolvePath = file => path.resolve(__dirname, file);
+
 export default env => {
-  const portalConfiguration = PortalConfiguration.fromEnv(env);
-  const copySpecifications = CopySpecifications.fromEnv(env);
+  const props = { ...env, pathResolver: resolvePath };
+  const portalConfiguration = PortalConfiguration.fromEnv(props);
+  const copySpecifications = CopySpecifications.fromEnv(props);
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),

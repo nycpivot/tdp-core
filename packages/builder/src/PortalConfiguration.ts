@@ -16,44 +16,48 @@ type EnvironmentProperties = {
   tpb_config: string | undefined;
   yarnrc_folder: string | undefined;
   production: string | undefined;
+  pathResolver: (file: string) => string;
 };
 
 export class CopySpecifications {
   private readonly _appConfigFile: string;
+  private readonly _resolvePath: (file: string) => string;
 
-  constructor(appConfigFile: string) {
+  constructor(appConfigFile: string, pathResolver: (file: string) => string) {
     this._appConfigFile = appConfigFile;
+    this._resolvePath = pathResolver;
   }
 
   static fromEnv(env: EnvironmentProperties) {
-    const appConfig = env.app_config || resolvePath('../conf/app-config.yaml');
-    return new CopySpecifications(appConfig);
+    const appConfig =
+      env.app_config || env.pathResolver('conf/app-config.yaml');
+    return new CopySpecifications(appConfig, env.pathResolver);
   }
 
   get filesToCopy() {
     return [
       {
-        from: resolvePath('../../app/.eslintrc.js'),
+        from: this._resolvePath('../app/.eslintrc.js'),
         to: 'packages/app/.eslintrc.js',
       },
       {
-        from: resolvePath('../../backend/.eslintrc.js'),
+        from: this._resolvePath('../backend/.eslintrc.js'),
         to: 'packages/backend/.eslintrc.js',
       },
       {
-        from: resolvePath('../../app/public'),
+        from: this._resolvePath('../app/public'),
         to: 'packages/app/public',
       },
       {
-        from: resolvePath('../../../package.json'),
+        from: this._resolvePath('../../package.json'),
         to: 'package.json',
       },
       {
-        from: resolvePath('../../../tsconfig.json'),
+        from: this._resolvePath('../../tsconfig.json'),
         to: 'tsconfig.json',
       },
       {
-        from: resolvePath('../../../backstage.json'),
+        from: this._resolvePath('../../backstage.json'),
         to: 'backstage.json',
       },
       {
