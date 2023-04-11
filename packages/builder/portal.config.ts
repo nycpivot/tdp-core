@@ -11,16 +11,13 @@ const template = file => {
   return compile(fs.readFileSync(path.resolve(__dirname, file)).toString());
 };
 
-const prepareData = (
-  appConfigPath: string,
-  isProduction: boolean,
-  config: TpbConfiguration,
-) => {
+const prepareData = (portalConfiguration: PortalConfiguration) => {
+  const config = portalConfiguration.tpbConfig;
   return {
     fileContents: [
       {
         file: '.yarnrc',
-        content: isProduction
+        content: portalConfiguration.isProduction
           ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
           : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
       },
@@ -83,7 +80,7 @@ const prepareData = (
         to: 'backstage.json',
       },
       {
-        from: appConfigPath,
+        from: portalConfiguration.appConfigFile,
         to: 'app-config.yaml',
       },
     ],
@@ -98,7 +95,18 @@ type EnvironmentProperties = {
   production: string | undefined;
 };
 
-export default (env: EnvironmentProperties) => {
+type PortalConfiguration = {
+  isProduction: boolean;
+  configFile: string;
+  outputFolder: string;
+  yarnrcFolder: string;
+  appConfigFile: string;
+  tpbConfig: TpbConfiguration;
+};
+
+const buildPortalConfiguration = (
+  env: EnvironmentProperties,
+): PortalConfiguration => {
   const isProduction = env.production !== undefined;
   const configFile =
     env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
@@ -111,14 +119,26 @@ export default (env: EnvironmentProperties) => {
     yarnResolver(yarnRcFolder),
   );
 
-  const data = prepareData(appConfig, isProduction, config);
+  return {
+    appConfigFile: appConfig,
+    configFile: configFile,
+    isProduction: isProduction,
+    outputFolder: outputFolder,
+    yarnrcFolder: yarnRcFolder,
+    tpbConfig: config,
+  };
+};
+
+export default (env: EnvironmentProperties) => {
+  const portalConfiguration = buildPortalConfiguration(env);
+  const data = prepareData(portalConfiguration);
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: path.resolve(__dirname, outputFolder),
+      path: path.resolve(__dirname, portalConfiguration.outputFolder),
     },
-    mode: isProduction ? 'production' : 'development',
+    mode: portalConfiguration.isProduction ? 'production' : 'development',
     plugins: [
       new CopyPlugin({
         patterns: data.filesToCopy,
