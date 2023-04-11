@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Custom entity provider plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render custom provider entity', () => {

@@ -69,6 +69,7 @@ async function buildEnvironment(serverType: ServerType) {
         AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
           'aws_secret_access_key',
         ),
+        BACKEND_SECRET: await vault.readE2ESecret('backend_secret'),
         NODE_TLS_REJECT_UNAUTHORIZED: 0,
       };
     case ServerType.cypress:

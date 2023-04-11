@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('AWS S3 Discovery Processor Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should display catalog entities imported from S3', () => {

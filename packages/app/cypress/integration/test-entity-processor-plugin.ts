@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Custom processor plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render custom processor entity', () => {

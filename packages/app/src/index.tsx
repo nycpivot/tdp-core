@@ -15,6 +15,7 @@ import { plugin as auth0AuthPlugin } from '@tpb/plugin-auth0-auth';
 import { plugin as bitbucketAuthPlugin } from '@tpb/plugin-bitbucket-auth';
 import { plugin as oneLoginAuthPlugin } from '@tpb/plugin-onelogin-auth';
 import { plugin as guestAuthPlugin } from '@tpb/plugin-guest-auth';
+import { plugin as permissionTestAuthPlugin } from '@tpb/plugin-permission-test-auth';
 
 import '@tpb/plugin-clarity-theme/style/clarity.css';
 
@@ -34,4 +35,5 @@ new AppRuntime([
   googleAuthPlugin(),
   oneLoginAuthPlugin(),
   guestAuthPlugin(),
+  permissionTestAuthPlugin(),
 ]).render();

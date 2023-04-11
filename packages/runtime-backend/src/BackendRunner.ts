@@ -13,6 +13,7 @@ import {
 } from '@backstage/backend-common';
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
+import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import {
   SurfaceStoreInterface,
@@ -26,11 +27,14 @@ function makeCreateEnv(config: Config) {
   const discovery = SingleHostDiscovery.fromConfig(config);
   const cacheManager = CacheManager.fromConfig(config);
   const databaseManager = DatabaseManager.fromConfig(config);
-  const tokenManager = ServerTokenManager.noop();
+  const tokenManager = ServerTokenManager.fromConfig(config, { logger: root });
   const taskScheduler = TaskScheduler.fromConfig(config);
   const permissions = ServerPermissionClient.fromConfig(config, {
     discovery,
     tokenManager,
+  });
+  const identity = DefaultIdentityClient.create({
+    discovery,
   });
 
   root.info(`Created UrlReader ${reader}`);
@@ -50,6 +54,7 @@ function makeCreateEnv(config: Config) {
       tokenManager,
       scheduler,
       permissions,
+      identity,
     };
   };
 }

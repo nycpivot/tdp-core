@@ -167,6 +167,7 @@ jobs:
           azure_tenant_id: ((e2e.azure_tenant_id))
           azure_client_id: ((e2e.azure_client_id))
           azure_client_secret: ((e2e.azure_client_secret))
+          backend_secret: ((backend_secret))
           bitbucket_server_license: ((e2e.bitbucket_server_license))
           bitbucket_client_id: ((bitbucket.svc_tpb_client_id))
           bitbucket_client_secret: ((bitbucket.svc_tpb_client_secret))

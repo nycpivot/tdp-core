@@ -87,5 +87,8 @@ function fakePluginEnvironment(config: MockConfigApi = new MockConfigApi({})) {
       authenticate: jest.fn(),
       getToken: jest.fn(),
     },
+    identity: {
+      getIdentity: jest.fn(),
+    },
   };
 }

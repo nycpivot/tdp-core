@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Azure DevOps Backend Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render the component from the processor', () => {

@@ -37,6 +37,30 @@ export namespace Authentication {
     );
   }
 
+  export function googleLogout() {
+    cy.clearCookie('google-refresh-token');
+  }
+
+  export function permissionTestLogin() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'permission-test',
+    );
+    cy.setCookie(
+      'permission-test-refresh-token',
+      Cypress.env('GOOGLE_USER_A_REFRESH_TOKEN'),
+    );
+  }
+
+  export const logInAsCatalogAdmin = () => {
+    cy.visit('/');
+    githubLogin();
+  };
+
+  export function catalogAdminLogout() {
+    cy.clearCookie('github-refresh-token');
+  }
+
   export function githubLogin() {
     window.localStorage.setItem(
       '@backstage/core:SignInPage:provider',
@@ -46,10 +70,6 @@ export namespace Authentication {
       'github-refresh-token',
       Cypress.env('GITHUB_SVC_TPB_REFRESH_TOKEN'),
     );
-  }
-
-  export function googleLogout() {
-    cy.clearCookie('google-refresh-token');
   }
 
   export function oktaLogin() {

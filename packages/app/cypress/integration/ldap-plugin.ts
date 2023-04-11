@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('LDAP Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should display users', () => {

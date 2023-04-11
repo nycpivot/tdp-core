@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Techdocs Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render a link to the docs in the sidebar', () => {

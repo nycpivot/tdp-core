@@ -24,6 +24,7 @@ params:
   AZURE_CLIENT_SECRET: ((azure_client_secret))
   AWS_ACCESS_KEY_ID: ((aws_access_key_id))
   AWS_SECRET_ACCESS_KEY: ((aws_secret_access_key))
+  BACKEND_SECRET: ((backend_secret))
   BITBUCKET_CLIENT_ID: ((bitbucket_client_id))
   BITBUCKET_CLIENT_SECRET: ((bitbucket_client_secret))
   BITBUCKET_SERVER_LICENSE: ((bitbucket_server_license))
