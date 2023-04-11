@@ -90,8 +90,16 @@ const prepareData = (
   };
 };
 
-export default env => {
-  const isProduction = env.production;
+type EnvironmentProperties = {
+  app_config: string | undefined;
+  output_folder: string | undefined;
+  tpb_config: string | undefined;
+  yarnrc_folder: string | undefined;
+  production: string | undefined;
+};
+
+export default (env: EnvironmentProperties) => {
+  const isProduction = env.production !== undefined;
   const configFile =
     env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
   const outputFolder = env.output_folder || 'portal';
