@@ -95,42 +95,67 @@ type EnvironmentProperties = {
   production: string | undefined;
 };
 
-type PortalConfiguration = {
-  isProduction: boolean;
-  configFile: string;
-  outputFolder: string;
-  yarnrcFolder: string;
-  appConfigFile: string;
-  tpbConfig: TpbConfiguration;
-};
+class PortalConfiguration {
+  private readonly _isProduction: boolean;
+  private readonly _configFile: string;
+  private readonly _outputFolder: string;
+  private readonly _yarnrcFolder: string;
+  private readonly _appConfigFile: string;
 
-const buildPortalConfiguration = (
-  env: EnvironmentProperties,
-): PortalConfiguration => {
-  const isProduction = env.production !== undefined;
-  const configFile =
-    env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
-  const outputFolder = env.output_folder || 'portal';
-  const yarnRcFolder = env.yarnrc_folder || outputFolder;
-  const appConfig =
-    env.app_config || path.resolve(__dirname, 'conf/app-config.yaml');
-  const config = new TpbConfiguration(
-    parseYaml(fs.readFileSync(configFile).toString('utf-8')),
-    yarnResolver(yarnRcFolder),
-  );
+  constructor(
+    isProduction: boolean,
+    configFile: string,
+    outputFolder: string,
+    yarnrcFolder: string,
+    appConfigFile: string,
+  ) {
+    this._isProduction = isProduction;
+    this._configFile = configFile;
+    this._outputFolder = outputFolder;
+    this._yarnrcFolder = yarnrcFolder;
+    this._appConfigFile = appConfigFile;
+  }
 
-  return {
-    appConfigFile: appConfig,
-    configFile: configFile,
-    isProduction: isProduction,
-    outputFolder: outputFolder,
-    yarnrcFolder: yarnRcFolder,
-    tpbConfig: config,
-  };
-};
+  get outputFolder() {
+    return this._outputFolder;
+  }
+
+  get isProduction() {
+    return this._isProduction;
+  }
+
+  get tpbConfig() {
+    return new TpbConfiguration(
+      parseYaml(fs.readFileSync(this._configFile).toString('utf-8')),
+      yarnResolver(this._yarnrcFolder),
+    );
+  }
+
+  get appConfigFile() {
+    return this._appConfigFile;
+  }
+
+  static fromEnv(env: EnvironmentProperties) {
+    const isProduction = env.production !== undefined;
+    const configFile =
+      env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
+    const outputFolder = env.output_folder || 'portal';
+    const yarnRcFolder = env.yarnrc_folder || outputFolder;
+    const appConfig =
+      env.app_config || path.resolve(__dirname, 'conf/app-config.yaml');
+
+    return new PortalConfiguration(
+      isProduction,
+      configFile,
+      outputFolder,
+      yarnRcFolder,
+      appConfig,
+    );
+  }
+}
 
 export default (env: EnvironmentProperties) => {
-  const portalConfiguration = buildPortalConfiguration(env);
+  const portalConfiguration = PortalConfiguration.fromEnv(env);
   const data = prepareData(portalConfiguration);
 
   return {
