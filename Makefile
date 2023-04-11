@@ -98,6 +98,7 @@ bitbucket-token: ## # Generate a bitbucket token.
 	@echo $(token)
 
 start-bitbucket-server: stop-bitbucket-server # Start the bitbucket server docker container.
+	$(MAKE) -C packages/app/cypress install_scripts
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress bitbucket
 
 start-ldap-server: stop-ldap-server # Stop the ldap server docker container.
