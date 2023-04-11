@@ -86,7 +86,7 @@ export class SurfaceStore implements SurfaceStoreInterface {
   ): T {
     return this.getSurfaceEntry(surfaceClass).state;
   }
-
+  
   private getSurfaceEntry<T extends TpbSurface>(
     surfaceClass: SurfaceConstructor<T>,
   ): SurfaceEntry<T> {
