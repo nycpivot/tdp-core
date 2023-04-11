@@ -1,4 +1,5 @@
 import { TpbConfiguration } from './TpbConfiguration';
+import * as path from 'path';
 
 describe('TPB configuration', () => {
   it('resolves plugin versions', () => {
@@ -95,5 +96,22 @@ describe('TPB configuration', () => {
     tpbConfig.resolve();
 
     expect(calls.count).toEqual(1);
+  });
+
+  it('generates content from a template', () => {
+    const config = {
+      app: {
+        plugins: [{ name: 'foo' }],
+      },
+      backend: {
+        plugins: [{ name: 'bar' }],
+      },
+    };
+    const tpbConfig = new TpbConfiguration(config, name => '1');
+    const generated = tpbConfig.generate(
+      'hello {{app.plugins.0.name}} and {{backend.plugins.0.name}}',
+    );
+
+    expect(generated).toEqual('hello foo and bar');
   });
 });
