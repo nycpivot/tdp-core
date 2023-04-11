@@ -18,33 +18,16 @@ type EnvironmentProperties = {
   production: string | undefined;
 };
 
-export class PortalConfiguration {
-  private readonly _isProduction: boolean;
-  private readonly _outputFolder: string;
+export class CopySpecifications {
   private readonly _appConfigFile: string;
-  private readonly _tpbConfig: TpbConfiguration;
 
-  constructor(
-    isProduction: boolean,
-    configFile: string,
-    outputFolder: string,
-    yarnrcFolder: string,
-    appConfigFile: string,
-  ) {
-    this._isProduction = isProduction;
-    this._outputFolder = outputFolder;
+  constructor(appConfigFile: string) {
     this._appConfigFile = appConfigFile;
-    this._tpbConfig = new TpbConfiguration(
-      parseYaml(fs.readFileSync(configFile).toString('utf-8')),
-      yarnResolver(yarnrcFolder),
-    );
   }
 
-  get outputFolder() {
-    return this._outputFolder;
-  }
-  get mode() {
-    return this._isProduction ? 'production' : 'development';
+  static fromEnv(env: EnvironmentProperties) {
+    const appConfig = env.app_config || resolvePath('../conf/app-config.yaml');
+    return new CopySpecifications(appConfig);
   }
 
   get filesToCopy() {
@@ -78,6 +61,33 @@ export class PortalConfiguration {
         to: 'app-config.yaml',
       },
     ];
+  }
+}
+
+export class PortalConfiguration {
+  private readonly _isProduction: boolean;
+  private readonly _outputFolder: string;
+  private readonly _tpbConfig: TpbConfiguration;
+
+  constructor(
+    isProduction: boolean,
+    configFile: string,
+    outputFolder: string,
+    yarnrcFolder: string,
+  ) {
+    this._isProduction = isProduction;
+    this._outputFolder = outputFolder;
+    this._tpbConfig = new TpbConfiguration(
+      parseYaml(fs.readFileSync(configFile).toString('utf-8')),
+      yarnResolver(yarnrcFolder),
+    );
+  }
+
+  get outputFolder() {
+    return this._outputFolder;
+  }
+  get mode() {
+    return this._isProduction ? 'production' : 'development';
   }
 
   private templateGenerator(template, output) {
@@ -130,7 +140,6 @@ export class PortalConfiguration {
       configFile,
       outputFolder,
       yarnRcFolder,
-      appConfig,
     );
   }
 }
