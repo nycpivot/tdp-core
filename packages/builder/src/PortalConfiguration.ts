@@ -1,71 +1,14 @@
-import { TpbConfiguration } from './TpbConfiguration';
-import { parse as parseYaml } from 'yaml';
+import {TpbConfiguration} from './TpbConfiguration';
+import {parse as parseYaml} from 'yaml';
 import * as fs from 'fs';
-import { yarnResolver } from './version_resolver';
+import {yarnResolver} from './version_resolver';
 import * as path from 'path';
+import {EnvironmentProperties} from "./EnvironmentProperties";
 
 const resolvePath = file => path.resolve(path.dirname(__filename), file);
 
 function readFileContent(file) {
   return fs.readFileSync(resolvePath(file)).toString();
-}
-
-type EnvironmentProperties = {
-  app_config: string | undefined;
-  output_folder: string | undefined;
-  tpb_config: string | undefined;
-  yarnrc_folder: string | undefined;
-  production: string | undefined;
-  pathResolver: (file: string) => string;
-};
-
-export class CopySpecifications {
-  private readonly _appConfigFile: string;
-  private readonly _resolvePath: (file: string) => string;
-
-  constructor(appConfigFile: string, pathResolver: (file: string) => string) {
-    this._appConfigFile = appConfigFile;
-    this._resolvePath = pathResolver;
-  }
-
-  static fromEnv(env: EnvironmentProperties) {
-    const appConfig =
-      env.app_config || env.pathResolver('conf/app-config.yaml');
-    return new CopySpecifications(appConfig, env.pathResolver);
-  }
-
-  get filesToCopy() {
-    return [
-      {
-        from: this._resolvePath('../app/.eslintrc.js'),
-        to: 'packages/app/.eslintrc.js',
-      },
-      {
-        from: this._resolvePath('../backend/.eslintrc.js'),
-        to: 'packages/backend/.eslintrc.js',
-      },
-      {
-        from: this._resolvePath('../app/public'),
-        to: 'packages/app/public',
-      },
-      {
-        from: this._resolvePath('../../package.json'),
-        to: 'package.json',
-      },
-      {
-        from: this._resolvePath('../../tsconfig.json'),
-        to: 'tsconfig.json',
-      },
-      {
-        from: this._resolvePath('../../backstage.json'),
-        to: 'backstage.json',
-      },
-      {
-        from: this._appConfigFile,
-        to: 'app-config.yaml',
-      },
-    ];
-  }
 }
 
 export class PortalConfiguration {

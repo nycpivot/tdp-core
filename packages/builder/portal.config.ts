@@ -2,9 +2,9 @@ import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as generate from 'generate-file-webpack-plugin';
 import {
-  CopySpecifications,
   PortalConfiguration,
 } from './src/PortalConfiguration';
+import {CopySpecifications} from "./src/CopySpecifications";
 
 const resolvePath = file => path.resolve(__dirname, file);
 
