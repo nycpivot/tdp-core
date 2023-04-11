@@ -14,8 +14,11 @@
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
     "portal": "webpack --config portal.config.ts --env production",
-    "dev-portal": "webpack --config portal.config.ts",
-    "handlebars": "^4.7.7"
+    "dev-portal": "webpack --config portal.config.ts"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "yaml": "^2.2.1"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
@@ -25,7 +28,6 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.3",
     "webpack": "^5.77.0",
-    "webpack-cli": "^5.0.1",
-    "yaml": "^2.2.1"
+    "webpack-cli": "^5.0.1"
   }
 }

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as generate from 'generate-file-webpack-plugin';
-import { PortalConfiguration, prepareData } from './PortalConfiguration';
+import { PortalConfiguration, prepareData } from './src/PortalConfiguration';
 
 export default env => {
   const portalConfiguration = PortalConfiguration.fromEnv(env);

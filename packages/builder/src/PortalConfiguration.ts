@@ -1,12 +1,14 @@
-import { TpbConfiguration } from './src/TpbConfiguration';
+import { TpbConfiguration } from './TpbConfiguration';
 import { parse as parseYaml } from 'yaml';
 import * as fs from 'fs';
-import { yarnResolver } from './src/version_resolver';
+import { yarnResolver } from './version_resolver';
 import * as path from 'path';
 import { compile } from 'handlebars';
 
+const resolvePath = file => path.resolve(path.dirname(__filename), file);
+
 const template = file => {
-  return compile(fs.readFileSync(path.resolve(__dirname, file)).toString());
+  return compile(fs.readFileSync(resolvePath(file)).toString());
 };
 
 const generate = (file, templateFile, config: TpbConfiguration) => {
@@ -23,8 +25,8 @@ export const prepareData = (portalConfiguration: PortalConfiguration) => {
       {
         file: '.yarnrc',
         content: portalConfiguration.isProduction
-          ? fs.readFileSync(path.resolve(__dirname, 'assets/.yarnrc'))
-          : fs.readFileSync(path.resolve(__dirname, '../../.yarnrc')),
+          ? fs.readFileSync(resolvePath('assets/.yarnrc'))
+          : fs.readFileSync(resolvePath('../../../.yarnrc')),
       },
       generate(
         'packages/app/src/index.ts',
@@ -36,6 +38,7 @@ export const prepareData = (portalConfiguration: PortalConfiguration) => {
         'assets/packages/app/package.json.hbs',
         config,
       ),
+
       generate(
         'packages/backend/src/index.ts',
         'assets/packages/backend/src/index.ts.hbs',
@@ -49,27 +52,27 @@ export const prepareData = (portalConfiguration: PortalConfiguration) => {
     ],
     filesToCopy: [
       {
-        from: path.resolve(__dirname, '../app/.eslintrc.js'),
+        from: resolvePath('../../app/.eslintrc.js'),
         to: 'packages/app/.eslintrc.js',
       },
       {
-        from: path.resolve(__dirname, '../backend/.eslintrc.js'),
+        from: resolvePath('../../backend/.eslintrc.js'),
         to: 'packages/backend/.eslintrc.js',
       },
       {
-        from: path.resolve(__dirname, '../app/public'),
+        from: resolvePath('../../app/public'),
         to: 'packages/app/public',
       },
       {
-        from: path.resolve(__dirname, '../../package.json'),
+        from: resolvePath('../../../package.json'),
         to: 'package.json',
       },
       {
-        from: path.resolve(__dirname, '../../tsconfig.json'),
+        from: resolvePath('../../../tsconfig.json'),
         to: 'tsconfig.json',
       },
       {
-        from: path.resolve(__dirname, '../../backstage.json'),
+        from: resolvePath('../../../backstage.json'),
         to: 'backstage.json',
       },
       {
@@ -130,12 +133,10 @@ export class PortalConfiguration {
 
   static fromEnv(env: EnvironmentProperties) {
     const isProduction = env.production !== undefined;
-    const configFile =
-      env.tpb_config || path.resolve(__dirname, 'conf/tpb-config.yaml');
+    const configFile = env.tpb_config || resolvePath('../conf/tpb-config.yaml');
     const outputFolder = env.output_folder || 'portal';
     const yarnRcFolder = env.yarnrc_folder || outputFolder;
-    const appConfig =
-      env.app_config || path.resolve(__dirname, 'conf/app-config.yaml');
+    const appConfig = env.app_config || resolvePath('../conf/app-config.yaml');
 
     return new PortalConfiguration(
       isProduction,
