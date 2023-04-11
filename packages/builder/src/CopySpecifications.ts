@@ -1,4 +1,4 @@
-import {EnvironmentProperties} from "./EnvironmentProperties";
+import { EnvironmentProperties } from './EnvironmentProperties';
 
 export class CopySpecifications {
   private readonly _appConfigFile: string;

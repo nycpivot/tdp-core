@@ -3,7 +3,7 @@ import {parse as parseYaml} from 'yaml';
 import * as fs from 'fs';
 import {yarnResolver} from './version_resolver';
 import * as path from 'path';
-import {EnvironmentProperties} from "./EnvironmentProperties";
+import {EnvironmentProperties} from './EnvironmentProperties';
 
 const resolvePath = file => path.resolve(path.dirname(__filename), file);
 
@@ -44,18 +44,8 @@ export class PortalConfiguration {
     };
   }
 
-  private contentGenerator(filePath, output) {
-    return {
-      file: output,
-      content: readFileContent(filePath),
-    };
-  }
-
-  get fileGenerators() {
+  get generators() {
     return [
-      this._isProduction
-        ? this.contentGenerator('assets/.yarnrc', '.yarnrc')
-        : this.contentGenerator('../../../.yarnrc', '.yarnrc'),
       this.templateGenerator(
         'assets/packages/app/src/index.ts.hbs',
         'packages/app/src/index.ts',
