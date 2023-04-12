@@ -3,11 +3,10 @@ import * as fs from 'fs';
 import { TpbConfiguration } from './TpbConfiguration';
 import { parse as parseYaml } from 'yaml';
 import { yarnResolver } from './version_resolver';
-import { compile } from 'handlebars';
 
 const assetsFolder = 'src/assets';
 
-type FileContent = {
+export type FileContent = {
   file: string;
   content: string | (() => string);
 };

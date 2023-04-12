@@ -4,7 +4,12 @@ import * as fs from 'fs';
 import { yarnResolver } from './version_resolver';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { CopyPatterns } from './CopyPatterns';
-import { FileContentGenerator } from './FileContentGenerator';
+import { FileContent, FileContentGenerator } from './FileContentGenerator';
+
+export type Portal = {
+  filesToCopy: { from: string; to: string }[];
+  generatedContents: FileContent[];
+};
 
 export class PortalBuilder {
   private readonly _outputFolder: string;
@@ -30,6 +35,13 @@ export class PortalBuilder {
 
   get outputFolder() {
     return this._outputFolder;
+  }
+
+  build(): Portal {
+    return {
+      filesToCopy: this._copyPatterns.patterns,
+      generatedContents: this._fileContents.generate(),
+    };
   }
 
   generate() {

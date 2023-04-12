@@ -9,21 +9,20 @@ const mode = env => (env.production ? 'production' : 'development');
 
 export default env => {
   const props = { ...env, pathResolver: resolvePath };
-  const portalBuilder = PortalBuilder.fromEnv(props);
+  const builder = PortalBuilder.fromEnv(props);
+  const portal = builder.build();
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: path.resolve(__dirname, portalBuilder.outputFolder),
+      path: path.resolve(__dirname, builder.outputFolder),
     },
     mode: mode(env),
     plugins: [
       new CopyPlugin({
-        patterns: portalBuilder.copyPatterns,
+        patterns: portal.filesToCopy,
       }),
-      ...portalBuilder
-        .generate()
-        .map(f => generate({ file: f.file, content: f.content })),
+      ...portal.generatedContents.map(generate),
     ],
   };
 };
