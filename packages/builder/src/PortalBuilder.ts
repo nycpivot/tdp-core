@@ -1,6 +1,5 @@
 import {
   FileContent,
-  FileContentGenerator,
   TemplatedFilesGenerator,
   YarnrcFileGenerator,
 } from './FileContentGenerator';
@@ -14,14 +13,21 @@ export type Portal = {
 
 export class PortalBuilder {
   private _config: PortalConfiguration;
-  private _contentsGenerator: FileContentGenerator;
+  private _yarnrcGenerator: YarnrcFileGenerator;
+  private _templateGenerators: TemplatedFilesGenerator;
 
-  private constructor(
-    config: PortalConfiguration,
-    fileContents: FileContentGenerator,
-  ) {
+  constructor(config: PortalConfiguration) {
     this._config = config;
-    this._contentsGenerator = fileContents;
+    this._yarnrcGenerator = new YarnrcFileGenerator(config);
+    this._templateGenerators = new TemplatedFilesGenerator(config);
+  }
+
+  build(): Portal {
+    return {
+      filesToCopy: this.filesToCopy,
+      generatedContents: this.generate(),
+      outputFolder: this._config.outputFolder,
+    };
   }
 
   private get filesToCopy() {
@@ -57,20 +63,10 @@ export class PortalBuilder {
     ];
   }
 
-  build(): Portal {
-    return {
-      filesToCopy: this.filesToCopy,
-      generatedContents: this._contentsGenerator.generate(),
-      outputFolder: this._config.outputFolder,
-    };
-  }
-
-  static fromConfig(config: PortalConfiguration) {
-    const fileContents = new FileContentGenerator(
-      new YarnrcFileGenerator(config),
-      new TemplatedFilesGenerator(config),
-    );
-
-    return new PortalBuilder(config, fileContents);
+  private generate() {
+    return [
+      this._yarnrcGenerator.generate,
+      ...this._templateGenerators.generate,
+    ];
   }
 }

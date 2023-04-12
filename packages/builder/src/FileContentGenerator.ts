@@ -78,22 +78,3 @@ export class TemplatedFilesGenerator {
     };
   }
 }
-
-export class FileContentGenerator {
-  private _yarnrcGenerator: YarnrcFileGenerator;
-  private _templateGenerators: TemplatedFilesGenerator;
-  constructor(
-    contentGenerators: YarnrcFileGenerator,
-    templateGenerators: TemplatedFilesGenerator,
-  ) {
-    this._yarnrcGenerator = contentGenerators;
-    this._templateGenerators = templateGenerators;
-  }
-
-  generate() {
-    return [
-      this._yarnrcGenerator.generate,
-      ...this._templateGenerators.generate,
-    ];
-  }
-}

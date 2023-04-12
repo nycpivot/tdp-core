@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
-import * as generate from 'generate-file-webpack-plugin';
+import * as createFileWithContent from 'generate-file-webpack-plugin';
 import { PortalBuilder } from './src/PortalBuilder';
 import { mapEnvProperties } from './src/PortalConfiguration';
 
@@ -11,7 +11,7 @@ const mode = env => (env.production ? 'production' : 'development');
 export default env => {
   const props = { ...env, pathResolver: resolvePath };
   const config = mapEnvProperties(props);
-  const builder = PortalBuilder.fromConfig(config);
+  const builder = new PortalBuilder(config);
   const portal = builder.build();
 
   return {
@@ -24,7 +24,7 @@ export default env => {
       new CopyPlugin({
         patterns: portal.filesToCopy,
       }),
-      ...portal.generatedContents.map(generate),
+      ...portal.generatedContents.map(createFileWithContent),
     ],
   };
 };
