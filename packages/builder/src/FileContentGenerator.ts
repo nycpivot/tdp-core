@@ -3,14 +3,14 @@ import * as fs from 'fs';
 import { TpbConfiguration } from './TpbConfiguration';
 import { parse as parseYaml } from 'yaml';
 import { yarnResolver } from './version_resolver';
-import {compile} from "handlebars";
+import { compile } from 'handlebars';
 
 const assetsFolder = 'src/assets';
 
 type FileContent = {
-  file: string
-  content: string | (() => string)
-}
+  file: string;
+  content: string | (() => string);
+};
 
 class YarnrcFileGenerator {
   private readonly _isProduction: boolean;
@@ -23,9 +23,8 @@ class YarnrcFileGenerator {
 
   get generate(): FileContent {
     return this._isProduction
-        ? this.contentGenerator(`${assetsFolder}/.yarnrc`, '.yarnrc')
-        : this.contentGenerator('../../.yarnrc', '.yarnrc')
-    ;
+      ? this.contentGenerator(`${assetsFolder}/.yarnrc`, '.yarnrc')
+      : this.contentGenerator('../../.yarnrc', '.yarnrc');
   }
 
   static fromEnv(env: EnvironmentProperties) {
@@ -108,7 +107,10 @@ class TemplatedFilesGenerator {
 export class FileContentGenerator {
   private _yarnrcGenerator: YarnrcFileGenerator;
   private _templateGenerators: TemplatedFilesGenerator;
-  constructor(contentGenerators: YarnrcFileGenerator, templateGenerators: TemplatedFilesGenerator) {
+  constructor(
+    contentGenerators: YarnrcFileGenerator,
+    templateGenerators: TemplatedFilesGenerator,
+  ) {
     this._yarnrcGenerator = contentGenerators;
     this._templateGenerators = templateGenerators;
   }
@@ -117,10 +119,13 @@ export class FileContentGenerator {
     return [
       this._yarnrcGenerator.generate,
       ...this._templateGenerators.generate,
-    ]
+    ];
   }
 
   static fromEnv(env: EnvironmentProperties) {
-    return new FileContentGenerator(YarnrcFileGenerator.fromEnv(env), TemplatedFilesGenerator.fromEnv(env));
+    return new FileContentGenerator(
+      YarnrcFileGenerator.fromEnv(env),
+      TemplatedFilesGenerator.fromEnv(env),
+    );
   }
 }

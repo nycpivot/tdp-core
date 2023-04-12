@@ -3,8 +3,8 @@ import { parse as parseYaml } from 'yaml';
 import * as fs from 'fs';
 import { yarnResolver } from './version_resolver';
 import { EnvironmentProperties } from './EnvironmentProperties';
-import {CopyPatterns} from "./CopyPatterns";
-import {FileContentGenerator} from "./FileContentGenerator";
+import { CopyPatterns } from './CopyPatterns';
+import { FileContentGenerator } from './FileContentGenerator';
 
 export class PortalBuilder {
   private readonly _outputFolder: string;
@@ -12,7 +12,13 @@ export class PortalBuilder {
   private _copyPatterns: CopyPatterns;
   private _fileContents: FileContentGenerator;
 
-  constructor(configFile: string, outputFolder: string, yarnrcFolder: string, copyPatterns: CopyPatterns, fileContents: FileContentGenerator) {
+  constructor(
+    configFile: string,
+    outputFolder: string,
+    yarnrcFolder: string,
+    copyPatterns: CopyPatterns,
+    fileContents: FileContentGenerator,
+  ) {
     this._outputFolder = outputFolder;
     this._copyPatterns = copyPatterns;
     this._fileContents = fileContents;
@@ -43,6 +49,12 @@ export class PortalBuilder {
     const copyPatterns = CopyPatterns.fromEnv(env);
     const fileContents = FileContentGenerator.fromEnv(env);
 
-    return new PortalBuilder(configFile, outputFolder, yarnRcFolder, copyPatterns, fileContents);
+    return new PortalBuilder(
+      configFile,
+      outputFolder,
+      yarnRcFolder,
+      copyPatterns,
+      fileContents,
+    );
   }
 }

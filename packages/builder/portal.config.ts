@@ -21,9 +21,9 @@ export default env => {
       new CopyPlugin({
         patterns: portalBuilder.copyPatterns,
       }),
-      ...portalBuilder.generate().map(f =>
-        generate({ file: f.file, content: f.content }),
-      ),
+      ...portalBuilder
+        .generate()
+        .map(f => generate({ file: f.file, content: f.content })),
     ],
   };
 };
