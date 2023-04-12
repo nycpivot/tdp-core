@@ -11,7 +11,7 @@ export type FileContent = {
   content: string | (() => string);
 };
 
-class YarnrcFileGenerator {
+export class YarnrcFileGenerator {
   private readonly _isProduction: boolean;
   private readonly _resolvePath: (file: string) => string;
 
@@ -43,7 +43,7 @@ class YarnrcFileGenerator {
   }
 }
 
-class TemplatedFilesGenerator {
+export class TemplatedFilesGenerator {
   private readonly _tpbConfig: TpbConfiguration;
   private readonly _resolvePath: (file: string) => string;
 
@@ -119,12 +119,5 @@ export class FileContentGenerator {
       this._yarnrcGenerator.generate,
       ...this._templateGenerators.generate,
     ];
-  }
-
-  static fromEnv(env: EnvironmentProperties) {
-    return new FileContentGenerator(
-      YarnrcFileGenerator.fromEnv(env),
-      TemplatedFilesGenerator.fromEnv(env),
-    );
   }
 }

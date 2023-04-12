@@ -1,5 +1,3 @@
-import { EnvironmentProperties } from './EnvironmentProperties';
-
 export class CopyPatterns {
   private readonly _appConfigFile: string;
   private readonly _resolvePath: (file: string) => string;
@@ -7,12 +5,6 @@ export class CopyPatterns {
   constructor(appConfigFile: string, pathResolver: (file: string) => string) {
     this._appConfigFile = appConfigFile;
     this._resolvePath = pathResolver;
-  }
-
-  static fromEnv(env: EnvironmentProperties) {
-    const appConfig =
-      env.app_config || env.pathResolver('conf/app-config.yaml');
-    return new CopyPatterns(appConfig, env.pathResolver);
   }
 
   get patterns() {
