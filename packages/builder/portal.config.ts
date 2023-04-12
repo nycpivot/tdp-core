@@ -1,7 +1,8 @@
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as generate from 'generate-file-webpack-plugin';
-import { mapEnvProperties, PortalBuilder } from './src/PortalBuilder';
+import { PortalBuilder } from './src/PortalBuilder';
+import { mapEnvProperties } from './src/PortalConfiguration';
 
 const resolvePath = file => path.resolve(__dirname, file);
 

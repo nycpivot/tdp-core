@@ -1,15 +1,10 @@
-import { PluginsConfiguration } from './PluginsConfiguration';
-import { parse as parseYaml } from 'yaml';
-import * as fs from 'fs';
-import { yarnResolver } from './version_resolver';
-import { EnvironmentProperties } from './EnvironmentProperties';
-import { CopyPatterns } from './CopyPatterns';
 import {
   FileContent,
   FileContentGenerator,
   TemplatedFilesGenerator,
   YarnrcFileGenerator,
 } from './FileContentGenerator';
+import { PortalConfiguration } from './PortalConfiguration';
 
 export type Portal = {
   filesToCopy: { from: string; to: string }[];
@@ -17,64 +12,65 @@ export type Portal = {
   outputFolder: string;
 };
 
-export type PortalConfiguration = {
-  appConfig: string;
-  outputFolder: string;
-  pluginsConfig: PluginsConfiguration;
-  pathResolver: (file: string) => string;
-};
-
-export const mapEnvProperties = (
-  env: EnvironmentProperties,
-): PortalConfiguration => {
-  const configFile = env.tpb_config || env.pathResolver('conf/tpb-config.yaml');
-  const outputFolder = env.output_folder || 'portal';
-  const yarnrcFolder = env.yarnrc_folder || outputFolder;
-  const appConfig = env.app_config || env.pathResolver('conf/app-config.yaml');
-
-  return {
-    appConfig: appConfig,
-    outputFolder: outputFolder,
-    pluginsConfig: new PluginsConfiguration(
-      parseYaml(fs.readFileSync(configFile).toString('utf-8')),
-      yarnResolver(yarnrcFolder),
-    ),
-    pathResolver: env.pathResolver,
-  };
-};
-
 export class PortalBuilder {
-  private readonly _outputFolder: string;
-  private _copyPatterns: CopyPatterns;
-  private _fileContents: FileContentGenerator;
+  private _config: PortalConfiguration;
+  private _contentsGenerator: FileContentGenerator;
 
-  constructor(
-    outputFolder: string,
-    copyPatterns: CopyPatterns,
+  private constructor(
+    config: PortalConfiguration,
     fileContents: FileContentGenerator,
   ) {
-    this._outputFolder = outputFolder;
-    this._copyPatterns = copyPatterns;
-    this._fileContents = fileContents;
+    this._config = config;
+    this._contentsGenerator = fileContents;
+  }
+
+  private get filesToCopy() {
+    return [
+      {
+        from: this._config.resolvePath('../app/.eslintrc.js'),
+        to: 'packages/app/.eslintrc.js',
+      },
+      {
+        from: this._config.resolvePath('../backend/.eslintrc.js'),
+        to: 'packages/backend/.eslintrc.js',
+      },
+      {
+        from: this._config.resolvePath('../app/public'),
+        to: 'packages/app/public',
+      },
+      {
+        from: this._config.resolvePath('../../package.json'),
+        to: 'package.json',
+      },
+      {
+        from: this._config.resolvePath('../../tsconfig.json'),
+        to: 'tsconfig.json',
+      },
+      {
+        from: this._config.resolvePath('../../backstage.json'),
+        to: 'backstage.json',
+      },
+      {
+        from: this._config.appConfig,
+        to: 'app-config.yaml',
+      },
+    ];
   }
 
   build(): Portal {
     return {
-      filesToCopy: this._copyPatterns.patterns,
-      generatedContents: this._fileContents.generate(),
-      outputFolder: this._outputFolder,
+      filesToCopy: this.filesToCopy,
+      generatedContents: this._contentsGenerator.generate(),
+      outputFolder: this._config.outputFolder,
     };
   }
+
   static fromConfig(config: PortalConfiguration) {
-    const copyPatterns = new CopyPatterns(
-      config.appConfig,
-      config.pathResolver,
-    );
     const fileContents = new FileContentGenerator(
-      new YarnrcFileGenerator(false, config.pathResolver),
-      new TemplatedFilesGenerator(config.pluginsConfig, config.pathResolver),
+      new YarnrcFileGenerator(config),
+      new TemplatedFilesGenerator(config),
     );
 
-    return new PortalBuilder(config.outputFolder, copyPatterns, fileContents);
+    return new PortalBuilder(config, fileContents);
   }
 }

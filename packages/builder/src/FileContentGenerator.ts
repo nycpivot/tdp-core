@@ -1,8 +1,6 @@
-import { EnvironmentProperties } from './EnvironmentProperties';
 import * as fs from 'fs';
 import { PluginsConfiguration } from './PluginsConfiguration';
-import { parse as parseYaml } from 'yaml';
-import { yarnResolver } from './version_resolver';
+import { PortalConfiguration } from './PortalConfiguration';
 
 const assetsFolder = 'src/assets';
 
@@ -15,20 +13,15 @@ export class YarnrcFileGenerator {
   private readonly _isProduction: boolean;
   private readonly _resolvePath: (file: string) => string;
 
-  constructor(isProduction: boolean, pathResolver: (file: string) => string) {
-    this._isProduction = isProduction;
-    this._resolvePath = pathResolver;
+  constructor(config: PortalConfiguration) {
+    this._isProduction = config.isProduction;
+    this._resolvePath = config.resolvePath;
   }
 
   get generate(): FileContent {
     return this._isProduction
       ? this.contentGenerator(`${assetsFolder}/.yarnrc`, '.yarnrc')
       : this.contentGenerator('../../.yarnrc', '.yarnrc');
-  }
-
-  static fromEnv(env: EnvironmentProperties) {
-    const isProduction = env.production !== undefined;
-    return new YarnrcFileGenerator(isProduction, env.pathResolver);
   }
 
   private readFileContent(file): string {
@@ -44,15 +37,12 @@ export class YarnrcFileGenerator {
 }
 
 export class TemplatedFilesGenerator {
-  private readonly _tpbConfig: PluginsConfiguration;
+  private readonly _pluginsConfig: PluginsConfiguration;
   private readonly _resolvePath: (file: string) => string;
 
-  constructor(
-    tpbConfig: PluginsConfiguration,
-    pathResolver: (file: string) => string,
-  ) {
-    this._tpbConfig = tpbConfig;
-    this._resolvePath = pathResolver;
+  constructor(config: PortalConfiguration) {
+    this._pluginsConfig = config.pluginsConfig;
+    this._resolvePath = config.resolvePath;
   }
 
   get generate(): FileContent[] {
@@ -76,21 +66,6 @@ export class TemplatedFilesGenerator {
     ];
   }
 
-  static fromEnv(env: EnvironmentProperties) {
-    const configFile =
-      env.tpb_config || env.pathResolver('conf/tpb-config.yaml');
-    const outputFolder = env.output_folder || 'portal';
-    const yarnRcFolder = env.yarnrc_folder || outputFolder;
-
-    return new TemplatedFilesGenerator(
-      new PluginsConfiguration(
-        parseYaml(fs.readFileSync(configFile).toString('utf-8')),
-        yarnResolver(yarnRcFolder),
-      ),
-      env.pathResolver,
-    );
-  }
-
   private readFileContent(file): string {
     return fs.readFileSync(this._resolvePath(file)).toString();
   }
@@ -98,7 +73,8 @@ export class TemplatedFilesGenerator {
   private templateGenerator(template, output): FileContent {
     return {
       file: output,
-      content: () => this._tpbConfig.generate(this.readFileContent(template)),
+      content: () =>
+        this._pluginsConfig.generate(this.readFileContent(template)),
     };
   }
 }

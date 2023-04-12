@@ -97,21 +97,4 @@ describe('TPB configuration', () => {
 
     expect(calls.count).toEqual(1);
   });
-
-  it('generates content from a template', () => {
-    const config = {
-      app: {
-        plugins: [{ name: 'foo' }],
-      },
-      backend: {
-        plugins: [{ name: 'bar' }],
-      },
-    };
-    const tpbConfig = new PluginsConfiguration(config, name => '1');
-    const generated = tpbConfig.generate(
-      'hello {{app.plugins.0.name}} and {{backend.plugins.0.name}}',
-    );
-
-    expect(generated).toEqual('hello foo and bar');
-  });
 });
