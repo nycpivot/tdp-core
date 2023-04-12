@@ -9,7 +9,7 @@ export type Portal = {
   filesToCopy: { from: string; to: string }[];
   generatedContents: FileContent[];
   outputFolder: string;
-  mode: string;
+  mode: 'development' | 'production';
 };
 
 export class PortalBuilder {
