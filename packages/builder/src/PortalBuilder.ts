@@ -9,6 +9,7 @@ export type Portal = {
   filesToCopy: { from: string; to: string }[];
   generatedContents: FileContent[];
   outputFolder: string;
+  mode: string;
 };
 
 export class PortalBuilder {
@@ -27,6 +28,7 @@ export class PortalBuilder {
       filesToCopy: this.filesToCopy,
       generatedContents: this.generate(),
       outputFolder: this._config.outputFolder,
+      mode: this._config.isProduction ? 'production' : 'development',
     };
   }
 

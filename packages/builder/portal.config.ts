@@ -6,8 +6,6 @@ import { mapEnvProperties } from './src/PortalConfiguration';
 
 const resolvePath = file => path.resolve(__dirname, file);
 
-const mode = env => (env.production ? 'production' : 'development');
-
 export default env => {
   const props = { ...env, pathResolver: resolvePath };
   const config = mapEnvProperties(props);
@@ -19,7 +17,7 @@ export default env => {
     output: {
       path: path.resolve(__dirname, portal.outputFolder),
     },
-    mode: mode(env),
+    mode: portal.mode,
     plugins: [
       new CopyPlugin({
         patterns: portal.filesToCopy,
