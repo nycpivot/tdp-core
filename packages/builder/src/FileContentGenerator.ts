@@ -1,6 +1,6 @@
 import { EnvironmentProperties } from './EnvironmentProperties';
 import * as fs from 'fs';
-import { TpbConfiguration } from './TpbConfiguration';
+import { PluginsConfiguration } from './PluginsConfiguration';
 import { parse as parseYaml } from 'yaml';
 import { yarnResolver } from './version_resolver';
 
@@ -44,11 +44,11 @@ export class YarnrcFileGenerator {
 }
 
 export class TemplatedFilesGenerator {
-  private readonly _tpbConfig: TpbConfiguration;
+  private readonly _tpbConfig: PluginsConfiguration;
   private readonly _resolvePath: (file: string) => string;
 
   constructor(
-    tpbConfig: TpbConfiguration,
+    tpbConfig: PluginsConfiguration,
     pathResolver: (file: string) => string,
   ) {
     this._tpbConfig = tpbConfig;
@@ -83,7 +83,7 @@ export class TemplatedFilesGenerator {
     const yarnRcFolder = env.yarnrc_folder || outputFolder;
 
     return new TemplatedFilesGenerator(
-      new TpbConfiguration(
+      new PluginsConfiguration(
         parseYaml(fs.readFileSync(configFile).toString('utf-8')),
         yarnResolver(yarnRcFolder),
       ),

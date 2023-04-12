@@ -1,4 +1,4 @@
-import { TpbConfiguration } from './TpbConfiguration';
+import { PluginsConfiguration } from './PluginsConfiguration';
 import { parse as parseYaml } from 'yaml';
 import * as fs from 'fs';
 import { yarnResolver } from './version_resolver';
@@ -20,7 +20,7 @@ export type Portal = {
 export type PortalConfiguration = {
   appConfig: string;
   outputFolder: string;
-  pluginsConfig: TpbConfiguration;
+  pluginsConfig: PluginsConfiguration;
   pathResolver: (file: string) => string;
 };
 
@@ -35,7 +35,7 @@ export const mapEnvProperties = (
   return {
     appConfig: appConfig,
     outputFolder: outputFolder,
-    pluginsConfig: new TpbConfiguration(
+    pluginsConfig: new PluginsConfiguration(
       parseYaml(fs.readFileSync(configFile).toString('utf-8')),
       yarnResolver(yarnrcFolder),
     ),

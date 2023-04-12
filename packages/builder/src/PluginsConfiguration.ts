@@ -43,7 +43,7 @@ type ResolvedTpbConfiguration = {
   };
 };
 
-export class TpbConfiguration {
+export class PluginsConfiguration {
   private readonly _config: UnresolvedTpbConfiguration;
   private readonly _versionResolver: VersionResolver;
   private _resolvedConfig?: ResolvedTpbConfiguration;

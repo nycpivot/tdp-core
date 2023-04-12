@@ -1,4 +1,4 @@
-import { TpbConfiguration } from './TpbConfiguration';
+import { PluginsConfiguration } from './PluginsConfiguration';
 import * as path from 'path';
 
 describe('TPB configuration', () => {
@@ -38,7 +38,7 @@ describe('TPB configuration', () => {
       theme: '5',
     };
 
-    const tpbConfig = new TpbConfiguration(config, name => versions[name]);
+    const tpbConfig = new PluginsConfiguration(config, name => versions[name]);
 
     const resolvedConfig = tpbConfig.resolve();
 
@@ -87,7 +87,7 @@ describe('TPB configuration', () => {
         plugins: [],
       },
     };
-    const tpbConfig = new TpbConfiguration(config, () => {
+    const tpbConfig = new PluginsConfiguration(config, () => {
       calls.count++;
       return 'foo';
     });
@@ -107,7 +107,7 @@ describe('TPB configuration', () => {
         plugins: [{ name: 'bar' }],
       },
     };
-    const tpbConfig = new TpbConfiguration(config, name => '1');
+    const tpbConfig = new PluginsConfiguration(config, name => '1');
     const generated = tpbConfig.generate(
       'hello {{app.plugins.0.name}} and {{backend.plugins.0.name}}',
     );
