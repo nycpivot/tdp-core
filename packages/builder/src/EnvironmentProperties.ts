@@ -5,4 +5,5 @@ export type EnvironmentProperties = {
   yarnrc_folder: string | undefined;
   production: string | undefined;
   pathResolver: (file: string) => string;
+  readFileContent: (file: string) => string;
 };

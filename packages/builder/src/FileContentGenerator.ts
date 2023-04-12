@@ -11,11 +11,11 @@ export type FileContent = {
 
 export class YarnrcFileGenerator {
   private readonly _isProduction: boolean;
-  private readonly _resolvePath: (file: string) => string;
+  private readonly _readFileContent: (file: string) => string;
 
   constructor(config: PortalConfiguration) {
     this._isProduction = config.isProduction;
-    this._resolvePath = config.resolvePath;
+    this._readFileContent = config.readFileContent;
   }
 
   get generate(): FileContent {
@@ -24,25 +24,21 @@ export class YarnrcFileGenerator {
       : this.contentGenerator('../../.yarnrc', '.yarnrc');
   }
 
-  private readFileContent(file): string {
-    return fs.readFileSync(this._resolvePath(file)).toString();
-  }
-
   private contentGenerator(filePath, output): FileContent {
     return {
       file: output,
-      content: this.readFileContent(filePath),
+      content: this._readFileContent(filePath),
     };
   }
 }
 
 export class TemplatedFilesGenerator {
   private readonly _pluginsConfig: PluginsConfiguration;
-  private readonly _resolvePath: (file: string) => string;
+  private readonly _readFileContent: (file: string) => string;
 
   constructor(config: PortalConfiguration) {
     this._pluginsConfig = config.pluginsConfig;
-    this._resolvePath = config.resolvePath;
+    this._readFileContent = config.readFileContent;
   }
 
   get generate(): FileContent[] {
@@ -66,15 +62,11 @@ export class TemplatedFilesGenerator {
     ];
   }
 
-  private readFileContent(file): string {
-    return fs.readFileSync(this._resolvePath(file)).toString();
-  }
-
   private templateGenerator(template, output): FileContent {
     return {
       file: output,
       content: () =>
-        this._pluginsConfig.generate(this.readFileContent(template)),
+        this._pluginsConfig.generate(this._readFileContent(template)),
     };
   }
 }

@@ -10,6 +10,7 @@ export type PortalConfiguration = {
   outputFolder: string;
   pluginsConfig: PluginsConfiguration;
   resolvePath: (file: string) => string;
+  readFileContent: (file: string) => string;
 };
 
 export const mapEnvProperties = (
@@ -28,6 +29,7 @@ export const mapEnvProperties = (
       yarnResolver(yarnrcFolder),
     ),
     resolvePath: env.pathResolver,
+    readFileContent: env.readFileContent,
     isProduction: env.production !== undefined,
   };
 };
