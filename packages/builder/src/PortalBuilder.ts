@@ -8,8 +8,6 @@ import { PortalConfiguration } from './PortalConfiguration';
 export type Portal = {
   filesToCopy: { from: string; to: string }[];
   generatedContents: FileContent[];
-  outputFolder: string;
-  mode: 'development' | 'production';
 };
 
 export class PortalBuilder {
@@ -27,8 +25,6 @@ export class PortalBuilder {
     return {
       filesToCopy: this.filesToCopy,
       generatedContents: this.generate(),
-      outputFolder: this._config.outputFolder,
-      mode: this._config.isProduction ? 'production' : 'development',
     };
   }
 

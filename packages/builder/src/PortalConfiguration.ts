@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import { yarnResolver } from './version_resolver';
 
 export type PortalConfiguration = {
-  isProduction: boolean;
+  mode: 'production' | 'development';
   appConfig: string;
   outputFolder: string;
   pluginsConfig: PluginsConfiguration;
@@ -30,6 +30,6 @@ export const mapEnvProperties = (
     ),
     resolvePath: env.pathResolver,
     readFileContent: env.readFileContent,
-    isProduction: env.production !== undefined,
+    mode: env.production ? 'production' : 'development',
   };
 };

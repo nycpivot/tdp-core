@@ -14,7 +14,7 @@ export class YarnrcFileGenerator {
   private readonly _readFileContent: (file: string) => string;
 
   constructor(config: PortalConfiguration) {
-    this._isProduction = config.isProduction;
+    this._isProduction = config.mode === 'production';
     this._readFileContent = config.readFileContent;
   }
 

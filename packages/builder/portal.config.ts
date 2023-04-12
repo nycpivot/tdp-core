@@ -21,9 +21,9 @@ export default env => {
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: path.resolve(__dirname, portal.outputFolder),
+      path: path.resolve(__dirname, config.outputFolder),
     },
-    mode: portal.mode,
+    mode: config.mode,
     plugins: [
       new CopyPlugin({
         patterns: portal.filesToCopy,
