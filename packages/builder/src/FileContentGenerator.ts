@@ -3,15 +3,16 @@ import * as fs from 'fs';
 import { TpbConfiguration } from './TpbConfiguration';
 import { parse as parseYaml } from 'yaml';
 import { yarnResolver } from './version_resolver';
+import {compile} from "handlebars";
 
 const assetsFolder = 'src/assets';
 
-type Generator = {
+type FileContent = {
   file: string
   content: string | (() => string)
 }
 
-class YarnrcGenerator {
+class YarnrcFileGenerator {
   private readonly _isProduction: boolean;
   private readonly _resolvePath: (file: string) => string;
 
@@ -20,7 +21,7 @@ class YarnrcGenerator {
     this._resolvePath = pathResolver;
   }
 
-  get generator(): Generator {
+  get generate(): FileContent {
     return this._isProduction
         ? this.contentGenerator(`${assetsFolder}/.yarnrc`, '.yarnrc')
         : this.contentGenerator('../../.yarnrc', '.yarnrc')
@@ -29,14 +30,14 @@ class YarnrcGenerator {
 
   static fromEnv(env: EnvironmentProperties) {
     const isProduction = env.production !== undefined;
-    return new YarnrcGenerator(isProduction, env.pathResolver);
+    return new YarnrcFileGenerator(isProduction, env.pathResolver);
   }
 
   private readFileContent(file): string {
     return fs.readFileSync(this._resolvePath(file)).toString();
   }
 
-  private contentGenerator(filePath, output): Generator {
+  private contentGenerator(filePath, output): FileContent {
     return {
       file: output,
       content: this.readFileContent(filePath),
@@ -44,7 +45,7 @@ class YarnrcGenerator {
   }
 }
 
-class TemplateGenerators {
+class TemplatedFilesGenerator {
   private readonly _tpbConfig: TpbConfiguration;
   private readonly _resolvePath: (file: string) => string;
 
@@ -56,7 +57,7 @@ class TemplateGenerators {
     this._resolvePath = pathResolver;
   }
 
-  get generators(): Generator[] {
+  get generate(): FileContent[] {
     return [
       this.templateGenerator(
         `${assetsFolder}/packages/app/src/index.ts.hbs`,
@@ -83,7 +84,7 @@ class TemplateGenerators {
     const outputFolder = env.output_folder || 'portal';
     const yarnRcFolder = env.yarnrc_folder || outputFolder;
 
-    return new TemplateGenerators(
+    return new TemplatedFilesGenerator(
       new TpbConfiguration(
         parseYaml(fs.readFileSync(configFile).toString('utf-8')),
         yarnResolver(yarnRcFolder),
@@ -96,7 +97,7 @@ class TemplateGenerators {
     return fs.readFileSync(this._resolvePath(file)).toString();
   }
 
-  private templateGenerator(template, output): Generator {
+  private templateGenerator(template, output): FileContent {
     return {
       file: output,
       content: () => this._tpbConfig.generate(this.readFileContent(template)),
@@ -104,22 +105,22 @@ class TemplateGenerators {
   }
 }
 
-export class Generators {
-  private _yarnrcGenerator: YarnrcGenerator;
-  private _templateGenerators: TemplateGenerators;
-  constructor(contentGenerators: YarnrcGenerator, templateGenerators: TemplateGenerators) {
+export class FileContentGenerator {
+  private _yarnrcGenerator: YarnrcFileGenerator;
+  private _templateGenerators: TemplatedFilesGenerator;
+  constructor(contentGenerators: YarnrcFileGenerator, templateGenerators: TemplatedFilesGenerator) {
     this._yarnrcGenerator = contentGenerators;
     this._templateGenerators = templateGenerators;
   }
 
   get generators() {
     return [
-      this._yarnrcGenerator.generator,
-      ...this._templateGenerators.generators,
+      this._yarnrcGenerator.generate,
+      ...this._templateGenerators.generate,
     ]
   }
 
   static fromEnv(env: EnvironmentProperties) {
-    return new Generators(YarnrcGenerator.fromEnv(env), TemplateGenerators.fromEnv(env));
+    return new FileContentGenerator(YarnrcFileGenerator.fromEnv(env), TemplatedFilesGenerator.fromEnv(env));
   }
 }
