@@ -1,6 +1,6 @@
 import { EnvironmentProperties } from './EnvironmentProperties';
 
-export class CopySpecifications {
+export class CopyPatterns {
   private readonly _appConfigFile: string;
   private readonly _resolvePath: (file: string) => string;
 
@@ -12,10 +12,10 @@ export class CopySpecifications {
   static fromEnv(env: EnvironmentProperties) {
     const appConfig =
       env.app_config || env.pathResolver('conf/app-config.yaml');
-    return new CopySpecifications(appConfig, env.pathResolver);
+    return new CopyPatterns(appConfig, env.pathResolver);
   }
 
-  get filesToCopy() {
+  get patterns() {
     return [
       {
         from: this._resolvePath('../app/.eslintrc.js'),
