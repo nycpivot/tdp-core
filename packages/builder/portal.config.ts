@@ -1,9 +1,7 @@
 import * as path from 'path';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as generate from 'generate-file-webpack-plugin';
-import { PortalConfiguration } from './src/PortalConfiguration';
-import { CopyPatterns } from './src/CopyPatterns';
-import { FileContentGenerator } from './src/FileContentGenerator';
+import { PortalBuilder } from './src/PortalBuilder';
 
 const resolvePath = file => path.resolve(__dirname, file);
 
@@ -11,21 +9,19 @@ const mode = env => (env.production ? 'production' : 'development');
 
 export default env => {
   const props = { ...env, pathResolver: resolvePath };
-  const portalConfiguration = PortalConfiguration.fromEnv(props);
-  const copyPatterns = CopyPatterns.fromEnv(props);
-  const generators = FileContentGenerator.fromEnv(props);
+  const portalBuilder = PortalBuilder.fromEnv(props);
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: path.resolve(__dirname, portalConfiguration.outputFolder),
+      path: path.resolve(__dirname, portalBuilder.outputFolder),
     },
     mode: mode(env),
     plugins: [
       new CopyPlugin({
-        patterns: copyPatterns.patterns,
+        patterns: portalBuilder.copyPatterns,
       }),
-      ...generators.generators.map(f =>
+      ...portalBuilder.generate().map(f =>
         generate({ file: f.file, content: f.content }),
       ),
     ],

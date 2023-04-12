@@ -113,7 +113,7 @@ export class FileContentGenerator {
     this._templateGenerators = templateGenerators;
   }
 
-  get generators() {
+  generate() {
     return [
       this._yarnrcGenerator.generate,
       ...this._templateGenerators.generate,
