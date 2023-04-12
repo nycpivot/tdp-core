@@ -26,7 +26,10 @@ export default env => {
     mode: config.mode,
     plugins: [
       new CopyPlugin({
-        patterns: portal.filesToCopy,
+        patterns: portal.filesToCopy.map(f => ({
+          from: resolvePath(f.from),
+          to: f.to,
+        })),
       }),
       ...portal.generatedContents.map(createFileWithContent),
     ],

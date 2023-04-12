@@ -31,27 +31,27 @@ export class PortalBuilder {
   private get filesToCopy() {
     return [
       {
-        from: this._config.resolvePath('../app/.eslintrc.js'),
+        from: '../app/.eslintrc.js',
         to: 'packages/app/.eslintrc.js',
       },
       {
-        from: this._config.resolvePath('../backend/.eslintrc.js'),
+        from: '../backend/.eslintrc.js',
         to: 'packages/backend/.eslintrc.js',
       },
       {
-        from: this._config.resolvePath('../app/public'),
+        from: '../app/public',
         to: 'packages/app/public',
       },
       {
-        from: this._config.resolvePath('../../package.json'),
+        from: '../../package.json',
         to: 'package.json',
       },
       {
-        from: this._config.resolvePath('../../tsconfig.json'),
+        from: '../../tsconfig.json',
         to: 'tsconfig.json',
       },
       {
-        from: this._config.resolvePath('../../backstage.json'),
+        from: '../../backstage.json',
         to: 'backstage.json',
       },
       {

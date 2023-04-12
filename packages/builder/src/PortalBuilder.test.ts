@@ -10,9 +10,6 @@ describe('Portal builder', () => {
     readFileContent(file: string): string {
       return '';
     },
-    resolvePath(file: string): string {
-      return file;
-    },
   };
 
   it('provides a list of files to be copied', () => {
