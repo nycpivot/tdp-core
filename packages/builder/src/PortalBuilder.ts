@@ -5,7 +5,7 @@ import { HandlebarGenerator } from './Templates';
 
 export type Portal = {
   filesToCopy: { from: string; to: string }[];
-  generatedContents: FileContent[];
+  fileContents: FileContent[];
 };
 
 export class PortalBuilder {
@@ -18,7 +18,7 @@ export class PortalBuilder {
   build(resolvePath: PathResolver): Portal {
     return {
       filesToCopy: this.filesToCopy(resolvePath),
-      generatedContents: this.generate(resolvePath),
+      fileContents: this.generate(resolvePath),
     };
   }
 

@@ -21,6 +21,6 @@ describe('Portal builder', () => {
     const builder = new PortalBuilder(config);
     const portal = builder.build(file => file);
 
-    expect(portal.generatedContents.length).toBeGreaterThan(1);
+    expect(portal.fileContents.length).toBeGreaterThan(1);
   });
 });

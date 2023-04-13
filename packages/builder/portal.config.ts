@@ -23,7 +23,7 @@ export default (env: EnvironmentProperties) => {
       new CopyPlugin({
         patterns: portal.filesToCopy,
       }),
-      ...portal.generatedContents.map(createFileWithContent),
+      ...portal.fileContents.map(createFileWithContent),
     ],
   };
 };
