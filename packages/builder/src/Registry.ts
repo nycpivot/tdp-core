@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { FilePath } from './FileContent';
+import { FilePath } from './File';
 
 export type Registry = 'verdaccio' | 'remote';
 

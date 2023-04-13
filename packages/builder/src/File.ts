@@ -16,5 +16,10 @@ export type FileCopy = {
   to: FilePath;
 };
 
+export type TemplatedFile = {
+  file: FilePath;
+  template: FilePath;
+};
+
 export const readContent = (file: FilePath): RawContent =>
   fs.readFileSync(file).toString();

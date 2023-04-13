@@ -1,5 +1,5 @@
 import { PortalConfiguration } from './PortalConfiguration';
-import { FileContent, FileCopy, readContent } from './FileContent';
+import { FileContent, FileCopy, readContent } from './File';
 import { HandlebarTemplate } from './HandlebarTemplate';
 
 type CopyBundle = FileCopy[];

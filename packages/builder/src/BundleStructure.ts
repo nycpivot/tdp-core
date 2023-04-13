@@ -1,4 +1,10 @@
-import { FilePath, PathResolver, readContent } from './FileContent';
+import {
+  FileCopy,
+  FilePath,
+  PathResolver,
+  readContent,
+  TemplatedFile,
+} from './File';
 import { parse as parseYaml } from 'yaml';
 
 type FolderNode = {
@@ -18,25 +24,15 @@ type CopyNode = {
 
 type Node = FolderNode | TemplateNode | CopyNode;
 
-type BundleStructure = {
+type BundleStructureConfiguration = {
   files: Node[];
-};
-
-type Foo = {
-  file: FilePath;
-  template: FilePath;
-};
-
-type Bar = {
-  from: FilePath;
-  to: FilePath;
 };
 
 const flattenNodeTemplate = (
   node: Node,
   ancestors: string[],
   resolvePath: PathResolver,
-): Foo[] => {
+): TemplatedFile[] => {
   if ('template' in node) {
     return [
       {
@@ -57,7 +53,7 @@ const flattenNodeCopy = (
   node: Node,
   ancestors: string[],
   resolvePath: PathResolver,
-): Bar[] => {
+): FileCopy[] => {
   if ('copy' in node) {
     return [
       {
@@ -75,20 +71,28 @@ const flattenNodeCopy = (
 };
 
 export const flattenTemplates = (
-  structure: BundleStructure,
+  structure: BundleStructureConfiguration,
   resolvePath: PathResolver,
-): Foo[] => {
+): TemplatedFile[] => {
   return flattenNodeTemplate({ name: 'root', ...structure }, [], resolvePath);
 };
 
 export const flattenCopies = (
-  structure: BundleStructure,
+  structure: BundleStructureConfiguration,
   resolvePath: PathResolver,
-): Bar[] => {
+): FileCopy[] => {
   return flattenNodeCopy({ name: 'root', ...structure }, [], resolvePath);
 };
 
-export const buildStructure = (config: FilePath, resolvePath: PathResolver) => {
+type BundleStructure = {
+  templates: TemplatedFile[];
+  copies: FileCopy[];
+};
+
+export const buildStructure = (
+  config: FilePath,
+  resolvePath: PathResolver,
+): BundleStructure => {
   const yaml = parseYaml(readContent(config));
   return {
     templates: flattenTemplates(yaml, resolvePath),

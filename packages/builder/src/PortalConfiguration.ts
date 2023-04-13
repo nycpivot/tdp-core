@@ -2,7 +2,7 @@ import { PluginsResolver } from './PluginsResolver';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import { registryConfiguration, yarnResolver } from './Registry';
-import { FilePath, PathResolver, readContent } from './FileContent';
+import { FilePath, PathResolver, readContent } from './File';
 import { buildStructure } from './BundleStructure';
 
 export type PortalConfiguration = {

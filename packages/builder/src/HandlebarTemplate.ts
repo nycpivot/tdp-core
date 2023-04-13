@@ -1,5 +1,5 @@
 import { compile } from 'handlebars';
-import { RawContent, FileContent, FilePath, readContent } from './FileContent';
+import { RawContent, FileContent, FilePath, readContent } from './File';
 import { PluginsResolver } from './PluginsResolver';
 
 export class HandlebarGenerator {
