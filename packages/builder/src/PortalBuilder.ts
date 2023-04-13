@@ -1,10 +1,5 @@
 import { PortalConfiguration } from './PortalConfiguration';
-import {
-  FileContent,
-  FilePath,
-  PathResolver,
-  readContent,
-} from './FileContent';
+import { FileContent, FilePath, PathResolver } from './FileContent';
 import { registryConfiguration } from './Registry';
 import { HandlebarTemplate } from './Templates';
 
@@ -104,9 +99,9 @@ export class PortalBuilder {
     template: FilePath;
     output: FilePath;
   }) {
-    return new HandlebarTemplate(data.template, this._resolvePath).createFileContent(
-      data.output,
-      this._config.pluginsConfig.resolve(),
-    );
+    return new HandlebarTemplate(
+      data.template,
+      this._resolvePath,
+    ).createFileContent(data.output, this._config.pluginsConfig.resolve());
   }
 }

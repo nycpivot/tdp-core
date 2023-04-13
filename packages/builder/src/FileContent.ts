@@ -11,8 +11,10 @@ export type FileContent = {
   content: RawContent | (() => RawContent);
 };
 
-export const readContent = (filePath, resolvePath: (file: string) => string) =>
-  fs.readFileSync(resolvePath(filePath)).toString();
+export const readContent = (
+  file: FilePath,
+  resolvePath: (file: FilePath) => RawContent,
+) => fs.readFileSync(resolvePath(file)).toString();
 
 export const fileContentByCopy = (
   from: FilePath,

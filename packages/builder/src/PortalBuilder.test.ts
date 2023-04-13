@@ -16,7 +16,7 @@ describe('Portal builder', () => {
           plugins: [],
         },
       },
-      name => '1.0.0',
+      () => '1.0.0',
     ),
     assetsFolder: 'src/assets',
   };

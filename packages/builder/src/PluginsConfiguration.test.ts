@@ -1,5 +1,4 @@
-import { PluginsConfiguration } from './PluginsConfiguration';
-import * as path from 'path';
+import {PluginsConfiguration,} from './PluginsConfiguration';
 
 describe('TPB configuration', () => {
   it('resolves plugin versions', () => {
@@ -30,7 +29,7 @@ describe('TPB configuration', () => {
       },
     };
 
-    const versions = {
+    const versions: { [key: string]: string } = {
       appPlugin1: '1',
       appPlugin2: '2',
       backendPlugin1: '3',
@@ -38,7 +37,7 @@ describe('TPB configuration', () => {
       theme: '5',
     };
 
-    const tpbConfig = new PluginsConfiguration(config, name => versions[name]);
+    const tpbConfig = new PluginsConfiguration(config, (name) => versions[name]);
 
     const resolvedConfig = tpbConfig.resolve();
 
