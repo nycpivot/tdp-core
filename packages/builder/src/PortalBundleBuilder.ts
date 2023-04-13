@@ -82,28 +82,7 @@ export class PortalBundleBuilder {
   }
 
   private contentBundleFromTemplates(): ContentBundle {
-    const structure = flatten(this._config.structure);
-
-    const data = [
-      {
-        template: `src/assets/packages/app/src/index.ts.hbs`,
-        output: 'packages/app/src/index.ts',
-      },
-      {
-        template: `src/assets/packages/app/package.json.hbs`,
-        output: 'packages/app/package.json',
-      },
-      {
-        template: `src/assets/packages/backend/src/index.ts.hbs`,
-        output: 'packages/backend/src/index.ts',
-      },
-      {
-        template: `src/assets/packages/backend/package.json.hbs`,
-        output: 'packages/backend/package.json',
-      },
-    ];
-
-    return structure.map(d =>
+    return flatten(this._config.structure).map(d =>
       new HandlebarTemplate(d.template, this._resolvePath).createFileContent(
         d.file,
         this._config.pluginsResolver,
