@@ -24,7 +24,7 @@ export const mapEnvProperties = (
     appConfig: appConfig,
     outputFolder: outputFolder,
     pluginsConfig: new PluginsConfiguration(
-      parseYaml(readContent(configFile, resolvePath)),
+      parseYaml(readContent(resolvePath(configFile))),
       yarnResolver(outputFolder),
     ),
     registry: env.registry || 'remote',

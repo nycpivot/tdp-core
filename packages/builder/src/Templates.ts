@@ -30,6 +30,6 @@ export class HandlebarTemplate {
   }
 
   private generate(config: any) {
-    return compile(readContent(this._template, this._resolvePath))(config);
+    return compile(readContent(this._resolvePath(this._template)))(config);
   }
 }
