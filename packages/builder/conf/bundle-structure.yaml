@@ -1,10 +1,20 @@
 files:
+  - name: backstage.json
+    copy: ../../backstage.json
+  - name: tsconfig.json
+    copy: ../../tsconfig.json
+  - name: package.json
+    copy: ../../package.json
   - name: packages
     files:
       - name: app
         files:
           - name: package.json
             template: src/assets/packages/app/package.json.hbs
+          - name: .eslintrc.js
+            copy: ../app/.eslintrc.js
+          - name: public
+            copy: ../app/public
           - name: src
             files:
               - name: index.ts
@@ -13,6 +23,8 @@ files:
         files:
           - name: package.json
             template: src/assets/packages/backend/package.json.hbs
+          - name: .eslintrc.js
+            copy: ../backend/.eslintrc.js
           - name: src
             files:
               - name: index.ts

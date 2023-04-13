@@ -7,10 +7,15 @@ type FolderNode = {
 
 type TemplateNode = {
   name: string;
-  template: string;
+  template: FilePath;
 };
 
-type Node = FolderNode | TemplateNode;
+type CopyNode = {
+  name: string;
+  copy: FilePath;
+};
+
+type Node = FolderNode | TemplateNode | CopyNode;
 
 type BundleStructure = {
   files: Node[];
@@ -21,7 +26,12 @@ type Foo = {
   template: FilePath;
 };
 
-const flattenNode = (node: Node, ancestors: string[]): Foo[] => {
+type Bar = {
+  from: FilePath;
+  to: FilePath;
+};
+
+const flattenNodeTemplate = (node: Node, ancestors: string[]): Foo[] => {
   if ('template' in node) {
     return [
       {
@@ -29,11 +39,34 @@ const flattenNode = (node: Node, ancestors: string[]): Foo[] => {
         template: node.template,
       },
     ];
+  } else if ('copy' in node) {
+    return [];
   }
 
-  return node.files.flatMap(n => flattenNode(n, [...ancestors, n.name]));
+  return node.files.flatMap(n =>
+    flattenNodeTemplate(n, [...ancestors, n.name]),
+  );
 };
 
-export const flatten = (structure: BundleStructure): Foo[] => {
-  return flattenNode({ name: 'root', ...structure }, []);
+const flattenNodeCopy = (node: Node, ancestors: string[]): Bar[] => {
+  if ('copy' in node) {
+    return [
+      {
+        from: node.copy,
+        to: ancestors.join('/'),
+      },
+    ];
+  } else if ('template' in node) {
+    return [];
+  }
+
+  return node.files.flatMap(n => flattenNodeCopy(n, [...ancestors, n.name]));
+};
+
+export const flattenTemplates = (structure: BundleStructure): Foo[] => {
+  return flattenNodeTemplate({ name: 'root', ...structure }, []);
+};
+
+export const flattenCopies = (structure: BundleStructure): Bar[] => {
+  return flattenNodeCopy({ name: 'root', ...structure }, []);
 };

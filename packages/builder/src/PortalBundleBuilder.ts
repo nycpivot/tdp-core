@@ -7,7 +7,7 @@ import {
 } from './FileContent';
 import { registryConfiguration } from './Registry';
 import { HandlebarTemplate } from './HandlebarTemplate';
-import { flatten } from './BundleStructure';
+import { flattenCopies, flattenTemplates } from './BundleStructure';
 
 type CopyBundle = FileCopy[];
 type ContentBundle = FileContent[];
@@ -34,31 +34,9 @@ export class PortalBundleBuilder {
   }
 
   private copyBundle(): CopyBundle {
+    const copies = flattenCopies(this._config.structure);
     return [
-      {
-        from: '../app/.eslintrc.js',
-        to: 'packages/app/.eslintrc.js',
-      },
-      {
-        from: '../backend/.eslintrc.js',
-        to: 'packages/backend/.eslintrc.js',
-      },
-      {
-        from: '../app/public',
-        to: 'packages/app/public',
-      },
-      {
-        from: '../../package.json',
-        to: 'package.json',
-      },
-      {
-        from: '../../tsconfig.json',
-        to: 'tsconfig.json',
-      },
-      {
-        from: '../../backstage.json',
-        to: 'backstage.json',
-      },
+      ...copies,
       {
         from: this._config.appConfig,
         to: 'app-config.yaml',
@@ -82,7 +60,7 @@ export class PortalBundleBuilder {
   }
 
   private contentBundleFromTemplates(): ContentBundle {
-    return flatten(this._config.structure).map(d =>
+    return flattenTemplates(this._config.structure).map(d =>
       new HandlebarTemplate(d.template, this._resolvePath).createFileContent(
         d.file,
         this._config.pluginsResolver,

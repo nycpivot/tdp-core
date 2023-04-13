@@ -24,6 +24,10 @@ describe('Portal bundle builder', () => {
           name: 'package.json',
           template: 'src/assets/packages/app/package.json.hbs',
         },
+        {
+          name: 'eslint.rc',
+          copy: '../../eslint.rc',
+        },
       ],
     },
   };
