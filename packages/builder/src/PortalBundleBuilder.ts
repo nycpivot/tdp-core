@@ -7,6 +7,7 @@ import {
 } from './FileContent';
 import { registryConfiguration } from './Registry';
 import { HandlebarTemplate } from './HandlebarTemplate';
+import { flatten } from './BundleStructure';
 
 type CopyBundle = FileCopy[];
 type ContentBundle = FileContent[];
@@ -81,29 +82,30 @@ export class PortalBundleBuilder {
   }
 
   private contentBundleFromTemplates(): ContentBundle {
-    const assetsFolder = this._config.assetsFolder;
+    const structure = flatten(this._config.structure);
+
     const data = [
       {
-        template: `${assetsFolder}/packages/app/src/index.ts.hbs`,
+        template: `src/assets/packages/app/src/index.ts.hbs`,
         output: 'packages/app/src/index.ts',
       },
       {
-        template: `${assetsFolder}/packages/app/package.json.hbs`,
+        template: `src/assets/packages/app/package.json.hbs`,
         output: 'packages/app/package.json',
       },
       {
-        template: `${assetsFolder}/packages/backend/src/index.ts.hbs`,
+        template: `src/assets/packages/backend/src/index.ts.hbs`,
         output: 'packages/backend/src/index.ts',
       },
       {
-        template: `${assetsFolder}/packages/backend/package.json.hbs`,
+        template: `src/assets/packages/backend/package.json.hbs`,
         output: 'packages/backend/package.json',
       },
     ];
 
-    return data.map(d =>
+    return structure.map(d =>
       new HandlebarTemplate(d.template, this._resolvePath).createFileContent(
-        d.output,
+        d.file,
         this._config.pluginsResolver,
       ),
     );

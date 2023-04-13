@@ -1,0 +1,19 @@
+files:
+  - name: packages
+    files:
+      - name: app
+        files:
+          - name: package.json
+            template: src/assets/packages/app/package.json.hbs
+          - name: src
+            files:
+              - name: index.ts
+                template: src/assets/packages/app/src/index.ts.hbs
+      - name: backend
+        files:
+          - name: package.json
+            template: src/assets/packages/backend/package.json.hbs
+          - name: src
+            files:
+              - name: index.ts
+                template: src/assets/packages/backend/src/index.ts.hbs

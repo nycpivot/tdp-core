@@ -9,7 +9,7 @@ export type PortalConfiguration = {
   appConfig: FilePath;
   outputFolder: FilePath;
   pluginsResolver: PluginsResolver;
-  assetsFolder: FilePath;
+  structure: any;
 };
 
 export const mapEnvProperties = (
@@ -28,6 +28,8 @@ export const mapEnvProperties = (
       yarnResolver(outputFolder),
     ),
     registry: env.registry || 'remote',
-    assetsFolder: 'src/assets',
+    structure: parseYaml(
+      readContent(resolvePath('conf/bundle-structure.yaml')),
+    ),
   };
 };

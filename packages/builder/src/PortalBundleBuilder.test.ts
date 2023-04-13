@@ -18,7 +18,14 @@ describe('Portal bundle builder', () => {
       },
       () => '1.0.0',
     ),
-    assetsFolder: 'src/assets',
+    structure: {
+      files: [
+        {
+          name: 'package.json',
+          template: 'src/assets/packages/app/package.json.hbs',
+        },
+      ],
+    },
   };
 
   it('provides a list of files to be copied', () => {
