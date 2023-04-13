@@ -14,14 +14,21 @@ describe('Portal builder', () => {
 
   it('provides a list of files to be copied', () => {
     const builder = new PortalBuilder(config);
-    const portal = builder.build();
+    const portal = builder.build(file => file);
 
     expect(portal.filesToCopy.length).toBeGreaterThan(1);
   });
 
+  it('resolves the from path for the files to copy', () => {
+    const builder = new PortalBuilder(config);
+    const portal = builder.build(file => `resolved/${file}`);
+
+    expect(portal.filesToCopy[0].from).toContain('resolved/');
+  });
+
   it('provides a list of generated contents', () => {
     const builder = new PortalBuilder(config);
-    const portal = builder.build();
+    const portal = builder.build(file => file);
 
     expect(portal.generatedContents.length).toBeGreaterThan(1);
   });

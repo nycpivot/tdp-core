@@ -5,6 +5,8 @@ import {
 } from './FileContentGenerator';
 import { PortalConfiguration } from './PortalConfiguration';
 
+export type PathResolver = (file: string) => string;
+
 export type Portal = {
   filesToCopy: { from: string; to: string }[];
   generatedContents: FileContent[];
@@ -21,14 +23,14 @@ export class PortalBuilder {
     this._templateGenerators = new TemplatedFilesGenerator(config);
   }
 
-  build(): Portal {
+  build(resolvePath: PathResolver): Portal {
     return {
-      filesToCopy: this.filesToCopy,
+      filesToCopy: this.filesToCopy(resolvePath),
       generatedContents: this.generate(),
     };
   }
 
-  private get filesToCopy() {
+  private filesToCopy(resolvePath: PathResolver) {
     return [
       {
         from: '../app/.eslintrc.js',
@@ -58,7 +60,10 @@ export class PortalBuilder {
         from: this._config.appConfig,
         to: 'app-config.yaml',
       },
-    ];
+    ].map(item => ({
+      from: resolvePath(item.from),
+      to: item.to,
+    }));
   }
 
   private generate() {
