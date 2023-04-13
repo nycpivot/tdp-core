@@ -1,11 +1,5 @@
 import { compile } from 'handlebars';
-import {
-  RawContent,
-  FileContent,
-  FilePath,
-  PathResolver,
-  readContent,
-} from './FileContent';
+import { RawContent, FileContent, FilePath, readContent } from './FileContent';
 import { PluginsResolver } from './PluginsResolver';
 
 export class HandlebarGenerator {
@@ -16,11 +10,9 @@ export class HandlebarGenerator {
 
 export class HandlebarTemplate {
   private readonly _template: FilePath;
-  private readonly _resolvePath: PathResolver;
 
-  constructor(template: FilePath, resolvePath: PathResolver) {
+  constructor(template: FilePath) {
     this._template = template;
-    this._resolvePath = resolvePath;
   }
 
   createFileContent(
@@ -34,6 +26,6 @@ export class HandlebarTemplate {
   }
 
   private generate(config: any) {
-    return compile(readContent(this._resolvePath(this._template)))(config);
+    return compile(readContent(this._template))(config);
   }
 }

@@ -34,17 +34,13 @@ export class PortalBundleBuilder {
   }
 
   private copyBundle(): CopyBundle {
-    const copies = flattenCopies(this._config.structure);
     return [
-      ...copies,
+      ...flattenCopies(this._config.structure, this._resolvePath),
       {
         from: this._config.appConfig,
         to: 'app-config.yaml',
       },
-    ].map(item => ({
-      from: this._resolvePath(item.from),
-      to: item.to,
-    }));
+    ];
   }
 
   private contentBundle(): ContentBundle {
@@ -60,8 +56,8 @@ export class PortalBundleBuilder {
   }
 
   private contentBundleFromTemplates(): ContentBundle {
-    return flattenTemplates(this._config.structure).map(d =>
-      new HandlebarTemplate(d.template, this._resolvePath).createFileContent(
+    return flattenTemplates(this._config.structure, this._resolvePath).map(d =>
+      new HandlebarTemplate(d.template).createFileContent(
         d.file,
         this._config.pluginsResolver,
       ),

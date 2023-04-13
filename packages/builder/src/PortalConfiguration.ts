@@ -21,7 +21,7 @@ export const mapEnvProperties = (
   const appConfig = env.app_config || 'conf/app-config.yaml';
 
   return {
-    appConfig: appConfig,
+    appConfig: resolvePath(appConfig),
     outputFolder: outputFolder,
     pluginsResolver: new PluginsResolver(
       parseYaml(readContent(resolvePath(configFile))),

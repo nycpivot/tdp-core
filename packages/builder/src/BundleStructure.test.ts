@@ -24,7 +24,7 @@ describe('structure', () => {
       ],
     };
 
-    const flatStructure = flattenTemplates(structure);
+    const flatStructure = flattenTemplates(structure, file => file);
 
     expect(flatStructure).toContainEqual({
       file: 'foo.txt',
@@ -63,7 +63,7 @@ describe('structure', () => {
       ],
     };
 
-    const flatStructure = flattenCopies(structure);
+    const flatStructure = flattenCopies(structure, file => file);
 
     expect(flatStructure).toContainEqual({
       from: 'a/path/to/foo/file',

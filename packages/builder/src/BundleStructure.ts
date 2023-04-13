@@ -1,4 +1,5 @@
-import { FilePath } from './FileContent';
+import { FilePath, PathResolver, readContent } from './FileContent';
+import { parse as parseYaml } from 'yaml';
 
 type FolderNode = {
   name: string;
@@ -31,12 +32,16 @@ type Bar = {
   to: FilePath;
 };
 
-const flattenNodeTemplate = (node: Node, ancestors: string[]): Foo[] => {
+const flattenNodeTemplate = (
+  node: Node,
+  ancestors: string[],
+  resolvePath: PathResolver,
+): Foo[] => {
   if ('template' in node) {
     return [
       {
         file: ancestors.join('/'),
-        template: node.template,
+        template: resolvePath(node.template),
       },
     ];
   } else if ('copy' in node) {
@@ -44,15 +49,19 @@ const flattenNodeTemplate = (node: Node, ancestors: string[]): Foo[] => {
   }
 
   return node.files.flatMap(n =>
-    flattenNodeTemplate(n, [...ancestors, n.name]),
+    flattenNodeTemplate(n, [...ancestors, n.name], resolvePath),
   );
 };
 
-const flattenNodeCopy = (node: Node, ancestors: string[]): Bar[] => {
+const flattenNodeCopy = (
+  node: Node,
+  ancestors: string[],
+  resolvePath: PathResolver,
+): Bar[] => {
   if ('copy' in node) {
     return [
       {
-        from: node.copy,
+        from: resolvePath(node.copy),
         to: ancestors.join('/'),
       },
     ];
@@ -60,13 +69,21 @@ const flattenNodeCopy = (node: Node, ancestors: string[]): Bar[] => {
     return [];
   }
 
-  return node.files.flatMap(n => flattenNodeCopy(n, [...ancestors, n.name]));
+  return node.files.flatMap(n =>
+    flattenNodeCopy(n, [...ancestors, n.name], resolvePath),
+  );
 };
 
-export const flattenTemplates = (structure: BundleStructure): Foo[] => {
-  return flattenNodeTemplate({ name: 'root', ...structure }, []);
+export const flattenTemplates = (
+  structure: BundleStructure,
+  resolvePath: PathResolver,
+): Foo[] => {
+  return flattenNodeTemplate({ name: 'root', ...structure }, [], resolvePath);
 };
 
-export const flattenCopies = (structure: BundleStructure): Bar[] => {
-  return flattenNodeCopy({ name: 'root', ...structure }, []);
+export const flattenCopies = (
+  structure: BundleStructure,
+  resolvePath: PathResolver,
+): Bar[] => {
+  return flattenNodeCopy({ name: 'root', ...structure }, [], resolvePath);
 };
