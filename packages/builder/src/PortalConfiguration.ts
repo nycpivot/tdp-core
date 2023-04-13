@@ -31,7 +31,7 @@ export const mapEnvProperties = (
     ),
     registryConfiguration: resolvePath(registryConfiguration(registry)),
     structure: buildStructure(
-      resolvePath('conf/bundle-structure.yaml'),
+      parseYaml(readContent(resolvePath('conf/bundle-structure.yaml'))),
       resolvePath,
     ),
   };

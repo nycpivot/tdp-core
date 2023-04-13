@@ -1,4 +1,8 @@
-import { flattenCopies, flattenTemplates } from './BundleStructure';
+import {
+  buildStructure,
+  flattenCopies,
+  flattenTemplates,
+} from './BundleStructure';
 
 describe('structure', () => {
   it('flatten templates', () => {
@@ -24,7 +28,7 @@ describe('structure', () => {
       ],
     };
 
-    const flatStructure = flattenTemplates(structure, file => file);
+    const flatStructure = buildStructure(structure, file => file).templates;
 
     expect(flatStructure).toContainEqual({
       file: 'foo.txt',
@@ -63,7 +67,7 @@ describe('structure', () => {
       ],
     };
 
-    const flatStructure = flattenCopies(structure, file => file);
+    const flatStructure = buildStructure(structure, file => file).copies;
 
     expect(flatStructure).toContainEqual({
       from: 'a/path/to/foo/file',

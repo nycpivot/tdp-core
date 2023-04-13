@@ -1,11 +1,4 @@
-import {
-  FileCopy,
-  FilePath,
-  PathResolver,
-  readContent,
-  TemplatedFile,
-} from './File';
-import { parse as parseYaml } from 'yaml';
+import { FileCopy, FilePath, PathResolver, TemplatedFile } from './File';
 
 type FolderNode = {
   name: string;
@@ -90,12 +83,11 @@ type BundleStructure = {
 };
 
 export const buildStructure = (
-  config: FilePath,
+  config: BundleStructureConfiguration,
   resolvePath: PathResolver,
 ): BundleStructure => {
-  const yaml = parseYaml(readContent(config));
   return {
-    templates: flattenTemplates(yaml, resolvePath),
-    copies: flattenCopies(yaml, resolvePath),
+    templates: flattenTemplates(config, resolvePath),
+    copies: flattenCopies(config, resolvePath),
   };
 };
