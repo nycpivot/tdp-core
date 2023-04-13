@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { HandlebarGenerator } from './FileContentGenerator';
+import { HandlebarGenerator } from './Templates';
 
 function readFileContent(filePath: string) {
   return fs.readFileSync(path.resolve(__dirname, filePath)).toString();
