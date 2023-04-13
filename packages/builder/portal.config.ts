@@ -25,7 +25,7 @@ export default env => {
     output: {
       path: path.resolve(__dirname, config.outputFolder),
     },
-    mode: config.mode,
+    mode: 'development',
     plugins: [
       new CopyPlugin({
         patterns: portal.filesToCopy,

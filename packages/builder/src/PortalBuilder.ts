@@ -62,10 +62,7 @@ export class PortalBuilder {
 
   private generate(resolvePath: PathResolver) {
     return [
-      registryConfiguration(
-        this._config.mode === 'production' ? 'verdaccio' : 'remote',
-        resolvePath,
-      ),
+      registryConfiguration(this._config.registry, resolvePath),
       ...this._templateGenerators.generate,
     ];
   }

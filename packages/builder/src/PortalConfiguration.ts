@@ -2,10 +2,10 @@ import { PluginsConfiguration } from './PluginsConfiguration';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import * as fs from 'fs';
-import { yarnResolver } from './Registry';
+import { Registry, yarnResolver } from './Registry';
 
 export type PortalConfiguration = {
-  mode: 'production' | 'development';
+  registry: Registry;
   appConfig: string;
   outputFolder: string;
   pluginsConfig: PluginsConfiguration;
@@ -28,6 +28,6 @@ export const mapEnvProperties = (
       yarnResolver(yarnrcFolder),
     ),
     readFileContent: env.readFileContent,
-    mode: env.production ? 'production' : 'development',
+    registry: env.registry || 'remote',
   };
 };

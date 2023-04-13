@@ -4,7 +4,7 @@ import { PortalConfiguration } from './PortalConfiguration';
 describe('Portal builder', () => {
   const config: PortalConfiguration = {
     appConfig: 'app-config.yaml',
-    mode: 'production',
+    registry: 'remote',
     outputFolder: 'output',
     pluginsConfig: undefined,
     readFileContent(file: string): string {
