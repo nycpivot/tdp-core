@@ -1,3 +1,16 @@
+#
+# This file configures the output structure of the portal.
+#
+# There are three kinds of nodes:
+#
+# - folder node that only have the name and files properties, name representing the name the folder will have
+# - template node that configures files that will be generated with handlebars.
+#   The name is the name of the file that will be generated and the template property is the path to the handlebar template.
+# - copy node that configures files that must be copied from some location to some output location.
+#   The name is the name of the file (or folder) that will be generated and copy is the path to the file (or folder)
+#   that must be copied from.
+#
+# Note that the paths for template & copy properties are relative to the root of this package.
 files:
   - name: backstage.json
     copy: ../../backstage.json
