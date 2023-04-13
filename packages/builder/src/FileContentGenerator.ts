@@ -55,7 +55,7 @@ export class TemplatedFilesGenerator {
       },
       {
         template: `${assetsFolder}/packages/app/package.json.hbs`,
-        output: 'packages/app/src/index.ts',
+        output: 'packages/app/package.json',
       },
       {
         template: `${assetsFolder}/packages/backend/src/index.ts.hbs`,
@@ -67,7 +67,9 @@ export class TemplatedFilesGenerator {
       },
     ];
 
-    return data.map(d => this.generateFileContent(d.template, d.output));
+    return data.map(d =>
+      this.generateFileContent(this._readFileContent(d.template), d.output),
+    );
   }
 
   private generateFileContent(template, output): FileContent {
