@@ -1,14 +1,14 @@
 import {PortalConfiguration} from './PortalConfiguration';
-import {FileContent, PathResolver, readContent} from './FileContent';
+import {FileContent, FileCopy, PathResolver, readContent} from './FileContent';
 import {registryConfiguration} from './Registry';
 import {HandlebarTemplate} from './HandlebarTemplate';
 
-export type Portal = {
-  filesToCopy: { from: string; to: string }[];
+export type PortalBundle = {
+  filesToCopy: FileCopy[];
   fileContents: FileContent[];
 };
 
-export class PortalBuilder {
+export class PortalBundleBuilder {
   private readonly _config: PortalConfiguration;
   private readonly _resolvePath: PathResolver;
 
@@ -17,24 +17,14 @@ export class PortalBuilder {
     this._resolvePath = resolvePath;
   }
 
-  build(): Portal {
+  build(): PortalBundle {
     return {
       filesToCopy: this.filesToCopy(),
       fileContents: this.fileContents(),
     };
   }
 
-  private fileContents() {
-    return [
-      {
-        file: '.yarnrc',
-        content: readContent(this._resolvePath(registryConfiguration(this._config.registry))),
-      },
-      ...this.fileContentsFromTemplates(),
-    ];
-  }
-
-  private filesToCopy() {
+  private filesToCopy(): FileCopy[] {
     return [
       {
         from: '../app/.eslintrc.js',
@@ -68,6 +58,16 @@ export class PortalBuilder {
       from: this._resolvePath(item.from),
       to: item.to,
     }));
+  }
+
+  private fileContents(): FileContent[] {
+    return [
+      {
+        file: '.yarnrc',
+        content: readContent(this._resolvePath(registryConfiguration(this._config.registry))),
+      },
+      ...this.fileContentsFromTemplates(),
+    ];
   }
 
   fileContentsFromTemplates(): FileContent[] {
