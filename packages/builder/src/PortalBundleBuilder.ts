@@ -1,13 +1,6 @@
 import { PortalConfiguration } from './PortalConfiguration';
-import {
-  FileContent,
-  FileCopy,
-  PathResolver,
-  readContent,
-} from './FileContent';
-import { registryConfiguration } from './Registry';
+import { FileContent, FileCopy, readContent } from './FileContent';
 import { HandlebarTemplate } from './HandlebarTemplate';
-import { flattenCopies, flattenTemplates } from './BundleStructure';
 
 type CopyBundle = FileCopy[];
 type ContentBundle = FileContent[];
@@ -19,11 +12,9 @@ export type PortalBundle = {
 
 export class PortalBundleBuilder {
   private readonly _config: PortalConfiguration;
-  private readonly _resolvePath: PathResolver;
 
-  constructor(config: PortalConfiguration, resolvePath: PathResolver) {
+  constructor(config: PortalConfiguration) {
     this._config = config;
-    this._resolvePath = resolvePath;
   }
 
   build(): PortalBundle {
@@ -35,7 +26,7 @@ export class PortalBundleBuilder {
 
   private copyBundle(): CopyBundle {
     return [
-      ...flattenCopies(this._config.structure, this._resolvePath),
+      ...this._config.structure.copies,
       {
         from: this._config.appConfig,
         to: 'app-config.yaml',
@@ -47,16 +38,14 @@ export class PortalBundleBuilder {
     return [
       {
         file: '.yarnrc',
-        content: readContent(
-          this._resolvePath(registryConfiguration(this._config.registry)),
-        ),
+        content: readContent(this._config.registryConfiguration),
       },
       ...this.contentBundleFromTemplates(),
     ];
   }
 
   private contentBundleFromTemplates(): ContentBundle {
-    return flattenTemplates(this._config.structure, this._resolvePath).map(d =>
+    return this._config.structure.templates.map(d =>
       new HandlebarTemplate(d.template).createFileContent(
         d.file,
         this._config.pluginsResolver,

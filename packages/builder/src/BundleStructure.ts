@@ -87,3 +87,11 @@ export const flattenCopies = (
 ): Bar[] => {
   return flattenNodeCopy({ name: 'root', ...structure }, [], resolvePath);
 };
+
+export const buildStructure = (config: FilePath, resolvePath: PathResolver) => {
+  const yaml = parseYaml(readContent(config));
+  return {
+    templates: flattenTemplates(yaml, resolvePath),
+    copies: flattenCopies(yaml, resolvePath),
+  };
+};

@@ -5,7 +5,7 @@ import { PluginsResolver } from './PluginsResolver';
 describe('Portal bundle builder', () => {
   const config: PortalConfiguration = {
     appConfig: 'app-config.yaml',
-    registry: 'remote',
+    registryConfiguration: 'src/assets/.yarnrc',
     outputFolder: 'output',
     pluginsResolver: new PluginsResolver(
       {
@@ -19,28 +19,25 @@ describe('Portal bundle builder', () => {
       () => '1.0.0',
     ),
     structure: {
-      files: [
+      templates: [
         {
-          name: 'package.json',
+          file: 'package.json',
           template: 'src/assets/packages/app/package.json.hbs',
         },
-        {
-          name: 'eslint.rc',
-          copy: '../../eslint.rc',
-        },
       ],
+      copies: [{ from: 'eslint.rc', to: '../../eslint.rc' }],
     },
   };
 
   it('provides a list of files to be copied', () => {
-    const builder = new PortalBundleBuilder(config, file => file);
+    const builder = new PortalBundleBuilder(config);
     const bundle = builder.build();
 
     expect(bundle.copyBundle.length).toBeGreaterThan(1);
   });
 
   it('provides a list of generated contents', () => {
-    const builder = new PortalBundleBuilder(config, file => file);
+    const builder = new PortalBundleBuilder(config);
     const bundle = builder.build();
 
     expect(bundle.contentBundle.length).toBeGreaterThan(1);

@@ -1,11 +1,12 @@
 import { PluginsResolver } from './PluginsResolver';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
-import { Registry, yarnResolver } from './Registry';
+import { registryConfiguration, yarnResolver } from './Registry';
 import { FilePath, PathResolver, readContent } from './FileContent';
+import { buildStructure } from './BundleStructure';
 
 export type PortalConfiguration = {
-  registry: Registry;
+  registryConfiguration: FilePath;
   appConfig: FilePath;
   outputFolder: FilePath;
   pluginsResolver: PluginsResolver;
@@ -19,6 +20,7 @@ export const mapEnvProperties = (
   const configFile = env.tpb_config || 'conf/tpb-config.yaml';
   const outputFolder = env.output_folder || 'portal';
   const appConfig = env.app_config || 'conf/app-config.yaml';
+  const registry = env.registry || 'remote';
 
   return {
     appConfig: resolvePath(appConfig),
@@ -27,9 +29,10 @@ export const mapEnvProperties = (
       parseYaml(readContent(resolvePath(configFile))),
       yarnResolver(outputFolder),
     ),
-    registry: env.registry || 'remote',
-    structure: parseYaml(
-      readContent(resolvePath('conf/bundle-structure.yaml')),
+    registryConfiguration: resolvePath(registryConfiguration(registry)),
+    structure: buildStructure(
+      resolvePath('conf/bundle-structure.yaml'),
+      resolvePath,
     ),
   };
 };

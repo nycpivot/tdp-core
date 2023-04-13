@@ -10,7 +10,7 @@ const resolvePath: PathResolver = file => path.resolve(__dirname, file);
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
-  const builder = new PortalBundleBuilder(config, resolvePath);
+  const builder = new PortalBundleBuilder(config);
   const bundle = builder.build();
 
   return {

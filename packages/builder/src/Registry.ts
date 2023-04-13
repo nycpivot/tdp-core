@@ -1,8 +1,9 @@
 import { execSync } from 'child_process';
+import { FilePath } from './FileContent';
 
 export type Registry = 'verdaccio' | 'remote';
 
-export const registryConfiguration = (registry: Registry) => {
+export const registryConfiguration = (registry: Registry): FilePath => {
   if (registry === 'verdaccio') {
     return `src/assets/.yarnrc`;
   } else if (registry === 'remote') {
