@@ -11,15 +11,15 @@ describe('Portal builder', () => {
   };
 
   it('provides a list of files to be copied', () => {
-    const builder = new PortalBuilder(config);
-    const portal = builder.build(file => file);
+    const builder = new PortalBuilder(config, file => file);
+    const portal = builder.build();
 
     expect(portal.filesToCopy.length).toBeGreaterThan(1);
   });
 
   it('provides a list of generated contents', () => {
-    const builder = new PortalBuilder(config);
-    const portal = builder.build(file => file);
+    const builder = new PortalBuilder(config, file => file);
+    const portal = builder.build();
 
     expect(portal.fileContents.length).toBeGreaterThan(1);
   });

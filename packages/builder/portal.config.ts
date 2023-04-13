@@ -10,8 +10,8 @@ const resolvePath: PathResolver = file => path.resolve(__dirname, file);
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
-  const builder = new PortalBuilder(config);
-  const portal = builder.build(resolvePath);
+  const builder = new PortalBuilder(config, resolvePath);
+  const portal = builder.build();
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),

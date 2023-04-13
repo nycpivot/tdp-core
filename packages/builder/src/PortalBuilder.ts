@@ -10,30 +10,32 @@ export type Portal = {
 
 export class PortalBuilder {
   private readonly _config: PortalConfiguration;
+  private readonly _resolvePath: PathResolver;
 
-  constructor(config: PortalConfiguration) {
+  constructor(config: PortalConfiguration, resolvePath: PathResolver) {
     this._config = config;
+    this._resolvePath = resolvePath;
   }
 
-  build(resolvePath: PathResolver): Portal {
+  build(): Portal {
     return {
-      filesToCopy: this.filesToCopy(resolvePath),
-      fileContents: this.generate(resolvePath),
+      filesToCopy: this.filesToCopy(),
+      fileContents: this.fileContents(),
     };
   }
 
-  private generate(resolvePath: PathResolver) {
+  private fileContents() {
     return [
       registryConfiguration(
         this._config.registry,
         this._config.assetsFolder,
-        resolvePath,
+        this._resolvePath,
       ),
-      ...this.generateFromTemplates(resolvePath),
+      ...this.fileContentsFromTemplates(),
     ];
   }
 
-  private filesToCopy(resolvePath: PathResolver) {
+  private filesToCopy() {
     return [
       {
         from: '../app/.eslintrc.js',
@@ -64,12 +66,12 @@ export class PortalBuilder {
         to: 'app-config.yaml',
       },
     ].map(item => ({
-      from: resolvePath(item.from),
+      from: this._resolvePath(item.from),
       to: item.to,
     }));
   }
 
-  generateFromTemplates(resolvePath: PathResolver): FileContent[] {
+  fileContentsFromTemplates(): FileContent[] {
     const assetsFolder = this._config.assetsFolder;
     const data = [
       {
@@ -91,7 +93,7 @@ export class PortalBuilder {
     ];
 
     return data.map(d =>
-      this.generateFileContent(readContent(d.template, resolvePath), d.output),
+      this.generateFileContent(readContent(d.template, this._resolvePath), d.output),
     );
   }
 
