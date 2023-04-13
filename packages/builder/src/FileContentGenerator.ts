@@ -1,5 +1,4 @@
 import { PluginsConfiguration } from './PluginsConfiguration';
-import { PortalConfiguration } from './PortalConfiguration';
 import { compile } from 'handlebars';
 import { FileContent, PathResolver, readContent } from './FileContent';
 
@@ -14,8 +13,8 @@ export class HandlebarGenerator {
 export class TemplatedFilesGenerator {
   private readonly _pluginsConfig: PluginsConfiguration;
 
-  constructor(config: PortalConfiguration) {
-    this._pluginsConfig = config.pluginsConfig;
+  constructor(pluginsConfig: PluginsConfiguration) {
+    this._pluginsConfig = pluginsConfig;
   }
 
   generate(resolvePath: PathResolver): FileContent[] {

@@ -14,7 +14,7 @@ export class PortalBuilder {
 
   constructor(config: PortalConfiguration) {
     this._config = config;
-    this._templateGenerators = new TemplatedFilesGenerator(config);
+    this._templateGenerators = new TemplatedFilesGenerator(config.pluginsConfig);
   }
 
   build(resolvePath: PathResolver): Portal {
