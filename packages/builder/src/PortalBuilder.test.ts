@@ -7,6 +7,7 @@ describe('Portal builder', () => {
     registry: 'remote',
     outputFolder: 'output',
     pluginsConfig: undefined,
+    assetsFolder: 'src/assets',
   };
 
   it('provides a list of files to be copied', () => {

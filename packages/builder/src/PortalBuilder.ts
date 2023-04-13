@@ -1,7 +1,6 @@
 import { PortalConfiguration } from './PortalConfiguration';
 import { FileContent, PathResolver, readContent } from './FileContent';
 import { registryConfiguration } from './Registry';
-import { PluginsConfiguration } from './PluginsConfiguration';
 import { HandlebarGenerator } from './Templates';
 
 export type Portal = {
@@ -10,12 +9,10 @@ export type Portal = {
 };
 
 export class PortalBuilder {
-  private _config: PortalConfiguration;
-  private readonly _pluginsConfig: PluginsConfiguration;
+  private readonly _config: PortalConfiguration;
 
   constructor(config: PortalConfiguration) {
     this._config = config;
-    this._pluginsConfig = config.pluginsConfig;
   }
 
   build(resolvePath: PathResolver): Portal {
@@ -25,38 +22,15 @@ export class PortalBuilder {
     };
   }
 
-  generateFromTemplates(resolvePath: PathResolver): FileContent[] {
-    const assetsFolder = 'src/assets';
-    const data = [
-      {
-        template: `${assetsFolder}/packages/app/src/index.ts.hbs`,
-        output: 'packages/app/src/index.ts',
-      },
-      {
-        template: `${assetsFolder}/packages/app/package.json.hbs`,
-        output: 'packages/app/package.json',
-      },
-      {
-        template: `${assetsFolder}/packages/backend/src/index.ts.hbs`,
-        output: 'packages/backend/src/index.ts',
-      },
-      {
-        template: `${assetsFolder}/packages/backend/package.json.hbs`,
-        output: 'packages/backend/package.json',
-      },
+  private generate(resolvePath: PathResolver) {
+    return [
+      registryConfiguration(
+        this._config.registry,
+        this._config.assetsFolder,
+        resolvePath,
+      ),
+      ...this.generateFromTemplates(resolvePath),
     ];
-
-    return data.map(d =>
-      this.generateFileContent(readContent(d.template, resolvePath), d.output),
-    );
-  }
-
-  private generateFileContent(template, output): FileContent {
-    return {
-      file: output,
-      content: () =>
-        HandlebarGenerator.generate(template, this._pluginsConfig.resolve()),
-    };
   }
 
   private filesToCopy(resolvePath: PathResolver) {
@@ -95,10 +69,40 @@ export class PortalBuilder {
     }));
   }
 
-  private generate(resolvePath: PathResolver) {
-    return [
-      registryConfiguration(this._config.registry, resolvePath),
-      ...this.generateFromTemplates(resolvePath),
+  generateFromTemplates(resolvePath: PathResolver): FileContent[] {
+    const assetsFolder = this._config.assetsFolder;
+    const data = [
+      {
+        template: `${assetsFolder}/packages/app/src/index.ts.hbs`,
+        output: 'packages/app/src/index.ts',
+      },
+      {
+        template: `${assetsFolder}/packages/app/package.json.hbs`,
+        output: 'packages/app/package.json',
+      },
+      {
+        template: `${assetsFolder}/packages/backend/src/index.ts.hbs`,
+        output: 'packages/backend/src/index.ts',
+      },
+      {
+        template: `${assetsFolder}/packages/backend/package.json.hbs`,
+        output: 'packages/backend/package.json',
+      },
     ];
+
+    return data.map(d =>
+      this.generateFileContent(readContent(d.template, resolvePath), d.output),
+    );
+  }
+
+  private generateFileContent(template, output): FileContent {
+    return {
+      file: output,
+      content: () =>
+        HandlebarGenerator.generate(
+          template,
+          this._config.pluginsConfig.resolve(),
+        ),
+    };
   }
 }

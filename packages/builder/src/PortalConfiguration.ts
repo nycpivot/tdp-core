@@ -9,6 +9,7 @@ export type PortalConfiguration = {
   appConfig: string;
   outputFolder: string;
   pluginsConfig: PluginsConfiguration;
+  assetsFolder: string;
 };
 
 export const mapEnvProperties = (
@@ -27,5 +28,6 @@ export const mapEnvProperties = (
       yarnResolver(outputFolder),
     ),
     registry: env.registry || 'remote',
+    assetsFolder: 'src/assets',
   };
 };

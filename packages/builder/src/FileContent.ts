@@ -10,11 +10,11 @@ export type FileContent = {
 export const readContent = (filePath, resolvePath: (file: string) => string) =>
   fs.readFileSync(resolvePath(filePath)).toString();
 
-export const readFileContent = (
-  filePath,
-  output,
+export const fileContentByCopy = (
+  from,
+  to,
   resolvePath: PathResolver,
 ): FileContent => ({
-  file: output,
-  content: readContent(filePath, resolvePath),
+  file: to,
+  content: readContent(from, resolvePath),
 });
