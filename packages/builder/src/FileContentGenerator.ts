@@ -1,7 +1,7 @@
 import { PluginsConfiguration } from './PluginsConfiguration';
 import { PortalConfiguration } from './PortalConfiguration';
 import { compile } from 'handlebars';
-import { FileContent } from './FileContent';
+import { FileContent, PathResolver, readContent } from './FileContent';
 
 const assetsFolder = 'src/assets';
 
@@ -13,14 +13,12 @@ export class HandlebarGenerator {
 
 export class TemplatedFilesGenerator {
   private readonly _pluginsConfig: PluginsConfiguration;
-  private readonly _readFileContent: (file: string) => string;
 
   constructor(config: PortalConfiguration) {
     this._pluginsConfig = config.pluginsConfig;
-    this._readFileContent = config.readFileContent;
   }
 
-  get generate(): FileContent[] {
+  generate(resolvePath: PathResolver): FileContent[] {
     const data = [
       {
         template: `${assetsFolder}/packages/app/src/index.ts.hbs`,
@@ -41,7 +39,7 @@ export class TemplatedFilesGenerator {
     ];
 
     return data.map(d =>
-      this.generateFileContent(this._readFileContent(d.template), d.output),
+      this.generateFileContent(readContent(d.template, resolvePath), d.output),
     );
   }
 

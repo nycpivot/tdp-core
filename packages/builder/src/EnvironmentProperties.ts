@@ -6,6 +6,5 @@ export type EnvironmentProperties = {
   tpb_config: string | undefined;
   yarnrc_folder: string | undefined;
   registry: Registry | undefined;
-  pathResolver: (file: string) => string;
-  readFileContent: (file: string) => string;
+  production: string | undefined;
 };

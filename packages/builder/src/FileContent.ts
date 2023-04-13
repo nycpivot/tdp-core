@@ -7,11 +7,14 @@ export type FileContent = {
   content: string | (() => string);
 };
 
+export const readContent = (filePath, resolvePath: (file: string) => string) =>
+  fs.readFileSync(resolvePath(filePath)).toString();
+
 export const readFileContent = (
   filePath,
   output,
   resolvePath: PathResolver,
 ): FileContent => ({
   file: output,
-  content: fs.readFileSync(resolvePath(filePath)).toString(),
+  content: readContent(filePath, resolvePath),
 });

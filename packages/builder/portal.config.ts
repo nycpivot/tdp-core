@@ -1,23 +1,15 @@
 import * as path from 'path';
-import * as fs from 'fs';
 import * as CopyPlugin from 'copy-webpack-plugin';
 import * as createFileWithContent from 'generate-file-webpack-plugin';
 import { PortalBuilder } from './src/PortalBuilder';
 import { mapEnvProperties } from './src/PortalConfiguration';
 import { PathResolver } from './src/FileContent';
-import {EnvironmentProperties} from "./src/EnvironmentProperties";
+import { EnvironmentProperties } from './src/EnvironmentProperties';
 
 const resolvePath: PathResolver = file => path.resolve(__dirname, file);
 
-const readFileContent = file => fs.readFileSync(resolvePath(file)).toString();
-
-export default env => {
-  const props: EnvironmentProperties = {
-    ...env,
-    pathResolver: resolvePath,
-    readFileContent: readFileContent,
-  };
-  const config = mapEnvProperties(props);
+export default (env: EnvironmentProperties) => {
+  const config = mapEnvProperties(env, resolvePath);
   const builder = new PortalBuilder(config);
   const portal = builder.build(resolvePath);
 

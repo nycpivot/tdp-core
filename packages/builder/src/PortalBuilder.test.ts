@@ -7,9 +7,6 @@ describe('Portal builder', () => {
     registry: 'remote',
     outputFolder: 'output',
     pluginsConfig: undefined,
-    readFileContent(file: string): string {
-      return '';
-    },
   };
 
   it('provides a list of files to be copied', () => {

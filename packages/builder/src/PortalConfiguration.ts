@@ -1,33 +1,31 @@
 import { PluginsConfiguration } from './PluginsConfiguration';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
-import * as fs from 'fs';
 import { Registry, yarnResolver } from './Registry';
+import { PathResolver, readContent } from './FileContent';
 
 export type PortalConfiguration = {
   registry: Registry;
   appConfig: string;
   outputFolder: string;
   pluginsConfig: PluginsConfiguration;
-  readFileContent: (file: string) => string;
 };
 
 export const mapEnvProperties = (
   env: EnvironmentProperties,
+  resolvePath: PathResolver,
 ): PortalConfiguration => {
-  const configFile = env.tpb_config || env.pathResolver('conf/tpb-config.yaml');
+  const configFile = env.tpb_config || 'conf/tpb-config.yaml';
   const outputFolder = env.output_folder || 'portal';
-  const yarnrcFolder = env.yarnrc_folder || outputFolder;
   const appConfig = env.app_config || 'conf/app-config.yaml';
 
   return {
     appConfig: appConfig,
     outputFolder: outputFolder,
     pluginsConfig: new PluginsConfiguration(
-      parseYaml(fs.readFileSync(configFile).toString('utf-8')),
-      yarnResolver(yarnrcFolder),
+      parseYaml(readContent(configFile, resolvePath)),
+      yarnResolver(outputFolder),
     ),
-    readFileContent: env.readFileContent,
     registry: env.registry || 'remote',
   };
 };

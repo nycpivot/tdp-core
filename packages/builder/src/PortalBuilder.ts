@@ -63,7 +63,7 @@ export class PortalBuilder {
   private generate(resolvePath: PathResolver) {
     return [
       registryConfiguration(this._config.registry, resolvePath),
-      ...this._templateGenerators.generate,
+      ...this._templateGenerators.generate(resolvePath),
     ];
   }
 }
