@@ -5,13 +5,14 @@ import * as createFileWithContent from 'generate-file-webpack-plugin';
 import { PortalBuilder } from './src/PortalBuilder';
 import { mapEnvProperties } from './src/PortalConfiguration';
 import { PathResolver } from './src/FileContent';
+import {EnvironmentProperties} from "./src/EnvironmentProperties";
 
 const resolvePath: PathResolver = file => path.resolve(__dirname, file);
 
 const readFileContent = file => fs.readFileSync(resolvePath(file)).toString();
 
 export default env => {
-  const props = {
+  const props: EnvironmentProperties = {
     ...env,
     pathResolver: resolvePath,
     readFileContent: readFileContent,
@@ -25,7 +26,7 @@ export default env => {
     output: {
       path: path.resolve(__dirname, config.outputFolder),
     },
-    mode: 'development',
+    mode: env.production ? 'production' : 'development',
     plugins: [
       new CopyPlugin({
         patterns: portal.filesToCopy,
