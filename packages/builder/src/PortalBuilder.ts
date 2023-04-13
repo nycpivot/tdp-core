@@ -1,11 +1,7 @@
-import {
-  FileContent,
-  TemplatedFilesGenerator,
-  YarnrcFileGenerator,
-} from './FileContentGenerator';
+import { TemplatedFilesGenerator } from './FileContentGenerator';
 import { PortalConfiguration } from './PortalConfiguration';
-
-export type PathResolver = (file: string) => string;
+import { FileContent, PathResolver } from './FileContent';
+import { registryConfiguration } from './Registry';
 
 export type Portal = {
   filesToCopy: { from: string; to: string }[];
@@ -14,19 +10,17 @@ export type Portal = {
 
 export class PortalBuilder {
   private _config: PortalConfiguration;
-  private _yarnrcGenerator: YarnrcFileGenerator;
   private _templateGenerators: TemplatedFilesGenerator;
 
   constructor(config: PortalConfiguration) {
     this._config = config;
-    this._yarnrcGenerator = new YarnrcFileGenerator(config);
     this._templateGenerators = new TemplatedFilesGenerator(config);
   }
 
   build(resolvePath: PathResolver): Portal {
     return {
       filesToCopy: this.filesToCopy(resolvePath),
-      generatedContents: this.generate(),
+      generatedContents: this.generate(resolvePath),
     };
   }
 
@@ -66,9 +60,12 @@ export class PortalBuilder {
     }));
   }
 
-  private generate() {
+  private generate(resolvePath: PathResolver) {
     return [
-      this._yarnrcGenerator.generate,
+      registryConfiguration(
+        this._config.mode === 'production' ? 'verdaccio' : 'remote',
+        resolvePath,
+      ),
       ...this._templateGenerators.generate,
     ];
   }

@@ -1,36 +1,9 @@
 import { PluginsConfiguration } from './PluginsConfiguration';
 import { PortalConfiguration } from './PortalConfiguration';
 import { compile } from 'handlebars';
+import { FileContent } from './FileContent';
 
 const assetsFolder = 'src/assets';
-
-export type FileContent = {
-  file: string;
-  content: string | (() => string);
-};
-
-export class YarnrcFileGenerator {
-  private readonly _isProduction: boolean;
-  private readonly _readFileContent: (file: string) => string;
-
-  constructor(config: PortalConfiguration) {
-    this._isProduction = config.mode === 'production';
-    this._readFileContent = config.readFileContent;
-  }
-
-  get generate(): FileContent {
-    return this._isProduction
-      ? this.contentGenerator(`${assetsFolder}/.yarnrc`, '.yarnrc')
-      : this.contentGenerator('../../.yarnrc', '.yarnrc');
-  }
-
-  private contentGenerator(filePath, output): FileContent {
-    return {
-      file: output,
-      content: this._readFileContent(filePath),
-    };
-  }
-}
 
 export class HandlebarGenerator {
   static generate(templateString: string, config: any) {

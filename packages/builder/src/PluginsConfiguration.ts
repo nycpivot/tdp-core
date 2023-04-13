@@ -1,4 +1,4 @@
-import { VersionResolver } from './version_resolver';
+import { VersionResolver } from './Registry';
 
 type UnresolvedTpbConfiguration = {
   app: {

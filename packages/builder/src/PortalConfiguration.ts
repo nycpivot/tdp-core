@@ -2,7 +2,7 @@ import { PluginsConfiguration } from './PluginsConfiguration';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import * as fs from 'fs';
-import { yarnResolver } from './version_resolver';
+import { yarnResolver } from './Registry';
 
 export type PortalConfiguration = {
   mode: 'production' | 'development';
