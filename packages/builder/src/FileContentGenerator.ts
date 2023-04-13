@@ -1,6 +1,6 @@
-import * as fs from 'fs';
 import { PluginsConfiguration } from './PluginsConfiguration';
 import { PortalConfiguration } from './PortalConfiguration';
+import { compile } from 'handlebars';
 
 const assetsFolder = 'src/assets';
 
@@ -32,6 +32,12 @@ export class YarnrcFileGenerator {
   }
 }
 
+export class HandlebarGenerator {
+  static generate(templateString: string, config: any) {
+    return compile(templateString)(config);
+  }
+}
+
 export class TemplatedFilesGenerator {
   private readonly _pluginsConfig: PluginsConfiguration;
   private readonly _readFileContent: (file: string) => string;
@@ -42,31 +48,33 @@ export class TemplatedFilesGenerator {
   }
 
   get generate(): FileContent[] {
-    return [
-      this.templateGenerator(
-        `${assetsFolder}/packages/app/src/index.ts.hbs`,
-        'packages/app/src/index.ts',
-      ),
-      this.templateGenerator(
-        `${assetsFolder}/packages/app/package.json.hbs`,
-        'packages/app/package.json',
-      ),
-      this.templateGenerator(
-        `${assetsFolder}/packages/backend/src/index.ts.hbs`,
-        'packages/backend/src/index.ts',
-      ),
-      this.templateGenerator(
-        `${assetsFolder}/packages/backend/package.json.hbs`,
-        'packages/backend/package.json',
-      ),
+    const data = [
+      {
+        template: `${assetsFolder}/packages/app/src/index.ts.hbs`,
+        output: 'packages/app/src/index.ts',
+      },
+      {
+        template: `${assetsFolder}/packages/app/package.json.hbs`,
+        output: 'packages/app/src/index.ts',
+      },
+      {
+        template: `${assetsFolder}/packages/backend/src/index.ts.hbs`,
+        output: 'packages/backend/src/index.ts',
+      },
+      {
+        template: `${assetsFolder}/packages/backend/package.json.hbs`,
+        output: 'packages/backend/package.json',
+      },
     ];
+
+    return data.map(d => this.generateFileContent(d.template, d.output));
   }
 
-  private templateGenerator(template, output): FileContent {
+  private generateFileContent(template, output): FileContent {
     return {
       file: output,
       content: () =>
-        this._pluginsConfig.generate(this._readFileContent(template)),
+        HandlebarGenerator.generate(template, this._pluginsConfig.resolve()),
     };
   }
 }

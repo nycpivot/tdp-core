@@ -1,7 +1,4 @@
 import { VersionResolver } from './version_resolver';
-import { compile } from 'handlebars';
-import * as fs from 'fs';
-import * as path from 'path';
 
 type UnresolvedTpbConfiguration = {
   app: {
@@ -89,9 +86,5 @@ export class PluginsConfiguration {
       name: p.name,
       version: this.resolvePluginVersion(p.name),
     }));
-  }
-
-  generate(templateString: string) {
-    return compile(templateString)(this.resolve());
   }
 }

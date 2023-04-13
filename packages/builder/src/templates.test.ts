@@ -1,10 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { compile } from 'handlebars';
-
-const generate = (templateString: string, config: any) => {
-  return compile(templateString)(config);
-};
+import { HandlebarGenerator } from './FileContentGenerator';
 
 function readFileContent(filePath: string) {
   return fs.readFileSync(path.resolve(__dirname, filePath)).toString();
@@ -28,7 +24,7 @@ describe('Templates', () => {
         },
       };
 
-      const got = generate(
+      const got = HandlebarGenerator.generate(
         readFileContent('assets/packages/app/package.json.hbs'),
         config,
       );
@@ -53,7 +49,7 @@ describe('Templates', () => {
         },
       };
 
-      const got = generate(
+      const got = HandlebarGenerator.generate(
         readFileContent('assets/packages/app/src/index.ts.hbs'),
         config,
       );
@@ -82,7 +78,7 @@ describe('Templates', () => {
         },
       };
 
-      const got = generate(
+      const got = HandlebarGenerator.generate(
         readFileContent('assets/packages/backend/package.json.hbs'),
         config,
       );
@@ -107,7 +103,7 @@ describe('Templates', () => {
         },
       };
 
-      const got = generate(
+      const got = HandlebarGenerator.generate(
         readFileContent('assets/packages/backend/src/index.ts.hbs'),
         config,
       );
