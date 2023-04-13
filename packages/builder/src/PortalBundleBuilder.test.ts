@@ -42,4 +42,11 @@ describe('Portal bundle builder', () => {
 
     expect(bundle.contentBundle.length).toBeGreaterThan(1);
   });
+
+  it('includes an app-config file', () => {
+    const builder = new PortalBundleBuilder(config);
+    const bundle = builder.build();
+
+    expect(bundle.copyBundle.map(b => b.to)).toContainEqual('app-config.yaml');
+  })
 });

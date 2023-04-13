@@ -3,14 +3,14 @@ import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import { registryConfiguration, yarnResolver } from './Registry';
 import { FilePath, PathResolver, readContent } from './File';
-import { buildStructure } from './BundleStructure';
+import {buildStructure, BundleStructure} from './BundleStructure';
 
 export type PortalConfiguration = {
   registryConfiguration: FilePath;
   appConfig: FilePath;
   outputFolder: FilePath;
   pluginsResolver: PluginsResolver;
-  structure: any;
+  structure: BundleStructure;
 };
 
 export const mapEnvProperties = (

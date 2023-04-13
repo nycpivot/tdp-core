@@ -77,7 +77,7 @@ export const flattenCopies = (
   return flattenNodeCopy({ name: 'root', ...structure }, [], resolvePath);
 };
 
-type BundleStructure = {
+export type BundleStructure = {
   templates: TemplatedFile[];
   copies: FileCopy[];
 };
