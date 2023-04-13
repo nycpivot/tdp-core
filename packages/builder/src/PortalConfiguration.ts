@@ -1,15 +1,15 @@
-import { PluginsConfiguration } from './PluginsConfiguration';
+import { PluginsResolver } from './PluginsResolver';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import { Registry, yarnResolver } from './Registry';
-import { PathResolver, readContent } from './FileContent';
+import { FilePath, PathResolver, readContent } from './FileContent';
 
 export type PortalConfiguration = {
   registry: Registry;
-  appConfig: string;
-  outputFolder: string;
-  pluginsConfig: PluginsConfiguration;
-  assetsFolder: string;
+  appConfig: FilePath;
+  outputFolder: FilePath;
+  pluginsResolver: PluginsResolver;
+  assetsFolder: FilePath;
 };
 
 export const mapEnvProperties = (
@@ -23,7 +23,7 @@ export const mapEnvProperties = (
   return {
     appConfig: appConfig,
     outputFolder: outputFolder,
-    pluginsConfig: new PluginsConfiguration(
+    pluginsResolver: new PluginsResolver(
       parseYaml(readContent(resolvePath(configFile))),
       yarnResolver(outputFolder),
     ),

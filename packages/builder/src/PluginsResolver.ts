@@ -1,6 +1,6 @@
 import { VersionResolver } from './Registry';
 
-type UnresolvedTpbConfiguration = {
+type UnresolvedPluginsConfiguration = {
   app: {
     theme?: {
       name: string;
@@ -20,7 +20,7 @@ type UnresolvedTpbConfiguration = {
   };
 };
 
-type ResolvedTpbConfiguration = {
+type ResolvedPluginsConfiguration = {
   app: {
     theme?: {
       name: string;
@@ -40,20 +40,20 @@ type ResolvedTpbConfiguration = {
   };
 };
 
-export class PluginsConfiguration {
-  private readonly _config: UnresolvedTpbConfiguration;
+export class PluginsResolver {
+  private readonly _config: UnresolvedPluginsConfiguration;
   private readonly _versionResolver: VersionResolver;
-  private _resolvedConfig?: ResolvedTpbConfiguration;
+  private _resolvedConfig?: ResolvedPluginsConfiguration;
 
   constructor(
-    config: UnresolvedTpbConfiguration,
+    config: UnresolvedPluginsConfiguration,
     versionResolver: VersionResolver,
   ) {
     this._config = config;
     this._versionResolver = versionResolver;
   }
 
-  resolve(): ResolvedTpbConfiguration {
+  resolve(): ResolvedPluginsConfiguration {
     if (this._resolvedConfig) {
       return this._resolvedConfig;
     }

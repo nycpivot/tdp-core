@@ -1,23 +1,30 @@
 import { execSync } from 'child_process';
-import { FileContent, PathResolver, fileContentByCopy } from './FileContent';
+import {
+  FileContent,
+  FilePath,
+  PathResolver,
+  readContent,
+} from './FileContent';
 
 export type Registry = 'verdaccio' | 'remote';
 
 export const registryConfiguration = (
   registry: Registry,
-  assetsFolder: string,
+  assetsFolder: FilePath,
   resolvePath: PathResolver,
 ): FileContent => {
   switch (registry) {
     case 'verdaccio':
-      return fileContentByCopy(
-        `${assetsFolder}/.yarnrc`,
-        '.yarnrc',
-        resolvePath,
-      );
+      return {
+        file: '.yarnrc',
+        content: readContent(resolvePath(`${assetsFolder}/.yarnrc`)),
+      };
 
     case 'remote':
-      return fileContentByCopy('../../.yarnrc', '.yarnrc', resolvePath);
+      return {
+        file: '.yarnrc',
+        content: readContent(resolvePath('../../.yarnrc')),
+      };
 
     default:
       throw new Error('invalid registry: select between remote and verdaccio');

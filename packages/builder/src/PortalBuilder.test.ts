@@ -1,13 +1,13 @@
 import { PortalBuilder } from './PortalBuilder';
 import { PortalConfiguration } from './PortalConfiguration';
-import { PluginsConfiguration } from './PluginsConfiguration';
+import { PluginsResolver } from './PluginsResolver';
 
 describe('Portal builder', () => {
   const config: PortalConfiguration = {
     appConfig: 'app-config.yaml',
     registry: 'remote',
     outputFolder: 'output',
-    pluginsConfig: new PluginsConfiguration(
+    pluginsResolver: new PluginsResolver(
       {
         app: {
           plugins: [],

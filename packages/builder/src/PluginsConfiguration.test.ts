@@ -1,4 +1,4 @@
-import {PluginsConfiguration,} from './PluginsConfiguration';
+import { PluginsResolver } from './PluginsResolver';
 
 describe('TPB configuration', () => {
   it('resolves plugin versions', () => {
@@ -37,7 +37,7 @@ describe('TPB configuration', () => {
       theme: '5',
     };
 
-    const tpbConfig = new PluginsConfiguration(config, (name) => versions[name]);
+    const tpbConfig = new PluginsResolver(config, name => versions[name]);
 
     const resolvedConfig = tpbConfig.resolve();
 
@@ -86,7 +86,7 @@ describe('TPB configuration', () => {
         plugins: [],
       },
     };
-    const tpbConfig = new PluginsConfiguration(config, () => {
+    const tpbConfig = new PluginsResolver(config, () => {
       calls.count++;
       return 'foo';
     });

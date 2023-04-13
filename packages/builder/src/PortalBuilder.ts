@@ -1,7 +1,7 @@
 import { PortalConfiguration } from './PortalConfiguration';
 import { FileContent, FilePath, PathResolver } from './FileContent';
 import { registryConfiguration } from './Registry';
-import { HandlebarTemplate } from './Templates';
+import { HandlebarTemplate } from './HandlebarTemplate';
 
 export type Portal = {
   filesToCopy: { from: string; to: string }[];
@@ -92,16 +92,11 @@ export class PortalBuilder {
       },
     ];
 
-    return data.map(d => this.fileContentFromTemplate(d));
-  }
-
-  private fileContentFromTemplate(data: {
-    template: FilePath;
-    output: FilePath;
-  }) {
-    return new HandlebarTemplate(
-      data.template,
-      this._resolvePath,
-    ).createFileContent(data.output, this._config.pluginsConfig.resolve());
+    return data.map(d =>
+      new HandlebarTemplate(d.template, this._resolvePath).createFileContent(
+        d.output,
+        this._config.pluginsResolver,
+      ),
+    );
   }
 }

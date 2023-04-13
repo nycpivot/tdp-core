@@ -6,6 +6,7 @@ import {
   PathResolver,
   readContent,
 } from './FileContent';
+import { PluginsResolver } from './PluginsResolver';
 
 export class HandlebarGenerator {
   static generate(template: RawContent, config: any) {
@@ -14,18 +15,21 @@ export class HandlebarGenerator {
 }
 
 export class HandlebarTemplate {
-  private _template: FilePath;
-  private _resolvePath: PathResolver;
+  private readonly _template: FilePath;
+  private readonly _resolvePath: PathResolver;
 
   constructor(template: FilePath, resolvePath: PathResolver) {
     this._template = template;
     this._resolvePath = resolvePath;
   }
 
-  createFileContent(output: FilePath, config: any): FileContent {
+  createFileContent(
+    output: FilePath,
+    pluginsResolver: PluginsResolver,
+  ): FileContent {
     return {
       file: output,
-      content: this.generate(config),
+      content: () => this.generate(pluginsResolver.resolve()),
     };
   }
 
