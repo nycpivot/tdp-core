@@ -14,7 +14,7 @@ export type FileContent = {
 export type FileCopy = {
   from: FilePath;
   to: FilePath;
-}
+};
 
 export const readContent = (file: FilePath): RawContent =>
   fs.readFileSync(file).toString();

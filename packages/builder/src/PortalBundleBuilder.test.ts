@@ -25,13 +25,13 @@ describe('Portal bundle builder', () => {
     const builder = new PortalBundleBuilder(config, file => file);
     const bundle = builder.build();
 
-    expect(bundle.filesToCopy.length).toBeGreaterThan(1);
+    expect(bundle.copyBundle.length).toBeGreaterThan(1);
   });
 
   it('provides a list of generated contents', () => {
     const builder = new PortalBundleBuilder(config, file => file);
     const bundle = builder.build();
 
-    expect(bundle.fileContents.length).toBeGreaterThan(1);
+    expect(bundle.contentBundle.length).toBeGreaterThan(1);
   });
 });

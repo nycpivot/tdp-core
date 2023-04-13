@@ -8,7 +8,9 @@ export const registryConfiguration = (registry: Registry) => {
   } else if (registry === 'remote') {
     return '../../.yarnrc';
   }
-  throw new Error('invalid registry: please select between remote and verdaccio');
+  throw new Error(
+    'invalid registry: please select between remote and verdaccio',
+  );
 };
 
 export type VersionResolver = (name: string) => string;

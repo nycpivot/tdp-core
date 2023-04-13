@@ -1,11 +1,19 @@
-import {PortalConfiguration} from './PortalConfiguration';
-import {FileContent, FileCopy, PathResolver, readContent} from './FileContent';
-import {registryConfiguration} from './Registry';
-import {HandlebarTemplate} from './HandlebarTemplate';
+import { PortalConfiguration } from './PortalConfiguration';
+import {
+  FileContent,
+  FileCopy,
+  PathResolver,
+  readContent,
+} from './FileContent';
+import { registryConfiguration } from './Registry';
+import { HandlebarTemplate } from './HandlebarTemplate';
+
+type CopyBundle = FileCopy[];
+type ContentBundle = FileContent[];
 
 export type PortalBundle = {
-  filesToCopy: FileCopy[];
-  fileContents: FileContent[];
+  copyBundle: CopyBundle;
+  contentBundle: ContentBundle;
 };
 
 export class PortalBundleBuilder {
@@ -19,12 +27,12 @@ export class PortalBundleBuilder {
 
   build(): PortalBundle {
     return {
-      filesToCopy: this.filesToCopy(),
-      fileContents: this.fileContents(),
+      copyBundle: this.copyBundle(),
+      contentBundle: this.contentBundle(),
     };
   }
 
-  private filesToCopy(): FileCopy[] {
+  private copyBundle(): CopyBundle {
     return [
       {
         from: '../app/.eslintrc.js',
@@ -60,17 +68,19 @@ export class PortalBundleBuilder {
     }));
   }
 
-  private fileContents(): FileContent[] {
+  private contentBundle(): ContentBundle {
     return [
       {
         file: '.yarnrc',
-        content: readContent(this._resolvePath(registryConfiguration(this._config.registry))),
+        content: readContent(
+          this._resolvePath(registryConfiguration(this._config.registry)),
+        ),
       },
-      ...this.fileContentsFromTemplates(),
+      ...this.contentBundleFromTemplates(),
     ];
   }
 
-  fileContentsFromTemplates(): FileContent[] {
+  private contentBundleFromTemplates(): ContentBundle {
     const assetsFolder = this._config.assetsFolder;
     const data = [
       {
