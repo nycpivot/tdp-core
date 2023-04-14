@@ -6,15 +6,9 @@ import {
   mapEnvProperties,
   PortalConfiguration,
 } from './src/PortalConfiguration';
-import {
-  FileContent,
-  FilePath,
-  findInDir,
-  RawContent,
-  readContent,
-} from './src/FileUtils';
+import { FilePath } from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
-import { compile } from 'handlebars';
+import { prepareTemplates } from './src/Templates';
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
@@ -38,29 +32,9 @@ function resolvePath(file: FilePath): FilePath {
   return path.resolve(__dirname, file);
 }
 
-function generate(template: RawContent, config: any) {
-  return compile(template)(config);
-}
-
 function applyTemplates(config: PortalConfiguration) {
-  const contents: FileContent[] = [];
-
-  contents.push({
-    file: '.yarnrc',
-    content: readContent(resolvePath(`bundle/.yarnrc.${config.registry}`)),
-  });
-
-  const templates = findInDir(resolvePath('bundle'), /\.hbs$/);
-  templates.forEach(t => {
-    contents.push({
-      file: t
-        .replace(path.join(__dirname, 'bundle'), config.outputFolder)
-        .replace('.hbs', ''),
-      content: () => generate(readContent(t), config.pluginsResolver.resolve()),
-    });
-  });
-
-  return contents.map(createFileWithContent);
+  const bundleFolder = resolvePath(`bundle`);
+  return prepareTemplates(config, bundleFolder).map(createFileWithContent);
 }
 
 function copyBundle() {
