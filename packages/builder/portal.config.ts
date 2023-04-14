@@ -8,7 +8,7 @@ import {
 } from './src/PortalConfiguration';
 import { FilePath } from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
-import { prepareTemplates } from './src/Templates';
+import { prepareContents } from './src/FileContents';
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
@@ -34,7 +34,9 @@ function resolvePath(file: FilePath): FilePath {
 
 function applyTemplates(config: PortalConfiguration) {
   const bundleFolder = resolvePath(`bundle`);
-  return prepareTemplates(config, bundleFolder).map(createFileWithContent);
+  return prepareContents(bundleFolder, config.pluginsResolver).map(
+    createFileWithContent,
+  );
 }
 
 function copyBundle() {

@@ -14,6 +14,7 @@ function buildPluginsResolver(
   resolvePath: (file: FilePath) => FilePath,
   configFile: string,
   outputFolder: string,
+  registry: Registry,
 ) {
   const yaml = parseYaml(readContent(resolvePath(configFile)));
   // we force the theme for the moment.
@@ -29,6 +30,7 @@ function buildPluginsResolver(
       backend: yaml.backend,
     },
     yarnResolver(outputFolder),
+    registry,
   );
 }
 
@@ -48,6 +50,7 @@ export const mapEnvProperties = (
       resolvePath,
       configFile,
       outputFolder,
+      registry,
     ),
     registry: registry,
   };

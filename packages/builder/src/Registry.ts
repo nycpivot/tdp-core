@@ -55,13 +55,20 @@ export class PluginsResolver {
   private readonly _config: UnresolvedPluginsConfiguration;
   private readonly _versionResolver: VersionResolver;
   private _resolvedConfig?: ResolvedPluginsConfiguration;
+  private _registry: Registry;
 
   constructor(
     config: UnresolvedPluginsConfiguration,
     versionResolver: VersionResolver,
+    registry: Registry,
   ) {
     this._config = config;
     this._versionResolver = versionResolver;
+    this._registry = registry;
+  }
+
+  get registry(): Registry {
+    return this._registry;
   }
 
   resolve(): ResolvedPluginsConfiguration {

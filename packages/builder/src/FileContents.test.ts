@@ -1,16 +1,15 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { generate, prepareTemplates } from './Templates';
-import { PortalConfiguration } from './PortalConfiguration';
+import fs from 'fs';
+import path from 'path';
+import { generate, prepareContents } from './FileContents';
 import { PluginsResolver } from './Registry';
 
 function readFileContent(filePath: string) {
   return fs.readFileSync(path.resolve(__dirname, filePath)).toString();
 }
 
-describe('Templates', () => {
+describe('File Contents', () => {
   describe('preparation', () => {
-    it('calculates output files', () => {
+    it('calculates output file paths', () => {
       const tpbConfig = {
         app: {
           plugins: [],
@@ -20,24 +19,18 @@ describe('Templates', () => {
         },
       };
 
-      const config: PortalConfiguration = {
-        registry: 'verdaccio',
-        outputFolder: '/foo/bar',
-        pluginsResolver: new PluginsResolver(tpbConfig, () => '1.0.0'),
-        appConfig: 'not_pertinent',
-      };
-
-      const preparedTemplates = prepareTemplates(
-        config,
+      const preparedTemplates = prepareContents(
         path.join(path.dirname(__filename), '../bundle'),
+        new PluginsResolver(tpbConfig, () => '1.0.0', 'verdaccio'),
       );
       const fileNames = preparedTemplates.map(pt => pt.file);
 
       expect(fileNames).toHaveLength(5);
-      expect(fileNames).toContain('/foo/bar/packages/app/package.json');
-      expect(fileNames).toContain('/foo/bar/packages/app/src/index.ts');
-      expect(fileNames).toContain('/foo/bar/packages/backend/package.json');
-      expect(fileNames).toContain('/foo/bar/packages/backend/src/index.ts');
+      expect(fileNames).toContain('packages/app/package.json');
+      expect(fileNames).toContain('packages/app/src/index.ts');
+      expect(fileNames).toContain('packages/backend/package.json');
+      expect(fileNames).toContain('packages/backend/src/index.ts');
+      expect(fileNames).toContain('.yarnrc');
     });
   });
 
