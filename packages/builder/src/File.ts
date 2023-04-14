@@ -11,11 +11,6 @@ export type FileContent = {
   content: RawContent | (() => RawContent);
 };
 
-export type FileCopy = {
-  from: FilePath;
-  to: FilePath;
-};
-
 export type TemplatedFile = {
   file: FilePath;
   template: FilePath;

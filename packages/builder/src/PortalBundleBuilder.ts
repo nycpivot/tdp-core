@@ -1,12 +1,10 @@
 import { PortalConfiguration } from './PortalConfiguration';
-import { FileContent, FileCopy, readContent } from './File';
+import { FileContent, readContent } from './File';
 import { HandlebarTemplate } from './HandlebarTemplate';
 
-type CopyBundle = FileCopy[];
 type ContentBundle = FileContent[];
 
 export type PortalBundle = {
-  copyBundle: CopyBundle;
   contentBundle: ContentBundle;
 };
 
@@ -19,19 +17,8 @@ export class PortalBundleBuilder {
 
   build(): PortalBundle {
     return {
-      copyBundle: this.copyBundle(),
       contentBundle: this.contentBundle(),
     };
-  }
-
-  private copyBundle(): CopyBundle {
-    return [
-      ...this._config.structure.copies,
-      {
-        from: this._config.appConfig,
-        to: 'app-config.yaml',
-      },
-    ];
   }
 
   private contentBundle(): ContentBundle {

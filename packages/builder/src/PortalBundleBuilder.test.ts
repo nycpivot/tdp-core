@@ -25,28 +25,13 @@ describe('Portal bundle builder', () => {
           template: 'src/assets/packages/app/package.json.hbs',
         },
       ],
-      copies: [{ from: 'eslint.rc', to: '../../eslint.rc' }],
     },
   };
-
-  it('provides a list of files to be copied', () => {
-    const builder = new PortalBundleBuilder(config);
-    const bundle = builder.build();
-
-    expect(bundle.copyBundle.length).toBeGreaterThan(1);
-  });
 
   it('provides a list of generated contents', () => {
     const builder = new PortalBundleBuilder(config);
     const bundle = builder.build();
 
     expect(bundle.contentBundle.length).toBeGreaterThan(1);
-  });
-
-  it('includes an app-config file', () => {
-    const builder = new PortalBundleBuilder(config);
-    const bundle = builder.build();
-
-    expect(bundle.copyBundle.map(b => b.to)).toContainEqual('app-config.yaml');
   });
 });

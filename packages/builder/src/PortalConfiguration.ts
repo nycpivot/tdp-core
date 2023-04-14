@@ -46,7 +46,7 @@ export const mapEnvProperties = (
 
   return {
     appConfig: resolvePath(appConfig),
-    outputFolder: outputFolder,
+    outputFolder: resolvePath(outputFolder),
     pluginsResolver: buildPluginsResolver(
       resolvePath,
       configFile,

@@ -1,6 +1,7 @@
 import * as path from 'path';
-import * as CopyPlugin from 'copy-webpack-plugin';
-import * as createFileWithContent from 'generate-file-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import createFileWithContent from 'generate-file-webpack-plugin';
+import RemovePlugin from 'remove-files-webpack-plugin';
 import { PortalBundleBuilder } from './src/PortalBundleBuilder';
 import { mapEnvProperties } from './src/PortalConfiguration';
 import { PathResolver } from './src/File';
@@ -16,20 +17,38 @@ export default (env: EnvironmentProperties) => {
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: path.resolve(__dirname, config.outputFolder),
+      path: config.outputFolder,
     },
     mode: env.production ? 'production' : 'development',
     plugins: [
       new CopyPlugin({
-        patterns: [{
-          from: resolvePath('bundle'),
-          to: ''
-        }],
+        patterns: [
+          {
+            from: resolvePath('bundle'),
+            to: '',
+          },
+          {
+            from: config.appConfig,
+            to: 'app-config.yaml',
+          },
+        ],
       }),
-      // new CopyPlugin({
-      //   patterns: bundle.copyBundle,
-      // }),
       ...bundle.contentBundle.map(createFileWithContent),
+      new RemovePlugin({
+        after: {
+          root: config.outputFolder,
+          include: ['main.js', '.yarnrc.verdaccio', '.yarnrc.artifactory'],
+          test: [
+            {
+              folder: config.outputFolder,
+              method: filePath => {
+                return new RegExp(/\.hbs$/, 'm').test(filePath);
+              },
+              recursive: true,
+            },
+          ],
+        },
+      }),
     ],
   };
 };
