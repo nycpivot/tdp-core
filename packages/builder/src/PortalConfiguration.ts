@@ -1,16 +1,14 @@
 import { PluginsResolver } from './PluginsResolver';
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
-import { registryConfiguration, yarnResolver } from './Registry';
+import { Registry, yarnResolver } from './Registry';
 import { FilePath, PathResolver, readContent } from './File';
-import { buildStructure, BundleStructure } from './BundleStructure';
 
 export type PortalConfiguration = {
-  registryConfiguration: FilePath;
+  registry: Registry;
   appConfig: FilePath;
   outputFolder: FilePath;
   pluginsResolver: PluginsResolver;
-  structure: BundleStructure;
 };
 
 function buildPluginsResolver(
@@ -42,7 +40,7 @@ export const mapEnvProperties = (
   const configFile = env.tpb_config || 'conf/tpb-config.yaml';
   const outputFolder = env.output_folder || 'portal';
   const appConfig = env.app_config || 'conf/app-config.yaml';
-  const registry = env.registry || 'remote';
+  const registry = env.registry || 'artifactory';
 
   return {
     appConfig: resolvePath(appConfig),
@@ -52,10 +50,6 @@ export const mapEnvProperties = (
       configFile,
       outputFolder,
     ),
-    registryConfiguration: resolvePath(registryConfiguration(registry)),
-    structure: buildStructure(
-      parseYaml(readContent(resolvePath('conf/bundle-structure.yaml'))),
-      resolvePath,
-    ),
+    registry: registry,
   };
 };

@@ -25,7 +25,7 @@ describe('Templates', () => {
       };
 
       const got = HandlebarGenerator.generate(
-        readFileContent('assets/packages/app/package.json.hbs'),
+        readFileContent('../bundle/packages/app/package.json.hbs'),
         config,
       );
 
@@ -50,7 +50,7 @@ describe('Templates', () => {
       };
 
       const got = HandlebarGenerator.generate(
-        readFileContent('assets/packages/app/src/index.ts.hbs'),
+        readFileContent('../bundle/packages/app/src/index.ts.hbs'),
         config,
       );
 
@@ -79,7 +79,7 @@ describe('Templates', () => {
       };
 
       const got = HandlebarGenerator.generate(
-        readFileContent('assets/packages/backend/package.json.hbs'),
+        readFileContent('../bundle/packages/backend/package.json.hbs'),
         config,
       );
 
@@ -104,7 +104,7 @@ describe('Templates', () => {
       };
 
       const got = HandlebarGenerator.generate(
-        readFileContent('assets/packages/backend/src/index.ts.hbs'),
+        readFileContent('../bundle/packages/backend/src/index.ts.hbs'),
         config,
       );
 

@@ -3,7 +3,6 @@ import fs from 'fs';
 import CopyPlugin from 'copy-webpack-plugin';
 import createFileWithContent from 'generate-file-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
-import { PortalBundle, PortalBundleBuilder } from './src/PortalBundleBuilder';
 import {
   mapEnvProperties,
   PortalConfiguration,
@@ -60,7 +59,7 @@ function applyTemplates(config: PortalConfiguration) {
 
   contents.push({
     file: '.yarnrc',
-    content: readContent(config.registryConfiguration),
+    content: readContent(resolvePath(`bundle/.yarnrc.${config.registry}`)),
   });
 
   const templates = findInDir(resolvePath('bundle'), /\.hbs$/);
@@ -73,14 +72,7 @@ function applyTemplates(config: PortalConfiguration) {
     });
   });
 
-  console.log(contents);
-
   return contents.map(createFileWithContent);
-
-  // const builder = new PortalBundleBuilder(config);
-  // const bundle = builder.build();
-  //
-  // return bundle.contentBundle.map(createFileWithContent);
 }
 
 function copyBundle() {
