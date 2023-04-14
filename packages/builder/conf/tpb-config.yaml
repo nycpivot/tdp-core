@@ -1,7 +1,4 @@
 app:
-  theme:
-    name: '@tpb/plugin-clarity-theme'
-    stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css'
   plugins:
     - name: '@tpb/plugin-hello-world'
     - name: '@tpb/plugin-rrv'

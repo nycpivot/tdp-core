@@ -3,7 +3,7 @@ import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import { registryConfiguration, yarnResolver } from './Registry';
 import { FilePath, PathResolver, readContent } from './File';
-import {buildStructure, BundleStructure} from './BundleStructure';
+import { buildStructure, BundleStructure } from './BundleStructure';
 
 export type PortalConfiguration = {
   registryConfiguration: FilePath;
@@ -12,6 +12,28 @@ export type PortalConfiguration = {
   pluginsResolver: PluginsResolver;
   structure: BundleStructure;
 };
+
+function buildPluginsResolver(
+  resolvePath: (file: FilePath) => FilePath,
+  configFile: string,
+  outputFolder: string,
+) {
+  const yaml = parseYaml(readContent(resolvePath(configFile)));
+  // we force the theme for the moment.
+  return new PluginsResolver(
+    {
+      app: {
+        theme: {
+          name: '@tpb/plugin-clarity-theme',
+          stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
+        },
+        plugins: yaml.app.plugins,
+      },
+      backend: yaml.backend,
+    },
+    yarnResolver(outputFolder),
+  );
+}
 
 export const mapEnvProperties = (
   env: EnvironmentProperties,
@@ -25,9 +47,10 @@ export const mapEnvProperties = (
   return {
     appConfig: resolvePath(appConfig),
     outputFolder: outputFolder,
-    pluginsResolver: new PluginsResolver(
-      parseYaml(readContent(resolvePath(configFile))),
-      yarnResolver(outputFolder),
+    pluginsResolver: buildPluginsResolver(
+      resolvePath,
+      configFile,
+      outputFolder,
     ),
     registryConfiguration: resolvePath(registryConfiguration(registry)),
     structure: buildStructure(

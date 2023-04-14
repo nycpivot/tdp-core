@@ -48,5 +48,5 @@ describe('Portal bundle builder', () => {
     const bundle = builder.build();
 
     expect(bundle.copyBundle.map(b => b.to)).toContainEqual('app-config.yaml');
-  })
+  });
 });
