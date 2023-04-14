@@ -1,13 +1,47 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { generate } from './Templates';
+import { generate, prepareTemplates } from './Templates';
+import { PortalConfiguration } from './PortalConfiguration';
+import { PluginsResolver } from './Registry';
 
 function readFileContent(filePath: string) {
   return fs.readFileSync(path.resolve(__dirname, filePath)).toString();
 }
 
 describe('Templates', () => {
-  describe('app', () => {
+  describe('preparation', () => {
+    it('calculates output files', () => {
+      const tpbConfig = {
+        app: {
+          plugins: [],
+        },
+        backend: {
+          plugins: [],
+        },
+      };
+
+      const config: PortalConfiguration = {
+        registry: 'verdaccio',
+        outputFolder: '/foo/bar',
+        pluginsResolver: new PluginsResolver(tpbConfig, () => '1.0.0'),
+        appConfig: 'not_pertinent',
+      };
+
+      const preparedTemplates = prepareTemplates(
+        config,
+        path.join(path.dirname(__filename), '../bundle'),
+      );
+      const fileNames = preparedTemplates.map(pt => pt.file);
+
+      expect(fileNames).toHaveLength(5);
+      expect(fileNames).toContain('/foo/bar/packages/app/package.json');
+      expect(fileNames).toContain('/foo/bar/packages/app/src/index.ts');
+      expect(fileNames).toContain('/foo/bar/packages/backend/package.json');
+      expect(fileNames).toContain('/foo/bar/packages/backend/src/index.ts');
+    });
+  });
+
+  describe('app templates', () => {
     it('generates package.json', () => {
       const config = {
         app: {
@@ -61,7 +95,7 @@ describe('Templates', () => {
     });
   });
 
-  describe('backend', () => {
+  describe('backend templates', () => {
     it('generates package.json', () => {
       const config = {
         backend: {
