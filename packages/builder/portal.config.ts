@@ -21,8 +21,14 @@ export default (env: EnvironmentProperties) => {
     mode: env.production ? 'production' : 'development',
     plugins: [
       new CopyPlugin({
-        patterns: bundle.copyBundle,
+        patterns: [{
+          from: resolvePath('bundle'),
+          to: ''
+        }],
       }),
+      // new CopyPlugin({
+      //   patterns: bundle.copyBundle,
+      // }),
       ...bundle.contentBundle.map(createFileWithContent),
     ],
   };
