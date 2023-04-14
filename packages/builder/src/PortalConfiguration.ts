@@ -1,7 +1,7 @@
 import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import { PluginsResolver, Registry, yarnResolver } from './Registry';
-import { FilePath, PathResolver, readContent } from './File';
+import { FilePath, PathResolver, readContent } from './FileUtils';
 
 export type PortalConfiguration = {
   registry: Registry;

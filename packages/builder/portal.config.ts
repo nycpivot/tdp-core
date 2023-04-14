@@ -1,5 +1,4 @@
 import * as path from 'path';
-import fs from 'fs';
 import CopyPlugin from 'copy-webpack-plugin';
 import createFileWithContent from 'generate-file-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
@@ -7,26 +6,15 @@ import {
   mapEnvProperties,
   PortalConfiguration,
 } from './src/PortalConfiguration';
-import { FileContent, FilePath, RawContent, readContent } from './src/File';
+import {
+  FileContent,
+  FilePath,
+  findInDir,
+  RawContent,
+  readContent,
+} from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
 import { compile } from 'handlebars';
-
-function findInDir(dir, filter, fileList = []) {
-  const files = fs.readdirSync(dir);
-
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    const fileStat = fs.lstatSync(filePath);
-
-    if (fileStat.isDirectory()) {
-      findInDir(filePath, filter, fileList);
-    } else if (filter.test(filePath)) {
-      fileList.push(filePath);
-    }
-  });
-
-  return fileList;
-}
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
