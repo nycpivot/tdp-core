@@ -1,4 +1,5 @@
 import * as path from 'path';
+import fs from 'fs';
 import CopyPlugin from 'copy-webpack-plugin';
 import createFileWithContent from 'generate-file-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
@@ -7,8 +8,26 @@ import {
   mapEnvProperties,
   PortalConfiguration,
 } from './src/PortalConfiguration';
-import { FilePath } from './src/File';
+import { FileContent, FilePath, RawContent, readContent } from './src/File';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
+import { compile } from 'handlebars';
+
+function findInDir(dir, filter, fileList = []) {
+  const files = fs.readdirSync(dir);
+
+  files.forEach(file => {
+    const filePath = path.join(dir, file);
+    const fileStat = fs.lstatSync(filePath);
+
+    if (fileStat.isDirectory()) {
+      findInDir(filePath, filter, fileList);
+    } else if (filter.test(filePath)) {
+      fileList.push(filePath);
+    }
+  });
+
+  return fileList;
+}
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
@@ -32,11 +51,36 @@ function resolvePath(file: FilePath): FilePath {
   return path.resolve(__dirname, file);
 }
 
-function applyTemplates(config: PortalConfiguration) {
-  const builder = new PortalBundleBuilder(config);
-  const bundle = builder.build();
+function generate(template: RawContent, config: any) {
+  return compile(template)(config);
+}
 
-  return bundle.contentBundle.map(createFileWithContent);
+function applyTemplates(config: PortalConfiguration) {
+  const contents: FileContent[] = [];
+
+  contents.push({
+    file: '.yarnrc',
+    content: readContent(config.registryConfiguration),
+  });
+
+  const templates = findInDir(resolvePath('bundle'), /\.hbs$/);
+  templates.forEach(t => {
+    contents.push({
+      file: t
+        .replace(path.join(__dirname, 'bundle'), config.outputFolder)
+        .replace('.hbs', ''),
+      content: () => generate(readContent(t), config.pluginsResolver.resolve()),
+    });
+  });
+
+  console.log(contents);
+
+  return contents.map(createFileWithContent);
+
+  // const builder = new PortalBundleBuilder(config);
+  // const bundle = builder.build();
+  //
+  // return bundle.contentBundle.map(createFileWithContent);
 }
 
 function copyBundle() {
