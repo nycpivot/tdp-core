@@ -81,6 +81,9 @@ function copyBundle() {
       {
         from: resolvePath('bundle'),
         to: '',
+        globOptions: {
+          ignore: ['**.hbs', '**.verdaccio', '**.artifactory'],
+        },
       },
     ],
   });
@@ -101,16 +104,7 @@ function cleanup(config: PortalConfiguration) {
   return new RemovePlugin({
     after: {
       root: config.outputFolder,
-      include: ['main.js', '.yarnrc.verdaccio', '.yarnrc.artifactory'],
-      test: [
-        {
-          folder: config.outputFolder,
-          method: filePath => {
-            return new RegExp(/\.hbs$/, 'm').test(filePath);
-          },
-          recursive: true,
-        },
-      ],
+      include: ['main.js'],
     },
   });
 }

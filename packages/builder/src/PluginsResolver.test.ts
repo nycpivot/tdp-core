@@ -1,6 +1,6 @@
-import { PluginsResolver } from './PluginsResolver';
+import { PluginsResolver } from './Registry';
 
-describe('TPB configuration', () => {
+describe('Plugins Resolver', () => {
   it('resolves plugin versions', () => {
     const config = {
       app: {
