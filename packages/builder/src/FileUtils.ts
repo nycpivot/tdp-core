@@ -10,7 +10,11 @@ export type RawContent = string;
 export const readContent = (file: FilePath): RawContent =>
   fs.readFileSync(file).toString();
 
-export function findInDir(dir: string, filter: RegExp, fileList: string[] = []) {
+export function findInDir(
+  dir: string,
+  filter: RegExp,
+  fileList: string[] = [],
+) {
   const files = fs.readdirSync(dir);
 
   files.forEach(file => {
