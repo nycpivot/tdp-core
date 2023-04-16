@@ -23,7 +23,8 @@
     "test": "lerna run test",
     "test:all": "lerna run test -- --coverage",
     "tsc": "tsc",
-    "tsc:full": "tsc --skipLibCheck false --incremental false"
+    "tsc:full": "tsc --skipLibCheck false --incremental false",
+    "build-pack": "pack build portal --path . --builder paketobuildpacks/builder:full --env \"BP_NODE_RUN_SCRIPTS=tsc,build\""
   },
   "workspaces": {
     "packages": [
