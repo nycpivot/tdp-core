@@ -25,12 +25,56 @@ describe('File Contents', () => {
       );
       const fileNames = preparedTemplates.map(pt => pt.file);
 
-      expect(fileNames).toHaveLength(5);
+      expect(fileNames).toHaveLength(6);
       expect(fileNames).toContain('packages/app/package.json');
       expect(fileNames).toContain('packages/app/src/index.ts');
       expect(fileNames).toContain('packages/backend/package.json');
       expect(fileNames).toContain('packages/backend/src/index.ts');
+      expect(fileNames).toContain('package.json');
       expect(fileNames).toContain('.yarnrc');
+    });
+  });
+
+  describe('root', () => {
+    it('includes local packages', () => {
+      const config = {
+        app: {
+          plugins: [
+            {
+              name: 'app_plugin1',
+              version: '1.1.1',
+              local: true,
+              localPath: '/foo/bar',
+            },
+            {
+              name: 'app_plugin2',
+              version: '2.2.2',
+            },
+          ],
+        },
+        backend: {
+          plugins: [
+            {
+              name: 'backend_plugin1',
+              version: '1.1.1',
+              local: true,
+              localPath: '/bar/foo',
+            },
+            {
+              name: 'backend_plugin2',
+              version: '2.2.2',
+            },
+          ],
+        },
+      };
+
+      const got = generate(
+        readFileContent('../bundle/package.json.hbs'),
+        config,
+      );
+
+      expect(got).toContain('"/foo/bar",');
+      expect(got).toContain('"/bar/foo",');
     });
   });
 

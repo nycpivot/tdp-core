@@ -28,6 +28,16 @@
   },
   "workspaces": {
     "packages": [
+      {{#each app.plugins}}
+          {{#if this.local}}
+      "{{{this.localPath}}}",
+          {{/if}}
+      {{/each}}
+      {{#each backend.plugins}}
+        {{#if this.local}}
+      "{{{this.localPath}}}",
+        {{/if}}
+      {{/each}}
       "packages/*",
       "plugins/*"
     ]
