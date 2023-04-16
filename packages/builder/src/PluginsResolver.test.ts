@@ -22,6 +22,7 @@ describe('Plugins Resolver', () => {
         plugins: [
           {
             name: 'backendPlugin1',
+            version: 'link:///foo/bar',
           },
           {
             name: 'backendPlugin2',
@@ -57,10 +58,12 @@ describe('Plugins Resolver', () => {
           {
             name: 'appPlugin1',
             version: 'keep',
+            local: false,
           },
           {
             name: 'appPlugin2',
             version: '2',
+            local: false,
           },
         ],
       },
@@ -68,11 +71,14 @@ describe('Plugins Resolver', () => {
         plugins: [
           {
             name: 'backendPlugin1',
-            version: '3',
+            version: 'link:///foo/bar',
+            local: true,
+            localPath: '///foo/bar',
           },
           {
             name: 'backendPlugin2',
             version: '4',
+            local: false,
           },
         ],
       },

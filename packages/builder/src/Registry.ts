@@ -31,6 +31,19 @@ type UnresolvedPluginsConfiguration = {
   };
 };
 
+type Plugin = {
+  name: string;
+  version: string;
+  local: false;
+};
+
+type LocalPlugin = {
+  name: string;
+  version: string;
+  local: true;
+  localPath: string;
+};
+
 type ResolvedPluginsConfiguration = {
   app: {
     theme?: {
@@ -38,16 +51,10 @@ type ResolvedPluginsConfiguration = {
       version: string;
       stylesheet?: string;
     };
-    plugins: {
-      name: string;
-      version: string;
-    }[];
+    plugins: (Plugin | LocalPlugin)[];
   };
   backend: {
-    plugins: {
-      name: string;
-      version: string;
-    }[];
+    plugins: (Plugin | LocalPlugin)[];
   };
 };
 
@@ -99,10 +106,26 @@ export class PluginsResolver {
     return this._versionResolver(pluginName);
   }
 
-  private resolvePlugins(plugins: { name: string; version?: string }[]) {
-    return plugins.map(p => ({
+  private resolvePlugin(p: {
+    name: string;
+    version?: string;
+  }): Plugin | LocalPlugin {
+    if (p.version && p.version.startsWith('link:')) {
+      return {
+        name: p.name,
+        version: p.version ? p.version : this.resolvePluginVersion(p.name),
+        local: true,
+        localPath: p.version.substring('link:'.length),
+      };
+    }
+    return {
       name: p.name,
       version: p.version ? p.version : this.resolvePluginVersion(p.name),
-    }));
+      local: false,
+    };
+  }
+
+  private resolvePlugins(plugins: { name: string; version?: string }[]) {
+    return plugins.map(p => this.resolvePlugin(p));
   }
 }
