@@ -24,7 +24,7 @@ function templatedFiles(
   pluginsResolver: PluginsResolver,
 ) {
   const templates = findInDir(bundleFolder, /\.hbs$/);
-  const files = templates.map(t => {
+  const files = templates.map((t:string) => {
     return {
       file: t.replace(`${bundleFolder}/`, '').replace('.hbs', ''),
       content: () => generate(readContent(t), pluginsResolver.resolve()),

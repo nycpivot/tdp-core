@@ -102,7 +102,7 @@ export class PluginsResolver {
   private resolvePlugins(plugins: { name: string; version?: string }[]) {
     return plugins.map(p => ({
       name: p.name,
-      version: this.resolvePluginVersion(p.name),
+      version: p.version ? p.version : this.resolvePluginVersion(p.name),
     }));
   }
 }

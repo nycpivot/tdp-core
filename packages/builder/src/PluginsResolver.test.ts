@@ -11,6 +11,7 @@ describe('Plugins Resolver', () => {
         plugins: [
           {
             name: 'appPlugin1',
+            version: 'keep'
           },
           {
             name: 'appPlugin2',
@@ -37,7 +38,7 @@ describe('Plugins Resolver', () => {
       theme: '5',
     };
 
-    const tpbConfig = new PluginsResolver(config, name => versions[name]);
+    const tpbConfig = new PluginsResolver(config, name => versions[name], 'verdaccio');
 
     const resolvedConfig = tpbConfig.resolve();
 
@@ -51,7 +52,7 @@ describe('Plugins Resolver', () => {
         plugins: [
           {
             name: 'appPlugin1',
-            version: '1',
+            version: 'keep',
           },
           {
             name: 'appPlugin2',
@@ -89,7 +90,7 @@ describe('Plugins Resolver', () => {
     const tpbConfig = new PluginsResolver(config, () => {
       calls.count++;
       return 'foo';
-    });
+    }, 'artifactory');
 
     tpbConfig.resolve();
     tpbConfig.resolve();
