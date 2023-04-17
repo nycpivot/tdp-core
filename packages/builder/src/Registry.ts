@@ -1,4 +1,6 @@
 import { execSync } from 'child_process';
+import { parse as parseYaml } from 'yaml';
+import { readContent } from './FileUtils';
 
 export type RegistryType = 'verdaccio' | 'artifactory';
 export type VersionResolver = (name: string) => string;
@@ -78,6 +80,10 @@ export class Registry {
     return this._registry;
   }
 
+  get unresolvedConfig(): UnresolvedPluginsConfiguration {
+    return this._config;
+  }
+
   resolve(): ResolvedPluginsConfiguration {
     if (this._resolvedConfig) {
       return this._resolvedConfig;
@@ -128,4 +134,27 @@ export class Registry {
   private resolvePlugins(plugins: { name: string; version?: string }[]) {
     return plugins.map(p => this.resolvePlugin(p));
   }
+}
+
+export function buildRegistry(
+  configFile: string,
+  outputFolder: string,
+  registryType: RegistryType,
+) {
+  const yaml = parseYaml(readContent(configFile));
+  // we force the theme for the moment.
+  return new Registry(
+    {
+      app: {
+        theme: {
+          name: '@tpb/plugin-clarity-theme',
+          stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
+        },
+        plugins: yaml.app.plugins,
+      },
+      backend: yaml.backend,
+    },
+    yarnResolver(outputFolder),
+    registryType,
+  );
 }

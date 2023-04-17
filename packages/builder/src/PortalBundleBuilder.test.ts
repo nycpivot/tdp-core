@@ -33,16 +33,4 @@ describe('Portal Bundle Builder', () => {
     expect(bundle.bundleFolder).toEqual('bundle');
     expect(bundle.registry.registry).toEqual('artifactory');
   });
-
-  it('forces clarity theme', () => {
-    const env: EnvironmentProperties = {
-      app_config: undefined,
-      output_folder: undefined,
-      tpb_config: undefined,
-      registry: undefined,
-    };
-
-    const bundle = buildPortalBundle(env, file => file);
-    const pluginsResolver = bundle.registry;
-  });
 });

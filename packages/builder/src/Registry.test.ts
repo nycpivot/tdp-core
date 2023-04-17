@@ -1,4 +1,4 @@
-import { Registry } from './Registry';
+import { buildRegistry, Registry } from './Registry';
 
 describe('Registry', () => {
   it('resolves plugin versions', () => {
@@ -81,7 +81,7 @@ describe('Registry', () => {
     });
   });
 
-  it('caches the version', () => {
+  it('caches the plugin versions', () => {
     const calls = {
       count: 0,
     };
@@ -106,5 +106,22 @@ describe('Registry', () => {
     tpbConfig.resolve();
 
     expect(calls.count).toEqual(1);
+  });
+
+  describe('the builder', () => {
+    it('forces the usage of clarity theme', () => {
+      const tpbConfig = buildRegistry(
+        'conf/tpb-config.yaml',
+        'foo',
+        'verdaccio',
+      );
+
+      const unresolvedConfig = tpbConfig.unresolvedConfig;
+
+      expect(unresolvedConfig.app.theme).toEqual({
+        name: '@tpb/plugin-clarity-theme',
+        stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
+      });
+    });
   });
 });

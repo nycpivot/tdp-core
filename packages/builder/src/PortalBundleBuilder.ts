@@ -1,32 +1,8 @@
 import { EnvironmentProperties } from './EnvironmentProperties';
-import { parse as parseYaml } from 'yaml';
-import { Registry, RegistryType, yarnResolver } from './Registry';
-import { FilePath, PathResolver, readContent } from './FileUtils';
+import { buildRegistry } from './Registry';
+import { PathResolver } from './FileUtils';
 import { PortalBundle } from '../PortalBundle';
 
-function buildRegistry(
-  resolvePath: (file: FilePath) => FilePath,
-  configFile: string,
-  outputFolder: string,
-  registryType: RegistryType,
-) {
-  const yaml = parseYaml(readContent(configFile));
-  // we force the theme for the moment.
-  return new Registry(
-    {
-      app: {
-        theme: {
-          name: '@tpb/plugin-clarity-theme',
-          stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
-        },
-        plugins: yaml.app.plugins,
-      },
-      backend: yaml.backend,
-    },
-    yarnResolver(outputFolder),
-    registryType,
-  );
-}
 export const buildPortalBundle = (
   env: EnvironmentProperties,
   resolvePath: PathResolver,
@@ -40,11 +16,6 @@ export const buildPortalBundle = (
     resolvePath('bundle'),
     resolvePath(outputFolder),
     resolvePath(appConfig),
-    buildRegistry(
-      resolvePath,
-      resolvePath(configFile),
-      outputFolder,
-      registryType,
-    ),
+    buildRegistry(resolvePath(configFile), outputFolder, registryType),
   );
 };
