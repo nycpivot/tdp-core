@@ -1,6 +1,6 @@
-import { FilePath } from './src/FileUtils';
-import { PluginsResolver } from './src/PluginsResolver';
-import { buildContents, FileContent } from './src/FileContents';
+import { FilePath } from './FileUtils';
+import { PluginsResolver } from './PluginsResolver';
+import { buildContents, FileContent } from './FileContents';
 
 export class PortalBundle {
   private readonly _outputFolder: FilePath;

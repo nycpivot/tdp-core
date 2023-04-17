@@ -126,21 +126,17 @@ describe('Registry', () => {
 
   describe('the builder', () => {
     it('forces the usage of clarity theme', () => {
-      const tpbConfig = buildPluginsResolver(
-        'conf/tpb-config.yaml',
-        'verdaccio',
-        {
-          resolve: () => 'not relevant',
-          configuration: () => ({
-            file: 'not relevant',
-            content: 'not relevant',
-          }),
-        },
-      );
+      const tpbConfig = buildPluginsResolver({}, 'verdaccio', {
+        resolve: () => 'not relevant',
+        configuration: () => ({
+          file: 'not relevant',
+          content: 'not relevant',
+        }),
+      });
 
       const unresolvedConfig = tpbConfig.unresolvedConfig;
 
-      expect(unresolvedConfig.app.theme).toEqual({
+      expect(unresolvedConfig.app?.theme).toEqual({
         name: '@tpb/plugin-clarity-theme',
         stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
       });

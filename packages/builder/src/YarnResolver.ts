@@ -13,7 +13,7 @@ export class YarnResolver {
 
   resolve(plugin: string) {
     return execSync(
-      `yarn info --cwd ${this._yarnrcFolder} -s ${plugin} version`,
+      `yarn info --cwd "${this._yarnrcFolder}" -s ${plugin} version`,
     )
       .toString('utf-8')
       .trim();

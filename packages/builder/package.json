@@ -13,8 +13,7 @@
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
-    "portal": "webpack --config portal.config.ts --env production",
-    "dev-portal": "webpack --config portal.config.ts"
+    "portal": "webpack --config portal.config.ts"
   },
   "dependencies": {
     "handlebars": "^4.7.7",

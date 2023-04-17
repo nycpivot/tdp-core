@@ -1,5 +1,3 @@
-import { parse as parseYaml } from 'yaml';
-import { readContent } from './FileUtils';
 import { FileContent } from './FileContents';
 
 export type RegistryType = 'verdaccio' | 'artifactory';
@@ -9,8 +7,8 @@ export interface VersionResolver {
   configuration(): FileContent;
 }
 
-type UnresolvedPlugins = {
-  app: {
+export type UnresolvedPlugins = {
+  app?: {
     theme?: {
       name: string;
       version?: string;
@@ -21,7 +19,7 @@ type UnresolvedPlugins = {
       version?: string;
     }[];
   };
-  backend: {
+  backend?: {
     plugins: {
       name: string;
       version?: string;
@@ -90,14 +88,18 @@ export class PluginsResolver {
     }
     this._resolvedConfig = {
       app: {
-        plugins: this.resolvePlugins(this._config.app.plugins),
+        plugins: this._config.app
+          ? this.resolvePlugins(this._config.app.plugins)
+          : [],
       },
       backend: {
-        plugins: this.resolvePlugins(this._config.backend.plugins),
+        plugins: this._config.backend
+          ? this.resolvePlugins(this._config.backend.plugins)
+          : [],
       },
     };
 
-    if (this._config.app.theme) {
+    if (this._config.app?.theme) {
       this._resolvedConfig.app.theme = {
         name: this._config.app.theme.name,
         version: this.resolvePluginVersion(this._config.app.theme.name),
@@ -137,11 +139,10 @@ export class PluginsResolver {
 }
 
 export function buildPluginsResolver(
-  configFile: string,
+  tpbConfig: UnresolvedPlugins,
   registryType: RegistryType,
   resolver: VersionResolver,
 ) {
-  const yaml = parseYaml(readContent(configFile));
   // we force the theme for the moment.
   return new PluginsResolver(
     {
@@ -150,9 +151,9 @@ export function buildPluginsResolver(
           name: '@tpb/plugin-clarity-theme',
           stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
         },
-        plugins: yaml.app.plugins,
+        plugins: tpbConfig.app ? tpbConfig.app.plugins : [],
       },
-      backend: yaml.backend,
+      backend: tpbConfig.backend,
     },
     resolver,
     registryType,

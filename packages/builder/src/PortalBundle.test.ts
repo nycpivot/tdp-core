@@ -1,4 +1,4 @@
-import { PortalBundle } from '../PortalBundle';
+import { PortalBundle } from './PortalBundle';
 import { PluginsResolver } from './PluginsResolver';
 
 describe('Portal Bundle', () => {
