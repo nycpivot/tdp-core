@@ -21,16 +21,13 @@ describe('File Contents', () => {
 
       const preparedTemplates = buildContents(
         path.join(path.dirname(__filename), '../bundle'),
-        new PluginsResolver(
-          tpbConfig,
-          {
-            resolve: () => '1.0.0',
-            configuration: () => ({
-              file: '.yarnrc',
-              content: 'lorem ipsum',
-            }),
-          },
-        ),
+        new PluginsResolver(tpbConfig, {
+          resolve: () => '1.0.0',
+          configuration: () => ({
+            file: '.yarnrc',
+            content: 'lorem ipsum',
+          }),
+        }),
       );
       const fileNames = preparedTemplates.map(pt => pt.file);
 
