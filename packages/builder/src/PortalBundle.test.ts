@@ -1,5 +1,5 @@
 import { PortalBundle } from '../PortalBundle';
-import { PluginsResolver } from './Registry';
+import { Registry } from './Registry';
 
 describe('Portal Bundle', () => {
   it('generates copy patterns', () => {
@@ -7,7 +7,7 @@ describe('Portal Bundle', () => {
       'foo/bar',
       '/output',
       '/config/app-config.yaml',
-      new PluginsResolver(
+      new Registry(
         {
           app: {
             plugins: [],
@@ -40,7 +40,7 @@ describe('Portal Bundle', () => {
       'bundle',
       '/output',
       '/config/app-config.yaml',
-      new PluginsResolver(
+      new Registry(
         {
           app: {
             plugins: [],

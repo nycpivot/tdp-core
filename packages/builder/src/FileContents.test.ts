@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { generate, buildContents } from './FileContents';
-import { PluginsResolver } from './Registry';
+import { Registry } from './Registry';
 
 function readFileContent(filePath: string) {
   return fs.readFileSync(path.resolve(__dirname, filePath)).toString();
@@ -21,7 +21,7 @@ describe('File Contents', () => {
 
       const preparedTemplates = buildContents(
         path.join(path.dirname(__filename), '../bundle'),
-        new PluginsResolver(tpbConfig, () => '1.0.0', 'verdaccio'),
+        new Registry(tpbConfig, () => '1.0.0', 'verdaccio'),
       );
       const fileNames = preparedTemplates.map(pt => pt.file);
 

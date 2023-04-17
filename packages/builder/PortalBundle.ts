@@ -1,23 +1,23 @@
 import { FilePath } from './src/FileUtils';
-import { PluginsResolver } from './src/Registry';
+import { Registry } from './src/Registry';
 import { buildContents, FileContent } from './src/FileContents';
 
 export class PortalBundle {
-  private _outputFolder: FilePath;
-  private _appConfig: FilePath;
-  private _pluginsResolver: PluginsResolver;
-  private _bundleFolder: FilePath;
+  private readonly _outputFolder: FilePath;
+  private readonly _appConfig: FilePath;
+  private readonly _registry: Registry;
+  private readonly _bundleFolder: FilePath;
 
   constructor(
     bundleFolder: FilePath,
     outputFolder: FilePath,
     appConfig: FilePath,
-    pluginsResolver: PluginsResolver,
+    registry: Registry,
   ) {
     this._bundleFolder = bundleFolder;
     this._outputFolder = outputFolder;
     this._appConfig = appConfig;
-    this._pluginsResolver = pluginsResolver;
+    this._registry = registry;
   }
 
   get copyPatterns() {
@@ -40,9 +40,19 @@ export class PortalBundle {
     return this._outputFolder;
   }
 
+  get appConfig() {
+    return this._appConfig;
+  }
+
+  get bundleFolder() {
+    return this._bundleFolder;
+  }
+
+  get registry() {
+    return this._registry;
+  }
+
   applyTemplates(fileCreator: (fileContent: FileContent) => void) {
-    return buildContents(this._bundleFolder, this._pluginsResolver).map(
-      fileCreator,
-    );
+    return buildContents(this._bundleFolder, this._registry).map(fileCreator);
   }
 }

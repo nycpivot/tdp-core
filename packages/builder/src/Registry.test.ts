@@ -1,6 +1,6 @@
-import { PluginsResolver } from './Registry';
+import { Registry } from './Registry';
 
-describe('Plugins Resolver', () => {
+describe('Registry', () => {
   it('resolves plugin versions', () => {
     const config = {
       app: {
@@ -39,11 +39,7 @@ describe('Plugins Resolver', () => {
       theme: '5',
     };
 
-    const tpbConfig = new PluginsResolver(
-      config,
-      name => versions[name],
-      'verdaccio',
-    );
+    const tpbConfig = new Registry(config, name => versions[name], 'verdaccio');
 
     const resolvedConfig = tpbConfig.resolve();
 
@@ -97,7 +93,7 @@ describe('Plugins Resolver', () => {
         plugins: [],
       },
     };
-    const tpbConfig = new PluginsResolver(
+    const tpbConfig = new Registry(
       config,
       () => {
         calls.count++;

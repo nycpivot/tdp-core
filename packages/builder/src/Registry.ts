@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 
-export type Registry = 'verdaccio' | 'artifactory';
+export type RegistryType = 'verdaccio' | 'artifactory';
 export type VersionResolver = (name: string) => string;
 
 export const yarnResolver = (yarnRcFolder: string) => {
@@ -58,23 +58,23 @@ type ResolvedPluginsConfiguration = {
   };
 };
 
-export class PluginsResolver {
+export class Registry {
   private readonly _config: UnresolvedPluginsConfiguration;
   private readonly _versionResolver: VersionResolver;
   private _resolvedConfig?: ResolvedPluginsConfiguration;
-  private _registry: Registry;
+  private _registry: RegistryType;
 
   constructor(
     config: UnresolvedPluginsConfiguration,
     versionResolver: VersionResolver,
-    registry: Registry,
+    registry: RegistryType,
   ) {
     this._config = config;
     this._versionResolver = versionResolver;
     this._registry = registry;
   }
 
-  get registry(): Registry {
+  get registry(): RegistryType {
     return this._registry;
   }
 
