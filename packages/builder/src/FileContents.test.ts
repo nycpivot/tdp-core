@@ -21,7 +21,17 @@ describe('File Contents', () => {
 
       const preparedTemplates = buildContents(
         path.join(path.dirname(__filename), '../bundle'),
-        new Registry(tpbConfig, () => '1.0.0', 'verdaccio'),
+        new Registry(
+          tpbConfig,
+          {
+            resolve: () => '1.0.0',
+            configuration: () => ({
+              file: '.yarnrc',
+              content: 'lorem ipsum',
+            }),
+          },
+          'verdaccio',
+        ),
       );
       const fileNames = preparedTemplates.map(pt => pt.file);
 

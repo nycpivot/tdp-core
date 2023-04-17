@@ -16,7 +16,10 @@ describe('Portal Bundle', () => {
             plugins: [],
           },
         },
-        () => 'not_relevant',
+        {
+          resolve: () => 'not relevant',
+          configuration: () => ({ file: '.yarnrc', content: 'not relevant' }),
+        },
         'verdaccio',
       ),
     );
@@ -49,12 +52,15 @@ describe('Portal Bundle', () => {
             plugins: [],
           },
         },
-        () => 'not_relevant',
+        {
+          resolve: () => 'not relevant',
+          configuration: () => ({ file: '.yarnrc', content: 'not relevant' }),
+        },
         'verdaccio',
       ),
     );
 
-    const contents = [];
+    const contents: string[] = [];
 
     bundle.applyTemplates(fileContent => {
       contents.push(fileContent.file);

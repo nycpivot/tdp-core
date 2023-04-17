@@ -1,7 +1,6 @@
 import { compile } from 'handlebars';
 import { FilePath, findInDir, RawContent, readContent } from './FileUtils';
-import path from 'path';
-import { Registry, RegistryType } from './Registry';
+import { Registry } from './Registry';
 
 export function generate(template: RawContent, config: any) {
   return compile(template)(config);
@@ -11,13 +10,6 @@ export type FileContent = {
   file: FilePath;
   content: RawContent | (() => RawContent);
 };
-
-function yarnrcConfiguration(bundleFolder: string, registry: RegistryType) {
-  return {
-    file: '.yarnrc',
-    content: readContent(path.join(bundleFolder, `.yarnrc.${registry}`)),
-  };
-}
 
 function templatedFiles(
   bundleFolder: string,
@@ -35,10 +27,10 @@ function templatedFiles(
 
 export function buildContents(
   bundleFolder: FilePath,
-  pluginsResolver: Registry,
+  registry: Registry,
 ): FileContent[] {
   const contents: FileContent[] = [];
-  contents.push(yarnrcConfiguration(bundleFolder, pluginsResolver.registry));
-  contents.push(...templatedFiles(bundleFolder, pluginsResolver));
+  contents.push(registry.resolverConfiguration);
+  contents.push(...templatedFiles(bundleFolder, registry));
   return contents;
 }

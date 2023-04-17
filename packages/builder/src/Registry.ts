@@ -1,17 +1,14 @@
-import { execSync } from 'child_process';
 import { parse as parseYaml } from 'yaml';
 import { readContent } from './FileUtils';
+import { YarnResolver } from './YarnResolver';
+import { FileContent } from './FileContents';
 
 export type RegistryType = 'verdaccio' | 'artifactory';
-export type VersionResolver = (name: string) => string;
 
-export const yarnResolver = (yarnRcFolder: string) => {
-  return (name: string) => {
-    return execSync(`yarn info --cwd ${yarnRcFolder} -s ${name} version`)
-      .toString('utf-8')
-      .trim();
-  };
-};
+export interface VersionResolver {
+  resolve(plugin: string): string;
+  configuration(): FileContent;
+}
 
 type UnresolvedPluginsConfiguration = {
   app: {
@@ -84,6 +81,10 @@ export class Registry {
     return this._config;
   }
 
+  get resolverConfiguration() {
+    return this._versionResolver.configuration();
+  }
+
   resolve(): ResolvedPluginsConfiguration {
     if (this._resolvedConfig) {
       return this._resolvedConfig;
@@ -109,7 +110,7 @@ export class Registry {
   }
 
   private resolvePluginVersion(pluginName: string) {
-    return this._versionResolver(pluginName);
+    return this._versionResolver.resolve(pluginName);
   }
 
   private resolvePlugin(p: {
@@ -154,7 +155,7 @@ export function buildRegistry(
       },
       backend: yaml.backend,
     },
-    yarnResolver(outputFolder),
+    new YarnResolver(outputFolder, registryType),
     registryType,
   );
 }

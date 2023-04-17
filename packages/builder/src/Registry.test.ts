@@ -39,7 +39,17 @@ describe('Registry', () => {
       theme: '5',
     };
 
-    const tpbConfig = new Registry(config, name => versions[name], 'verdaccio');
+    const tpbConfig = new Registry(
+      config,
+      {
+        resolve: name => versions[name],
+        configuration: () => ({
+          file: 'not relevant',
+          content: 'not relevant',
+        }),
+      },
+      'verdaccio',
+    );
 
     const resolvedConfig = tpbConfig.resolve();
 
@@ -95,9 +105,15 @@ describe('Registry', () => {
     };
     const tpbConfig = new Registry(
       config,
-      () => {
-        calls.count++;
-        return 'foo';
+      {
+        resolve: () => {
+          calls.count++;
+          return 'foo';
+        },
+        configuration: () => ({
+          file: 'not relevant',
+          content: 'not relevant',
+        }),
       },
       'artifactory',
     );
