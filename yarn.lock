@@ -3018,6 +3018,21 @@
     "@material-ui/lab" "4.0.0-alpha.57"
     react-use "^17.2.4"
 
+"@backstage/integration-react@^1.1.11":
+  version "1.1.11"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/integration-react/-/integration-react-1.1.11.tgz#f6e0bf284c0095127d60b358595d627ee2adc681"
+  integrity sha512-jpPe7eXD6+JE1pOYqPwTIWgwG+O11YOqA6ivk2SmigBaT5ZxO8sTWNxsD9wy1LNUmKyNetUNkflv0g2KP/sgMA==
+  dependencies:
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-components" "^0.12.5"
+    "@backstage/core-plugin-api" "^1.5.0"
+    "@backstage/integration" "^1.4.3"
+    "@backstage/theme" "^0.2.18"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    react-use "^17.2.4"
+
 "@backstage/integration@^1.4.2":
   version "1.4.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/integration/-/integration-1.4.2.tgz#5a0d6e6215d46b05055804c06a2e54bad501fb6e"
@@ -3475,6 +3490,32 @@
     "@backstage/integration-react" "^1.1.10"
     "@backstage/plugin-catalog-common" "^1.0.11"
     "@backstage/plugin-catalog-react" "^1.3.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    "@octokit/rest" "^19.0.3"
+    git-url-parse "^13.0.0"
+    js-base64 "^3.6.0"
+    lodash "^4.17.21"
+    react-hook-form "^7.12.2"
+    react-use "^17.2.4"
+    yaml "^2.0.0"
+
+"@backstage/plugin-catalog-import@^0.9.6":
+  version "0.9.6"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog-import/-/plugin-catalog-import-0.9.6.tgz#ca929c49791b19b9c3edfa1dc92b36612c1995cf"
+  integrity sha512-76E2RZft4UItw+jltLnGuwhydWCZW679yeQe68OifUWkXCKLgeQ2c9s2J6uIuBOzALcsR+cU4kHb9gKE0/1AoA==
+  dependencies:
+    "@backstage/catalog-client" "^1.4.0"
+    "@backstage/catalog-model" "^1.2.1"
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-components" "^0.12.5"
+    "@backstage/core-plugin-api" "^1.5.0"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/integration" "^1.4.3"
+    "@backstage/integration-react" "^1.1.11"
+    "@backstage/plugin-catalog-common" "^1.0.12"
+    "@backstage/plugin-catalog-react" "^1.4.0"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.57"
