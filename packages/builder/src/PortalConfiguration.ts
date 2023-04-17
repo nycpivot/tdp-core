@@ -2,6 +2,7 @@ import { EnvironmentProperties } from './EnvironmentProperties';
 import { parse as parseYaml } from 'yaml';
 import { PluginsResolver, Registry, yarnResolver } from './Registry';
 import { FilePath, PathResolver, readContent } from './FileUtils';
+import { PortalBundle } from '../PortalBundle';
 
 export type PortalConfiguration = {
   registry: Registry;
@@ -54,4 +55,17 @@ export const mapEnvProperties = (
     ),
     registry: registry,
   };
+};
+
+export const buildPortalBundle = (
+  env: EnvironmentProperties,
+  resolvePath: PathResolver,
+) => {
+  const config = mapEnvProperties(env, resolvePath);
+  return new PortalBundle(
+    resolvePath('bundle'),
+    config.outputFolder,
+    config.appConfig,
+    config.pluginsResolver,
+  );
 };
