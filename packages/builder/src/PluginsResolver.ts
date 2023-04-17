@@ -1,7 +1,5 @@
 import { FileContent } from './FileContents';
 
-export type RegistryType = 'verdaccio' | 'artifactory';
-
 export interface VersionResolver {
   resolve(plugin: string): string;
   configuration(): FileContent;
@@ -58,20 +56,10 @@ export class PluginsResolver {
   private readonly _config: UnresolvedPlugins;
   private readonly _versionResolver: VersionResolver;
   private _resolvedConfig?: ResolvedPlugins;
-  private _registryType: RegistryType;
 
-  constructor(
-    config: UnresolvedPlugins,
-    versionResolver: VersionResolver,
-    registry: RegistryType,
-  ) {
+  constructor(config: UnresolvedPlugins, versionResolver: VersionResolver) {
     this._config = config;
     this._versionResolver = versionResolver;
-    this._registryType = registry;
-  }
-
-  get registryType(): RegistryType {
-    return this._registryType;
   }
 
   get unresolvedConfig(): UnresolvedPlugins {
@@ -140,7 +128,6 @@ export class PluginsResolver {
 
 export function buildPluginsResolver(
   tpbConfig: UnresolvedPlugins,
-  registryType: RegistryType,
   resolver: VersionResolver,
 ) {
   // we force the theme for the moment.
@@ -156,6 +143,5 @@ export function buildPluginsResolver(
       backend: tpbConfig.backend,
     },
     resolver,
-    registryType,
   );
 }

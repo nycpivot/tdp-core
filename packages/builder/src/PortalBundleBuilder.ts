@@ -32,6 +32,6 @@ export const buildPortalBundle = (
     'bundle',
     outputFolder,
     appConfig,
-    buildPluginsResolver(tpbConfig, registryType, yarnResolver),
+    buildPluginsResolver(tpbConfig, yarnResolver),
   );
 };

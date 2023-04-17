@@ -20,7 +20,6 @@ describe('Portal Bundle', () => {
           resolve: () => 'not relevant',
           configuration: () => ({ file: '.yarnrc', content: 'not relevant' }),
         },
-        'verdaccio',
       ),
     );
 
@@ -56,7 +55,6 @@ describe('Portal Bundle', () => {
           resolve: () => 'not relevant',
           configuration: () => ({ file: '.yarnrc', content: 'not relevant' }),
         },
-        'verdaccio',
       ),
     );
 

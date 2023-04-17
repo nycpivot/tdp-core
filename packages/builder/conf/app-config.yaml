@@ -77,10 +77,6 @@ scaffolder:
 catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
-  locations:
-    #! this location type is processed by @esback/plugin-catalog-processor
-    - type: system-x
-      target: 'non empty string'
 
 kubernetes:
   customResources:

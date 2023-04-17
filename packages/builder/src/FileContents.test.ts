@@ -30,7 +30,6 @@ describe('File Contents', () => {
               content: 'lorem ipsum',
             }),
           },
-          'verdaccio',
         ),
       );
       const fileNames = preparedTemplates.map(pt => pt.file);

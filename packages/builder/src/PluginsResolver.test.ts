@@ -39,17 +39,13 @@ describe('Registry', () => {
       theme: '5',
     };
 
-    const tpbConfig = new PluginsResolver(
-      config,
-      {
-        resolve: name => versions[name],
-        configuration: () => ({
-          file: 'not relevant',
-          content: 'not relevant',
-        }),
-      },
-      'verdaccio',
-    );
+    const tpbConfig = new PluginsResolver(config, {
+      resolve: name => versions[name],
+      configuration: () => ({
+        file: 'not relevant',
+        content: 'not relevant',
+      }),
+    });
 
     const resolvedConfig = tpbConfig.resolve();
 
@@ -103,20 +99,16 @@ describe('Registry', () => {
         plugins: [],
       },
     };
-    const tpbConfig = new PluginsResolver(
-      config,
-      {
-        resolve: () => {
-          calls.count++;
-          return 'foo';
-        },
-        configuration: () => ({
-          file: 'not relevant',
-          content: 'not relevant',
-        }),
+    const tpbConfig = new PluginsResolver(config, {
+      resolve: () => {
+        calls.count++;
+        return 'foo';
       },
-      'artifactory',
-    );
+      configuration: () => ({
+        file: 'not relevant',
+        content: 'not relevant',
+      }),
+    });
 
     tpbConfig.resolve();
     tpbConfig.resolve();
@@ -126,13 +118,16 @@ describe('Registry', () => {
 
   describe('the builder', () => {
     it('forces the usage of clarity theme', () => {
-      const tpbConfig = buildPluginsResolver({}, 'verdaccio', {
-        resolve: () => 'not relevant',
-        configuration: () => ({
-          file: 'not relevant',
-          content: 'not relevant',
-        }),
-      });
+      const tpbConfig = buildPluginsResolver(
+        {},
+        {
+          resolve: () => 'not relevant',
+          configuration: () => ({
+            file: 'not relevant',
+            content: 'not relevant',
+          }),
+        },
+      );
 
       const unresolvedConfig = tpbConfig.unresolvedConfig;
 
