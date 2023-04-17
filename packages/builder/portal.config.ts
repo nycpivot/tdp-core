@@ -5,7 +5,7 @@ import RemovePlugin from 'remove-files-webpack-plugin';
 import { mapEnvProperties } from './src/PortalConfiguration';
 import { FilePath } from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
-import { buildContents } from './src/FileContents';
+import { buildContents, FileContent } from './src/FileContents';
 import { PluginsResolver } from './src/Registry';
 
 class PortalBundle {
@@ -26,16 +26,32 @@ class PortalBundle {
     this._pluginsResolver = pluginsResolver;
   }
 
+  get copyPatterns() {
+    return [
+      {
+        from: this._bundleFolder,
+        to: '',
+        globOptions: {
+          ignore: ['**.hbs', '**.verdaccio', '**.artifactory'],
+        },
+      },
+      {
+        from: this._appConfig,
+        to: 'app-config.yaml',
+      },
+    ];
+  }
+
   get outputFolder() {
     return this._outputFolder;
   }
 
-  get appConfig() {
-    return this._appConfig;
-  }
-
   get contents() {
     return buildContents(resolvePath(`bundle`), this._pluginsResolver);
+  }
+
+  applyTemplates(fileCreator: (fileContent: FileContent) => void) {
+    return this.contents.map(fileCreator);
   }
 }
 
@@ -55,9 +71,10 @@ export default (env: EnvironmentProperties) => {
     },
     mode: env.production ? 'production' : 'development',
     plugins: [
-      copyBundle(),
-      includeAppConfig(bundle),
-      ...applyTemplates(bundle),
+      new CopyPlugin({
+        patterns: bundle.copyPatterns,
+      }),
+      ...bundle.applyTemplates(createFileWithContent),
       cleanup(bundle),
     ],
   };
@@ -65,35 +82,6 @@ export default (env: EnvironmentProperties) => {
 
 function resolvePath(file: FilePath): FilePath {
   return path.resolve(__dirname, file);
-}
-
-function applyTemplates(bundle: PortalBundle) {
-  return bundle.contents.map(createFileWithContent);
-}
-
-function copyBundle() {
-  return new CopyPlugin({
-    patterns: [
-      {
-        from: resolvePath('bundle'),
-        to: '',
-        globOptions: {
-          ignore: ['**.hbs', '**.verdaccio', '**.artifactory'],
-        },
-      },
-    ],
-  });
-}
-
-function includeAppConfig(bundle: PortalBundle) {
-  return new CopyPlugin({
-    patterns: [
-      {
-        from: bundle.appConfig,
-        to: 'app-config.yaml',
-      },
-    ],
-  });
 }
 
 function cleanup(bundle: PortalBundle) {
