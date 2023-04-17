@@ -1,19 +1,14 @@
 import { execSync } from 'child_process';
-import { RegistryType } from './PluginsResolver';
 import { FileContent } from './FileContents';
-
-const verdaccioConfig = `registry "http://localhost:4873"`;
-
-const artifactoryConfig = `"@tpb:registry" "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/"
-registry "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/"`;
+import { readContent } from './FileUtils';
 
 export class YarnResolver {
   private readonly _yarnrcFolder: string;
-  private readonly _registryType: RegistryType;
+  private readonly _yarnrcConfig: string;
 
-  constructor(yarnrcFolder: string, registryType: RegistryType) {
+  constructor(yarnrcFolder: string, yarnrcConfig: string) {
     this._yarnrcFolder = yarnrcFolder;
-    this._registryType = registryType;
+    this._yarnrcConfig = yarnrcConfig;
   }
 
   resolve(plugin: string) {
@@ -27,18 +22,7 @@ export class YarnResolver {
   configuration(): FileContent {
     return {
       file: '.yarnrc',
-      content:
-        this._registryType === 'verdaccio'
-          ? verdaccioConfig
-          : artifactoryConfig,
+      content: readContent(this._yarnrcConfig),
     };
   }
 }
-
-export const buildYarnResolver = (
-  yarnrcFolder: string,
-  yarnrcConfig: string,
-  registryType: RegistryType,
-) => {
-  return new YarnResolver(yarnrcFolder, registryType);
-};
