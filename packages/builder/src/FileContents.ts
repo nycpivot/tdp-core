@@ -1,6 +1,6 @@
 import { compile } from 'handlebars';
 import { FilePath, findInDir, RawContent, readContent } from './FileUtils';
-import { Registry } from './Registry';
+import { PluginsResolver } from './PluginsResolver';
 
 export function generate(template: RawContent, config: any) {
   return compile(template)(config);
@@ -13,7 +13,7 @@ export type FileContent = {
 
 function templatedFiles(
   bundleFolder: string,
-  pluginsResolver: Registry,
+  pluginsResolver: PluginsResolver,
 ): FileContent[] {
   const templates = findInDir(bundleFolder, /\.hbs$/);
   const files = templates.map((t: string) => {
@@ -27,7 +27,7 @@ function templatedFiles(
 
 export function buildContents(
   bundleFolder: FilePath,
-  registry: Registry,
+  registry: PluginsResolver,
 ): FileContent[] {
   const contents: FileContent[] = [];
   contents.push(registry.resolverConfiguration);

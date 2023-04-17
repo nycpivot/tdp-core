@@ -1,18 +1,18 @@
 import { FilePath } from './src/FileUtils';
-import { Registry } from './src/Registry';
+import { PluginsResolver } from './src/PluginsResolver';
 import { buildContents, FileContent } from './src/FileContents';
 
 export class PortalBundle {
   private readonly _outputFolder: FilePath;
   private readonly _appConfig: FilePath;
-  private readonly _registry: Registry;
+  private readonly _registry: PluginsResolver;
   private readonly _bundleFolder: FilePath;
 
   constructor(
     bundleFolder: FilePath,
     outputFolder: FilePath,
     appConfig: FilePath,
-    registry: Registry,
+    registry: PluginsResolver,
   ) {
     this._bundleFolder = bundleFolder;
     this._outputFolder = outputFolder;

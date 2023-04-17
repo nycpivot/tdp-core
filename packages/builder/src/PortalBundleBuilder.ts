@@ -1,7 +1,8 @@
 import { EnvironmentProperties } from './EnvironmentProperties';
-import { buildRegistry } from './Registry';
+import { buildPluginsResolver } from './PluginsResolver';
 import { PathResolver } from './FileUtils';
 import { PortalBundle } from '../PortalBundle';
+import { buildYarnResolver } from './YarnResolver';
 
 export const buildPortalBundle = (
   env: EnvironmentProperties,
@@ -11,11 +12,18 @@ export const buildPortalBundle = (
   const outputFolder = env.output_folder || 'portal';
   const appConfig = env.app_config || 'conf/app-config.yaml';
   const registryType = env.registry || 'artifactory';
+  const yarnrcConfig = env.yarnrc_config || `bundle/.yarnrc.${registryType}`;
+
+  const yarnResolver = buildYarnResolver(
+    outputFolder,
+    yarnrcConfig,
+    registryType,
+  );
 
   return new PortalBundle(
     resolvePath('bundle'),
     resolvePath(outputFolder),
     resolvePath(appConfig),
-    buildRegistry(resolvePath(configFile), outputFolder, registryType),
+    buildPluginsResolver(resolvePath(configFile), registryType, yarnResolver),
   );
 };

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { generate, buildContents } from './FileContents';
-import { Registry } from './Registry';
+import { PluginsResolver } from './PluginsResolver';
 
 function readFileContent(filePath: string) {
   return fs.readFileSync(path.resolve(__dirname, filePath)).toString();
@@ -21,7 +21,7 @@ describe('File Contents', () => {
 
       const preparedTemplates = buildContents(
         path.join(path.dirname(__filename), '../bundle'),
-        new Registry(
+        new PluginsResolver(
           tpbConfig,
           {
             resolve: () => '1.0.0',

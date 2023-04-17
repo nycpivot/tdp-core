@@ -1,4 +1,4 @@
-import { buildRegistry, Registry } from './Registry';
+import { buildPluginsResolver, PluginsResolver } from './PluginsResolver';
 
 describe('Registry', () => {
   it('resolves plugin versions', () => {
@@ -39,7 +39,7 @@ describe('Registry', () => {
       theme: '5',
     };
 
-    const tpbConfig = new Registry(
+    const tpbConfig = new PluginsResolver(
       config,
       {
         resolve: name => versions[name],
@@ -103,7 +103,7 @@ describe('Registry', () => {
         plugins: [],
       },
     };
-    const tpbConfig = new Registry(
+    const tpbConfig = new PluginsResolver(
       config,
       {
         resolve: () => {
@@ -126,10 +126,16 @@ describe('Registry', () => {
 
   describe('the builder', () => {
     it('forces the usage of clarity theme', () => {
-      const tpbConfig = buildRegistry(
+      const tpbConfig = buildPluginsResolver(
         'conf/tpb-config.yaml',
-        'foo',
         'verdaccio',
+        {
+          resolve: () => 'not relevant',
+          configuration: () => ({
+            file: 'not relevant',
+            content: 'not relevant',
+          }),
+        },
       );
 
       const unresolvedConfig = tpbConfig.unresolvedConfig;

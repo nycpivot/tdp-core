@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { RegistryType } from './Registry';
+import { RegistryType } from './PluginsResolver';
 import { FileContent } from './FileContents';
 
 const verdaccioConfig = `registry "http://localhost:4873"`;
@@ -8,8 +8,8 @@ const artifactoryConfig = `"@tpb:registry" "https://artifactory.eng.vmware.com/a
 registry "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/"`;
 
 export class YarnResolver {
-  private _yarnrcFolder: string;
-  private _registryType: RegistryType;
+  private readonly _yarnrcFolder: string;
+  private readonly _registryType: RegistryType;
 
   constructor(yarnrcFolder: string, registryType: RegistryType) {
     this._yarnrcFolder = yarnrcFolder;
@@ -34,3 +34,11 @@ export class YarnResolver {
     };
   }
 }
+
+export const buildYarnResolver = (
+  yarnrcFolder: string,
+  yarnrcConfig: string,
+  registryType: RegistryType,
+) => {
+  return new YarnResolver(yarnrcFolder, registryType);
+};

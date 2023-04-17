@@ -15,7 +15,7 @@ describe('Portal Bundle Builder', () => {
     expect(bundle.outputFolder).toEqual(env.output_folder);
     expect(bundle.appConfig).toEqual(env.app_config);
     expect(bundle.bundleFolder).toEqual('bundle');
-    expect(bundle.registry.registry).toEqual('verdaccio');
+    expect(bundle.registry.registryType).toEqual('verdaccio');
   });
 
   it('provides proper defaults when environment properties are undefined', () => {
@@ -31,6 +31,6 @@ describe('Portal Bundle Builder', () => {
     expect(bundle.outputFolder).toEqual('portal');
     expect(bundle.appConfig).toEqual('conf/app-config.yaml');
     expect(bundle.bundleFolder).toEqual('bundle');
-    expect(bundle.registry.registry).toEqual('artifactory');
+    expect(bundle.registry.registryType).toEqual('artifactory');
   });
 });

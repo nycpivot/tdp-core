@@ -1,6 +1,5 @@
 import { parse as parseYaml } from 'yaml';
 import { readContent } from './FileUtils';
-import { YarnResolver } from './YarnResolver';
 import { FileContent } from './FileContents';
 
 export type RegistryType = 'verdaccio' | 'artifactory';
@@ -10,7 +9,7 @@ export interface VersionResolver {
   configuration(): FileContent;
 }
 
-type UnresolvedPluginsConfiguration = {
+type UnresolvedPlugins = {
   app: {
     theme?: {
       name: string;
@@ -43,7 +42,7 @@ type LocalPlugin = {
   localPath: string;
 };
 
-type ResolvedPluginsConfiguration = {
+type ResolvedPlugins = {
   app: {
     theme?: {
       name: string;
@@ -57,27 +56,27 @@ type ResolvedPluginsConfiguration = {
   };
 };
 
-export class Registry {
-  private readonly _config: UnresolvedPluginsConfiguration;
+export class PluginsResolver {
+  private readonly _config: UnresolvedPlugins;
   private readonly _versionResolver: VersionResolver;
-  private _resolvedConfig?: ResolvedPluginsConfiguration;
-  private _registry: RegistryType;
+  private _resolvedConfig?: ResolvedPlugins;
+  private _registryType: RegistryType;
 
   constructor(
-    config: UnresolvedPluginsConfiguration,
+    config: UnresolvedPlugins,
     versionResolver: VersionResolver,
     registry: RegistryType,
   ) {
     this._config = config;
     this._versionResolver = versionResolver;
-    this._registry = registry;
+    this._registryType = registry;
   }
 
-  get registry(): RegistryType {
-    return this._registry;
+  get registryType(): RegistryType {
+    return this._registryType;
   }
 
-  get unresolvedConfig(): UnresolvedPluginsConfiguration {
+  get unresolvedConfig(): UnresolvedPlugins {
     return this._config;
   }
 
@@ -85,7 +84,7 @@ export class Registry {
     return this._versionResolver.configuration();
   }
 
-  resolve(): ResolvedPluginsConfiguration {
+  resolve(): ResolvedPlugins {
     if (this._resolvedConfig) {
       return this._resolvedConfig;
     }
@@ -137,14 +136,14 @@ export class Registry {
   }
 }
 
-export function buildRegistry(
+export function buildPluginsResolver(
   configFile: string,
-  outputFolder: string,
   registryType: RegistryType,
+  resolver: VersionResolver,
 ) {
   const yaml = parseYaml(readContent(configFile));
   // we force the theme for the moment.
-  return new Registry(
+  return new PluginsResolver(
     {
       app: {
         theme: {
@@ -155,7 +154,7 @@ export function buildRegistry(
       },
       backend: yaml.backend,
     },
-    new YarnResolver(outputFolder, registryType),
+    resolver,
     registryType,
   );
 }

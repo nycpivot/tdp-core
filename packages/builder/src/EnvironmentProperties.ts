@@ -1,9 +1,10 @@
-import { RegistryType } from './Registry';
+import { RegistryType } from './PluginsResolver';
 
 export type EnvironmentProperties = {
-  app_config: string | undefined;
-  output_folder: string | undefined;
-  tpb_config: string | undefined;
-  registry: RegistryType | undefined;
-  production?: string | undefined;
+  app_config?: string;
+  output_folder?: string;
+  tpb_config?: string;
+  registry?: RegistryType;
+  production?: string;
+  yarnrc_config?: string;
 };
