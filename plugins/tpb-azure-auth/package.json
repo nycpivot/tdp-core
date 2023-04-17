@@ -30,7 +30,7 @@
     "@backstage/plugin-catalog-import": "^0.9.5",
     "@backstage/plugin-github-actions": "^0.5.15",
     "@backstage/plugin-org": "^0.6.5",
-    "@backstage/plugin-permission-react": "^0.4.10",
+    "@backstage/plugin-permission-react": "^0.4.11",
     "@backstage/plugin-scaffolder": "^1.11.0",
     "@backstage/plugin-techdocs": "^1.5.0",
     "@tpb/core": "^0.0.1-alpha.2",
