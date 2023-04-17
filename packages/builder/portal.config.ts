@@ -6,21 +6,47 @@ import { mapEnvProperties } from './src/PortalConfiguration';
 import { FilePath } from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
 import { buildContents } from './src/FileContents';
-import { FileContent } from './src/FileContents';
+import { PluginsResolver } from './src/Registry';
 
-type PortalBundle = {
-  outputFolder: string;
-  appConfig: FilePath;
-  contents: FileContent[];
-};
+class PortalBundle {
+  private _outputFolder: string;
+  private _appConfig: FilePath;
+  private _pluginsResolver: PluginsResolver;
+  private _bundleFolder: string;
+
+  constructor(
+    bundleFolder: string,
+    outputFolder: string,
+    appConfig: FilePath,
+    pluginsResolver: PluginsResolver,
+  ) {
+    this._bundleFolder = bundleFolder;
+    this._outputFolder = outputFolder;
+    this._appConfig = appConfig;
+    this._pluginsResolver = pluginsResolver;
+  }
+
+  get outputFolder() {
+    return this._outputFolder;
+  }
+
+  get appConfig() {
+    return this._appConfig;
+  }
+
+  get contents() {
+    return buildContents(resolvePath(`bundle`), this._pluginsResolver);
+  }
+}
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
-  const bundle: PortalBundle = {
-    outputFolder: config.outputFolder,
-    appConfig: config.appConfig,
-    contents: buildContents(resolvePath(`bundle`), config.pluginsResolver),
-  };
+  const bundle = new PortalBundle(
+    resolvePath('bundle'),
+    config.outputFolder,
+    config.appConfig,
+    config.pluginsResolver,
+  );
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
