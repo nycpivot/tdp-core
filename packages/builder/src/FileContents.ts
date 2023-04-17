@@ -7,7 +7,7 @@ export function generate(template: RawContent, config: any) {
   return compile(template)(config);
 }
 
-type FileContent = {
+export type FileContent = {
   file: FilePath;
   content: RawContent | (() => RawContent);
 };
@@ -22,7 +22,7 @@ function yarnrcConfiguration(bundleFolder: string, registry: Registry) {
 function templatedFiles(
   bundleFolder: string,
   pluginsResolver: PluginsResolver,
-) {
+): FileContent[] {
   const templates = findInDir(bundleFolder, /\.hbs$/);
   const files = templates.map((t: string) => {
     return {
@@ -33,7 +33,7 @@ function templatedFiles(
   return files;
 }
 
-export function prepareContents(
+export function buildContents(
   bundleFolder: FilePath,
   pluginsResolver: PluginsResolver,
 ): FileContent[] {

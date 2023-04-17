@@ -2,28 +2,37 @@ import * as path from 'path';
 import CopyPlugin from 'copy-webpack-plugin';
 import createFileWithContent from 'generate-file-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
-import {
-  mapEnvProperties,
-  PortalConfiguration,
-} from './src/PortalConfiguration';
+import { mapEnvProperties } from './src/PortalConfiguration';
 import { FilePath } from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
-import { prepareContents } from './src/FileContents';
+import { buildContents } from './src/FileContents';
+import { FileContent } from './src/FileContents';
+
+type PortalBundle = {
+  outputFolder: string;
+  appConfig: FilePath;
+  contents: FileContent[];
+};
 
 export default (env: EnvironmentProperties) => {
   const config = mapEnvProperties(env, resolvePath);
+  const bundle: PortalBundle = {
+    outputFolder: config.outputFolder,
+    appConfig: config.appConfig,
+    contents: buildContents(resolvePath(`bundle`), config.pluginsResolver),
+  };
 
   return {
     entry: path.resolve(__dirname, 'src/entrypoint.js'),
     output: {
-      path: config.outputFolder,
+      path: bundle.outputFolder,
     },
     mode: env.production ? 'production' : 'development',
     plugins: [
       copyBundle(),
-      includeAppConfig(config),
-      ...applyTemplates(config),
-      cleanup(config),
+      includeAppConfig(bundle),
+      ...applyTemplates(bundle),
+      cleanup(bundle),
     ],
   };
 };
@@ -32,11 +41,8 @@ function resolvePath(file: FilePath): FilePath {
   return path.resolve(__dirname, file);
 }
 
-function applyTemplates(config: PortalConfiguration) {
-  const bundleFolder = resolvePath(`bundle`);
-  return prepareContents(bundleFolder, config.pluginsResolver).map(
-    createFileWithContent,
-  );
+function applyTemplates(bundle: PortalBundle) {
+  return bundle.contents.map(createFileWithContent);
 }
 
 function copyBundle() {
@@ -53,21 +59,21 @@ function copyBundle() {
   });
 }
 
-function includeAppConfig(config: PortalConfiguration) {
+function includeAppConfig(bundle: PortalBundle) {
   return new CopyPlugin({
     patterns: [
       {
-        from: config.appConfig,
+        from: bundle.appConfig,
         to: 'app-config.yaml',
       },
     ],
   });
 }
 
-function cleanup(config: PortalConfiguration) {
+function cleanup(bundle: PortalBundle) {
   return new RemovePlugin({
     after: {
-      root: config.outputFolder,
+      root: bundle.outputFolder,
       include: ['main.js'],
     },
   });

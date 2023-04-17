@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { generate, prepareContents } from './FileContents';
+import { generate, buildContents } from './FileContents';
 import { PluginsResolver } from './Registry';
 
 function readFileContent(filePath: string) {
@@ -19,7 +19,7 @@ describe('File Contents', () => {
         },
       };
 
-      const preparedTemplates = prepareContents(
+      const preparedTemplates = buildContents(
         path.join(path.dirname(__filename), '../bundle'),
         new PluginsResolver(tpbConfig, () => '1.0.0', 'verdaccio'),
       );
