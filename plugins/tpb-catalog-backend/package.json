@@ -21,7 +21,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/plugin-catalog-backend": "^1.7.2",
+    "@backstage/plugin-catalog-backend": "^1.8.0",
     "@tpb/core": "^0.0.1-alpha.3",
     "express": "^4.17.1"
   },
