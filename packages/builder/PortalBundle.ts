@@ -3,14 +3,14 @@ import { PluginsResolver } from './src/Registry';
 import { buildContents, FileContent } from './src/FileContents';
 
 export class PortalBundle {
-  private _outputFolder: string;
+  private _outputFolder: FilePath;
   private _appConfig: FilePath;
   private _pluginsResolver: PluginsResolver;
-  private _bundleFolder: string;
+  private _bundleFolder: FilePath;
 
   constructor(
-    bundleFolder: string,
-    outputFolder: string,
+    bundleFolder: FilePath,
+    outputFolder: FilePath,
     appConfig: FilePath,
     pluginsResolver: PluginsResolver,
   ) {
@@ -40,11 +40,9 @@ export class PortalBundle {
     return this._outputFolder;
   }
 
-  get contents() {
-    return buildContents(this._bundleFolder, this._pluginsResolver);
-  }
-
   applyTemplates(fileCreator: (fileContent: FileContent) => void) {
-    return this.contents.map(fileCreator);
+    return buildContents(this._bundleFolder, this._pluginsResolver).map(
+      fileCreator,
+    );
   }
 }
