@@ -21,7 +21,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/plugin-catalog-backend-module-github": "^0.2.5",
+    "@backstage/plugin-catalog-backend-module-github": "^0.2.6",
     "@tpb/core": "^0.0.1-alpha.2"
   },
   "devDependencies": {

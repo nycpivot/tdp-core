@@ -79,6 +79,7 @@ function fakePluginEnvironment(config: MockConfigApi = new MockConfigApi({})) {
     reader: new FetchUrlReader(),
     scheduler: {
       createScheduledTaskRunner: jest.fn(),
+      getScheduledTasks: jest.fn(),
       scheduleTask: jest.fn(),
       triggerTask: jest.fn(),
     },
