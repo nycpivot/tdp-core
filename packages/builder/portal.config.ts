@@ -1,6 +1,6 @@
-import * as path from 'path';
+import path from 'path';
 import CopyPlugin from 'copy-webpack-plugin';
-import createFileWithContent from 'generate-file-webpack-plugin';
+import createFile from 'generate-file-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
 import { buildPortalBundle } from './src/PortalBundleBuilder';
 import { FilePath } from './src/FileUtils';
@@ -19,7 +19,7 @@ export default (env: EnvironmentProperties) => {
       new CopyPlugin({
         patterns: bundle.copyPatterns,
       }),
-      ...bundle.applyTemplates(createFileWithContent),
+      ...bundle.applyTemplates(createFile),
       new RemovePlugin({
         after: {
           root: bundle.outputFolder,
