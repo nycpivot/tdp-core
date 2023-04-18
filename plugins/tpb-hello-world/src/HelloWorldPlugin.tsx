@@ -6,10 +6,25 @@ import {
   AppRouteSurface,
   SidebarItemSurface,
   SettingsTabsSurface,
+  BannerSurface,
 } from '@tpb/core';
 import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import { HelloWorld } from './HelloWorld';
+import { configApiRef, useApi } from '@backstage/core-plugin-api';
+
+export interface ToggleFeatureProps {
+  feature: string;
+}
+
+export const ToggleFeature: React.FunctionComponent<
+  ToggleFeatureProps
+> = props => {
+  const config = useApi(configApiRef);
+  const configVal = config.getOptionalBoolean(props.feature);
+  const isFeatureEnabled = configVal ?? true;
+  return isFeatureEnabled ? <>{props.children}</> : null;
+};
 
 export const HelloWorldPlugin: AppPluginInterface = () => context => {
   context.applyTo(AppRouteSurface, routes =>
@@ -29,4 +44,12 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
       </SettingsLayout.Route>,
     ),
   );
+
+  context.applyTo(BannerSurface, banners => {
+    banners.add(
+      <ToggleFeature feature="helloWorld.enabled">
+        <div>hello world banner</div>
+      </ToggleFeature>,
+    );
+  });
 };
