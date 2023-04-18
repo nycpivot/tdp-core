@@ -123,7 +123,7 @@ cd /foo/bar/portal
 image_tag=portal:1.0.0 yarn buildpack
 ```
 
-Set the tag of the image in the `image_tag` environment variable.
+Set the tag of the Docker image in the `image_tag` environment variable.
 
 ## Developing a plugin locally
 
