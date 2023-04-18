@@ -9,4 +9,11 @@ describe('Hello World Plugin', () => {
     cy.visit('/hello-world');
     cy.contains('Hello World!!');
   });
+
+  it('should display a tab on the settings page', () => {
+    cy.visit('/settings');
+    cy.contains('Hello World Tab');
+    cy.visit('/settings/hello-world');
+    cy.contains('Hello World Settings Tab Content');
+  });
 });

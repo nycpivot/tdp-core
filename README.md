@@ -330,6 +330,28 @@ describe('AppRenderer', () => {
 });
 ```
 
+### SettingsTabsSurface
+
+```
+import React from 'react';
+import {
+  AppPluginInterface,
+  SettingsTabsSurface,
+} from '@tpb/core';
+import { SettingsLayout } from '@backstage/plugin-user-settings';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(SettingsTabsSurface, tabs =>
+    tabs.add(
+      <SettingsLayout.Route path="/hello-world" title="Hello World Tab">
+        <div>Hello World Settings Tab Content</div>
+      </SettingsLayout.Route>,
+    ),
+  );
+};
+```
+
+
 ## Running the builder
 
 To run the builder follow the steps in the Getting Started section of this guide.

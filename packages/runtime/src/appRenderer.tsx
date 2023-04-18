@@ -22,6 +22,7 @@ import {
   AppRouteSurface,
   SurfaceStoreInterface,
   ThemeSurface,
+  SettingsTabsSurface,
 } from '@tpb/core';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
@@ -43,6 +44,8 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
 
   const themeSurface = surfaces.findSurface(ThemeSurface);
 
+  const settingsTabsSurface = surfaces.findSurface(SettingsTabsSurface);
+
   const app = createApp({
     apis,
     themes: themeSurface.themes(),
@@ -62,7 +65,9 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
         <Navigate key="/" to={routeSurface.defaultRoute} />
       )}
       {...routeSurface.nonDefaultRoutes}
-      <Route path="/settings" element={<UserSettingsPage />} />
+      <Route path="/settings" element={<UserSettingsPage />}>
+        {...settingsTabsSurface.tabs}
+      </Route>
     </FlatRoutes>
   );
 
