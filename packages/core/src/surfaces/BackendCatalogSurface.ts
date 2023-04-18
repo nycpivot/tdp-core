@@ -2,6 +2,7 @@ import {
   CatalogProcessor,
   EntityProvider,
 } from '@backstage/plugin-catalog-backend';
+import { Router } from 'express';
 import { PluginEnvironment } from '../PluginEnvironment';
 
 export type EntityProviderBuilder = (
@@ -12,13 +13,19 @@ export type CatalogProcessorBuilder = (
   env: PluginEnvironment,
 ) => CatalogProcessor[] | CatalogProcessor;
 
+export type RouterBuilder = (
+  env: PluginEnvironment,
+) => Router | Promise<Router>;
+
 export class BackendCatalogSurface {
   private readonly _processorBuilders: CatalogProcessorBuilder[];
   private readonly _providerBuilders: EntityProviderBuilder[];
+  private readonly _routerBuilders: RouterBuilder[];
 
   constructor() {
     this._processorBuilders = [];
     this._providerBuilders = [];
+    this._routerBuilders = [];
   }
 
   addCatalogProcessorBuilder(builder: CatalogProcessorBuilder) {
@@ -29,11 +36,21 @@ export class BackendCatalogSurface {
     this._providerBuilders.push(builder);
   }
 
+  addRouterBuilder(
+    routerBuilder: (env: PluginEnvironment) => Router | Promise<Router>,
+  ) {
+    this._routerBuilders.push(routerBuilder);
+  }
+
   buildProviders(env: PluginEnvironment): EntityProvider[] {
     return this._providerBuilders.map(b => b(env)).flat();
   }
 
-  buildProcessors(env: PluginEnvironment) {
+  buildProcessors(env: PluginEnvironment): CatalogProcessor[] {
     return this._processorBuilders.map(b => b(env)).flat();
+  }
+
+  buildRouters(env: PluginEnvironment): (Router | Promise<Router>)[] {
+    return this._routerBuilders.map(b => b(env));
   }
 }
