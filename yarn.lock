@@ -3726,6 +3726,41 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
+"@backstage/plugin-kubernetes-backend@^0.9.4":
+  version "0.9.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.9.4.tgz#c9ae886e94b14e574e84e3bed48a2299112a491b"
+  integrity sha512-rNMAZ0/z2fsRYos5u+AYrN/slu/A58i1VPO5GQz0nNZxVJgASnCci1lgpr5sjNX2NKEp/y956OBV5PMpcWXKDA==
+  dependencies:
+    "@azure/identity" "^2.0.4"
+    "@backstage/backend-common" "^0.18.3"
+    "@backstage/catalog-client" "^1.4.0"
+    "@backstage/catalog-model" "^1.2.1"
+    "@backstage/config" "^1.0.7"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/plugin-auth-node" "^0.2.12"
+    "@backstage/plugin-kubernetes-common" "^0.6.1"
+    "@google-cloud/container" "^4.0.0"
+    "@jest-mock/express" "^2.0.1"
+    "@kubernetes/client-node" "0.18.1"
+    "@types/express" "^4.17.6"
+    "@types/luxon" "^3.0.0"
+    aws-sdk "^2.840.0"
+    aws4 "^1.11.0"
+    compression "^1.7.4"
+    cors "^2.8.5"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    fs-extra "10.1.0"
+    helmet "^6.0.0"
+    http-proxy-middleware "^2.0.6"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+    morgan "^1.10.0"
+    node-fetch "^2.6.7"
+    stream-buffers "^3.0.2"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
 "@backstage/plugin-kubernetes-common@^0.4.1", "@backstage/plugin-kubernetes-common@^0.4.2":
   version "0.4.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.4.4.tgz#5c77e326a9d7cd8eefb75ae060c8dd122a2b25e4"
@@ -3740,6 +3775,14 @@
   integrity sha512-Br8Uv0+IJlwRtmr3IoPxODwsovZTxLnkgZtVcK+dNTiV3JD2DoE9TYahQI70wWOIeNG6TAQBRj2ly9bmxFQmUw==
   dependencies:
     "@backstage/catalog-model" "^1.2.0"
+    "@kubernetes/client-node" "0.18.1"
+
+"@backstage/plugin-kubernetes-common@^0.6.1":
+  version "0.6.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.6.1.tgz#1fda20cee8679d2ac6274d6531257c1f3bd4bd78"
+  integrity sha512-zD0fohe42uKwmIgQ4R0eoAqEFA/T6ddH5niXeSFNAvWcDXEFZcOxTWufjHBCkAwIuG/AkXsFIBB8i5viiYoBWA==
+  dependencies:
+    "@backstage/catalog-model" "^1.2.1"
     "@kubernetes/client-node" "0.18.1"
 
 "@backstage/plugin-kubernetes@^0.7.2":
