@@ -1,8 +1,8 @@
 import {
+  BackendCatalogSurface,
   BackendPluginInterface,
   BackendPluginSurface,
   PluginEnvironment,
-  BackendCatalogSurface,
 } from '@tpb/core';
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { Router } from 'express';
@@ -13,6 +13,10 @@ const catalog = (surface: BackendCatalogSurface) => {
     builder.addEntityProvider(surface.buildProviders(env));
     builder.addProcessor(surface.buildProcessors(env));
     const { processingEngine, router } = await builder.build();
+    const routers = surface.buildRouters(env);
+    for (const item of routers) {
+      router.use(await item);
+    }
     await processingEngine.start();
     return router;
   };

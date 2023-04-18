@@ -36,9 +36,7 @@ export class BackendCatalogSurface {
     this._providerBuilders.push(builder);
   }
 
-  addRouterBuilder(
-    routerBuilder: (env: PluginEnvironment) => Router | Promise<Router>,
-  ) {
+  addRouterBuilder(routerBuilder: RouterBuilder) {
     this._routerBuilders.push(routerBuilder);
   }
 
