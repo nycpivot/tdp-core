@@ -20,9 +20,10 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@tpb/core": "^0.0.1-alpha.3",
     "@backstage/core-components": "^0.12.4",
-    "@material-ui/icons": "^4.9.1"
+    "@backstage/plugin-user-settings": "^0.7.2",
+    "@material-ui/icons": "^4.9.1",
+    "@tpb/core": "^0.0.1-alpha.3"
   },
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0",

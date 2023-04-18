@@ -351,7 +351,6 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 };
 ```
 
-
 ## Running the builder
 
 To run the builder follow the steps in the Getting Started section of this guide.
