@@ -24,6 +24,7 @@ describe('RRV Plugin', () => {
   });
 
   it('should render the app live view', () => {
+    cy.get('input[placeholder="Filter"]').type('tanzu-java');
     cy.contains(/tanzu-java-web-app/i).click();
     cy.contains(/runtime resources/i).click();
     cy.contains('tr', /pod/i)
@@ -44,6 +45,7 @@ describe('RRV Plugin', () => {
   describe('rbac', () => {
     it('should require login when not authenticated', () => {
       Authentication.googleLogout();
+      cy.get('input[placeholder="Filter"]').type('gke-user-a-nginx');
       cy.contains(/gke-user-a-nginx/i).click();
       cy.contains(/runtime resources/i).click();
       cy.contains(/login required/i).should('be.visible');
@@ -51,6 +53,7 @@ describe('RRV Plugin', () => {
     });
 
     it('should show k8s resources for user A', () => {
+      cy.get('input[placeholder="Filter"]').type('gke-user-a-nginx');
       cy.contains(/gke-user-a-nginx/i).click();
       cy.contains(/runtime resources/i).click();
       cy.contains(/login required/i).should('not.exist');
@@ -58,6 +61,7 @@ describe('RRV Plugin', () => {
     });
 
     it('should not show k8s resources for user B', () => {
+      cy.get('input[placeholder="Filter"]').type('gke-user-b-nginx');
       cy.contains(/gke-user-b-nginx/i).click();
       cy.contains(/runtime resources/i).click();
       cy.contains(/userb-server/i).should('not.exist');

@@ -6,3 +6,4 @@ export * from './BackendPluginSurface';
 export * from './BackendCatalogSurface';
 export * from './SidebarItemSurface';
 export * from './ThemeSurface';
+export * from './SettingsTabsSurface';
