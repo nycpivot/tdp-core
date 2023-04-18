@@ -22,7 +22,7 @@
   "dependencies": {
     "@backstage/catalog-model": "^1.2.1",
     "@backstage/core-components": "^0.12.4",
-    "@backstage/plugin-catalog-backend-module-msgraph": "^0.5.1",
+    "@backstage/plugin-catalog-backend-module-msgraph": "^0.5.3",
     "@tpb/plugin-microsoft-graph-org-reader-processor": "^0.0.1-alpha.2",
     "@tpb/core": "^0.0.1-alpha.3"
   },
