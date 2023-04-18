@@ -26,15 +26,6 @@ describe('BackendCatalogSurface', () => {
     expect(processors[0].getProcessorName()).toBe(processorName);
   });
 
-  it('should build catalog', () => {
-    const providerName = 'fake-entity-provider';
-    const processorName = 'fake-processor-name';
-    const surface = new BackendCatalogSurface();
-
-    surface.addEntityProviderBuilder(entityProviderBuilder(providerName));
-    surface.addCatalogProcessorBuilder(catalogProcessorBuilder(processorName));
-  });
-
   it('should build routers', () => {
     const routerBuilder = (): Router | Promise<Router> => Router();
     const surface = new BackendCatalogSurface();
