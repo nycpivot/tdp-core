@@ -9,19 +9,11 @@ import {
 } from '@tpb/core';
 import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';
+import { HelloWorld } from './HelloWorld';
 
 export const HelloWorldPlugin: AppPluginInterface = () => context => {
   context.applyTo(AppRouteSurface, routes =>
-    routes.add(
-      <Route
-        path="/hello-world"
-        element={
-          <div>
-            <h1>Hello World!!</h1>
-          </div>
-        }
-      />,
-    ),
+    routes.add(<Route path="/hello-world" element={<HelloWorld />} />),
   );
 
   context.applyTo(SidebarItemSurface, sidebar =>

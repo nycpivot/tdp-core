@@ -5,10 +5,10 @@ export const HelloWorldBackendPlugin: BackendPluginInterface = () => surfaces =>
   surfaces.applyTo(BackendCatalogSurface, surface => {
     surface.addRouterBuilder(() => {
       const router = Router();
-      router.get('/hello', async (req, res) => {
-        console.log(`in hello router!!! ${req.params}`);
+      router.get('/hello', async (_req, res) => {
+        const now = new Date();
         return res.json({
-          message: `hello, time is ${new Date()}`,
+          date: now.toISOString(),
         });
       });
 
