@@ -97,7 +97,7 @@ bitbucket-token: ## # Generate a bitbucket token.
 	$(eval token="$(shell yarn --cwd packages/app/cypress/scripts --silent generate-bitbucket-server-token)")
 	@echo $(token)
 
-start-bitbucket-server: stop-bitbucket-server # Start the bitbucket server docker container.
+start-bitbucket-server: stop-bitbucket-server login-to-vault # Start the bitbucket server docker container.
 	$(MAKE) -C packages/app/cypress install_scripts
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress bitbucket
 
