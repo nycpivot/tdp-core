@@ -112,19 +112,6 @@ yarn portal --env yarnrc_config=/foo/bar/.yarnrc
 
 If this parameter is set, the **registry** parameter will be ignored if it is provided.
 
-## Building the portal with buildpack
-
-In the generated portal, there will be a `buildpack` command that can be used to build an image of the portal.
-
-Here is the syntax to run it:
-
-```shell
-cd /foo/bar/portal
-image_tag=portal:1.0.0 yarn buildpack
-```
-
-Set the tag of the Docker image in the `image_tag` environment variable.
-
 ## Developing a plugin locally
 
 It is possible to create a portal that can be used for local plugin development.
