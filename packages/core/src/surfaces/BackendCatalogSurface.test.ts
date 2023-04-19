@@ -27,7 +27,7 @@ describe('BackendCatalogSurface', () => {
   });
 
   it('should build routers', () => {
-    const routerBuilder = (): Router | Promise<Router> => Router();
+    const routerBuilder = (): Promise<Router> => Promise.resolve(Router());
     const surface = new BackendCatalogSurface();
     surface.addRouterBuilder(routerBuilder);
     surface.addRouterBuilder(routerBuilder);
