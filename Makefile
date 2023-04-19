@@ -44,6 +44,9 @@ test:	## # Run the unit tests.
 start: install	## # Run the server locally in dev mode.
 	yarn dev
 
+start-integration-app: install	## # Run the server locally in integration mode.
+	yarn start:integration
+
 login-to-vault:	# Log in to Vault if not yet already.
 ifeq (, $(findstring expire_time, $(shell vault token lookup -address ${VAULT_ADDR} 2>/dev/null | grep expire_time)))
 	@echo "Let's connect to Vault"

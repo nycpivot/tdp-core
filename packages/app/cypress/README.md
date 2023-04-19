@@ -44,13 +44,13 @@ make setup
 
 This command will generate an `.envrc` file that you can source with `direnv` or manually. This file contains all the variables that are needed to run the integration tests.
 
-Copy the contents of the `app-config.e2e.yaml` file into you `app-config.local.yaml` file.
-
-Start your local app:
+Start your local app in integration mode:
 
 ```shell
-make start
+make start-integration-app
 ```
+
+This will start your local app using `app-config.e2e.yaml`.
 
 Now, you can either run all the integration tests:
 
