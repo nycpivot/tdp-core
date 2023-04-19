@@ -22,4 +22,8 @@ describe('Hello World Plugin', () => {
     cy.contains(/\d{4}-\d{2}-\d{2}/i);
     cy.contains(/\d{2}:\d{2}:\d{2}/i);
   });
+  it('should display a banner', () => {
+    cy.visit('/');
+    cy.contains('Hello World Banner')
+  })
 });
