@@ -351,6 +351,36 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 };
 ```
 
+### BannerSurface
+
+```
+import React from 'react';
+import { BannerSurface } from '@tpb/core';
+
+export interface ToggleFeatureProps {
+  feature: string;
+}
+
+export const ToggleFeature: React.FunctionComponent<
+  ToggleFeatureProps
+> = props => {
+  const config = useApi(configApiRef);
+  const configVal = config.getOptionalBoolean(props.feature);
+  const isFeatureEnabled = configVal ?? true;
+  return isFeatureEnabled ? <>{props.children}</> : null;
+};
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(BannerSurface, banners => {
+    banners.add(
+      <ToggleFeature feature="helloWorld.enabled">
+        <div>Hello World Banner</div>
+      </ToggleFeature>,
+    );
+  });
+};
+```
+
 ## Running the builder
 
 To run the builder follow the steps in the Getting Started section of this guide.
