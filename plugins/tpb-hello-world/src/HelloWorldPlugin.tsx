@@ -48,7 +48,7 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
   context.applyTo(BannerSurface, banners => {
     banners.add(
       <ToggleFeature feature="helloWorld.enabled">
-        <div>hello world banner</div>
+        <div>Hello World Banner</div>
       </ToggleFeature>,
     );
   });
