@@ -1,6 +1,7 @@
 import { BackendCatalogSurface } from './BackendCatalogSurface';
 import { ConfigReader } from '@backstage/config';
 import { FetchUrlReader, getVoidLogger } from '@backstage/backend-common';
+import { Router } from 'express';
 
 describe('BackendCatalogSurface', () => {
   it('should build entity providers', () => {
@@ -23,6 +24,17 @@ describe('BackendCatalogSurface', () => {
 
     expect(processors).toHaveLength(1);
     expect(processors[0].getProcessorName()).toBe(processorName);
+  });
+
+  it('should build routers', () => {
+    const routerBuilder = (): Promise<Router> => Promise.resolve(Router());
+    const surface = new BackendCatalogSurface();
+    surface.addRouterBuilder(routerBuilder);
+    surface.addRouterBuilder(routerBuilder);
+
+    const routers = surface.buildRouters(fakePluginEnvironment());
+
+    expect(routers).toHaveLength(2);
   });
 });
 
