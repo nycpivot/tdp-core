@@ -24,6 +24,6 @@ describe('Hello World Plugin', () => {
   });
   it('should display a banner', () => {
     cy.visit('/');
-    cy.contains('Hello World Banner')
-  })
+    cy.contains('Hello World Banner');
+  });
 });
