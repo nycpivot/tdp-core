@@ -83,6 +83,7 @@ function fakePluginEnvironment() {
     reader: new FetchUrlReader(),
     scheduler: {
       createScheduledTaskRunner: jest.fn(),
+      getScheduledTasks: jest.fn(),
       scheduleTask: jest.fn(),
       triggerTask: jest.fn(),
     },

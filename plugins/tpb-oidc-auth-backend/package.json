@@ -21,10 +21,10 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/plugin-auth-backend": "^0.18.0",
+    "@backstage/plugin-auth-backend": "^0.18.1",
     "@tpb/core": "^0.0.1-alpha.3",
     "@tpb/plugin-auth-backend": "^0.0.1-alpha.2",
-    "@backstage/catalog-model": "^1.2.0"
+    "@backstage/catalog-model": "^1.2.1"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.3"
