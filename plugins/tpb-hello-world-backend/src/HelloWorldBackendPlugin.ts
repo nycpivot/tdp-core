@@ -3,7 +3,7 @@ import { Router } from 'express';
 
 export const HelloWorldBackendPlugin: BackendPluginInterface = () => surfaces =>
   surfaces.applyTo(BackendCatalogSurface, surface => {
-    surface.addRouterBuilder(() => {
+    surface.addRouterBuilder(async () => {
       const router = Router();
       router.get('/hello', async (_req, res) => {
         const now = new Date();

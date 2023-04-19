@@ -13,9 +13,7 @@ export type CatalogProcessorBuilder = (
   env: PluginEnvironment,
 ) => CatalogProcessor[] | CatalogProcessor;
 
-export type RouterBuilder = (
-  env: PluginEnvironment,
-) => Router | Promise<Router>;
+export type RouterBuilder = (env: PluginEnvironment) => Promise<Router>;
 
 export class BackendCatalogSurface {
   private readonly _processorBuilders: CatalogProcessorBuilder[];
@@ -48,7 +46,7 @@ export class BackendCatalogSurface {
     return this._processorBuilders.map(b => b(env)).flat();
   }
 
-  buildRouters(env: PluginEnvironment): (Router | Promise<Router>)[] {
+  buildRouters(env: PluginEnvironment): Promise<Router>[] {
     return this._routerBuilders.map(b => b(env));
   }
 }
