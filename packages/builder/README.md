@@ -25,12 +25,12 @@ A minimal version of the portal will be running.
 
 ### Creating a portal with some plugins
 
-Let say that we would like to build a portal containing some plugins:
+Let's say that we would like to build a portal containing some plugins:
 
 - `@tpb/plugin-hello-world` and `@tpb/plugin-gitlab-loblaw` that are frontend plugins
 - `@tpb/plugin-gitlab-backend` that is a backend plugin
 
-Let's create a file named `tpb-config.yaml` and store it somewhere. The contents of this file is:
+Let's create a file named `tpb-config.yaml` and store it somewhere. The contents of this file are:
 
 ```yaml
 app:
