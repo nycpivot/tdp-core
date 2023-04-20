@@ -28,7 +28,7 @@ A minimal version of the portal will be running.
 Let's say that we would like to build a portal containing some plugins:
 
 - `@tpb/plugin-hello-world` and `@tpb/plugin-gitlab-loblaw` that are frontend plugins
-- `@tpb/plugin-gitlab-backend` that is a backend plugin
+- `@tpb/plugin-hello-world-backend` and `@tpb/plugin-gitlab-backend` that are a backend plugins
 
 Let's create a file named `tpb-config.yaml` and store it somewhere. The contents of this file are:
 
@@ -218,7 +218,7 @@ yarn portal --env registry=verdaccio
 
 This parameter specifies the file that configures yarn to access the npm registry.
 
-If not defined, the builder will either use [this configuration](./bundle/.yarnrc.verdaccio) for verdaccio or [this one](./bundle/.yarnrc.artifactory) for artifactory.
+If not defined, the builder will either use [this configuration](./bundle/.yarnrc.verdaccio) for verdaccio or [this one](./bundle/.yarnrc.artifactory) for artifactory depending on the value of the **registry** parameter.
 
 Example:
 
