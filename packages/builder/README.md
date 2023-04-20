@@ -204,7 +204,7 @@ An example of this file can be found [here](./conf/tpb-config.yaml).
 
 - **registry**
 
-This parameters specifies the npm registry that will be used in the generated portal. Only two values are possible: `verdaccio` or `artifactory`.
+This parameter specifies the npm registry that will be used in the generated portal. Only two values are possible: `verdaccio` or `artifactory`.
 
 If no value is provided, the builder will use `artifactory` by default except if the **yarnrc_config** parameter is provided.
 
