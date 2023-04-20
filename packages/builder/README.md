@@ -2,6 +2,8 @@ This package contains the portal builder that can be used to create a portal wit
 
 ## Getting Started
 
+### Creating a minimalist portal
+
 To create a basic portal with no added plugin, just run the following command:
 
 ```shell
@@ -20,6 +22,120 @@ yarn dev
 ```
 
 A minimal version of the portal will be running.
+
+### Creating a portal with some plugins
+
+Let say that we would like to build a portal containing some plugins:
+
+- `@tpb/plugin-hello-world` and `@tpb/plugin-gitlab-loblaw` that are frontend plugins
+- `@tpb/plugin-gitlab-backend` that is a backend plugin
+
+Let's create a file named `tpb-config.yaml` and store it somewhere. The contents of this file is:
+
+```yaml
+app:
+  plugins:
+    - name: '@tpb/plugin-hello-world'
+    - name: '@tpb/plugin-gitlab-loblaw'
+      version: '^0.0.18'
+backend:
+  plugins:
+    - name: '@tpb/plugin-hello-world-backend'
+    - name: '@tpb/plugin-gitlab-backend'
+```
+
+Now, let's create a backstage configuration file called `app-config.yaml`:
+
+```yaml
+app:
+  title: My Hello World Portal
+  baseUrl: http://localhost:3000
+
+organization:
+  name: VMware
+
+backend:
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+  csp:
+    connect-src: ["'self'", 'http:', 'https:']
+    upgrade-insecure-requests: false
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, POST, PUT, DELETE]
+    credentials: true
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
+  cache:
+    store: memory
+
+integrations:
+  gitlab:
+    - host: gitlab.eng.vmware.com
+      baseUrl: https://gitlab.eng.vmware.com
+      apiBaseUrl: https://gitlab.eng.vmware.com/api/v4/
+      token: ${GITLAB_TOKEN}
+
+auth:
+  allowGuestAccess: true
+  providers: {}
+
+techdocs:
+  builder: 'local'
+  generator:
+    runIn: 'docker'
+  publisher:
+    type: 'local'
+
+catalog:
+  providers:
+    gitlab:
+      tpb:
+        host: gitlab.eng.vmware.com
+        group: esback/fixtures
+        entityFilename: catalog-info.yaml
+        schedule:
+          frequency: { minutes: 1 }
+          timeout: { minutes: 3 }
+  rules:
+    - allow: [Component, System, API, Resource, Location]
+```
+
+We will also need a Gitlab token to be stored in an environment variable called `GITLAB_TOKEN`.
+
+Let's build the portal now:
+
+```shell
+yarn portal --env output_folder=/foo/portal --env tpb_config=/bar/tpb-config.yaml --env app_config=/bar/app-config.yaml
+```
+
+Let's try to run it:
+
+```shell
+cd /foo/portal
+yarn
+yarn dev
+```
+
+The portal should be running at [http://localhost:3000](http://localhost:3000)
+
+After playing with it, stop the portal and let's generate a Docker image of it:
+
+```shell
+image_tag=hello_portal:1.0.0 yarn buildpack
+```
+
+It will probably take a while, specially the first time you run this command since it has to download a bunch of Docker layers and build everything.
+
+and run it in a container:
+
+```shell
+docker run --rm -p 7007:7007 --env GITLAB_TOKEN=<your token> hello_portal:1.0.0
+```
+
+The portal should be running at [http://localhost:7007](http://localhost:7007)
 
 ## Configuration
 

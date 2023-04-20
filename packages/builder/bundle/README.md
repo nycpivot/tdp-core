@@ -13,3 +13,11 @@ Set the tag of the Docker image in the `image_tag` environment variable.
 The [app-config.pack.yaml](./app-config.pack.yaml) file is a configuration file that aligns the frontend port with the one defined in [app-config.yaml](./app-config.yaml).
 
 The [Procfile](./Procfile) file contains the command that is used to run the app in the Docker container.
+
+To run a container from the created image, use the following command:
+
+```shell
+docker run --rm -p 7007:7007 portal:1.0.0
+```
+
+You can use the --env options from docker to pass environment variables.
