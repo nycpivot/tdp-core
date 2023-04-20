@@ -21,7 +21,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.18.3",
+    "@backstage/backend-common": "^0.18.4",
     "@backstage/plugin-catalog-backend-module-azure": "^0.1.13",
     "@tpb/core": "^0.0.1-alpha.3"
   },

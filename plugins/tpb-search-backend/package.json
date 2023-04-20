@@ -21,7 +21,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.18.3",
+    "@backstage/backend-common": "^0.18.4",
     "@backstage/plugin-catalog-backend": "^1.9.0",
     "@backstage/plugin-search-backend": "^1.2.3",
     "@backstage/plugin-search-backend-node": "^1.1.3",
