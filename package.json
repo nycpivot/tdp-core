@@ -11,6 +11,7 @@
     "clean": "backstage-cli clean && lerna run clean",
     "create-plugin": "backstage-cli create-plugin --scope internal",
     "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
+    "start:integration": "concurrently \"yarn start --config ../../app-config.yaml --config ../../app-config.e2e.yaml\" \"yarn start-backend --config ../../app-config.yaml --config ../../app-config.e2e.yaml\"",
     "diff": "lerna run diff --",
     "lint": "backstage-cli repo lint --since origin/main",
     "lint:all": "backstage-cli repo lint",
