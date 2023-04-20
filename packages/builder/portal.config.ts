@@ -14,7 +14,7 @@ export default (env: EnvironmentProperties) => {
     output: {
       path: bundle.outputFolder,
     },
-    mode: env.production ? 'production' : 'development',
+    mode: 'production',
     plugins: [
       new CopyPlugin({
         patterns: bundle.copyPatterns,

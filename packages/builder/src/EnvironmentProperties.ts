@@ -3,6 +3,5 @@ export type EnvironmentProperties = {
   output_folder?: string;
   tpb_config?: string;
   registry?: 'verdaccio' | 'artifactory';
-  production?: string;
   yarnrc_config?: string;
 };
