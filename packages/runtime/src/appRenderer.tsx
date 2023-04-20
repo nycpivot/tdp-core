@@ -23,6 +23,7 @@ import {
   SurfaceStoreInterface,
   ThemeSurface,
   SettingsTabsSurface,
+  BannerSurface,
 } from '@tpb/core';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
@@ -43,6 +44,8 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const routeSurface = surfaces.findSurface(AppRouteSurface);
 
   const themeSurface = surfaces.findSurface(ThemeSurface);
+
+  const bannerSurface = surfaces.findSurface(BannerSurface);
 
   const settingsTabsSurface = surfaces.findSurface(SettingsTabsSurface);
 
@@ -80,6 +83,7 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
     <AppProvider>
       <AlertDisplay />
       <OAuthRequestDialog />
+      {...bannerSurface.banners}
       <AppRouter>{rootBuilder(routes)}</AppRouter>
     </AppProvider>
   );

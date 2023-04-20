@@ -351,6 +351,21 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 };
 ```
 
+### BannerSurface
+
+```
+import React from 'react';
+import { BannerSurface } from '@tpb/core';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(BannerSurface, banners => {
+    banners.add(
+        <div>Hello World Banner</div>
+    );
+  });
+};
+```
+
 ## Running the builder
 
 To run the builder follow the steps in the Getting Started section of this guide.
