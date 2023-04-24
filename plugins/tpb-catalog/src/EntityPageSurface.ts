@@ -75,16 +75,23 @@ export class EntityPageSurface {
     return this._userPage;
   }
 
-  get webistePage() {
+  get websitePage() {
     return this._websitePage;
-  }
-
-  public addApiPageTab(tab: ReactElement) {
-    this._apiPage.addTab(tab);
   }
 
   public addComponentPageCase(pageCase: ReactElement) {
     this._componentPageCases.push(pageCase);
+  }
+
+  public get componentPageCases(): ReactElement[] {
+    return this._componentPageCases;
+  }
+
+  /**
+   * @deprecated use apiPage
+   */
+  public addApiPageTab(tab: ReactElement) {
+    this._apiPage.addTab(tab);
   }
 
   /**
@@ -138,41 +145,5 @@ export class EntityPageSurface {
 
   public get overviewContent(): ReactElement[] {
     return this._overviewContent;
-  }
-
-  public get apiPageTabs(): ReactElement[] {
-    return this._apiPage.tabs;
-  }
-
-  public get componentPageCases(): ReactElement[] {
-    return this._componentPageCases;
-  }
-
-  public get defaultPageTabs(): ReactElement[] {
-    return this._defaultPage.tabs;
-  }
-
-  public get domainPageTabs(): ReactElement[] {
-    return this._domainPage.tabs;
-  }
-
-  public get groupPageTabs(): ReactElement[] {
-    return this._groupPage.tabs;
-  }
-
-  public get servicePageTabs(): ReactElement[] {
-    return this._servicePage.tabs;
-  }
-
-  public get systemPageTabs(): ReactElement[] {
-    return this._systemPage.tabs;
-  }
-
-  public get userPageTabs(): ReactElement[] {
-    return this._userPage.tabs;
-  }
-
-  public get websitePageTabs(): ReactElement[] {
-    return this._websitePage.tabs;
   }
 }

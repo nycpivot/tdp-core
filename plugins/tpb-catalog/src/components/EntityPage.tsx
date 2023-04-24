@@ -48,6 +48,14 @@ import {
 } from '@backstage/plugin-api-docs';
 
 export const entityPage = (surface: EntityPageSurface) => {
+  /**
+   * Note: do NOT extract the following constants in React functional components:
+   * that will break the plugins auto-discovery implemented in Backstage.
+   *
+   * Here is the kind of error you might have if you try to refactor
+   * this code with React components: https://github.com/backstage/backstage/issues/13307
+   */
+
   const entityWarningContent = (
     <>
       <EntitySwitch>
@@ -116,7 +124,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
-      {surface.servicePageTabs}
+      {surface.servicePage.tabs}
     </EntityLayout>
   );
 
@@ -137,7 +145,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
-      {surface.websitePageTabs}
+      {surface.websitePage.tabs}
     </EntityLayout>
   );
 
@@ -154,7 +162,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         {overviewContent}
       </EntityLayout.Route>
 
-      {surface.defaultPageTabs}
+      {surface.defaultPage.tabs}
     </EntityLayout>
   );
 
@@ -206,7 +214,7 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
-      {surface.apiPageTabs}
+      {surface.apiPage.tabs}
     </EntityLayout>
   );
 
@@ -223,7 +231,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-      {surface.userPageTabs}
+      {surface.userPage.tabs}
     </EntityLayout>
   );
 
@@ -243,7 +251,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-      {surface.groupPageTabs}
+      {surface.groupPage.tabs}
     </EntityLayout>
   );
 
@@ -285,7 +293,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           unidirectional={false}
         />
       </EntityLayout.Route>
-      {surface.systemPageTabs}
+      {surface.systemPage.tabs}
     </EntityLayout>
   );
 
@@ -305,7 +313,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-      {surface.domainPageTabs}
+      {surface.domainPage.tabs}
     </EntityLayout>
   );
 
