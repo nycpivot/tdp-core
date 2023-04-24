@@ -1,6 +1,6 @@
 import { TestApiProvider as ApiProvider } from '@backstage/test-utils';
 import { errorApiRef } from '@backstage/core-plugin-api';
-import { act, render } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import {
@@ -86,7 +86,7 @@ describe('<StepInitAnalyzeUrl />', () => {
 
     await act(async () => {
       try {
-        userEvent.click(getByRole('button', { name: /Analyze/i }));
+        await userEvent.click(getByRole('button', { name: /Analyze/i }));
       } catch {
         return;
       }
@@ -112,7 +112,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'http:/',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(catalogImportApi.analyzeUrl).toHaveBeenCalledTimes(0);
@@ -147,7 +147,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
@@ -184,7 +184,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository-1',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
@@ -220,7 +220,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository-1',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
@@ -264,7 +264,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository-2',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
@@ -302,7 +302,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository-2',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
@@ -346,7 +346,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository-2',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
@@ -375,7 +375,7 @@ describe('<StepInitAnalyzeUrl />', () => {
         getByRole('textbox', { name: /Repository/i }),
         'https://my-repository-2',
       );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     });
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
