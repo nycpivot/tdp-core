@@ -37,7 +37,7 @@ describe('System Page', () => {
 
   it('should render new tabs', async () => {
     const surface = new EntityPageSurface();
-    surface.addServicePageTab(
+    surface.servicePage.addTab(
       <EntityLayout.Route path="/new-tab" title="New Tab">
         <Grid container spacing={3}>
           <Grid item xs={12}>

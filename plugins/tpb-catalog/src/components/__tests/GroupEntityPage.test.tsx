@@ -45,7 +45,7 @@ describe('Group Page', () => {
 
   it('should render new tabs', async () => {
     const surface = new EntityPageSurface();
-    surface.addGroupPageTab(
+    surface.groupPage.addTab(
       <EntityLayout.Route path="/new-tab" title="New Tab">
         <Grid container spacing={3}>
           <Grid item xs={12}>

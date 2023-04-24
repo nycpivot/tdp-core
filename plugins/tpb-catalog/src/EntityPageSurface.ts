@@ -94,10 +94,16 @@ export class EntityPageSurface {
     this._defaultPage.addTab(tab);
   }
 
+  /**
+   * @deprecated use domainPage
+   */
   public addDomainPageTab(tab: ReactElement) {
     this._domainPage.addTab(tab);
   }
 
+  /**
+   * @deprecated use groupPage
+   */
   public addGroupPageTab(tab: ReactElement) {
     this._groupPage.addTab(tab);
   }
@@ -109,10 +115,16 @@ export class EntityPageSurface {
     this._servicePage.addTab(tab);
   }
 
+  /**
+   * @deprecated use systemPage
+   */
   public addSystemPageTab(tab: ReactElement) {
     this._systemPage.addTab(tab);
   }
 
+  /**
+   * @deprecated use userPage
+   */
   public addUserPageTab(tab: ReactElement) {
     this._userPage.addTab(tab);
   }
