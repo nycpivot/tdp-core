@@ -10,7 +10,7 @@ export const RRVPlugin: AppPluginInterface = () => context => {
     EntityPageSurface,
     // @ts-ignore routes that is not used
     (routes, surface) => {
-      surface.addServicePageTab(
+      surface.servicePage.addTab(
         <EntityLayout.Route path="/workloads" title="Runtime Resources">
           <WorkloadsContent />
         </EntityLayout.Route>,
