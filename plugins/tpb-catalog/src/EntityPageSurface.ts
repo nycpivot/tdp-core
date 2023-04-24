@@ -16,10 +16,27 @@ class BasicPage {
   }
 }
 
+class ApiPage extends BasicPage {
+  private readonly _overviewContents: ReactElement[];
+
+  constructor() {
+    super();
+    this._overviewContents = [];
+  }
+
+  addOverviewContent(content: ReactElement) {
+    this._overviewContents.push(content);
+  }
+
+  get overviewContents() {
+    return this._overviewContents;
+  }
+}
+
 export class EntityPageSurface {
   private readonly _overviewContent: ReactElement[];
   private readonly _componentPageCases: ReactElement[];
-  private readonly _apiPage: BasicPage;
+  private readonly _apiPage: ApiPage;
   private readonly _defaultPage: BasicPage;
   private readonly _domainPage: BasicPage;
   private readonly _groupPage: BasicPage;
@@ -33,7 +50,7 @@ export class EntityPageSurface {
 
     this._componentPageCases = [];
 
-    this._apiPage = new BasicPage();
+    this._apiPage = new ApiPage();
     this._defaultPage = new BasicPage();
     this._domainPage = new BasicPage();
     this._groupPage = new BasicPage();

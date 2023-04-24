@@ -32,16 +32,16 @@ describe('API Page', () => {
     ).toBeInTheDocument();
   });
 
-  // it('can customize the overview tab', async () => {
-  //   const surface = new EntityPageSurface();
-  //   surface.apiPage.addOverviewContent(<div>i am a new overview element</div>);
-  //
-  //   await renderTestEntityPage(testEntity, surface);
-  //
-  //   expect(
-  //     await screen.findByText(/i am a new overview element/i),
-  //   ).toBeInTheDocument();
-  // });
+  it('can customize the overview tab', async () => {
+    const surface = new EntityPageSurface();
+    surface.apiPage.addOverviewContent(<div>i am a new overview element</div>);
+
+    await renderTestEntityPage(testEntity, surface);
+
+    expect(
+      await screen.findByText(/i am a new overview element/i),
+    ).toBeInTheDocument();
+  });
 
   it('should render new tabs', async () => {
     const surface = new EntityPageSurface();
