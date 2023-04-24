@@ -1,6 +1,6 @@
 import { TestApiProvider as ApiProvider } from '@backstage/test-utils';
 import { errorApiRef } from '@backstage/core-plugin-api';
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import {
@@ -84,13 +84,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       wrapper: Wrapper,
     });
 
-    await act(async () => {
-      try {
-        await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-      } catch {
-        return;
-      }
-    });
+    try {
+      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
+    } catch {
+      return;
+    }
 
     expect(catalogImportApi.analyzeUrl).toHaveBeenCalledTimes(0);
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
@@ -104,13 +102,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       wrapper: Wrapper,
     });
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'http:/',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'http:/',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(catalogImportApi.analyzeUrl).toHaveBeenCalledTimes(0);
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
@@ -136,13 +132,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -170,13 +164,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-1',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-1',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -203,13 +195,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-1',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-1',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
@@ -244,13 +234,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -279,13 +267,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
@@ -323,13 +309,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
@@ -349,13 +333,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve({ type: 'unknown' } as any as AnalyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        screen.getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
-    });
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
