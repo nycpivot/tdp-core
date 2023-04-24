@@ -1,0 +1,32 @@
+{
+  "name": "builder",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "backstage": {
+    "role": "node-library"
+  },
+  "scripts": {
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "portal": "webpack --config portal.config.ts"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "yaml": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/webpack": "^5.28.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "generate-file-webpack-plugin": "^1.0.1",
+    "remove-files-webpack-plugin": "~1.4.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1"
+  }
+}

@@ -5,3 +5,4 @@ coverage
 lerna.json
 *.local.yaml
 techdocs
+*.hbs

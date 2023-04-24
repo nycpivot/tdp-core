@@ -1,0 +1,20 @@
+import '@backstage/cli/asset-types';
+import { AppRuntime } from '@tpb/runtime';
+{{#each app.plugins}}
+import { plugin as plugin{{@index}} } from '{{this.name}}';
+{{/each}}
+{{#if app.theme}}
+import { plugin as themePlugin } from '{{app.theme.name}}';
+    {{#if app.theme.stylesheet}}
+import '{{app.theme.stylesheet}}';
+    {{/if}}
+{{/if}}
+
+new AppRuntime([
+{{#if app.theme}}
+    themePlugin(),
+{{/if}}
+{{#each app.plugins}}
+    plugin{{@index}}(),
+{{/each}}
+]).render();
