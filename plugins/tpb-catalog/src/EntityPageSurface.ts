@@ -47,6 +47,38 @@ export class EntityPageSurface {
     this._overviewContent.push(content);
   }
 
+  get apiPage() {
+    return this._apiPage;
+  }
+
+  get defaultPage() {
+    return this._defaultPage;
+  }
+
+  get domainPage() {
+    return this._domainPage;
+  }
+
+  get groupPage() {
+    return this._groupPage;
+  }
+
+  get servicePage() {
+    return this._servicePage;
+  }
+
+  get systemPage() {
+    return this._systemPage;
+  }
+
+  get userPage() {
+    return this._userPage;
+  }
+
+  get webistePage() {
+    return this._websitePage;
+  }
+
   public addApiPageTab(tab: ReactElement) {
     this._apiPage.addTab(tab);
   }
@@ -55,6 +87,9 @@ export class EntityPageSurface {
     this._componentPageCases.push(pageCase);
   }
 
+  /**
+   * @deprecated use defaultPage
+   */
   public addDefaultPageTab(tab: ReactElement) {
     this._defaultPage.addTab(tab);
   }
@@ -67,6 +102,9 @@ export class EntityPageSurface {
     this._groupPage.addTab(tab);
   }
 
+  /**
+   * @deprecated use servicePage
+   */
   public addServicePageTab(tab: ReactElement) {
     this._servicePage.addTab(tab);
   }
@@ -79,6 +117,9 @@ export class EntityPageSurface {
     this._userPage.addTab(tab);
   }
 
+  /**
+   * @deprecated use websitePage
+   */
   public addWebsitePageTab(tab: ReactElement) {
     this._websitePage.addTab(tab);
   }
