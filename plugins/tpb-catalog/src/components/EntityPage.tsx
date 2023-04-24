@@ -196,8 +196,8 @@ export const entityPage = (surface: EntityPageSurface) => {
                 <EntityLinksCard />
               </Grid>
             </Grid>
+            {surface.apiPage.overviewContents}
           </Grid>
-          {surface.apiPage.overviewContents}
           <Grid item md={6} xs={12}>
             <EntityProvidingComponentsCard />
           </Grid>

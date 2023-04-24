@@ -26,4 +26,10 @@ describe('Hello World Plugin', () => {
     cy.visit('/');
     cy.contains('Hello World Banner');
   });
+
+  it('should customize api page overview', () => {
+    cy.visit('/api-docs');
+    cy.contains(/example-grpc-api/i).click();
+    cy.contains(/i am an hello world overview/i);
+  });
 });

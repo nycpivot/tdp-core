@@ -11,6 +11,8 @@ import {
 import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import { HelloWorld } from './HelloWorld';
+import { EntityPageSurface } from '@tpb/plugin-catalog';
+import { Grid } from '@material-ui/core';
 
 export const HelloWorldPlugin: AppPluginInterface = () => context => {
   context.applyTo(AppRouteSurface, routes =>
@@ -33,5 +35,13 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 
   context.applyTo(BannerSurface, banners => {
     banners.add(<div>Hello World Banner</div>);
+  });
+
+  context.applyTo(EntityPageSurface, surface => {
+    surface.apiPage.addOverviewContent(
+      <Grid item md={6} xs={12}>
+        <div>I am an Hello World overview!</div>
+      </Grid>,
+    );
   });
 };
