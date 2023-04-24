@@ -1,30 +1,46 @@
 import { ReactElement } from 'react';
 
+class BasicPage {
+  private readonly _tabs: ReactElement[];
+
+  constructor() {
+    this._tabs = [];
+  }
+
+  addTab(tab: ReactElement) {
+    this._tabs.push(tab);
+  }
+
+  get tabs() {
+    return this._tabs;
+  }
+}
+
 export class EntityPageSurface {
   private readonly _overviewContent: ReactElement[];
-
-  private readonly _apiPageTabs: ReactElement[];
   private readonly _componentPageCases: ReactElement[];
-  private readonly _defaultPageTabs: ReactElement[];
-  private readonly _domainPageTabs: ReactElement[];
-  private readonly _groupPageTabs: ReactElement[];
-  private readonly _servicePageTabs: ReactElement[];
-  private readonly _systemPageTabs: ReactElement[];
-  private readonly _userPageTabs: ReactElement[];
-  private readonly _websitePageTabs: ReactElement[];
+  private readonly _apiPage: BasicPage;
+  private readonly _defaultPage: BasicPage;
+  private readonly _domainPage: BasicPage;
+  private readonly _groupPage: BasicPage;
+  private readonly _servicePage: BasicPage;
+  private readonly _systemPage: BasicPage;
+  private readonly _userPage: BasicPage;
+  private readonly _websitePage: BasicPage;
 
   public constructor() {
     this._overviewContent = [];
 
-    this._apiPageTabs = [];
     this._componentPageCases = [];
-    this._defaultPageTabs = [];
-    this._domainPageTabs = [];
-    this._groupPageTabs = [];
-    this._servicePageTabs = [];
-    this._systemPageTabs = [];
-    this._userPageTabs = [];
-    this._websitePageTabs = [];
+
+    this._apiPage = new BasicPage();
+    this._defaultPage = new BasicPage();
+    this._domainPage = new BasicPage();
+    this._groupPage = new BasicPage();
+    this._servicePage = new BasicPage();
+    this._systemPage = new BasicPage();
+    this._userPage = new BasicPage();
+    this._websitePage = new BasicPage();
   }
 
   public addOverviewContent(content: ReactElement) {
@@ -32,39 +48,39 @@ export class EntityPageSurface {
   }
 
   public addApiPageTab(tab: ReactElement) {
-    this._apiPageTabs.push(tab);
+    this._apiPage.addTab(tab);
   }
 
-  public addComponentPageCase(tab: ReactElement) {
-    this._componentPageCases.push(tab);
+  public addComponentPageCase(pageCase: ReactElement) {
+    this._componentPageCases.push(pageCase);
   }
 
   public addDefaultPageTab(tab: ReactElement) {
-    this._defaultPageTabs.push(tab);
+    this._defaultPage.addTab(tab);
   }
 
   public addDomainPageTab(tab: ReactElement) {
-    this._domainPageTabs.push(tab);
+    this._domainPage.addTab(tab);
   }
 
   public addGroupPageTab(tab: ReactElement) {
-    this._groupPageTabs.push(tab);
+    this._groupPage.addTab(tab);
   }
 
   public addServicePageTab(tab: ReactElement) {
-    this._servicePageTabs.push(tab);
+    this._servicePage.addTab(tab);
   }
 
   public addSystemPageTab(tab: ReactElement) {
-    this._systemPageTabs.push(tab);
+    this._systemPage.addTab(tab);
   }
 
   public addUserPageTab(tab: ReactElement) {
-    this._userPageTabs.push(tab);
+    this._userPage.addTab(tab);
   }
 
   public addWebsitePageTab(tab: ReactElement) {
-    this._websitePageTabs.push(tab);
+    this._websitePage.addTab(tab);
   }
 
   public get overviewContent(): ReactElement[] {
@@ -72,7 +88,7 @@ export class EntityPageSurface {
   }
 
   public get apiPageTabs(): ReactElement[] {
-    return this._apiPageTabs;
+    return this._apiPage.tabs;
   }
 
   public get componentPageCases(): ReactElement[] {
@@ -80,30 +96,30 @@ export class EntityPageSurface {
   }
 
   public get defaultPageTabs(): ReactElement[] {
-    return this._defaultPageTabs;
+    return this._defaultPage.tabs;
   }
 
   public get domainPageTabs(): ReactElement[] {
-    return this._domainPageTabs;
+    return this._domainPage.tabs;
   }
 
   public get groupPageTabs(): ReactElement[] {
-    return this._groupPageTabs;
+    return this._groupPage.tabs;
   }
 
   public get servicePageTabs(): ReactElement[] {
-    return this._servicePageTabs;
+    return this._servicePage.tabs;
   }
 
   public get systemPageTabs(): ReactElement[] {
-    return this._systemPageTabs;
+    return this._systemPage.tabs;
   }
 
   public get userPageTabs(): ReactElement[] {
-    return this._userPageTabs;
+    return this._userPage.tabs;
   }
 
   public get websitePageTabs(): ReactElement[] {
-    return this._websitePageTabs;
+    return this._websitePage.tabs;
   }
 }
