@@ -366,6 +366,67 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 };
 ```
 
+### EntityPageSurface
+
+This surface can be used to customize the page displayed when an entity is selected.
+
+There are different [kinds of entities](https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-component) that are supported:
+
+It is possible to add a new tab to one of those entity pages. Let's say that we want to customize the API Page, here is how it can be done:
+
+```jsx
+import React from 'react';
+import { EntityPageSurface } from '@tpb/plugin-catalog';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(EntityPageSurface, surface => {
+    surface.apiPage.addTab(<div>I am a new tab</div>);
+  });
+};
+```
+
+There is a configurable page per kind of entity.
+
+### Customizing API Page
+
+The API page overview can also be customized:
+
+```jsx
+import React from 'react';
+import { EntityPageSurface } from '@tpb/plugin-catalog';
+import { Grid } from '@material-ui/core';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(EntityPageSurface, surface => {
+    surface.apiPage.addOverviewContent(
+      <Grid item md={6} xs={12}>
+        <div>I am an Hello World overview!</div>
+      </Grid>,
+    );
+  });
+};
+```
+
+### Customizing component pages
+
+If a component is not supported by the TPB, it is possible to add a new page for it:
+
+```jsx
+import React from 'react';
+import { EntityPageSurface } from '@tpb/plugin-catalog';
+import { isComponentType, EntitySwitch } from '@backstage/plugin-catalog';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(EntityPageSurface, surface => {
+    surface.addComponentPageCase(
+      <EntitySwitch.Case if={isComponentType('foo')}>
+        <div>i am foo</div>
+      </EntitySwitch.Case>,
+    );
+  });
+};
+```
+
 ## Running the builder
 
 To run the builder follow the steps in the Getting Started section of this guide.
