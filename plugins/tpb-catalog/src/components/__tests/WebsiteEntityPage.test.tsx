@@ -4,7 +4,7 @@ import { EntityPageSurface } from '../../EntityPageSurface';
 import { Grid } from '@material-ui/core';
 import { EntityLayout } from '@backstage/plugin-catalog';
 import userEvent from '@testing-library/user-event';
-import { renderTestEntityPage } from './test_helpers';
+import { buildTestEntity, renderTestEntityPage } from './test_helpers';
 
 describe('Website Page', () => {
   const testEntity = buildTestEntity(

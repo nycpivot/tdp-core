@@ -6,7 +6,7 @@ import {
   isKind,
   EntitySwitch,
 } from '@backstage/plugin-catalog';
-import { renderTestEntityPage } from './test_helpers';
+import { buildTestEntity, renderTestEntityPage } from './test_helpers';
 
 describe('Custom Component Page', () => {
   const testEntity = buildTestEntity('component', {

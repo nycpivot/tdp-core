@@ -12,6 +12,8 @@ import {
   scmIntegrationsApiRef,
 } from '@backstage/integration-react';
 // eslint-disable-next-line @backstage/no-undeclared-imports
+import { JsonObject } from '@backstage/types';
+// eslint-disable-next-line @backstage/no-undeclared-imports
 import { ConfigReader } from '@backstage/config';
 import {
   CatalogApi,
@@ -27,10 +29,10 @@ import { orgPlugin } from '@backstage/plugin-org';
 import { catalogGraphRouteRef } from '@backstage/plugin-catalog-graph';
 import { EntityPageSurface } from '../../EntityPageSurface';
 
-export async function renderTestEntityPage(
+export const renderTestEntityPage = async (
   testEntity: Entity,
   surface: EntityPageSurface,
-) {
+) => {
   await renderInTestApp(
     <ApiProvider
       apis={[
@@ -64,4 +66,28 @@ export async function renderTestEntityPage(
       },
     },
   );
-}
+};
+
+export const buildTestEntity = (
+  kind: string,
+  spec: JsonObject = {},
+  metadata: JsonObject = {},
+): Entity => ({
+  apiVersion: 'v1',
+  kind,
+  metadata: {
+    name: 'TestEntity',
+    description: 'This is the description',
+    ...metadata,
+  },
+  spec: {
+    owner: 'guest',
+    ...spec,
+  },
+  relations: [
+    {
+      type: 'ownedBy',
+      targetRef: 'user:default/guest',
+    },
+  ],
+});
