@@ -1,109 +1,166 @@
 import { ReactElement } from 'react';
 
+class BasicPage {
+  private readonly _tabs: ReactElement[];
+
+  constructor() {
+    this._tabs = [];
+  }
+
+  addTab(tab: ReactElement) {
+    this._tabs.push(tab);
+  }
+
+  get tabs() {
+    return this._tabs;
+  }
+}
+
+class ApiPage extends BasicPage {
+  private readonly _overviewContents: ReactElement[];
+
+  constructor() {
+    super();
+    this._overviewContents = [];
+  }
+
+  addOverviewContent(content: ReactElement) {
+    this._overviewContents.push(content);
+  }
+
+  get overviewContents() {
+    return this._overviewContents;
+  }
+}
+
 export class EntityPageSurface {
   private readonly _overviewContent: ReactElement[];
-
-  private readonly _apiPageTabs: ReactElement[];
   private readonly _componentPageCases: ReactElement[];
-  private readonly _defaultPageTabs: ReactElement[];
-  private readonly _domainPageTabs: ReactElement[];
-  private readonly _groupPageTabs: ReactElement[];
-  private readonly _servicePageTabs: ReactElement[];
-  private readonly _systemPageTabs: ReactElement[];
-  private readonly _userPageTabs: ReactElement[];
-  private readonly _websitePageTabs: ReactElement[];
+  private readonly _apiPage: ApiPage;
+  private readonly _defaultPage: BasicPage;
+  private readonly _domainPage: BasicPage;
+  private readonly _groupPage: BasicPage;
+  private readonly _servicePage: BasicPage;
+  private readonly _systemPage: BasicPage;
+  private readonly _userPage: BasicPage;
+  private readonly _websitePage: BasicPage;
 
   public constructor() {
     this._overviewContent = [];
 
-    this._apiPageTabs = [];
     this._componentPageCases = [];
-    this._defaultPageTabs = [];
-    this._domainPageTabs = [];
-    this._groupPageTabs = [];
-    this._servicePageTabs = [];
-    this._systemPageTabs = [];
-    this._userPageTabs = [];
-    this._websitePageTabs = [];
+
+    this._apiPage = new ApiPage();
+    this._defaultPage = new BasicPage();
+    this._domainPage = new BasicPage();
+    this._groupPage = new BasicPage();
+    this._servicePage = new BasicPage();
+    this._systemPage = new BasicPage();
+    this._userPage = new BasicPage();
+    this._websitePage = new BasicPage();
   }
 
   public addOverviewContent(content: ReactElement) {
     this._overviewContent.push(content);
   }
 
-  public addApiPageTab(tab: ReactElement) {
-    this._apiPageTabs.push(tab);
+  get apiPage() {
+    return this._apiPage;
   }
 
-  public addComponentPageCase(tab: ReactElement) {
-    this._componentPageCases.push(tab);
+  get defaultPage() {
+    return this._defaultPage;
   }
 
-  public addDefaultPageTab(tab: ReactElement) {
-    this._defaultPageTabs.push(tab);
+  get domainPage() {
+    return this._domainPage;
   }
 
-  public addDomainPageTab(tab: ReactElement) {
-    this._domainPageTabs.push(tab);
+  get groupPage() {
+    return this._groupPage;
   }
 
-  public addGroupPageTab(tab: ReactElement) {
-    this._groupPageTabs.push(tab);
+  get servicePage() {
+    return this._servicePage;
   }
 
-  public addServicePageTab(tab: ReactElement) {
-    this._servicePageTabs.push(tab);
+  get systemPage() {
+    return this._systemPage;
   }
 
-  public addSystemPageTab(tab: ReactElement) {
-    this._systemPageTabs.push(tab);
+  get userPage() {
+    return this._userPage;
   }
 
-  public addUserPageTab(tab: ReactElement) {
-    this._userPageTabs.push(tab);
+  get websitePage() {
+    return this._websitePage;
   }
 
-  public addWebsitePageTab(tab: ReactElement) {
-    this._websitePageTabs.push(tab);
-  }
-
-  public get overviewContent(): ReactElement[] {
-    return this._overviewContent;
-  }
-
-  public get apiPageTabs(): ReactElement[] {
-    return this._apiPageTabs;
+  public addComponentPageCase(pageCase: ReactElement) {
+    this._componentPageCases.push(pageCase);
   }
 
   public get componentPageCases(): ReactElement[] {
     return this._componentPageCases;
   }
 
-  public get defaultPageTabs(): ReactElement[] {
-    return this._defaultPageTabs;
+  /**
+   * @deprecated use apiPage
+   */
+  public addApiPageTab(tab: ReactElement) {
+    this._apiPage.addTab(tab);
   }
 
-  public get domainPageTabs(): ReactElement[] {
-    return this._domainPageTabs;
+  /**
+   * @deprecated use defaultPage
+   */
+  public addDefaultPageTab(tab: ReactElement) {
+    this._defaultPage.addTab(tab);
   }
 
-  public get groupPageTabs(): ReactElement[] {
-    return this._groupPageTabs;
+  /**
+   * @deprecated use domainPage
+   */
+  public addDomainPageTab(tab: ReactElement) {
+    this._domainPage.addTab(tab);
   }
 
-  public get servicePageTabs(): ReactElement[] {
-    return this._servicePageTabs;
+  /**
+   * @deprecated use groupPage
+   */
+  public addGroupPageTab(tab: ReactElement) {
+    this._groupPage.addTab(tab);
   }
 
-  public get systemPageTabs(): ReactElement[] {
-    return this._systemPageTabs;
+  /**
+   * @deprecated use servicePage
+   */
+  public addServicePageTab(tab: ReactElement) {
+    this._servicePage.addTab(tab);
   }
 
-  public get userPageTabs(): ReactElement[] {
-    return this._userPageTabs;
+  /**
+   * @deprecated use systemPage
+   */
+  public addSystemPageTab(tab: ReactElement) {
+    this._systemPage.addTab(tab);
   }
 
-  public get websitePageTabs(): ReactElement[] {
-    return this._websitePageTabs;
+  /**
+   * @deprecated use userPage
+   */
+  public addUserPageTab(tab: ReactElement) {
+    this._userPage.addTab(tab);
+  }
+
+  /**
+   * @deprecated use websitePage
+   */
+  public addWebsitePageTab(tab: ReactElement) {
+    this._websitePage.addTab(tab);
+  }
+
+  public get overviewContent(): ReactElement[] {
+    return this._overviewContent;
   }
 }
