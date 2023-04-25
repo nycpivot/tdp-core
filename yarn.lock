@@ -9726,10 +9726,10 @@ before-after-hook@^2.2.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/before-after-hook/-/before-after-hook-2.2.3.tgz#c51e809c81a4e354084422b9b26bad88249c517c"
   integrity sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ==
 
-better-sqlite3@^7.5.0:
-  version "7.6.2"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/better-sqlite3/-/better-sqlite3-7.6.2.tgz#47cd8cad5b9573cace535f950ac321166bc31384"
-  integrity sha512-S5zIU1Hink2AH4xPsN0W43T1/AJ5jrPh7Oy07ocuW/AKYYY02GWzz9NH0nbSMn/gw6fDZ5jZ1QsHt1BXAwJ6Lg==
+better-sqlite3@^8.3.0:
+  version "8.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/better-sqlite3/-/better-sqlite3-8.3.0.tgz#3873ddfd9f2af90b628657e8ff221786c93d1984"
+  integrity sha512-JTmvBZL/JLTc+3Msbvq6gK6elbU9/wVMqiudplHrVJpr7sVMR9KJrNhZAbW+RhXKlpMcuEhYkdcHa3TXKNXQ1w==
   dependencies:
     bindings "^1.5.0"
     prebuild-install "^7.1.0"
