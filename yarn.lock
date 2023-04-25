@@ -3287,17 +3287,17 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-auth-backend@^0.18.1":
-  version "0.18.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-backend/-/plugin-auth-backend-0.18.1.tgz#fd5bd240c67873232b4361e5f10b8716a394d676"
-  integrity sha512-A4D8CT9xgpi1Fn2pZTXwRFN0kWU4sNgTH5JiBLHOhLfTYrSlTTnF7tXftgYq5WjyjqbX5MJocnICVhEvA/FgJw==
+"@backstage/plugin-auth-backend@^0.18.2":
+  version "0.18.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-backend/-/plugin-auth-backend-0.18.2.tgz#7131bf67f06dda4cb7aa896ecf0357a5f1d591a5"
+  integrity sha512-Kdx50LaZCoSUhHsRTOs3bAQDUsKc6CeVoXg5+dBiT5S88oe+jumXBEE8RpeJnKvWjXa8jPPDrn6+nPLNQlGHzg==
   dependencies:
-    "@backstage/backend-common" "^0.18.3"
-    "@backstage/catalog-client" "^1.4.0"
-    "@backstage/catalog-model" "^1.2.1"
+    "@backstage/backend-common" "^0.18.4"
+    "@backstage/catalog-client" "^1.4.1"
+    "@backstage/catalog-model" "^1.3.0"
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
-    "@backstage/plugin-auth-node" "^0.2.12"
+    "@backstage/plugin-auth-node" "^0.2.13"
     "@backstage/types" "^1.0.2"
     "@davidzemon/passport-okta-oauth" "^0.0.5"
     "@google-cloud/firestore" "^6.0.0"
