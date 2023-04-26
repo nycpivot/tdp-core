@@ -4,14 +4,15 @@ image_resource:
   type: registry-image
   source:
     repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
-    tag: 16-buster-slim
+    tag: 16-alpine3.17
 inputs:
   - name: code
 run:
   dir: code
-  path: bash
+  path: ash
   args:
     - -exc
     - |
+      ci/scripts/setup_alpine
       ci/scripts/yarn_install
       CI=true yarn test:all

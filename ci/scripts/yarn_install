@@ -7,7 +7,7 @@ set -euo pipefail
 yarn config set unsafe-perm true
 
 CKSUM_BEFORE=$(cksum yarn.lock)
-yarn install
+yarn install --build-from-source --sqlite=/usr/bin
 CKSUM_AFTER=$(cksum yarn.lock)
 
 
