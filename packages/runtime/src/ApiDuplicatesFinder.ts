@@ -16,4 +16,8 @@ export class ApiDuplicatesFinder {
   isDuplicate(apiFactory: AnyApiFactory): boolean {
     return this._apis[apiFactory.api.id] !== undefined;
   }
+
+  deduplicate(apiFactories: AnyApiFactory[]): AnyApiFactory[] {
+    return apiFactories.filter(factory => !this.isDuplicate(factory));
+  }
 }

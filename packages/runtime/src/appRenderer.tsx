@@ -30,9 +30,9 @@ import { ApiDuplicatesFinder } from './ApiDuplicatesFinder';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const apiDuplicatesFinder = new ApiDuplicatesFinder([configApiRef]);
-  const deduplicatedApis = surfaces
-    .findSurface(ApiSurface)
-    .apis.filter(api => !apiDuplicatesFinder.isDuplicate(api));
+  const deduplicatedApis = apiDuplicatesFinder.deduplicate(
+    surfaces.findSurface(ApiSurface).apis,
+  );
 
   const apis: AnyApiFactory[] = [
     createApiFactory({
