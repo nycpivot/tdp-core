@@ -1,6 +1,7 @@
 import { ApiSurface } from './ApiSurface';
 import {
   ApiRef,
+  configApiRef,
   createApiFactory,
   createApiRef,
 } from '@backstage/core-plugin-api';
@@ -46,6 +47,32 @@ describe('Api Surface', () => {
     surface.add(factory);
     surface.add(factory);
 
-    expect(surface.apis.map(a => a.api)).toEqual(['my.api']);
+    expect(surface.apis.map(a => a.api.id)).toEqual(['my.api']);
+  });
+
+  it('should keep the last registered api when two different apis with the same id are added', () => {
+    class MyApi {}
+
+    const surface = new ApiSurface();
+
+    const ref: ApiRef<MyApi> = createApiRef({
+      id: 'my.api',
+    });
+
+    const factoryWithNoDeps = createApiFactory<MyApi, any>(ref, null);
+
+    const factoryWithDeps = createApiFactory({
+      api: ref,
+      deps: { configApi: configApiRef },
+      factory: jest.fn(),
+    });
+
+    surface.add(factoryWithNoDeps);
+    surface.add(factoryWithDeps);
+
+    expect(surface.apis.map(a => a.api.id)).toEqual(['my.api']);
+    expect(surface.apis.map(a => a.deps.configApi)).toContainEqual(
+      configApiRef,
+    );
   });
 });
