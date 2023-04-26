@@ -1,5 +1,5 @@
 import {
-  AnyApiFactory,
+  ApiRef,
   createApiFactory,
   createApiRef,
 } from '@backstage/core-plugin-api';
@@ -9,27 +9,18 @@ describe('Api Duplicates Finder', () => {
   it('should detect duplicate', () => {
     class MyApi {}
 
-    const existing: AnyApiFactory[] = [
-      createApiFactory<MyApi, any>(
-        createApiRef({
-          id: 'my.api1',
-        }),
-        null,
-      ),
-      createApiFactory<MyApi, any>(
-        createApiRef({
-          id: 'my.api2',
-        }),
-        null,
-      ),
-      createApiFactory<MyApi, any>(
-        createApiRef({
-          id: 'my.api3',
-        }),
-        null,
-      ),
+    const apis: ApiRef<any>[] = [
+      createApiRef({
+        id: 'my.api1',
+      }),
+      createApiRef({
+        id: 'my.api2',
+      }),
+      createApiRef({
+        id: 'my.api3',
+      }),
     ];
-    const finder = new ApiDuplicatesFinder(existing);
+    const finder = new ApiDuplicatesFinder(apis);
 
     expect(
       finder.isDuplicate(

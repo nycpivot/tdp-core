@@ -26,8 +26,14 @@ import {
   BannerSurface,
 } from '@tpb/core';
 import { ToggleRoute } from '@tpb/core-frontend';
+import { ApiDuplicatesFinder } from './ApiDuplicatesFinder';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
+  const apiDuplicatesFinder = new ApiDuplicatesFinder([configApiRef]);
+  const deduplicatedApis = surfaces
+    .findSurface(ApiSurface)
+    .apis.filter(api => !apiDuplicatesFinder.isDuplicate(api));
+
   const apis: AnyApiFactory[] = [
     createApiFactory({
       api: scmIntegrationsApiRef,
@@ -35,7 +41,7 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
       factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
     }),
     ScmAuth.createDefaultApiFactory(),
-    ...surfaces.findSurface(ApiSurface).apis,
+    ...deduplicatedApis,
   ];
 
   const pluginSurface = surfaces.findSurface(AppPluginSurface);

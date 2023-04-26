@@ -1,19 +1,19 @@
-import { AnyApiFactory } from '@backstage/core-plugin-api';
+import { AnyApiFactory, ApiRef } from '@backstage/core-plugin-api';
 
-type ApiFactoryMap = {
-  [id: string]: AnyApiFactory;
+type ApiMap = {
+  [id: string]: ApiRef<any>;
 };
 
 export class ApiDuplicatesFinder {
-  private _factories: ApiFactoryMap = {};
+  private _apis: ApiMap = {};
 
-  constructor(factories: AnyApiFactory[]) {
-    factories.forEach(f => {
-      this._factories[f.api.id] = f;
+  constructor(apis: ApiRef<any>[]) {
+    apis.forEach(f => {
+      this._apis[f.id] = f;
     });
   }
 
   isDuplicate(apiFactory: AnyApiFactory): boolean {
-    return this._factories[apiFactory.api.id] !== undefined;
+    return this._apis[apiFactory.api.id] !== undefined;
   }
 }
