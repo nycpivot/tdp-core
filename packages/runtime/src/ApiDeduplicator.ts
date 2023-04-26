@@ -4,7 +4,7 @@ type ApiMap = {
   [id: string]: ApiRef<any>;
 };
 
-export class ApiDuplicatesFinder {
+export class ApiDeduplicator {
   private _apis: ApiMap = {};
 
   constructor(apis: ApiRef<any>[]) {
@@ -13,11 +13,11 @@ export class ApiDuplicatesFinder {
     });
   }
 
-  isDuplicate(apiFactory: AnyApiFactory): boolean {
-    return this._apis[apiFactory.api.id] !== undefined;
-  }
-
   deduplicate(apiFactories: AnyApiFactory[]): AnyApiFactory[] {
     return apiFactories.filter(factory => !this.isDuplicate(factory));
+  }
+
+  private isDuplicate(apiFactory: AnyApiFactory): boolean {
+    return this._apis[apiFactory.api.id] !== undefined;
   }
 }

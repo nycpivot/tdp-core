@@ -26,10 +26,10 @@ import {
   BannerSurface,
 } from '@tpb/core';
 import { ToggleRoute } from '@tpb/core-frontend';
-import { ApiDuplicatesFinder } from './ApiDuplicatesFinder';
+import { ApiDeduplicator } from './ApiDeduplicator';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
-  const apiDuplicatesFinder = new ApiDuplicatesFinder([configApiRef]);
+  const apiDuplicatesFinder = new ApiDeduplicator([configApiRef]);
   const deduplicatedApis = apiDuplicatesFinder.deduplicate(
     surfaces.findSurface(ApiSurface).apis,
   );
