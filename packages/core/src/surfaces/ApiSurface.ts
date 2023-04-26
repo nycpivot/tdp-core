@@ -1,14 +1,18 @@
 import { AnyApiFactory } from '@backstage/core-plugin-api';
 
+type ApiFactoryMap = {
+  [id: string]: AnyApiFactory;
+};
+
 export class ApiSurface {
-  private readonly _apis: AnyApiFactory[] = [];
+  private readonly _apis: ApiFactoryMap = {};
   public static readonly id = 'ApiSurface';
 
-  public add(api: AnyApiFactory) {
-    this._apis.push(api);
+  public add(factory: AnyApiFactory) {
+    this._apis[factory.api.id] = factory;
   }
 
   public get apis(): AnyApiFactory[] {
-    return this._apis;
+    return Object.values(this._apis);
   }
 }
