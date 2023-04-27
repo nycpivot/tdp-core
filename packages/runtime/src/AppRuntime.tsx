@@ -7,6 +7,7 @@ import {
   SurfaceStore,
   ThemeSurface,
 } from '@tpb/core';
+import { plugin as scmPlugin } from '@tpb/plugin-scm';
 import { plugin as catalogPlugin } from '@tpb/plugin-catalog';
 import { plugin as techdocsPlugin } from '@tpb/plugin-techdocs';
 import { plugin as searchPlugin } from '@tpb/plugin-search';
@@ -26,6 +27,7 @@ export class AppRuntime {
     searchPlugin()(this._surfaces);
     apiDocsPlugin()(this._surfaces);
     loginPlugin()(this._surfaces);
+    scmPlugin()(this._surfaces);
     this._surfaces.applyTo(AppRouteSurface, routes =>
       routes.setDefault('catalog'),
     );

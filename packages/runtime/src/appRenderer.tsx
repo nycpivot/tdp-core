@@ -6,16 +6,8 @@ import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
 import {
-  ScmAuth,
-  scmAuthApiRef,
-  ScmIntegrationsApi,
-  scmIntegrationsApiRef,
-} from '@backstage/integration-react';
-import {
-  AnyApiFactory,
   appThemeApiRef,
   configApiRef,
-  createApiFactory,
   identityApiRef,
 } from '@backstage/core-plugin-api';
 import {
@@ -33,10 +25,6 @@ import { ApiDeduplicator } from './ApiDeduplicator';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const apiDeduplicator = new ApiDeduplicator([
-    // the following apis are hardcoded in this renderer or do we want them to be replaceable by some api in ApiSurface ?
-    scmIntegrationsApiRef,
-    scmAuthApiRef,
-
     // the following apis are registered in [this file](https://github.com/backstage/backstage/blob/8ee31f38bfb2fd7c416fb8da9472fd46f0a7e664/packages/core-app-api/src/app/AppManager.tsx#L428) -> no way found to get them before creating our app
     // note that we don't include the featureFlagsApiRef because it can be replaced
     // we also don't include the backstage default apis here for the same reason TBC
@@ -45,16 +33,6 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
     configApiRef,
     identityApiRef,
   ]);
-  const apis: AnyApiFactory[] = [
-    createApiFactory({
-      api: scmIntegrationsApiRef,
-      deps: { configApi: configApiRef },
-      factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
-    }),
-    ScmAuth.createDefaultApiFactory(),
-    ...apiDeduplicator.deduplicate(surfaces.findSurface(ApiSurface).apis),
-  ];
-
   const pluginSurface = surfaces.findSurface(AppPluginSurface);
   const plugins =
     pluginSurface.plugins.length > 0 ? pluginSurface.plugins : undefined;
@@ -68,7 +46,7 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const settingsTabsSurface = surfaces.findSurface(SettingsTabsSurface);
 
   const app = createApp({
-    apis,
+    apis: apiDeduplicator.deduplicate(surfaces.findSurface(ApiSurface).apis),
     themes: themeSurface.themes(),
     components: surfaces.findSurface(AppComponentSurface).components,
     plugins,
