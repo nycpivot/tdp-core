@@ -4,23 +4,38 @@ import {
   SignInResolver,
 } from '@backstage/plugin-auth-backend';
 import { BackstageSignInResult } from '@backstage/plugin-auth-node';
-import { stringifyEntityRef } from '@backstage/catalog-model';
 import { NotFoundError } from '@backstage/errors';
+import { stringifyEntityRef } from '@backstage/catalog-model';
 
-export type SignInProvider = {};
+class ResolverEntry {
+  authProviderKey: string;
+  readonly resolver: SignInResolver<any>;
 
-export class SignInProviderResolverSurface {
-  private _signInProvidersResolvers = {};
+  constructor(authProviderKey: string, signInResolver: SignInResolver<any>) {
+    this.authProviderKey = authProviderKey;
+    this.resolver = signInResolver;
+  }
+}
 
-  public add(signInProvider: SignInProvider) {
-    this._signInProvidersResolvers = {
-      ...signInProvider,
-      ...this._signInProvidersResolvers,
-    };
+export class SignInResolverSurface {
+  private _resolvers: ResolverEntry[] = [];
+
+  public add(authProviderKey: string, resolver: SignInResolver<any>) {
+    this._resolvers.push(new ResolverEntry(authProviderKey, resolver));
   }
 
-  public allSignInProviders() {
-    return this._signInProvidersResolvers;
+  public getResolver<TAuthResult>(
+    authProviderKey: string,
+  ): SignInResolver<TAuthResult> {
+    const resolverEntry = this._resolvers.find(
+      r => r.authProviderKey === authProviderKey,
+    );
+
+    if (resolverEntry) {
+      return resolverEntry.resolver;
+    }
+
+    return this.signInAsGuestResolver();
   }
 
   public signInAsGuestResolver<TAuthResult>(): SignInResolver<TAuthResult> {

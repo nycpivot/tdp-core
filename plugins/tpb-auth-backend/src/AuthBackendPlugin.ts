@@ -4,15 +4,13 @@ import {
   PluginEnvironment,
 } from '@tpb/core';
 import { Router } from 'express';
-import { SignInProviderResolverSurface } from './SignInProviderResolverSurface';
+import { SignInProviderSurface } from './SignInProviderSurface';
 import {
   createRouter,
   defaultAuthProviderFactories,
 } from '@backstage/plugin-auth-backend';
 
-const createPlugin = (
-  signInProviderResolverSurface: SignInProviderResolverSurface,
-) => {
+const createPlugin = (signInProviderSurface: SignInProviderSurface) => {
   return async (env: PluginEnvironment): Promise<Router> => {
     return await createRouter({
       logger: env.logger,
@@ -40,7 +38,7 @@ const createPlugin = (
         // your own, see the auth documentation for more details:
         //
         //   https://backstage.io/docs/auth/identity-resolver
-        ...signInProviderResolverSurface.allSignInProviders(),
+        ...signInProviderSurface.allSignInProviders(),
       },
     });
   };
@@ -49,11 +47,11 @@ const createPlugin = (
 export const AuthBackendPlugin: BackendPluginInterface = () => surfaces =>
   surfaces.applyWithDependency(
     BackendPluginSurface,
-    SignInProviderResolverSurface,
-    (backendPluginSurface, signInProviderResolverSurface) => {
+    SignInProviderSurface,
+    (backendPluginSurface, signInProviderSurface) => {
       backendPluginSurface.addPlugin({
         name: 'auth',
-        pluginFn: createPlugin(signInProviderResolverSurface),
+        pluginFn: createPlugin(signInProviderSurface),
       });
     },
   );

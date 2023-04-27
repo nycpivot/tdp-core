@@ -1,2 +1,3 @@
 export { AuthBackendPlugin as plugin } from './AuthBackendPlugin';
-export { SignInProviderResolverSurface } from './SignInProviderResolverSurface';
+export { SignInProviderSurface } from './SignInProviderSurface';
+export { SignInResolverSurface } from './SignInResolverSurface';

@@ -1,7 +1,7 @@
 import { BackendPluginInterface } from '@tpb/core';
 import { AuthResolverContext, providers } from '@backstage/plugin-auth-backend';
 import { BackstageSignInResult } from '@backstage/plugin-auth-node';
-import { SignInProviderResolverSurface } from '@tpb/plugin-auth-backend';
+import { SignInProviderSurface } from '@tpb/plugin-auth-backend';
 import { stringifyEntityRef } from '@backstage/catalog-model';
 import { NotFoundError } from '@backstage/errors';
 
@@ -41,17 +41,14 @@ const signInWithRevolvingUserRef = async (
 
 export const PermissionTestAuthBackendPlugin: BackendPluginInterface =
   () => surfaceStore => {
-    surfaceStore.applyTo(
-      SignInProviderResolverSurface,
-      signInProviderResolverSurface => {
-        signInProviderResolverSurface.add({
-          'permission-test': providers.google.create({
-            signIn: {
-              resolver: async (_, context): Promise<BackstageSignInResult> =>
-                signInWithRevolvingUserRef(context),
-            },
-          }),
-        });
-      },
-    );
+    surfaceStore.applyTo(SignInProviderSurface, signInProviderSurface => {
+      signInProviderSurface.add({
+        'permission-test': providers.google.create({
+          signIn: {
+            resolver: async (_, context): Promise<BackstageSignInResult> =>
+              signInWithRevolvingUserRef(context),
+          },
+        }),
+      });
+    });
   };
