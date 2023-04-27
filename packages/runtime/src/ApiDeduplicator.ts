@@ -14,7 +14,16 @@ export class ApiDeduplicator {
   }
 
   deduplicate(apiFactories: AnyApiFactory[]): AnyApiFactory[] {
-    return apiFactories.filter(factory => !this.isDuplicate(factory));
+    return apiFactories.filter(factory => {
+      const isDuplicate = this.isDuplicate(factory);
+      if (isDuplicate) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `An api added through a surface has a forbidden id [${factory.api.id}], it will be ignored by the app.`,
+        );
+      }
+      return !isDuplicate;
+    });
   }
 
   private isDuplicate(apiFactory: AnyApiFactory): boolean {
