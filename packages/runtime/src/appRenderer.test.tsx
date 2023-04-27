@@ -1,7 +1,12 @@
 import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import { appRenderer } from './appRenderer';
-import { ApiSurface, SurfaceStore, ThemeSurface } from '@tpb/core';
+import {
+  ApiSurface,
+  AppPluginSurface,
+  SurfaceStore,
+  ThemeSurface,
+} from '@tpb/core';
 import {
   ApiRef,
   appThemeApiRef,
@@ -69,6 +74,17 @@ describe('AppRenderer', () => {
     await expectAppIsRendered();
   });
 
+  it('should not render when a plugin conflicts with the config api', async () => {
+    store.applyTo(AppPluginSurface, surface => {
+      surface.add(makePlugin(configApiRef));
+    });
+
+    const App = appRenderer(store);
+    await expect(renderWithEffects(<App />)).rejects.toThrow(
+      'Plugin my.plugin tried to register duplicate or forbidden API factory for apiRef{core.config}',
+    );
+  });
+
   async function expectAppIsRendered() {
     const App = appRenderer(store);
     const rendered = await renderWithEffects(<App />);
@@ -77,5 +93,25 @@ describe('AppRenderer', () => {
 
   function makeApiFactory<T extends any>(api: ApiRef<T>) {
     return createApiFactory<T, any>(api, null);
+  }
+
+  function makePlugin<T extends any>(api: ApiRef<T>) {
+    return {
+      __experimentalReconfigure(): void {},
+      externalRoutes: {},
+      routes: {},
+      getApis() {
+        return [makeApiFactory(api)];
+      },
+      getFeatureFlags() {
+        return [];
+      },
+      getId() {
+        return 'my.plugin';
+      },
+      provide<T>(): T {
+        throw new Error('should not be called');
+      },
+    };
   }
 });
