@@ -4,7 +4,7 @@ import { UserSettingsPage } from '@backstage/plugin-user-settings';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
-import { FlatRoutes } from '@backstage/core-app-api';
+import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import {
   appThemeApiRef,
   configApiRef,
@@ -23,7 +23,7 @@ import {
 import { ToggleRoute } from '@tpb/core-frontend';
 import { ApiDeduplicator } from './ApiDeduplicator';
 
-export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
+export const appRenderer = (surfaces: SurfaceStoreInterface) => {
   const apiDeduplicator = new ApiDeduplicator([
     // the following apis are registered in [this file](https://github.com/backstage/backstage/blob/8ee31f38bfb2fd7c416fb8da9472fd46f0a7e664/packages/core-app-api/src/app/AppManager.tsx#L428) -> no way found to get them before creating our app
     // note that we don't include the featureFlagsApiRef because it can be replaced
@@ -55,9 +55,6 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
     },
   });
 
-  const AppProvider = app.getProvider();
-  const AppRouter = app.getRouter();
-
   const routes = (
     <FlatRoutes>
       {routeSurface.defaultRoute && (
@@ -79,12 +76,12 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
     throw new Error('No root builder available in theme');
   }
 
-  return () => (
-    <AppProvider>
+  return app.createRoot(
+    <>
       <AlertDisplay />
       <OAuthRequestDialog />
       {...bannerSurface.banners}
       <AppRouter>{rootBuilder(routes)}</AppRouter>
-    </AppProvider>
+    </>,
   );
 };
