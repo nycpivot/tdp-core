@@ -7,33 +7,44 @@ import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
 import {
   ScmAuth,
+  scmAuthApiRef,
   ScmIntegrationsApi,
   scmIntegrationsApiRef,
 } from '@backstage/integration-react';
 import {
   AnyApiFactory,
+  appThemeApiRef,
   configApiRef,
   createApiFactory,
+  identityApiRef,
 } from '@backstage/core-plugin-api';
 import {
   ApiSurface,
   AppComponentSurface,
   AppPluginSurface,
   AppRouteSurface,
+  BannerSurface,
+  SettingsTabsSurface,
   SurfaceStoreInterface,
   ThemeSurface,
-  SettingsTabsSurface,
-  BannerSurface,
 } from '@tpb/core';
 import { ToggleRoute } from '@tpb/core-frontend';
 import { ApiDeduplicator } from './ApiDeduplicator';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
-  const apiDuplicatesFinder = new ApiDeduplicator([configApiRef]);
-  const deduplicatedApis = apiDuplicatesFinder.deduplicate(
-    surfaces.findSurface(ApiSurface).apis,
-  );
+  const apiDeduplicator = new ApiDeduplicator([
+    // the following apis are hardcoded in this renderer or do we want them to be replaceable by some api in ApiSurface ?
+    scmIntegrationsApiRef,
+    scmAuthApiRef,
 
+    // the following apis are registered in [this file](https://github.com/backstage/backstage/blob/8ee31f38bfb2fd7c416fb8da9472fd46f0a7e664/packages/core-app-api/src/app/AppManager.tsx#L428) -> no way found to get them before creating our app
+    // note that we don't include the featureFlagsApiRef because it can be replaced
+    // we also don't include the backstage default apis here for the same reason TBC
+    // (those that are listed [here](https://github.com/backstage/backstage/blob/master/packages/app-defaults/src/defaults/apis.ts)) TBC
+    appThemeApiRef,
+    configApiRef,
+    identityApiRef,
+  ]);
   const apis: AnyApiFactory[] = [
     createApiFactory({
       api: scmIntegrationsApiRef,
@@ -41,7 +52,7 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
       factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
     }),
     ScmAuth.createDefaultApiFactory(),
-    ...deduplicatedApis,
+    ...apiDeduplicator.deduplicate(surfaces.findSurface(ApiSurface).apis),
   ];
 
   const pluginSurface = surfaces.findSurface(AppPluginSurface);
