@@ -21493,13 +21493,13 @@ remarkable@^2.0.1:
     argparse "^1.0.10"
     autolinker "^3.11.0"
 
-remove-files-webpack-plugin@~1.4.0:
-  version "1.4.5"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/remove-files-webpack-plugin/-/remove-files-webpack-plugin-1.4.5.tgz#69b898f9359afb0411757f7a808f64c36a52b537"
-  integrity sha512-yHz/GSmiNMcj2mCrg0XHGOHMW9g+8u7d2JqS7ciDuUcPqLFgvXUndeRp8v64HSDk5A6guXgfotdkp3xfjxU6GQ==
+remove-files-webpack-plugin@~1.5.0:
+  version "1.5.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/remove-files-webpack-plugin/-/remove-files-webpack-plugin-1.5.0.tgz#bb43b9cbcb5e9bb6a1a4c4c55dfd8d14279b6fa7"
+  integrity sha512-PWxldMWpXKmqAv0Lc6Gy1+9QnMLJad94xKSrD3mJLHuZbifVcbTaJn5iZY1YUqPv56GnvMdJZfU8807NxKhtvg==
   dependencies:
     "@types/webpack" "5.28.0"
-    trash "7.1.1"
+    trash "7.2.0"
 
 renderkid@^3.0.0:
   version "3.0.0"
@@ -23340,10 +23340,10 @@ tr46@~0.0.3:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-trash@7.1.1:
-  version "7.1.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/trash/-/trash-7.1.1.tgz#ef3bc68a8f253c876684972d8a603ef9b4f42b45"
-  integrity sha512-iG43vKNh4Q540RrfefjSxll6hkqc2t6tAM1AfikXUXbW6O7jEKftMQZho6dg6VLUWng/uWu4brGrvE9a0uQbOQ==
+trash@7.2.0:
+  version "7.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/trash/-/trash-7.2.0.tgz#c5ad0c9b13d7e7cad0b4187b3cfe38cd8b39abe2"
+  integrity sha512-3bR8Z5aWO8b9qybS6skBoaavH/hX9Onb1RrdIIhJxv9VpH3aBtpbKuAX4rIh/0xpDZ7K4ga36wONk/okbhjTlA==
   dependencies:
     "@stroncium/procfs" "^1.2.1"
     globby "^7.1.1"
