@@ -79,16 +79,38 @@ describe('AppRenderer', () => {
       surface.add(makePlugin(configApiRef));
     });
 
-    const App = appRenderer(store);
-    await expect(renderWithEffects(<App />)).rejects.toThrow(
-      'Plugin my.plugin tried to register duplicate or forbidden API factory for apiRef{core.config}',
-    );
+    await expectAppIsNotRendered(duplicateApiError(configApiRef));
+  });
+
+  it('should not render when a plugin conflicts with the theme api', async () => {
+    store.applyTo(AppPluginSurface, surface => {
+      surface.add(makePlugin(appThemeApiRef));
+    });
+
+    await expectAppIsNotRendered(duplicateApiError(appThemeApiRef));
+  });
+
+  it('should not render when a plugin conflicts with the identity api', async () => {
+    store.applyTo(AppPluginSurface, surface => {
+      surface.add(makePlugin(identityApiRef));
+    });
+
+    await expectAppIsNotRendered(duplicateApiError(identityApiRef));
   });
 
   async function expectAppIsRendered() {
     const App = appRenderer(store);
     const rendered = await renderWithEffects(<App />);
     expect(rendered.baseElement).toBeInTheDocument();
+  }
+
+  async function expectAppIsNotRendered(expectedError: string) {
+    const App = appRenderer(store);
+    await expect(renderWithEffects(<App />)).rejects.toThrow(expectedError);
+  }
+
+  function duplicateApiError(api: ApiRef<any>) {
+    return `Plugin my.plugin tried to register duplicate or forbidden API factory for apiRef{${api.id}}`;
   }
 
   function makeApiFactory<T extends any>(api: ApiRef<T>) {
@@ -109,7 +131,7 @@ describe('AppRenderer', () => {
       getId() {
         return 'my.plugin';
       },
-      provide<T>(): T {
+      provide<U>(): U {
         throw new Error('should not be called');
       },
     };
