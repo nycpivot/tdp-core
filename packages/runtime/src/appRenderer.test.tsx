@@ -2,10 +2,13 @@ import React from 'react';
 import { renderWithEffects } from '@backstage/test-utils';
 import { appRenderer } from './appRenderer';
 import { ApiSurface, SurfaceStore, ThemeSurface } from '@tpb/core';
-import {ApiRef, configApiRef, createApiFactory,} from '@backstage/core-plugin-api';
-
-const makeApiFactory = <T extends any>(api: ApiRef<T>) =>
-  createApiFactory<T, any>(api, null);
+import {
+  ApiRef,
+  appThemeApiRef,
+  configApiRef,
+  createApiFactory,
+  identityApiRef,
+} from '@backstage/core-plugin-api';
 
 describe('AppRenderer', () => {
   let store: SurfaceStore;
@@ -38,19 +41,41 @@ describe('AppRenderer', () => {
     });
   });
 
-  it('should render', async () => {
-    const App = appRenderer(store);
-    const rendered = await renderWithEffects(<App />);
-    expect(rendered.baseElement).toBeInTheDocument();
+  it('should render by default', async () => {
+    await expectAppIsRendered();
   });
 
-  it('should not add an api that conflicts with the config api', async () => {
+  it('should render when an api conflicts with the config api', async () => {
     store.applyTo(ApiSurface, surface => {
       surface.add(makeApiFactory(configApiRef));
     });
 
+    await expectAppIsRendered();
+  });
+
+  it('should render when an api conflicts with the theme api', async () => {
+    store.applyTo(ApiSurface, surface => {
+      surface.add(makeApiFactory(appThemeApiRef));
+    });
+
+    await expectAppIsRendered();
+  });
+
+  it('should render when an api conflicts with the identity api', async () => {
+    store.applyTo(ApiSurface, surface => {
+      surface.add(makeApiFactory(identityApiRef));
+    });
+
+    await expectAppIsRendered();
+  });
+
+  async function expectAppIsRendered() {
     const App = appRenderer(store);
     const rendered = await renderWithEffects(<App />);
     expect(rendered.baseElement).toBeInTheDocument();
-  });
+  }
+
+  function makeApiFactory<T extends any>(api: ApiRef<T>) {
+    return createApiFactory<T, any>(api, null);
+  }
 });
