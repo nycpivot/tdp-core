@@ -1,6 +1,5 @@
 import { ApiSurface } from './ApiSurface';
 import {
-  ApiRef,
   configApiRef,
   createApiFactory,
   createApiRef,
@@ -8,71 +7,59 @@ import {
 
 describe('Api Surface', () => {
   it('should register apis', () => {
-    class MyApi {}
-
     const surface = new ApiSurface();
 
-    surface.add(
-      createApiFactory<MyApi, any>(
-        createApiRef({
-          id: 'my.api1',
-        }),
-        null,
-      ),
-    );
+    const factory1 = makeApiFactory('my.api1');
+    surface.add(factory1);
 
-    surface.add(
-      createApiFactory<MyApi, any>(
-        createApiRef({
-          id: 'my.api2',
-        }),
-        null,
-      ),
-    );
+    const factory2 = makeApiFactory('my.api2');
+    surface.add(factory2);
 
-    expect(surface.apis).toHaveLength(2);
-    expect(surface.apis.map(a => a.api.id)).toEqual(['my.api1', 'my.api2']);
+    expect(surface.apis).toEqual([factory1, factory2]);
   });
 
   it('should keep the last registered api when the same api is added twice', () => {
-    class MyApi {}
+    const factory = makeApiFactory('my.api');
 
     const surface = new ApiSurface();
-
-    const ref: ApiRef<MyApi> = createApiRef({
-      id: 'my.api',
-    });
-    const factory = createApiFactory<MyApi, any>(ref, null);
-
     surface.add(factory);
     surface.add(factory);
 
-    expect(surface.apis.map(a => a.api.id)).toEqual(['my.api']);
+    expect(surface.apis).toEqual([factory]);
   });
 
   it('should keep the last registered api when two different apis with the same id are added', () => {
-    class MyApi {}
-
     const surface = new ApiSurface();
 
-    const ref: ApiRef<MyApi> = createApiRef({
-      id: 'my.api',
-    });
+    const factory1 = makeApiFactory('my.api');
+    surface.add(factory1);
 
-    const factoryWithNoDeps = createApiFactory<MyApi, any>(ref, null);
+    const factory2 = makeApiFactory('my.api', { configApi: configApiRef });
+    surface.add(factory2);
 
-    const factoryWithDeps = createApiFactory({
-      api: ref,
-      deps: { configApi: configApiRef },
-      factory: jest.fn(),
-    });
-
-    surface.add(factoryWithNoDeps);
-    surface.add(factoryWithDeps);
-
-    expect(surface.apis.map(a => a.api.id)).toEqual(['my.api']);
-    expect(surface.apis.map(a => a.deps.configApi)).toContainEqual(
-      configApiRef,
-    );
+    expect(surface.apis).toEqual([factory2]);
   });
+
+  function makeApiFactory(
+    id: string,
+    dependencies: any | undefined = undefined,
+  ) {
+    class MyApi {}
+
+    if (dependencies) {
+      return createApiFactory({
+        api: createApiRef({
+          id: id,
+        }),
+        deps: dependencies,
+        factory: jest.fn(),
+      });
+    }
+    return createApiFactory<MyApi, any>(
+      createApiRef({
+        id: id,
+      }),
+      null,
+    );
+  }
 });
