@@ -23,7 +23,7 @@
   "dependencies": {
     "@backstage/backend-common": "^0.18.4",
     "@backstage/config": "^1.0.7",
-    "@backstage/plugin-catalog-backend-module-gitlab": "^0.1.13",
+    "@backstage/plugin-catalog-backend-module-gitlab": "^0.2.0",
     "@tpb/core": "^0.0.1-alpha.3",
     "@types/express": "*",
     "express": "^4.17.1",
