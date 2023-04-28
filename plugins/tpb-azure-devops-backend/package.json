@@ -21,12 +21,12 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.18.2",
+    "@backstage/backend-common": "^0.18.4",
     "@backstage/plugin-catalog-backend-module-azure": "^0.1.13",
     "@tpb/core": "^0.0.1-alpha.3"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.3",
+    "@backstage/cli": "^0.22.6",
     "@types/supertest": "^2.0.8",
     "msw": "^0.44.0",
     "supertest": "^4.0.2"

@@ -15,6 +15,7 @@ const createPlugin = () => {
     const { router } = await KubernetesBuilder.createBuilder({
       logger: env.logger,
       config: env.config,
+      permissions: env.permissions,
       catalogApi,
     }).build();
 

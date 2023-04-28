@@ -23,8 +23,8 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.18.2",
-    "@backstage/backend-tasks": "^0.5.0",
+    "@backstage/backend-common": "^0.18.4",
+    "@backstage/backend-tasks": "^0.5.1",
     "@backstage/config": "^1.0.7",
     "@backstage/core-app-api": "^1.5.0",
     "@backstage/core-plugin-api": "^1.5.0",
@@ -41,7 +41,7 @@
     "react": "^16.13.1 || ^17.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.3"
+    "@backstage/cli": "^0.22.6"
   },
   "files": [
     "dist"
