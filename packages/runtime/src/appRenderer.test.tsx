@@ -75,6 +75,7 @@ describe('AppRenderer', () => {
     await expectAppIsRendered();
   });
 
+  // TODO: ESBACK-311 - this is how it works for the moment but that might change with this ticket.
   it('should not render when a plugin conflicts with the config api', async () => {
     store.applyTo(AppPluginSurface, surface => {
       surface.add(makePlugin(configApiRef));
@@ -83,6 +84,7 @@ describe('AppRenderer', () => {
     await expectAppIsNotRendered(duplicateApiError(configApiRef));
   });
 
+  // TODO: ESBACK-311 - this is how it works for the moment but that might change with this ticket.
   it('should not render when a plugin conflicts with the theme api', async () => {
     store.applyTo(AppPluginSurface, surface => {
       surface.add(makePlugin(appThemeApiRef));
@@ -91,6 +93,7 @@ describe('AppRenderer', () => {
     await expectAppIsNotRendered(duplicateApiError(appThemeApiRef));
   });
 
+  // TODO: ESBACK-311 - this is how it works for the moment but that might change with this ticket.
   it('should not render when a plugin conflicts with the identity api', async () => {
     store.applyTo(AppPluginSurface, surface => {
       surface.add(makePlugin(identityApiRef));
