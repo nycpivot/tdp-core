@@ -3956,19 +3956,23 @@
     luxon "^3.0.0"
     react-use "^17.2.4"
 
-"@backstage/plugin-kubernetes-backend@^0.9.3":
-  version "0.9.3"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.9.3.tgz#4a923a5d97ca328b3068d3f949fd1b42a8595e13"
-  integrity sha512-J2dpszDyOtDEdt1pwj2lVjfM4xvXW3NyTqw7xX5PbER25Gg+xa+uXWURuILFxAFGXlXOEqD26/ozx5TM7cjfqA==
+"@backstage/plugin-kubernetes-backend@^0.10.0":
+  version "0.10.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.10.0.tgz#4641ffa498394b748ab6fd157b60267aa381efb9"
+  integrity sha512-/FuAWQGuFXLIdpNXLgMguiVPezh/PUL9WnousX6W9MIrtSqQBDFgz6aWCl2JXpVFk7kLQQXbQ0o+FsFtmurKtA==
   dependencies:
     "@azure/identity" "^2.0.4"
-    "@backstage/backend-common" "^0.18.2"
-    "@backstage/catalog-client" "^1.3.1"
-    "@backstage/catalog-model" "^1.2.0"
-    "@backstage/config" "^1.0.6"
-    "@backstage/errors" "^1.1.4"
-    "@backstage/plugin-auth-node" "^0.2.11"
-    "@backstage/plugin-kubernetes-common" "^0.6.0"
+    "@backstage/backend-common" "^0.18.4"
+    "@backstage/backend-plugin-api" "^0.5.1"
+    "@backstage/catalog-client" "^1.4.1"
+    "@backstage/catalog-model" "^1.3.0"
+    "@backstage/config" "^1.0.7"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/plugin-auth-node" "^0.2.13"
+    "@backstage/plugin-catalog-node" "^1.3.5"
+    "@backstage/plugin-kubernetes-common" "^0.6.2"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@backstage/plugin-permission-node" "^0.7.7"
     "@google-cloud/container" "^4.0.0"
     "@jest-mock/express" "^2.0.1"
     "@kubernetes/client-node" "0.18.1"
@@ -3991,19 +3995,19 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-kubernetes-backend@^0.9.4":
-  version "0.9.4"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.9.4.tgz#c9ae886e94b14e574e84e3bed48a2299112a491b"
-  integrity sha512-rNMAZ0/z2fsRYos5u+AYrN/slu/A58i1VPO5GQz0nNZxVJgASnCci1lgpr5sjNX2NKEp/y956OBV5PMpcWXKDA==
+"@backstage/plugin-kubernetes-backend@^0.9.3":
+  version "0.9.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.9.3.tgz#4a923a5d97ca328b3068d3f949fd1b42a8595e13"
+  integrity sha512-J2dpszDyOtDEdt1pwj2lVjfM4xvXW3NyTqw7xX5PbER25Gg+xa+uXWURuILFxAFGXlXOEqD26/ozx5TM7cjfqA==
   dependencies:
     "@azure/identity" "^2.0.4"
-    "@backstage/backend-common" "^0.18.3"
-    "@backstage/catalog-client" "^1.4.0"
-    "@backstage/catalog-model" "^1.2.1"
-    "@backstage/config" "^1.0.7"
-    "@backstage/errors" "^1.1.5"
-    "@backstage/plugin-auth-node" "^0.2.12"
-    "@backstage/plugin-kubernetes-common" "^0.6.1"
+    "@backstage/backend-common" "^0.18.2"
+    "@backstage/catalog-client" "^1.3.1"
+    "@backstage/catalog-model" "^1.2.0"
+    "@backstage/config" "^1.0.6"
+    "@backstage/errors" "^1.1.4"
+    "@backstage/plugin-auth-node" "^0.2.11"
+    "@backstage/plugin-kubernetes-common" "^0.6.0"
     "@google-cloud/container" "^4.0.0"
     "@jest-mock/express" "^2.0.1"
     "@kubernetes/client-node" "0.18.1"
@@ -4040,14 +4044,6 @@
   integrity sha512-Br8Uv0+IJlwRtmr3IoPxODwsovZTxLnkgZtVcK+dNTiV3JD2DoE9TYahQI70wWOIeNG6TAQBRj2ly9bmxFQmUw==
   dependencies:
     "@backstage/catalog-model" "^1.2.0"
-    "@kubernetes/client-node" "0.18.1"
-
-"@backstage/plugin-kubernetes-common@^0.6.1":
-  version "0.6.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.6.1.tgz#1fda20cee8679d2ac6274d6531257c1f3bd4bd78"
-  integrity sha512-zD0fohe42uKwmIgQ4R0eoAqEFA/T6ddH5niXeSFNAvWcDXEFZcOxTWufjHBCkAwIuG/AkXsFIBB8i5viiYoBWA==
-  dependencies:
-    "@backstage/catalog-model" "^1.2.1"
     "@kubernetes/client-node" "0.18.1"
 
 "@backstage/plugin-kubernetes-common@^0.6.2":
