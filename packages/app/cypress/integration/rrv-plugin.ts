@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('RRV Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    cy.visit('/');
     Authentication.googleSvcTpbLogin();
   });
 
@@ -45,6 +45,7 @@ describe('RRV Plugin', () => {
   describe('rbac', () => {
     it('should require login when not authenticated', () => {
       Authentication.googleLogout();
+      Authentication.guestLogin();
       cy.get('input[placeholder=Filter]').type('gke-svc');
       cy.contains(/gke-svc-tpb-nginx/i).click();
       cy.contains(/runtime resources/i).click();
