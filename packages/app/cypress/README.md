@@ -263,30 +263,34 @@ that is available in the `tap-gui` namespace.
 
 ## Authentication to Auth0 in the tests
 
-In order to test Auth0 login, an Auth0 account has been created with the user `esback.e2e@gmail.com` account. The credentials
-for this user can be found in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e) under
-the `john_doe_password` key.
+In order to test Auth0 login, an Auth0 account has been created using Google SSO with the account `svc.tpb@vmware.com`.
+The account credentials for this Google account and the service account are in [Vault (esback/e2e)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
+The auth config credentials are in [Vault (esback/auth0)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/auth0)
 
 A refresh token is used and stored in a cookie to emulate an authentication. The Auth0 account has been configured so that
 this token should not expire.
 
 ## Authentication to Bitbucket in the tests
 
+The Bitbucket account associated with this token was created using the service account `svc.tpb@vmware.com`.
+The account credentials for this service account are in [Vault (esback/e2e)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
+The auth config credentials for the BitBucket account are in [Vault (esback/bitbucket)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/bitbucket)
+
 In order to test Bitbucket authentication, a refresh token is used and stored in a cookie. Bitbucket refresh tokens do
 not expire, hence it should not be needed to update it in the future.
 
-The Bitbucket user associated with this token is named John Doe. Its google email & google password can be found in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e) and its credentials can be used to connect to its Bitbucket account
-using Google SSO.
-
 ## Authentication to Google in the tests
 
-In order to test k8s rbac features, an external Google user has been created. Its email address is `esback.e2e.usera@gmail.com` and its password can be found in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
+In order to test k8s rbac features, a GCP account was created using the service account `svc.tpb@vmware.com`.
+The Google account credentials and service account credentials can be found in [Vault (esback/e2e)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
+The auth config credentials for the Google account are in [Vault (esback/gke_oidc)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/gke_oidc)
 
-To emulate a Google authentication for this user, you can use the `Authentication.googleUserALogin()` function that will set up an appropriate cookie in the browser.
+To emulate a Google authentication for this user, you can use the `Authentication.googleSvcTpbLogin()` function that will set up an appropriate cookie in the browser.
 
 ## Authentication to Okta in the tests
 
-A dev tenant Okta has been created for the tests. The information about it can be found in
-[Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/okta).
+An Okta account was created using the service account `svc.tpb@vmware.com`.
+The Okta account credentials and service account credentials are stored in [Vault (esback/e2e)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
+The auth config credentials for the Okta account are in [Vault (esback/okta)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/okta)
 
 To emulate an Okta authentication, a refresh token representing a test user is used.
