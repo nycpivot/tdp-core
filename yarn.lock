@@ -3002,7 +3002,7 @@
     uuid "^8.0.0"
     winston "^3.2.1"
 
-"@backstage/plugin-catalog-backend-module-azure@^0.1.13":
+"@backstage/plugin-catalog-backend-module-azure@^0.1.15":
   version "0.1.15"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog-backend-module-azure/-/plugin-catalog-backend-module-azure-0.1.15.tgz#8b8ab761f0c8e7cf23bb7f254cf36c3bacffd3d9"
   integrity sha512-Ilwq6ZUs7P+qzM2qjft5NNijyxTqE+O+Bb/bq9EQXujY/NtmzO4FYD+nQT9pbq0TAzNO+h+ZQ3YaZSqPKtymuA==
