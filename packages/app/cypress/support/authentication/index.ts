@@ -54,7 +54,7 @@ export namespace Authentication {
 
   export const logInAsCatalogAdmin = () => {
     cy.visit('/');
-    githubLogin();
+    guestLogin();
   };
 
   export function catalogAdminLogout() {
