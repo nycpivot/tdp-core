@@ -3068,7 +3068,7 @@
     uuid "^8.0.0"
     winston "^3.2.1"
 
-"@backstage/plugin-catalog-backend-module-ldap@^0.5.9":
+"@backstage/plugin-catalog-backend-module-ldap@^0.5.11":
   version "0.5.11"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog-backend-module-ldap/-/plugin-catalog-backend-module-ldap-0.5.11.tgz#eff825fed2555965a02ce4ec8d3de0c53bc84cde"
   integrity sha512-aOKkh2n0uVPiqyHmiyd1HfQB510Qv0wM9vWqbYCpRx/z3EdfbPkOTKboOUdQyRw3u4QNgQRux0juWDMGTWgOAA==
