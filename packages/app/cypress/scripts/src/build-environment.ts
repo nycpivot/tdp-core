@@ -20,9 +20,9 @@ async function buildEnvironment(serverType: ServerType) {
       };
     case ServerType.tpb:
       return {
-        OKTA_CLIENT_ID: await vault.readOktaSecret('client_id'),
-        OKTA_CLIENT_SECRET: await vault.readOktaSecret('client_secret'),
-        OKTA_AUDIENCE: await vault.readOktaSecret('audience'),
+        OKTA_CLIENT_ID: await vault.readOktaSecret('svc_tpb_client_id'),
+        OKTA_CLIENT_SECRET: await vault.readOktaSecret('svc_tpb_client_secret'),
+        OKTA_AUDIENCE: await vault.readOktaSecret('svc_tpb_audience'),
         GITHUB_ENTERPRISE_TOKEN: await vault.readE2ESecret(
           'github_enterprise_token',
         ),
@@ -32,9 +32,11 @@ async function buildEnvironment(serverType: ServerType) {
         AZURE_CLIENT_ID: await vault.readE2ESecret('azure_client_id'),
         AZURE_CLIENT_SECRET: await vault.readE2ESecret('azure_client_secret'),
         GITLAB_TOKEN: await vault.readGitlabSecret('fixtures_token'),
-        BITBUCKET_CLIENT_ID: await vault.readBitbucketSecret('client_id'),
+        BITBUCKET_CLIENT_ID: await vault.readBitbucketSecret(
+          'svc_tpb_client_id',
+        ),
         BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(
-          'client_secret',
+          'svc_tpb_client_secret',
         ),
         BITBUCKET_HOST: process.env.BITBUCKET_HOST || 'bitbucket:7990',
         LDAP_ENDPOINT: process.env.LDAP_ENDPOINT || 'ldap://openldap:1389',
@@ -50,14 +52,18 @@ async function buildEnvironment(serverType: ServerType) {
         GKE_OIDC_CONTROL_PLANE_ENDPOINT: await vault.readGkeOidcSecret(
           'control_plane_endpoint',
         ),
-        GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret('client_id'),
-        GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret('client_secret'),
-        AUTH0_CLIENT_ID: await vault.readAuth0Secret('client_id'),
-        AUTH0_CLIENT_SECRET: await vault.readAuth0Secret('client_secret'),
-        AUTH0_DOMAIN: await vault.readAuth0Secret('domain'),
-        GITHUB_APP_CLIENT_ID: await vault.readE2ESecret('github_app_client_id'),
-        GITHUB_APP_CLIENT_SECRET: await vault.readE2ESecret(
-          'github_app_client_secret',
+        GKE_OIDC_CLIENT_ID: await vault.readGkeOidcSecret('svc_tpb_client_id'),
+        GKE_OIDC_CLIENT_SECRET: await vault.readGkeOidcSecret(
+          'svc_tpb_client_secret',
+        ),
+        AUTH0_CLIENT_ID: await vault.readAuth0Secret('svc_tpb_client_id'),
+        AUTH0_CLIENT_SECRET: await vault.readAuth0Secret(
+          'svc_tpb_client_secret',
+        ),
+        AUTH0_DOMAIN: await vault.readAuth0Secret('svc_tpb_domain'),
+        GITHUB_APP_CLIENT_ID: await vault.readGithubSecret('svc_tpb_client_id'),
+        GITHUB_APP_CLIENT_SECRET: await vault.readGithubSecret(
+          'svc_tpb_client_secret',
         ),
         AWS_ACCESS_KEY_ID: await vault.readE2ESecret('aws_access_key_id'),
         AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
@@ -70,20 +76,20 @@ async function buildEnvironment(serverType: ServerType) {
         CYPRESS_BITBUCKET_HOST: 'localhost:7990',
         CYPRESS_BITBUCKET_CATALOG_PREFIX:
           process.env.BITBUCKET_CATALOG_PREFIX || 'bitbucket:7990',
-        CYPRESS_BITBUCKET_JOHN_DOE_REFRESH_TOKEN: await vault.readE2ESecret(
-          'bitbucket_john_doe_refresh_token',
+        CYPRESS_BITBUCKET_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
+          'bitbucket_svc_tpb_refresh_token',
         ),
-        CYPRESS_AUTH0_REFRESH_TOKEN: await vault.readE2ESecret(
-          'auth0_refresh_token',
+        CYPRESS_AUTH0_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
+          'auth0_svc_tpb_refresh_token',
         ),
-        CYPRESS_GOOGLE_USER_A_REFRESH_TOKEN: await vault.readE2ESecret(
-          'google_user_a_refresh_token',
+        CYPRESS_GOOGLE_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
+          'google_svc_tpb_refresh_token',
         ),
-        CYPRESS_OKTA_REFRESH_TOKEN: await vault.readE2ESecret(
-          'okta_refresh_token',
+        CYPRESS_OKTA_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
+          'okta_svc_tpb_refresh_token',
         ),
-        CYPRESS_GITHUB_USER_REFRESH_TOKEN: await vault.readE2ESecret(
-          'github_user_refresh_token',
+        CYPRESS_GITHUB_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
+          'github_svc_tpb_refresh_token',
         ),
       };
     default:

@@ -12,7 +12,7 @@ describe('Okta Auth plugin', () => {
   it("should display user's email & name in the settings", () => {
     Authentication.oktaLogin();
     cy.visit('/settings');
-    cy.contains(/john doe/i).should('be.visible');
-    cy.contains('esback.e2e@gmail.com').should('be.visible');
+    cy.contains(/svc tpb/i).should('be.visible');
+    cy.contains('svc.tpb@vmware.com').should('be.visible');
   });
 });

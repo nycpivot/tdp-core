@@ -11,7 +11,7 @@ You need the following tools on your machine:
 
 ## Login to Vault
 
-When running one of the following commands, you might be prompted to login to Vault if you are not already authenticated or if your token has expired.
+When running one of the following commands, you might be prompted to log in to Vault if you are not already authenticated or if your token has expired.
 
 Just enter you vault password when asked for it.
 
@@ -70,7 +70,7 @@ Or open the Cypress UI:
 make open-dev-e2e
 ```
 
-(this is the recommanded way to update or write new integration tests)
+(this is the recommended way to update or write new integration tests)
 
 ## Deploying the app in Docker and Running the integration tests in Docker
 
@@ -94,7 +94,7 @@ To build, deploy and run the app in Docker, execute the following command:
 make e2e-environment
 ```
 
-It will also run the dependencies needed by the app for the tests (Bitbucker and Ldap servers).
+It will also run the dependencies needed by the app for the tests (Bitbucket and Ldap servers).
 
 A Bitbucket server will be available at [http://localhost:7990](http://localhost:7990).
 
@@ -282,7 +282,7 @@ using Google SSO.
 
 In order to test k8s rbac features, an external Google user has been created. Its email address is `esback.e2e.usera@gmail.com` and its password can be found in [Vault](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
 
-To emulate a google authentication for this user, you can use the `Authentication.googleUserALogin()` function that will setup an appropriate cookie in the browser.
+To emulate a Google authentication for this user, you can use the `Authentication.googleUserALogin()` function that will set up an appropriate cookie in the browser.
 
 ## Authentication to Okta in the tests
 

@@ -12,6 +12,6 @@ describe('Bitbucket Auth Plugin', () => {
   it('should display user identity in the settings', () => {
     Authentication.bitbucketLogin();
     cy.visit('/settings');
-    cy.contains('John Doe').should('be.visible');
+    cy.contains('svc.tpb').should('be.visible');
   });
 });
