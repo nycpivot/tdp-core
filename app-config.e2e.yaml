@@ -329,5 +329,5 @@ permission:
   adminRefs:
     - group:default/admins
     - user:default/user-d
-    - user:default/esbacke2e # This is the github login user for e2e tests
-    - user:default/guest
+    - user:default/svctpb # This is the github login user for e2e tests
+    - user:default/guest # This is the google auth login user for rrv e2e tests

@@ -184,6 +184,7 @@ jobs:
           gke_oidc_control_plane_endpoint: ((gke_oidc.control_plane_endpoint))
           gke_oidc_client_id: ((gke_oidc.svc_tpb_client_id))
           gke_oidc_client_secret: ((gke_oidc.svc_tpb_client_secret))
+          google_svc_tpb_insufficient_scope_refresh_token: ((e2e.google_svc_tpb_insufficient_scope_refresh_token))
           google_svc_tpb_refresh_token: ((e2e.google_svc_tpb_refresh_token))
           okta_client_id: ((okta.svc_tpb_client_id))
           okta_client_secret: ((okta.svc_tpb_client_secret))
