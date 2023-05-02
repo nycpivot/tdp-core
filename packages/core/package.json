@@ -28,6 +28,7 @@
     "@backstage/config": "^1.0.7",
     "@backstage/core-app-api": "^1.5.0",
     "@backstage/core-plugin-api": "^1.5.0",
+    "@backstage/plugin-auth-node": "^0.2.12",
     "@backstage/plugin-catalog-backend": "^1.9.0",
     "@backstage/plugin-permission-common": "^0.7.4",
     "@backstage/theme": "^0.2.18",
@@ -41,7 +42,8 @@
     "react": "^16.13.1 || ^17.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.6"
+    "@backstage/cli": "^0.22.6",
+    "@backstage/plugin-catalog-common": "^1.0.13"
   },
   "files": [
     "dist"

@@ -2,6 +2,8 @@ import { BackendCatalogSurface } from './BackendCatalogSurface';
 import { ConfigReader } from '@backstage/config';
 import { FetchUrlReader, getVoidLogger } from '@backstage/backend-common';
 import { Router } from 'express';
+import { RESOURCE_TYPE_CATALOG_ENTITY } from '@backstage/plugin-catalog-common/alpha';
+import { createCatalogPermissionRule } from '@backstage/plugin-catalog-backend/alpha';
 
 describe('BackendCatalogSurface', () => {
   it('should build entity providers', () => {
@@ -24,6 +26,21 @@ describe('BackendCatalogSurface', () => {
 
     expect(processors).toHaveLength(1);
     expect(processors[0].getProcessorName()).toBe(processorName);
+  });
+
+  it('should build permission rules', () => {
+    const permissionRuleName = 'fake-permission-rule-name';
+    const surface = new BackendCatalogSurface();
+    surface.addPermissionRuleBuilder(
+      catalogPermissionRuleBuilder(permissionRuleName),
+    );
+
+    const permissionRules = surface.buildPermissionRules(
+      fakePluginEnvironment(),
+    );
+
+    expect(permissionRules).toHaveLength(1);
+    expect(permissionRules[0].name).toBe(permissionRuleName);
   });
 
   it('should build routers', () => {
@@ -62,6 +79,19 @@ function catalogProcessorBuilder(processorName: string) {
   });
 }
 
+function catalogPermissionRuleBuilder(permissionRuleName: string) {
+  return () =>
+    createCatalogPermissionRule({
+      name: permissionRuleName,
+      description: '',
+      resourceType: RESOURCE_TYPE_CATALOG_ENTITY,
+      apply: () => true,
+      toQuery: () => ({
+        key: 'test',
+      }),
+    });
+}
+
 function fakePluginEnvironment() {
   return {
     cache: {
@@ -90,6 +120,9 @@ function fakePluginEnvironment() {
     tokenManager: {
       authenticate: jest.fn(),
       getToken: jest.fn(),
+    },
+    identity: {
+      getIdentity: jest.fn(),
     },
   };
 }

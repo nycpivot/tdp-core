@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Microsoft Graph Org Reader Processor Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should display imported users with any transformations', () => {

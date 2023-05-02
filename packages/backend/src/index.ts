@@ -20,6 +20,8 @@ import { plugin as oneLoginBackendPlugin } from '@tpb/plugin-onelogin-auth-backe
 import { plugin as ldapBackendPlugin } from '@tpb/plugin-ldap-backend';
 import { plugin as ldapTransformersPlugin } from '@tpb/plugin-ldap-test-transformers';
 import { plugin as microsoftGraphOrgReaderProcessorTestTransformersPlugin } from '@tpb/plugin-microsoft-graph-org-reader-processor-test-transformers';
+import { plugin as permissionBackendPlugin } from '@tpb/plugin-permission-backend';
+import { plugin as permissionTestAuthBackendPlugin } from '@tpb/plugin-permission-test-auth-backend';
 import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world-backend';
 
 new BackendRuntime([
@@ -44,5 +46,7 @@ new BackendRuntime([
   oneLoginBackendPlugin(),
   ldapBackendPlugin(),
   ldapTransformersPlugin(),
+  permissionTestAuthBackendPlugin(),
+  permissionBackendPlugin(),
   helloWorldPlugin(),
 ]).start();

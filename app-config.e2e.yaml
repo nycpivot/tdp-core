@@ -24,6 +24,9 @@ backend:
     connection: ':memory:'
   cache:
     store: memory
+  auth:
+    keys:
+      - secret: ${BACKEND_SECRET}
 
 integrations:
   azure:
@@ -135,6 +138,8 @@ catalog:
       target: https://github.com/tanzu-demo/tap-gui-catalogs/blob/main/blank/catalog-info.yaml
     - type: s3-discovery
       target: https://tpb-aws-s3-discovery-processor.dev.s3.us-east-1.amazonaws.com/
+    - type: url
+      target: https://gitlab.eng.vmware.com/esback/fixtures/permission-plugin-integration-test/-/blob/main/catalog-info.yaml
 
 techdocs:
   builder: 'external' # Alternatives - 'external'
@@ -291,6 +296,10 @@ auth:
       development:
         clientId: ${GITHUB_APP_CLIENT_ID}
         clientSecret: ${GITHUB_APP_CLIENT_SECRET}
+    permission-test:
+      development:
+        clientId: ${GKE_OIDC_CLIENT_ID}
+        clientSecret: ${GKE_OIDC_CLIENT_SECRET}
     google:
       development:
         clientId: ${GKE_OIDC_CLIENT_ID}
@@ -314,3 +323,11 @@ auth:
     oidc:
       title: 'custom OIDC provider'
       message: 'customized in appconfig.e2e.yaml'
+
+permission:
+  enabled: true
+  adminRefs:
+    - group:default/admins
+    - user:default/user-d
+    - user:default/svctpb # This is the github login user for e2e tests
+    - user:default/guest # This is the google auth login user for rrv e2e tests

@@ -2,10 +2,11 @@ import { Authentication } from '../support/authentication';
 
 describe("Esback's Github Plugin", () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render components from org repositories', () => {
+    cy.get('[placeholder=Filter]').type('github');
     cy.contains('github-component-1');
     cy.contains('github-component-2');
   });

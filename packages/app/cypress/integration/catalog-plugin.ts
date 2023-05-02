@@ -5,7 +5,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Catalog Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render the title', () => {

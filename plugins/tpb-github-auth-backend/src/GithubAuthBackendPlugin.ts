@@ -1,6 +1,27 @@
 import { BackendPluginInterface } from '@tpb/core';
-import { providers } from '@backstage/plugin-auth-backend';
+import {
+  GithubOAuthResult,
+  providers,
+  SignInResolver,
+} from '@backstage/plugin-auth-backend';
+import { BackstageSignInResult } from '@backstage/plugin-auth-node';
 import { SignInProviderResolverSurface } from '@tpb/plugin-auth-backend';
+
+const githubSignInResolver =
+  (
+    signInProviderResolverSurface: SignInProviderResolverSurface,
+  ): SignInResolver<GithubOAuthResult> =>
+  async (info, context): Promise<BackstageSignInResult> => {
+    const { fullProfile } = info.result;
+    const userId = fullProfile.username;
+    if (!userId) {
+      throw new Error(
+        'Github login failed, user profile does not contain a username',
+      );
+    }
+
+    return signInProviderResolverSurface.signInWithName(userId, context);
+  };
 
 export const GithubAuthBackendPlugin: BackendPluginInterface =
   () => surfaceStore => {
@@ -10,7 +31,7 @@ export const GithubAuthBackendPlugin: BackendPluginInterface =
         signInProviderResolverSurface.add({
           github: providers.github.create({
             signIn: {
-              resolver: signInProviderResolverSurface.signInAsGuestResolver(),
+              resolver: githubSignInResolver(signInProviderResolverSurface),
             },
           }),
         });

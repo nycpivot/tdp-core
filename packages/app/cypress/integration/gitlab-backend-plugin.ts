@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Gitlab Backend Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render the component from the provider', () => {

@@ -12,6 +12,8 @@ const catalog = (surface: BackendCatalogSurface) => {
     const builder = await CatalogBuilder.create(env);
     builder.addEntityProvider(surface.buildProviders(env));
     builder.addProcessor(surface.buildProcessors(env));
+    builder.addPermissionRules(surface.buildPermissionRules(env));
+
     const { processingEngine, router } = await builder.build();
     const routers = surface.buildRouters(env);
     for (const item of routers) {

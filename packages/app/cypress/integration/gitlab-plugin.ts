@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('Gitlab plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
     cy.get('input[placeholder="Filter"]').type('simple');
     cy.contains(/simple-app/i).click();
   });

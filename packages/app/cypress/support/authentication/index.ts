@@ -37,6 +37,38 @@ export namespace Authentication {
     );
   }
 
+  export function googleSvcTpbInsufficientScopeLogin() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'google-auth-provider',
+    );
+    cy.setCookie(
+      'google-refresh-token',
+      Cypress.env('GOOGLE_SVC_TPB_INSUFFICIENT_SCOPE_REFRESH_TOKEN'),
+    );
+    cy.visit('/');
+  }
+
+  export function googleLogout() {
+    cy.clearCookie('google-refresh-token');
+  }
+
+  export function permissionTestLogin() {
+    window.localStorage.setItem(
+      '@backstage/core:SignInPage:provider',
+      'permission-test',
+    );
+    cy.setCookie(
+      'permission-test-refresh-token',
+      Cypress.env('GOOGLE_SVC_TPB_REFRESH_TOKEN'),
+    );
+  }
+
+  export const logInAsCatalogAdmin = () => {
+    cy.visit('/');
+    githubLogin();
+  };
+
   export function githubLogin() {
     window.localStorage.setItem(
       '@backstage/core:SignInPage:provider',
@@ -46,10 +78,6 @@ export namespace Authentication {
       'github-refresh-token',
       Cypress.env('GITHUB_SVC_TPB_REFRESH_TOKEN'),
     );
-  }
-
-  export function googleLogout() {
-    cy.clearCookie('google-refresh-token');
   }
 
   export function oktaLogin() {

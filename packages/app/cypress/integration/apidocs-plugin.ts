@@ -2,7 +2,7 @@ import { Authentication } from '../support/authentication';
 
 describe('API Docs Plugin', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render a link to the APIs in the sidebar', () => {

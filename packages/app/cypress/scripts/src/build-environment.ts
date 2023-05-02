@@ -69,6 +69,7 @@ async function buildEnvironment(serverType: ServerType) {
         AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
           'aws_secret_access_key',
         ),
+        BACKEND_SECRET: await vault.readE2ESecret('backend_secret'),
         NODE_TLS_REJECT_UNAUTHORIZED: 0,
       };
     case ServerType.cypress:
@@ -82,6 +83,10 @@ async function buildEnvironment(serverType: ServerType) {
         CYPRESS_AUTH0_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
           'auth0_svc_tpb_refresh_token',
         ),
+        CYPRESS_GOOGLE_SVC_TPB_INSUFFICIENT_SCOPE_REFRESH_TOKEN:
+          await vault.readE2ESecret(
+            'google_svc_tpb_insufficient_scope_refresh_token',
+          ),
         CYPRESS_GOOGLE_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
           'google_svc_tpb_refresh_token',
         ),
