@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
-    "msw": "^0.44.0"
+    "msw": "^1.2.1"
   },
   "files": [
     "dist"
