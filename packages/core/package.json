@@ -33,7 +33,7 @@
     "@backstage/plugin-permission-common": "^0.7.4",
     "@backstage/theme": "^0.2.18",
     "@types/express": "*",
-    "@types/uuid": "^8.3.4",
+    "@types/uuid": "^9.0.1",
     "express": "^4.17.1",
     "uuid": "^9.0.0",
     "winston": "^3.2.1"

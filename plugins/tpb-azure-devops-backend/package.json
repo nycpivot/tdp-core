@@ -22,13 +22,13 @@
   },
   "dependencies": {
     "@backstage/backend-common": "^0.18.4",
-    "@backstage/plugin-catalog-backend-module-azure": "^0.1.13",
+    "@backstage/plugin-catalog-backend-module-azure": "^0.1.15",
     "@tpb/core": "^0.0.1-alpha.3"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
     "@types/supertest": "^2.0.8",
-    "msw": "^0.44.0",
+    "msw": "^1.2.1",
     "supertest": "^4.0.2"
   },
   "files": [

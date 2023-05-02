@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@backstage/core-components": "^0.13.0",
-    "@backstage/plugin-catalog-backend-module-ldap": "^0.5.9",
+    "@backstage/plugin-catalog-backend-module-ldap": "^0.5.11",
     "@tpb/core": "^0.0.1-alpha.3"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "@types/jest": "*",
     "@types/node": "*",
     "cross-fetch": "^3.1.5",
-    "msw": "^0.44.0"
+    "msw": "^1.2.1"
   },
   "files": [
     "dist"
