@@ -28,10 +28,10 @@ describe('Permission Plugin', () => {
     },
   };
 
-  const logInAs = user => {
+  const logInAs = (username: string) => {
     Authentication.permissionTestLogin();
     cy.visit('/settings');
-    cy.contains('User Entity').contains(user).should('exist');
+    cy.contains('User Entity').contains(username).should('exist');
   };
 
   const viewAllComponents = () => {
