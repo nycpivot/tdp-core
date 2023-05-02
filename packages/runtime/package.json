@@ -42,7 +42,7 @@
     "@material-ui/icons": "^4.11.2",
     "history": "^5.0.0",
     "react-router-dom": "6.0.0-beta.0",
-    "react-use": "^15.3.3"
+    "react-use": "^17.4.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
