@@ -46,7 +46,7 @@
     "axios": "^1.4.0",
     "cross-env": "^7.0.0",
     "cypress": "^12.11.0",
-    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-cypress": "^2.13.3",
     "start-server-and-test": "^2.0.0",
     "cypress-wait-until": "^1.7.2"
   },

@@ -58,7 +58,7 @@
     "@types/node": "^18.16.3",
     "@types/react-dom": "*",
     "cross-env": "^7.0.0",
-    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-cypress": "^2.13.3",
     "start-server-and-test": "^2.0.0"
   },
   "peerDependencies": {
