@@ -4,7 +4,7 @@ export interface Config {
      * @visibility frontend
      */
     loginPage?: {
-      github?: {
+      'permission-test'?: {
         /**
          * @visibility frontend
          */

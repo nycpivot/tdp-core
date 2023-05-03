@@ -285,7 +285,17 @@ In order to test k8s rbac features, a GCP account was created using the service 
 The Google account credentials and service account credentials can be found in [Vault (esback/e2e)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/e2e).
 The auth config credentials for the Google account are in [Vault (esback/gke_oidc)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/gke_oidc)
 
+This service account is listed as catalog admin under `permission.adminRefs` in `app-config.e2e.yaml` to be able to access the catalog entities.
+
 To emulate a Google authentication for this user, you can use the `Authentication.googleSvcTpbLogin()` function that will set up an appropriate cookie in the browser.
+
+## Authentication to Permission Test in the tests
+
+In order to test permission plugin, the same auth credentials for Google is used for the `Permission Test` login method, but the user identity is rotated among 4 different users. More about this test setup can be found [here](https://gitlab.eng.vmware.com/esback/fixtures/permission-plugin-integration-test).
+
+Admin list is configured under `permission.adminRefs` in `app-config.e2e.yaml`.
+
+To emulate a Permission Test authentication, you can use the `Authentication.permissionTestLogin()` function that will set up an appropriate cookie in the browser.
 
 ## Authentication to Okta in the tests
 
@@ -294,3 +304,9 @@ The Okta account credentials and service account credentials are stored in [Vaul
 The auth config credentials for the Okta account are in [Vault (esback/okta)](https://runway-vault-sfo.eng.vmware.com/ui/vault/secrets/runway_concourse/show/esback/okta)
 
 To emulate an Okta authentication, a refresh token representing a test user is used.
+
+## Authentication as Catalog Admin User
+
+With permission plugin enabled, only admin users would have full access on catalog entities.
+For tests that needs to access catalog but doesn't want to worry about setting up permissions, use the `Authentication.logInAsCatalogAdmin()` function.
+This method triggers Github Login under the hood at the moment, and the github user has been added to the admin list (`permission.adminRefs` in `app-config.e2e.yaml`).
