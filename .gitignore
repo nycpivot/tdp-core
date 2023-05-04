@@ -15,9 +15,6 @@ lerna-debug.log*
 # Coverage directory generated when running tests with coverage
 coverage
 
-# integration test screenshots
-packages/app/cypress/screenshots/
-
 # Dependencies
 node_modules/
 
@@ -49,6 +46,8 @@ site
 
 # Local cypress output
 packages/app/cypress/videos
+packages/app/cypress/screenshots/
+packages/app/cypress/downloads/
 
 # Generated techdocs output
 techdocs/*
