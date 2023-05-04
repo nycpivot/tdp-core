@@ -7376,6 +7376,14 @@
     "@types/docker-modem" "*"
     "@types/node" "*"
 
+"@types/dockerode@^3.3.17":
+  version "3.3.17"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/dockerode/-/dockerode-3.3.17.tgz#6070d12831a0518adf4755d831bb947bfec1255c"
+  integrity sha512-rhH719FBhfwFcL45AixUE5YWnXsdYEEnGhp/HWubOTowZMcsE4wDANvZi+EOrDLzYy2jI3EougA8par/ILi5Ww==
+  dependencies:
+    "@types/docker-modem" "*"
+    "@types/node" "*"
+
 "@types/dompurify@^2.1.0":
   version "2.4.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/dompurify/-/dompurify-2.4.0.tgz#fd9706392a88e0e0e6d367f3588482d817df0ab9"
@@ -11582,7 +11590,7 @@ docker-modem@^3.0.0:
     split-ca "^1.0.1"
     ssh2 "^1.11.0"
 
-dockerode@^3.3.1, dockerode@^3.3.4:
+dockerode@^3.3.1, dockerode@^3.3.5:
   version "3.3.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/dockerode/-/dockerode-3.3.5.tgz#7ae3f40f2bec53ae5e9a741ce655fff459745629"
   integrity sha512-/0YNa3ZDNeLr/tSckmD69+Gq+qVNhvKfAHNeZJBnp7EOP6RGKV8ORrJHkUn20So5wU+xxT7+1n5u8PjHbfjbSA==
