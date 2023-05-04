@@ -82,11 +82,11 @@ services:
       - ../../../examples/techdocs/output:/techdocs
       - ../../../examples:/app/examples
   cypress:
-    image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:8.5.0
+    image: harbor-repo.vmware.com/dockerhub-proxy-cache/cypress/included:12.11.0
     volumes:
       - .:/e2e/cypress
       - ./package.docker-compose.json:/e2e/package.json
-      - ../cypress.json:/e2e/cypress.json
+      - ../cypress.config.ts:/e2e/cypress.config.ts
       - ./npmrc.example:/e2e/.npmrc
     environment:
       - CYPRESS_baseUrl=http://tpb:7007
