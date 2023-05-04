@@ -7441,7 +7441,7 @@
     "@types/range-parser" "*"
     "@types/send" "*"
 
-"@types/express@*", "@types/express@^4.17.13", "@types/express@^4.17.6":
+"@types/express@*", "@types/express@^4.17.13", "@types/express@^4.17.17", "@types/express@^4.17.6":
   version "4.17.17"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/express/-/express-4.17.17.tgz#01d5437f6ef9cfa8668e616e13c2f2ac9a491ae4"
   integrity sha512-Q4FmmuLGBG58btUnfS1c1r/NQdlp3DMfGDGig8WhfpA2YRUtEkxAjkZb0yvplJGYdF1fsQ81iMDcH24sSCNC/Q==
@@ -12630,7 +12630,7 @@ expect@^29.0.0, expect@^29.5.0:
     jest-message-util "^29.5.0"
     jest-util "^29.5.0"
 
-express-promise-router@^4.1.0:
+express-promise-router@^4.1.0, express-promise-router@^4.1.1:
   version "4.1.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/express-promise-router/-/express-promise-router-4.1.1.tgz#8fac102060b9bcc868f84d34fbb12fd8fa494291"
   integrity sha512-Lkvcy/ZGrBhzkl3y7uYBHLMtLI4D6XQ2kiFg9dq7fbktBch5gjqJ0+KovX0cvCAvTJw92raWunRLM/OM+5l4fA==

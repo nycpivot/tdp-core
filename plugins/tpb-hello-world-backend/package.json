@@ -20,7 +20,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "peerDependencies": {
     "@tpb/core": "^0.0.1",
