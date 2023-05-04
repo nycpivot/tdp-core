@@ -5360,7 +5360,7 @@
     react-double-scrollbar "0.0.15"
     uuid "^3.4.0"
 
-"@material-ui/core@^4.12.2", "@material-ui/core@^4.9.13":
+"@material-ui/core@^4.12.2", "@material-ui/core@^4.12.4", "@material-ui/core@^4.9.13":
   version "4.12.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
   integrity sha512-tr7xekNlM9LjA6pagJmL8QCgZXaubWUwkJnoYcMKd4gw/t4XiyvnTkjdGrUVicyB2BsdaAv1tvow45bPM4sSwQ==
@@ -5378,7 +5378,7 @@
     react-is "^16.8.0 || ^17.0.0"
     react-transition-group "^4.4.0"
 
-"@material-ui/icons@^4.11.2", "@material-ui/icons@^4.9.1":
+"@material-ui/icons@^4.11.2", "@material-ui/icons@^4.11.3", "@material-ui/icons@^4.9.1":
   version "4.11.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/icons/-/icons-4.11.3.tgz#b0693709f9b161ce9ccde276a770d968484ecff1"
   integrity sha512-IKHlyx6LDh8n19vzwH5RtHIOHl9Tu90aAAxcbWME6kp4dmvODM3UvOHJeMIDzUbd4muuJKHmlNoBN+mDY4XkBA==
@@ -8804,8 +8804,8 @@ anymatch@^3.0.3, anymatch@~3.1.2:
   version "0.0.1-alpha.2"
   dependencies:
     "@backstage/cli" "^0.22.6"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.11.2"
+    "@material-ui/core" "^4.12.4"
+    "@material-ui/icons" "^4.11.3"
     "@tpb/plugin-app-live-view" "^0.0.1-alpha.2"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-azure-auth" "^0.0.1-alpha.2"

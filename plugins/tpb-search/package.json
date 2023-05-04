@@ -37,8 +37,8 @@
     "@backstage/plugin-search-react": "^1.5.0",
     "@backstage/plugin-techdocs": "^1.5.0",
     "@tpb/core": "^0.0.1-alpha.3",
-    "@material-ui/core": "^4.9.13",
-    "@material-ui/icons": "^4.11.2"
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3"
   },
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0",
