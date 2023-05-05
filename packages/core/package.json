@@ -30,7 +30,7 @@
     "@backstage/core-plugin-api": "^1.5.0",
     "@backstage/plugin-auth-node": "^0.2.13",
     "@backstage/plugin-catalog-backend": "^1.9.0",
-    "@backstage/plugin-permission-common": "^0.7.4",
+    "@backstage/plugin-permission-common": "^0.7.5",
     "@backstage/theme": "^0.2.18",
     "@types/express": "*",
     "@types/uuid": "^9.0.1",
