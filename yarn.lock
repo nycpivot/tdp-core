@@ -7671,10 +7671,10 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/node/-/node-18.13.0.tgz#0400d1e6ce87e9d3032c19eb6c58205b0d3f7850"
   integrity sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==
 
-"@types/node@^18.16.3":
-  version "18.16.3"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/node/-/node-18.16.3.tgz#6bda7819aae6ea0b386ebc5b24bdf602f1b42b01"
-  integrity sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==
+"@types/node@^18.16.4":
+  version "18.16.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/node/-/node-18.16.4.tgz#dfb38f0f3fb045fca84ffa7783233c63009d8a92"
+  integrity sha512-LUhvPmAKAbgm+p/K11IWszLZVoZDlMF4NRmqbhEzDz/CnCuehPkZXwZbBCKGJsgjnuVejotBwM7B3Scrq4EqDw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
