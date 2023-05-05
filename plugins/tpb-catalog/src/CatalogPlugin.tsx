@@ -18,6 +18,7 @@ import {
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
+import { ToggleFeature } from '@tpb/core-frontend';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
@@ -102,7 +103,9 @@ export const CatalogPlugin: AppPluginInterface<
 
     context.applyTo(SidebarItemSurface, sidebar =>
       sidebar.addMainItem(
-        <SidebarItem icon={HomeIcon} to={path} text={label} />,
+        <ToggleFeature feature="customize.features.catalog.showInSidebar">
+          <SidebarItem icon={HomeIcon} to={path} text={label} />
+        </ToggleFeature>,
       ),
     );
   };
