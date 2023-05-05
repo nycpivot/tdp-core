@@ -8,6 +8,7 @@ import React from 'react';
 import { Route } from 'react-router';
 import { SearchPage, SidebarSearchModal } from '@backstage/plugin-search';
 import { searchPage } from './components/SearchPage';
+import { ToggleFeature } from '@tpb/core-frontend';
 
 export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
   const { path } = {
@@ -25,7 +26,11 @@ export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
     });
 
     context.applyTo(SidebarItemSurface, sidebar => {
-      sidebar.addTopItem(<SidebarSearchModal />);
+      sidebar.addTopItem(
+        <ToggleFeature feature="customize.features.search.showInSidebar">
+          <SidebarSearchModal />
+        </ToggleFeature>,
+      );
     });
   };
 };
