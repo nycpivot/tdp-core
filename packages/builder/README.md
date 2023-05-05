@@ -70,6 +70,9 @@ backend:
     connection: ':memory:'
   cache:
     store: memory
+  auth:
+    keys:
+      - secret: ${BACKEND_SECRET}
 
 integrations:
   gitlab:
