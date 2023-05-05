@@ -36,7 +36,7 @@ export const PermissionTestAuthPlugin: BackendPluginInterface =
           ...customizeAuthProviderConfig(
             configApi,
             defaultConfig,
-            'permission',
+            'permission-test',
           ),
           apiRef: permissionTestAuthApiRef,
         }),
