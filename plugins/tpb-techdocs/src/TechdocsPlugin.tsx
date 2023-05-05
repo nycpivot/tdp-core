@@ -6,6 +6,7 @@ import {
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
+import { ToggleFeature } from '@tpb/core-frontend';
 import { SidebarItem } from '@backstage/core-components';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import {
@@ -42,7 +43,9 @@ export const TechdocsPlugin: AppPluginInterface<RoutableConfig> = config => {
 
     context.applyTo(SidebarItemSurface, sidebar =>
       sidebar.addMainItem(
-        <SidebarItem icon={LibraryBooks} to={path} text={label} />,
+        <ToggleFeature feature="customize.features.docs.showInSidebar">
+          <SidebarItem icon={LibraryBooks} to={path} text={label} />
+        </ToggleFeature>,
       ),
     );
   };
