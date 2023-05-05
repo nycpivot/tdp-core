@@ -6,6 +6,11 @@ export class PermissionPolicySurface {
   private _permissionPolicy: PermissionPolicy | undefined;
 
   public set(permissionPolicy: PermissionPolicy) {
+    if (this._permissionPolicy !== undefined) {
+      throw new Error(
+        `Permission policy has already been set to ${this._permissionPolicy.constructor.name}`,
+      );
+    }
     this._permissionPolicy = permissionPolicy;
   }
 
