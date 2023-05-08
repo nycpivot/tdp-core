@@ -41,7 +41,7 @@
     "@material-ui/icons": "^4.11.3"
   },
   "peerDependencies": {
-    "react": "^16.13.1 || ^17.0.0",
+    "react": "^17.0.2",
     "react-router": "6.0.0-beta.0"
   },
   "devDependencies": {
