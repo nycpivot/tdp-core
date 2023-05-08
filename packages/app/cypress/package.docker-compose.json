@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@types/node": "^18.16.4",
+    "@types/node": "^18.16.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "cypress-wait-until": "^1.7.2",
