@@ -183,23 +183,42 @@ export const MicrosoftGraphOrgReaderProcessorPlugin: BackendPluginInterface =
   };
 ```
 
-### SignInProviderResolverSurface
+### SignInProviderSurface
 
 ```
-import { SignInProviderResolverSurface } from '@tpb/plugin-auth-backend';
+import { SignInProviderSurface } from '@tpb/plugin-auth-backend';
 
 ...
 
 export const OidcAuthBackendPlugin: BackendPluginInterface = () => store => {
-  store.applyTo(SignInProviderResolverSurface, surface => {
-    surface.add({
-      oidc: providers.oidc.create({
-        signIn: {
-          resolver: surface.signInAsGuestResolver(),
-        },
-      }),
-    });
-  });
+  store.applyWithDependency(
+    SignInProviderSurface,
+    SignInResolverSurface,
+    (providerSurface, resolverSurface) => {
+      providerSurface.add({
+        oidc: providers.oidc.create({
+          signIn: {
+            resolver: resolverSurface.getResolver('oidc'),
+          },
+        }),
+      });
+    },
+  );
+};
+```
+
+### SignInResolverSurface
+
+```
+import { SignInResolverSurface } from '@tpb/plugin-auth-backend';
+const resolver: SignInResolver<TAuthResult>
+
+...
+
+export const SomeAuthProviderSignInResolverPlugin: BackendPluginInterface = () => store => {
+   store.applyTo(SignInResolverSurface, (resolverSurface) => {
+      resolverSurface.add('authProviderKey', resolver)
+   })
 };
 ```
 
