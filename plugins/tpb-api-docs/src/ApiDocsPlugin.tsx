@@ -6,6 +6,7 @@ import {
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
+import { ToggleFeature } from '@tpb/core-frontend';
 import { SidebarItem } from '@backstage/core-components';
 import { ApiExplorerPage } from '@backstage/plugin-api-docs';
 import Extension from '@material-ui/icons/Extension';
@@ -24,7 +25,9 @@ export const ApiDocsPlugin: AppPluginInterface<RoutableConfig> = config => {
 
     context.applyTo(SidebarItemSurface, sidebar =>
       sidebar.addMainItem(
-        <SidebarItem icon={Extension} to={path} text={label} />,
+        <ToggleFeature feature="customize.features.apiDocs.showInSidebar">
+          <SidebarItem icon={Extension} to={path} text={label} />
+        </ToggleFeature>,
       ),
     );
   };
