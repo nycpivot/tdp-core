@@ -24,6 +24,7 @@ import {
 } from '@material-ui/core';
 import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
 import { SidebarItemSurface } from '@tpb/core';
+import { ToggleFeature } from '@tpb/core-frontend';
 import { ClaritySidebarPage } from '../Sidebar/SidebarPage';
 import { ClaritySidebar } from '../Sidebar/Sidebar';
 import { BackstageTheme } from '@backstage/theme';
@@ -55,7 +56,9 @@ const Root = ({ sidebar, children, classes }: PropsWithChildren<IRoot>) => {
         <ClaritySidebar>
           {...sidebar.topItems}
           {...sidebar.mainItems}
-          <SidebarSettings />
+          <ToggleFeature feature="customize.features.settings.showInSidebar">
+            <SidebarSettings />
+          </ToggleFeature>
         </ClaritySidebar>
         {/* eslint-disable */}
         <div
