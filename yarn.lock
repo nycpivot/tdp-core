@@ -7010,10 +7010,10 @@
     "@tpb/core" "^0.0.2-main.85"
     "@tpb/plugin-login" "^0.0.2-main.85"
 
-"@tpb/plugin-gitlab-loblaw@^0.0.19":
-  version "0.0.19"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.19.tgz#6a22d937c329cd68a1ffdcee4b1b790fef010410"
-  integrity sha512-/29748X9OIxrue2GMClwLBeR2IarwruhpkqBcqqJCPE1NrOdONT8/x/pGGMB0nNO4zne1wY6ZUGWVmniEfY8Vw==
+"@tpb/plugin-gitlab-loblaw@^0.0.20":
+  version "0.0.20"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.20.tgz#28b70faa423089a94ba4f29346560162ab370727"
+  integrity sha512-WAKANmtfLajGRGIt6ewhvqeGvJMfOaYIVXyCpiXlfH8BJrmfasJYB9E8295uHO1/G1aYTUuYT5+Ok4suYNXA4A==
   dependencies:
     "@backstage/plugin-catalog" "^1.10.0"
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
@@ -8787,7 +8787,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-clarity-theme" "^0.0.1-alpha.2"
     "@tpb/plugin-github-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-gitlab-auth" "^0.0.1-alpha.2"
-    "@tpb/plugin-gitlab-loblaw" "^0.0.19"
+    "@tpb/plugin-gitlab-loblaw" "^0.0.20"
     "@tpb/plugin-google-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-guest-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-hello-world" "^0.0.1-alpha.3"
