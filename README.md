@@ -446,17 +446,17 @@ customize:
 
 Here are some features that can be toggled:
 
-| Feature             | Property                                 |
-| ------------------- | ---------------------------------------- |
-| catalog in sidebar  | customize.features.catalog.showInSidebar |
-| techdocs in sidebar | customize.features.catalog.showInSidebar |
-| api docs in sidebar | customize.features.catalog.showInSidebar |
-| search in sidebar   | customize.features.catalog.showInSidebar |
-| settings in sidebar | customize.features.catalog.showInSidebar |
+| Feature             | Property                                  |
+| ------------------- | ----------------------------------------- |
+| catalog in sidebar  | customize.features.catalog.showInSidebar  |
+| techdocs in sidebar | customize.features.docs.showInSidebar     |
+| api docs in sidebar | customize.features.apiDocs.showInSidebar  |
+| search in sidebar   | customize.features.search.showInSidebar   |
+| settings in sidebar | customize.features.settings.showInSidebar |
 
 If a property is not set, its value is `true` by default.
 
-Any frontend plugin can leverage on this mechanism by:
+Any frontend plugin can leverage on this mechanism following these steps:
 
 1. Create a `config.d.ts` file that defines the name of the toggle feature property.
 
