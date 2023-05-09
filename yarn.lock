@@ -3258,7 +3258,7 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
-"@backstage/plugin-catalog@^1.10.0", "@backstage/plugin-catalog@^1.4.0", "@backstage/plugin-catalog@^1.8.0":
+"@backstage/plugin-catalog@^1.10.0", "@backstage/plugin-catalog@^1.8.0":
   version "1.10.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog/-/plugin-catalog-1.10.0.tgz#208fd1a2de7993a4d001bf0a0c5011a5e9ddc7cc"
   integrity sha512-AATMGOs7YaB11je6Zi+gwhSzb947ritex1eSCePwhb+i5vTfDu5RGicv239AW+qoqcpCpROKSOqc1pUruu8GZA==
@@ -7010,14 +7010,14 @@
     "@tpb/core" "^0.0.2-main.85"
     "@tpb/plugin-login" "^0.0.2-main.85"
 
-"@tpb/plugin-gitlab-loblaw@^0.0.18":
-  version "0.0.18"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.18.tgz#c82b7074b81d4bab6b23d49a2946d7286061d20b"
-  integrity sha512-xrVcU6ZrWT3mcq86QXM4/GpS2eaooGiT6hI6Y7sWhg0iWQhzWVl0ZgZz9UgmnGHPV5oAIOGKrctO3NNRJm/Ffg==
+"@tpb/plugin-gitlab-loblaw@^0.0.19":
+  version "0.0.19"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.19.tgz#6a22d937c329cd68a1ffdcee4b1b790fef010410"
+  integrity sha512-/29748X9OIxrue2GMClwLBeR2IarwruhpkqBcqqJCPE1NrOdONT8/x/pGGMB0nNO4zne1wY6ZUGWVmniEfY8Vw==
   dependencies:
-    "@backstage/plugin-catalog" "^1.4.0"
+    "@backstage/plugin-catalog" "^1.10.0"
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
-    "@material-ui/core" "^4.12.2"
+    "@material-ui/core" "^4.12.4"
 
 "@tpb/plugin-login@^0.0.2-main.61", "@tpb/plugin-login@^0.0.2-main.85":
   version "0.0.2-main.85"
@@ -8787,7 +8787,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-clarity-theme" "^0.0.1-alpha.2"
     "@tpb/plugin-github-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-gitlab-auth" "^0.0.1-alpha.2"
-    "@tpb/plugin-gitlab-loblaw" "^0.0.18"
+    "@tpb/plugin-gitlab-loblaw" "^0.0.19"
     "@tpb/plugin-google-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-guest-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-hello-world" "^0.0.1-alpha.3"

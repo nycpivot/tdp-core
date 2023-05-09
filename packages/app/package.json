@@ -15,7 +15,7 @@
     "@tpb/plugin-bitbucket-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-github-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-gitlab-auth": "^0.0.1-alpha.2",
-    "@tpb/plugin-gitlab-loblaw": "^0.0.18",
+    "@tpb/plugin-gitlab-loblaw": "^0.0.19",
     "@tpb/plugin-google-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-guest-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-hello-world": "^0.0.1-alpha.3",
