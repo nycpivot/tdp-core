@@ -15,7 +15,7 @@ export const GoogleAuthPlugin: BackendPluginInterface = () => surfaces => {
         ...customizeAuthProviderConfig(configApi, defaultConfig, 'google'),
         apiRef: googleAuthApiRef,
       }),
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.google'), // TODO: ESBACK-163 - needs test for case when config does not exist
+      enabled: (configApi: ConfigApi) => configApi.has('auth.providers. '), // TODO: ESBACK-163 - needs test for case when config does not exist
       authProviderKey: 'google',
     });
   });

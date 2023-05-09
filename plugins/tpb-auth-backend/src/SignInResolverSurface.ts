@@ -21,6 +21,13 @@ export class SignInResolverSurface {
   private _resolvers: ResolverEntry[] = [];
 
   public add(authProviderKey: string, resolver: SignInResolver<any>) {
+    if (
+      this._resolvers.some(entry => entry.authProviderKey === authProviderKey)
+    ) {
+      console.warn(
+        `Multiple SignInResolvers are set for ${authProviderKey}, this can cause unexpected behavior.`,
+      );
+    }
     this._resolvers.push(new ResolverEntry(authProviderKey, resolver));
   }
 
