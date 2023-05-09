@@ -26,7 +26,7 @@
   "dependencies": {
     "@tpb/core": "^0.0.1-alpha.3",
     "@backstage/plugin-kubernetes-backend": "^0.10.0",
-    "@backstage/catalog-client": "^1.4.0",
+    "@backstage/catalog-client": "^1.4.1",
     "express": "^4.18.2"
   },
   "devDependencies": {
