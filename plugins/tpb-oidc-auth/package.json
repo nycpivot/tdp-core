@@ -22,7 +22,7 @@
   "dependencies": {
     "@tpb/core": "^0.0.1-alpha.2",
     "@tpb/plugin-login": "^0.0.1-alpha.2",
-    "@backstage/core-plugin-api": "^1.5.0",
+    "@backstage/core-plugin-api": "^1.5.1",
     "@backstage/core-app-api": "^1.7.0"
   },
   "peerDependencies": {

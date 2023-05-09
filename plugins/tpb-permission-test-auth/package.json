@@ -22,7 +22,7 @@
   "dependencies": {
     "@backstage/core-app-api": "^1.7.0",
     "@backstage/core-components": "^0.13.0",
-    "@backstage/core-plugin-api": "^1.5.0",
+    "@backstage/core-plugin-api": "^1.5.1",
     "@tpb/core": "^0.0.1-alpha.3",
     "@tpb/plugin-login": "^0.0.1-alpha.2"
   },
