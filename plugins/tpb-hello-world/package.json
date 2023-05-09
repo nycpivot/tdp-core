@@ -22,26 +22,26 @@
   "dependencies": {
     "@backstage/core-components": "^0.13.0",
     "@backstage/plugin-user-settings": "^0.7.2",
-    "@material-ui/icons": "^4.11.2",
+    "@material-ui/icons": "^4.11.3",
     "@tpb/core": "^0.0.1-alpha.3"
   },
   "peerDependencies": {
     "@tpb/core": "~0.0.1",
     "@tpb/plugin-catalog": "~0.0.1",
-    "react": "^16.13.1 || ^17.0.0",
+    "react": "^17.0.2",
     "react-router": "6.0.0-beta.0",
     "@backstage/core-plugin-api": "^1.4.0",
-    "@material-ui/core": "^4.12.2"
+    "@material-ui/core": "^4.12.4"
   },
   "devDependencies": {
     "@tpb/core": "^0.0.1-alpha.3",
     "@tpb/plugin-catalog": "^0.0.1-alpha.3",
     "@backstage/cli": "^0.22.6",
-    "@backstage/core-app-api": "^1.5.0",
+    "@backstage/core-app-api": "^1.7.0",
     "@backstage/dev-utils": "^1.0.12",
     "@backstage/test-utils": "^1.2.5",
     "@types/jest": "*",
-    "@types/node": "^18.16.3",
+    "@types/node": "^18.16.5",
     "cross-fetch": "^3.1.5",
     "msw": "^1.2.1"
   },
