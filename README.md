@@ -296,38 +296,42 @@ import { ThemeSurface } from '@tpb/core';
 
 ...
 
-describe('AppRenderer', () => {
-  it('should render', async () => {
-    process.env = {
-      NODE_ENV: 'test',
-      APP_CONFIG: [
-        {
-          data: {
-            app: { title: 'Test' },
-            backend: { baseUrl: 'http://localhost:7007' },
-          },
-          context: 'test',
-        },
-      ] as any,
-    };
+const BackstageLight: AppTheme = {
+  id: 'backstage-light',
+  title: 'Light',
+  variant: 'light',
+  Provider: ({ children }) => (
+    <ThemeProvider theme={lightTheme}>
+      <CssBaseline>{children}</CssBaseline>
+    </ThemeProvider>
+  ),
+};
 
-    const store = new SurfaceStore();
-    store.applyTo(ThemeSurface, surface => {
-      surface.addTheme({
-        id: 'theme',
-        title: 'dummy theme',
-        variant: 'light',
-        Provider(): JSX.Element | null {
-          return null;
-        },
-      });
-      surface.setRootBuilder(children => <div>{children}</div>);
+const BackstageDark: AppTheme = {
+  id: 'backstage-dark',
+  title: 'Dark',
+  variant: 'dark',
+  Provider: ({ children }) => (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline>{children}</CssBaseline>
+    </ThemeProvider>
+  ),
+};
+
+export const ThemePlugin: AppPluginInterface = () => {
+  return context => {
+    context.applyTo(ThemeSurface, surface => {
+      surface.addTheme(BackstageLight);
+      surface.addTheme(BackstageDark);
+      surface.setRootBuilder(children => (
+        <Root sidebar={context.findSurface(SidebarItemSurface)}>
+          {children}
+        </Root>
+      ));
     });
-    const App = appRenderer(store);
-    const rendered = await renderWithEffects(<App />);
-    expect(rendered.baseElement).toBeInTheDocument();
-  });
-});
+  };
+};
+
 ```
 
 ### SettingsTabsSurface
