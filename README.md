@@ -427,6 +427,88 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 };
 ```
 
+## Toggle Features
+
+It is possible to render or not components based on properties defined in the configuration.
+
+To hide the catalog in the sidebar for example, you can add this property to your configuration:
+
+```yaml
+customize:
+  features:
+    catalog:
+      showInSidebar: false
+```
+
+Here are some features that can be toggled:
+
+| Feature             | Property                                 |
+| ------------------- | ---------------------------------------- |
+| catalog in sidebar  | customize.features.catalog.showInSidebar |
+| techdocs in sidebar | customize.features.catalog.showInSidebar |
+| api docs in sidebar | customize.features.catalog.showInSidebar |
+| search in sidebar   | customize.features.catalog.showInSidebar |
+| settings in sidebar | customize.features.catalog.showInSidebar |
+
+If a property is not set, its value is `true` by default.
+
+Any frontend plugin can leverage on this mechanism by:
+
+1. Create a `config.d.ts` file that defines the name of the toggle feature property.
+
+_Example:_
+
+```typescript
+export interface Config {
+  customize?: {
+    features?: {
+      apiDocs?: {
+        /**
+         * Show or hide the sidebar entry. Default: true
+         * @visibility frontend
+         */
+        showInSidebar?: boolean;
+      };
+    };
+  };
+}
+```
+
+The `@visibility` annotation is required if you want the property to be taken into account.
+
+Place this file at the root of the plugin folder.
+
+2. Add a `configSchema` property in the `package.json` file of the plugin
+
+```json
+  "configSchema": "config.d.ts",
+```
+
+3. Add the `config.d.ts` file to list of files to publish in the `package.json` file:
+
+```json
+"files": [
+    "dist",
+    "config.d.ts"
+  ]
+```
+
+4. Add a dependency to the `@tpb/core-frontend` package in the `package.json` file
+
+5. Use the `ToggleFeature` component to wrap the component that you want to hide or show depending on the property you have defined.
+
+_Example:_
+
+```typescript jsx
+context.applyTo(SidebarItemSurface, sidebar =>
+  sidebar.addMainItem(
+    <ToggleFeature feature="customize.features.apiDocs.showInSidebar">
+      <SidebarItem icon={Extension} to={path} text={label} />
+    </ToggleFeature>,
+  ),
+);
+```
+
 ## Running the builder
 
 To run the builder follow the steps in the Getting Started section of this guide.

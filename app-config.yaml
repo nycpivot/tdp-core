@@ -140,3 +140,17 @@ kubernetes:
           authProvider: serviceAccount
           serviceAccountToken:
           skipTLSVerify: true
+# Use the properties below to customize the visible features.
+# By default, features are visible if not set.
+#customize:
+#  features:
+#    catalog:
+#      showInSidebar: true
+#    docs:
+#      showInSidebar: true
+#    search:
+#      showInSidebar: true
+#    apiDocs:
+#      showInSidebar: true
+#    settings:
+#      showInSidebar: true
