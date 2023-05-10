@@ -2343,7 +2343,7 @@
     winston "^3.2.1"
     winston-transport "^4.5.0"
 
-"@backstage/backend-common@^0.18.1", "@backstage/backend-common@^0.18.2", "@backstage/backend-common@^0.18.3", "@backstage/backend-common@^0.18.4":
+"@backstage/backend-common@^0.18.2", "@backstage/backend-common@^0.18.3", "@backstage/backend-common@^0.18.4":
   version "0.18.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/backend-common/-/backend-common-0.18.4.tgz#10f467d729e065f600539b423e242740ead1ac20"
   integrity sha512-NywzQUya6MuvtFfzALOTvPfy0D8BX0iXH+K75auNtk2m3tRHCttDqagso9+6cKpapq7/HyydlVwdyADMcGnTgQ==
@@ -2454,16 +2454,7 @@
     "@backstage/errors" "^1.1.5"
     cross-fetch "^3.1.5"
 
-"@backstage/catalog-client@~1.3.0":
-  version "1.3.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/catalog-client/-/catalog-client-1.3.1.tgz#625ce4da098bc3d3e9cdfad4152f53df2ab39d20"
-  integrity sha512-3RtkQ1z79Rm2USsuNtsEKKd2IZvgqZSQg0u7ohpB8NAJSgQ3VloyWpVPIrS9PUBOCj7oktS//HWD5d0LHm9cvw==
-  dependencies:
-    "@backstage/catalog-model" "^1.2.0"
-    "@backstage/errors" "^1.1.4"
-    cross-fetch "^3.1.5"
-
-"@backstage/catalog-model@^1.0.2", "@backstage/catalog-model@^1.1.3", "@backstage/catalog-model@^1.2.0", "@backstage/catalog-model@^1.2.1", "@backstage/catalog-model@^1.3.0":
+"@backstage/catalog-model@^1.0.2", "@backstage/catalog-model@^1.1.3", "@backstage/catalog-model@^1.2.1", "@backstage/catalog-model@^1.3.0":
   version "1.3.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/catalog-model/-/catalog-model-1.3.0.tgz#3d926b4e9d3d871f37e88295788cdce3b4ec17d3"
   integrity sha512-QFoLho/SvzNepFHDUBL58fdcktAtshQQQ1FABpDbnBR954iQ7MGQlSPP+2uSrQ5wGpZylIjpFnsH3NB/k06i6g==
@@ -2623,7 +2614,7 @@
     yaml "^2.0.0"
     yup "^0.32.9"
 
-"@backstage/config@^1.0.1", "@backstage/config@^1.0.6", "@backstage/config@^1.0.7":
+"@backstage/config@^1.0.1", "@backstage/config@^1.0.7":
   version "1.0.7"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/config/-/config-1.0.7.tgz#f6929fb5af80ca36fae8b385f957f9c0a64a72a6"
   integrity sha512-8Fh3QJl0PltQZ9nCNr9UsYoRNCbfhJQR+1z1JUur7hTgJ/yCVnVPmESrpBWR27NCT7IBNtRv0jZhzj/BYZfFgA==
@@ -2820,7 +2811,7 @@
     react-use "^17.2.4"
     zen-observable "^0.10.0"
 
-"@backstage/errors@^1.0.0", "@backstage/errors@^1.1.4", "@backstage/errors@^1.1.5":
+"@backstage/errors@^1.0.0", "@backstage/errors@^1.1.5":
   version "1.1.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/errors/-/errors-1.1.5.tgz#27c0deb040a136f196865d2d6d24e31f1d17f472"
   integrity sha512-aKkYniwo3dkd8a5dIZhnfoSLqsFzBqzQC2yhw/XfOUbfEkej6XZVsPKws/zZODUAPF1ZKNMUBbt1NTVG14Bahw==
@@ -3350,7 +3341,7 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-kubernetes-backend@^0.9.3":
+"@backstage/plugin-kubernetes-backend@^0.9.4":
   version "0.9.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.9.4.tgz#c9ae886e94b14e574e84e3bed48a2299112a491b"
   integrity sha512-rNMAZ0/z2fsRYos5u+AYrN/slu/A58i1VPO5GQz0nNZxVJgASnCci1lgpr5sjNX2NKEp/y956OBV5PMpcWXKDA==
@@ -4543,17 +4534,17 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@google-cloud/container@^3.0.0":
-  version "3.0.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@google-cloud/container/-/container-3.0.1.tgz#46bcbc05e1d45e0f182f6eda49d82edcc2c0118e"
-  integrity sha512-5Ae76MFhGJm+PtQM8Wn/2BCOzLH9Aej8HdGRcsF/DA1ejUy+Q6HzwsHPTcyNExRrtxC4jjcB59IQn0fwEVayZQ==
-  dependencies:
-    google-gax "^2.24.1"
-
 "@google-cloud/container@^4.0.0":
   version "4.8.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@google-cloud/container/-/container-4.8.0.tgz#eff34572de85c92c8a7a44df8301bd3625a68f13"
   integrity sha512-TerBqeZ8pDeTamqYGw5uSCc/XRNNKfTprC2tA3Qg7x6Qtt6M9bFhVhRIyL5A3npFUFouGqZw2ExXj4DPU+tjCg==
+  dependencies:
+    google-gax "^3.5.8"
+
+"@google-cloud/container@^4.11.0":
+  version "4.11.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@google-cloud/container/-/container-4.11.0.tgz#001cc583a13871241f3de0b0e141d3ebff3d7c1d"
+  integrity sha512-Y7J3bcVyF8Zyo1HeZGXzj1AHoqQFBHtyhVA9qLapXb+gWs9+8RfSEHg1yByhWrD/KYmuFkmXwGXLNrTfaPBIaQ==
   dependencies:
     google-gax "^3.5.8"
 
@@ -4630,14 +4621,6 @@
     "@n1ru4l/push-pull-async-iterable-iterator" "^3.1.0"
     meros "^1.1.4"
 
-"@grpc/grpc-js@~1.6.0":
-  version "1.6.12"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@grpc/grpc-js/-/grpc-js-1.6.12.tgz#20f710d8a8c5c396b2ae9530ba6c06b984614fdf"
-  integrity sha512-JmvQ03OTSpVd9JTlj/K3IWHSz4Gk/JMLUTtW7Zb0KvO1LcOYGATh5cNuRYzCAeDR3O8wq+q8FZe97eO9MBrkUw==
-  dependencies:
-    "@grpc/proto-loader" "^0.7.0"
-    "@types/node" ">=12.12.47"
-
 "@grpc/grpc-js@~1.8.0":
   version "1.8.14"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@grpc/grpc-js/-/grpc-js-1.8.14.tgz#4fe0f9917d6f094cf59245763c275442b182e9ad"
@@ -4645,17 +4628,6 @@
   dependencies:
     "@grpc/proto-loader" "^0.7.0"
     "@types/node" ">=12.12.47"
-
-"@grpc/proto-loader@^0.6.12":
-  version "0.6.13"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@grpc/proto-loader/-/proto-loader-0.6.13.tgz#008f989b72a40c60c96cd4088522f09b05ac66bc"
-  integrity sha512-FjxPYDRTn6Ec3V0arm1FtSpmP6V50wuph2yILpyvTKzjc76oDdoihXqM1DzOW5ubvCC8GivfCnNtfaRE8myJ7g==
-  dependencies:
-    "@types/long" "^4.0.1"
-    lodash.camelcase "^4.3.0"
-    long "^4.0.0"
-    protobufjs "^6.11.3"
-    yargs "^16.2.0"
 
 "@grpc/proto-loader@^0.7.0":
   version "0.7.6"
@@ -5102,7 +5074,7 @@
     underscore "^1.9.1"
     ws "^7.3.1"
 
-"@kubernetes/client-node@0.18.1":
+"@kubernetes/client-node@0.18.1", "@kubernetes/client-node@^0.18.1":
   version "0.18.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes/client-node/-/client-node-0.18.1.tgz#58d864c8f584efd0f8670f6c46bb8e9d5abd58f6"
   integrity sha512-F3JiK9iZnbh81O/da1tD0h8fQMi/MDttWc/JydyUVnjPEom55wVfnpl4zQ/sWD4uKB8FlxYRPiLwV2ZXB+xPKw==
@@ -6957,28 +6929,28 @@
     uuid "^9.0.0"
     winston "^3.2.1"
 
-"@tpb/k8s-custom-apis-backend@^0.1.4":
-  version "0.1.4"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/k8s-custom-apis-backend/-/@tpb/k8s-custom-apis-backend-0.1.4.tgz#5cd7c3c10150721af3239fda12c804d070924e1e"
-  integrity sha512-glVwo2g3UJuWMxKVvwEgqy5O2SquWI/DMyp2crXZOe+cfgoG/0V14Kj4ak2Lgpe8YIk/B7DDioi9fu1jU2A8YA==
+"@tpb/k8s-custom-apis-backend@^0.1.5":
+  version "0.1.5"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/k8s-custom-apis-backend/-/@tpb/k8s-custom-apis-backend-0.1.5.tgz#f68d48a992f67d56986678bbf615dfa6db8cde0b"
+  integrity sha512-RPf48kDJ0Ke8arhetC++98hCni9e0hHmNQxTIl4mz5bWEgXMphZb5y4rlmlanXfc2D9AJZlzhIwNzGHZtDmjBw==
   dependencies:
-    "@backstage/backend-common" "^0.18.1"
-    "@backstage/catalog-client" "~1.3.0"
-    "@backstage/config" "^1.0.6"
-    "@backstage/plugin-kubernetes-backend" "^0.9.3"
-    "@google-cloud/container" "^3.0.0"
-    "@kubernetes/client-node" "^0.16.3"
-    "@types/aws4" "^1.5.1"
-    "@types/express" "^4.17.13"
-    aws-sdk "^2.840.0"
-    aws4 "^1.11.0"
+    "@backstage/backend-common" "^0.18.4"
+    "@backstage/catalog-client" "^1.4.1"
+    "@backstage/config" "^1.0.7"
+    "@backstage/plugin-kubernetes-backend" "^0.9.4"
+    "@google-cloud/container" "^4.11.0"
+    "@kubernetes/client-node" "^0.18.1"
+    "@types/aws4" "^1.11.2"
+    "@types/express" "^4.17.17"
+    aws-sdk "^2.1375.0"
+    aws4 "^1.12.0"
     cross-fetch "^3.1.5"
-    express "^4.17.1"
-    express-promise-router "^4.1.0"
-    http-status-codes "^2.1.4"
-    uuid "^8.3.2"
-    winston "^3.2.1"
-    yn "^4.0.0"
+    express "^4.18.2"
+    express-promise-router "^4.1.1"
+    http-status-codes "^2.2.0"
+    uuid "^9.0.0"
+    winston "^3.8.2"
+    yn "^5.0.0"
 
 "@tpb/kubernetes-orm@^0.1.2":
   version "0.1.2"
@@ -7161,7 +7133,7 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/aws-lambda/-/aws-lambda-8.10.114.tgz#4048273ebcd517dd118ecaa34b1368d275b6c7ad"
   integrity sha512-M8WpEGfC9iQ6V2Ccq6nGIXoQgeVc6z0Ngk8yCOL5V/TYIxshvb0MWQYLFFTZDesL0zmsoBc4OBjG9DB/4rei6w==
 
-"@types/aws4@^1.5.1":
+"@types/aws4@^1.11.2":
   version "1.11.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/aws4/-/aws4-1.11.2.tgz#7700aabe4646f8868b5d2b20820d9583225e7b78"
   integrity sha512-x0f96eBPrCCJzJxdPbUvDFRva4yPpINJzTuXXpmS2j9qLUpF2nyGzvXPlRziuGbCsPukwY4JfuO+8xwsoZLzGw==
@@ -9102,6 +9074,22 @@ avsc@^5.7.3:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/avsc/-/avsc-5.7.7.tgz#8d1b5fd85904cc96a1e439450633ff33f4aff57b"
   integrity sha512-9cYNccliXZDByFsFliVwk5GvTq058Fj513CiR4E60ndDwmuXzTJEp/Bp8FyuRmGyYupLjHLs+JA9/CBoVS4/NQ==
 
+aws-sdk@^2.1375.0:
+  version "2.1376.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/aws-sdk/-/aws-sdk-2.1376.0.tgz#26b8e021cb62ef4dab5ce991fe7c84cf234ea1f2"
+  integrity sha512-ja/Xnft8BDcDEz786VJFPrWpuWpOgsA+QzBAwzsjYeIolQ/vEs/bbXkoS085fOoeAPEhYWQh9wog7cVvrQPJFQ==
+  dependencies:
+    buffer "4.9.2"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.16.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    util "^0.12.4"
+    uuid "8.0.0"
+    xml2js "0.5.0"
+
 aws-sdk@^2.840.0:
   version "2.1362.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/aws-sdk/-/aws-sdk-2.1362.0.tgz#e7a65b5db9dfa40dd5b968a456ac7ad903c721bc"
@@ -9123,7 +9111,7 @@ aws-sign2@~0.7.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
   integrity sha512-08kcGqnYf/YmjoRhfxyu+CLxBjUtHLXLXX/vUfx9l2LYzG3c1m61nrpyFUZI6zeS+Li/wWMMidD9KgrqtGq3mA==
 
-aws4@^1.11.0, aws4@^1.8.0:
+aws4@^1.11.0, aws4@^1.12.0, aws4@^1.8.0:
   version "1.12.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
@@ -13261,17 +13249,6 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-gaxios@^4.0.0:
-  version "4.3.3"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/gaxios/-/gaxios-4.3.3.tgz#d44bdefe52d34b6435cc41214fdb160b64abfc22"
-  integrity sha512-gSaYYIO1Y3wUtdfHmjDUZ8LWaxJQpiavzbF5Kq53akSzvmVg0RfyOcFDbO1KJ/KCGRFz2qG+lS81F0nkr7cRJA==
-  dependencies:
-    abort-controller "^3.0.0"
-    extend "^3.0.2"
-    https-proxy-agent "^5.0.0"
-    is-stream "^2.0.0"
-    node-fetch "^2.6.7"
-
 gaxios@^5.0.0, gaxios@^5.0.1:
   version "5.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/gaxios/-/gaxios-5.1.0.tgz#133b77b45532be71eec72012b7e97c2320b6140a"
@@ -13281,14 +13258,6 @@ gaxios@^5.0.0, gaxios@^5.0.1:
     https-proxy-agent "^5.0.0"
     is-stream "^2.0.0"
     node-fetch "^2.6.7"
-
-gcp-metadata@^4.2.0:
-  version "4.3.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/gcp-metadata/-/gcp-metadata-4.3.1.tgz#fb205fe6a90fef2fd9c85e6ba06e5559ee1eefa9"
-  integrity sha512-x850LS5N7V1F3UcV7PoupzGsyD6iVwTVvsh3tbXfkctZnBnjW5yu5z1/3k3SehF7TyoTIe78rJs02GMMy+LF+A==
-  dependencies:
-    gaxios "^4.0.0"
-    json-bigint "^1.0.0"
 
 gcp-metadata@^5.0.0:
   version "5.2.0"
@@ -13617,21 +13586,6 @@ globby@^7.1.1:
     pify "^3.0.0"
     slash "^1.0.0"
 
-google-auth-library@^7.14.0:
-  version "7.14.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/google-auth-library/-/google-auth-library-7.14.1.tgz#e3483034162f24cc71b95c8a55a210008826213c"
-  integrity sha512-5Rk7iLNDFhFeBYc3s8l1CqzbEBcdhwR193RlD4vSNFajIcINKI8W8P0JLmBpwymHqqWbX34pJDQu39cSy/6RsA==
-  dependencies:
-    arrify "^2.0.0"
-    base64-js "^1.3.0"
-    ecdsa-sig-formatter "^1.0.11"
-    fast-text-encoding "^1.0.0"
-    gaxios "^4.0.0"
-    gcp-metadata "^4.2.0"
-    gtoken "^5.0.4"
-    jws "^4.0.0"
-    lru-cache "^6.0.0"
-
 google-auth-library@^8.0.0, google-auth-library@^8.0.1, google-auth-library@^8.0.2:
   version "8.7.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/google-auth-library/-/google-auth-library-8.7.0.tgz#e36e255baba4755ce38dded4c50f896cf8515e51"
@@ -13646,25 +13600,6 @@ google-auth-library@^8.0.0, google-auth-library@^8.0.1, google-auth-library@^8.0
     gtoken "^6.1.0"
     jws "^4.0.0"
     lru-cache "^6.0.0"
-
-google-gax@^2.24.1:
-  version "2.30.5"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/google-gax/-/google-gax-2.30.5.tgz#e836f984f3228900a8336f608c83d75f9cb73eff"
-  integrity sha512-Jey13YrAN2hfpozHzbtrwEfEHdStJh1GwaQ2+Akh1k0Tv/EuNVSuBtHZoKSBm5wBMvNsxTsEIZ/152NrYyZgxQ==
-  dependencies:
-    "@grpc/grpc-js" "~1.6.0"
-    "@grpc/proto-loader" "^0.6.12"
-    "@types/long" "^4.0.0"
-    abort-controller "^3.0.0"
-    duplexify "^4.0.0"
-    fast-text-encoding "^1.0.3"
-    google-auth-library "^7.14.0"
-    is-stream-ended "^0.1.4"
-    node-fetch "^2.6.1"
-    object-hash "^3.0.0"
-    proto3-json-serializer "^0.1.8"
-    protobufjs "6.11.3"
-    retry-request "^4.0.0"
 
 google-gax@^3.5.7, google-gax@^3.5.8:
   version "3.6.0"
@@ -13686,13 +13621,6 @@ google-gax@^3.5.7, google-gax@^3.5.8:
     protobufjs "7.2.3"
     protobufjs-cli "1.1.1"
     retry-request "^5.0.0"
-
-google-p12-pem@^3.1.3:
-  version "3.1.4"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/google-p12-pem/-/google-p12-pem-3.1.4.tgz#123f7b40da204de4ed1fbf2fd5be12c047fc8b3b"
-  integrity sha512-HHuHmkLgwjdmVRngf5+gSmpkyaRI6QmOg77J8tkNBHhNEI62sGHyw4/+UkgyZEI7h84NbWprXDJ+sa3xOYFvTg==
-  dependencies:
-    node-forge "^1.3.1"
 
 google-p12-pem@^4.0.0:
   version "4.0.1"
@@ -13775,15 +13703,6 @@ graphql-ws@^5.4.1:
   version "16.6.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/graphql/-/graphql-16.6.0.tgz#c2dcffa4649db149f6282af726c8c83f1c7c5fdb"
   integrity sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw==
-
-gtoken@^5.0.4:
-  version "5.3.2"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/gtoken/-/gtoken-5.3.2.tgz#deb7dc876abe002178e0515e383382ea9446d58f"
-  integrity sha512-gkvEKREW7dXWF8NV8pVrKfW7WqReAmjjkMBh6lNCCGOM4ucS0r0YyXXl0r/9Yj8wcW/32ISkfc8h5mPTDbtifQ==
-  dependencies:
-    gaxios "^4.0.0"
-    google-p12-pem "^3.1.3"
-    jws "^4.0.0"
 
 gtoken@^6.1.0:
   version "6.1.2"
@@ -14181,7 +14100,7 @@ http-signature@~1.3.6:
     jsprim "^2.0.2"
     sshpk "^1.14.1"
 
-http-status-codes@^2.1.4:
+http-status-codes@^2.1.4, http-status-codes@^2.2.0:
   version "2.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/http-status-codes/-/http-status-codes-2.2.0.tgz#bb2efe63d941dfc2be18e15f703da525169622be"
   integrity sha512-feERVo9iWxvnejp3SEfm/+oNG517npqL2/PIA8ORjyOZjGC7TwCRQsZylciLS64i6pJ0wRYz3rkXLRwbtFa8Ng==
@@ -19572,13 +19491,6 @@ proto-list@~1.2.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/proto-list/-/proto-list-1.2.4.tgz#212d5bfe1318306a420f6402b8e26ff39647a849"
   integrity sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==
 
-proto3-json-serializer@^0.1.8:
-  version "0.1.9"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/proto3-json-serializer/-/proto3-json-serializer-0.1.9.tgz#705ddb41b009dd3e6fcd8123edd72926abf65a34"
-  integrity sha512-A60IisqvnuI45qNRygJjrnNjX2TMdQGMY+57tR3nul3ZgO2zXkR9OGR8AXxJhkqx84g0FTnrfi3D5fWMSdANdQ==
-  dependencies:
-    protobufjs "^6.11.2"
-
 proto3-json-serializer@^1.0.0:
   version "1.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/proto3-json-serializer/-/proto3-json-serializer-1.1.0.tgz#52d9c73b24d25ff925639e1e5a01ac883460149f"
@@ -19601,25 +19513,6 @@ protobufjs-cli@1.1.1:
     semver "^7.1.2"
     tmp "^0.2.1"
     uglify-js "^3.7.7"
-
-protobufjs@6.11.3, protobufjs@^6.11.2, protobufjs@^6.11.3:
-  version "6.11.3"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/protobufjs/-/protobufjs-6.11.3.tgz#637a527205a35caa4f3e2a9a4a13ddffe0e7af74"
-  integrity sha512-xL96WDdCZYdU7Slin569tFX712BxsxslWwAfAhCYjQKGTq7dAU91Lomy6nLLhh/dyGhk/YH4TwTSRxTzhuHyZg==
-  dependencies:
-    "@protobufjs/aspromise" "^1.1.2"
-    "@protobufjs/base64" "^1.1.2"
-    "@protobufjs/codegen" "^2.0.4"
-    "@protobufjs/eventemitter" "^1.1.0"
-    "@protobufjs/fetch" "^1.1.0"
-    "@protobufjs/float" "^1.0.2"
-    "@protobufjs/inquire" "^1.1.0"
-    "@protobufjs/path" "^1.1.2"
-    "@protobufjs/pool" "^1.1.0"
-    "@protobufjs/utf8" "^1.1.0"
-    "@types/long" "^4.0.1"
-    "@types/node" ">=13.7.0"
-    long "^4.0.0"
 
 protobufjs@7.2.3, protobufjs@^7.0.0:
   version "7.2.3"
@@ -20761,14 +20654,6 @@ ret@^0.2.0:
   version "0.2.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ret/-/ret-0.2.2.tgz#b6861782a1f4762dce43402a71eb7a283f44573c"
   integrity sha512-M0b3YWQs7R3Z917WRQy1HHA7Ba7D8hvZg6UE5mLykJxQVE2ju0IXbGlaHPPlkY+WN7wFP+wUMXmBFA0aV6vYGQ==
-
-retry-request@^4.0.0:
-  version "4.2.2"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/retry-request/-/retry-request-4.2.2.tgz#b7d82210b6d2651ed249ba3497f07ea602f1a903"
-  integrity sha512-xA93uxUD/rogV7BV59agW/JHPGXeREMWiZc9jhcwY4YdZ7QOtC7qbomYg0n4wyk2lJhggjvKvhNX8wln/Aldhg==
-  dependencies:
-    debug "^4.1.1"
-    extend "^3.0.2"
 
 retry-request@^5.0.0:
   version "5.0.2"

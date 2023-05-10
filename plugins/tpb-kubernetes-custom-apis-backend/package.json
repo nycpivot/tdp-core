@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@tpb/core": "^0.0.1-alpha.3",
-    "@tpb/k8s-custom-apis-backend": "^0.1.4",
+    "@tpb/k8s-custom-apis-backend": "^0.1.5",
     "@backstage/catalog-client": "^1.4.1",
     "express": "^4.18.2"
   },
