@@ -1,5 +1,4 @@
 import type { Entity, CompoundEntityRef } from '@backstage/catalog-model';
-import { CatalogFilterLayout } from '@backstage/plugin-catalog-react';
 import {
   Content,
   ContentHeader,
@@ -11,7 +10,6 @@ import {
 } from '@backstage/core-components';
 import { configApiRef, useApi, useRouteRef } from '@backstage/core-plugin-api';
 import {
-  EntityKindPicker,
   EntityLifecyclePicker,
   EntityListProvider,
   EntityOwnerPicker,
@@ -21,7 +19,14 @@ import {
   UserListPicker,
 } from '@backstage/plugin-catalog-react';
 import React from 'react';
-import { CatalogTable, catalogPlugin } from '@backstage/plugin-catalog';
+import {
+  CatalogKindHeader,
+  CatalogTable,
+  FilteredEntityLayout,
+  EntityListContainer,
+  FilterContainer,
+  catalogPlugin,
+} from '@backstage/plugin-catalog';
 
 export type EntityRow = {
   entity: Entity;
@@ -55,25 +60,25 @@ export const CustomCatalogPage = ({
     <PageWithHeader title={`${orgName} Catalog`} themeId="home">
       <EntityListProvider>
         <Content>
-          <ContentHeader titleComponent={<EntityKindPicker />}>
+          <ContentHeader titleComponent={<CatalogKindHeader />}>
             <CreateButton
               title="Register Entity"
               to={createComponentLink && createComponentLink()}
             />
             <SupportButton>All your software catalog entities</SupportButton>
           </ContentHeader>
-          <CatalogFilterLayout>
-            <CatalogFilterLayout.Filters>
+          <FilteredEntityLayout>
+            <FilterContainer>
               <EntityTypePicker />
               <UserListPicker initialFilter={initiallySelectedFilter} />
               <EntityOwnerPicker />
               <EntityLifecyclePicker />
               <EntityTagPicker />
-            </CatalogFilterLayout.Filters>
-            <CatalogFilterLayout.Content>
+            </FilterContainer>
+            <EntityListContainer>
               <CatalogTable columns={columns} actions={actions} />
-            </CatalogFilterLayout.Content>
-          </CatalogFilterLayout>
+            </EntityListContainer>
+          </FilteredEntityLayout>
         </Content>
       </EntityListProvider>
     </PageWithHeader>

@@ -40,7 +40,9 @@
     "@material-ui/icons": "^4.11.3",
     "@tpb/core": "^0.0.1-alpha.2",
     "@tpb/core-frontend": "^0.0.1-alpha.1",
-    "react-hook-form": "^7.12.2"
+    "react-hook-form": "^7.12.2",
+    "@tap/plugin-workloads": "*",
+    "@internal/plugin-api-scoring": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
