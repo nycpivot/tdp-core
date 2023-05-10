@@ -24,7 +24,7 @@ import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { EntityPageSurface } from './EntityPageSurface';
 import { CustomCatalogPage } from './components/CustomCatalogPage';
 import { DefaultImportPage } from './components/CatalogImport/DefaultImportPage';
-import { PermissionedRoute } from '@backstage/plugin-permission-react';
+import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
 interface CatalogConfig {
@@ -61,13 +61,15 @@ export const CatalogPlugin: AppPluginInterface<
 
       if (!config?.disableImport) {
         routes.add(
-          <PermissionedRoute
-            permission={catalogEntityCreatePermission}
+          <ToggleRoute
+            feature="customize.features.catalog.enabled"
             path="/catalog-import"
             element={<CatalogImportPage />}
           >
-            <DefaultImportPage />
-          </PermissionedRoute>,
+            <RequirePermission permission={catalogEntityCreatePermission}>
+              <DefaultImportPage />
+            </RequirePermission>
+          </ToggleRoute>,
         );
 
         routes.addRouteBinder(({ bind }) => {
