@@ -11,7 +11,6 @@ export const ToggleRoute: React.FunctionComponent<ToggleRouteProps> = ({
   ...props
 }) => {
   const config = useApi(configApiRef);
-  const isFeatureEnabled =
-    config.getOptionalBoolean(`customize.features.${feature}`) ?? true;
+  const isFeatureEnabled = config.getOptionalBoolean(`${feature}`) ?? true;
   return <>{isFeatureEnabled && <Route {...props} />}</>;
 };

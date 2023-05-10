@@ -18,7 +18,7 @@ import {
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
-import { ToggleFeature } from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
@@ -45,9 +45,13 @@ export const CatalogPlugin: AppPluginInterface<
   return context => {
     context.applyTo(AppRouteSurface, routes => {
       routes.add(
-        <Route path={`/${path}`} element={<CatalogIndexPage />}>
+        <ToggleRoute
+          feature="customize.features.catalog.enabled"
+          path={`/${path}`}
+          element={<CatalogIndexPage />}
+        >
           <CustomCatalogPage />
-        </Route>,
+        </ToggleRoute>,
       );
 
       routes.addRouteBinder(({ bind }) => {
@@ -82,7 +86,11 @@ export const CatalogPlugin: AppPluginInterface<
 
       if (!config?.disableGraph) {
         routes.add(
-          <Route path="/catalog-graph" element={<CatalogGraphPage />} />,
+          <ToggleRoute
+            feature="customize.features.catalogGraph.enabled"
+            path="/catalog-graph"
+            element={<CatalogGraphPage />}
+          />,
         );
       }
     });
@@ -92,12 +100,13 @@ export const CatalogPlugin: AppPluginInterface<
       EntityPageSurface,
       (routes, entityPageSurface) =>
         routes.add(
-          <Route
+          <ToggleRoute
+            feature="customize.features.catalog.enabled"
             path={`/${path}/:namespace/:kind/:name`}
             element={<CatalogEntityPage />}
           >
             {entityPage(entityPageSurface)}
-          </Route>,
+          </ToggleRoute>,
         ),
     );
 
