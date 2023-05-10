@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router';
+import { Navigate } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
