@@ -1,1 +1,4 @@
-export { BitbucketAuthPlugin as plugin } from './BitbucketAuthPlugin';
+export {
+  BitbucketAuthPlugin as plugin,
+  bitbucketAuthProviderKey,
+} from './BitbucketAuthPlugin';

@@ -4,6 +4,7 @@ import {
   SignInProviderSurface,
   SignInResolverSurface,
 } from '@tpb/plugin-auth-backend';
+import { oneLoginAuthProviderKey } from '@tpb/plugin-onelogin-auth';
 
 export const OneLoginAuthBackendPlugin: BackendPluginInterface =
   () => store => {
@@ -14,7 +15,7 @@ export const OneLoginAuthBackendPlugin: BackendPluginInterface =
         providerSurface.add({
           onelogin: providers.onelogin.create({
             signIn: {
-              resolver: resolverSurface.getResolver('onelogin'),
+              resolver: resolverSurface.getResolver(oneLoginAuthProviderKey),
             },
           }),
         });

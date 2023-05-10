@@ -2,6 +2,7 @@ import { BackendPluginInterface } from '@tpb/core';
 import { ConfigApi, githubAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
+export const githubAuthProviderKey = 'github';
 export const GithubAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'github-auth-provider',
@@ -12,11 +13,16 @@ export const GithubAuthPlugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
       config: (configApi: ConfigApi) => ({
-        ...customizeAuthProviderConfig(configApi, defaultConfig, 'github'),
+        ...customizeAuthProviderConfig(
+          configApi,
+          defaultConfig,
+          githubAuthProviderKey,
+        ),
         apiRef: githubAuthApiRef,
       }),
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.github'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'github',
+      enabled: (configApi: ConfigApi) =>
+        configApi.has(`auth.providers.${githubAuthProviderKey}`), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: githubAuthProviderKey,
     });
   });
 };

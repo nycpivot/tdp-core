@@ -2,6 +2,7 @@ import { BackendPluginInterface } from '@tpb/core';
 import { ConfigApi, microsoftAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
+export const azureAuthProviderKey = 'microsoft';
 export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'azure-auth-provider',
@@ -12,12 +13,16 @@ export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
       config: (configApi: ConfigApi) => ({
-        ...customizeAuthProviderConfig(configApi, defaultConfig, 'microsoft'),
+        ...customizeAuthProviderConfig(
+          configApi,
+          defaultConfig,
+          azureAuthProviderKey,
+        ),
         apiRef: microsoftAuthApiRef,
       }),
       enabled: (configApi: ConfigApi) =>
-        configApi.has('auth.providers.microsoft'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'microsoft',
+        configApi.has(`auth.providers.${azureAuthProviderKey}`), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: azureAuthProviderKey,
     });
   });
 };

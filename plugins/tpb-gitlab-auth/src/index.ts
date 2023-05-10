@@ -1,4 +1,4 @@
 export {
   GitlabAuthPlugin as plugin,
-  GitlabAuthProviderKey,
+  gitlabAuthProviderKey,
 } from './GitlabAuthPlugin';

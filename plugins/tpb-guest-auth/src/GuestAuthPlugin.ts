@@ -2,6 +2,8 @@ import { BackendPluginInterface } from '@tpb/core';
 import { LoginSurface } from '@tpb/plugin-login';
 import { ConfigApi } from '@backstage/core-plugin-api';
 
+export const guestAuthProviderKey = 'guest';
+
 export const GuestAuthPlugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
@@ -14,7 +16,7 @@ export const GuestAuthPlugin: BackendPluginInterface = () => surfaces => {
           ? false
           : optionalAllowGuestAccess.valueOf();
       },
-      authProviderKey: 'guest',
+      authProviderKey: guestAuthProviderKey,
     });
   });
 };

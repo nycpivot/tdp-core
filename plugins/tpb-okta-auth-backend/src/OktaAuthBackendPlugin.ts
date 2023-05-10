@@ -4,6 +4,7 @@ import {
   SignInProviderSurface,
   SignInResolverSurface,
 } from '@tpb/plugin-auth-backend';
+import { oktaAuthProviderKey } from '@tpb/plugin-okta-auth';
 
 export const OktaAuthBackendPlugin: BackendPluginInterface = () => store => {
   store.applyWithDependency(
@@ -13,7 +14,7 @@ export const OktaAuthBackendPlugin: BackendPluginInterface = () => store => {
       providerSurface.add({
         okta: providers.okta.create({
           signIn: {
-            resolver: resolverSurface.getResolver('okta'),
+            resolver: resolverSurface.getResolver(oktaAuthProviderKey),
           },
         }),
       });

@@ -1,1 +1,4 @@
-export { GithubAuthPlugin as plugin } from './GithubAuthPlugin';
+export {
+  GithubAuthPlugin as plugin,
+  githubAuthProviderKey,
+} from './GithubAuthPlugin';

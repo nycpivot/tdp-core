@@ -1,1 +1,4 @@
-export { AzureAuthPlugin as plugin } from './AzureAuthPlugin';
+export {
+  AzureAuthPlugin as plugin,
+  azureAuthProviderKey,
+} from './AzureAuthPlugin';

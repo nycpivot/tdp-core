@@ -2,7 +2,7 @@ import { BackendPluginInterface } from '@tpb/core';
 import { ConfigApi, gitlabAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
-export const GitlabAuthProviderKey = 'gitlab';
+export const gitlabAuthProviderKey = 'gitlab';
 export const GitlabAuthPlugin: BackendPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'gitlab-auth-provider',
@@ -16,13 +16,13 @@ export const GitlabAuthPlugin: BackendPluginInterface = () => surfaces => {
         ...customizeAuthProviderConfig(
           configApi,
           defaultConfig,
-          GitlabAuthProviderKey,
+          gitlabAuthProviderKey,
         ),
         apiRef: gitlabAuthApiRef,
       }),
       enabled: (configApi: ConfigApi) =>
-        configApi.has(`auth.providers.${GitlabAuthProviderKey}`), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: GitlabAuthProviderKey,
+        configApi.has(`auth.providers.${gitlabAuthProviderKey}`), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: gitlabAuthProviderKey,
     });
   });
 };

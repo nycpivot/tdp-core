@@ -4,6 +4,7 @@ import {
   SignInProviderSurface,
   SignInResolverSurface,
 } from '@tpb/plugin-auth-backend';
+import { azureAuthProviderKey } from '@tpb/plugin-azure-auth';
 
 export const AzureAuthBackendPlugin: BackendPluginInterface =
   () => surfaceStore => {
@@ -14,7 +15,7 @@ export const AzureAuthBackendPlugin: BackendPluginInterface =
         providerSurface.add({
           microsoft: providers.microsoft.create({
             signIn: {
-              resolver: resolverSurface.getResolver('microsoft'),
+              resolver: resolverSurface.getResolver(azureAuthProviderKey),
             },
           }),
         });

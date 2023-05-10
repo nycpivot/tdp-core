@@ -16,6 +16,8 @@ import {
 import { OAuth2 } from '@backstage/core-app-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
+export const auth0AuthProviderKey = 'auth0';
+
 export const auth0AuthApiRef: ApiRef<
   OAuthApi &
     OpenIdConnectApi &
@@ -36,11 +38,16 @@ export const Auth0Plugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
       config: (configApi: ConfigApi) => ({
-        ...customizeAuthProviderConfig(configApi, defaultConfig, 'auth0'),
+        ...customizeAuthProviderConfig(
+          configApi,
+          defaultConfig,
+          auth0AuthProviderKey,
+        ),
         apiRef: auth0AuthApiRef,
       }),
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.auth0'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'auth0',
+      enabled: (configApi: ConfigApi) =>
+        configApi.has(`auth.providers.${auth0AuthProviderKey}`), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: auth0AuthProviderKey,
     });
   });
 

@@ -4,6 +4,7 @@ import {
   SignInProviderSurface,
   SignInResolverSurface,
 } from '@tpb/plugin-auth-backend';
+import { auth0AuthProviderKey } from '@tpb/plugin-auth0-auth';
 
 export const Auth0BackendPlugin: BackendPluginInterface =
   () => surfaceStore => {
@@ -14,7 +15,7 @@ export const Auth0BackendPlugin: BackendPluginInterface =
         providerSurface.add({
           auth0: providers.auth0.create({
             signIn: {
-              resolver: resolverSurface.getResolver('auth0'),
+              resolver: resolverSurface.getResolver(auth0AuthProviderKey),
             },
           }),
         });
