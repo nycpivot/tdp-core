@@ -83,7 +83,7 @@ export class SurfaceStore implements SurfaceStoreInterface {
   private getSurfaceEntry<T extends TpbSurface>(surfaceClass: {
     new (): T;
   }): SurfaceEntry<T> {
-    const entry = this._entries.find(s => s.Surface === surfaceClass);
+    const entry = this._entries.find(s => s.Surface.name === surfaceClass.name);
 
     if (entry) {
       return entry;
