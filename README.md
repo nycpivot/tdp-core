@@ -450,9 +450,9 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 };
 ```
 
-## Toggle Features
+## Toggle Features & Toggle Routes
 
-It is possible to render or not components based on properties defined in the configuration.
+It is possible to render components or routes based on properties defined in the configuration.
 
 To hide the catalog in the sidebar for example, you can add this property to your configuration:
 
@@ -463,14 +463,28 @@ customize:
       showInSidebar: false
 ```
 
-Here are some features that can be toggled:
+It is also possible to enable or disable the catalog route:
 
-| Feature             | Property                                  |
+```yaml
+customize:
+  features:
+    catalog:
+      enabled: false
+```
+
+Here are some routes & features that can be toggled:
+
+| Feature/Route       | Property                                  |
 | ------------------- | ----------------------------------------- |
+| catalog route       | customize.features.catalog.enabled        |
 | catalog in sidebar  | customize.features.catalog.showInSidebar  |
+| techdocs route      | customize.features.docs.enabled           |
 | techdocs in sidebar | customize.features.docs.showInSidebar     |
+| api docs route      | customize.features.apiDocs.enabled        |
 | api docs in sidebar | customize.features.apiDocs.showInSidebar  |
+| search route        | customize.features.search.route           |
 | search in sidebar   | customize.features.search.showInSidebar   |
+| settings route      | customize.features.settings.route         |
 | settings in sidebar | customize.features.settings.showInSidebar |
 
 If a property is not set, its value is `true` by default.
@@ -487,6 +501,12 @@ export interface Config {
     features?: {
       apiDocs?: {
         /**
+         * Activate or deactivate the plugin? Default: true
+         * @visibility frontend
+         */
+        enabled?: boolean;
+
+        /**
          * Show or hide the sidebar entry. Default: true
          * @visibility frontend
          */
@@ -497,7 +517,7 @@ export interface Config {
 }
 ```
 
-The `@visibility` annotation is required if you want the property to be taken into account.
+The `@visibility` annotation is required if you want the property to be taken into account by Backstage.
 
 Place this file at the root of the plugin folder.
 
@@ -530,6 +550,20 @@ context.applyTo(SidebarItemSurface, sidebar =>
     </ToggleFeature>,
   ),
 );
+```
+
+6. Use the `ToggleRoute` component to wrap a route that you want to activate or not depending on the property you have defined.
+
+```typescript jsx
+context.applyTo(AppRouteSurface, routes => {
+  routes.add(
+    <ToggleRoute
+      feature="customize.features.apiDocs.enabled"
+      path={`/${path}`}
+      element={<ApiExplorerPage />}
+    />,
+  );
+});
 ```
 
 ## Running the builder
