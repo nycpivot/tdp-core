@@ -5,10 +5,9 @@ import {
   SidebarItemSurface,
 } from '@tpb/core';
 import React from 'react';
-import { Route } from 'react-router';
 import { SearchPage, SidebarSearchModal } from '@backstage/plugin-search';
 import { searchPage } from './components/SearchPage';
-import { ToggleFeature } from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
 
 export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
   const { path } = {
@@ -19,9 +18,13 @@ export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
   return context => {
     context.applyTo(AppRouteSurface, routes => {
       routes.add(
-        <Route path={`/${path}`} element={<SearchPage />}>
+        <ToggleRoute
+          feature="customize.features.search.enabled"
+          path={`/${path}`}
+          element={<SearchPage />}
+        >
           {searchPage}
-        </Route>,
+        </ToggleRoute>,
       );
     });
 
