@@ -8,7 +8,7 @@ describe('API Scoring Plugin', () => {
 
   it('should render', () => {
     cy.visit('/api-docs');
-    cy.contains(/cats/i).click({ force: true }); // force=true fixes a flakeyness issue since the link is render asynchronously
+    cy.contains(/cats/i).click({ force: true }); // force=true fixes a flakeyness issue since the link is rendered asynchronously
     cy.contains(/validation analysis/i);
     cy.contains(/34.4%/);
     cy.contains(/70%/);

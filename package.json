@@ -29,8 +29,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "plugins/*",
-      "node_modules/@tpb/plugin-api-scoring-backend"
+      "plugins/*"
     ]
   },
   "devDependencies": {
