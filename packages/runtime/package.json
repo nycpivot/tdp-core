@@ -28,7 +28,7 @@
     "@backstage/core-plugin-api": "^1.5.1",
     "@backstage/integration-react": "^1.1.10",
     "@backstage/plugin-search": "^1.1.0",
-    "@backstage/plugin-user-settings": "^0.7.0",
+    "@backstage/plugin-user-settings": "^0.7.2",
     "@backstage/theme": "^0.2.18",
     "@tpb/core": "^0.0.1-alpha.3",
     "@tpb/core-frontend": "^0.0.1-alpha.1",
