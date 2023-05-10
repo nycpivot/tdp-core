@@ -19,7 +19,7 @@ import {
 } from '@tpb/core';
 import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
-import { entityPage } from './components/EntityPage';
+import { entityPage } from './components/Catalog/EntityPage';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { EntityPageSurface } from './EntityPageSurface';
 import { CustomCatalogPage } from './components/CustomCatalogPage';
