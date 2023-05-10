@@ -25,6 +25,7 @@ import {
   SettingsTabsSurface,
   BannerSurface,
 } from '@tpb/core';
+import { ToggleRoute } from '@tpb/core-frontend';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
   const apis: AnyApiFactory[] = [
@@ -68,9 +69,13 @@ export const appRenderer = (surfaces: SurfaceStoreInterface): React.FC => {
         <Navigate key="/" to={routeSurface.defaultRoute} />
       )}
       {...routeSurface.nonDefaultRoutes}
-      <Route path="/settings" element={<UserSettingsPage />}>
+      <ToggleRoute
+        feature="customize.features.settings.enabled"
+        path="/settings"
+        element={<UserSettingsPage />}
+      >
         {...settingsTabsSurface.tabs}
-      </Route>
+      </ToggleRoute>
     </FlatRoutes>
   );
 

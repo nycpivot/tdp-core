@@ -12,6 +12,7 @@
   "backstage": {
     "role": "web-library"
   },
+  "configSchema": "config.d.ts",
   "scripts": {
     "build": "backstage-cli package build",
     "clean": "backstage-cli package clean",
@@ -76,6 +77,7 @@
     ]
   },
   "files": [
-    "dist"
+    "dist",
+    "config.d.ts"
   ]
 }

@@ -14,7 +14,7 @@ export interface Config {
          */
         showInSidebar?: boolean;
       };
-      catalogGraph: {
+      catalogGraph?: {
         /**
          * Activate or deactivate the plugin? Default: true
          * @visibility frontend
