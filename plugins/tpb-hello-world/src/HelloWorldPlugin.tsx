@@ -5,10 +5,7 @@ import {
   AppPluginInterface,
   AppRouteSurface,
   SidebarItemSurface,
-  SettingsTabsSurface,
-  BannerSurface,
 } from '@tpb/core';
-import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import { HelloWorld } from './HelloWorld';
 import { EntityPageSurface } from '@tpb/plugin-catalog';
@@ -24,18 +21,6 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
       <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />,
     ),
   );
-
-  context.applyTo(SettingsTabsSurface, tabs =>
-    tabs.add(
-      <SettingsLayout.Route path="/hello-world" title="Hello World Tab">
-        <div>Hello World Settings Tab Content</div>
-      </SettingsLayout.Route>,
-    ),
-  );
-
-  context.applyTo(BannerSurface, banners => {
-    banners.add(<div>Hello World Banner</div>);
-  });
 
   context.applyTo(EntityPageSurface, surface => {
     surface.apiPage.addOverviewContent(

@@ -22,6 +22,7 @@ import { plugin as ldapTransformersPlugin } from '@tpb/plugin-ldap-test-transfor
 import { plugin as microsoftGraphOrgReaderProcessorTestTransformersPlugin } from '@tpb/plugin-microsoft-graph-org-reader-processor-test-transformers';
 import { plugin as permissionBackendPlugin } from '@tpb/plugin-permission-backend';
 import { plugin as permissionTestAuthBackendPlugin } from '@tpb/plugin-permission-test-auth-backend';
+import { plugin as pendoBackendPlugin } from '@tpb/plugin-pendo-analytics-backend';
 import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world-backend';
 
 new BackendRuntime([
@@ -48,5 +49,6 @@ new BackendRuntime([
   ldapTransformersPlugin(),
   permissionTestAuthBackendPlugin(),
   permissionBackendPlugin(),
+  pendoBackendPlugin(),
   helloWorldPlugin(),
 ]).start();
