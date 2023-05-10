@@ -1,9 +1,9 @@
-import { Authentication } from '../support/authentication';
+import { Authentication, logInAsCatalogAdmin } from '../support/authentication';
 
 describe('API Scoring Plugin', () => {
   beforeEach(() => {
     createApiDoc();
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
   });
 
   it('should render', () => {
