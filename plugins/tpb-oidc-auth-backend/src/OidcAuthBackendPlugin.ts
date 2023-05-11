@@ -4,7 +4,6 @@ import {
   SignInProviderSurface,
   SignInResolverSurface,
 } from '@tpb/plugin-auth-backend';
-import { oidcAuthProviderKey } from '@tpb/plugin-oidc-auth';
 
 export const OidcAuthBackendPlugin: BackendPluginInterface = () => store => {
   store.applyWithDependency(
@@ -14,7 +13,7 @@ export const OidcAuthBackendPlugin: BackendPluginInterface = () => store => {
       providerSurface.add({
         oidc: providers.oidc.create({
           signIn: {
-            resolver: resolverSurface.getResolver(oidcAuthProviderKey),
+            resolver: resolverSurface.getResolver('oidc'),
           },
         }),
       });

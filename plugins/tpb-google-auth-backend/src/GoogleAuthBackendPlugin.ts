@@ -4,7 +4,6 @@ import {
   SignInProviderSurface,
   SignInResolverSurface,
 } from '@tpb/plugin-auth-backend';
-import { googleAuthProviderKey } from '@tpb/plugin-google-auth';
 
 export const GoogleAuthBackendPlugin: BackendPluginInterface =
   () => surfaceStore => {
@@ -15,7 +14,7 @@ export const GoogleAuthBackendPlugin: BackendPluginInterface =
         providerSurface.add({
           google: providers.google.create({
             signIn: {
-              resolver: resolverSurface.getResolver(googleAuthProviderKey),
+              resolver: resolverSurface.getResolver('google'),
             },
           }),
         });
