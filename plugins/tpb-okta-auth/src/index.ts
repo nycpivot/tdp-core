@@ -1,1 +1,4 @@
-export { OktaAuthPlugin as plugin } from './OktaAuthPlugin';
+export {
+  OktaAuthPlugin as plugin,
+  oktaAuthProviderKey,
+} from './OktaAuthPlugin';

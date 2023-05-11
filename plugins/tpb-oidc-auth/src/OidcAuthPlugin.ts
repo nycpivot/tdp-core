@@ -16,6 +16,8 @@ import {
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 import { OAuth2 } from '@backstage/core-app-api';
 
+export const oidcAuthProviderKey = 'oidc';
+
 export const oidcAuthApiRef: ApiRef<
   OAuthApi &
     OpenIdConnectApi &
@@ -36,11 +38,16 @@ export const OidcAuthPlugin: BackendPluginInterface = () => surfaces => {
   surfaces.applyTo(LoginSurface, surface => {
     surface.add({
       config: (configApi: ConfigApi) => ({
-        ...customizeAuthProviderConfig(configApi, defaultConfig, 'oidc'),
+        ...customizeAuthProviderConfig(
+          configApi,
+          defaultConfig,
+          oidcAuthProviderKey,
+        ),
         apiRef: oidcAuthApiRef,
       }),
-      enabled: (configApi: ConfigApi) => configApi.has('auth.providers.oidc'), // TODO: ESBACK-163 - needs test for case when config does not exist
-      authProviderKey: 'oidc',
+      enabled: (configApi: ConfigApi) =>
+        configApi.has(`auth.providers.${oidcAuthProviderKey}`), // TODO: ESBACK-163 - needs test for case when config does not exist
+      authProviderKey: oidcAuthProviderKey,
     });
   });
 

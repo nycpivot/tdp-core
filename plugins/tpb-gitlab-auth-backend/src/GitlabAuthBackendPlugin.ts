@@ -1,16 +1,18 @@
 import { BackendPluginInterface } from '@tpb/core';
 import { providers } from '@backstage/plugin-auth-backend';
-import { SignInProviderResolverSurface } from '@tpb/plugin-auth-backend';
+import { SignInProviderSurface } from '@tpb/plugin-auth-backend';
+import { SignInResolverSurface } from '@tpb/plugin-auth-backend';
 
 export const GitlabAuthBackendPlugin: BackendPluginInterface =
   () => surfaceStore => {
-    surfaceStore.applyTo(
-      SignInProviderResolverSurface,
-      signInProviderResolverSurface => {
-        signInProviderResolverSurface.add({
+    surfaceStore.applyWithDependency(
+      SignInProviderSurface,
+      SignInResolverSurface,
+      (providerSurface, resolverSurface) => {
+        providerSurface.add({
           gitlab: providers.gitlab.create({
             signIn: {
-              resolver: signInProviderResolverSurface.signInAsGuestResolver(),
+              resolver: resolverSurface.getResolver('gitlab'),
             },
           }),
         });

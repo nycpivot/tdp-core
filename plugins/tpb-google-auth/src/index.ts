@@ -1,1 +1,4 @@
-export { GoogleAuthPlugin as plugin } from './GoogleAuthPlugin';
+export {
+  GoogleAuthPlugin as plugin,
+  googleAuthProviderKey,
+} from './GoogleAuthPlugin';
