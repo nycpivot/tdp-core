@@ -58,7 +58,6 @@ import {
   EntityOwnershipCard,
   EntityUserProfileCard,
 } from '@backstage/plugin-org';
-import { WorkloadsContent } from '@tap/plugin-workloads';
 import {
   isGitlabAvailable,
   EntityGitlabContent,
@@ -67,10 +66,6 @@ import {
   apiPluginOverrides,
   orgPluginOverrides,
 } from '../../theme/apiPluginOverrides';
-import {
-  ApiScoringPage,
-  shouldDisplayAPIScoring,
-} from '@internal/plugin-api-scoring';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import { EntityPageSurface } from '../../EntityPageSurface';
 
@@ -144,11 +139,6 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </Grid>
       </EntityLayout.Route>
-
-      <EntityLayout.Route path="/workloads" title="Runtime Resources">
-        <WorkloadsContent />
-      </EntityLayout.Route>
-
       {surface.servicePage.tabs}
     </EntityLayout>
   );
@@ -259,13 +249,6 @@ export const entityPage = (surface: EntityPageSurface) => {
                 <Grid item md={12} xs={12}>
                   <EntityLinksCard />
                 </Grid>
-                <EntitySwitch>
-                  <EntitySwitch.Case if={shouldDisplayAPIScoring}>
-                    <Grid item md={12} xs={12}>
-                      <ApiScoringPage />
-                    </Grid>
-                  </EntitySwitch.Case>
-                </EntitySwitch>
               </Grid>
               {surface.apiPage.overviewContents}
             </Grid>

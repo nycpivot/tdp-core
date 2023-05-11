@@ -1,4 +1,5 @@
 import type { Entity, CompoundEntityRef } from '@backstage/catalog-model';
+import { CatalogFilterLayout } from '@backstage/plugin-catalog-react';
 import {
   Content,
   ContentHeader,
@@ -10,6 +11,7 @@ import {
 } from '@backstage/core-components';
 import { configApiRef, useApi, useRouteRef } from '@backstage/core-plugin-api';
 import {
+  EntityKindPicker,
   EntityLifecyclePicker,
   EntityListProvider,
   EntityOwnerPicker,
@@ -20,11 +22,7 @@ import {
 } from '@backstage/plugin-catalog-react';
 import React from 'react';
 import {
-  CatalogKindHeader,
   CatalogTable,
-  FilteredEntityLayout,
-  EntityListContainer,
-  FilterContainer,
   catalogPlugin,
 } from '@backstage/plugin-catalog';
 
@@ -60,25 +58,25 @@ export const CustomCatalogPage = ({
     <PageWithHeader title={`${orgName} Catalog`} themeId="home">
       <EntityListProvider>
         <Content>
-          <ContentHeader titleComponent={<CatalogKindHeader />}>
+          <ContentHeader titleComponent={<EntityKindPicker />}>
             <CreateButton
               title="Register Entity"
               to={createComponentLink && createComponentLink()}
             />
             <SupportButton>All your software catalog entities</SupportButton>
           </ContentHeader>
-          <FilteredEntityLayout>
-            <FilterContainer>
+          <CatalogFilterLayout>
+            <CatalogFilterLayout.Filters>
               <EntityTypePicker />
               <UserListPicker initialFilter={initiallySelectedFilter} />
               <EntityOwnerPicker />
               <EntityLifecyclePicker />
               <EntityTagPicker />
-            </FilterContainer>
-            <EntityListContainer>
+            </CatalogFilterLayout.Filters>
+            <CatalogFilterLayout.Content>
               <CatalogTable columns={columns} actions={actions} />
-            </EntityListContainer>
-          </FilteredEntityLayout>
+            </CatalogFilterLayout.Content>
+          </CatalogFilterLayout>
         </Content>
       </EntityListProvider>
     </PageWithHeader>
