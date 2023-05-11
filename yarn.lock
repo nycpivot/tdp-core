@@ -6929,10 +6929,10 @@
     uuid "^9.0.0"
     winston "^3.2.1"
 
-"@tpb/k8s-custom-apis-backend@^0.1.5":
-  version "0.1.5"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/k8s-custom-apis-backend/-/@tpb/k8s-custom-apis-backend-0.1.5.tgz#f68d48a992f67d56986678bbf615dfa6db8cde0b"
-  integrity sha512-RPf48kDJ0Ke8arhetC++98hCni9e0hHmNQxTIl4mz5bWEgXMphZb5y4rlmlanXfc2D9AJZlzhIwNzGHZtDmjBw==
+"@tpb/k8s-custom-apis-backend@^0.1.6":
+  version "0.1.6"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/k8s-custom-apis-backend/-/@tpb/k8s-custom-apis-backend-0.1.6.tgz#610f2367ac2efb9ae261bc67d40daee0c79dc7d4"
+  integrity sha512-x4m0SNHploqGYJiMeoGrw5PprNvTCgvASYYcKKySfbDVhBcDIzpgqwkIXl7XSvck6ZSsPQnlEERPDQ79D1IExA==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
     "@backstage/catalog-client" "^1.4.1"
@@ -6942,7 +6942,7 @@
     "@kubernetes/client-node" "^0.18.1"
     "@types/aws4" "^1.11.2"
     "@types/express" "^4.17.17"
-    aws-sdk "^2.1375.0"
+    aws-sdk "^2.1376.0"
     aws4 "^1.12.0"
     cross-fetch "^3.1.5"
     express "^4.18.2"
@@ -9074,10 +9074,10 @@ avsc@^5.7.3:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/avsc/-/avsc-5.7.7.tgz#8d1b5fd85904cc96a1e439450633ff33f4aff57b"
   integrity sha512-9cYNccliXZDByFsFliVwk5GvTq058Fj513CiR4E60ndDwmuXzTJEp/Bp8FyuRmGyYupLjHLs+JA9/CBoVS4/NQ==
 
-aws-sdk@^2.1375.0:
-  version "2.1376.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/aws-sdk/-/aws-sdk-2.1376.0.tgz#26b8e021cb62ef4dab5ce991fe7c84cf234ea1f2"
-  integrity sha512-ja/Xnft8BDcDEz786VJFPrWpuWpOgsA+QzBAwzsjYeIolQ/vEs/bbXkoS085fOoeAPEhYWQh9wog7cVvrQPJFQ==
+aws-sdk@^2.1376.0:
+  version "2.1377.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/aws-sdk/-/aws-sdk-2.1377.0.tgz#85f3590c8a8c0a600268e921aea8a289f7804e87"
+  integrity sha512-59T3v/o40fk2I2zpgh2E0Z/BBK5awBQUva7VLjLHo9rsMvTM58mgya667hYTua00rHC1A3GJSCNORUhXvhomYQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
