@@ -1,6 +1,7 @@
 export type SignInProvider = {};
 
 export class SignInProviderSurface {
+  public static readonly id = 'SignInProviderSurface';
   private _signInProviders = {};
 
   public add(signInProvider: SignInProvider) {
