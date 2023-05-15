@@ -5,6 +5,7 @@ import {
   AppPluginInterface,
   AppRouteSurface,
   SidebarItemSurface,
+  BannerSurface,
 } from '@tpb/core';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import { HelloWorld } from './HelloWorld';
@@ -21,6 +22,10 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
       <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />,
     ),
   );
+
+  context.applyTo(BannerSurface, banners => {
+    banners.add(<div>Hello World Banner</div>);
+  });
 
   context.applyTo(EntityPageSurface, surface => {
     surface.apiPage.addOverviewContent(

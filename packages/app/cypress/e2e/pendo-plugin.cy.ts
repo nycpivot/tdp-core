@@ -5,11 +5,6 @@ describe('Pendo', () => {
     Authentication.logInAsCatalogAdmin();
   });
 
-  it('displays the telemetry banner', () => {
-    cy.visit('/');
-    cy.contains('Please accept telemetry collection for optimal performance.');
-  });
-
   it('should display a tab on the settings page', () => {
     cy.visit('/settings');
     cy.contains('Preferences');

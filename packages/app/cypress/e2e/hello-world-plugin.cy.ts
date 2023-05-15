@@ -16,6 +16,11 @@ describe('Hello World Plugin', () => {
     cy.contains(/\d{2}:\d{2}:\d{2}/i);
   });
 
+  it('should display a banner', () => {
+    cy.visit('/');
+    cy.contains('Hello World Banner');
+  });
+
   it('should customize api page overview', () => {
     cy.visit('/api-docs');
     cy.contains(/example-grpc-api/i).click();
