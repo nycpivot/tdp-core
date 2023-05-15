@@ -1,12 +1,14 @@
 import { AnyApiFactory } from '@backstage/core-plugin-api';
+import { ApiDeduplicator } from './ApiDeduplicator';
 
 type ApiFactoryMap = {
   [id: string]: AnyApiFactory;
 };
 
 export class ApiSurface {
-  private readonly _apis: ApiFactoryMap = {};
   public static readonly id = 'ApiSurface';
+  private readonly _apis: ApiFactoryMap = {};
+  private readonly _deduplicator = new ApiDeduplicator();
 
   public add(factory: AnyApiFactory) {
     if (this._apis[factory.api.id]) {
@@ -19,6 +21,6 @@ export class ApiSurface {
   }
 
   public get apis(): AnyApiFactory[] {
-    return Object.values(this._apis);
+    return this._deduplicator.ignoreDuplicates(Object.values(this._apis));
   }
 }
