@@ -1,14 +1,21 @@
 import { ApiSurface } from './ApiSurface';
 import {
+  AnyApiFactory,
+  appThemeApiRef,
   configApiRef,
   createApiFactory,
   createApiRef,
+  identityApiRef,
 } from '@backstage/core-plugin-api';
 
 describe('Api Surface', () => {
-  it('should register apis', () => {
-    const surface = new ApiSurface();
+  let surface: ApiSurface;
 
+  beforeEach(() => {
+    surface = new ApiSurface();
+  });
+
+  it('should register apis', () => {
     const factory1 = makeApiFactory('my.api1');
     surface.add(factory1);
 
@@ -21,7 +28,6 @@ describe('Api Surface', () => {
   it('should keep the last registered api when the same api is added twice', () => {
     const factory = makeApiFactory('my.api');
 
-    const surface = new ApiSurface();
     surface.add(factory);
     surface.add(factory);
 
@@ -29,8 +35,6 @@ describe('Api Surface', () => {
   });
 
   it('should keep the last registered api when two different apis with the same id are added', () => {
-    const surface = new ApiSurface();
-
     const factory1 = makeApiFactory('my.api');
     surface.add(factory1);
 
@@ -40,10 +44,33 @@ describe('Api Surface', () => {
     expect(surface.apis).toEqual([factory2]);
   });
 
+  describe('static apis that are created by backstage', () => {
+    it('should ignore app theme api', () => {
+      const factory = makeApiFactory(appThemeApiRef.id);
+      surface.add(factory);
+
+      expect(surface.apis).toEqual([]);
+    });
+
+    it('should ignore config api', () => {
+      const factory = makeApiFactory(configApiRef.id);
+      surface.add(factory);
+
+      expect(surface.apis).toEqual([]);
+    });
+
+    it('should ignore identity api', () => {
+      const factory = makeApiFactory(identityApiRef.id);
+      surface.add(factory);
+
+      expect(surface.apis).toEqual([]);
+    });
+  });
+
   function makeApiFactory(
     id: string,
     dependencies: any | undefined = undefined,
-  ) {
+  ): AnyApiFactory {
     class MyApi {}
 
     if (dependencies) {
