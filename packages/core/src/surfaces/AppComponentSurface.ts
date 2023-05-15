@@ -2,6 +2,7 @@ import { AppComponents } from '@backstage/core-app-api';
 
 export class AppComponentSurface {
   private readonly _components: Partial<AppComponents>;
+  public static readonly id = 'AppComponentSurface';
 
   public constructor() {
     this._components = {};

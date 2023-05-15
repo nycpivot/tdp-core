@@ -18,6 +18,7 @@ class ResolverEntry {
 }
 
 export class SignInResolverSurface {
+  public static readonly id = 'SignInProviderResolverSurface';
   private _resolvers: ResolverEntry[] = [];
 
   public add(authProviderKey: string, resolver: SignInResolver<any>) {

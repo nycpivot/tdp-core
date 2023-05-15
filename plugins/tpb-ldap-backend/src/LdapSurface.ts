@@ -15,6 +15,7 @@ export type UserTransformerBuilder = (
 ) => UserTransformer;
 
 export class LdapSurface {
+  public static readonly id = 'LdapSurface';
   private _groupTransformerBuilder: GroupTransformerBuilder;
   private _userTransformerBuilder: UserTransformerBuilder;
 

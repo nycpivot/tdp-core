@@ -3,6 +3,7 @@ import { OwnedByPermissionPolicy } from './OwnedByPermissionPolicy';
 import { Config } from '@backstage/config';
 
 export class PermissionPolicySurface {
+  public static readonly id = 'PermissionPolicySurface';
   private _permissionPolicy: PermissionPolicy | undefined;
 
   public set(permissionPolicy: PermissionPolicy) {

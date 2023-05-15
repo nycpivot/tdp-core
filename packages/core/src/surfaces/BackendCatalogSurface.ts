@@ -21,6 +21,7 @@ export type PermissionRuleBuilder = (
 export type RouterBuilder = (env: PluginEnvironment) => Promise<Router>;
 
 export class BackendCatalogSurface {
+  public static readonly id = 'BackendCatalogSurface';
   private readonly _processorBuilders: CatalogProcessorBuilder[];
   private readonly _providerBuilders: EntityProviderBuilder[];
   private readonly _permissionRules: PermissionRuleBuilder[];

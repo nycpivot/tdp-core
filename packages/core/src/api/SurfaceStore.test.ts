@@ -1,6 +1,7 @@
 import { TpbSurface, SurfaceStore } from '.';
 
 class FakeSurface1 implements TpbSurface {
+  public static readonly id = 'FakeSurface1';
   public readonly data: string[] = [];
   addData(s: string) {
     this.data.push(s);
@@ -8,6 +9,7 @@ class FakeSurface1 implements TpbSurface {
 }
 
 class FakeSurface2 implements TpbSurface {
+  public static readonly id = 'FakeSurface2';
   public count: number = 0;
 
   setCount(count: number) {

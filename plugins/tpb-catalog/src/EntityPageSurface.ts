@@ -34,6 +34,7 @@ class ApiPage extends BasicPage {
 }
 
 export class EntityPageSurface {
+  public static readonly id = 'EntityPageSurface';
   private readonly _overviewContent: ReactElement[];
   private readonly _componentPageCases: ReactElement[];
   private readonly _apiPage: ApiPage;

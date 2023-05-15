@@ -35,6 +35,7 @@ export function customizeAuthProviderConfig(
 
 export class LoginSurface {
   private readonly _providers: Provider[] = [];
+  public static readonly id = 'LoginSurface';
 
   public add(provider: Provider): void {
     this._providers.push(provider);

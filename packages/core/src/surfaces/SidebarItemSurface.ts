@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 
 export class SidebarItemSurface {
+  public static readonly id = 'SidebarItemSurface';
   private readonly _mainItems: ReactElement[];
   private readonly _topItems: ReactElement[];
 
