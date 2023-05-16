@@ -6,7 +6,9 @@ import {
   AppRouteSurface,
   SidebarItemSurface,
   BannerSurface,
+  SettingsTabsSurface,
 } from '@tpb/core';
+import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import { HelloWorld } from './HelloWorld';
 import { EntityPageSurface } from '@tpb/plugin-catalog';
@@ -20,6 +22,14 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
   context.applyTo(SidebarItemSurface, sidebar =>
     sidebar.addMainItem(
       <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />,
+    ),
+  );
+
+  context.applyTo(SettingsTabsSurface, tabs =>
+    tabs.add(
+      <SettingsLayout.Route path="/hello-world" title="Hello World Tab">
+        <div>Hello World Settings Tab Content</div>
+      </SettingsLayout.Route>,
     ),
   );
 
