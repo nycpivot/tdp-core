@@ -4,13 +4,18 @@ import { TpbSurface } from './TpbSurface';
 
 type SurfaceModifier<T extends TpbSurface> = (s: T) => void;
 
+interface SurfaceConstructor<T> {
+  new (): T;
+  id: string;
+}
+
 class SurfaceEntry<T extends TpbSurface> {
   readonly id: string;
-  readonly Surface: { new (): T };
+  readonly Surface: SurfaceConstructor<T>;
   private readonly _modifiers: SurfaceModifier<T>[];
   private _state: T | undefined;
 
-  constructor(id: string, surfaceClass: { new (): T }) {
+  constructor(id: string, surfaceClass: SurfaceConstructor<T>) {
     this.id = id;
     this.Surface = surfaceClass;
     this._modifiers = [];
@@ -34,15 +39,15 @@ class SurfaceEntry<T extends TpbSurface> {
 
 export interface SurfaceStoreInterface {
   applyTo<T extends TpbSurface>(
-    surfaceClass: { new (): T },
+    surfaceClass: SurfaceConstructor<T>,
     modifier: SurfaceModifier<T>,
   ): void;
   applyWithDependency<T extends TpbSurface, U extends TpbSurface>(
-    targetClass: { new (): T },
-    dependencyClass: { new (): U },
+    targetClass: SurfaceConstructor<T>,
+    dependencyClass: SurfaceConstructor<U>,
     modifier: (surface: T, dependency: U) => void,
   ): void;
-  findSurface<T extends TpbSurface>(surfaceClass: { new (): T }): T;
+  findSurface<T extends TpbSurface>(surfaceClass: SurfaceConstructor<T>): T;
 }
 
 export class SurfaceStore implements SurfaceStoreInterface {
@@ -51,15 +56,15 @@ export class SurfaceStore implements SurfaceStoreInterface {
     new DependencyGraph();
 
   public applyTo<T extends TpbSurface>(
-    surfaceClass: { new (): T },
+    surfaceClass: SurfaceConstructor<T>,
     modifier: SurfaceModifier<T>,
   ) {
     this.getSurfaceEntry(surfaceClass).addModifier(modifier);
   }
 
   public applyWithDependency<T extends TpbSurface, U extends TpbSurface>(
-    targetClass: { new (): T },
-    dependencyClass: { new (): U },
+    targetClass: SurfaceConstructor<T>,
+    dependencyClass: SurfaceConstructor<U>,
     modifier: (surface: T, dependency: U) => void,
   ) {
     const target = this.getSurfaceEntry(targetClass);
@@ -76,14 +81,16 @@ export class SurfaceStore implements SurfaceStoreInterface {
     );
   }
 
-  public findSurface<T extends TpbSurface>(surfaceClass: { new (): T }): T {
+  public findSurface<T extends TpbSurface>(
+    surfaceClass: SurfaceConstructor<T>,
+  ): T {
     return this.getSurfaceEntry(surfaceClass).state;
   }
 
-  private getSurfaceEntry<T extends TpbSurface>(surfaceClass: {
-    new (): T;
-  }): SurfaceEntry<T> {
-    const entry = this._entries.find(s => s.Surface === surfaceClass);
+  private getSurfaceEntry<T extends TpbSurface>(
+    surfaceClass: SurfaceConstructor<T>,
+  ): SurfaceEntry<T> {
+    const entry = this._entries.find(s => s.Surface.id === surfaceClass.id);
 
     if (entry) {
       return entry;

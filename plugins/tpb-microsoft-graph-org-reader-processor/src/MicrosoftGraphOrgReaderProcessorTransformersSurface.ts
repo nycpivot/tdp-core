@@ -5,6 +5,8 @@ import {
 } from '@backstage/plugin-catalog-backend-module-msgraph';
 
 export class MicrosoftGraphOrgReaderProcessorTransformersSurface {
+  public static readonly id =
+    'MicrosoftGraphOrgReaderProcessorTransformersSurface';
   private _userTransformer?: UserTransformer;
   private _groupTransformer?: GroupTransformer;
   private _organizationTransformer?: OrganizationTransformer;

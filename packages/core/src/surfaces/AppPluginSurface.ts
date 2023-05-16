@@ -1,6 +1,7 @@
 import { BackstagePlugin } from '@backstage/core-plugin-api';
 
 export class AppPluginSurface {
+  public static readonly id = 'AppPluginSurface';
   private readonly _plugins: BackstagePlugin[];
 
   public constructor() {

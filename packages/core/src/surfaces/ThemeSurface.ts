@@ -2,6 +2,7 @@ import { AppTheme } from '@backstage/core-plugin-api';
 import { ReactElement } from 'react';
 
 export class ThemeSurface {
+  public static readonly id = 'ThemeSurface';
   private _themes: AppTheme[];
   private _rootBuilder: ((children: JSX.Element) => ReactElement) | undefined;
 

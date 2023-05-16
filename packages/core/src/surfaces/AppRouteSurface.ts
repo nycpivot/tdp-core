@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 type RouteBinder = (context: { bind: AppRouteBinder }) => void;
 
 export class AppRouteSurface {
+  public static readonly id = 'AppRouteSurface';
   private readonly _routes: ReactElement[];
   private readonly _routeBinders: RouteBinder[];
   private _defaultRoute?: string;

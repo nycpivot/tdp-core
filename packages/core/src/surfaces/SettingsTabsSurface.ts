@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 
 export class SettingsTabsSurface {
+  public static readonly id = 'SettingsTabsSurface';
   private readonly _tabs: ReactElement[];
 
   public constructor() {

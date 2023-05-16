@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 
 export class BannerSurface {
+  public static readonly id = 'BannerSurface';
   private readonly _banners: ReactElement[];
 
   public constructor() {
