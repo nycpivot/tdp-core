@@ -21,11 +21,11 @@
   },
   "dependencies": {
     "@backstage/catalog-model": "^1.2.1",
-    "@backstage/errors" : "",
+    "@backstage/errors": "^1.1.5",
     "@tpb/core": "^0.0.1-alpha.2",
-    "@tpb/plugin-auth-backend": "",
-    "@backstage/plugin-auth-backend": "",
-    "@backstage/plugin-auth-node": ""
+    "@tpb/plugin-auth-backend": "^0.0.1-alpha.2",
+    "@backstage/plugin-auth-backend": "^0.18.2",
+    "@backstage/plugin-auth-node": "^0.2.13"
   },
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0"
