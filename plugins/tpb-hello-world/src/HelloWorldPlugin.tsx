@@ -5,8 +5,8 @@ import {
   AppPluginInterface,
   AppRouteSurface,
   SidebarItemSurface,
-  BannerSurface,
   SettingsTabsSurface,
+  BannerSurface,
 } from '@tpb/core';
 import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';

@@ -2343,7 +2343,7 @@
     winston "^3.2.1"
     winston-transport "^4.5.0"
 
-"@backstage/backend-common@^0.18.2", "@backstage/backend-common@^0.18.3", "@backstage/backend-common@^0.18.4":
+"@backstage/backend-common@^0.18.2", "@backstage/backend-common@^0.18.3", "@backstage/backend-common@^0.18.4", "@backstage/backend-common@^0.18.5":
   version "0.18.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/backend-common/-/backend-common-0.18.4.tgz#10f467d729e065f600539b423e242740ead1ac20"
   integrity sha512-NywzQUya6MuvtFfzALOTvPfy0D8BX0iXH+K75auNtk2m3tRHCttDqagso9+6cKpapq7/HyydlVwdyADMcGnTgQ==
@@ -2427,12 +2427,44 @@
     express "^4.17.1"
     knex "^2.0.0"
 
+"@backstage/backend-plugin-api@^0.5.2":
+  version "0.5.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/backend-plugin-api/-/backend-plugin-api-0.5.2.tgz#307bd698ea884d17f8e18eb1f90558682c660e43"
+  integrity sha512-X2MRm2K9uQroPgLV/a8iG088QUJp/dXzfQvXy1Xxxxs/HloWFoqcljtk5JT7I9aerhUAv1OBRNV/0tdOqnOmcA==
+  dependencies:
+    "@backstage/backend-tasks" "^0.5.2"
+    "@backstage/config" "^1.0.7"
+    "@backstage/plugin-auth-node" "^0.2.14"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@backstage/types" "^1.0.2"
+    "@types/express" "^4.17.6"
+    express "^4.17.1"
+    knex "^2.0.0"
+
 "@backstage/backend-tasks@^0.5.0", "@backstage/backend-tasks@^0.5.1":
   version "0.5.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/backend-tasks/-/backend-tasks-0.5.1.tgz#b2a7e119db89bc1bd603e25bffdfbfc687af7b84"
   integrity sha512-v7WglgF83ptqV9ukOYtXOT/YDi+bOrhK5nXBcustAEFzxgcBgCqMPKI5IrrmvbowFy/zXPOzmj2gB5r7kQ5xUg==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
+    "@backstage/config" "^1.0.7"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/types" "^1.0.2"
+    "@types/luxon" "^3.0.0"
+    cron "^2.0.0"
+    knex "^2.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+    uuid "^8.0.0"
+    winston "^3.2.1"
+    zod "^3.21.4"
+
+"@backstage/backend-tasks@^0.5.2":
+  version "0.5.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/backend-tasks/-/backend-tasks-0.5.2.tgz#28403d5d979b4311983cc18df82633bcab24e977"
+  integrity sha512-LZTDWutQ/xexv7Np3Q2TZIajgF+xzcRdTR1qTDnkuylpzWrYyXHggqBSkfCgSzGVDDLdWNkViyutALhZR2SePQ==
+  dependencies:
+    "@backstage/backend-common" "^0.18.5"
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
     "@backstage/types" "^1.0.2"
@@ -2989,6 +3021,20 @@
   integrity sha512-vMLm14UB9f5yddas6bHtt9yoQxiOiHBctk9RMyqFMIgf8U47t/ZBc2MsN1s3x453tN7rNQmHLlLY/nnSZudFTg==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
+    "@backstage/config" "^1.0.7"
+    "@backstage/errors" "^1.1.5"
+    "@types/express" "*"
+    express "^4.17.1"
+    jose "^4.6.0"
+    node-fetch "^2.6.7"
+    winston "^3.2.1"
+
+"@backstage/plugin-auth-node@^0.2.14":
+  version "0.2.14"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.14.tgz#7b973b72f41325de2181f04f8ac956f41c645bf8"
+  integrity sha512-s6uoXcBCVNYzL5LOWlt7W1Q8k3Y2MH42BCE9d804J6Ef00OV5oKAe60O4zOI+zgaiBCaiY1hMko9/XM/hdAjGg==
+  dependencies:
+    "@backstage/backend-common" "^0.18.5"
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
     "@types/express" "*"
@@ -3887,6 +3933,24 @@
     "@backstage/catalog-model" "^1.3.0"
     "@backstage/errors" "^1.1.5"
     "@backstage/plugin-auth-node" "^0.2.13"
+    "@backstage/types" "^1.0.2"
+    "@types/express" "^4.17.6"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    knex "^2.0.0"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
+"@backstage/plugin-user-settings-backend@^0.1.9":
+  version "0.1.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-user-settings-backend/-/plugin-user-settings-backend-0.1.9.tgz#16b50c1b9607d735e3f88102b0cfa42b9a446f1f"
+  integrity sha512-Oe4Bjrl7cpKL6EHJJbXs8mYhik7tHLv2qF2YOGmfnGBqavviPY+RYr1a/iuVKyoQC8hazFyTqH/cpepMAs2I7Q==
+  dependencies:
+    "@backstage/backend-common" "^0.18.5"
+    "@backstage/backend-plugin-api" "^0.5.2"
+    "@backstage/catalog-model" "^1.3.0"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/plugin-auth-node" "^0.2.14"
     "@backstage/types" "^1.0.2"
     "@types/express" "^4.17.6"
     express "^4.17.1"
