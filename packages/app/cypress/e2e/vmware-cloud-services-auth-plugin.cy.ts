@@ -6,4 +6,16 @@ describe('VMware Cloud Services Sign-in', () => {
       .contains('button', /sign in/i)
       .should('be.visible');
   });
+
+  it('opens a popup to the auth backend', () => {
+    cy.visit('/');
+    cy.window().then(win => {
+      cy.stub(win, 'open').as('popup');
+    });
+    cy.contains('li', 'VMware Cloud Services').find('button').click();
+    cy.get('@popup').should(
+      'have.been.calledWithMatch',
+      '/api/auth/vmwareCloudServices/start',
+    );
+  });
 });
