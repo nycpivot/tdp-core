@@ -22,6 +22,7 @@
     "@tpb/plugin-oidc-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-okta-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-onelogin-auth": "^0.0.1-alpha.2",
+    "@tpb/plugin-pendo-analytics": "^1.0.5-beta.4",
     "@tpb/plugin-permission-test-auth": "^0.0.1-alpha.1",
     "@tpb/plugin-rrv": "^0.0.1-alpha.2",
     "@tpb/runtime": "^0.0.1-alpha.3",

@@ -16,6 +16,7 @@ import { plugin as bitbucketAuthPlugin } from '@tpb/plugin-bitbucket-auth';
 import { plugin as oneLoginAuthPlugin } from '@tpb/plugin-onelogin-auth';
 import { plugin as guestAuthPlugin } from '@tpb/plugin-guest-auth';
 import { plugin as permissionTestAuthPlugin } from '@tpb/plugin-permission-test-auth';
+import { plugin as pendoPlugin } from '@tpb/plugin-pendo-analytics';
 
 import '@tpb/plugin-clarity-theme/style/clarity.css';
 
@@ -36,4 +37,5 @@ new AppRuntime([
   oneLoginAuthPlugin(),
   guestAuthPlugin(),
   permissionTestAuthPlugin(),
+  pendoPlugin(),
 ]).render();
