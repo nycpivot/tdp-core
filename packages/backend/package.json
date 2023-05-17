@@ -16,8 +16,8 @@
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
-    "@tpb/plugin-git-providers-backend": "^0.0.1-alpha.1",
-    "@tpb/plugin-app-accelerator-backend": "^0.0.1-alpha.1",
+    "@tpb/plugin-git-providers-backend": "^0.0.1-alpha.2",
+    "@tpb/plugin-app-accelerator-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-auth0-auth-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-aws-s3-discovery-processor": "^0.0.1-alpha.2",
     "@tpb/plugin-azure-auth-backend": "^0.0.1-alpha.2",
