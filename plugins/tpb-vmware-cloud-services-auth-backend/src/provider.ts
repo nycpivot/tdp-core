@@ -1,8 +1,10 @@
 import { stringifyEntityRef } from '@backstage/catalog-model';
+import { NotFoundError } from '@backstage/errors';
 import {
   AuthResolverContext,
   OAuthHandlers,
   OAuthResponse,
+  OAuthRefreshRequest,
   OAuthStartRequest,
   OAuthStartResponse,
   OAuthState,
@@ -16,6 +18,7 @@ import {
   Strategy as OAuth2Strategy,
   VerifyCallback,
 } from 'passport-oauth2';
+import { OAuth2 } from 'oauth';
 import express from 'express';
 import passport from 'passport';
 import jwtDecoder from 'jwt-decode';
@@ -105,66 +108,127 @@ export class VMwareCloudServicesAuthProvider implements OAuthHandlers {
     });
   }
 
-  async handler(
+  handler(
     req: express.Request,
   ): Promise<{ response: OAuthResponse; refreshToken?: string }> {
     return new Promise((resolve, reject) => {
+      if (!req.query?.code) {
+        reject(new Error('Missing authorization code'));
+      }
       const strategy = Object.create(this._strategy);
 
       strategy.success = (
         user: { id_token: string },
         info: { refreshToken: string },
       ) => {
-        const identity: Record<string, string> = jwtDecoder(user.id_token);
-        this.resolverContext
-          .signInWithCatalogUser({
-            filter: {
-              'spec.profile.email': identity.email,
-            },
-          })
-          .catch(_ => {
-            const userEntityRef = stringifyEntityRef({
-              kind: 'User',
-              name: identity.email,
-            });
-            return this.resolverContext.issueToken({
-              claims: {
-                sub: userEntityRef,
-                ent: [userEntityRef],
-              },
-            });
-          })
-          .then(backstageIdentity => {
-            resolve({
-              response: {
-                profile: {
-                  displayName: `${identity.given_name} ${identity.family_name}`,
-                  email: identity.email,
-                },
-                providerInfo: {
-                  idToken: user.id_token,
-                  accessToken: '',
-                  scope: '',
-                },
-                backstageIdentity,
-              },
-              refreshToken: info.refreshToken,
-            });
-          });
+        this.signIn(user, info).then(
+          result => {
+            resolve(result);
+          },
+          reason => {
+            reject(reason);
+          },
+        );
       };
-      strategy.fail = (
-        info: { type: 'success' | 'error'; message?: string },
-      ) => {
+      strategy.fail = (info: {
+        type: 'success' | 'error';
+        message?: string;
+      }) => {
         reject(new Error(`Authentication rejected, ${info.message ?? ''}`));
       };
       strategy.error = (error: Error) => {
         reject(error);
       };
-      strategy.redirect = () => {
-        reject(new Error('Unexpected redirect'));
-      };
 
       strategy.authenticate(req);
     });
+  }
+
+  refresh(
+    req: OAuthRefreshRequest,
+  ): Promise<{ response: OAuthResponse; refreshToken?: string }> {
+    return new Promise((resolve, reject) => {
+      new OAuth2(
+        this.clientId,
+        '',
+        '',
+        'https://console.cloud.vmware.com/csp/gateway/discovery',
+        'https://console.cloud.vmware.com/csp/gateway/am/api/auth/token',
+        {
+          Authorization: `Basic ${Buffer.from(`${this.clientId}:`).toString(
+            'base64',
+          )}`,
+        },
+      ).getOAuthAccessToken(
+        req.refreshToken,
+        { scope: 'openid', grant_type: 'refresh_token' },
+        (
+          err: { statusCode: number; data?: any } | null,
+          _accessToken: string,
+          refreshToken: string,
+          params: { id_token: string },
+        ) => {
+          if (err) {
+            reject(
+              new Error(
+                `Failed to refresh access token ${JSON.stringify(err)}`,
+              ),
+            );
+          }
+
+          this.signIn(params, { refreshToken }).then(
+            result => {
+              resolve(result);
+            },
+            reason => {
+              reject(reason);
+            },
+          );
+        },
+      );
+    });
+  }
+
+  private async signIn(
+    user: { id_token: string },
+    info: { refreshToken: string },
+  ): Promise<{ response: OAuthResponse; refreshToken?: string }> {
+    const identity: Record<string, string> = jwtDecoder(user.id_token);
+    const backstageIdentity = await this.resolverContext
+      .signInWithCatalogUser({
+        filter: {
+          'spec.profile.email': identity.email,
+        },
+      })
+      .catch(err => {
+        if (!(err instanceof NotFoundError)) {
+          throw err;
+        }
+        const userEntityRef = stringifyEntityRef({
+          kind: 'User',
+          name: identity.email,
+        });
+        return this.resolverContext.issueToken({
+          claims: {
+            sub: userEntityRef,
+            ent: [userEntityRef],
+          },
+        });
+      });
+    return {
+      response: {
+        profile: {
+          displayName: `${identity.given_name} ${identity.family_name}`,
+          email: identity.email,
+        },
+        providerInfo: {
+          idToken: user.id_token,
+          accessToken: '',
+          scope: '',
+        },
+        backstageIdentity,
+      },
+      refreshToken: info.refreshToken,
+    };
   }
 }

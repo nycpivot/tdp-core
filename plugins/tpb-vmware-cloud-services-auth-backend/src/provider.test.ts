@@ -2,6 +2,7 @@ import { setupRequestMockHandlers } from '@backstage/backend-test-utils';
 import { NotFoundError } from '@backstage/errors';
 import {
   AuthResolverContext,
+  OAuthRefreshRequest,
   OAuthStartRequest,
   OAuthState,
   encodeState,
@@ -221,7 +222,46 @@ describe('VMwareCloudServicesAuthProvider', () => {
       });
     });
 
-    // TODO what if there is some other error?
+    it('fails when resolver context throws other error', () => {
+      const error = new Error('bizarre');
+      resolverContext.signInWithCatalogUser.mockRejectedValue(error);
+
+      return expect(provider.handler(handlerRequest)).rejects.toThrow(error);
+    });
+
+    it('fails when request has no session', () => {
+      return expect(
+        provider.handler({
+          query: {
+            code: 'authorization_code',
+            state: encodeState({
+              handle: 'sessionid',
+              nonce: 'nonce',
+              env: 'development',
+            } as OAuthState),
+          },
+        } as unknown as express.Request),
+      ).rejects.toThrow('requires session support');
+    });
+
+    it('fails when request has no authorization code', () => {
+      return expect(
+        provider.handler({
+          query: {
+            state: encodeState({
+              handle: 'sessionid',
+              nonce: 'nonce',
+              env: 'development',
+            } as OAuthState),
+          },
+          session: {
+            ['oauth2:console.cloud.vmware.com']: {
+              state: { handle: 'sessionid', code_verifier: 'foo' },
+            },
+          },
+        } as unknown as express.Request),
+      ).rejects.toThrow('Missing authorization code');
+    });
   });
 
   describe('integration between #start and #handler', () => {
@@ -257,6 +297,39 @@ describe('VMwareCloudServicesAuthProvider', () => {
       } as unknown as express.Request);
 
       expect(response).toBeDefined();
+    });
+  });
+
+  describe('#refresh', () => {
+    it('gets new refresh token', async () => {
+      provider = new VMwareCloudServicesAuthProvider({
+        clientId: 'placeholderClientId',
+        callbackUrl: 'http://callbackUrl',
+        resolverContext: {
+          issueToken: jest.fn(),
+          findCatalogUser: jest.fn(),
+          signInWithCatalogUser: jest.fn().mockResolvedValue({
+            token: 'token',
+          }),
+        },
+      });
+
+      const { refreshToken } = await provider.refresh({
+        refreshToken: 'oldRefreshToken',
+      } as unknown as OAuthRefreshRequest);
+
+      expect(refreshToken).toBe('refreshToken');
+    });
+  });
+
+  it('decodes profile from ID token', async () => {
+    const { response } = await provider.refresh({
+      refreshToken: 'oldRefreshToken',
+    } as unknown as OAuthRefreshRequest);
+
+    expect(response.profile).toStrictEqual({
+      displayName: 'Givenname Familyname',
+      email: 'user@example.com',
     });
   });
 });
