@@ -21,10 +21,7 @@ import {
   UserListPicker,
 } from '@backstage/plugin-catalog-react';
 import React from 'react';
-import {
-  CatalogTable,
-  catalogPlugin,
-} from '@backstage/plugin-catalog';
+import { CatalogTable, catalogPlugin } from '@backstage/plugin-catalog';
 
 export type EntityRow = {
   entity: Entity;

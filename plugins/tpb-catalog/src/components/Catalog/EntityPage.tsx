@@ -25,7 +25,10 @@ import {
 } from '@backstage/catalog-model';
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { Direction, EntityCatalogGraphCard } from '@backstage/plugin-catalog-graph';
+import {
+  Direction,
+  EntityCatalogGraphCard,
+} from '@backstage/plugin-catalog-graph';
 import {
   EntityApiDefinitionCard,
   EntityConsumedApisCard,
@@ -69,9 +72,7 @@ import {
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import { EntityPageSurface } from '../../EntityPageSurface';
 
-
 export const entityPage = (surface: EntityPageSurface) => {
-
   const techdocsContent = <EntityTechdocsContent />;
 
   const overviewContent = (
@@ -362,7 +363,8 @@ export const entityPage = (surface: EntityPageSurface) => {
             RELATION_DEPENDENCY_OF,
             RELATION_DEPENDS_ON,
           ]}
-          unidirectional={false}/>
+          unidirectional={false}
+        />
       </EntityLayout.Route>
       {surface.systemPage.tabs}
     </EntityLayout>
@@ -398,5 +400,5 @@ export const entityPage = (surface: EntityPageSurface) => {
 
       <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>
     </EntitySwitch>
-  )
+  );
 };

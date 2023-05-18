@@ -31,7 +31,7 @@ import { Alert } from '@material-ui/lab';
 import React, { ReactNode, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { EntityContextMenu } from '../EntityContextMenu/EntityContextMenu';
-import { PageHeader } from "../../PageHeader/PageHeader";
+import { PageHeader } from '../../PageHeader/PageHeader';
 
 type SubRoute = {
   path: string;
@@ -56,7 +56,9 @@ const EntityLayoutTitle = ({
   title: string;
   entity: Entity | undefined;
 }) => {
-  const to = `/catalog/${entity?.metadata.namespace ?? DEFAULT_NAMESPACE}/${entity?.kind}/${entity?.metadata.name}`
+  const to = `/catalog/${entity?.metadata.namespace ?? DEFAULT_NAMESPACE}/${
+    entity?.kind
+  }/${entity?.metadata.name}`;
   return (
     <Box display="inline-flex" alignItems="center" height="1em" maxWidth="100%">
       <Box
@@ -84,9 +86,7 @@ const headerProps = (
     entity?.metadata.title ?? paramName ?? entity?.metadata.name ?? '';
   return {
     headerTitle: `${name}${
-      namespace && namespace !== DEFAULT_NAMESPACE
-        ? ` in ${namespace}`
-        : ''
+      namespace && namespace !== DEFAULT_NAMESPACE ? ` in ${namespace}` : ''
     }`,
     headerType: (() => {
       let t = kind.toLocaleLowerCase('en-US');
@@ -94,7 +94,7 @@ const headerProps = (
         t += ' — ';
         t += (entity.spec as { type: string }).type.toLocaleLowerCase('en-US');
       }
-      return <Link to='/catalog'>{t}</Link>;
+      return <Link to="/catalog">{t}</Link>;
     })(),
   };
 };
@@ -208,7 +208,7 @@ export const EntityLayout = ({
   return (
     <Page themeId={entity?.spec?.type?.toString() ?? 'home'}>
       <PageHeader
-        title={<EntityLayoutTitle title={headerTitle} entity={entity!}/>}
+        title={<EntityLayoutTitle title={headerTitle} entity={entity!} />}
         pageTitleOverride={headerTitle}
         type={headerType}
       >

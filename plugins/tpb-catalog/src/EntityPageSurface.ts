@@ -167,7 +167,7 @@ export class EntityPageSurface {
     this._websitePage.addTab(tab);
   }
 
-    /**
+  /**
    * @deprecated use packagePage
    */
   public addPackagePageTab(tab: ReactElement) {

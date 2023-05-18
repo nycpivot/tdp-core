@@ -12,7 +12,7 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import React, { useState } from 'react';
 import { IconComponent } from '@backstage/core-plugin-api';
 import { catalogEntityDeletePermission } from '@backstage/plugin-catalog-common/alpha';
-import { useEntityPermission } from '@backstage/plugin-catalog-react/alpha'
+import { useEntityPermission } from '@backstage/plugin-catalog-react/alpha';
 import UninstallLogoIcon from './UninstallLogoIcon';
 
 // TODO(mstergianis): PSTAR-342 (https://jira.eng.vmware.com/browse/PSTAR-342)
@@ -86,7 +86,9 @@ export const EntityContextMenu = ({
   ];
 
   const disableUnregister =
-    (!unregisterPermission.allowed || UNSTABLE_contextMenuOptions?.disableUnregister) ?? false;
+    (!unregisterPermission.allowed ||
+      UNSTABLE_contextMenuOptions?.disableUnregister) ??
+    false;
 
   return (
     <>

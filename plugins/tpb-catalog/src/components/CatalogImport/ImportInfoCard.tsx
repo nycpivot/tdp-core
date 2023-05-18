@@ -20,11 +20,13 @@ export const ImportInfoCard = () => {
       </Typography>
       <Typography variant="h6">Link to an existing entity file</Typography>
       <Typography variant="subtitle2" color="textSecondary" paragraph>
-        To view example catalogs, visit {' '}
+        To view example catalogs, visit{' '}
         <Link to="https://network.tanzu.vmware.com/products/tanzu-application-platform">
           Tanzu Network
         </Link>{' '}
-        and navigate to the tap-gui-catalogs-latest folder. Here, you can view an example Blank Software Catalog that includes a catalog-info.yaml entity file.
+        and navigate to the tap-gui-catalogs-latest folder. Here, you can view
+        an example Blank Software Catalog that includes a catalog-info.yaml
+        entity file.
       </Typography>
       <Typography variant="body2" paragraph>
         The wizard analyzes the file, previews the entities, and adds them to

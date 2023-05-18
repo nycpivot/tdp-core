@@ -62,7 +62,7 @@ const TestApiWrapper: FC = ({ children }) => {
             }),
           ),
         ],
-        [catalogApiRef, {getEntityByRef: jest.fn()} as unknown as CatalogApi],
+        [catalogApiRef, { getEntityByRef: jest.fn() } as unknown as CatalogApi],
         [permissionApiRef, new MockPermissionApi()],
       ]}
     >
@@ -116,7 +116,9 @@ describe('EntityPage app', () => {
       },
     );
 
-    expect(await findByText('APIs', { selector: 'h2'})).toBeInTheDocument();
-    expect(await findByText('This system does not contain any APIs.')).toBeInTheDocument();
+    expect(await findByText('APIs', { selector: 'h2' })).toBeInTheDocument();
+    expect(
+      await findByText('This system does not contain any APIs.'),
+    ).toBeInTheDocument();
   });
 });

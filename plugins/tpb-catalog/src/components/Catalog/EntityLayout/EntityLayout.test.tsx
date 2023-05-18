@@ -16,7 +16,10 @@ import React, { FC } from 'react';
 import { act } from 'react-dom/test-utils';
 import { Route, Routes } from 'react-router';
 import { EntityLayout } from './EntityLayout';
-import { PermissionApi, permissionApiRef } from '@backstage/plugin-permission-react'
+import {
+  PermissionApi,
+  permissionApiRef,
+} from '@backstage/plugin-permission-react';
 
 const mockEntity = {
   kind: 'MyKind',
@@ -31,11 +34,8 @@ const TestApiWrapper: FC = ({ children }) => {
       apis={[
         [catalogApiRef, {} as CatalogApi],
         [alertApiRef, {} as AlertApi],
-        [
-          starredEntitiesApiRef,
-          new MockStarredEntitiesApi(),
-        ],
-        [permissionApiRef, {} as PermissionApi]
+        [starredEntitiesApiRef, new MockStarredEntitiesApi()],
+        [permissionApiRef, {} as PermissionApi],
       ]}
     >
       {children}

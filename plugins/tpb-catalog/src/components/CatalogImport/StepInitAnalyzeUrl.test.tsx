@@ -20,7 +20,12 @@ describe('<StepInitAnalyzeUrl />', () => {
     error$: jest.fn(),
   };
   const Wrapper = ({ children }: { children?: React.ReactNode }) => (
-    <ApiProvider apis={[[catalogImportApiRef, catalogImportApi], [errorApiRef, errorApi]]}>
+    <ApiProvider
+      apis={[
+        [catalogImportApiRef, catalogImportApi],
+        [errorApiRef, errorApi],
+      ]}
+    >
       {children}
     </ApiProvider>
   );
