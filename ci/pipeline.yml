@@ -157,6 +157,7 @@ jobs:
           code: esback-core
           docker-image: core-image
         vars:
+          app_accelerator_host: ((app-accelerator.host))
           auth0_client_id: ((auth0.svc_tpb_client_id))
           auth0_client_secret: ((auth0.svc_tpb_client_secret))
           auth0_domain: ((auth0.svc_tpb_domain))
