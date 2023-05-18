@@ -10,7 +10,7 @@
     "types": "dist/index.d.ts"
   },
   "backstage": {
-    "role": "frontend-plugin"
+    "role": "backend-plugin"
   },
   "scripts": {
     "build": "backstage-cli package build",
@@ -27,15 +27,10 @@
     "@backstage/plugin-auth-backend": "^0.18.2",
     "@backstage/plugin-auth-node": "^0.2.13"
   },
-  "peerDependencies": {
-    "react": "^16.13.1 || ^17.0.0"
-  },
   "devDependencies": {
     "@backstage/cli": "^0.22.6"
   },
   "files": [
-    "dist",
-    "config.d.ts"
-  ],
-  "configSchema": "config.d.ts"
+    "dist"
+  ]
 }
