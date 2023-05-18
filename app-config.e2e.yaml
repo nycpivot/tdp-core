@@ -27,6 +27,9 @@ backend:
   auth:
     keys:
       - secret: ${BACKEND_SECRET}
+  reading:
+    allow:
+      - host: ${APP_ACCELERATOR_HOST}
 
 integrations:
   azure:
@@ -70,6 +73,8 @@ catalog:
           clientSecret: ${AZURE_CLIENT_SECRET}
           userFilter: displayName eq 'Benjamin Smith'
           groupFilter: displayName eq 'dap-build'
+    appAccelerators:
+      target: https://${APP_ACCELERATOR_HOST}/api/proxy/accelerators
   providers:
     gitlab:
       tpb:
@@ -274,6 +279,11 @@ proxy:
     changeOrigin: true
     headers:
       X-Custom-Source: project-star
+  '/accelerators':
+    target: https://${APP_ACCELERATOR_HOST}
+    changeOrigin: true
+    pathRewrite:
+      '^/api/proxy/accelerators': '/api/accelerators'
 
 auth:
   session:

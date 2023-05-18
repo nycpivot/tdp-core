@@ -65,4 +65,8 @@ export class Vault {
   async readGithubSecret(key: string): Promise<string> {
     return this.read('runway_concourse/esback/github', key);
   }
+
+  async readAppAcceleratorSecret(key: string): Promise<string> {
+    return this.read('runway_concourse/esback/app-accelerator', key);
+  }
 }
