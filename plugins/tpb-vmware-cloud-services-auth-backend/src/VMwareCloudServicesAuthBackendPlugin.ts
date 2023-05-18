@@ -18,16 +18,17 @@ export const VMwareCloudServicesAuthBackendPlugin: BackendPluginInterface =
           create:
             (): AuthProviderFactory =>
             ({ providerId, globalConfig, config }): AuthProviderRouteHandlers =>
-              OAuthEnvironmentHandler.mapConfig(config, _envConfig =>
-                OAuthAdapter.fromConfig(
+              OAuthEnvironmentHandler.mapConfig(config, envConfig => {
+                const callbackUrl = `${globalConfig.baseUrl}/${providerId}/handler/frame`;
+                return OAuthAdapter.fromConfig(
                   globalConfig,
-                  new VMwareCloudServicesAuthProvider(),
-                  {
-                    providerId,
-                    callbackUrl: `${globalConfig.baseUrl}/${providerId}/handler/frame`,
-                  },
-                ),
-              ),
+                  new VMwareCloudServicesAuthProvider({
+                    clientId: envConfig.getString('clientId'),
+                    callbackUrl,
+                  }),
+                  { providerId, callbackUrl },
+                );
+              }),
         }).create(),
       });
     });
