@@ -1,4 +1,4 @@
-import {Authentication} from "../support/authentication"
+import { Authentication } from '../support/authentication';
 
 describe('App Accelerator Plugin', () => {
   beforeEach(() => {
@@ -17,4 +17,4 @@ describe('App Accelerator Plugin', () => {
     cy.contains('button', /generate accelerator/i).click();
     cy.contains('button', /download zip file/i).should('be.visible');
   });
-})
+});
