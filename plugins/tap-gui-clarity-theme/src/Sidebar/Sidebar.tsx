@@ -113,7 +113,9 @@ const Sidebar = (props: PropsWithChildren<SidebarProps>) => {
     }
   };
 
-  const setOpen = (open: boolean) => { setState(open ? State.Open : State.Closed) }
+  const setOpen = (open: boolean) => {
+    setState(open ? State.Open : State.Closed);
+  };
 
   const isOpen = state === State.Open && !isSmallScreen;
   const HasTapLogo = icon && text;

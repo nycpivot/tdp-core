@@ -23,8 +23,8 @@ export const ThemePlugin: AppPluginInterface = () => {
     });
     context.applyTo(SidebarItemSurface, sidebar => {
       sidebar.addMainItem(
-        <SidebarItem icon={SettingsIcon} to="settings" text="Settings" />
-      )
+        <SidebarItem icon={SettingsIcon} to="settings" text="Settings" />,
+      );
     });
   };
 };

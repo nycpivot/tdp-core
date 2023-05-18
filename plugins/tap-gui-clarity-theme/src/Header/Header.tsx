@@ -17,34 +17,37 @@ export type HeaderClassKey = 'root' | 'header' | 'headerBold' | 'homeButton';
 export interface HeaderProps
   extends StandardProps<React.HTMLAttributes<HTMLDivElement>, HeaderClassKey> {}
 
-const styles: StyleRulesCallback<BackstageTheme, HeaderProps, HeaderClassKey> =
-  (theme: BackstageTheme) => ({
-    root: {
-      display: 'flex',
-      flexBasis: 'auto',
-      alignItems: 'center',
-      padding: '12px 24px',
-      minWidth: '200px',
-      color: theme.palette.common.white,
-      background: getTapUIKitPalette(theme.palette.type).headerBackground,
-    },
-    headerBold: {
-      display: 'flex',
-      fontWeight: 700,
-      fontSize: theme.typography.h5.fontSize,
-      lineHeight: theme.typography.h5.lineHeight,
-    },
-    header: {
-      display: 'flex',
-      fontWeight: theme.typography.h5.fontWeight,
-      fontSize: theme.typography.h5.fontSize,
-      lineHeight: theme.typography.h5.lineHeight,
-      marginRight: '10px',
-    },
-    homeButton: {
-      cursor: 'pointer',
-    },
-  });
+const styles: StyleRulesCallback<
+  BackstageTheme,
+  HeaderProps,
+  HeaderClassKey
+> = (theme: BackstageTheme) => ({
+  root: {
+    display: 'flex',
+    flexBasis: 'auto',
+    alignItems: 'center',
+    padding: '12px 24px',
+    minWidth: '200px',
+    color: theme.palette.common.white,
+    background: getTapUIKitPalette(theme.palette.type).headerBackground,
+  },
+  headerBold: {
+    display: 'flex',
+    fontWeight: 700,
+    fontSize: theme.typography.h5.fontSize,
+    lineHeight: theme.typography.h5.lineHeight,
+  },
+  header: {
+    display: 'flex',
+    fontWeight: theme.typography.h5.fontWeight,
+    fontSize: theme.typography.h5.fontSize,
+    lineHeight: theme.typography.h5.lineHeight,
+    marginRight: '10px',
+  },
+  homeButton: {
+    cursor: 'pointer',
+  },
+});
 
 const Header = (props: HeaderProps) => {
   const config = useApi(configApiRef);
@@ -71,7 +74,9 @@ const Header = (props: HeaderProps) => {
           >
             <LogoIcon />
           </span>
-          <h1 className={props.classes?.header}>VMware Tanzu Application Platform</h1>
+          <h1 className={props.classes?.header}>
+            VMware Tanzu Application Platform
+          </h1>
         </>
       )}
     </div>

@@ -20,32 +20,35 @@ export interface BannerProps
   };
 }
 
-const styles: StyleRulesCallback<BackstageTheme, BannerProps, BannerClassKey> =
-  () => ({
-    root: {
-      display: 'flex',
-      padding: '0 1rem',
-      alignItems: 'center',
-      justifyContent: 'center',
+const styles: StyleRulesCallback<
+  BackstageTheme,
+  BannerProps,
+  BannerClassKey
+> = () => ({
+  root: {
+    display: 'flex',
+    padding: '0 1rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    textAlign: 'center',
+    height: '36px',
+    lineHeight: '36px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    paddingRight: '1rem',
+    textOverflow: 'ellipsis',
+  },
+  link: {
+    textDecoration: 'none',
+    lineHeight: '36px',
+    whiteSpace: 'nowrap',
+    '&:hover': {
+      textDecoration: 'underline',
     },
-    text: {
-      textAlign: 'center',
-      height: '36px',
-      lineHeight: '36px',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      paddingRight: '1rem',
-      textOverflow: 'ellipsis',
-    },
-    link: {
-      textDecoration: 'none',
-      lineHeight: '36px',
-      whiteSpace: 'nowrap',
-      '&:hover': {
-        textDecoration: 'underline',
-      },
-    },
-  });
+  },
+});
 
 const BannerComponent = (props: BannerProps) => {
   const style = {

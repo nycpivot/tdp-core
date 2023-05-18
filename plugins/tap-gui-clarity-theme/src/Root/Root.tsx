@@ -45,7 +45,7 @@ const styles: StyleRulesCallback<BackstageTheme, RootProps, RootClassKey> = (
   },
 });
 
-const Root = ({sidebar, classes, children}: PropsWithChildren<IRoot>) => {
+const Root = ({ sidebar, classes, children }: PropsWithChildren<IRoot>) => {
   const config = useApi(configApiRef);
   const banner = {
     text: config.getOptionalString('customize.banners.text'),
