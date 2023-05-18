@@ -46,6 +46,10 @@ integrations:
     #   apiBaseUrl: https://ghe.example.net/api/v3
     #   token: ${GHE_TOKEN}
 
+
+appLiveView:
+  activateAppLiveViewSecureAccessControl: true
+
 proxy:
   '/test':
     target: 'https://example.com'
