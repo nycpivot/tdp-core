@@ -28,6 +28,7 @@ import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world-backend';
 import { plugin as appAcceleratorBackendPlugin } from '@tpb/plugin-app-accelerator-backend';
 import { plugin as gitProvidersBackend } from '@tpb/plugin-git-providers-backend';
 import { plugin as autoRegistrationPlugin } from '@tpb/plugin-api-auto-registration-backend';
+import { plugin as customLoggerPlugin } from '@tpb/tpb-custom-logger';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
@@ -59,4 +60,5 @@ new BackendRuntime([
   appAcceleratorBackendPlugin(),
   gitProvidersBackend(),
   autoRegistrationPlugin(),
+  customLoggerPlugin(),
 ]).start();

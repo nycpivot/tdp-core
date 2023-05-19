@@ -13,6 +13,7 @@
     "lint": "backstage-cli package lint",
     "test": "backstage-cli package test",
     "clean": "backstage-cli package clean",
+    "debug": "backstage-cli package start --inspect-brk",
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
@@ -47,6 +48,7 @@
     "@tpb/plugin-permission-test-policy": "^0.0.1-alpha.1",
     "@tpb/runtime-backend": "^0.0.1-alpha.3",
     "@tpb/plugin-api-auto-registration-backend": "1.0.0",
+    "@tpb/tpb-custom-logger": "^0.0.1-alpha.1",
     "app": "link:../app",
     "better-sqlite3": "^8.3.0",
     "dockerode": "^3.3.5",

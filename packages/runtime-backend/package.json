@@ -35,7 +35,8 @@
     "@tpb/plugin-catalog-backend": "^0.0.1-alpha.3",
     "@tpb/plugin-techdocs-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-search-backend": "^0.0.1-alpha.2",
-    "@tpb/plugin-auth-backend": "^0.0.1-alpha.2"
+    "@tpb/plugin-auth-backend": "^0.0.1-alpha.2",
+    "@tpb/tpb-custom-logger": "^0.0.1-alpha.1"
   },
   "peerDependencies": {
     "dockerode": "^3.3.5",
