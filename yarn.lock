@@ -2254,7 +2254,7 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@babel/runtime@^7.20.1", "@babel/runtime@^7.21.0":
+"@babel/runtime@^7.19.4", "@babel/runtime@^7.20.1", "@babel/runtime@^7.21.0":
   version "7.21.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@babel/runtime/-/runtime-7.21.5.tgz#8492dddda9644ae3bda3b45eabe87382caee7200"
   integrity sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==
@@ -2506,7 +2506,7 @@
     "@backstage/errors" "^1.1.5"
     cross-fetch "^3.1.5"
 
-"@backstage/catalog-model@^1.0.2", "@backstage/catalog-model@^1.1.3", "@backstage/catalog-model@^1.2.1", "@backstage/catalog-model@^1.3.0":
+"@backstage/catalog-model@^1.0.2", "@backstage/catalog-model@^1.1.3", "@backstage/catalog-model@^1.1.5", "@backstage/catalog-model@^1.2.1", "@backstage/catalog-model@^1.3.0":
   version "1.3.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/catalog-model/-/catalog-model-1.3.0.tgz#3d926b4e9d3d871f37e88295788cdce3b4ec17d3"
   integrity sha512-QFoLho/SvzNepFHDUBL58fdcktAtshQQQ1FABpDbnBR954iQ7MGQlSPP+2uSrQ5wGpZylIjpFnsH3NB/k06i6g==
@@ -2821,6 +2821,23 @@
     zen-observable "^0.10.0"
     zod "^3.21.4"
 
+"@backstage/core-app-api@^1.4.0":
+  version "1.8.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-app-api/-/core-app-api-1.8.0.tgz#b027cb069954041714be6bb0fba2802c10fa073a"
+  integrity sha512-oipXAcr8FT+Bd97MZ6yQ4GQ1coPsNJs0M/OsdfR6eWMjUmyigq4XpZ+NG5E6zK9jxIDjV/fauDkIAnR8HxC9gQ==
+  dependencies:
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/types" "^1.0.2"
+    "@backstage/version-bridge" "^1.0.4"
+    "@types/prop-types" "^15.7.3"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    history "^5.0.0"
+    prop-types "^15.7.2"
+    react-use "^17.2.4"
+    zen-observable "^0.10.0"
+    zod "^3.21.4"
+
 "@backstage/core-components@^0.12.0", "@backstage/core-components@^0.12.4", "@backstage/core-components@^0.12.5":
   version "0.12.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-components/-/core-components-0.12.5.tgz#ea9e5d04845fb031e0f4fb4b764497ee722ad128"
@@ -2911,6 +2928,53 @@
     zen-observable "^0.10.0"
     zod "^3.21.4"
 
+"@backstage/core-components@^0.13.1":
+  version "0.13.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-components/-/core-components-0.13.1.tgz#cf84d0ff2ea2e096be8dfd0b9d8b6bc11561ea6b"
+  integrity sha512-vqL6kg4EqH4rpuyPwMlkIEqSL/Mm135HuhMeevHwg1DG6YMWS6Y4Q8KLDQ8LbH1HfT6q3zpveDoyK6ClrfmJOw==
+  dependencies:
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/theme" "^0.3.0"
+    "@backstage/version-bridge" "^1.0.4"
+    "@date-io/core" "^1.3.13"
+    "@material-table/core" "^3.1.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@react-hookz/web" "^20.0.0"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    "@types/react-sparklines" "^1.7.0"
+    "@types/react-text-truncate" "^0.14.0"
+    ansi-regex "^6.0.1"
+    classnames "^2.2.6"
+    d3-selection "^3.0.0"
+    d3-shape "^3.0.0"
+    d3-zoom "^3.0.0"
+    dagre "^0.8.5"
+    history "^5.0.0"
+    immer "^9.0.1"
+    linkify-react "4.1.1"
+    linkifyjs "4.1.1"
+    lodash "^4.17.21"
+    pluralize "^8.0.0"
+    prop-types "^15.7.2"
+    qs "^6.9.4"
+    rc-progress "3.4.1"
+    react-helmet "6.1.0"
+    react-hook-form "^7.12.2"
+    react-markdown "^8.0.0"
+    react-sparklines "^1.7.0"
+    react-syntax-highlighter "^15.4.5"
+    react-text-truncate "^0.19.0"
+    react-use "^17.3.2"
+    react-virtualized-auto-sizer "^1.0.11"
+    react-window "^1.8.6"
+    remark-gfm "^3.0.1"
+    zen-observable "^0.10.0"
+    zod "^3.21.4"
+
 "@backstage/core-components@^0.9.0":
   version "0.9.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-components/-/core-components-0.9.5.tgz#5a0b34867aaee0549bfa67b39a69c09588fa3c7a"
@@ -2956,7 +3020,7 @@
     zen-observable "^0.8.15"
     zod "^3.11.6"
 
-"@backstage/core-plugin-api@1.5.1", "@backstage/core-plugin-api@^1.0.0", "@backstage/core-plugin-api@^1.0.2", "@backstage/core-plugin-api@^1.0.3", "@backstage/core-plugin-api@^1.4.0", "@backstage/core-plugin-api@^1.5.0", "@backstage/core-plugin-api@^1.5.1":
+"@backstage/core-plugin-api@1.5.1", "@backstage/core-plugin-api@^1.0.0", "@backstage/core-plugin-api@^1.0.2", "@backstage/core-plugin-api@^1.0.3", "@backstage/core-plugin-api@^1.3.0", "@backstage/core-plugin-api@^1.4.0", "@backstage/core-plugin-api@^1.5.0", "@backstage/core-plugin-api@^1.5.1":
   version "1.5.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-plugin-api/-/core-plugin-api-1.5.1.tgz#c295f14d38321c116378af6a9cebf84d83bb8d39"
   integrity sha512-egGEhKYMAFyjw9LZU6zeJ2rDUgcgXGWjBoSUXok6+b3Ya7jDjNVWzhOWyQ/6gSmFG3c/W5+hnF4UmPjIkyYmiw==
@@ -3042,6 +3106,20 @@
   version "1.4.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/integration/-/integration-1.4.4.tgz#f4ef266eef0193e34c073bcbbf75d0cd471f8800"
   integrity sha512-hDISATvtIPBqkl2wk1/i0me6of0i34D2i3P0GMnMwbbBRBAquYBiBvIgB6TUWd9xJmDibFKqk3y9bemqzsYk3g==
+  dependencies:
+    "@backstage/config" "^1.0.7"
+    "@backstage/errors" "^1.1.5"
+    "@octokit/auth-app" "^4.0.0"
+    "@octokit/rest" "^19.0.3"
+    cross-fetch "^3.1.5"
+    git-url-parse "^13.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+
+"@backstage/integration@^1.4.5":
+  version "1.4.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/integration/-/integration-1.4.5.tgz#c38f025d541ed371c4fbf3810e8f1305a6ab12fa"
+  integrity sha512-G7WUGMhrzyGpIey0EF4i6oTVSxHqhEUYsszVq6l87zosQRJYZtRe8c2FKy1WfO43d4L/F9L/ncaYwImLg2jk3w==
   dependencies:
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
@@ -3445,6 +3523,36 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
+"@backstage/plugin-catalog-react@^1.2.4":
+  version "1.6.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog-react/-/plugin-catalog-react-1.6.0.tgz#09caf2788959fefc4bd845360b0c6ec405caae0b"
+  integrity sha512-N/eQLFDSWqJzWSnrO07jOCpTCGs0beImR5TZSTPmlDgjzM1Nb80W5XvV/7q0+AVUBKtnw37LTk6JDDNXBnkyfg==
+  dependencies:
+    "@backstage/catalog-client" "^1.4.1"
+    "@backstage/catalog-model" "^1.3.0"
+    "@backstage/core-components" "^0.13.1"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/integration" "^1.4.5"
+    "@backstage/plugin-catalog-common" "^1.0.13"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@backstage/plugin-permission-react" "^0.4.12"
+    "@backstage/theme" "^0.3.0"
+    "@backstage/types" "^1.0.2"
+    "@backstage/version-bridge" "^1.0.4"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    classnames "^2.2.6"
+    jwt-decode "^3.1.0"
+    lodash "^4.17.21"
+    material-ui-popup-state "^1.9.3"
+    qs "^6.9.4"
+    react-use "^17.2.4"
+    yaml "^2.0.0"
+    zen-observable "^0.10.0"
+
 "@backstage/plugin-catalog@^1.10.0", "@backstage/plugin-catalog@^1.8.0":
   version "1.10.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog/-/plugin-catalog-1.10.0.tgz#208fd1a2de7993a4d001bf0a0c5011a5e9ddc7cc"
@@ -3580,6 +3688,14 @@
     "@backstage/catalog-model" "^1.1.3"
     "@kubernetes/client-node" "0.17.0"
 
+"@backstage/plugin-kubernetes-common@^0.5.1":
+  version "0.5.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.5.1.tgz#0d3d6eebde640e124bd46ae000290274d0c3923d"
+  integrity sha512-CNuC/elXGUqNseXjAsx4zuJH9oCezFsmVMtVxlsiN/wihjjqdYeFpqI8l/4QLm5OK35ltvDxvxHTb/ZbomkBIQ==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.5"
+    "@kubernetes/client-node" "0.18.0"
+
 "@backstage/plugin-kubernetes-common@^0.6.1", "@backstage/plugin-kubernetes-common@^0.6.2":
   version "0.6.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.6.2.tgz#0557e019502cb91500b623c98c9422ce740130da"
@@ -3589,7 +3705,7 @@
     "@backstage/plugin-permission-common" "^0.7.5"
     "@kubernetes/client-node" "0.18.1"
 
-"@backstage/plugin-kubernetes@^0.7.2":
+"@backstage/plugin-kubernetes@^0.7.2", "@backstage/plugin-kubernetes@^0.7.7":
   version "0.7.9"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes/-/plugin-kubernetes-0.7.9.tgz#2a8d424ef5c1c8ec234c59e3355a1e136f90ae76"
   integrity sha512-/iBXJxMQuKx8KIZerAkfHWWGk3nmlAm9NOyjrzJ/cdn3UK+g66A3S1Vy1FDFKLB8rizh7aliF4WNLCBcosNHpg==
@@ -4217,10 +4333,17 @@
     cross-fetch "^3.1.5"
     zen-observable "^0.10.0"
 
-"@backstage/theme@^0.2.10", "@backstage/theme@^0.2.14", "@backstage/theme@^0.2.15", "@backstage/theme@^0.2.18", "@backstage/theme@^0.2.19":
+"@backstage/theme@^0.2.10", "@backstage/theme@^0.2.14", "@backstage/theme@^0.2.15", "@backstage/theme@^0.2.16", "@backstage/theme@^0.2.18", "@backstage/theme@^0.2.19":
   version "0.2.19"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/theme/-/theme-0.2.19.tgz#6385729849e8caee069056b819135609d7bfd5cf"
   integrity sha512-W9smhIlQZ0jHOCNnRsWbNIhQ2QEmophCFxN89uxQcOILwP5p3YoRsa8S8Lz1yFDMfWiS7gLEk2cpl6RybBVgwQ==
+  dependencies:
+    "@material-ui/core" "^4.12.2"
+
+"@backstage/theme@^0.3.0":
+  version "0.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/theme/-/theme-0.3.0.tgz#453f1200578dac1a9e65182cccceb6e5bac14b50"
+  integrity sha512-em6tubxECvYBEJrboPGwc0pEtt0BZD0ujPSHbxXMslUfhpMfGELYvfupKmegm//iQl8D6wP8D/B6tIMx5YvjtQ==
   dependencies:
     "@material-ui/core" "^4.12.2"
 
@@ -5200,6 +5323,19 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@hello-pangea/dnd@^16.0.0":
+  version "16.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@hello-pangea/dnd/-/dnd-16.2.0.tgz#58cbadeb56f8c7a381da696bb7aa3bfbb87876ec"
+  integrity sha512-inACvMcvvLr34CG0P6+G/3bprVKhwswxjcsFUSJ+fpOGjhvDj9caiA9X3clby0lgJ6/ILIJjyedHZYECB7GAgA==
+  dependencies:
+    "@babel/runtime" "^7.19.4"
+    css-box-model "^1.2.1"
+    memoize-one "^6.0.0"
+    raf-schd "^4.0.3"
+    react-redux "^8.0.4"
+    redux "^4.2.0"
+    use-memo-one "^1.1.3"
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -5228,6 +5364,18 @@
   version "1.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@ioredis/commands/-/commands-1.2.0.tgz#6d61b3097470af1fdbbe622795b8921d42018e11"
   integrity sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==
+
+"@isaacs/cliui@^8.0.2":
+  version "8.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
+  integrity sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==
+  dependencies:
+    string-width "^5.1.2"
+    string-width-cjs "npm:string-width@^4.2.0"
+    strip-ansi "^7.0.1"
+    strip-ansi-cjs "npm:strip-ansi@^6.0.1"
+    wrap-ansi "^8.1.0"
+    wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
 "@isaacs/string-locale-compare@^1.1.0":
   version "1.1.0"
@@ -5575,6 +5723,32 @@
     is-plain-object "^5.0.0"
     tslib "^2.3.1"
 
+"@kubernetes-models/crd-generate@^2.0.2":
+  version "2.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes-models/crd-generate/-/crd-generate-2.0.2.tgz#7fe9366546640c89e5528a22b53d9841ac4b5cc8"
+  integrity sha512-6rWfxIFY74q4moLTS7s+mFghB++mpbRt8P6V78sANEEXz7djDrWAHkfGi8yYSZmWWNTMQgTmc40r8co+gbRxyw==
+  dependencies:
+    "@kubernetes-models/generate" "1.1.0"
+    "@kubernetes-models/read-input" "2.0.1"
+    "@kubernetes-models/string-util" "2.0.1"
+    lodash "^4.17.21"
+    make-dir "^3.1.0"
+    tslib "^2.3.0"
+    yaml "^1.10.2"
+    yargs "^17.1.0"
+
+"@kubernetes-models/generate@1.1.0":
+  version "1.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes-models/generate/-/generate-1.1.0.tgz#88b4fc5e0e2236d685424ea0e9303a95f11eb44f"
+  integrity sha512-SFgQGRPXNcW7OGdd8w5ho61L9Ntw1A8x8Lr9nSkMQTzOOpUYHZGY1qsHF4UWhsyC6HSAA1ZKmIqSpcL3LqKXQw==
+  dependencies:
+    "@kubernetes-models/string-util" "2.0.1"
+    ajv "^8.6.2"
+    fs-extra "^10.0.0"
+    indent-string "^4.0.0"
+    lodash "^4.17.21"
+    tslib "^2.3.0"
+
 "@kubernetes-models/knative@^1.0.2":
   version "1.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes-models/knative/-/knative-1.1.0.tgz#6c0abf923f6ce3ea083be7eb045992214e08483b"
@@ -5584,6 +5758,27 @@
     "@kubernetes-models/base" "^3.0.0"
     "@kubernetes-models/validate" "^2.0.1"
     tslib "^2.3.1"
+
+"@kubernetes-models/read-input@2.0.1":
+  version "2.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes-models/read-input/-/read-input-2.0.1.tgz#6f662f66d2251ceebcfe0795509554cf380492b3"
+  integrity sha512-CeZWPuKmUNO7h+7mNvDyEvTQuDNkWot03kjJwdck47P7Tpe7RXRm63I7AW/JHY+Rh1VldPXbs4uQZSrAkAK+BQ==
+  dependencies:
+    base-x "^3.0.8"
+    find-cache-dir "^3.3.1"
+    get-stdin "^8.0.0"
+    hasha "^5.2.2"
+    make-dir "^3.1.0"
+    request "^2.88.2"
+    request-promise-native "^1.0.7"
+    tslib "^2.3.0"
+
+"@kubernetes-models/string-util@2.0.1":
+  version "2.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes-models/string-util/-/string-util-2.0.1.tgz#d3431f0357b0c87b43de64448ef268d4ec16ead3"
+  integrity sha512-qUf7fBCKOWprFUimeYb4lsKDtLxN1mXkcWSbGz7Agj4XXISeRs6BWX/Ng5e3+R2k/eIGO7GiBw6Iyh3Fdu81yA==
+  dependencies:
+    tslib "^2.3.0"
 
 "@kubernetes-models/validate@^2.0.1":
   version "2.0.1"
@@ -5621,6 +5816,32 @@
     tslib "^1.9.3"
     underscore "^1.9.1"
     ws "^7.3.1"
+
+"@kubernetes/client-node@0.18.0":
+  version "0.18.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes/client-node/-/client-node-0.18.0.tgz#b1002f3c19fb7509ce521ea78f500589f8e3e047"
+  integrity sha512-Mp6q0OkZQBp+HslIgvHYpsPJk8z6mch231QWtIZQHvs+PaTE6mkUfusYE8fNw3jMjru5mVO/JDz6PTjB9YT2rQ==
+  dependencies:
+    "@types/js-yaml" "^4.0.1"
+    "@types/node" "^10.12.0"
+    "@types/request" "^2.47.1"
+    "@types/ws" "^6.0.1"
+    byline "^5.0.0"
+    execa "5.0.0"
+    isomorphic-ws "^4.0.1"
+    js-yaml "^4.1.0"
+    jsonpath-plus "^0.19.0"
+    request "^2.88.0"
+    rfc4648 "^1.3.0"
+    shelljs "^0.8.5"
+    stream-buffers "^3.0.2"
+    tar "^6.1.11"
+    tmp-promise "^3.0.2"
+    tslib "^2.4.1"
+    underscore "^1.13.6"
+    ws "^7.3.1"
+  optionalDependencies:
+    openid-client "^5.3.0"
 
 "@kubernetes/client-node@0.18.1", "@kubernetes/client-node@^0.18.1":
   version "0.18.1"
@@ -5880,6 +6101,25 @@
     react-double-scrollbar "0.0.15"
     uuid "^3.4.0"
 
+"@material-table/core@^4.3.1":
+  version "4.3.46"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-table/core/-/core-4.3.46.tgz#cd74de9b13057ff121cbb0f0331d79ec65183e73"
+  integrity sha512-EoBaLt9DDHp/CPkihyTaVA6VUp08vNAeF/UvGdtanxgeubF3l6ZNOlN49giRThS73k01XzkJ/JyQ03Fi3vTLzA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@date-io/date-fns" "^1.3.13"
+    "@hello-pangea/dnd" "^16.0.0"
+    "@material-ui/icons" "^4.11.2"
+    "@material-ui/pickers" "^3.2.10"
+    "@material-ui/styles" "^4.11.4"
+    classnames "^2.2.6"
+    date-fns "^2.16.1"
+    debounce "^1.2.0"
+    deep-eql "^4.1.1"
+    prop-types "^15.7.2"
+    react-double-scrollbar "0.0.15"
+    uuid "^3.4.0"
+
 "@material-ui/core@^4.12.2", "@material-ui/core@^4.12.4", "@material-ui/core@^4.9.13":
   version "4.12.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
@@ -6124,6 +6364,65 @@
     treeverse "^3.0.0"
     walk-up-path "^1.0.0"
 
+"@npmcli/arborist@^6.2.9":
+  version "6.2.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/arborist/-/arborist-6.2.9.tgz#9ac892e5444206bd9bb3cb1ff18232322ac0fe54"
+  integrity sha512-uC16dg+aykdctgIYPUKNa3pNGIDYh1egzk5vOf34d24cw5mwMsVArFiVdcRieKHmOGEv595se3x0fvbwNrBk8g==
+  dependencies:
+    "@isaacs/string-locale-compare" "^1.1.0"
+    "@npmcli/fs" "^3.1.0"
+    "@npmcli/installed-package-contents" "^2.0.2"
+    "@npmcli/map-workspaces" "^3.0.2"
+    "@npmcli/metavuln-calculator" "^5.0.0"
+    "@npmcli/name-from-folder" "^2.0.0"
+    "@npmcli/node-gyp" "^3.0.0"
+    "@npmcli/package-json" "^3.0.0"
+    "@npmcli/query" "^3.0.0"
+    "@npmcli/run-script" "^6.0.0"
+    bin-links "^4.0.1"
+    cacache "^17.0.4"
+    common-ancestor-path "^1.0.1"
+    hosted-git-info "^6.1.1"
+    json-parse-even-better-errors "^3.0.0"
+    json-stringify-nice "^1.1.4"
+    minimatch "^9.0.0"
+    nopt "^7.0.0"
+    npm-install-checks "^6.0.0"
+    npm-package-arg "^10.1.0"
+    npm-pick-manifest "^8.0.1"
+    npm-registry-fetch "^14.0.3"
+    npmlog "^7.0.1"
+    pacote "^15.0.8"
+    parse-conflict-json "^3.0.0"
+    proc-log "^3.0.0"
+    promise-all-reject-late "^1.0.0"
+    promise-call-limit "^1.0.2"
+    read-package-json-fast "^3.0.2"
+    semver "^7.3.7"
+    ssri "^10.0.1"
+    treeverse "^3.0.0"
+    walk-up-path "^3.0.1"
+
+"@npmcli/config@^6.1.7":
+  version "6.1.7"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/config/-/config-6.1.7.tgz#88bcaf76e0f1f36ebf422b18513cf3bec6af781f"
+  integrity sha512-DyACY6Mv7TH1kz2iBgwS3xE7jKsY+ukUfDyY5PLl9LZTktmBBSybDNzX3bUii+SD4j77Bx6EvgS/jsaUtV7Fng==
+  dependencies:
+    "@npmcli/map-workspaces" "^3.0.2"
+    ini "^4.1.0"
+    nopt "^7.0.0"
+    proc-log "^3.0.0"
+    read-package-json-fast "^3.0.2"
+    semver "^7.3.5"
+    walk-up-path "^3.0.1"
+
+"@npmcli/disparity-colors@^3.0.0":
+  version "3.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/disparity-colors/-/disparity-colors-3.0.0.tgz#60ea8c6eb5ba9de2d1950e15b06205b2c3ab7833"
+  integrity sha512-5R/z157/f20Fi0Ou4ZttL51V0xz0EdPEOauFtPCEYOLInDBRCj1/TxOJ5aGTrtShxEshN2d+hXb9ZKSi5RLBcg==
+  dependencies:
+    ansi-styles "^4.3.0"
+
 "@npmcli/fs@^2.1.0":
   version "2.1.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/fs/-/fs-2.1.2.tgz#a9e2541a4a2fec2e69c29b35e6060973da79b865"
@@ -6139,7 +6438,7 @@
   dependencies:
     semver "^7.3.5"
 
-"@npmcli/git@^4.0.0":
+"@npmcli/git@^4.0.0", "@npmcli/git@^4.0.1":
   version "4.0.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/git/-/git-4.0.4.tgz#cdf74f21b1d440c0756fb28159d935129d9daa33"
   integrity sha512-5yZghx+u5M47LghaybLCkdSyFzV/w4OuH12d96HO389Ik9CDsLaDZJVynSGGVJOLn6gy/k7Dz5XYcplM3uxXRg==
@@ -6153,7 +6452,7 @@
     semver "^7.3.5"
     which "^3.0.0"
 
-"@npmcli/installed-package-contents@^2.0.0", "@npmcli/installed-package-contents@^2.0.1":
+"@npmcli/installed-package-contents@^2.0.0", "@npmcli/installed-package-contents@^2.0.1", "@npmcli/installed-package-contents@^2.0.2":
   version "2.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/installed-package-contents/-/installed-package-contents-2.0.2.tgz#bfd817eccd9e8df200919e73f57f9e3d9e4f9e33"
   integrity sha512-xACzLPhnfD51GKvTOOuNX2/V4G4mz9/1I2MfDoye9kBM3RYe5g2YbscsaGoTlaWqkxeiapBWyseULVKpSVHtKQ==
@@ -6169,6 +6468,16 @@
     "@npmcli/name-from-folder" "^2.0.0"
     glob "^9.3.1"
     minimatch "^7.4.2"
+    read-package-json-fast "^3.0.0"
+
+"@npmcli/map-workspaces@^3.0.4":
+  version "3.0.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/map-workspaces/-/map-workspaces-3.0.4.tgz#15ad7d854292e484f7ba04bc30187a8320dba799"
+  integrity sha512-Z0TbvXkRbacjFFLpVpV0e2mheCh+WzQpcqL+4xp49uNJOxOnIAPZyXtUxZ5Qn3QBTGKA11Exjd9a5411rBrhDg==
+  dependencies:
+    "@npmcli/name-from-folder" "^2.0.0"
+    glob "^10.2.2"
+    minimatch "^9.0.0"
     read-package-json-fast "^3.0.0"
 
 "@npmcli/metavuln-calculator@^5.0.0":
@@ -6211,6 +6520,16 @@
   dependencies:
     json-parse-even-better-errors "^3.0.0"
 
+"@npmcli/package-json@^3.1.0":
+  version "3.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/package-json/-/package-json-3.1.0.tgz#d9eb34083be4275520f3844d17fc74926d47cae1"
+  integrity sha512-qNPy6Yf9ruFST99xcrl5EWAvrb7qFrwgVbwdzcTJlIgxbArKOq5e/bgZ6rTL1X9hDgAdPbvL8RWx/OTLSB0ToA==
+  dependencies:
+    glob "^10.2.2"
+    json-parse-even-better-errors "^3.0.0"
+    normalize-package-data "^5.0.0"
+    npm-normalize-package-bin "^3.0.1"
+
 "@npmcli/promise-spawn@^3.0.0":
   version "3.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/promise-spawn/-/promise-spawn-3.0.0.tgz#53283b5f18f855c6925f23c24e67c911501ef573"
@@ -6247,6 +6566,17 @@
   version "6.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/run-script/-/run-script-6.0.0.tgz#f89e322c729e26ae29db6cc8cc76559074aac208"
   integrity sha512-ql+AbRur1TeOdl1FY+RAwGW9fcr4ZwiVKabdvm93mujGREVuVLbdkXRJDrkTXSdCjaxYydr1wlA2v67jxWG5BQ==
+  dependencies:
+    "@npmcli/node-gyp" "^3.0.0"
+    "@npmcli/promise-spawn" "^6.0.0"
+    node-gyp "^9.0.0"
+    read-package-json-fast "^3.0.0"
+    which "^3.0.0"
+
+"@npmcli/run-script@^6.0.2":
+  version "6.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@npmcli/run-script/-/run-script-6.0.2.tgz#a25452d45ee7f7fb8c16dfaf9624423c0c0eb885"
+  integrity sha512-NCcr1uQo1k5U+SYlnIrbAh3cxy+OQT1VtqiAbxdymSlptbzBb62AjH2xXgjNCoP073hoa1CfCAcwoZ8k96C4nA==
   dependencies:
     "@npmcli/node-gyp" "^3.0.0"
     "@npmcli/promise-spawn" "^6.0.0"
@@ -6677,6 +7007,11 @@
   dependencies:
     node-addon-api "^3.2.1"
     node-gyp-build "^4.3.0"
+
+"@pkgjs/parseargs@^0.11.0":
+  version "0.11.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
+  integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.7":
   version "0.5.10"
@@ -7524,6 +7859,38 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tap/kubernetes-orm@~1.0.5-beta.0":
+  version "1.0.5-beta.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tap/kubernetes-orm/-/@tap/kubernetes-orm-1.0.5-beta.0.tgz#69c364a4a063807ce278b22ac70da07085110470"
+  integrity sha512-HZ/p2hGlwjs5mW6XYmhLFlDiaXBzjCUYLGis1aihHd2uFD91mmSdjeK7nt/a77XNxrze+FHFW0vqfUEYZeogEg==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.5"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@backstage/plugin-catalog-react" "^1.2.4"
+    "@backstage/plugin-kubernetes" "^0.7.7"
+    "@backstage/plugin-kubernetes-common" "^0.5.1"
+    "@kubernetes-models/apimachinery" "^0.2.0"
+    "@kubernetes-models/base" "^3.0.0"
+    "@kubernetes-models/knative" "^1.0.2"
+    http-status-codes "^2.1.4"
+    kubernetes-models "^3.0.0"
+    lodash "^4.17.21"
+    moment "^2.29.4"
+    react "^17.0.2"
+    react-use "^17.3.2"
+    uuid "^8.3.2"
+
+"@tap/shared-components@1.0.6-beta.1":
+  version "1.0.6-beta.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tap/shared-components/-/@tap/shared-components-1.0.6-beta.1.tgz#1b9fc299d4f8d33787482d21e2daa103bbe14f5c"
+  integrity sha512-kYi89qATlEgeH8IkXDAj/pC4ESiPr24ccOyIJMgyA7Xr/pjAVhpZZh9XP0eQEdYlb8BH20pPR9RXd5sBRLDOTw==
+  dependencies:
+    clsx "^1.1.1"
+    react "^17.0.2"
+    react-copy-to-clipboard "^5.1.0"
+    react-dom "^17.0.2"
+    ring-buffer-ts "^1.0.3"
+
 "@testing-library/dom@^8.0.0":
   version "8.20.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@testing-library/dom/-/dom-8.20.0.tgz#914aa862cef0f5e89b98cc48e3445c4c921010f6"
@@ -7566,6 +7933,15 @@
   version "14.4.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@testing-library/user-event/-/user-event-14.4.3.tgz#af975e367743fa91989cd666666aec31a8f50591"
   integrity sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==
+
+"@tint/metadata-store-interface@^1.2.0":
+  version "1.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tint/metadata-store-interface/-/@tint/metadata-store-interface-1.2.0.tgz#68f84eb12e390cd17df71cce1f520963dd08925a"
+  integrity sha512-Xt70Oj19vHNjWqNdrY9jaqhE0bbo78bAgrltnMxD9aT7nTXEYGzCuIk881Z638xLYSjcZ/LnB5jjBteCMdMnyw==
+  dependencies:
+    "@backstage/core-plugin-api" "^1.0.2"
+    lodash "^4.17.21"
+    typescript "~4.6.4"
 
 "@tokenizer/token@^0.3.0":
   version "0.3.0"
@@ -7648,6 +8024,26 @@
     "@backstage/core-app-api" "^1.7.0"
     "@backstage/core-plugin-api" "^1.5.1"
     "@backstage/plugin-auth-node" "^0.2.13"
+    "@backstage/plugin-catalog-backend" "^1.9.0"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@backstage/theme" "^0.2.19"
+    "@types/express" "*"
+    "@types/uuid" "^9.0.1"
+    express "^4.18.2"
+    uuid "^9.0.0"
+    winston "^3.8.2"
+
+"@tpb/core@^0.0.2-main.106":
+  version "0.0.2-main.108"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.108.tgz#cc320fed6cac4e7b8aff58f618be0b91de99bfbc"
+  integrity sha512-aS+6UcXdKuaPpD8rAY4ptb6K2DbI6KT2zNi/n61/ZtIvvpvy6mVpdwAGEYey7pDpWxCmtxfRrtn+6nEf7YEmTQ==
+  dependencies:
+    "@backstage/backend-common" "^0.18.4"
+    "@backstage/backend-tasks" "^0.5.1"
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-app-api" "^1.7.0"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/plugin-auth-node" "^0.2.10"
     "@backstage/plugin-catalog-backend" "^1.9.0"
     "@backstage/plugin-permission-common" "^0.7.5"
     "@backstage/theme" "^0.2.19"
@@ -7921,6 +8317,56 @@
     react-use "^17.4.0"
     uuid "^9.0.0"
 
+"@tpb/plugin-supply-chain@1.0.6-beta.6":
+  version "1.0.6-beta.6"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-beta.6.tgz#4fb8e2fd1ba6c08df85d86ae7efddc48e9bb1de4"
+  integrity sha512-dIv2ABEq0VV5IsQ5FRQnNZ9Zar6a1OR6G3FYS53S0gEZPudDcEBlZgszo3Zsck0PpNxHKi5a+fKXF+nqJN0TMQ==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.5"
+    "@backstage/core-app-api" "^1.4.0"
+    "@backstage/core-components" "^0.13.0"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@backstage/plugin-catalog-react" "^1.2.4"
+    "@backstage/plugin-kubernetes" "^0.7.7"
+    "@backstage/plugin-kubernetes-common" "^0.5.1"
+    "@backstage/theme" "^0.2.16"
+    "@kubernetes-models/apimachinery" "^0.2.0"
+    "@kubernetes-models/base" "^3.0.0"
+    "@kubernetes-models/crd-generate" "^2.0.2"
+    "@kubernetes-models/validate" "^2.0.1"
+    "@material-table/core" "^4.3.1"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "^4.0.0-alpha.60"
+    "@tap/kubernetes-orm" "~1.0.5-beta.0"
+    "@tap/shared-components" "1.0.6-beta.1"
+    "@tint/metadata-store-interface" "^1.2.0"
+    "@tpb/core" "^0.0.2-main.106"
+    "@types/jest-when" "^3.5.2"
+    "@types/react-copy-to-clipboard" "^5.0.4"
+    "@types/react-cytoscapejs" "^1.2.2"
+    cytoscape "^3.20.0"
+    cytoscape-navigator "^2.0.1"
+    cytoscape-node-html-label "^1.2.2"
+    fs-extra "^10.0.1"
+    glob "^7.2.0"
+    http-status-codes "^2.1.4"
+    js-yaml "^4.1.0"
+    kubernetes-models "^3.0.0"
+    lodash "^4.17.21"
+    moment "^2.29.1"
+    npm "^9.2.0"
+    react-copy-to-clipboard "^5.0.4"
+    react-cytoscapejs "^1.2.1"
+    react-draggable "^2.2.3"
+    react-hot-keys "^2.7.2"
+    react-resizable "^3.0.4"
+    react-router "6.0.0-beta.0"
+    react-router-dom "6.0.0-beta.0"
+    react-use "^17.2.4"
+    uuid "^8.3.2"
+    xml-formatter "^3.3.2"
+
 "@tpb/rrv@^0.1.2-alpha.4":
   version "0.1.2-alpha.6"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.6.tgz#ccf8b86b1d8dee3058df7e452884edd12e9dc1e2"
@@ -8154,6 +8600,11 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/crypto-js/-/crypto-js-4.1.1.tgz#602859584cecc91894eb23a4892f38cfa927890d"
   integrity sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==
 
+"@types/cytoscape@*":
+  version "3.19.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/cytoscape/-/cytoscape-3.19.9.tgz#d697971d4a33eacc6ae7a7a158035b5c60c064a2"
+  integrity sha512-oqCx0ZGiBO0UESbjgq052vjDAy2X53lZpMrWqiweMpvVwKw/2IiYDdzPFK6+f4tMfdv9YKEM9raO5bAZc3UYBg==
+
 "@types/d3-array@^3.0.3":
   version "3.0.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/d3-array/-/d3-array-3.0.4.tgz#44eebe40be57476cad6a0cd6a85b0f57d54185a2"
@@ -8375,6 +8826,13 @@
   integrity sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==
   dependencies:
     "@types/istanbul-lib-report" "*"
+
+"@types/jest-when@^3.5.2":
+  version "3.5.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/jest-when/-/jest-when-3.5.2.tgz#7e6225e827267d26f115dc97da6403a3b37556c5"
+  integrity sha512-1WP+wJDW7h4TYAVLoIebxRIVv8GPk66Qsq2nU7PkwKZ6usurnDQZgk0DfBNKAJ9gVzapCXSV53Vn/3nBHBNzAw==
+  dependencies:
+    "@types/jest" "*"
 
 "@types/jest@*", "@types/jest@^29.0.0", "@types/jest@^29.5.1":
   version "29.5.1"
@@ -8636,6 +9094,21 @@
   version "1.2.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
+
+"@types/react-copy-to-clipboard@^5.0.4":
+  version "5.0.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.4.tgz#558f2c38a97f53693e537815f6024f1e41e36a7e"
+  integrity sha512-otTJsJpofYAeaIeOwV5xBUGpo6exXG2HX7X4nseToCB2VgPEBxGBHCm/FecZ676doNR7HCSTVtmohxfG2b3/yQ==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-cytoscapejs@^1.2.2":
+  version "1.2.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react-cytoscapejs/-/react-cytoscapejs-1.2.2.tgz#e2d27dc11b2bac61fd3e64efe2004ab65958344f"
+  integrity sha512-Z+CeQLw4XyQOrS/SdbcUCdYfWqYmaPS/WT+gNy33KYR09BtVzekx1jeNU5kNDvXCv8/8jGlhSrSk0uO7ocGuFg==
+  dependencies:
+    "@types/cytoscape" "*"
+    "@types/react" "*"
 
 "@types/react-dom@17.0.20", "@types/react-dom@<18.0.0", "@types/react-dom@^17.0.20":
   version "17.0.20"
@@ -9682,7 +10155,7 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-ansi-styles@^4.0.0, ansi-styles@^4.1.0:
+ansi-styles@^4.0.0, ansi-styles@^4.1.0, ansi-styles@^4.3.0:
   version "4.3.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ansi-styles/-/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
   integrity sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==
@@ -9693,6 +10166,11 @@ ansi-styles@^5.0.0:
   version "5.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
+
+ansi-styles@^6.1.0:
+  version "6.2.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ansi-styles/-/ansi-styles-6.2.1.tgz#0e62320cf99c21afff3b3012192546aacbfb05c5"
+  integrity sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==
 
 any-promise@^1.0.0:
   version "1.3.0"
@@ -9732,6 +10210,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-pendo-analytics" "^1.0.5-beta.5"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
+    "@tpb/plugin-supply-chain" "1.0.6-beta.6"
     "@tpb/runtime" "^0.0.1-alpha.3"
     history "^5.0.0"
     react "^17.0.2"
@@ -9783,6 +10262,11 @@ archiver@^5.0.2, archiver@^5.3.1:
     readdir-glob "^1.0.0"
     tar-stream "^2.2.0"
     zip-stream "^4.1.0"
+
+archy@~1.0.0:
+  version "1.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/archy/-/archy-1.0.0.tgz#f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40"
+  integrity sha512-Xg+9RwCg/0p32teKdGMPTPnVXKD0w3DfHnFTficozsAgsvq2XenPJq/MYpzzQ/v8zrOyJn6Ds39VA4JIDwFfqw==
 
 are-we-there-yet@^3.0.0:
   version "3.0.1"
@@ -10278,6 +10762,13 @@ balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
+
+base-x@^3.0.8:
+  version "3.0.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/base-x/-/base-x-3.0.9.tgz#6349aaabb58526332de9f60995e548a53fe21320"
+  integrity sha512-H7JU6iBHTal1gp56aKoaa//YUxEaAOUiydvrV/pILqIHXTtqxSkATOnDA2u+jZ/61sD+L/412+7kzXRtWukhpQ==
+  dependencies:
+    safe-buffer "^5.0.1"
 
 base64-js@^1.0.2, base64-js@^1.3.0, base64-js@^1.3.1, base64-js@^1.5.1:
   version "1.5.1"
@@ -10797,6 +11288,24 @@ cacache@^17.0.0, cacache@^17.0.4:
     tar "^6.1.11"
     unique-filename "^3.0.0"
 
+cacache@^17.1.2:
+  version "17.1.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cacache/-/cacache-17.1.3.tgz#c6ac23bec56516a7c0c52020fd48b4909d7c7044"
+  integrity sha512-jAdjGxmPxZh0IipMdR7fK/4sDSrHMLUV0+GvVUsjwyGNKHsh79kW/otg+GkbXwl6Uzvy9wsvHOX4nUoWldeZMg==
+  dependencies:
+    "@npmcli/fs" "^3.1.0"
+    fs-minipass "^3.0.0"
+    glob "^10.2.2"
+    lru-cache "^7.7.1"
+    minipass "^5.0.0"
+    minipass-collect "^1.0.2"
+    minipass-flush "^1.0.5"
+    minipass-pipeline "^1.2.4"
+    p-map "^4.0.0"
+    ssri "^10.0.0"
+    tar "^6.1.11"
+    unique-filename "^3.0.0"
+
 cacheable-lookup@^5.0.3:
   version "5.0.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cacheable-lookup/-/cacheable-lookup-5.0.4.tgz#5a6b865b2c44357be3d5ebc2a467b032719a7005"
@@ -11025,10 +11534,17 @@ ci-info@^2.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
 
-ci-info@^3.1.0, ci-info@^3.2.0, ci-info@^3.6.1:
+ci-info@^3.1.0, ci-info@^3.2.0, ci-info@^3.6.1, ci-info@^3.7.1, ci-info@^3.8.0:
   version "3.8.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ci-info/-/ci-info-3.8.0.tgz#81408265a5380c929f0bc665d62256628ce9ef91"
   integrity sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==
+
+cidr-regex@^3.1.1:
+  version "3.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cidr-regex/-/cidr-regex-3.1.1.tgz#ba1972c57c66f61875f18fd7dd487469770b571d"
+  integrity sha512-RBqYd32aDwbCMFJRL6wHOlDNYJsPNTt8vC82ErHF5vKt8QQzxm1FrkW8s/R5pVrXMf17sba09Uoy91PKiddAsw==
+  dependencies:
+    ip-regex "^4.1.0"
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
@@ -11065,6 +11581,14 @@ clean-stack@^2.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
 
+cli-columns@^4.0.0:
+  version "4.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cli-columns/-/cli-columns-4.0.0.tgz#9fe4d65975238d55218c41bd2ed296a7fa555646"
+  integrity sha512-XW2Vg+w+L9on9wtwKpyzluIPCWXjaBahI7mTcYjx+BVIYD9c3yqcv/yKC7CmdCZat4rq2yiE1UMSJC5ivKfMtQ==
+  dependencies:
+    string-width "^4.2.3"
+    strip-ansi "^6.0.1"
+
 cli-cursor@3.1.0, cli-cursor@^3.1.0:
   version "3.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cli-cursor/-/cli-cursor-3.1.0.tgz#264305a7ae490d1d03bf0c9ba7c925d1753af307"
@@ -11082,7 +11606,7 @@ cli-spinners@^2.5.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cli-spinners/-/cli-spinners-2.8.0.tgz#e97a3e2bd00e6d85aa0c13d7f9e3ce236f7787fc"
   integrity sha512-/eG5sJcvEIwxcdYM86k5tPwn0MUzkX5YY3eImTGpJOZgVe4SdTMY14vQpcxgBzJ0wXwAYrS8E+c3uHeK4JNyzQ==
 
-cli-table3@~0.6.1:
+cli-table3@^0.6.3, cli-table3@~0.6.1:
   version "0.6.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cli-table3/-/cli-table3-0.6.3.tgz#61ab765aac156b52f222954ffc607a6f01dbeeb2"
   integrity sha512-w5Jac5SykAeZJKntOxJCrm63Eg5/4dhMWIcuTbo9rpE+brgaSZo0RuNJZeOyMgsUdhDeojvgyQLmjI+K50ZGyg==
@@ -11307,7 +11831,7 @@ colorspace@1.1.x:
     color "^3.1.3"
     text-hex "1.0.x"
 
-columnify@1.6.0:
+columnify@1.6.0, columnify@^1.6.0:
   version "1.6.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/columnify/-/columnify-1.6.0.tgz#6989531713c9008bb29735e61e37acf5bd553cf3"
   integrity sha512-lomjuFZKfM6MSAnV9aCZC9sc0qGbmZdfygNv+nCpqVkSKdCxCklLtd16O0EILGkImHw9ZpHkAnHaB+8Zxq5W6Q==
@@ -11919,7 +12443,7 @@ crypto-random-string@^2.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-css-box-model@^1.2.0:
+css-box-model@^1.2.0, css-box-model@^1.2.1:
   version "1.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
   integrity sha512-a7Vr4Q/kd/aw96bnJG332W9V9LkJO69JRcaCYDUqjp6/z0w6VcZjgAcTbgFxEPfBgdnAwlh3iwu+hLopa+flJw==
@@ -12164,6 +12688,24 @@ cypress@^12.12.0:
     tmp "~0.2.1"
     untildify "^4.0.0"
     yauzl "^2.10.0"
+
+cytoscape-navigator@^2.0.1:
+  version "2.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cytoscape-navigator/-/cytoscape-navigator-2.0.2.tgz#4f839797ff05d921be3f22b26c5f237c730f0996"
+  integrity sha512-TZFBLFWEMW858UOt4rzusOjtDj7YT5vNx2uCwpUuicUYbaWCHHcUROBZWO+hiuSPWpVhvGLFlOq3NBcAVYOAgw==
+
+cytoscape-node-html-label@^1.2.2:
+  version "1.2.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cytoscape-node-html-label/-/cytoscape-node-html-label-1.2.2.tgz#cad4942a52be2075f55521b3ea376daadc67d65f"
+  integrity sha512-oUVwrlsIlaJJ8QrQFSMdv3uXVXPg6tMH/Tfofr8JuZIovqI4fPqBi6sQgCMcVpS6k9Td0TTjowBsNRw32CESWg==
+
+cytoscape@^3.2.19, cytoscape@^3.20.0:
+  version "3.25.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/cytoscape/-/cytoscape-3.25.0.tgz#5289e9d18be0293b073bfe93f83bb95b908b2dc1"
+  integrity sha512-7MW3Iz57mCUo6JQCho6CmPBCbTlJr7LzyEtIkutG255HLVd4XuBg2I9BkTZLI/e4HoaOB/BiAzXuQybQ95+r9Q==
+  dependencies:
+    heap "^0.2.6"
+    lodash "^4.17.21"
 
 "d3-array@2 - 3", "d3-array@2.10.0 - 3", d3-array@^3.1.6:
   version "3.2.3"
@@ -12431,6 +12973,13 @@ dedent@0.7.0, dedent@^0.7.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
   integrity sha512-Q6fKUPqnAHAyhiUgFU7BUzLiv0kd8saH9al7tnu5Q/okj6dnupxyTgFIBjVzJATdfIAm9NAsvXNzjaKa+bxVyA==
 
+deep-eql@^4.1.1:
+  version "4.1.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/deep-eql/-/deep-eql-4.1.3.tgz#7c7775513092f7df98d8df9996dd085eb668cc6d"
+  integrity sha512-WaEtAOpRA1MQ0eohqZjpGD8zdI0Ovsm8mmFhaDN8dvDZzyoUMcYDnf5Y6iu7HTXxf8JDS23qWa4a+hKCDyOPzw==
+  dependencies:
+    type-detect "^4.0.0"
+
 deep-equal@^2.0.5:
   version "2.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/deep-equal/-/deep-equal-2.2.0.tgz#5caeace9c781028b9ff459f33b779346637c43e6"
@@ -12629,7 +13178,7 @@ diff@^4.0.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
 
-diff@^5.0.0:
+diff@^5.0.0, diff@^5.1.0:
   version "5.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/diff/-/diff-5.1.0.tgz#bc52d298c5ea8df9194800224445ed43ffc87e40"
   integrity sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==
@@ -12848,6 +13397,11 @@ duplexify@^4.0.0:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
     stream-shift "^1.0.0"
+
+eastasianwidth@^0.2.0:
+  version "0.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
+  integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 ebnf@^1.9.0:
   version "1.9.0"
@@ -13930,7 +14484,7 @@ fast-xml-parser@4.1.2:
   dependencies:
     strnum "^1.0.5"
 
-fastest-levenshtein@^1.0.12:
+fastest-levenshtein@^1.0.12, fastest-levenshtein@^1.0.16:
   version "1.0.16"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fastest-levenshtein/-/fastest-levenshtein-1.0.16.tgz#210e61b6ff181de91ea9b3d1b84fdedd47e034e5"
   integrity sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==
@@ -14063,6 +14617,15 @@ finalhandler@1.2.0:
     statuses "2.0.1"
     unpipe "~1.0.0"
 
+find-cache-dir@^3.3.1:
+  version "3.3.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/find-cache-dir/-/find-cache-dir-3.3.2.tgz#b30c5b6eff0730731aea9bbd9dbecbd80256d64b"
+  integrity sha512-wXZV5emFEjrridIgED11OoUKLxiYjAcqot/NJdAkOhlJ+vGzwhOAfcG5OX1jP+S0PcjEn8bdMJv+g2jwQ3Onig==
+  dependencies:
+    commondir "^1.0.1"
+    make-dir "^3.0.2"
+    pkg-dir "^4.1.0"
+
 find-up@5.0.0, find-up@^5.0.0:
   version "5.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/find-up/-/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
@@ -14152,6 +14715,14 @@ foreach@^2.0.4:
   version "2.0.6"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/foreach/-/foreach-2.0.6.tgz#87bcc8a1a0e74000ff2bf9802110708cfb02eb6e"
   integrity sha512-k6GAGDyqLe9JaebCsFCoudPPWfihKu8pylYXRlqP1J7ms39iPoTtk2fviNglIeQEwdh0bQeKJ01ZPyuyQvKzwg==
+
+foreground-child@^3.1.0:
+  version "3.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/foreground-child/-/foreground-child-3.1.1.tgz#1d173e776d75d2772fed08efe4a0de1ea1b12d0d"
+  integrity sha512-TMKDUnIte6bfb5nWv7V/caI169OHgvwjb7V4WkeUvbQQdjr5rWKqHFiKWb/fcOwB+CzBT+qbWjvj+DVwRskpIg==
+  dependencies:
+    cross-spawn "^7.0.0"
+    signal-exit "^4.0.1"
 
 forever-agent@~0.6.1:
   version "0.6.1"
@@ -14291,7 +14862,7 @@ fs-constants@^1.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fs-constants/-/fs-constants-1.0.0.tgz#6be0de9be998ce16af8afc24497b9ee9b7ccd9ad"
   integrity sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
 
-fs-extra@10.1.0, fs-extra@^10.0.0, fs-extra@^10.1.0:
+fs-extra@10.1.0, fs-extra@^10.0.0, fs-extra@^10.0.1, fs-extra@^10.1.0:
   version "10.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
   integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
@@ -14350,6 +14921,13 @@ fs-minipass@^3.0.0:
   integrity sha512-MhaJDcFRTuLidHrIttu0RDGyyXs/IYHVmlcxfLAEFIWjc1vdLAkdwT7Ace2u7DbitWC0toKMl5eJZRYNVreIMw==
   dependencies:
     minipass "^4.0.0"
+
+fs-minipass@^3.0.2:
+  version "3.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fs-minipass/-/fs-minipass-3.0.2.tgz#5b383858efa8c1eb8c33b39e994f7e8555b8b3a3"
+  integrity sha512-2GAfyfoaCDRrM6jaOS3UsBts8yJ55VioXdWcOL7dK9zdAuKT71+WBA4ifnNYqVjYv+4SsPxjK0JT4yIIn4cA/g==
+  dependencies:
+    minipass "^5.0.0"
 
 fs-monkey@^1.0.3:
   version "1.0.3"
@@ -14519,6 +15097,11 @@ get-port@5.1.1, get-port@^5.1.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/get-port/-/get-port-5.1.1.tgz#0469ed07563479de6efb986baf053dcd7d4e3193"
   integrity sha512-g/Q1aTSDOxFpchXC4i8ZWvxA1lnPqx/JHqcpIw0/LX9T8x/GBbi6YnlN5nhaKIFkT8oFsscUKgDJYxfwfS6QsQ==
 
+get-stdin@^8.0.0:
+  version "8.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/get-stdin/-/get-stdin-8.0.0.tgz#cbad6a73feb75f6eeb22ba9e01f89aa28aa97a53"
+  integrity sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==
+
 get-stream@6.0.0:
   version "6.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/get-stream/-/get-stream-6.0.0.tgz#3e0012cb6827319da2706e601a1583e8629a6718"
@@ -14664,6 +15247,17 @@ glob@7.1.6:
     minimatch "^3.0.4"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
+
+glob@^10.2.2, glob@^10.2.4:
+  version "10.2.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/glob/-/glob-10.2.5.tgz#73c1850ac8f077810d8370ba414b382ad1a86083"
+  integrity sha512-Gj+dFYPZ5hc5dazjXzB0iHg2jKWJZYMjITXYPBRQ/xc2Buw7H0BINknRTwURJ6IC6MEFpYbLvtgVb3qD+DwyuA==
+  dependencies:
+    foreground-child "^3.1.0"
+    jackspeak "^2.0.3"
+    minimatch "^9.0.0"
+    minipass "^5.0.0 || ^6.0.2"
+    path-scurry "^1.7.0"
 
 glob@^7.0.0, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
   version "7.2.3"
@@ -14859,7 +15453,7 @@ graceful-fs@4.2.10:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.5, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0, graceful-fs@^4.2.2, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
+graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.5, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0, graceful-fs@^4.2.11, graceful-fs@^4.2.2, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.11"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
@@ -15029,6 +15623,14 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
+hasha@^5.2.2:
+  version "5.2.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/hasha/-/hasha-5.2.2.tgz#a48477989b3b327aea3c04f53096d816d97522a1"
+  integrity sha512-Hrp5vIK/xr5SkeN2onO32H0MgNZ0f17HRNH39WfL0SYUNOTZ5Lz1TJ8Pajo/87dYGEFlLMm7mIc/k/s6Bvz9HQ==
+  dependencies:
+    is-stream "^2.0.0"
+    type-fest "^0.8.0"
+
 hast-util-parse-selector@^2.0.0:
   version "2.2.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/hast-util-parse-selector/-/hast-util-parse-selector-2.2.5.tgz#d57c23f4da16ae3c63b3b6ca4616683313499c3a"
@@ -15059,6 +15661,11 @@ headers-polyfill@^3.1.0, headers-polyfill@^3.1.2:
   version "3.1.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/headers-polyfill/-/headers-polyfill-3.1.2.tgz#9a4dcb545c5b95d9569592ef7ec0708aab763fbe"
   integrity sha512-tWCK4biJ6hcLqTviLXVR9DTRfYGQMXEIUj3gwJ2rZ5wO/at3XtkI4g8mCvFdUF9l1KMBNCfmNAdnahm1cgavQA==
+
+heap@^0.2.6:
+  version "0.2.7"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/heap/-/heap-0.2.7.tgz#1e6adf711d3f27ce35a81fe3b7bd576c2260a8fc"
+  integrity sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==
 
 helmet@^6.0.0:
   version "6.1.5"
@@ -15135,6 +15742,11 @@ hosted-git-info@^6.0.0, hosted-git-info@^6.1.1:
   integrity sha512-r0EI+HBMcXadMrugk0GCQ+6BQV39PiWAZVfq7oIckeGiN7sjRGyQxPdft3nQekFTCQbYxLBH+/axZMeH8UX6+w==
   dependencies:
     lru-cache "^7.5.1"
+
+hotkeys-js@^3.8.1:
+  version "3.10.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/hotkeys-js/-/hotkeys-js-3.10.2.tgz#cf52661904f5a13a973565cb97085fea2f5ae257"
+  integrity sha512-Z6vLmJTYzkbZZXlBkhrYB962Q/rZGc/WHQiyEGu9ZZVF7bAeFDjjDa31grWREuw9Ygb4zmlov2bTkPYqj0aFnQ==
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -15522,6 +16134,11 @@ ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
+ini@^4.1.0:
+  version "4.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ini/-/ini-4.1.1.tgz#d95b3d843b1e906e56d6747d5447904ff50ce7a1"
+  integrity sha512-QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==
+
 init-package-json@3.0.2, init-package-json@^3.0.2:
   version "3.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/init-package-json/-/init-package-json-3.0.2.tgz#f5bc9bac93f2bdc005778bc2271be642fecfcd69"
@@ -15534,6 +16151,19 @@ init-package-json@3.0.2, init-package-json@^3.0.2:
     semver "^7.3.5"
     validate-npm-package-license "^3.0.4"
     validate-npm-package-name "^4.0.0"
+
+init-package-json@^5.0.0:
+  version "5.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/init-package-json/-/init-package-json-5.0.0.tgz#030cf0ea9c84cfc1b0dc2e898b45d171393e4b40"
+  integrity sha512-kBhlSheBfYmq3e0L1ii+VKe3zBTLL5lDCDWR+f9dLmEGSB3MqLlMlsolubSsyI88Bg6EA+BIMlomAnQ1SwgQBw==
+  dependencies:
+    npm-package-arg "^10.0.0"
+    promzard "^1.0.0"
+    read "^2.0.0"
+    read-package-json "^6.0.0"
+    semver "^7.3.5"
+    validate-npm-package-license "^3.0.4"
+    validate-npm-package-name "^5.0.0"
 
 inline-style-parser@0.1.1:
   version "0.1.1"
@@ -15640,6 +16270,11 @@ ioredis@^5.3.1:
     redis-errors "^1.2.0"
     redis-parser "^3.0.0"
     standard-as-callback "^2.1.0"
+
+ip-regex@^4.1.0:
+  version "4.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ip-regex/-/ip-regex-4.3.0.tgz#687275ab0f57fa76978ff8f4dddc8a23d5990db5"
+  integrity sha512-B9ZWJxHHOHUhUjCPrMpLD4xEq35bUTClHM1S6CBU5ixQnkZmwipwgc96vAd7AAGM9TGHvJR+Uss+/Ak6UphK+Q==
 
 ip@^2.0.0:
   version "2.0.0"
@@ -15748,6 +16383,13 @@ is-ci@^3.0.0, is-ci@^3.0.1:
   integrity sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==
   dependencies:
     ci-info "^3.2.0"
+
+is-cidr@^4.0.2:
+  version "4.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/is-cidr/-/is-cidr-4.0.2.tgz#94c7585e4c6c77ceabf920f8cde51b8c0fda8814"
+  integrity sha512-z4a1ENUajDbEl/Q6/pVBpTR1nBjjEE1X7qb7bmWYanNnPoKAvUCPFKeXV6Fe4mgTkWKBqiHIcwsI3SndiO5FeA==
+  dependencies:
+    cidr-regex "^3.1.1"
 
 is-core-module@^2.1.0:
   version "2.12.1"
@@ -16187,6 +16829,15 @@ istanbul-reports@^3.1.3:
   dependencies:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
+
+jackspeak@^2.0.3:
+  version "2.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/jackspeak/-/jackspeak-2.2.0.tgz#497cbaedc902ec3f31d5d61be804d2364ff9ddad"
+  integrity sha512-r5XBrqIJfwRIjRt/Xr5fv9Wh09qyhHfKnYddDlpM+ibRR20qrYActpCAgU6U+d53EOEjzkvxPMVHSlgR7leXrQ==
+  dependencies:
+    "@isaacs/cliui" "^8.0.2"
+  optionalDependencies:
+    "@pkgjs/parseargs" "^0.11.0"
 
 jake@^10.8.5:
   version "10.8.5"
@@ -17379,6 +18030,80 @@ libnpmaccess@^6.0.3:
     npm-package-arg "^9.0.1"
     npm-registry-fetch "^13.0.0"
 
+libnpmaccess@^7.0.2:
+  version "7.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmaccess/-/libnpmaccess-7.0.2.tgz#7f056c8c933dd9c8ba771fa6493556b53c5aac52"
+  integrity sha512-vHBVMw1JFMTgEk15zRsJuSAg7QtGGHpUSEfnbcRL1/gTBag9iEfJbyjpDmdJmwMhvpoLoNBtdAUCdGnaP32hhw==
+  dependencies:
+    npm-package-arg "^10.1.0"
+    npm-registry-fetch "^14.0.3"
+
+libnpmdiff@^5.0.17:
+  version "5.0.17"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmdiff/-/libnpmdiff-5.0.17.tgz#365ca61d34ddb39bfd20f5cc13a273d02313d27e"
+  integrity sha512-wptFvhrX+5dsjicG+D14j1dXWZUg4+vWDuL/m/8puZcrWhD3rdl7IunLmnw6eVQoep8EtxHv4DpARkQsW9xiqw==
+  dependencies:
+    "@npmcli/arborist" "^6.2.9"
+    "@npmcli/disparity-colors" "^3.0.0"
+    "@npmcli/installed-package-contents" "^2.0.2"
+    binary-extensions "^2.2.0"
+    diff "^5.1.0"
+    minimatch "^9.0.0"
+    npm-package-arg "^10.1.0"
+    pacote "^15.0.8"
+    tar "^6.1.13"
+
+libnpmexec@^5.0.17:
+  version "5.0.17"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmexec/-/libnpmexec-5.0.17.tgz#46f628688da8c92aeb2ea79333edbea464c46dd5"
+  integrity sha512-HGO8XiNWojyxb//LHsXmYuDWehPi/NuGsrNTu9VeRp/WNT5ijq2p219nLRu8ZBxGlBFCkLj8AbVRj1lmIFPObA==
+  dependencies:
+    "@npmcli/arborist" "^6.2.9"
+    "@npmcli/run-script" "^6.0.0"
+    chalk "^4.1.0"
+    ci-info "^3.7.1"
+    npm-package-arg "^10.1.0"
+    npmlog "^7.0.1"
+    pacote "^15.0.8"
+    proc-log "^3.0.0"
+    read "^2.0.0"
+    read-package-json-fast "^3.0.2"
+    semver "^7.3.7"
+    walk-up-path "^3.0.1"
+
+libnpmfund@^4.0.17:
+  version "4.0.17"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmfund/-/libnpmfund-4.0.17.tgz#200dd7867c156b1ef2a2d9898a0c4a3afc90657b"
+  integrity sha512-7cOf67KxpSNK/g5mWy3LWojxgXwuXHw62gGyeDSH7wVOUahD9pZPKqt5jwHtfiFgSOe9Lf51lcVIaeAS3wekqg==
+  dependencies:
+    "@npmcli/arborist" "^6.2.9"
+
+libnpmhook@^9.0.3:
+  version "9.0.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmhook/-/libnpmhook-9.0.3.tgz#5dbd6a146feb7e11993d36a26f750ae2347bb1d9"
+  integrity sha512-wMZe58sI7KLhg0+nUWZW5KdMfjNNcOIIbkoP19BDHYoUF9El7eeUWkGNxUGzpHkPKiGoQ1z/v6CYin4deebeuw==
+  dependencies:
+    aproba "^2.0.0"
+    npm-registry-fetch "^14.0.3"
+
+libnpmorg@^5.0.4:
+  version "5.0.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmorg/-/libnpmorg-5.0.4.tgz#94eec2b84fbef736457eb27894c972ae6f5cac82"
+  integrity sha512-YqYXLMAN0Y1eJH4w3hUFN9648xfSdvJANMsdeZTOWJOW4Pqp8qapJFzQdqCfUkg+tEuQmnaFQQKXvkMZC51+Mw==
+  dependencies:
+    aproba "^2.0.0"
+    npm-registry-fetch "^14.0.3"
+
+libnpmpack@^5.0.17:
+  version "5.0.17"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmpack/-/libnpmpack-5.0.17.tgz#b73e16bd0ee6486b35ea69cb566131f8d0f32ce2"
+  integrity sha512-JvYZc3lLnZcbcmG9vOnbvGMd4Qfu4fQTi9zGlGn0KOUKUsWvkUGJYQwVHiW0/6r1yyn8kQ7/tCPj2+Ubz1njtQ==
+  dependencies:
+    "@npmcli/arborist" "^6.2.9"
+    "@npmcli/run-script" "^6.0.0"
+    npm-package-arg "^10.1.0"
+    pacote "^15.0.8"
+
 libnpmpublish@7.1.4:
   version "7.1.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmpublish/-/libnpmpublish-7.1.4.tgz#a0d138e00e52a0c71ffc82273acf0082fc2dfb36"
@@ -17392,6 +18117,46 @@ libnpmpublish@7.1.4:
     semver "^7.3.7"
     sigstore "^1.4.0"
     ssri "^10.0.1"
+
+libnpmpublish@^7.2.0:
+  version "7.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmpublish/-/libnpmpublish-7.2.0.tgz#5f079fe9b699fd956fdbb129718f92e9c131b0e6"
+  integrity sha512-8541kM4954q63VHdYTjCfMic2cAzPgMwktgiK9gcIH9CyhiZdrhVuLit0i3iJMl2NsWKdkR9gGxdtYnMjKoOKg==
+  dependencies:
+    ci-info "^3.6.1"
+    normalize-package-data "^5.0.0"
+    npm-package-arg "^10.1.0"
+    npm-registry-fetch "^14.0.3"
+    proc-log "^3.0.0"
+    semver "^7.3.7"
+    sigstore "^1.4.0"
+    ssri "^10.0.1"
+
+libnpmsearch@^6.0.2:
+  version "6.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmsearch/-/libnpmsearch-6.0.2.tgz#b6a531a312855dd3bf84dd273b1033dd09b4cbec"
+  integrity sha512-p+5BF19AvnVg8mcIQhy6yWhI6jHQRVMYaIaKeITEfYAffWsqbottA/WZdMtHL76hViC6SFM1WdclM1w5eAIa1g==
+  dependencies:
+    npm-registry-fetch "^14.0.3"
+
+libnpmteam@^5.0.3:
+  version "5.0.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmteam/-/libnpmteam-5.0.3.tgz#196657e9d87c0cc914c44fee588ad2b838074a3c"
+  integrity sha512-7XOGhi45s+ml6TyrhJUTyrErcoDMKGKfEtiTEco4ofU7BGGAUOalVztKMVLLJgJOOXdIAIlzCHqkTXEuSiyCiA==
+  dependencies:
+    aproba "^2.0.0"
+    npm-registry-fetch "^14.0.3"
+
+libnpmversion@^4.0.2:
+  version "4.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/libnpmversion/-/libnpmversion-4.0.2.tgz#cad9cd1b287fcf9576a64edfe71491b49a65d06f"
+  integrity sha512-n1X70mFHv8Piy4yos+MFWUARSkTbyV5cdsHScaIkuwYvRAF/s2VtYScDzWB4Oe8uNEuGNdjiRR1E/Dh1tMvv6g==
+  dependencies:
+    "@npmcli/git" "^4.0.1"
+    "@npmcli/run-script" "^6.0.0"
+    json-parse-even-better-errors "^3.0.0"
+    proc-log "^3.0.0"
+    semver "^7.3.7"
 
 lie@~3.3.0:
   version "3.3.0"
@@ -17783,6 +18548,11 @@ lru-cache@^9.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lru-cache/-/lru-cache-9.1.0.tgz#19efafa9d08d1c08eb8efd78876075f0b8b1b07b"
   integrity sha512-qFXQEwchrZcMVen2uIDceR8Tii6kCJak5rzDStfEM0qA3YLMswaxIEZO0DhIbJ3aqaJiDjt+3crlplOb0tDtKQ==
 
+lru-cache@^9.1.1:
+  version "9.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lru-cache/-/lru-cache-9.1.1.tgz#c58a93de58630b688de39ad04ef02ef26f1902f1"
+  integrity sha512-65/Jky17UwSb0BuB9V+MyDpsOtXKmYwzhyl+cOa9XUiI4uV2Ouy/2voFP3+al0BjZbJgMBD8FojMpAf+Z+qn4A==
+
 lunr@^2.3.9:
   version "2.3.9"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lunr/-/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
@@ -17812,7 +18582,7 @@ magic-string@^0.27.0:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.13"
 
-make-dir@3.1.0, make-dir@^3.0.0, make-dir@^3.1.0:
+make-dir@3.1.0, make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
@@ -17867,6 +18637,27 @@ make-fetch-happen@^11.0.0, make-fetch-happen@^11.0.1:
     is-lambda "^1.0.1"
     lru-cache "^7.7.1"
     minipass "^4.0.0"
+    minipass-fetch "^3.0.0"
+    minipass-flush "^1.0.5"
+    minipass-pipeline "^1.2.4"
+    negotiator "^0.6.3"
+    promise-retry "^2.0.1"
+    socks-proxy-agent "^7.0.0"
+    ssri "^10.0.0"
+
+make-fetch-happen@^11.1.1:
+  version "11.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/make-fetch-happen/-/make-fetch-happen-11.1.1.tgz#85ceb98079584a9523d4bf71d32996e7e208549f"
+  integrity sha512-rLWS7GCSTcEujjVBs2YqG7Y4643u8ucvCJeSRqiLYhesrDuzeuFIk37xREzAsfQaqzl8b9rNCE4m6J8tvX4Q8w==
+  dependencies:
+    agentkeepalive "^4.2.1"
+    cacache "^17.0.0"
+    http-cache-semantics "^4.1.1"
+    http-proxy-agent "^5.0.0"
+    https-proxy-agent "^5.0.0"
+    is-lambda "^1.0.1"
+    lru-cache "^7.7.1"
+    minipass "^5.0.0"
     minipass-fetch "^3.0.0"
     minipass-flush "^1.0.5"
     minipass-pipeline "^1.2.4"
@@ -18123,6 +18914,11 @@ memjs@^1.3.1:
   version "5.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
+
+memoize-one@^6.0.0:
+  version "6.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/memoize-one/-/memoize-one-6.0.0.tgz#b2591b871ed82948aee4727dc6abceeeac8c1045"
+  integrity sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==
 
 meow@^6.0.0:
   version "6.1.1"
@@ -18599,6 +19395,13 @@ minimatch@^8.0.2:
   dependencies:
     brace-expansion "^2.0.1"
 
+minimatch@^9.0.0:
+  version "9.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/minimatch/-/minimatch-9.0.0.tgz#bfc8e88a1c40ffd40c172ddac3decb8451503b56"
+  integrity sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==
+  dependencies:
+    brace-expansion "^2.0.1"
+
 minimist-options@4.1.0, minimist-options@^4.0.2:
   version "4.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/minimist-options/-/minimist-options-4.1.0.tgz#c0655713c53a8a2ebd77ffa247d342c40f010619"
@@ -18694,6 +19497,11 @@ minipass@^4.0.0, minipass@^4.2.4:
   version "4.2.8"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/minipass/-/minipass-4.2.8.tgz#f0010f64393ecfc1d1ccb5f582bcaf45f48e1a3a"
   integrity sha512-fNzuVyifolSLFL4NzpF+wEF4qrgqaaKX0haXPQEdQ7NKAN+WecoKMHV09YcuL/DHxrUsYQOK3MiuDf7Ip2OXfQ==
+
+"minipass@^5.0.0 || ^6.0.2":
+  version "6.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/minipass/-/minipass-6.0.2.tgz#542844b6c4ce95b202c0995b0a471f1229de4c81"
+  integrity sha512-MzWSV5nYVT7mVyWCwn2o7JH13w2TBRmmSqSRCKzTw+lmft9X4z+3wjvs06Tzijo5z4W/kahUCDpRXTF+ZrmF/w==
 
 minizlib@^2.1.1, minizlib@^2.1.2:
   version "2.1.2"
@@ -18808,7 +19616,7 @@ ms@2.1.2:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-ms@2.1.3, ms@^2.0.0, ms@^2.1.1:
+ms@2.1.3, ms@^2.0.0, ms@^2.1.1, ms@^2.1.2:
   version "2.1.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
@@ -18861,6 +19669,11 @@ mute-stream@0.0.8, mute-stream@~0.0.4:
   version "0.0.8"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
+
+mute-stream@~1.0.0:
+  version "1.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/mute-stream/-/mute-stream-1.0.0.tgz#e31bd9fe62f0aed23520aa4324ea6671531e013e"
+  integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
 
 mysql2@^2.2.5:
   version "2.3.3"
@@ -19101,7 +19914,7 @@ nopt@^6.0.0:
   dependencies:
     abbrev "^1.0.0"
 
-nopt@^7.0.0:
+nopt@^7.0.0, nopt@^7.1.0:
   version "7.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/nopt/-/nopt-7.1.0.tgz#91f6a3366182176e72ecab93a09c19b63b485f28"
   integrity sha512-ZFPLe9Iu0tnx7oWhFxAo4s7QTn8+NNDDxYNaKLjE7Dp0tbakQ3M1QhQzsnzXHQBTUO3K9BmwaxnyO8Ayn2I95Q==
@@ -19158,6 +19971,13 @@ normalize-url@^6.0.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/normalize-url/-/normalize-url-6.1.0.tgz#40d0885b535deffe3f3147bec877d05fe4c5668a"
   integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
 
+npm-audit-report@^4.0.0:
+  version "4.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-audit-report/-/npm-audit-report-4.0.0.tgz#dfffdb6464a7799d3d30e067ae1943982cf45f69"
+  integrity sha512-k2o5476sLrp94b6Gl819YzlS7LAdb8lgE6yQCysBEji5E3WoUdRve6tiVMLKAPPdLfItU4kOSUycWS5HFTrbug==
+  dependencies:
+    chalk "^4.0.0"
+
 npm-bundled@^1.1.2:
   version "1.1.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-bundled/-/npm-bundled-1.1.2.tgz#944c78789bd739035b70baa2ca5cc32b8d860bc1"
@@ -19179,7 +19999,7 @@ npm-bundled@^3.0.0:
   dependencies:
     npm-normalize-package-bin "^3.0.0"
 
-npm-install-checks@^6.0.0:
+npm-install-checks@^6.0.0, npm-install-checks@^6.1.1:
   version "6.1.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-install-checks/-/npm-install-checks-6.1.1.tgz#b459b621634d06546664207fde16810815808db1"
   integrity sha512-dH3GmQL4vsPtld59cOn8uY0iOqRmqKvV+DLGwNXV/Q7MDgD2QfOADWd/mFXcIE5LVhYYGjA3baz6W9JneqnuCw==
@@ -19200,6 +20020,11 @@ npm-normalize-package-bin@^3.0.0:
   version "3.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-normalize-package-bin/-/npm-normalize-package-bin-3.0.0.tgz#6097436adb4ef09e2628b59a7882576fe53ce485"
   integrity sha512-g+DPQSkusnk7HYXr75NtzkIP4+N81i3RPsGFidF3DzHd9MT9wWngmqoeg/fnHFz5MNdtG4w03s+QnhewSLTT2Q==
+
+npm-normalize-package-bin@^3.0.1:
+  version "3.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-normalize-package-bin/-/npm-normalize-package-bin-3.0.1.tgz#25447e32a9a7de1f51362c61a559233b89947832"
+  integrity sha512-dMxCf+zZ+3zeQZXKxmyuCKlIDPGuv8EF940xbkC4kQVDTtqoh6rJFO+JTKSA6/Rwi0getWmtuy4Itup0AMcaDQ==
 
 npm-package-arg@8.1.1:
   version "8.1.1"
@@ -19267,6 +20092,14 @@ npm-pick-manifest@^8.0.0, npm-pick-manifest@^8.0.1:
     npm-package-arg "^10.0.0"
     semver "^7.3.5"
 
+npm-profile@^7.0.1:
+  version "7.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-profile/-/npm-profile-7.0.1.tgz#a37dae08b22e662ece2c6e08946f9fcd9fdef663"
+  integrity sha512-VReArOY/fCx5dWL66cbJ2OMogTQAVVQA//8jjmjkarboki3V7UJ0XbGFW+khRwiAJFQjuH0Bqr/yF7Y5RZdkMQ==
+  dependencies:
+    npm-registry-fetch "^14.0.0"
+    proc-log "^3.0.0"
+
 npm-registry-fetch@14.0.3:
   version "14.0.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-registry-fetch/-/npm-registry-fetch-14.0.3.tgz#8545e321c2b36d2c6fe6e009e77e9f0e527f547b"
@@ -19306,6 +20139,19 @@ npm-registry-fetch@^14.0.0, npm-registry-fetch@^14.0.3:
     npm-package-arg "^10.0.0"
     proc-log "^3.0.0"
 
+npm-registry-fetch@^14.0.5:
+  version "14.0.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-registry-fetch/-/npm-registry-fetch-14.0.5.tgz#fe7169957ba4986a4853a650278ee02e568d115d"
+  integrity sha512-kIDMIo4aBm6xg7jOttupWZamsZRkAqMqwqqbVXnUqstY5+tapvv6bkH/qMR76jdgV+YljEUCyWx3hRYMrJiAgA==
+  dependencies:
+    make-fetch-happen "^11.0.0"
+    minipass "^5.0.0"
+    minipass-fetch "^3.0.0"
+    minipass-json-stream "^1.0.1"
+    minizlib "^2.1.2"
+    npm-package-arg "^10.0.0"
+    proc-log "^3.0.0"
+
 npm-run-path@^3.0.0:
   version "3.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-run-path/-/npm-run-path-3.1.0.tgz#7f91be317f6a466efed3c9f2980ad8a4ee8b0fa5"
@@ -19319,6 +20165,83 @@ npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
   dependencies:
     path-key "^3.0.0"
+
+npm-user-validate@^2.0.0:
+  version "2.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm-user-validate/-/npm-user-validate-2.0.0.tgz#7b69bbbff6f7992a1d9a8968d52fd6b6db5431b6"
+  integrity sha512-sSWeqAYJ2dUPStJB+AEj0DyLRltr/f6YNcvCA7phkB8/RMLMnVsQ41GMwHo/ERZLYNDsyB2wPm7pZo1mqPOl7Q==
+
+npm@^9.2.0:
+  version "9.6.7"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/npm/-/npm-9.6.7.tgz#11902e3f00d4175bbd305e646ed82c2a14f1f588"
+  integrity sha512-xwkU1hSZl6Qrkfw3fhxVmMfNWu0A67+aZZs5gz/LoehCeAPkVhQDB90Z2NFoPSI1KpfBWCJ6Bp28wXzv5U5/2g==
+  dependencies:
+    "@isaacs/string-locale-compare" "^1.1.0"
+    "@npmcli/arborist" "^6.2.9"
+    "@npmcli/config" "^6.1.7"
+    "@npmcli/map-workspaces" "^3.0.4"
+    "@npmcli/package-json" "^3.1.0"
+    "@npmcli/run-script" "^6.0.2"
+    abbrev "^2.0.0"
+    archy "~1.0.0"
+    cacache "^17.1.2"
+    chalk "^4.1.2"
+    ci-info "^3.8.0"
+    cli-columns "^4.0.0"
+    cli-table3 "^0.6.3"
+    columnify "^1.6.0"
+    fastest-levenshtein "^1.0.16"
+    fs-minipass "^3.0.2"
+    glob "^10.2.4"
+    graceful-fs "^4.2.11"
+    hosted-git-info "^6.1.1"
+    ini "^4.1.0"
+    init-package-json "^5.0.0"
+    is-cidr "^4.0.2"
+    json-parse-even-better-errors "^3.0.0"
+    libnpmaccess "^7.0.2"
+    libnpmdiff "^5.0.17"
+    libnpmexec "^5.0.17"
+    libnpmfund "^4.0.17"
+    libnpmhook "^9.0.3"
+    libnpmorg "^5.0.4"
+    libnpmpack "^5.0.17"
+    libnpmpublish "^7.2.0"
+    libnpmsearch "^6.0.2"
+    libnpmteam "^5.0.3"
+    libnpmversion "^4.0.2"
+    make-fetch-happen "^11.1.1"
+    minimatch "^9.0.0"
+    minipass "^5.0.0"
+    minipass-pipeline "^1.2.4"
+    ms "^2.1.2"
+    node-gyp "^9.3.1"
+    nopt "^7.1.0"
+    npm-audit-report "^4.0.0"
+    npm-install-checks "^6.1.1"
+    npm-package-arg "^10.1.0"
+    npm-pick-manifest "^8.0.1"
+    npm-profile "^7.0.1"
+    npm-registry-fetch "^14.0.5"
+    npm-user-validate "^2.0.0"
+    npmlog "^7.0.1"
+    p-map "^4.0.0"
+    pacote "^15.1.3"
+    parse-conflict-json "^3.0.1"
+    proc-log "^3.0.0"
+    qrcode-terminal "^0.12.0"
+    read "^2.1.0"
+    read-package-json "^6.0.3"
+    read-package-json-fast "^3.0.2"
+    semver "^7.5.1"
+    ssri "^10.0.4"
+    tar "^6.1.14"
+    text-table "~0.2.0"
+    tiny-relative-date "^1.3.0"
+    treeverse "^3.0.0"
+    validate-npm-package-name "^5.0.0"
+    which "^3.0.1"
+    write-file-atomic "^5.0.1"
 
 npmlog@6.0.2, npmlog@^6.0.0, npmlog@^6.0.2:
   version "6.0.2"
@@ -19875,6 +20798,30 @@ pacote@15.1.1, pacote@^15.0.0, pacote@^15.0.8:
     ssri "^10.0.0"
     tar "^6.1.11"
 
+pacote@^15.1.3:
+  version "15.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/pacote/-/pacote-15.2.0.tgz#0f0dfcc3e60c7b39121b2ac612bf8596e95344d3"
+  integrity sha512-rJVZeIwHTUta23sIZgEIM62WYwbmGbThdbnkt81ravBplQv+HjyroqnLRNH2+sLJHcGZmLRmhPwACqhfTcOmnA==
+  dependencies:
+    "@npmcli/git" "^4.0.0"
+    "@npmcli/installed-package-contents" "^2.0.1"
+    "@npmcli/promise-spawn" "^6.0.1"
+    "@npmcli/run-script" "^6.0.0"
+    cacache "^17.0.0"
+    fs-minipass "^3.0.0"
+    minipass "^5.0.0"
+    npm-package-arg "^10.0.0"
+    npm-packlist "^7.0.0"
+    npm-pick-manifest "^8.0.0"
+    npm-registry-fetch "^14.0.0"
+    proc-log "^3.0.0"
+    promise-retry "^2.0.1"
+    read-package-json "^6.0.0"
+    read-package-json-fast "^3.0.0"
+    sigstore "^1.3.0"
+    ssri "^10.0.0"
+    tar "^6.1.11"
+
 pako@^1.0.10, pako@~1.0.2, pako@~1.0.5:
   version "1.0.11"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
@@ -19906,7 +20853,7 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.5:
     pbkdf2 "^3.0.3"
     safe-buffer "^5.1.1"
 
-parse-conflict-json@^3.0.0:
+parse-conflict-json@^3.0.0, parse-conflict-json@^3.0.1:
   version "3.0.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/parse-conflict-json/-/parse-conflict-json-3.0.1.tgz#67dc55312781e62aa2ddb91452c7606d1969960c"
   integrity sha512-01TvEktc68vwbJOtWZluyWeVGWjP+bZwXtPDMQVbBKzbJ/vZBif0L69KH1+cHv1SZ6e0FKLvjyHe8mqsIqYOmw==
@@ -20173,6 +21120,14 @@ path-scurry@^1.6.1:
     lru-cache "^9.0.0"
     minipass "^5.0.0"
 
+path-scurry@^1.7.0:
+  version "1.9.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/path-scurry/-/path-scurry-1.9.2.tgz#90f9d296ac5e37e608028e28a447b11d385b3f63"
+  integrity sha512-qSDLy2aGFPm8i4rsbHd4MNyTcrzHFsLQykrtbuGRknZZCBBVXSv2tSCDN2Cg6Rt/GFRw8GoW9y9Ecw5rIPG1sg==
+  dependencies:
+    lru-cache "^9.1.1"
+    minipass "^5.0.0 || ^6.0.2"
+
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
@@ -20363,7 +21318,7 @@ pirates@^4.0.1, pirates@^4.0.4:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
-pkg-dir@^4.2.0:
+pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   version "4.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/pkg-dir/-/pkg-dir-4.2.0.tgz#f099133df7ede422e81d1d8448270eeb3e4261f3"
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
@@ -20854,7 +21809,7 @@ promise-all-reject-late@^1.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/promise-all-reject-late/-/promise-all-reject-late-1.0.1.tgz#f8ebf13483e5ca91ad809ccc2fcf25f26f8643c2"
   integrity sha512-vuf0Lf0lOxyQREH7GDIOUMLS7kz+gs8i6B+Yi8dC68a2sychGrHTJYghMBD6k7eUcH0H5P73EckCA48xijWqXw==
 
-promise-call-limit@^1.0.1:
+promise-call-limit@^1.0.1, promise-call-limit@^1.0.2:
   version "1.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/promise-call-limit/-/promise-call-limit-1.0.2.tgz#f64b8dd9ef7693c9c7613e7dfe8d6d24de3031ea"
   integrity sha512-1vTUnfI2hzui8AEIixbdAJlFY4LFDXqQswy/2eOlThAscXCY4It8FdVuI0fMJGAB2aWGbdQf/gv0skKYXmdrHA==
@@ -20892,7 +21847,14 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+promzard@^1.0.0:
+  version "1.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/promzard/-/promzard-1.0.0.tgz#3246f8e6c9895a77c0549cefb65828ac0f6c006b"
+  integrity sha512-KQVDEubSUHGSt5xLakaToDFrSoZhStB8dXLzk2xvwR67gJktrHFvpR63oZgHyK19WKbHFLXJqCPXdVR3aBP8Ig==
+  dependencies:
+    read "^2.0.0"
+
+prop-types@15.x, prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -21056,6 +22018,11 @@ q@^1.5.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
 
+qrcode-terminal@^0.12.0:
+  version "0.12.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/qrcode-terminal/-/qrcode-terminal-0.12.0.tgz#bb5b699ef7f9f0505092a3748be4464fe71b5819"
+  integrity sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==
+
 qs@6.11.0:
   version "6.11.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
@@ -21134,7 +22101,7 @@ quick-lru@^5.1.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-raf-schd@^4.0.2:
+raf-schd@^4.0.2, raf-schd@^4.0.3:
   version "4.0.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
   integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
@@ -21256,13 +22223,21 @@ react-beautiful-dnd@^13.0.0:
     redux "^4.0.4"
     use-memo-one "^1.1.1"
 
-react-copy-to-clipboard@5.1.0, react-copy-to-clipboard@^5.1.0:
+react-copy-to-clipboard@5.1.0, react-copy-to-clipboard@^5.0.4, react-copy-to-clipboard@^5.1.0:
   version "5.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
   integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
   dependencies:
     copy-to-clipboard "^3.3.1"
     prop-types "^15.8.1"
+
+react-cytoscapejs@^1.2.1:
+  version "1.2.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-cytoscapejs/-/react-cytoscapejs-1.2.1.tgz#ccce46acabf4f0c41dce9070743854f92b0dc050"
+  integrity sha512-8exVCetpzyGCAKuRjXPWGjFCnb22boZ3SXUPpPB/+wQI8Q8BwkT1URN3A7J1Czvj1qAbShh5QQ514mBUp7i7kw==
+  dependencies:
+    cytoscape "^3.2.19"
+    prop-types "^15.6.2"
 
 react-debounce-input@=3.3.0:
   version "3.3.0"
@@ -21316,6 +22291,21 @@ react-double-scrollbar@0.0.15:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-double-scrollbar/-/react-double-scrollbar-0.0.15.tgz#e915ab8cb3b959877075f49436debfdb04288fe4"
   integrity sha512-dLz3/WBIpgFnzFY0Kb4aIYBMT2BWomHuW2DH6/9jXfS6/zxRRBUFQ04My4HIB7Ma7QoRBpcy8NtkPeFgcGBpgg==
 
+react-draggable@^2.2.3:
+  version "2.2.6"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-draggable/-/react-draggable-2.2.6.tgz#3a806e10f2da6babfea4136be6510e89b0d76901"
+  integrity sha512-QWsjxOlKUB+81+f2AKfoleKT6jBm4xloQbA149JDUECCUoDEdTo6ha9C0y84MTiq7m5TmhJ3G2PK2gPTCDxXeQ==
+  dependencies:
+    classnames "^2.2.5"
+
+react-draggable@^4.0.3:
+  version "4.4.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-draggable/-/react-draggable-4.4.5.tgz#9e37fe7ce1a4cf843030f521a0a4cc41886d7e7c"
+  integrity sha512-OMHzJdyJbYTZo4uQE393fHcqqPYsEtkjfMgvCHr6rejT+Ezn4OZbNyGH50vv+SunC1RMvwOTSWkEODQLzw1M9g==
+  dependencies:
+    clsx "^1.1.1"
+    prop-types "^15.8.1"
+
 react-error-overlay@^6.0.11:
   version "6.0.11"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
@@ -21340,6 +22330,14 @@ react-hook-form@^7.12.2:
   version "7.43.9"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-hook-form/-/react-hook-form-7.43.9.tgz#84b56ac2f38f8e946c6032ccb760e13a1037c66d"
   integrity sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ==
+
+react-hot-keys@^2.7.2:
+  version "2.7.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-hot-keys/-/react-hot-keys-2.7.2.tgz#7d2b02b7e2cf69182ea71ca01885446ebfae01d2"
+  integrity sha512-Z7eSh7SU6s52+zP+vkfFoNk0x4kgEmnwqDiyACKv53crK2AZ7FUaBLnf+vxLor3dvtId9murLmKOsrJeYgeHWw==
+  dependencies:
+    hotkeys-js "^3.8.1"
+    prop-types "^15.7.2"
 
 react-immutable-proptypes@2.2.0:
   version "2.2.0"
@@ -21411,7 +22409,7 @@ react-redux@^7.2.0:
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
-react-redux@^8.0.5:
+react-redux@^8.0.4, react-redux@^8.0.5:
   version "8.0.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-redux/-/react-redux-8.0.5.tgz#e5fb8331993a019b8aaf2e167a93d10af469c7bd"
   integrity sha512-Q2f6fCKxPFpkXt1qNRZdEDLlScsDWyrgSj0mliK59qU6W5gvBiKkdMEG2lJzhd1rCctf0hb6EtePPLZ2e0m1uw==
@@ -21427,6 +22425,14 @@ react-refresh@^0.14.0:
   version "0.14.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
+
+react-resizable@^3.0.4:
+  version "3.0.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-resizable/-/react-resizable-3.0.5.tgz#362721f2efbd094976f1780ae13f1ad7739786c1"
+  integrity sha512-vKpeHhI5OZvYn82kXOs1bC8aOXktGU5AmKAgaZS4F5JPburCtbmDPqE7Pzp+1kN4+Wb81LlF33VpGwWwtXem+w==
+  dependencies:
+    prop-types "15.x"
+    react-draggable "^4.0.3"
 
 react-resize-detector@^8.0.4:
   version "8.1.0"
@@ -21636,6 +22642,16 @@ read-package-json@^6.0.0:
     normalize-package-data "^5.0.0"
     npm-normalize-package-bin "^3.0.0"
 
+read-package-json@^6.0.3:
+  version "6.0.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/read-package-json/-/read-package-json-6.0.3.tgz#726116b75e00eac2075240995f05681af4ca7122"
+  integrity sha512-4QbpReW4kxFgeBQ0vPAqh2y8sXEB3D4t3jsXbJKIhBiF80KT6XRo45reqwtftju5J6ru1ax06A2Gb/wM1qCOEQ==
+  dependencies:
+    glob "^10.2.2"
+    json-parse-even-better-errors "^3.0.0"
+    normalize-package-data "^5.0.0"
+    npm-normalize-package-bin "^3.0.0"
+
 read-pkg-up@^3.0.0:
   version "3.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/read-pkg-up/-/read-pkg-up-3.0.0.tgz#3ed496685dba0f8fe118d0691dc51f4a1ff96f07"
@@ -21688,6 +22704,13 @@ read@1, read@^1.0.7:
   integrity sha512-rSOKNYUmaxy0om1BNjMN4ezNT6VKK+2xF4GBhc81mkH7L60i6dp8qPYrkndNLT3QPphoII3maL9PVC9XmhHwVQ==
   dependencies:
     mute-stream "~0.0.4"
+
+read@^2.0.0, read@^2.1.0:
+  version "2.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/read/-/read-2.1.0.tgz#69409372c54fe3381092bc363a00650b6ac37218"
+  integrity sha512-bvxi1QLJHcaywCAEsAk4DG3nVoqiY2Csps3qzWalhj5hFqRn1d/OixkFXtLO1PrgHUcAP0FNaSY/5GYNfENFFQ==
+  dependencies:
+    mute-stream "~1.0.0"
 
 readable-stream@3, readable-stream@^3.0.0, readable-stream@^3.0.2, readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.5.0, readable-stream@^3.6.0:
   version "3.6.2"
@@ -21818,7 +22841,7 @@ redux-immutable@^4.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
   integrity sha512-SchSn/DWfGb3oAejd+1hhHx01xUoxY+V7TeK0BKqpkLKiQPVFf7DYzEaKmrEVxsWxielKfSK9/Xq66YyxgR1cg==
 
-redux@^4.0.0, redux@^4.0.4, redux@^4.1.2:
+redux@^4.0.0, redux@^4.0.4, redux@^4.1.2, redux@^4.2.0:
   version "4.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/redux/-/redux-4.2.1.tgz#c08f4306826c49b5e9dc901dee0452ea8fce6197"
   integrity sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==
@@ -21992,6 +23015,22 @@ request-progress@^3.0.0:
   integrity sha512-MnWzEHHaxHO2iWiQuHrUPBi/1WeBf5PkxQqNyNvLl9VAYSdXkP8tQ3pBSeCPD+yw0v0Aq1zosWLz0BdeXpWwZg==
   dependencies:
     throttleit "^1.0.0"
+
+request-promise-core@1.1.4:
+  version "1.1.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/request-promise-core/-/request-promise-core-1.1.4.tgz#3eedd4223208d419867b78ce815167d10593a22f"
+  integrity sha512-TTbAfBBRdWD7aNNOoVOBH4pN/KigV6LyapYNNlAPA8JwbovRti1E88m3sYAwsLi5ryhPKsE9APwnjFTgdUjTpw==
+  dependencies:
+    lodash "^4.17.19"
+
+request-promise-native@^1.0.7:
+  version "1.0.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/request-promise-native/-/request-promise-native-1.0.9.tgz#e407120526a5efdc9a39b28a5679bf47b9d9dc28"
+  integrity sha512-wcW+sIUiWnKgNY0dqCpOZkUbF/I+YPi+f09JZIDa39Ec+q82CpSYniDp+ISgTTbKmnpJWASeJBPZmoxH84wt3g==
+  dependencies:
+    request-promise-core "1.1.4"
+    stealthy-require "^1.1.1"
+    tough-cookie "^2.3.3"
 
 request@^2.88.0, request@^2.88.2:
   version "2.88.2"
@@ -22476,6 +23515,13 @@ semver@^6.0.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
+semver@^7.5.1:
+  version "7.5.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/semver/-/semver-7.5.1.tgz#c90c4d631cf74720e46b21c1d37ea07edfab91ec"
+  integrity sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==
+  dependencies:
+    lru-cache "^6.0.0"
+
 send@0.18.0:
   version "0.18.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/send/-/send-0.18.0.tgz#670167cc654b05f5aa4a767f9113bb371bc706be"
@@ -22654,10 +23700,24 @@ signal-exit@3.0.7, signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3, s
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
+signal-exit@^4.0.1:
+  version "4.0.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/signal-exit/-/signal-exit-4.0.2.tgz#ff55bb1d9ff2114c13b400688fa544ac63c36967"
+  integrity sha512-MY2/qGx4enyjprQnFaZsHib3Yadh3IXyV2C321GY0pjGfVBu4un0uDJkwgdxqO+Rdx8JMT8IfJIRwbYVz3Ob3Q==
+
 sigstore@^1.0.0:
   version "1.3.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/sigstore/-/sigstore-1.3.2.tgz#2f70ec3e1192911484d9d148ecd9c98345cd172d"
   integrity sha512-0KT1DjpVB11FK15ep7BIsZQV6j1jBm4SnXIInbBCRvql6II39IKONOMO+j036sGsArU/+2xqa1NDJwJkic0neA==
+  dependencies:
+    "@sigstore/protobuf-specs" "^0.1.0"
+    make-fetch-happen "^11.0.1"
+    tuf-js "^1.1.3"
+
+sigstore@^1.3.0:
+  version "1.5.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/sigstore/-/sigstore-1.5.2.tgz#8d4c2a549341211cb08c687999843edc48c1a94c"
+  integrity sha512-X95v6xAAooVpn7PaB94TDmFeSO5SBfCtB1R23fvzr36WTfjtkiiyOeei979nbTjc8nzh6FSLeltQZuODsm1EjQ==
   dependencies:
     "@sigstore/protobuf-specs" "^0.1.0"
     make-fetch-happen "^11.0.1"
@@ -23038,6 +24098,13 @@ ssri@^10.0.0, ssri@^10.0.1:
   dependencies:
     minipass "^4.0.0"
 
+ssri@^10.0.4:
+  version "10.0.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ssri/-/ssri-10.0.4.tgz#5a20af378be586df139ddb2dfb3bf992cf0daba6"
+  integrity sha512-12+IR2CB2C28MMAw0Ncqwj5QbTcs0nGIhgJzYWzDkb21vWmfNI83KS4f3Ci6GI98WreIfG7o9UXp3C0qbpA8nQ==
+  dependencies:
+    minipass "^5.0.0"
+
 stable@^0.1.8:
   version "0.1.8"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
@@ -23117,6 +24184,11 @@ statuses@2.0.1:
   version "1.5.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
+
+stealthy-require@^1.1.1:
+  version "1.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+  integrity sha512-ZnWpYnYugiOVEY5GkcuJK1io5V8QmNYChG62gSit9pQVGErXtrKuPC55ITaVSukmMta5qpMU7vqLt2Lnni4f/g==
 
 stop-iteration-iterator@^1.0.0:
   version "1.0.0"
@@ -23223,6 +24295,15 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
+"string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  version "4.2.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
+
 string-width@^1.0.1:
   version "1.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -23232,14 +24313,14 @@ string-width@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     strip-ansi "^3.0.0"
 
-"string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
-  version "4.2.3"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
-  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+string-width@^5.0.1, string-width@^5.1.2:
+  version "5.1.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/string-width/-/string-width-5.1.2.tgz#14f8daec6d81e7221d2a357e668cab73bdbca794"
+  integrity sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==
   dependencies:
-    emoji-regex "^8.0.0"
-    is-fullwidth-code-point "^3.0.0"
-    strip-ansi "^6.0.1"
+    eastasianwidth "^0.2.0"
+    emoji-regex "^9.2.2"
+    strip-ansi "^7.0.1"
 
 string.prototype.matchall@^4.0.8:
   version "4.0.8"
@@ -23296,6 +24377,13 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  version "6.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
+
 strip-ansi@5.2.0:
   version "5.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
@@ -23310,12 +24398,12 @@ strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   dependencies:
     ansi-regex "^2.0.0"
 
-strip-ansi@^6.0.0, strip-ansi@^6.0.1:
-  version "6.0.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
-  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+strip-ansi@^7.0.1:
+  version "7.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/strip-ansi/-/strip-ansi-7.0.1.tgz#61740a08ce36b61e50e65653f07060d000975fb2"
+  integrity sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==
   dependencies:
-    ansi-regex "^5.0.1"
+    ansi-regex "^6.0.1"
 
 strip-bom@^3.0.0:
   version "3.0.0"
@@ -23637,6 +24725,18 @@ tar@^6.1.11, tar@^6.1.12, tar@^6.1.2:
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 
+tar@^6.1.13, tar@^6.1.14:
+  version "6.1.15"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tar/-/tar-6.1.15.tgz#c9738b0b98845a3b344d334b8fa3041aaba53a69"
+  integrity sha512-/zKt9UyngnxIT/EAGYuxaMYgOIJiP81ab9ZfkILq4oNLPFX50qyYmu7jRj9qeXoxmJHjGlbH0+cm2uy1WCs10A==
+  dependencies:
+    chownr "^2.0.0"
+    fs-minipass "^2.0.0"
+    minipass "^5.0.0"
+    minizlib "^2.1.1"
+    mkdirp "^1.0.3"
+    yallist "^4.0.0"
+
 tarn@^3.0.2:
   version "3.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tarn/-/tarn-3.0.2.tgz#73b6140fbb881b71559c4f8bfde3d9a4b3d27693"
@@ -23744,7 +24844,7 @@ text-hex@1.0.x:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/text-hex/-/text-hex-1.0.0.tgz#69dc9c1b17446ee79a92bf5b884bb4b9127506f5"
   integrity sha512-uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg==
 
-text-table@0.2.0, text-table@^0.2.0:
+text-table@0.2.0, text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
@@ -23819,6 +24919,11 @@ tiny-merge-patch@^0.1.2:
   version "0.1.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tiny-merge-patch/-/tiny-merge-patch-0.1.2.tgz#2e8ded19c56ea15dbd3ad4ed5db1c8e5ad544c3c"
   integrity sha512-NLoA//tTMBPTr0oGdq+fxnvVR0tDa8tOcG9ZGbuovGzROadZ404qOV4g01jeWa5S8MC9nAOvu5bQgCW7s8tlWQ==
+
+tiny-relative-date@^1.3.0:
+  version "1.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tiny-relative-date/-/tiny-relative-date-1.3.0.tgz#fa08aad501ed730f31cc043181d995c39a935e07"
+  integrity sha512-MOQHpzllWxDCHHaDno30hhLfbouoYlOI8YlMNtvKe1zXbjEVhbcEovQxvZrPvtiYW630GQDoMMarCnjfyfHA+A==
 
 tiny-warning@^1.0.2:
   version "1.0.3"
@@ -23896,6 +25001,14 @@ tosource@^2.0.0-alpha.3:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tosource/-/tosource-2.0.0-alpha.3.tgz#ef385dac9092e009bf25c018838ddaae436daeb6"
   integrity sha512-KAB2lrSS48y91MzFPFuDg4hLbvDiyTjOVgaK7Erw+5AmZXNq4sFRVn8r6yxSLuNs15PaokrDRpS61ERY9uZOug==
 
+tough-cookie@^2.3.3, tough-cookie@~2.5.0:
+  version "2.5.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
+  integrity sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
+  dependencies:
+    psl "^1.1.28"
+    punycode "^2.1.1"
+
 tough-cookie@^4.0.0, tough-cookie@^4.1.2:
   version "4.1.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tough-cookie/-/tough-cookie-4.1.2.tgz#e53e84b85f24e0b65dd526f46628db6c85f6b874"
@@ -23905,14 +25018,6 @@ tough-cookie@^4.0.0, tough-cookie@^4.1.2:
     punycode "^2.1.1"
     universalify "^0.2.0"
     url-parse "^1.5.3"
-
-tough-cookie@~2.5.0:
-  version "2.5.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
-  integrity sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
-  dependencies:
-    psl "^1.1.28"
-    punycode "^2.1.1"
 
 tr46@^1.0.1:
   version "1.0.1"
@@ -24182,7 +25287,7 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-detect@4.0.8:
+type-detect@4.0.8, type-detect@^4.0.0:
   version "4.0.8"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
@@ -24222,7 +25327,7 @@ type-fest@^0.6.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/type-fest/-/type-fest-0.6.0.tgz#8d2a2370d3df886eb5c90ada1c5bf6188acf838b"
   integrity sha512-q+MB8nYR1KDLrgr4G5yemftpMC7/QLqVndBmEEdqzmNj5dcFOO4Oo8qlwZE3ULT3+Zim1F8Kq4cBnikNhlCMlg==
 
-type-fest@^0.8.1:
+type-fest@^0.8.0, type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
@@ -24286,6 +25391,11 @@ typescript@^5.0.4:
   version "5.0.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
   integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
+
+typescript@~4.6.4:
+  version "4.6.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 typescript@~4.8.2, typescript@~4.8.4:
   version "4.8.4"
@@ -24561,7 +25671,7 @@ use-immer@^0.8.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/use-immer/-/use-immer-0.8.1.tgz#db7442bdd64ecf826ce274a91aa8cf821945cf0f"
   integrity sha512-OfTFf1pL+ICjjcLPn9+ZnaJO/Yg4MBzYZtACEe2mZ/W2A5col28PNUnwowOAaBuOogACOK/37TU17KgsIhUpOw==
 
-use-memo-one@^1.1.1:
+use-memo-one@^1.1.1, use-memo-one@^1.1.3:
   version "1.1.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/use-memo-one/-/use-memo-one-1.1.3.tgz#2fd2e43a2169eabc7496960ace8c79efef975e99"
   integrity sha512-g66/K7ZQGYrI6dy8GLpVcMsBp4s17xNkYJVSMvTEevGy3nDxHOfE6z8BVE22+5G5x7t3+bhzrlTDB7ObrEE0cQ==
@@ -24870,6 +25980,11 @@ walk-up-path@^1.0.0:
   version "1.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/walk-up-path/-/walk-up-path-1.0.0.tgz#d4745e893dd5fd0dbb58dd0a4c6a33d9c9fec53e"
   integrity sha512-hwj/qMDUEjCU5h0xr90KGCf0tg0/LgJbmOWgrWKYlcJZM7XvquvUJZ0G/HMGr7F7OQMOUuPHWP9JpriinkAlkg==
+
+walk-up-path@^3.0.1:
+  version "3.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/walk-up-path/-/walk-up-path-3.0.1.tgz#c8d78d5375b4966c717eb17ada73dbd41490e886"
+  integrity sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==
 
 walker@^1.0.8:
   version "1.0.8"
@@ -25270,6 +26385,13 @@ which@^3.0.0:
   dependencies:
     isexe "^2.0.0"
 
+which@^3.0.1:
+  version "3.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/which/-/which-3.0.1.tgz#89f1cd0c23f629a8105ffe69b8172791c87b4be1"
+  integrity sha512-XA1b62dzQzLfaEOSQFTCOd5KFf/1VSzZo7/7TUjnya6u0vGGKzU96UQBZTAThCb2j4/xjBAyii1OhRLJEivHvg==
+  dependencies:
+    isexe "^2.0.0"
+
 wide-align@^1.1.0, wide-align@^1.1.5:
   version "1.1.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/wide-align/-/wide-align-1.1.5.tgz#df1d4c206854369ecf3c9a4898f1b23fbd9d15d3"
@@ -25318,6 +26440,15 @@ wordwrap@^1.0.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
   integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
 wrap-ansi@^6.2.0:
   version "6.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
@@ -25327,14 +26458,14 @@ wrap-ansi@^6.2.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
 
-wrap-ansi@^7.0.0:
-  version "7.0.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
-  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
+wrap-ansi@^8.1.0:
+  version "8.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/wrap-ansi/-/wrap-ansi-8.1.0.tgz#56dc22368ee570face1b49819975d9b9a5ead214"
+  integrity sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==
   dependencies:
-    ansi-styles "^4.0.0"
-    string-width "^4.1.0"
-    strip-ansi "^6.0.0"
+    ansi-styles "^6.1.0"
+    string-width "^5.0.1"
+    strip-ansi "^7.0.1"
 
 wrappy@1:
   version "1.0.2"
@@ -25373,6 +26504,14 @@ write-file-atomic@^5.0.0:
   dependencies:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.7"
+
+write-file-atomic@^5.0.1:
+  version "5.0.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/write-file-atomic/-/write-file-atomic-5.0.1.tgz#68df4717c55c6fa4281a7860b4c2ba0a6d2b11e7"
+  integrity sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==
+  dependencies:
+    imurmurhash "^0.1.4"
+    signal-exit "^4.0.1"
 
 write-json-file@^3.2.0:
   version "3.2.0"
@@ -25449,6 +26588,13 @@ xml-encryption@^2.0.0:
     escape-html "^1.0.3"
     xpath "0.0.32"
 
+xml-formatter@^3.3.2:
+  version "3.4.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/xml-formatter/-/xml-formatter-3.4.1.tgz#0578f5bb56114d519b98bed824b00af8747c2787"
+  integrity sha512-C7VwnZpz662mZlKtrdREucsABAIlmdph/nMEUszTMsRAGGPMSNfyNOU4UaPBqxXYVadb9uSpc1Xibbj6XpbGRA==
+  dependencies:
+    xml-parser-xo "^4.1.0"
+
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
@@ -25458,6 +26604,11 @@ xml-name-validator@^4.0.0:
   version "4.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/xml-name-validator/-/xml-name-validator-4.0.0.tgz#79a006e2e63149a8600f15430f0a4725d1524835"
   integrity sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==
+
+xml-parser-xo@^4.1.0:
+  version "4.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/xml-parser-xo/-/xml-parser-xo-4.1.0.tgz#f97b7ea8cb400813e5306c25c34ac17fdf673a45"
+  integrity sha512-9mQMLmq8J++XlQH9WF57oQxFVbR3YM6dPPtTuV+++aMe2gRoRU/kj819/6IptUmfhC1d2DSFiYxEcpkoLabeJw==
 
 xml2js@0.5.0, xml2js@^0.5.0:
   version "0.5.0"
@@ -25608,10 +26759,10 @@ yargs@^15.1.0:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
-yargs@^17.1.1, yargs@^17.2.1, yargs@^17.3.1, yargs@^17.6.2:
-  version "17.7.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/yargs/-/yargs-17.7.1.tgz#34a77645201d1a8fc5213ace787c220eabbd0967"
-  integrity sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==
+yargs@^17.1.0, yargs@^17.7.1:
+  version "17.7.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/yargs/-/yargs-17.7.2.tgz#991df39aca675a192b816e1e0363f9d75d2aa269"
+  integrity sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==
   dependencies:
     cliui "^8.0.1"
     escalade "^3.1.1"
@@ -25621,10 +26772,10 @@ yargs@^17.1.1, yargs@^17.2.1, yargs@^17.3.1, yargs@^17.6.2:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
-yargs@^17.7.1:
-  version "17.7.2"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/yargs/-/yargs-17.7.2.tgz#991df39aca675a192b816e1e0363f9d75d2aa269"
-  integrity sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==
+yargs@^17.1.1, yargs@^17.2.1, yargs@^17.3.1, yargs@^17.6.2:
+  version "17.7.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/yargs/-/yargs-17.7.1.tgz#34a77645201d1a8fc5213ace787c220eabbd0967"
+  integrity sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==
   dependencies:
     cliui "^8.0.1"
     escalade "^3.1.1"
