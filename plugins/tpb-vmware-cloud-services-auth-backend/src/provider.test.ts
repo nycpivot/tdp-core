@@ -88,6 +88,33 @@ describe('VMwareCloudServicesAuthProvider', () => {
       expect(searchParams.get('client_id')).toBe('placeholderClientId');
     });
 
+    it('passes organizationId from config', async () => {
+      provider = new VMwareCloudServicesAuthProvider({
+        clientId: 'placeholderClientId',
+        callbackUrl: 'http://callbackUrl',
+        resolverContext: {
+          issueToken: jest.fn(),
+          findCatalogUser: jest.fn(),
+          signInWithCatalogUser: jest.fn().mockResolvedValue({
+            token: 'token',
+          }),
+        },
+        organizationId: 'orgId',
+      });
+
+      const startResponse = await provider.start(startRequest);
+      const { searchParams } = new URL(startResponse.url);
+
+      expect(searchParams.get('orgId')).toBe('orgId');
+    });
+
+    it('uses default org when organizationId is not configured', async () => {
+      const startResponse = await provider.start(startRequest);
+      const { searchParams } = new URL(startResponse.url);
+
+      expect(searchParams.get('orgId')).toBeNull();
+    });
+
     it('passes callback URL', async () => {
       const startResponse = await provider.start(startRequest);
       const { searchParams } = new URL(startResponse.url);

@@ -30,6 +30,8 @@ export const VMwareCloudServicesAuthBackendPlugin: BackendPluginInterface =
                   new VMwareCloudServicesAuthProvider({
                     clientId: envConfig.getString('clientId'),
                     callbackUrl,
+                    organizationId:
+                      envConfig.getOptionalString('organizationId'),
                     resolverContext,
                   }),
                   { providerId, callbackUrl },

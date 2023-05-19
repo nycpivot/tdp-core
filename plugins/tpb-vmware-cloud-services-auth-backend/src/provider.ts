@@ -26,16 +26,19 @@ import jwtDecoder from 'jwt-decode';
 export class VMwareCloudServicesAuthProvider implements OAuthHandlers {
   private readonly clientId: string;
   private readonly callbackUrl: string;
+  private readonly organizationId: string | undefined;
   private readonly _strategy: passport.Strategy;
   private readonly resolverContext: AuthResolverContext;
 
   constructor(options: {
     clientId: string;
     callbackUrl: string;
+    organizationId?: string;
     resolverContext: AuthResolverContext;
   }) {
     this.clientId = options.clientId;
     this.callbackUrl = options.callbackUrl;
+    this.organizationId = options.organizationId;
     this.resolverContext = options.resolverContext;
     this._strategy = new OAuth2Strategy(
       {
@@ -99,7 +102,11 @@ export class VMwareCloudServicesAuthProvider implements OAuthHandlers {
       const strategy = Object.create(this._strategy);
 
       strategy.redirect = (url: string, status?: number) => {
-        resolve({ url, status: status ?? undefined });
+        const parsed = new URL(url);
+        if (this.organizationId) {
+          parsed.searchParams.set('orgId', this.organizationId);
+        }
+        resolve({ url: parsed.toString(), status: status ?? undefined });
       };
       strategy.error = (error: Error) => {
         reject(error);
