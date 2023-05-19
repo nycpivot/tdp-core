@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "@tpb/core": "^0.0.1-alpha.3",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "logform": "^2.4.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6"
