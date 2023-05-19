@@ -10,6 +10,7 @@ import {
   SingleHostDiscovery,
   UrlReaders,
   ServerTokenManager,
+  createRootLogger
 } from '@backstage/backend-common';
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
@@ -20,6 +21,7 @@ import {
   PluginEnvironment,
   BackendPluginSurface,
 } from '@tpb/core';
+import { LoggerOptionsSurface } from '@tpb/tpb-custom-logger';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -60,6 +62,10 @@ function makeCreateEnv(config: Config) {
 }
 
 export async function BackendRunner(surfaces: SurfaceStoreInterface) {
+
+  const loggerOptionsSurface = surfaces.findSurface(LoggerOptionsSurface)
+  createRootLogger(loggerOptionsSurface.getLoggerOptions());
+
   const config = await loadBackendConfig({
     argv: process.argv,
     logger: getRootLogger(),
