@@ -191,6 +191,8 @@ jobs:
           okta_client_secret: ((okta.svc_tpb_client_secret))
           okta_audience: ((okta.svc_tpb_audience))
           okta_svc_tpb_refresh_token: ((e2e.okta_svc_tpb_refresh_token))
+          vmware_cloud_services_client_id: ((e2e.vmware_cloud_services_client_id))
+          vmware_cloud_services_organization_id: ((e2e.vmware_cloud_services_organization_id))
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: publish

@@ -49,6 +49,8 @@ params:
   OKTA_CLIENT_ID: ((okta_client_id))
   OKTA_CLIENT_SECRET: ((okta_client_secret))
   OKTA_AUDIENCE: ((okta_audience))
+  VMWARE_CLOUD_SERVICES_CLIENT_ID: ((vmware_cloud_services_client_id))
+  VMWARE_CLOUD_SERVICES_ORGANIZATION_ID: ((vmware_cloud_services_organization_id))
 run:
   dir: code
   path: ci/scripts/integration_tests
