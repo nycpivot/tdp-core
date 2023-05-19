@@ -1,0 +1,96 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: http-cats
+  namespace: http-cats-ns
+  description: HTTP Cats API
+  tags:
+    - cats
+  apiscores:
+    scores:
+      - id: documentationReport
+        label: 'Documentation Health'
+        value: 34.375
+        valueType: percentage
+        status: failed
+      - id: securityReport
+        label: 'Security Score'
+        value: 70.0
+        valueType: percentage
+        status: warning
+      - id: openApiHealthReport
+        label: 'OpenAPI Health'
+        value: 89.0625
+        valueType: percentage
+        status: passed
+    scoreDetailsURL: https://vmware.com
+spec:
+  type: openapi
+  owner: api-lifecycle
+  system: cats-api
+  lifecycle: experimental
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: HTTP Cats
+      description: |-
+        Site that offers a cat image for each of the HTTP status codes
+      contact:
+        email: api-lifecycle@vmware.com
+      version: 1.0.42
+    externalDocs:
+      description: Find out more about Swagger
+      url: http://swagger.io
+    servers:
+      - url: https://http.cat/
+    tags:
+      - name: error
+        description: Status codes related to errors
+      - name: ok
+        description: Status codes related to succeeded requests
+    paths:
+      /200:
+        get:
+          tags:
+            - ok
+          summary: Cat image for a successful operation
+          description: Cat image for a successful operation
+          operationId: okCat
+          responses:
+            '\''200'\'':
+              description: OK Cat
+              content:
+                image/png:
+                  schema:
+                    type: string
+                    format: binary
+      /202:
+        get:
+          tags:
+            - ok
+          summary: Cat image for an accepted operation
+          description: Cat image for an accepted operation
+          operationId: acceptedCat
+          responses:
+            '\''200'\'':
+              description: Cat image for an accepted operation
+              content:
+                image/png:
+                  schema:
+                    type: string
+                    format: binary
+      /404:
+        get:
+          tags:
+            - error
+          summary: Cat image for a not found operation
+          description: Cat image for a not found operation
+          operationId: notFoundCat
+          responses:
+            '\''200'\'':
+              description: Cat image for a not found operation
+              content:
+                image/png:
+                  schema:
+                    type: string
+                    format: binary

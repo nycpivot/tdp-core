@@ -18,6 +18,7 @@ import { plugin as guestAuthPlugin } from '@tpb/plugin-guest-auth';
 import { plugin as permissionTestAuthPlugin } from '@tpb/plugin-permission-test-auth';
 import { plugin as appAcceleratorPlugin } from '@tpb/plugin-app-accelerator-scaffolder';
 import { plugin as pendoPlugin } from '@tpb/plugin-pendo-analytics';
+import { plugin as scoringPlugin } from '@tpb/plugin-api-scoring';
 
 import '@tpb/plugin-clarity-theme/style/clarity.css';
 
@@ -40,4 +41,5 @@ new AppRuntime([
   permissionTestAuthPlugin(),
   appAcceleratorPlugin(),
   pendoPlugin(),
+  scoringPlugin(),
 ]).render();
