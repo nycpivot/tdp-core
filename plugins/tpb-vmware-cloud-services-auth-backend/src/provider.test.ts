@@ -94,6 +94,13 @@ describe('VMwareCloudServicesAuthProvider', () => {
       expect(searchParams.get('redirect_uri')).toBe('http://callbackUrl');
     });
 
+    it('requests scopes for ID and refresh token', async () => {
+      const startResponse = await provider.start(startRequest);
+      const { searchParams } = new URL(startResponse.url);
+
+      expect(searchParams.get('scope')).toBe('openid offline_access');
+    });
+
     it('generates PKCE challenge', async () => {
       const startResponse = await provider.start(startRequest);
       const { searchParams } = new URL(startResponse.url);

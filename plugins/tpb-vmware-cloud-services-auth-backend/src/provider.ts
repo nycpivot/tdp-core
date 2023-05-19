@@ -50,6 +50,7 @@ export class VMwareCloudServicesAuthProvider implements OAuthHandlers {
             'base64',
           )}`,
         },
+        scope: 'openid offline_access',
       },
       (
         _accessToken: string,
