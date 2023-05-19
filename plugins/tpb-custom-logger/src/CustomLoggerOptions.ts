@@ -24,6 +24,6 @@ const formatAsTAPAlignedJSONLog = format.printf(
   },
 );
 
-export const CustomLoggerOptions : LoggerOptions = {
+export const CustomLoggerOptions: LoggerOptions = {
   format: format.combine(format.timestamp(), formatAsTAPAlignedJSONLog),
-}
+};

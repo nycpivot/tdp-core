@@ -10,7 +10,7 @@ import {
   SingleHostDiscovery,
   UrlReaders,
   ServerTokenManager,
-  createRootLogger
+  createRootLogger,
 } from '@backstage/backend-common';
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
@@ -62,8 +62,7 @@ function makeCreateEnv(config: Config) {
 }
 
 export async function BackendRunner(surfaces: SurfaceStoreInterface) {
-
-  const loggerOptionsSurface = surfaces.findSurface(LoggerOptionsSurface)
+  const loggerOptionsSurface = surfaces.findSurface(LoggerOptionsSurface);
   createRootLogger(loggerOptionsSurface.getLoggerOptions());
 
   const config = await loadBackendConfig({
