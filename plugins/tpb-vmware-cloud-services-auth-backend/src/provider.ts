@@ -201,6 +201,14 @@ export class VMwareCloudServicesAuthProvider implements OAuthHandlers {
     info: { refreshToken: string },
   ): Promise<{ response: OAuthResponse; refreshToken?: string }> {
     const identity: Record<string, string> = jwtDecoder(user.id_token);
+    const missingClaims = ['email', 'given_name', 'family_name'].filter(
+      key => !(key in identity),
+    );
+    if (missingClaims.length > 0) {
+      throw new Error(
+        `ID token missing required claims: ${missingClaims.join(', ')}`,
+      );
+    }
     const backstageIdentity = await this.resolverContext
       .signInWithCatalogUser({
         filter: {

@@ -219,8 +219,27 @@ describe('VMwareCloudServicesAuthProvider', () => {
       });
     });
 
-    // TODO what if the given_name, family_name, or email claims are missing
-    // from the token!?
+    it('fails if given_name, family_name or email claims are missing', () => {
+      const inadequateIdToken: string = nJwt
+        .create({ sub: 'unusual' }, Buffer.from('signing key'))
+        .compact();
+      server.use(
+        rest.post(
+          'https://console.cloud.vmware.com/csp/gateway/am/api/auth/token',
+          (_, res, ctx) =>
+            res(
+              ctx.json({
+                access_token: 'accessToken',
+                id_token: inadequateIdToken,
+              }),
+            ),
+        ),
+      );
+
+      return expect(provider.handler(handlerRequest)).rejects.toThrow(
+        'ID token missing required claims: email, given_name, family_name',
+      );
+    });
 
     it('looks up backstage identity by email', async () => {
       const { response } = await provider.handler(handlerRequest);
