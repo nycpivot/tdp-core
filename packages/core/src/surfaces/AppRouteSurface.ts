@@ -7,7 +7,6 @@ export class AppRouteSurface {
   public static readonly id = 'AppRouteSurface';
   private readonly _routes: ReactElement[];
   private readonly _routeBinders: RouteBinder[];
-  private _defaultRoute?: string;
 
   public constructor() {
     this._routeBinders = [];
@@ -22,16 +21,8 @@ export class AppRouteSurface {
     this._routeBinders.push(routeBinder);
   }
 
-  public setDefault(defaultRoute: string) {
-    this._defaultRoute = defaultRoute;
-  }
-
   public bindRoutes(context: { bind: AppRouteBinder }): void {
     this._routeBinders.forEach(rb => rb(context));
-  }
-
-  public get defaultRoute(): string | undefined {
-    return this._defaultRoute;
   }
 
   public get nonDefaultRoutes(): ReactElement[] {

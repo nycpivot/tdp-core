@@ -21,7 +21,6 @@ describe('AppRuntime', () => {
     const sidebarItemSurface = runtime.surfaces.findSurface(SidebarItemSurface);
     const routeSurface = runtime.surfaces.findSurface(AppRouteSurface);
     expect(sidebarItemSurface.mainItems).toHaveLength(3);
-    expect(routeSurface.defaultRoute).toBe('catalog');
     expect(routeSurface.nonDefaultRoutes).toHaveLength(8);
   });
 
@@ -35,16 +34,6 @@ describe('AppRuntime', () => {
     expect(
       runtime.surfaces.findSurface(SidebarItemSurface).mainItems,
     ).toHaveLength(4);
-  });
-
-  it('should allow plugins to change default route', () => {
-    const fakePlugin: TpbPluginInterface = context =>
-      context.applyTo(AppRouteSurface, surface => surface.setDefault('test'));
-
-    const runtime = new AppRuntime([fakePlugin]);
-    expect(runtime.surfaces.findSurface(AppRouteSurface).defaultRoute).toBe(
-      'test',
-    );
   });
 
   describe('api surface', () => {

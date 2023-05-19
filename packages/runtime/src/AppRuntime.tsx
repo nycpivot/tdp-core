@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  AppRouteSurface,
   TpbPluginInterface,
   SurfaceStoreInterface,
   SurfaceStore,
@@ -34,9 +33,6 @@ export class AppRuntime {
     apiDocsPlugin()(this._surfaces);
     loginPlugin()(this._surfaces);
     scmPlugin()(this._surfaces);
-    this._surfaces.applyTo(AppRouteSurface, routes =>
-      routes.setDefault('catalog'),
-    );
 
     plugins.forEach(plugin => plugin(this._surfaces));
 

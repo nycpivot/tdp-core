@@ -1,7 +1,5 @@
 import React from 'react';
-import { Navigate } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
@@ -16,6 +14,7 @@ import {
   ThemeSurface,
 } from '@tpb/core';
 import { ToggleRoute } from '@tpb/core-frontend';
+import { DefaultRoute } from './DefaultRoute';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface) => {
   const pluginSurface = surfaces.findSurface(AppPluginSurface);
@@ -42,9 +41,7 @@ export const appRenderer = (surfaces: SurfaceStoreInterface) => {
 
   const routes = (
     <FlatRoutes>
-      {routeSurface.defaultRoute && (
-        <Navigate key="/" to={routeSurface.defaultRoute} />
-      )}
+      <DefaultRoute routeSurface={routeSurface} />
       {...routeSurface.nonDefaultRoutes}
       <ToggleRoute
         feature="customize.features.settings.enabled"
