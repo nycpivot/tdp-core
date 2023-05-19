@@ -8033,6 +8033,26 @@
     uuid "^9.0.0"
     winston "^3.8.2"
 
+"@tpb/core@^0.0.2-main.106":
+  version "0.0.2-main.108"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.108.tgz#cc320fed6cac4e7b8aff58f618be0b91de99bfbc"
+  integrity sha512-aS+6UcXdKuaPpD8rAY4ptb6K2DbI6KT2zNi/n61/ZtIvvpvy6mVpdwAGEYey7pDpWxCmtxfRrtn+6nEf7YEmTQ==
+  dependencies:
+    "@backstage/backend-common" "^0.18.4"
+    "@backstage/backend-tasks" "^0.5.1"
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-app-api" "^1.7.0"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/plugin-auth-node" "^0.2.10"
+    "@backstage/plugin-catalog-backend" "^1.9.0"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@backstage/theme" "^0.2.19"
+    "@types/express" "*"
+    "@types/uuid" "^9.0.1"
+    express "^4.18.2"
+    uuid "^9.0.0"
+    winston "^3.8.2"
+
 "@tpb/core@^0.0.2-main.61", "@tpb/core@^0.0.2-main.85":
   version "0.0.2-main.85"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.85.tgz#01e21c44a58880e19b1fcb27cfe285d1ed96d863"
@@ -8297,10 +8317,10 @@
     react-use "^17.4.0"
     uuid "^9.0.0"
 
-"@tpb/plugin-supply-chain@1.0.6-beta.4":
-  version "1.0.6-beta.4"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-beta.4.tgz#b46256bf8ffddb90f1be11be946b5409fca04bbc"
-  integrity sha512-h7ok3yewR0ARPp62RqL74SvD041J0yrEq+w+STYOc0pCPu8xXPjTelA9DccC+nYUoKu+mC0Yt57WlrZ8bP4ekA==
+"@tpb/plugin-supply-chain@1.0.6-beta.6":
+  version "1.0.6-beta.6"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-beta.6.tgz#4fb8e2fd1ba6c08df85d86ae7efddc48e9bb1de4"
+  integrity sha512-dIv2ABEq0VV5IsQ5FRQnNZ9Zar6a1OR6G3FYS53S0gEZPudDcEBlZgszo3Zsck0PpNxHKi5a+fKXF+nqJN0TMQ==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
     "@backstage/core-app-api" "^1.4.0"
@@ -8321,6 +8341,7 @@
     "@tap/kubernetes-orm" "~1.0.5-beta.0"
     "@tap/shared-components" "1.0.6-beta.1"
     "@tint/metadata-store-interface" "^1.2.0"
+    "@tpb/core" "^0.0.2-main.106"
     "@types/jest-when" "^3.5.2"
     "@types/react-copy-to-clipboard" "^5.0.4"
     "@types/react-cytoscapejs" "^1.2.2"
@@ -10189,7 +10210,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-pendo-analytics" "^1.0.5-beta.5"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
-    "@tpb/plugin-supply-chain" "1.0.6-beta.4"
+    "@tpb/plugin-supply-chain" "1.0.6-beta.6"
     "@tpb/runtime" "^0.0.1-alpha.3"
     history "^5.0.0"
     react "^17.0.2"
