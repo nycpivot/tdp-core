@@ -21,6 +21,7 @@ import { plugin as appAcceleratorPlugin } from '@tpb/plugin-app-accelerator-scaf
 import { plugin as pendoPlugin } from '@tpb/plugin-pendo-analytics';
 import { plugin as scoringPlugin } from '@tpb/plugin-api-scoring';
 import { plugin as supplyChainPlugin } from '@tpb/plugin-supply-chain';
+import { plugin as securityAnalysisPlugin } from '@tpb/plugin-security-analysis-frontend';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -46,4 +47,5 @@ new AppRuntime([
   pendoPlugin(),
   scoringPlugin(),
   supplyChainPlugin(),
+  securityAnalysisPlugin(),
 ]).render();
