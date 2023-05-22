@@ -41,7 +41,7 @@
     "@tpb/core": "^0.0.1-alpha.2",
     "@tpb/core-frontend": "^0.0.1-alpha.1",
     "react-hook-form": "^7.12.2",
-    "react-helmet": "6.1.0"
+    "react-helmet": "^6.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",
@@ -60,7 +60,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "*",
     "@types/node": "^18.16.5",
-    "@types/react-helmet": "6.1.0",
+    "@types/react-helmet": "^6.1",
     "cross-fetch": "^3.1.5",
     "msw": "^1.2.1"
   },

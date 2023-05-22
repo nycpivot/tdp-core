@@ -9528,10 +9528,10 @@
   dependencies:
     "@types/react" "^17"
 
-"@types/react-helmet@6.1.0":
-  version "6.1.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react-helmet/-/react-helmet-6.1.0.tgz#af586ed685f4905e2adc7462d1d65ace52beee7a"
-  integrity sha512-PYRoU1XJFOzQ3BHvWL1T8iDNbRjdMDJMT5hFmZKGbsq09kbSqJy61uwEpTrbTNWDopVphUT34zUSVLK9pjsgYQ==
+"@types/react-helmet@^6.1":
+  version "6.1.6"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react-helmet/-/react-helmet-6.1.6.tgz#7d1afd8cbf099616894e8240e9ef70e3c6d7506d"
+  integrity sha512-ZKcoOdW/Tg+kiUbkFCBtvDw0k3nD4HJ/h/B9yWxN4uDO8OkRksWTO+EL+z/Qu3aHTeTll3Ro0Cc/8UhwBCMG5A==
   dependencies:
     "@types/react" "*"
 
@@ -22833,7 +22833,7 @@ react-fast-compare@^3.1.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-fast-compare/-/react-fast-compare-3.2.1.tgz#53933d9e14f364281d6cba24bfed7a4afb808b5f"
   integrity sha512-xTYf9zFim2pEif/Fw16dBiXpe0hoy5PxcD8+OwBnTtNLfIm3g6WxhKNurY+6OmdH1u6Ta/W/Vl6vjbYP1MFnDg==
 
-react-helmet@6.1.0:
+react-helmet@6.1.0, react-helmet@^6.1:
   version "6.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
   integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
