@@ -1,6 +1,6 @@
 import { TestApiProvider as ApiProvider } from '@backstage/test-utils';
 import { errorApiRef } from '@backstage/core-plugin-api';
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import {
@@ -84,13 +84,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       },
     );
 
-    await act(async () => {
-      try {
-        userEvent.click(getByRole('button', { name: /Analyze/i }));
-      } catch {
-        return;
-      }
-    });
+    try {
+      userEvent.click(getByRole('button', { name: /Analyze/i }));
+    } catch {
+      return;
+    }
 
     expect(catalogImportApi.analyzeUrl).toBeCalledTimes(0);
     expect(onAnalysisFn).toBeCalledTimes(0);
@@ -107,13 +105,8 @@ describe('<StepInitAnalyzeUrl />', () => {
       },
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'http:/',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(getByRole('textbox', { name: /Repository/i }), 'http:/');
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(catalogImportApi.analyzeUrl).toBeCalledTimes(0);
     expect(onAnalysisFn).toBeCalledTimes(0);
@@ -142,13 +135,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -179,13 +170,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-1',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-1',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -215,13 +204,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-1',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-1',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
@@ -259,13 +246,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -297,13 +282,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
@@ -341,13 +324,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
@@ -370,13 +351,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve({ type: 'unknown' } as any as AnalyzeResult),
     );
 
-    await act(async () => {
-      await userEvent.type(
-        getByRole('textbox', { name: /Repository/i }),
-        'https://my-repository-2',
-      );
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
-    });
+    userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
+    );
+    userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
