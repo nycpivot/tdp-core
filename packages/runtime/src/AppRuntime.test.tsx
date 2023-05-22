@@ -1,10 +1,18 @@
 import React from 'react';
 import {
-  TpbPluginInterface,
+  ApiSurface,
   AppRouteSurface,
   SidebarItemSurface,
+  TpbPluginInterface,
 } from '@tpb/core';
 import { AppRuntime } from './AppRuntime';
+import {
+  ApiRef,
+  appThemeApiRef,
+  configApiRef,
+  createApiFactory,
+  identityApiRef,
+} from '@backstage/core-plugin-api';
 
 describe('AppRuntime', () => {
   it('should apply default plugins (catalog, techdocs, search, api)', () => {
@@ -37,5 +45,47 @@ describe('AppRuntime', () => {
     expect(runtime.surfaces.findSurface(AppRouteSurface).defaultRoute).toBe(
       'test',
     );
+  });
+
+  describe('api surface', () => {
+    it('should not contain config api', () => {
+      const runtime = new AppRuntime([createPluginWithApi(configApiRef)]);
+      expect(
+        runtime.surfaces
+          .findSurface(ApiSurface)
+          .apis.filter(api => api.api.id === configApiRef.id),
+      ).toHaveLength(0);
+    });
+
+    it('should not contain identity api', () => {
+      const runtime = new AppRuntime([createPluginWithApi(identityApiRef)]);
+      expect(
+        runtime.surfaces
+          .findSurface(ApiSurface)
+          .apis.filter(api => api.api.id === identityApiRef.id),
+      ).toHaveLength(0);
+    });
+
+    it('should not contain theme api', () => {
+      const runtime = new AppRuntime([createPluginWithApi(appThemeApiRef)]);
+      expect(
+        runtime.surfaces
+          .findSurface(ApiSurface)
+          .apis.filter(api => api.api.id === appThemeApiRef.id),
+      ).toHaveLength(0);
+    });
+
+    function createPluginWithApi(apiRef: ApiRef<any>): TpbPluginInterface {
+      return context =>
+        context.applyTo(ApiSurface, surface =>
+          surface.add(
+            createApiFactory({
+              api: apiRef,
+              deps: [],
+              factory: jest.fn(),
+            }),
+          ),
+        );
+    }
   });
 });
