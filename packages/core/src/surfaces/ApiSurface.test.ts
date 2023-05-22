@@ -1,11 +1,8 @@
 import { ApiSurface } from './ApiSurface';
 import {
   AnyApiFactory,
-  appThemeApiRef,
-  configApiRef,
   createApiFactory,
   createApiRef,
-  identityApiRef,
 } from '@backstage/core-plugin-api';
 
 describe('Api Surface', () => {
@@ -38,32 +35,20 @@ describe('Api Surface', () => {
     const factory1 = makeApiFactory('my.api');
     surface.add(factory1);
 
-    const factory2 = makeApiFactory('my.api', { configApi: configApiRef });
+    const factory2 = makeApiFactory('my.api', { configApi: { id: 'foo' } });
     surface.add(factory2);
 
     expect(surface.apis).toEqual([factory2]);
   });
 
   describe('static apis that are created by backstage', () => {
-    it('should ignore app theme api', () => {
-      const factory = makeApiFactory(appThemeApiRef.id);
-      surface.add(factory);
+    it('should ignore api', () => {
+      ApiSurface.apisToIgnore = ['foo', 'bar'];
+      const factory = makeApiFactory('bar');
+      surface.add(makeApiFactory('bar'));
+      surface.add(makeApiFactory('baz'));
 
-      expect(surface.apis).toEqual([]);
-    });
-
-    it('should ignore config api', () => {
-      const factory = makeApiFactory(configApiRef.id);
-      surface.add(factory);
-
-      expect(surface.apis).toEqual([]);
-    });
-
-    it('should ignore identity api', () => {
-      const factory = makeApiFactory(identityApiRef.id);
-      surface.add(factory);
-
-      expect(surface.apis).toEqual([]);
+      expect(surface.apis.map(api => api.api.id)).toEqual(['baz']);
     });
   });
 
