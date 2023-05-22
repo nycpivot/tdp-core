@@ -1,12 +1,11 @@
 import React from 'react';
-import { Route } from 'react-router';
 import {
   AppPluginInterface,
   AppRouteSurface,
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
-import { ToggleFeature } from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
 import { SidebarItem } from '@backstage/core-components';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import {
@@ -25,10 +24,17 @@ export const TechdocsPlugin: AppPluginInterface<RoutableConfig> = config => {
 
   return context => {
     context.applyTo(AppRouteSurface, routes => {
-      routes.add(<Route path={`/${path}`} element={<TechDocsIndexPage />} />);
+      routes.add(
+        <ToggleRoute
+          feature="customize.features.docs.enabled"
+          path={`/${path}`}
+          element={<TechDocsIndexPage />}
+        />,
+      );
 
       routes.add(
-        <Route
+        <ToggleRoute
+          feature="customize.features.docs.enabled"
           path={`/${path}/:namespace/:kind/:name/*`}
           element={<TechDocsReaderPage />}
         />,

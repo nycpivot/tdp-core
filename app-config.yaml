@@ -223,12 +223,19 @@ kubernetes:
 #customize:
 #  features:
 #    catalog:
+#      enabled: true
 #      showInSidebar: true
+#    catalogGraph:
+#      enabled: true
 #    docs:
+#      enabled: true
 #      showInSidebar: true
 #    search:
+#      enabled: true
 #      showInSidebar: true
 #    apiDocs:
+#      enabled: true
 #      showInSidebar: true
 #    settings:
+#      enabled: true
 #      showInSidebar: true

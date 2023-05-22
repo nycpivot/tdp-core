@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route } from 'react-router';
 import {
   CatalogEntityPage,
   CatalogIndexPage,
@@ -18,14 +17,14 @@ import {
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
-import { ToggleFeature } from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/EntityPage';
 import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { EntityPageSurface } from './EntityPageSurface';
 import { CustomCatalogPage } from './components/CustomCatalogPage';
 import { DefaultImportPage } from './components/CatalogImport/DefaultImportPage';
-import { PermissionedRoute } from '@backstage/plugin-permission-react';
+import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
 interface CatalogConfig {
@@ -45,9 +44,13 @@ export const CatalogPlugin: AppPluginInterface<
   return context => {
     context.applyTo(AppRouteSurface, routes => {
       routes.add(
-        <Route path={`/${path}`} element={<CatalogIndexPage />}>
+        <ToggleRoute
+          feature="customize.features.catalog.enabled"
+          path={`/${path}`}
+          element={<CatalogIndexPage />}
+        >
           <CustomCatalogPage />
-        </Route>,
+        </ToggleRoute>,
       );
 
       routes.addRouteBinder(({ bind }) => {
@@ -58,13 +61,15 @@ export const CatalogPlugin: AppPluginInterface<
 
       if (!config?.disableImport) {
         routes.add(
-          <PermissionedRoute
-            permission={catalogEntityCreatePermission}
+          <ToggleRoute
+            feature="customize.features.catalog.enabled"
             path="/catalog-import"
             element={<CatalogImportPage />}
           >
-            <DefaultImportPage />
-          </PermissionedRoute>,
+            <RequirePermission permission={catalogEntityCreatePermission}>
+              <DefaultImportPage />
+            </RequirePermission>
+          </ToggleRoute>,
         );
 
         routes.addRouteBinder(({ bind }) => {
@@ -82,7 +87,11 @@ export const CatalogPlugin: AppPluginInterface<
 
       if (!config?.disableGraph) {
         routes.add(
-          <Route path="/catalog-graph" element={<CatalogGraphPage />} />,
+          <ToggleRoute
+            feature="customize.features.catalogGraph.enabled"
+            path="/catalog-graph"
+            element={<CatalogGraphPage />}
+          />,
         );
       }
     });
@@ -92,12 +101,13 @@ export const CatalogPlugin: AppPluginInterface<
       EntityPageSurface,
       (routes, entityPageSurface) =>
         routes.add(
-          <Route
+          <ToggleRoute
+            feature="customize.features.catalog.enabled"
             path={`/${path}/:namespace/:kind/:name`}
             element={<CatalogEntityPage />}
           >
             {entityPage(entityPageSurface)}
-          </Route>,
+          </ToggleRoute>,
         ),
     );
 
