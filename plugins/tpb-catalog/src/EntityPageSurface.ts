@@ -167,13 +167,6 @@ export class EntityPageSurface {
     this._websitePage.addTab(tab);
   }
 
-  /**
-   * @deprecated use packagePage
-   */
-  public addPackagePageTab(tab: ReactElement) {
-    this._packagePage.addTab(tab);
-  }
-
   public get overviewContent(): ReactElement[] {
     return this._overviewContent;
   }
