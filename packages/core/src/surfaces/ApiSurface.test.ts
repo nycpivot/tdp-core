@@ -44,7 +44,6 @@ describe('Api Surface', () => {
   describe('static apis that are created by backstage', () => {
     it('should ignore api', () => {
       ApiSurface.apisToIgnore = ['foo', 'bar'];
-      const factory = makeApiFactory('bar');
       surface.add(makeApiFactory('bar'));
       surface.add(makeApiFactory('baz'));
 

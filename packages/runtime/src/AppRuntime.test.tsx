@@ -81,7 +81,7 @@ describe('AppRuntime', () => {
           surface.add(
             createApiFactory({
               api: apiRef,
-              deps: [],
+              deps: {},
               factory: jest.fn(),
             }),
           ),
