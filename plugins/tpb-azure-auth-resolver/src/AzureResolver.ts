@@ -15,7 +15,7 @@ export const AzureResolverPlugin: BackendPluginInterface = () => surfaces => {
           'Azure login failed, user profile does not contain an email',
         );
       }
-      return signInResolverSurface.signInWithName(email, context);
+      return signInResolverSurface.signInWithEmail(email, context);
     };
 
   surfaces.applyTo(SignInResolverSurface, surface => {
