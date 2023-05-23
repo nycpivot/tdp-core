@@ -31,7 +31,8 @@
     "@cds/core": "5.6.4",
     "@tap/shared-components": "^1.0.0",
     "@tint/plugin-security-analysis": "~1.1.0",
-    "@tint/plugin-supply-chain": "~1.0.4"
+    "@tint/plugin-supply-chain": "~1.0.4",
+    "@material-ui/icons": "^4.11.3"
   },
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0",
