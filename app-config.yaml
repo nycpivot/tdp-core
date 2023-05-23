@@ -54,11 +54,6 @@ proxy:
   '/test':
     target: 'https://example.com'
     changeOrigin: true
-  '/app-live-view':
-    target: http://application-live-view-5112.app-live-view.svc.cluster.local/api
-    changeOrigin: true
-    headers:
-      X-Custom-Source: project-star
 
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
