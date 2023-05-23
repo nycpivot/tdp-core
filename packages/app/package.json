@@ -15,7 +15,7 @@
     "@tpb/plugin-auth0-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-azure-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-bitbucket-auth": "^0.0.1-alpha.2",
-    "@tpb/plugin-clarity-theme": "^0.0.1-alpha.2",
+    "@tpb/plugin-clarity-theming": "^0.0.1-alpha.2",
     "@tpb/plugin-github-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-gitlab-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-gitlab-loblaw": "^0.0.20",

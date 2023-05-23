@@ -135,8 +135,8 @@ export function buildPluginsResolver(
     {
       app: {
         theme: {
-          name: '@tpb/plugin-clarity-theme',
-          stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
+          name: '@tpb/plugin-clarity-theming',
+          stylesheet: '@tpb/plugin-clarity-theming/style/clarity.css',
         },
         plugins: tpbConfig.app ? tpbConfig.app.plugins : [],
       },

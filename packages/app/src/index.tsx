@@ -1,6 +1,6 @@
 import '@backstage/cli/asset-types';
 import { AppRuntime } from '@tpb/runtime';
-import { plugin as themePlugin } from '@tpb/plugin-clarity-theme';
+import { plugin as themePlugin } from '@tpb/plugin-clarity-theming';
 import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world';
 import { plugin as gitlabPlugin } from '@tpb/plugin-gitlab-loblaw';
 import { plugin as rrvPlugin } from '@tpb/plugin-rrv';
@@ -21,7 +21,7 @@ import { plugin as pendoPlugin } from '@tpb/plugin-pendo-analytics';
 import { plugin as scoringPlugin } from '@tpb/plugin-api-scoring';
 import { plugin as supplyChainPlugin } from '@tpb/plugin-supply-chain';
 
-import '@tpb/plugin-clarity-theme/style/clarity.css';
+import '@tpb/plugin-clarity-theming/style/clarity.css';
 
 new AppRuntime([
   themePlugin(),

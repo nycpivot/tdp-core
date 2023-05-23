@@ -132,8 +132,8 @@ describe('Registry', () => {
       const unresolvedConfig = tpbConfig.unresolvedConfig;
 
       expect(unresolvedConfig.app?.theme).toEqual({
-        name: '@tpb/plugin-clarity-theme',
-        stylesheet: '@tpb/plugin-clarity-theme/style/clarity.css',
+        name: '@tpb/plugin-clarity-theming',
+        stylesheet: '@tpb/plugin-clarity-theming/style/clarity.css',
       });
     });
   });
