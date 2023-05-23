@@ -3210,21 +3210,6 @@
     "@material-ui/lab" "4.0.0-alpha.61"
     react-use "^17.2.4"
 
-"@backstage/integration-react@^1.1.13":
-  version "1.1.13"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/integration-react/-/integration-react-1.1.13.tgz#a7f0cb589d1bc70576df35a6c3815cd0d04e3014"
-  integrity sha512-WWwOJmhnkkJo3lywQX8TNCua+MwuLGuh9qR/Ff7KwifiZNby7pHSFYxBVeGtpDg2LS4z9UIhMWN8veNTuRBekQ==
-  dependencies:
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-components" "^0.13.1"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/integration" "^1.4.5"
-    "@backstage/theme" "^0.3.0"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.61"
-    react-use "^17.2.4"
-
 "@backstage/integration@1.4.4", "@backstage/integration@^1.4.3", "@backstage/integration@^1.4.4":
   version "1.4.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/integration/-/integration-1.4.4.tgz#f4ef266eef0193e34c073bcbbf75d0cd471f8800"
@@ -4467,28 +4452,6 @@
     "@backstage/plugin-permission-common" "^0.7.5"
     "@backstage/plugin-permission-react" "^0.4.12"
     "@backstage/theme" "^0.2.19"
-    "@backstage/types" "^1.0.2"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@testing-library/dom" "^8.0.0"
-    "@testing-library/jest-dom" "^5.10.1"
-    "@testing-library/react" "^12.1.3"
-    "@testing-library/user-event" "^14.0.0"
-    "@types/react" "^16.13.1 || ^17.0.0"
-    cross-fetch "^3.1.5"
-    zen-observable "^0.10.0"
-
-"@backstage/test-utils@^1.3.1":
-  version "1.3.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/test-utils/-/test-utils-1.3.1.tgz#aac959c23a444544d679e56c93ea38772c09254a"
-  integrity sha512-f9B4vRRi21rsLuK15cUd8wfslFFxzqZ1Jv0JQc9e6hIT/N6k1p52lTHRFFg+nKEkfRz3x3pD8S+LGeYZHKSiIg==
-  dependencies:
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-app-api" "^1.8.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/plugin-permission-common" "^0.7.5"
-    "@backstage/plugin-permission-react" "^0.4.12"
-    "@backstage/theme" "^0.3.0"
     "@backstage/types" "^1.0.2"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
@@ -8649,10 +8612,10 @@
     react-use "^17.4.0"
     uuid "^9.0.0"
 
-"@tpb/plugin-supply-chain@1.0.6-beta.7":
-  version "1.0.6-beta.7"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-beta.7.tgz#05180f6dc1eaf9719e9168baccb857b2bb549e8e"
-  integrity sha512-t7v/jHrHPIaUVEHxT1WFN/vENWo0hxcNSV/3MUOp+Iru0Vy5iYRrUHj5nkdFI+bdMnURusb0d21iDAEhKMp/jg==
+"@tpb/plugin-supply-chain@1.0.6-build.1":
+  version "1.0.6-build.1"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-build.1.tgz#68a36e1076fe19a8e7dff14262857ea80944767d"
+  integrity sha512-svShQIYQiztr6+2L3Lq4Seau1nIMLEMv9IHtwMpRKwhPTcTqOi0IIatdIk6Q6cRWZLk5VGE8xaogXRkc4653Pg==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
     "@backstage/core-app-api" "^1.7.0"
@@ -10560,7 +10523,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-pendo-analytics" "^1.0.5-beta.5"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
-    "@tpb/plugin-supply-chain" "1.0.6-beta.7"
+    "@tpb/plugin-supply-chain" "1.0.6-build.1"
     "@tpb/runtime" "^0.0.1-alpha.3"
     history "^5.0.0"
     react "^17.0.2"
