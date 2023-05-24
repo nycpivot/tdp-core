@@ -3331,12 +3331,12 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-auth-node@^0.2.10", "@backstage/plugin-auth-node@^0.2.12", "@backstage/plugin-auth-node@^0.2.13":
-  version "0.2.13"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.13.tgz#b46c266222bb51d62c37a323ce615a1f496a98df"
-  integrity sha512-vMLm14UB9f5yddas6bHtt9yoQxiOiHBctk9RMyqFMIgf8U47t/ZBc2MsN1s3x453tN7rNQmHLlLY/nnSZudFTg==
+"@backstage/plugin-auth-node@^0.2.10", "@backstage/plugin-auth-node@^0.2.14":
+  version "0.2.14"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.14.tgz#7b973b72f41325de2181f04f8ac956f41c645bf8"
+  integrity sha512-s6uoXcBCVNYzL5LOWlt7W1Q8k3Y2MH42BCE9d804J6Ef00OV5oKAe60O4zOI+zgaiBCaiY1hMko9/XM/hdAjGg==
   dependencies:
-    "@backstage/backend-common" "^0.18.4"
+    "@backstage/backend-common" "^0.18.5"
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
     "@types/express" "*"
@@ -3345,12 +3345,12 @@
     node-fetch "^2.6.7"
     winston "^3.2.1"
 
-"@backstage/plugin-auth-node@^0.2.14":
-  version "0.2.14"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.14.tgz#7b973b72f41325de2181f04f8ac956f41c645bf8"
-  integrity sha512-s6uoXcBCVNYzL5LOWlt7W1Q8k3Y2MH42BCE9d804J6Ef00OV5oKAe60O4zOI+zgaiBCaiY1hMko9/XM/hdAjGg==
+"@backstage/plugin-auth-node@^0.2.12", "@backstage/plugin-auth-node@^0.2.13":
+  version "0.2.13"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.13.tgz#b46c266222bb51d62c37a323ce615a1f496a98df"
+  integrity sha512-vMLm14UB9f5yddas6bHtt9yoQxiOiHBctk9RMyqFMIgf8U47t/ZBc2MsN1s3x453tN7rNQmHLlLY/nnSZudFTg==
   dependencies:
-    "@backstage/backend-common" "^0.18.5"
+    "@backstage/backend-common" "^0.18.4"
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
     "@types/express" "*"
@@ -8091,6 +8091,16 @@
     react-copy-to-clipboard "^5.1.0"
     ring-buffer-ts "^1.0.3"
 
+"@tap/shared-components@~1.0.0":
+  version "1.0.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tap/shared-components/-/@tap/shared-components-1.0.5.tgz#f72b9ee78bc3145ae4d19ca35365b8d4efe401f5"
+  integrity sha512-c3ZK1mCLtf6zUqmnNTHdYm2E/pbyKQNiT0TxxRIvqtNO3qvX3IyLBmScapuCR9Gv7Tqh+8bmFFE6BKjfF+cDIg==
+  dependencies:
+    ansi-to-react "^6.1.6"
+    clsx "^1.1.1"
+    react-copy-to-clipboard "^5.1.0"
+    ring-buffer-ts "^1.0.3"
+
 "@testing-library/dom@^8.0.0":
   version "8.20.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@testing-library/dom/-/dom-8.20.0.tgz#914aa862cef0f5e89b98cc48e3445c4c921010f6"
@@ -8328,7 +8338,7 @@
     uuid "^9.0.0"
     winston "^3.8.2"
 
-"@tpb/core@^0.0.2-main.106":
+"@tpb/core@^0.0.2-main.106", "@tpb/core@^0.0.2-main.83":
   version "0.0.2-main.108"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.108.tgz#cc320fed6cac4e7b8aff58f618be0b91de99bfbc"
   integrity sha512-aS+6UcXdKuaPpD8rAY4ptb6K2DbI6KT2zNi/n61/ZtIvvpvy6mVpdwAGEYey7pDpWxCmtxfRrtn+6nEf7YEmTQ==
@@ -8407,6 +8417,28 @@
     kubernetes-models "^3.0.0"
     lodash "^4.17.21"
     moment "^2.29.4"
+    react-use "^17.3.2"
+    uuid "^8.3.2"
+
+"@tpb/kubernetes-orm@^0.1.5":
+  version "0.1.5"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/kubernetes-orm/-/@tpb/kubernetes-orm-0.1.5.tgz#04faa5c67243b4d4579b2d9148ee36bd06fa6978"
+  integrity sha512-2QwUnr1JuSz3jbQ1T/t95oRfZ/zca5NM12L02yPD0U0NU1rDDXSMYfPXynAJBnkQiZhcTdRbq8kbvLLtG7fybw==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.5"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@backstage/plugin-catalog-react" "^1.2.4"
+    "@backstage/plugin-kubernetes" "^0.7.7"
+    "@backstage/plugin-kubernetes-common" "^0.5.1"
+    "@kubernetes-models/apimachinery" "^0.2.0"
+    "@kubernetes-models/base" "^3.0.0"
+    "@kubernetes-models/knative" "^1.0.2"
+    http-status-codes "^2.1.4"
+    kubernetes-models "^3.0.0"
+    lodash "^4.17.21"
+    moment "^2.29.4"
+    react "^17.0.2"
+    react-dom "^17.0.2"
     react-use "^17.3.2"
     uuid "^8.3.2"
 
@@ -8611,6 +8643,34 @@
     react-router-dom "6.0.0-beta.0"
     react-use "^17.4.0"
     uuid "^9.0.0"
+
+"@tpb/plugin-security-analysis-frontend@^1.0.0-build.7":
+  version "1.0.0-build.7"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-security-analysis-frontend/-/@tpb/plugin-security-analysis-frontend-1.0.0-build.7.tgz#1a87fc78b03b3dd1801e94c030de7a2c458a6476"
+  integrity sha512-IV54vi0KKBMT/gCikR2gyhZ5ZqJ5Du3mIUkX9RGBKvPfJ36w8HglXCHjljCtES69PmvUeu2c3Gaj7fOxHn3c0Q==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.5"
+    "@backstage/core-app-api" "^1.4.0"
+    "@backstage/core-plugin-api" "^1.3.0"
+    "@backstage/plugin-kubernetes" "^0.7.7"
+    "@backstage/plugin-kubernetes-common" "^0.6.1"
+    "@backstage/theme" "^0.2.16"
+    "@material-table/core" "^4.3.1"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "^4.0.0-alpha.60"
+    "@tap/shared-components" "~1.0.0"
+    "@tint/metadata-store-interface" "^1.2.0"
+    "@tpb/core" "^0.0.2-main.83"
+    "@tpb/kubernetes-orm" "^0.1.5"
+    lodash "^4.17.21"
+    moment "^2.29.1"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    react-router "6.0.0-beta.0"
+    react-router-dom "6.0.0-beta.0"
+    react-use "^17.2.4"
+    recharts "^2.1.9"
 
 "@tpb/plugin-supply-chain@1.0.6-build.1":
   version "1.0.6-build.1"
@@ -10533,6 +10593,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-pendo-analytics" "^1.0.5-beta.5"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
+    "@tpb/plugin-security-analysis-frontend" "^1.0.0-build.7"
     "@tpb/plugin-supply-chain" "1.0.6-build.1"
     "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
     "@tpb/runtime" "^0.0.1-alpha.3"
