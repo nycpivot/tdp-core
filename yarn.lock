@@ -9315,6 +9315,11 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/node/-/node-14.18.36.tgz#c414052cb9d43fab67d679d5f3c641be911f5835"
   integrity sha512-FXKWbsJ6a1hIrRxv+FoukuHnGTgEzKYGi7kilfMae96AL9UNkPFNWJEEYWzdRI9ooIkbr4AKldyuSTLql06vLQ==
 
+"@types/node@^15.0.1":
+  version "15.14.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/node/-/node-15.14.9.tgz#bc43c990c3c9be7281868bbc7b8fdd6e2b57adfa"
+  integrity sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==
+
 "@types/node@^16.9.2":
   version "16.18.24"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/node/-/node-16.18.24.tgz#f21925dd56cd3467b4e1e0c5071d0f2af5e9a316"
@@ -9655,6 +9660,11 @@
   integrity sha512-sOUTGn6h1SfQ+gbgqC364jLFBw2lnFqkgF3q0WovEHRLMrVD1sd5aufqi/aJObLekJO+Aq5z646U4Oxy6shXMA==
   dependencies:
     "@types/node" "*"
+
+"@types/uid2@0.0.x":
+  version "0.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/uid2/-/uid2-0.0.0.tgz#d650ce54123c1280535f3759d94b37d1de48c56e"
+  integrity sha512-ZozX4JtkwJM+Vs3WO8O75DfKuqWx22binIwKCExO7Mu9kz/4bpEGBd2zk4M7rMSs+i20SgUI5ezYru4C0PZZqg==
 
 "@types/underscore@^1.8.9":
   version "1.11.4"
@@ -10524,6 +10534,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-supply-chain" "1.0.6-build.1"
+    "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
     "@tpb/runtime" "^0.0.1-alpha.3"
     history "^5.0.0"
     react "^17.0.2"
@@ -13729,7 +13740,7 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-ecdsa-sig-formatter@1.0.11, ecdsa-sig-formatter@^1.0.11:
+ecdsa-sig-formatter@1.0.11, ecdsa-sig-formatter@^1.0.11, ecdsa-sig-formatter@^1.0.5:
   version "1.0.11"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ecdsa-sig-formatter/-/ecdsa-sig-formatter-1.0.11.tgz#ae0f0fa2d85045ef14a817daa3ce9acd0489e5bf"
   integrity sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==
@@ -20128,6 +20139,15 @@ nice-try@^1.0.4:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
+njwt@^2.0.0:
+  version "2.0.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/njwt/-/njwt-2.0.0.tgz#da8b7ad995980de67b8069dad63949d2bd5df27d"
+  integrity sha512-1RcqirhCqThBEe4KO83pFg0wPBa1c9NiXNCrocD2EbZqb6ksWWDVnp/w/p0gsyUcVa05PhhaaPjs9rc/GLmdxQ==
+  dependencies:
+    "@types/node" "^15.0.1"
+    ecdsa-sig-formatter "^1.0.5"
+    uuid "^8.3.2"
+
 no-case@^3.0.4:
   version "3.0.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/no-case/-/no-case-3.0.4.tgz#d361fd5c9800f558551a8369fc0dcd4662b6124d"
@@ -20717,6 +20737,11 @@ oauth@0.9.x:
   version "0.9.15"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
   integrity sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==
+
+oauth@^0.10.0:
+  version "0.10.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/oauth/-/oauth-0.10.0.tgz#3551c4c9b95c53ea437e1e21e46b649482339c58"
+  integrity sha512-1orQ9MT1vHFGQxhuy7E/0gECD3fd2fCC+PIX+/jgmU/gI3EpRocXtmtvxCO5x3WZ443FLTLFWNDjl5MPJf9u+Q==
 
 object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"

@@ -58,7 +58,7 @@ Now, you can either run all the integration tests:
 make dev-e2e
 ```
 
-Or run a specific test:
+Or run a specific test (by filename without extension):
 
 ```shell
 make dev-specific-test test=hello-world-plugin

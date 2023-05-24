@@ -329,6 +329,10 @@ auth:
         clientId: ${OKTA_CLIENT_ID}
         clientSecret: ${OKTA_CLIENT_SECRET}
         audience: ${OKTA_AUDIENCE}
+    vmwareCloudServices:
+      development:
+        clientId: ${VMWARE_CLOUD_SERVICES_CLIENT_ID}
+        organizationId: ${VMWARE_CLOUD_SERVICES_ORGANIZATION_ID}
   loginPage:
     oidc:
       title: 'custom OIDC provider'

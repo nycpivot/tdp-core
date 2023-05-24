@@ -69,6 +69,12 @@ async function buildEnvironment(serverType: ServerType) {
         AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
           'aws_secret_access_key',
         ),
+        VMWARE_CLOUD_SERVICES_CLIENT_ID: await vault.readE2ESecret(
+          'vmware_cloud_services_client_id',
+        ),
+        VMWARE_CLOUD_SERVICES_ORGANIZATION_ID: await vault.readE2ESecret(
+          'vmware_cloud_services_organization_id',
+        ),
         BACKEND_SECRET: await vault.readE2ESecret('backend_secret'),
         APP_ACCELERATOR_HOST: await vault.readAppAcceleratorSecret('host'),
         NODE_TLS_REJECT_UNAUTHORIZED: 0,

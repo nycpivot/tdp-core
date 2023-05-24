@@ -16,6 +16,7 @@ import { plugin as bitbucketAuthPlugin } from '@tpb/plugin-bitbucket-auth';
 import { plugin as oneLoginAuthPlugin } from '@tpb/plugin-onelogin-auth';
 import { plugin as guestAuthPlugin } from '@tpb/plugin-guest-auth';
 import { plugin as permissionTestAuthPlugin } from '@tpb/plugin-permission-test-auth';
+import { plugin as vmwareCloudServicesAuthPlugin } from '@tpb/plugin-vmware-cloud-services-auth';
 import { plugin as appAcceleratorPlugin } from '@tpb/plugin-app-accelerator-scaffolder';
 import { plugin as pendoPlugin } from '@tpb/plugin-pendo-analytics';
 import { plugin as scoringPlugin } from '@tpb/plugin-api-scoring';
@@ -40,6 +41,7 @@ new AppRuntime([
   oneLoginAuthPlugin(),
   guestAuthPlugin(),
   permissionTestAuthPlugin(),
+  vmwareCloudServicesAuthPlugin(),
   appAcceleratorPlugin(),
   pendoPlugin(),
   scoringPlugin(),
