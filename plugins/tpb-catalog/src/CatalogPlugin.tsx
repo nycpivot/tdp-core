@@ -89,7 +89,7 @@ export const CatalogPlugin: AppPluginInterface<
         routes.add(
           <ToggleRoute
             feature="customize.features.catalogGraph.enabled"
-            path="/catalog-graph"
+            path="/graph"
             element={<CatalogGraphPage />}
           />,
         );
