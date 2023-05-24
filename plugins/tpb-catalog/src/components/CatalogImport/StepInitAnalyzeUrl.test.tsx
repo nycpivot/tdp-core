@@ -105,8 +105,8 @@ describe('<StepInitAnalyzeUrl />', () => {
       },
     );
 
-    userEvent.type(getByRole('textbox', { name: /Repository/i }), 'http:/');
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.type(getByRole('textbox', { name: /Repository/i }), 'http:/');
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(catalogImportApi.analyzeUrl).toBeCalledTimes(0);
     expect(onAnalysisFn).toBeCalledTimes(0);
