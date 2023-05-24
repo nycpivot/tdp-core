@@ -17,6 +17,15 @@ import { plugin as googleAuthBackendPlugin } from '@tpb/plugin-google-auth-backe
 import { plugin as bitbucketAuthBackendPlugin } from '@tpb/plugin-bitbucket-auth-backend';
 import { plugin as auth0BackendPlugin } from '@tpb/plugin-auth0-auth-backend';
 import { plugin as oneLoginBackendPlugin } from '@tpb/plugin-onelogin-auth-backend';
+import { plugin as oidcAuthesolverPlugin } from '@tpb/plugin-oidc-auth-resolver';
+import { plugin as oktaAuthResolverPlugin } from '@tpb/plugin-okta-auth-resolver';
+import { plugin as azureAuthResolverPlugin } from '@tpb/plugin-azure-auth-resolver';
+import { plugin as githubAuthResolverPlugin } from '@tpb/plugin-github-auth-resolver';
+import { plugin as gitlabAuthResolverPlugin } from '@tpb/plugin-gitlab-auth-resolver';
+import { plugin as googleAuthResolverPlugin } from '@tpb/plugin-google-auth-resolver';
+import { plugin as bitbucketAuthResolverPlugin } from '@tpb/plugin-bitbucket-auth-resolver';
+import { plugin as auth0AuthResolverPlugin } from '@tpb/plugin-auth0-auth-resolver';
+import { plugin as oneLoginAuthResolverPlugin } from '@tpb/plugin-onelogin-auth-resolver';
 import { plugin as ldapBackendPlugin } from '@tpb/plugin-ldap-backend';
 import { plugin as ldapTransformersPlugin } from '@tpb/plugin-ldap-test-transformers';
 import { plugin as microsoftGraphOrgReaderProcessorTestTransformersPlugin } from '@tpb/plugin-microsoft-graph-org-reader-processor-test-transformers';
@@ -51,6 +60,15 @@ new BackendRuntime([
   bitbucketAuthBackendPlugin(),
   auth0BackendPlugin(),
   oneLoginBackendPlugin(),
+  oidcAuthesolverPlugin(),
+  oktaAuthResolverPlugin(),
+  azureAuthResolverPlugin(),
+  githubAuthResolverPlugin(),
+  gitlabAuthResolverPlugin(),
+  googleAuthResolverPlugin(),
+  bitbucketAuthResolverPlugin(),
+  auth0AuthResolverPlugin(),
+  oneLoginAuthResolverPlugin(),
   ldapBackendPlugin(),
   ldapTransformersPlugin(),
   permissionTestAuthBackendPlugin(),

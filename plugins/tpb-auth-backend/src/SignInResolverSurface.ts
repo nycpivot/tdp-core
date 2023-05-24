@@ -88,4 +88,37 @@ export class SignInResolverSurface {
       });
     }
   }
+
+  /**
+   * Attempt to match given email with a catalog user's email for sign in.
+   * If that fails, sign in the user without associating with a catalog user.
+   */
+  public async signInWithEmail(
+    email: string,
+    context: AuthResolverContext,
+  ): Promise<BackstageSignInResult> {
+    const userEntityRef = stringifyEntityRef({
+      kind: 'User',
+      name: email,
+    });
+
+    try {
+      // we await here so that signInWithCatalogUser throws in the current `try`
+      return await context.signInWithCatalogUser({
+        filter: {
+          'spec.profile.email': email,
+        },
+      });
+    } catch (e) {
+      if (!(e instanceof NotFoundError)) {
+        throw e;
+      }
+      return context.issueToken({
+        claims: {
+          sub: userEntityRef,
+          ent: [userEntityRef],
+        },
+      });
+    }
+  }
 }
