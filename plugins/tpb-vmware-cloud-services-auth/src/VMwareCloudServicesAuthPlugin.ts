@@ -1,4 +1,4 @@
-import { ApiSurface, BackendPluginInterface } from '@tpb/core';
+import { ApiSurface, AppPluginInterface } from '@tpb/core';
 import {
   ApiRef,
   BackstageIdentityApi,
@@ -23,7 +23,7 @@ export const vmwareCloudServicesAuthApiRef: ApiRef<
   id: 'esback.auth.vmware-cloud-services',
 });
 
-export const VMwareCloudServicesAuthPlugin: BackendPluginInterface =
+export const VMwareCloudServicesAuthPlugin: AppPluginInterface =
   () => surfaces => {
     const defaultConfig = {
       id: 'vmware-cloud-services-auth-provider',
