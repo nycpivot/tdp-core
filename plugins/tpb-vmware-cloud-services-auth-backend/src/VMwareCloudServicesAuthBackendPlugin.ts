@@ -17,7 +17,12 @@ export const VMwareCloudServicesAuthBackendPlugin: BackendPluginInterface =
         vmwareCloudServices: createAuthProviderIntegration({
           create:
             (): AuthProviderFactory =>
-            ({ providerId, globalConfig, config }): AuthProviderRouteHandlers =>
+            ({
+              providerId,
+              globalConfig,
+              config,
+              resolverContext,
+            }): AuthProviderRouteHandlers =>
               OAuthEnvironmentHandler.mapConfig(config, envConfig => {
                 const callbackUrl = `${globalConfig.baseUrl}/${providerId}/handler/frame`;
                 return OAuthAdapter.fromConfig(
@@ -25,6 +30,7 @@ export const VMwareCloudServicesAuthBackendPlugin: BackendPluginInterface =
                   new VMwareCloudServicesAuthProvider({
                     clientId: envConfig.getString('clientId'),
                     callbackUrl,
+                    resolverContext,
                   }),
                   { providerId, callbackUrl },
                 );
