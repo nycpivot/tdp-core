@@ -8550,7 +8550,7 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
-"@tpb/plugin-app-live-view@^0.1.12", "@tpb/plugin-app-live-view@^0.1.13-alpha.2":
+"@tpb/plugin-app-live-view@^0.1.12", "@tpb/plugin-app-live-view@^0.1.16":
   version "0.1.16"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.16.tgz#009b5f44b950c75d086600bbc7c750c0dc03bd00"
   integrity sha512-3yCZKx9YAj8gAXl1l7f49yynamEBH4csYGyDm+dTrxVgcLVxC58DxHTmiRoplK3urS7S9EHSBByOjdJDTkdxAw==
@@ -10627,7 +10627,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@material-ui/icons" "^4.11.3"
     "@tpb/plugin-api-scoring" "^1.0.2"
     "@tpb/plugin-app-accelerator-scaffolder" "^0.0.1-alpha.2"
-    "@tpb/plugin-app-live-view" "^0.1.13-alpha.2"
+    "@tpb/plugin-app-live-view" "^0.1.16"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-azure-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-bitbucket-auth" "^0.0.1-alpha.2"
