@@ -154,7 +154,7 @@ instance](https://artifactory.eng.vmware.com/ui/repos/tree/General/tpb-npm-local
   ```
 - Extract the auth token from `${HOME}/.npmrc` (for whatever reason NPM does not write this to the directory-local `.npmrc`, but the global `.npmrc` instead) and export as an environment variable:
   ```shell
-  $ export NPM_AUTH_TOKEN=(cat ${HOME}/.npmrc | sed 's/.*=//')
+  $ export NPM_AUTH_TOKEN=$(cat ${HOME}/.npmrc | sed 's/.*=//')
   ```
 - Export your email address as an environment variable:
   ```shell
