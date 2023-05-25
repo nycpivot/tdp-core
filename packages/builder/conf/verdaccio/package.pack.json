@@ -1,0 +1,14 @@
+{
+  "name": "registry",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "./start_offline.sh",
+    "stop": "./stop_offline.sh"
+  },
+  "dependencies": {
+    "forever": "^4.0.3",
+    "verdaccio": "5.25.0"
+  }
+}

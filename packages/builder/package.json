@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "16"
+  },
   "backstage": {
     "role": "node-library"
   },
@@ -12,7 +15,17 @@
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
-    "portal": "webpack --config portal.config.ts"
+    "portal": "webpack --config portal.config.ts",
+    "builder:install": "yarn install --registry http://localhost:4873",
+    "portal:generate": "yarn portal --env registry=verdaccio --env app_config=${TPB_APP_CONFIG} --env tpb_config=${TPB_CONFIG}",
+    "portal:install": "yarn --cwd portal install --registry http://localhost:4873 --network-timeout 600000",
+    "portal:tsc": "yarn --cwd portal tsc",
+    "portal:build": "yarn --cwd portal build",
+    "portal:prepare-app": "yarn --cwd portal prepare-app",
+    "portal:prepare-pack": "yarn builder:install && yarn portal:generate && yarn portal:install",
+    "portal:pack": "yarn portal:prepare-pack && yarn portal:tsc && yarn portal:build && yarn portal:prepare-app",
+    "set-tpb-config": "echo $TPB_CONFIG_STRING | base64 -d > $TPB_CONFIG",
+    "set-app-config": "echo $APP_CONFIG_STRING | base64 -d > $TPB_APP_CONFIG"
   },
   "dependencies": {
     "@tpb/plugin-clarity-theming": "^0.0.2-main.144",

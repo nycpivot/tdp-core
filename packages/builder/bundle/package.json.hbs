@@ -20,13 +20,14 @@
     "remove-plugin": "backstage-cli remove-plugin",
     "start": "yarn workspace app start",
     "start-backend": "yarn workspace backend start",
+    "start-portal": "node dist/packages/backend --config app-config.yaml --config runtime-config.yaml --config app-config.pack.yaml",
     "test": "lerna run test",
     "test:all": "lerna run test -- --coverage",
     "tsc": "tsc",
     "tsc:full": "tsc --skipLibCheck false --incremental false",
     "untar-bundle": "tar xzf packages/backend/dist/bundle.tar.gz --directory dist",
-    "prepare-app": "rm -rf dist && mkdir dist && yarn untar-bundle",
-    "buildpack": "pack build ${image_tag} --path . --builder paketobuildpacks/builder:full --env \"BP_NODE_RUN_SCRIPTS=tsc,build,prepare-app\" --default-process start"
+    "prepare-app": "rm -rf dist && mkdir dist && yarn untar-bundle && yarn set-permissions",
+    "set-permissions": "chmod -R +x dist && chmod -R 777 packages/app/dist"
   },
   "workspaces": {
     "packages": [

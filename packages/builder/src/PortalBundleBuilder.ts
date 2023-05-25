@@ -11,6 +11,7 @@ export const buildPortalBundle = (
 ) => {
   const outputFolder = resolvePath(env.output_folder || 'portal');
   const appConfig = resolvePath(env.app_config || 'conf/app-config.yaml');
+  const buildAppConfig = resolvePath('conf/app-config.yaml');
   const registryType = env.registry || 'artifactory';
   const yarnrcConfig = resolvePath(
     env.yarnrc_config || `bundle/.yarnrc.${registryType}`,
@@ -32,6 +33,7 @@ export const buildPortalBundle = (
     'bundle',
     outputFolder,
     appConfig,
+    buildAppConfig,
     buildPluginsResolver(tpbConfig, yarnResolver),
   );
 };

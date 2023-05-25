@@ -6,7 +6,8 @@ describe('Portal Bundle', () => {
     const bundle = new PortalBundle(
       'foo/bar',
       '/output',
-      '/config/app-config.yaml',
+      '/runtime/app-config.yaml',
+      '/buildtime/app-config.yaml',
       new PluginsResolver(
         {
           app: {
@@ -32,7 +33,12 @@ describe('Portal Bundle', () => {
     });
 
     expect(bundle.copyPatterns).toContainEqual({
-      from: '/config/app-config.yaml',
+      from: '/runtime/app-config.yaml',
+      to: 'runtime-config.yaml',
+    });
+
+    expect(bundle.copyPatterns).toContainEqual({
+      from: '/buildtime/app-config.yaml',
       to: 'app-config.yaml',
     });
   });
@@ -41,6 +47,7 @@ describe('Portal Bundle', () => {
     const bundle = new PortalBundle(
       'bundle',
       '/output',
+      '/config/app-config.yaml',
       '/config/app-config.yaml',
       new PluginsResolver(
         {

@@ -1,0 +1,18 @@
+storage: ./storage
+uplinks:
+  npmjs:
+    url: https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/
+    maxage: 2y
+    cache: true
+  tpb:
+    url: https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/
+    maxage: 2y
+    cache: true
+packages:
+  '@tpb/*':
+    access: $all
+    proxy: tpb
+  '**':
+    access: $all
+    proxy: npmjs
+log: { type: stdout, format: pretty, level: http }

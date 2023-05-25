@@ -1,0 +1,7 @@
+storage: ./storage
+packages:
+  '@tpb/*':
+    access: $all
+  '**':
+    access: $all
+log: { type: stdout, format: pretty, level: http }

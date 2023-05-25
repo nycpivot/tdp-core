@@ -5,6 +5,7 @@ import { buildContents, FileContent } from './FileContents';
 export class PortalBundle {
   private readonly _outputFolder: FilePath;
   private readonly _appConfig: FilePath;
+  private readonly _buildAppConfig: FilePath;
   private readonly _registry: PluginsResolver;
   private readonly _bundleFolder: FilePath;
 
@@ -12,11 +13,13 @@ export class PortalBundle {
     bundleFolder: FilePath,
     outputFolder: FilePath,
     appConfig: FilePath,
+    buildAppConfig: FilePath,
     registry: PluginsResolver,
   ) {
     this._bundleFolder = bundleFolder;
     this._outputFolder = outputFolder;
     this._appConfig = appConfig;
+    this._buildAppConfig = buildAppConfig;
     this._registry = registry;
   }
 
@@ -31,6 +34,10 @@ export class PortalBundle {
       },
       {
         from: this._appConfig,
+        to: 'runtime-config.yaml',
+      },
+      {
+        from: this._buildAppConfig,
         to: 'app-config.yaml',
       },
     ];
@@ -42,6 +49,10 @@ export class PortalBundle {
 
   get appConfig() {
     return this._appConfig;
+  }
+
+  get buildAppConfig() {
+    return this._buildAppConfig;
   }
 
   get bundleFolder() {
