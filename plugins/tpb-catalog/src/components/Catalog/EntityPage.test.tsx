@@ -23,6 +23,7 @@ import { techdocsPlugin } from '@backstage/plugin-techdocs';
 import { JsonObject } from '@backstage/types';
 import { permissionApiRef } from '@backstage/plugin-permission-react';
 import { catalogGraphRouteRef } from '@backstage/plugin-catalog-graph';
+import { EntityPageSurface } from '../../EntityPageSurface';
 
 const viewTechDocRouteRef = techdocsPlugin.routes.docRoot;
 
@@ -74,7 +75,7 @@ const TestApiWrapper: FC = ({ children }) => {
 describe('EntityPage app', () => {
   it('renders entity with links', async () => {
     const testEntity = buildTestEntity(
-      'Component',
+      'component',
       {
         owner: 'guest',
         lifecycle: 'production',
@@ -84,7 +85,7 @@ describe('EntityPage app', () => {
 
     const { findByText } = await renderInTestApp(
       <TestApiWrapper>
-        <EntityProvider entity={testEntity}>{entityPage}</EntityProvider>
+        <EntityProvider entity={testEntity}>{entityPage(new EntityPageSurface)}</EntityProvider>
       </TestApiWrapper>,
       {
         mountedRoutes: {
@@ -100,11 +101,11 @@ describe('EntityPage app', () => {
   });
 
   it('renders system with api info', async () => {
-    const testEntity = buildTestEntity('System');
+    const testEntity = buildTestEntity('system');
 
     const { findByText } = await renderInTestApp(
       <TestApiWrapper>
-        <EntityProvider entity={testEntity}>{entityPage}</EntityProvider>
+        <EntityProvider entity={testEntity}>{entityPage(new EntityPageSurface)}</EntityProvider>
       </TestApiWrapper>,
       {
         mountedRoutes: {
