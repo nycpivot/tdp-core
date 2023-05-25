@@ -26,7 +26,7 @@ export const KubernetesCustomApisPlugin: BackendPluginInterface =
   () => surfaces =>
     surfaces.applyTo(BackendPluginSurface, surface => {
       surface.addPlugin({
-        name: 'k8s-logging',
+        name: 'k8s-custom-apis',
         pluginFn: createPlugin(),
       });
     });
