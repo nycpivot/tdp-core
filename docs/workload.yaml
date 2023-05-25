@@ -1,0 +1,29 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: tpb-2
+  namespace: my-apps # Your developer namespace on TAP may be something else
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: tpb
+    apps.tanzu.vmware.com/has-tests: 'true'
+spec:
+  build:
+    env:
+      - name: BP_NODE_RUN_SCRIPTS
+        value: 'set-tpb-config,portal:pack' # These are the scripts run prior to the buildpack process
+      - name: TPB_CONFIG
+        value: /tmp/tpb-config.yaml
+      - name: TPB_CONFIG_STRING
+        value: YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdHBiL3BsdWdpbi1oZWxsby13b3JsZCcKICAgIC0gbmFtZTogJ0B0cGIvcGx1Z2luLWdpdGxhYi1sb2JsYXcnCiAgICAgIHZlcnNpb246ICdeMC4wLjE4JwpiYWNrZW5kOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICdAdHBiL3BsdWdpbi1oZWxsby13b3JsZC1iYWNrZW5kJwogICAgLSBuYW1lOiAnQHRwYi9wbHVnaW4tZ2l0bGFiLWJhY2tlbmQn
+
+  params:
+    - name: testing_pipeline_matching_labels # This section is needed if the supplychain you're running on has tests. This will run noop testing but is contingent on you having a test in the developer namespace that matches the name noop-pipeline.
+      value:
+        apps.tanzu.vmware.com/pipeline: noop-pipeline
+    - name: testing_pipeline_params
+      value: {}
+
+  source:
+    image: harbor-repo.vmware.com/esback/tpb-scratch-core:latest # replace with the image of core that you've created
+    subPath: core # This denotes that what we want the buildpack to run against is the sub-directory in the image

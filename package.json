@@ -24,7 +24,15 @@
     "test": "lerna run test",
     "test:all": "lerna run test -- --coverage",
     "tsc": "tsc",
-    "tsc:full": "tsc --skipLibCheck false --incremental false"
+    "tsc:full": "tsc --skipLibCheck false --incremental false",
+    "builder:install": "yarn --cwd packages/builder install",
+    "portal:generate": "yarn --cwd packages/builder portal --env app_config=${TPB_APP_CONFIG} --env tpb_config=${TPB_CONFIG}",
+    "portal:install": "yarn --cwd packages/builder/portal install",
+    "portal:tsc": "yarn --cwd packages/builder/portal tsc",
+    "portal:build": "yarn --cwd packages/builder/portal build",
+    "portal:prepare-app": "yarn --cwd packages/builder/portal prepare-app",
+    "portal:pack": "yarn builder:install && yarn portal:generate && yarn portal:install && yarn portal:tsc && yarn portal:build && yarn portal:prepare-app",
+    "set-tpb-config": "echo $TPB_CONFIG_STRING | base64 -d > $TPB_CONFIG"
   },
   "workspaces": {
     "packages": [
