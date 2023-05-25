@@ -31,7 +31,7 @@
     "@tpb/plugin-rrv": "^0.0.1-alpha.2",
     "@tpb/plugin-api-scoring": "^1.0.2",
     "@tpb/runtime": "^0.0.1-alpha.3",
-    "@tpb/plugin-supply-chain": "1.0.6-build.1",
+    "@tpb/plugin-supply-chain": "1.0.6-build.2",
     "@tpb/plugin-security-analysis-frontend": "^1.0.0-build.7",
     "history": "^5.0.0",
     "react": "^17.0.2",
