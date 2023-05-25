@@ -31,7 +31,8 @@
     "portal:tsc": "yarn --cwd packages/builder/portal tsc",
     "portal:build": "yarn --cwd packages/builder/portal build",
     "portal:prepare-app": "yarn --cwd packages/builder/portal prepare-app",
-    "portal:pack": "yarn builder:install && yarn portal:generate && yarn portal:install && yarn portal:tsc && yarn portal:build && yarn portal:prepare-app"
+    "portal:pack": "yarn builder:install && yarn portal:generate && yarn portal:install && yarn portal:tsc && yarn portal:build && yarn portal:prepare-app",
+    "set-tpb-config": "echo $TPB_CONFIG_STRING | base64 -d > $TPB_CONFIG"
   },
   "workspaces": {
     "packages": [
