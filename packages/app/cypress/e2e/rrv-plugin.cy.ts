@@ -23,24 +23,7 @@ describe('RRV Plugin', () => {
       .should('be.visible');
   });
 
-  it('should render the app live view', () => {
-    cy.get('input[placeholder="Filter"]').type('tanzu-java');
-    cy.contains(/tanzu-java-web-app/i).click();
-    cy.contains(/runtime resources/i).click();
-    cy.contains('tr', /pod/i)
-      .children()
-      .contains(/tanzu-java-web-app/i)
-      .click();
-    cy.contains(/live view/i).should('be.visible');
-    cy.contains('tr', /application name/i)
-      .children('td')
-      .last()
-      .contains('tanzu-java-web-app');
-    cy.contains('tr', /framework/i)
-      .children('td')
-      .last()
-      .contains(/spring boot/i);
-  });
+  // re add RRV/ALV component test after integration test TAP updated to >1.5
 
   describe('rbac', () => {
     it('should require login when not authenticated', () => {
