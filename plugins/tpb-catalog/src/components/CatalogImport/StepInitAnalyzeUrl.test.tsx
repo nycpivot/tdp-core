@@ -85,7 +85,7 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     try {
-      userEvent.click(getByRole('button', { name: /Analyze/i }));
+      await userEvent.click(getByRole('button', {name: /Analyze/i}));
     } catch {
       return;
     }
@@ -135,11 +135,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -170,11 +170,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository-1',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository-1',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -204,11 +204,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository-1',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository-1',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
@@ -246,11 +246,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository-2',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository-2',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -282,11 +282,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository-2',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository-2',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
@@ -324,11 +324,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve(analyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository-2',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository-2',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
@@ -351,11 +351,11 @@ describe('<StepInitAnalyzeUrl />', () => {
       Promise.resolve({ type: 'unknown' } as any as AnalyzeResult),
     );
 
-    userEvent.type(
-      getByRole('textbox', { name: /Repository/i }),
-      'https://my-repository-2',
+    await userEvent.type(
+        getByRole('textbox', {name: /Repository/i}),
+        'https://my-repository-2',
     );
-    userEvent.click(getByRole('button', { name: /Analyze/i }));
+    await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
     expect(onAnalysisFn).toBeCalledTimes(0);
     expect(
