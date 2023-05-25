@@ -8672,16 +8672,14 @@
     react-use "^17.2.4"
     recharts "^2.1.9"
 
-"@tpb/plugin-supply-chain@1.0.6-build.1":
-  version "1.0.6-build.1"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-build.1.tgz#68a36e1076fe19a8e7dff14262857ea80944767d"
-  integrity sha512-svShQIYQiztr6+2L3Lq4Seau1nIMLEMv9IHtwMpRKwhPTcTqOi0IIatdIk6Q6cRWZLk5VGE8xaogXRkc4653Pg==
+"@tpb/plugin-supply-chain@1.0.6-build.2":
+  version "1.0.6-build.2"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-build.2.tgz#8be36025737c45f7fce1c210725ff799756daa18"
+  integrity sha512-sb6DxOJxeIuuPzXn1jYgkdHRzy0WtFOf7jycK5i0aDiRZMSa+4NtV7hLJyhlIlS0oA0bL/Fki7wwoijzPvyXsA==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
-    "@backstage/core-app-api" "^1.7.0"
     "@backstage/core-components" "^0.13.0"
-    "@backstage/core-plugin-api" "^1.3.0"
-    "@backstage/plugin-catalog-react" "^1.2.4"
+    "@backstage/core-plugin-api" "^1.5.1"
     "@backstage/plugin-kubernetes" "^0.7.7"
     "@backstage/plugin-kubernetes-common" "^0.5.1"
     "@backstage/theme" "^0.2.16"
@@ -8711,8 +8709,10 @@
     lodash "^4.17.21"
     moment "^2.29.1"
     npm "^9.2.0"
+    react "^17.0.2"
     react-copy-to-clipboard "^5.0.4"
     react-cytoscapejs "^1.2.1"
+    react-dom "^17.0.2"
     react-draggable "^2.2.3"
     react-hot-keys "^2.7.2"
     react-resizable "^3.0.4"
@@ -10594,7 +10594,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-security-analysis-frontend" "^1.0.0-build.7"
-    "@tpb/plugin-supply-chain" "1.0.6-build.1"
+    "@tpb/plugin-supply-chain" "1.0.6-build.2"
     "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
     "@tpb/runtime" "^0.0.1-alpha.3"
     history "^5.0.0"
