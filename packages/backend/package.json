@@ -37,7 +37,6 @@
     "@tpb/plugin-gitlab-backend": "^0.0.1-alpha.3",
     "@tpb/plugin-google-auth-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-google-auth-resolver": "^0.0.1-alpha.2",
-    "@tpb/plugin-hello-world-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-kubernetes-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-kubernetes-custom-apis-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-ldap-backend": "^0.0.1-alpha.2",

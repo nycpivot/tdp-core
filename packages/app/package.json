@@ -23,7 +23,6 @@
     "@tpb/plugin-gitlab-loblaw": "^0.0.20",
     "@tpb/plugin-google-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-guest-auth": "^0.0.1-alpha.2",
-    "@tpb/plugin-hello-world": "^0.0.1-alpha.3",
     "@tpb/plugin-oidc-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-okta-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-onelogin-auth": "^0.0.1-alpha.2",
