@@ -90,9 +90,9 @@ describe('<StepInitAnalyzeUrl />', () => {
       return;
     }
 
-    expect(catalogImportApi.analyzeUrl).toBeCalledTimes(0);
-    expect(onAnalysisFn).toBeCalledTimes(0);
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(catalogImportApi.analyzeUrl).toHaveBeenCalledTimes(0);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should not analyze invalid value', async () => {
@@ -108,9 +108,9 @@ describe('<StepInitAnalyzeUrl />', () => {
     await userEvent.type(getByRole('textbox', { name: /Repository/i }), 'http:/');
     await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
-    expect(catalogImportApi.analyzeUrl).toBeCalledTimes(0);
-    expect(onAnalysisFn).toBeCalledTimes(0);
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(catalogImportApi.analyzeUrl).toHaveBeenCalledTimes(0);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
     expect(
       getByText('Must start with http:// or https://.'),
     ).toBeInTheDocument();
@@ -141,14 +141,14 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(1);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
       'single-location',
       'https://my-repository',
       analyzeResult,
       { prepareResult: analyzeResult },
     ]);
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should analyze multiple locations', async () => {
@@ -176,13 +176,13 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(1);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
       'multiple-locations',
       'https://my-repository-1',
       analyzeResult,
     ]);
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should not analyze with no locations', async () => {
@@ -210,11 +210,11 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(0);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
       getByText('There are no entities at this location'),
     ).toBeInTheDocument();
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should analyze repository', async () => {
@@ -252,13 +252,13 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(1);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
       'no-location',
       'https://my-repository-2',
       analyzeResult,
     ]);
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should not analyze repository without entities', async () => {
@@ -288,11 +288,11 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(0);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
       getByText("Couldn't generate entities for your repository"),
     ).toBeInTheDocument();
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should not analyze repository if disabled', async () => {
@@ -330,11 +330,11 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(0);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
       getByText("Couldn't generate entities for your repository"),
     ).toBeInTheDocument();
-    expect(errorApi.post).toBeCalledTimes(0);
+    expect(errorApi.post).toHaveBeenCalledTimes(0);
   });
 
   it('should report unknown type to the errorapi', async () => {
@@ -357,13 +357,13 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
     await userEvent.click(getByRole('button', {name: /Analyze/i}));
 
-    expect(onAnalysisFn).toBeCalledTimes(0);
+    expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
       getByText(
         'Received unknown analysis result of type unknown. Please contact the support team.',
       ),
     ).toBeInTheDocument();
-    expect(errorApi.post).toBeCalledTimes(1);
+    expect(errorApi.post).toHaveBeenCalledTimes(1);
     expect(errorApi.post.mock.calls[0][0]).toMatchObject(
       new Error(
         'Received unknown analysis result of type unknown. Please contact the support team.',
