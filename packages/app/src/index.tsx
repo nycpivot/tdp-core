@@ -1,7 +1,6 @@
 import '@backstage/cli/asset-types';
 import { AppRuntime } from '@tpb/runtime';
 import { plugin as themePlugin } from '@tpb/plugin-clarity-theming';
-import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world';
 import { plugin as gitlabPlugin } from '@tpb/plugin-gitlab-loblaw';
 import { plugin as rrvPlugin } from '@tpb/plugin-rrv';
 import { plugin as appLiveViewPlugin } from '@tpb/plugin-app-live-view';
@@ -27,7 +26,6 @@ import '@tpb/plugin-clarity-theming/style/clarity.css';
 
 new AppRuntime([
   themePlugin(),
-  helloWorldPlugin(),
   gitlabPlugin(),
   rrvPlugin(),
   appLiveViewPlugin(),
