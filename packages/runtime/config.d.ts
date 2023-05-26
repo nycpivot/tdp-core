@@ -9,5 +9,10 @@ export interface Config {
         enabled?: boolean;
       };
     };
+    /**
+     * Set the route to navigate to after logging in. Default: 'catalog'
+     * @visibility frontend
+     */
+    default_route?: string;
   };
 }

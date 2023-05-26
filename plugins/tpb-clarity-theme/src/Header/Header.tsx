@@ -55,7 +55,6 @@ const Header = (props: HeaderProps) => {
   const navigateHome = () => navigate('/');
   const icon = config.getOptionalString('customize.custom_logo');
   const text = config.getOptionalString('customize.custom_name');
-
   return (
     <div className={props.classes?.root}>
       {icon && text ? (
