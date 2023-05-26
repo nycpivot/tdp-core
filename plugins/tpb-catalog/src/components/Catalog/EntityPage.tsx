@@ -1,33 +1,18 @@
-import React from 'react';
-import { Grid } from '@material-ui/core';
-import {
-  EntityAboutCard,
-  EntityDependsOnComponentsCard,
-  EntityDependsOnResourcesCard,
-  EntityHasComponentsCard,
-  EntityHasResourcesCard,
-  EntityHasSubcomponentsCard,
-  EntityHasSystemsCard,
-  EntityLayout,
-  EntityLinksCard,
-  EntitySwitch,
-  EntityOrphanWarning,
-  EntityProcessingErrorsPanel,
-  isComponentType,
-  isKind,
-  hasCatalogProcessingErrors,
-  isOrphan,
-} from '@backstage/plugin-catalog';
-import {
-  EntityUserProfileCard,
-  EntityGroupProfileCard,
-  EntityMembersListCard,
-  EntityOwnershipCard,
-} from '@backstage/plugin-org';
-import {
-  Direction,
-  EntityCatalogGraphCard,
-} from '@backstage/plugin-catalog-graph';
+/*
+ * Copyright 2020 The Backstage Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import {
   RELATION_API_CONSUMED_BY,
   RELATION_API_PROVIDED_BY,
@@ -38,26 +23,60 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
-import { EntityPageSurface } from '../EntityPageSurface';
+import React from 'react';
+import { Grid } from '@material-ui/core';
+import {
+  Direction,
+  EntityCatalogGraphCard,
+} from '@backstage/plugin-catalog-graph';
 import {
   EntityApiDefinitionCard,
   EntityConsumedApisCard,
   EntityConsumingComponentsCard,
+  EntityHasApisCard,
   EntityProvidedApisCard,
   EntityProvidingComponentsCard,
 } from '@backstage/plugin-api-docs';
+import {
+  EntityAboutCard,
+  EntityDependsOnComponentsCard,
+  EntityDependsOnResourcesCard,
+  EntityHasComponentsCard,
+  EntityHasResourcesCard,
+  EntityHasSubcomponentsCard,
+  EntityHasSystemsCard,
+  EntityLinksCard,
+  EntitySwitch,
+  EntityOrphanWarning,
+  EntityProcessingErrorsPanel,
+  hasCatalogProcessingErrors,
+  isComponentType,
+  isKind,
+  isOrphan,
+} from '@backstage/plugin-catalog';
+import { EntityLayout } from './EntityLayout';
+import {
+  EntityGroupProfileCard,
+  EntityMembersListCard,
+  EntityOwnershipCard,
+  EntityUserProfileCard,
+} from '@backstage/plugin-org';
+import {
+  isGitlabAvailable,
+  EntityGitlabContent,
+} from '@loblaw/backstage-plugin-gitlab';
+import {
+  apiPluginOverrides,
+  orgPluginOverrides,
+} from '../../theme/apiPluginOverrides';
+import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
+import { EntityPageSurface } from '../../EntityPageSurface';
 
 export const entityPage = (surface: EntityPageSurface) => {
-  /**
-   * Note: do NOT extract the following constants in React functional components:
-   * that will break the plugins auto-discovery implemented in Backstage.
-   *
-   * Here is the kind of error you might have if you try to refactor
-   * this code with React components: https://github.com/backstage/backstage/issues/13307
-   */
+  const techdocsContent = <EntityTechdocsContent />;
 
-  const entityWarningContent = (
-    <>
+  const overviewContent = (
+    <Grid container spacing={3} alignItems="stretch">
       <EntitySwitch>
         <EntitySwitch.Case if={isOrphan}>
           <Grid item xs={12}>
@@ -73,19 +92,13 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
         </EntitySwitch.Case>
       </EntitySwitch>
-    </>
-  );
 
-  const overviewContent = (
-    <Grid container spacing={3} alignItems="stretch">
-      {entityWarningContent}
       <Grid item md={6}>
         <EntityAboutCard variant="gridItem" />
       </Grid>
       <Grid item md={6} xs={12}>
         <EntityCatalogGraphCard variant="gridItem" height={400} />
       </Grid>
-
       <Grid item md={4} xs={12}>
         <EntityLinksCard />
       </Grid>
@@ -102,15 +115,8 @@ export const entityPage = (surface: EntityPageSurface) => {
         {overviewContent}
       </EntityLayout.Route>
 
-      <EntityLayout.Route path="/api" title="API">
-        <Grid container spacing={3} alignItems="stretch">
-          <Grid item md={6}>
-            <EntityProvidedApisCard />
-          </Grid>
-          <Grid item md={6}>
-            <EntityConsumedApisCard />
-          </Grid>
-        </Grid>
+      <EntityLayout.Route path="/docs" title="Docs">
+        {techdocsContent}
       </EntityLayout.Route>
 
       <EntityLayout.Route path="/dependencies" title="Dependencies">
@@ -124,7 +130,42 @@ export const entityPage = (surface: EntityPageSurface) => {
         </Grid>
       </EntityLayout.Route>
 
+      <EntityLayout.Route path="/api" title="API">
+        <Grid container spacing={3} alignItems="stretch">
+          <Grid item xs={12} md={6}>
+            <EntityProvidedApisCard />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <EntityConsumedApisCard />
+          </Grid>
+        </Grid>
+      </EntityLayout.Route>
       {surface.servicePage.tabs}
+    </EntityLayout>
+  );
+
+  const packageEntityPage = (
+    <EntityLayout>
+      <EntityLayout.Route path="/" title="Overview">
+        {overviewContent}
+      </EntityLayout.Route>
+
+      <EntityLayout.Route path="/api" title="API">
+        <Grid container spacing={3} alignItems="stretch">
+          <Grid item xs={12} md={6}>
+            <EntityProvidedApisCard />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <EntityConsumedApisCard />
+          </Grid>
+        </Grid>
+      </EntityLayout.Route>
+
+      <EntityLayout.Route if={isGitlabAvailable} path="/gitlab" title="Gitlab">
+        <EntityGitlabContent />
+      </EntityLayout.Route>
+
+      {surface.packagePage.tabs}
     </EntityLayout>
   );
 
@@ -132,6 +173,10 @@ export const entityPage = (surface: EntityPageSurface) => {
     <EntityLayout>
       <EntityLayout.Route path="/" title="Overview">
         {overviewContent}
+      </EntityLayout.Route>
+
+      <EntityLayout.Route path="/docs" title="Docs">
+        {techdocsContent}
       </EntityLayout.Route>
 
       <EntityLayout.Route path="/dependencies" title="Dependencies">
@@ -161,6 +206,9 @@ export const entityPage = (surface: EntityPageSurface) => {
       <EntityLayout.Route path="/" title="Overview">
         {overviewContent}
       </EntityLayout.Route>
+      <EntityLayout.Route path="/docs" title="Docs">
+        {techdocsContent}
+      </EntityLayout.Route>
 
       {surface.defaultPage.tabs}
     </EntityLayout>
@@ -168,6 +216,10 @@ export const entityPage = (surface: EntityPageSurface) => {
 
   const componentPage = (
     <EntitySwitch>
+      <EntitySwitch.Case if={isComponentType('package')}>
+        {packageEntityPage}
+      </EntitySwitch.Case>
+
       <EntitySwitch.Case if={isComponentType('service')}>
         {serviceEntityPage}
       </EntitySwitch.Case>
@@ -182,85 +234,102 @@ export const entityPage = (surface: EntityPageSurface) => {
     </EntitySwitch>
   );
 
-  const ApiPage = () => (
-    <EntityLayout>
-      <EntityLayout.Route path="/" title="Overview">
-        <Grid container direction="row" spacing={3}>
-          {entityWarningContent}
-          <Grid container item>
-            <Grid item md={6} xs={12}>
-              <EntityAboutCard variant="fullHeight" />
-            </Grid>
-            <Grid container item md={6} xs={12}>
-              <Grid item md={12} xs={12}>
-                <EntityLinksCard />
+  const ApiPage = () => {
+    return (
+      <EntityLayout>
+        <EntityLayout.Route path="/" title="Overview">
+          <Grid container direction="row" spacing={3}>
+            <Grid container item>
+              <Grid item md={6} xs={12}>
+                <EntityAboutCard variant="fullHeight" />
               </Grid>
+              <Grid item md={6} xs={12}>
+                <EntityCatalogGraphCard variant="gridItem" height={400} />
+              </Grid>
+              <Grid container item md={6} xs={12}>
+                <Grid item md={12} xs={12}>
+                  <EntityLinksCard />
+                </Grid>
+              </Grid>
+              {surface.apiPage.overviewContents}
             </Grid>
-            {surface.apiPage.overviewContents}
+            <Grid item md={6} xs={12}>
+              <EntityProvidingComponentsCard />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <EntityConsumingComponentsCard />
+            </Grid>
           </Grid>
-          <Grid item md={6} xs={12}>
-            <EntityProvidingComponentsCard />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <EntityConsumingComponentsCard />
-          </Grid>
-        </Grid>
-      </EntityLayout.Route>
+        </EntityLayout.Route>
 
-      <EntityLayout.Route path="/definition" title="Definition">
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <EntityApiDefinitionCard />
+        <EntityLayout.Route path="/definition" title="Definition">
+          <Grid container spacing={3}>
+            <Grid item xs={12} className={apiPluginOverrides().container}>
+              <EntityApiDefinitionCard />
+            </Grid>
           </Grid>
-        </Grid>
-      </EntityLayout.Route>
+        </EntityLayout.Route>
 
-      {surface.apiPage.tabs}
-    </EntityLayout>
-  );
+        {surface.apiPage.tabs}
+      </EntityLayout>
+    );
+  };
 
-  const userPage = (
-    <EntityLayout>
-      <EntityLayout.Route path="/" title="Overview">
-        <Grid container spacing={3}>
-          {entityWarningContent}
-          <Grid item xs={12} md={6}>
-            <EntityUserProfileCard variant="gridItem" />
+  const UserPage = () => {
+    return (
+      <EntityLayout>
+        <EntityLayout.Route path="/" title="Overview">
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <EntityUserProfileCard variant="gridItem" />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              aria-label="ownership card"
+              className={orgPluginOverrides().ownership}
+            >
+              <EntityOwnershipCard variant="gridItem" />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <EntityOwnershipCard variant="gridItem" />
-          </Grid>
-        </Grid>
-      </EntityLayout.Route>
-      {surface.userPage.tabs}
-    </EntityLayout>
-  );
+        </EntityLayout.Route>
+        {surface.userPage.tabs}
+      </EntityLayout>
+    );
+  };
 
-  const groupPage = (
-    <EntityLayout>
-      <EntityLayout.Route path="/" title="Overview">
-        <Grid container spacing={3}>
-          {entityWarningContent}
-          <Grid item xs={12} md={6}>
-            <EntityGroupProfileCard variant="gridItem" />
+  const GroupPage = () => {
+    return (
+      <EntityLayout>
+        <EntityLayout.Route path="/" title="Overview">
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <EntityGroupProfileCard variant="gridItem" />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              aria-label="ownership card"
+              className={orgPluginOverrides().ownership}
+            >
+              <EntityOwnershipCard variant="gridItem" />
+            </Grid>
+            <Grid item xs={12}>
+              <EntityMembersListCard />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <EntityOwnershipCard variant="gridItem" />
-          </Grid>
-          <Grid item xs={12}>
-            <EntityMembersListCard />
-          </Grid>
-        </Grid>
-      </EntityLayout.Route>
-      {surface.groupPage.tabs}
-    </EntityLayout>
-  );
+        </EntityLayout.Route>
+        {surface.groupPage.tabs}
+      </EntityLayout>
+    );
+  };
 
   const systemPage = (
     <EntityLayout>
       <EntityLayout.Route path="/" title="Overview">
         <Grid container spacing={3} alignItems="stretch">
-          {entityWarningContent}
           <Grid item md={6}>
             <EntityAboutCard variant="gridItem" />
           </Grid>
@@ -269,6 +338,9 @@ export const entityPage = (surface: EntityPageSurface) => {
           </Grid>
           <Grid item md={6}>
             <EntityHasComponentsCard variant="gridItem" />
+          </Grid>
+          <Grid item md={6}>
+            <EntityHasApisCard variant="gridItem" />
           </Grid>
           <Grid item md={6}>
             <EntityHasResourcesCard variant="gridItem" />
@@ -280,7 +352,7 @@ export const entityPage = (surface: EntityPageSurface) => {
           variant="gridItem"
           direction={Direction.TOP_BOTTOM}
           title="System Diagram"
-          height={700}
+          height={400}
           relations={[
             RELATION_PART_OF,
             RELATION_HAS_PART,
@@ -302,7 +374,6 @@ export const entityPage = (surface: EntityPageSurface) => {
     <EntityLayout>
       <EntityLayout.Route path="/" title="Overview">
         <Grid container spacing={3} alignItems="stretch">
-          {entityWarningContent}
           <Grid item md={6}>
             <EntityAboutCard variant="gridItem" />
           </Grid>
@@ -322,8 +393,8 @@ export const entityPage = (surface: EntityPageSurface) => {
     <EntitySwitch>
       <EntitySwitch.Case if={isKind('component')} children={componentPage} />
       <EntitySwitch.Case if={isKind('api')} children={<ApiPage />} />
-      <EntitySwitch.Case if={isKind('group')} children={groupPage} />
-      <EntitySwitch.Case if={isKind('user')} children={userPage} />
+      <EntitySwitch.Case if={isKind('group')} children={<GroupPage />} />
+      <EntitySwitch.Case if={isKind('user')} children={<UserPage />} />
       <EntitySwitch.Case if={isKind('system')} children={systemPage} />
       <EntitySwitch.Case if={isKind('domain')} children={domainPage} />
 

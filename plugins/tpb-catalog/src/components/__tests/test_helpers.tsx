@@ -1,5 +1,5 @@
 import { Entity } from '@backstage/catalog-model';
-import { entityPage } from '../EntityPage';
+import { entityPage } from '../Catalog/EntityPage';
 // eslint-disable-next-line @backstage/no-undeclared-imports
 import {
   MockPermissionApi,

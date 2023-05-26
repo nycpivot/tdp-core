@@ -45,6 +45,7 @@ export class EntityPageSurface {
   private readonly _systemPage: BasicPage;
   private readonly _userPage: BasicPage;
   private readonly _websitePage: BasicPage;
+  private readonly _packagePage: BasicPage;
 
   public constructor() {
     this._overviewContent = [];
@@ -59,6 +60,7 @@ export class EntityPageSurface {
     this._systemPage = new BasicPage();
     this._userPage = new BasicPage();
     this._websitePage = new BasicPage();
+    this._packagePage = new BasicPage();
   }
 
   public addOverviewContent(content: ReactElement) {
@@ -95,6 +97,10 @@ export class EntityPageSurface {
 
   get websitePage() {
     return this._websitePage;
+  }
+
+  get packagePage() {
+    return this._packagePage;
   }
 
   public addComponentPageCase(pageCase: ReactElement) {

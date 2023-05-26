@@ -25,7 +25,9 @@ describe('API Page', () => {
 
     await renderTestEntityPage(testEntity, surface);
 
-    expect((await screen.findAllByText(/openapi/i)).length).toBeGreaterThan(1);
+    expect(
+      (await screen.findAllByText(/openapi/i)).length,
+    ).toBeGreaterThanOrEqual(1);
     expect(await screen.findByText(/artist-api/i)).toBeInTheDocument();
     expect(
       await screen.findByText(/Retrieve artist details/i),
@@ -56,7 +58,7 @@ describe('API Page', () => {
     );
 
     await renderTestEntityPage(testEntity, surface);
-    userEvent.click(screen.getByText(/new tab/i));
+    await userEvent.click(screen.getByText(/new tab/i));
 
     expect(await screen.findByText(/i am a new api tab/i)).toBeInTheDocument();
   });
