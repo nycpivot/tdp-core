@@ -1,4 +1,3 @@
-// TO DO: TAD-354 Deprecate PageHeader file and move changes upstream to backstage
 import { useApi, configApiRef } from '@backstage/core-plugin-api';
 import { BackstageTheme } from '@backstage/theme';
 import { makeStyles } from '@material-ui/core/styles';

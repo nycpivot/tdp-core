@@ -15,9 +15,6 @@ import { catalogEntityDeletePermission } from '@backstage/plugin-catalog-common/
 import { useEntityPermission } from '@backstage/plugin-catalog-react/alpha';
 import UninstallLogoIcon from './UninstallLogoIcon';
 
-// TODO(mstergianis): PSTAR-342 (https://jira.eng.vmware.com/browse/PSTAR-342)
-
-// TODO(freben): It should probably instead be the case that Header sets the theme text color to white inside itself unconditionally instead
 const useStyles = makeStyles(theme => ({
   button: {
     color:
