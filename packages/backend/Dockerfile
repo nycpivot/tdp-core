@@ -6,6 +6,7 @@ RUN apt-get update && \
     yarn config set python /usr/bin/python3
 
 RUN mkdir -p /app
+RUN chown -R node:node /app
 USER node
 WORKDIR /app
 
