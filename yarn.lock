@@ -8550,10 +8550,10 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
-"@tpb/plugin-app-live-view@^0.1.12", "@tpb/plugin-app-live-view@^0.1.16":
-  version "0.1.16"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.16.tgz#009b5f44b950c75d086600bbc7c750c0dc03bd00"
-  integrity sha512-3yCZKx9YAj8gAXl1l7f49yynamEBH4csYGyDm+dTrxVgcLVxC58DxHTmiRoplK3urS7S9EHSBByOjdJDTkdxAw==
+"@tpb/plugin-app-live-view@^0.1.12", "@tpb/plugin-app-live-view@^0.1.18":
+  version "0.1.18"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.18.tgz#dbce3d7cc060030a12cbe4c8193b15d10a433448"
+  integrity sha512-StV/tV/Zl+yVEMrpp5MgowJ6J38vdEj+7RJPmVGk6sGwGNtQQM1uQw8PRAEcTGOsYp5+OkdpUCWx73siLbNE3A==
   dependencies:
     "@backstage/config" "^1.0.6"
     "@backstage/core-components" "^0.13.0"
@@ -9560,9 +9560,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.13.1 || ^17.0.0", "@types/react@^17", "@types/react@^17.0.59":
-  version "17.0.59"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react/-/react-17.0.59.tgz#5aa4e161a356fcb824d81f166e01bad9e82243bb"
-  integrity sha512-gSON5zWYIGyoBcycCE75E9+r6dCC2dHdsrVkOEiIYNU5+Q28HcBAuqvDuxHcCbMfHBHdeT5Tva/AFn3rnMKE4g==
+  version "17.0.60"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/react/-/react-17.0.60.tgz#a4a97dcdbebad76612c188fc06440e4995fd8ad2"
+  integrity sha512-pCH7bqWIfzHs3D+PDs3O/COCQJka+Kcw3RnO9rFA2zalqoXg7cNjJDh6mZ7oRtY1wmY4LVwDdAbA1F7Z8tv3BQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -10627,7 +10627,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@material-ui/icons" "^4.11.3"
     "@tpb/plugin-api-scoring" "^1.0.2"
     "@tpb/plugin-app-accelerator-scaffolder" "^0.0.1-alpha.2"
-    "@tpb/plugin-app-live-view" "^0.1.16"
+    "@tpb/plugin-app-live-view" "^0.1.18"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-azure-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-bitbucket-auth" "^0.0.1-alpha.2"
