@@ -1,5 +1,5 @@
 import React from 'react';
-import {screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { EntityPageSurface } from '../../EntityPageSurface';
 import { Grid } from '@material-ui/core';
 import { EntityLayout } from '@backstage/plugin-catalog';
@@ -25,7 +25,9 @@ describe('API Page', () => {
 
     await renderTestEntityPage(testEntity, surface);
 
-    expect((await screen.findAllByText(/openapi/i)).length).toBeGreaterThanOrEqual(1);
+    expect(
+      (await screen.findAllByText(/openapi/i)).length,
+    ).toBeGreaterThanOrEqual(1);
     expect(await screen.findByText(/artist-api/i)).toBeInTheDocument();
     expect(
       await screen.findByText(/Retrieve artist details/i),

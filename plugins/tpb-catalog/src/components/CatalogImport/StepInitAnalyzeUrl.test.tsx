@@ -85,7 +85,7 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     try {
-      await userEvent.click(getByRole('button', {name: /Analyze/i}));
+      await userEvent.click(getByRole('button', { name: /Analyze/i }));
     } catch {
       return;
     }
@@ -105,7 +105,10 @@ describe('<StepInitAnalyzeUrl />', () => {
       },
     );
 
-    await userEvent.type(getByRole('textbox', { name: /Repository/i }), 'http:/');
+    await userEvent.type(
+      getByRole('textbox', { name: /Repository/i }),
+      'http:/',
+    );
     await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(catalogImportApi.analyzeUrl).toHaveBeenCalledTimes(0);
@@ -136,10 +139,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -171,10 +174,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository-1',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-1',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -205,10 +208,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository-1',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-1',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
@@ -247,10 +250,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository-2',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(1);
     expect(onAnalysisFn.mock.calls[0]).toMatchObject([
@@ -283,10 +286,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository-2',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
@@ -325,10 +328,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository-2',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(
@@ -352,10 +355,10 @@ describe('<StepInitAnalyzeUrl />', () => {
     );
 
     await userEvent.type(
-        getByRole('textbox', {name: /Repository/i}),
-        'https://my-repository-2',
+      getByRole('textbox', { name: /Repository/i }),
+      'https://my-repository-2',
     );
-    await userEvent.click(getByRole('button', {name: /Analyze/i}));
+    await userEvent.click(getByRole('button', { name: /Analyze/i }));
 
     expect(onAnalysisFn).toHaveBeenCalledTimes(0);
     expect(

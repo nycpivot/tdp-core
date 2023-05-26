@@ -85,7 +85,9 @@ describe('EntityPage app', () => {
 
     const { findByText } = await renderInTestApp(
       <TestApiWrapper>
-        <EntityProvider entity={testEntity}>{entityPage(new EntityPageSurface)}</EntityProvider>
+        <EntityProvider entity={testEntity}>
+          {entityPage(new EntityPageSurface())}
+        </EntityProvider>
       </TestApiWrapper>,
       {
         mountedRoutes: {
@@ -105,7 +107,9 @@ describe('EntityPage app', () => {
 
     const { findByText } = await renderInTestApp(
       <TestApiWrapper>
-        <EntityProvider entity={testEntity}>{entityPage(new EntityPageSurface)}</EntityProvider>
+        <EntityProvider entity={testEntity}>
+          {entityPage(new EntityPageSurface())}
+        </EntityProvider>
       </TestApiWrapper>,
       {
         mountedRoutes: {
