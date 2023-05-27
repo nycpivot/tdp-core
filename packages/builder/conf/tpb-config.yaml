@@ -1,6 +1,5 @@
 app:
   plugins:
-    - name: '@tpb/plugin-hello-world'
     - name: '@tpb/plugin-rrv'
     - name: '@tpb/plugin-app-live-view'
     - name: '@tpb/plugin-azure-auth'

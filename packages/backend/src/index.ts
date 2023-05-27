@@ -34,7 +34,6 @@ import { plugin as permissionTestAuthBackendPlugin } from '@tpb/plugin-permissio
 import { plugin as backstageUserSettingsBackendPlugin } from '@tpb/plugin-backstage-user-settings-backend';
 import { plugin as pendoBackendPlugin } from '@tpb/plugin-pendo-analytics-backend';
 import { plugin as vmwareCloudServicesAuthBackendPlugin } from '@tpb/plugin-vmware-cloud-services-auth-backend';
-import { plugin as helloWorldPlugin } from '@tpb/plugin-hello-world-backend';
 import { plugin as appAcceleratorBackendPlugin } from '@tpb/plugin-app-accelerator-backend';
 import { plugin as gitProvidersBackend } from '@tpb/plugin-git-providers-backend';
 import { plugin as autoRegistrationPlugin } from '@tpb/plugin-api-auto-registration-backend';
@@ -76,7 +75,6 @@ new BackendRuntime([
   permissionBackendPlugin(),
   backstageUserSettingsBackendPlugin(),
   pendoBackendPlugin(),
-  helloWorldPlugin(),
   appAcceleratorBackendPlugin(),
   gitProvidersBackend(),
   autoRegistrationPlugin(),
