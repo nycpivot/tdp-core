@@ -5,14 +5,13 @@ export interface Config {
      */
     providers?: {
       vmwareCloudServices?: {
-        clientId: string;
-
-        /**
-         * @visibility secret
-         */
-        clientSecret: string;
-        organizationId: string;
-        consoleEndpoint: string;
+        [authEnv: string]: {
+          /**
+           * @visibility secret
+           */
+          clientId: string;
+          organizationId?: string;
+        };
       };
     };
   };
