@@ -1,4 +1,4 @@
-import { SurfaceStoreInterface } from './api';
+import { SurfaceStoreInterface } from '@tpb/core-common';
 
 export interface RoutableConfig {
   path?: string;
