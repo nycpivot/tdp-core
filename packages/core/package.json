@@ -38,7 +38,8 @@
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "@tpb/core-common": "^0.0"
+    "@tpb/core-common": "^0.0",
+    "@tpb/core-backend": "^0.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
