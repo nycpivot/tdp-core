@@ -2,7 +2,7 @@ import {
   BackendCatalogSurface,
   BackendPluginInterface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { AwsS3DiscoveryProcessor } from '@backstage/plugin-catalog-backend-module-aws';
 
 export const AwsS3DiscoveryProcessorPlugin: BackendPluginInterface =
