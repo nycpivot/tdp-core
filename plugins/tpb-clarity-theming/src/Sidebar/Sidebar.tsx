@@ -7,7 +7,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { SidebarContext } from '@backstage/core-components';
+import { SidebarOpenStateProvider } from '@backstage/core-components';
 import { BackstageTheme } from '@backstage/theme';
 
 import AngleDoubleLineIcon from './AngleDoubleLineIcon';
@@ -121,7 +121,7 @@ const Sidebar = (props: PropsWithChildren<SidebarProps>) => {
   const HasTapLogo = icon && text;
 
   return (
-    <SidebarContext.Provider value={{ isOpen, setOpen }}>
+    <SidebarOpenStateProvider value={{ setOpen, isOpen }}>
       <div className={props.classes?.root}>
         {!isSmallScreen && (
           <span
@@ -154,7 +154,7 @@ const Sidebar = (props: PropsWithChildren<SidebarProps>) => {
           </div>
         )}
       </div>
-    </SidebarContext.Provider>
+    </SidebarOpenStateProvider>
   );
 };
 
