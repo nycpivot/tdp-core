@@ -1,9 +1,9 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, microsoftAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const azureAuthProviderKey = 'microsoft';
-export const AzureAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const AzureAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'azure-auth-provider',
     title: 'Azure',
