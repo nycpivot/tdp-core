@@ -1,10 +1,10 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, bitbucketAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const bitbucketAuthProviderKey = 'bitbucket';
 
-export const BitbucketAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const BitbucketAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'bitbucket-auth-provider',
     title: 'Bitbucket',

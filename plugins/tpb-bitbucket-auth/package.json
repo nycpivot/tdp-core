@@ -20,12 +20,12 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@tpb/core": "^0.0.1-alpha.3",
-    "@tpb/plugin-login": "^0.0.1-alpha.2",
     "@backstage/core-plugin-api": "^1.5.1"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "@tpb/core-frontend": "^0.0.1-alpha.1",
+    "@tpb/plugin-login": "^0.0.1-alpha.2"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6"
