@@ -1,4 +1,7 @@
-import { BackendCatalogSurface, BackendPluginInterface } from '@tpb/core';
+import {
+  BackendCatalogSurface,
+  BackendPluginInterface,
+} from '@tpb/core-backend';
 import { AzureDevOpsDiscoveryProcessor } from '@backstage/plugin-catalog-backend-module-azure';
 
 export const AzureDevOpsPlugin: BackendPluginInterface = () => surfaces => {
