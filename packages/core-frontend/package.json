@@ -22,7 +22,8 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/core-plugin-api": "^1.5.1"
+    "@backstage/core-plugin-api": "^1.5.1",
+    "@backstage/core-app-api": "^1.7.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
