@@ -26,7 +26,8 @@
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-router": "6.0.0-beta.0"
+    "react-router": "6.0.0-beta.0",
+    "@tpb/core-common": "^0.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
