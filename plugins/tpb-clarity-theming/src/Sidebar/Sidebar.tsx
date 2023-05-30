@@ -120,6 +120,7 @@ const Sidebar = (props: PropsWithChildren<SidebarProps>) => {
   const isOpen = state === State.Open && !isSmallScreen;
   const HasTapLogo = icon && text;
 
+  // TODO: ESBACK-335 - Backfill integration test for sidebar items
   return (
     <SidebarOpenStateProvider value={{ setOpen, isOpen }}>
       <div className={props.classes?.root}>
