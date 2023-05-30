@@ -27,10 +27,10 @@
     "@backstage/theme": "^0.2.19",
     "@backstage/core-plugin-api": "^1.5.1",
     "@backstage/dev-utils": "^1.0.14",
-    "@tpb/core": "^0.0.1-alpha.3",
     "@material-ui/icons": "^4.11.3"
   },
   "peerDependencies": {
+    "@tpb/core-frontend": "^0.0.1-alpha.1",
     "react": "^17.0.2",
     "react-router-dom": "6.0.0-beta.0"
   },
