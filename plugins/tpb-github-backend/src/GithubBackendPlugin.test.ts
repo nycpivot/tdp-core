@@ -1,4 +1,4 @@
-import { BackendCatalogSurface, SurfaceStore } from '@tpb/core';
+import { BackendCatalogSurface, SurfaceStore } from '@tpb/core-backend';
 import { GithubBackendPlugin } from './GithubBackendPlugin';
 import {
   GithubEntityProvider,

@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import { SignInResolverSurface } from '@tpb/plugin-auth-backend';
 import {
   GithubOAuthResult,
