@@ -4,7 +4,7 @@ import {
   AppRouteSurface,
   RoutableConfig,
   SidebarItemSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { ToggleFeature, ToggleRoute } from '@tpb/feature-flags';
 import { SidebarItem } from '@backstage/core-components';
 import { ApiExplorerPage } from '@backstage/plugin-api-docs';
