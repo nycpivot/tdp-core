@@ -16,7 +16,7 @@ import {
   AppRouteSurface,
   RoutableConfig,
   SidebarItemSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { ToggleFeature, ToggleRoute } from '@tpb/feature-flags';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { entityPage } from './components/Catalog/EntityPage';
