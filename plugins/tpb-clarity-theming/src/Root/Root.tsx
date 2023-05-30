@@ -13,6 +13,8 @@ import './styles.css';
 import { Banner } from '../Header/Banner';
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
 import { SidebarItemSurface } from '@tpb/core';
+import { ToggleFeature } from '@tpb/core-frontend';
+import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
 
 export type RootClassKey = 'root' | 'content' | 'contentSm';
 import { ClarityHeader } from '../Header/Header';
@@ -80,6 +82,9 @@ const Root = ({ sidebar, classes, children }: PropsWithChildren<IRoot>) => {
         <ClaritySidebar>
           {...sidebar.topItems}
           {...sidebar.mainItems}
+          <ToggleFeature feature="customize.features.settings.showInSidebar">
+            <SidebarSettings />
+          </ToggleFeature>
         </ClaritySidebar>
         {/* eslint-disable */}
         <div
