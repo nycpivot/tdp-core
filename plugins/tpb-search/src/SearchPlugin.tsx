@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import { SearchPage, SidebarSearchModal } from '@backstage/plugin-search';
 import { searchPage } from './components/SearchPage';
-import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/feature-flags';
 
 export const SearchPlugin: AppPluginInterface<RoutableConfig> = config => {
   const { path } = {

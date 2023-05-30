@@ -5,7 +5,7 @@ import {
   RoutableConfig,
   SidebarItemSurface,
 } from '@tpb/core';
-import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/feature-flags';
 import { SidebarItem } from '@backstage/core-components';
 import { ApiExplorerPage } from '@backstage/plugin-api-docs';
 import Extension from '@material-ui/icons/Extension';

@@ -13,7 +13,7 @@ import {
   SurfaceStoreInterface,
   ThemeSurface,
 } from '@tpb/core';
-import { ToggleRoute } from '@tpb/core-frontend';
+import { ToggleRoute } from '@tpb/feature-flags';
 import { DefaultRoute } from './DefaultRoute';
 
 export const appRenderer = (surfaces: SurfaceStoreInterface) => {
