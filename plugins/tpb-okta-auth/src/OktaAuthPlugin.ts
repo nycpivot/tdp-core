@@ -1,10 +1,10 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, oktaAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const oktaAuthProviderKey = 'okta';
 
-export const OktaAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const OktaAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'okta-auth-provider',
     title: 'Okta',

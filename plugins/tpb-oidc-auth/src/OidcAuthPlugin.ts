@@ -1,4 +1,4 @@
-import { ApiSurface, BackendPluginInterface } from '@tpb/core';
+import { ApiSurface, AppPluginInterface } from '@tpb/core-frontend';
 import {
   ApiRef,
   BackstageIdentityApi,
@@ -28,7 +28,7 @@ export const oidcAuthApiRef: ApiRef<
   id: 'esback.auth.oidc',
 });
 
-export const OidcAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const OidcAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'oidc-auth-provider',
     title: 'OIDC',
