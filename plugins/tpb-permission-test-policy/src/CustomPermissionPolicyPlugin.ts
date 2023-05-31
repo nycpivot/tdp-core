@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import { CustomPermissionPolicy } from './CustomPermissionPolicy';
 import { PermissionPolicySurface } from '@tpb/plugin-permission-backend';
 
