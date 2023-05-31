@@ -31,8 +31,7 @@
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
-    "@types/express": "^4.17.17",
-    "msw": "^1.2.1"
+    "@types/express": "^4.17.17"
   },
   "files": [
     "dist"

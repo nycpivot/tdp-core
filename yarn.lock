@@ -3616,7 +3616,7 @@
   dependencies:
     "@backstage/backend-plugin-api" "^0.5.1"
 
-"@backstage/plugin-github-actions@^0.5.15", "@backstage/plugin-github-actions@^0.5.17":
+"@backstage/plugin-github-actions@^0.5.15":
   version "0.5.17"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-github-actions/-/plugin-github-actions-0.5.17.tgz#e0770d7e69d917be051a9026a7c476da679a8fed"
   integrity sha512-vlCiChg7+qnN7npFnD+DiR3y9pjMOx1hGvHz7V5dw1vdvn2vQfcQKmxn0H12SCt9qB16ibRTIUbMUXfFC2HJBw==
