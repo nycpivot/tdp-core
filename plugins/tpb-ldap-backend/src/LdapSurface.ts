@@ -4,7 +4,7 @@ import {
   GroupTransformer,
   UserTransformer,
 } from '@backstage/plugin-catalog-backend-module-ldap';
-import { PluginEnvironment } from '@tpb/core';
+import { PluginEnvironment } from '@tpb/core-backend';
 
 export type GroupTransformerBuilder = (
   env: PluginEnvironment,

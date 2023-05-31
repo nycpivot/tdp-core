@@ -1,4 +1,7 @@
-import { BackendCatalogSurface, BackendPluginInterface } from '@tpb/core';
+import {
+  BackendCatalogSurface,
+  BackendPluginInterface,
+} from '@tpb/core-backend';
 import { LdapOrgReaderProcessor } from '@backstage/plugin-catalog-backend-module-ldap';
 import { LdapSurface } from './LdapSurface';
 

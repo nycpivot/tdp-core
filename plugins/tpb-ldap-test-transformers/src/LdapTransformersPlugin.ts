@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import { LdapSurface } from '@tpb/plugin-ldap-backend';
 import {
   defaultGroupTransformer,
