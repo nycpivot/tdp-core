@@ -20,7 +20,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/core-components": "^0.12.4",
+    "@backstage/core-components": "^0.13.0",
     "@backstage/plugin-user-settings": "^0.7.2",
     "@backstage/integration-react": "^1.1.10",
     "@material-ui/icons": "^4.11.2",
