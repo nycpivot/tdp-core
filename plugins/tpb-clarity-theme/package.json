@@ -27,7 +27,7 @@
     "@backstage/plugin-user-settings": "^0.7.2",
     "@backstage/theme": "^0.2.19",
     "@backstage/core-plugin-api": "^1.5.1",
-    "@backstage/dev-utils": "^1.0.15",
+    "@backstage/dev-utils": "^1.0.14",
     "clsx": "^1.1.1",
     "@cds/core": "6.4.2"
   },
