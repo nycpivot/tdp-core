@@ -1,10 +1,10 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, googleAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const googleAuthProviderKey = 'google';
 
-export const GoogleAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const GoogleAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'google-auth-provider',
     title: 'Google',
