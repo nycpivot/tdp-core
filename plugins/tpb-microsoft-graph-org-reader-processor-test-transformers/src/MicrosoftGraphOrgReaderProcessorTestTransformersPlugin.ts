@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { GroupEntity, UserEntity } from '@backstage/catalog-model';
 import {
