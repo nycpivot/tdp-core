@@ -12,7 +12,7 @@ import {
   SettingsTabsSurface,
   SurfaceStoreInterface,
   ThemeSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { ToggleRoute } from '@tpb/feature-flags';
 import { DefaultRoute } from './DefaultRoute';
 
