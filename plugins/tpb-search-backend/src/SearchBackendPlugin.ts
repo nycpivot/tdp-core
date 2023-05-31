@@ -2,7 +2,7 @@ import {
   BackendPluginInterface,
   BackendPluginSurface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { useHotCleanup } from '@backstage/backend-common';
 import { createRouter } from '@backstage/plugin-search-backend';
 import {

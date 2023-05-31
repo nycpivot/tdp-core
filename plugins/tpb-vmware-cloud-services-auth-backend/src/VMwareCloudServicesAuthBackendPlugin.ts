@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import { SignInProviderSurface } from '@tpb/plugin-auth-backend';
 import {
   AuthProviderFactory,

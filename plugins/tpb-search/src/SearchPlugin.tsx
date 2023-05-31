@@ -3,7 +3,7 @@ import {
   AppRouteSurface,
   RoutableConfig,
   SidebarItemSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import React from 'react';
 import { SearchPage, SidebarSearchModal } from '@backstage/plugin-search';
 import { searchPage } from './components/SearchPage';
