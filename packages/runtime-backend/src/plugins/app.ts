@@ -1,6 +1,6 @@
 import { createRouter } from '@backstage/plugin-app-backend';
 import { Router } from 'express';
-import { PluginEnvironment } from '@tpb/core';
+import { PluginEnvironment } from '@tpb/core-backend';
 
 export default async function createPlugin(
   env: PluginEnvironment,
