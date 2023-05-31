@@ -6,25 +6,16 @@ so that there is a "single" entrypoint for plugin integration.
 
 Here are the main components of the TPB library ecosystem:
 
-- packages/core: Contains the type definitions for developing TPB plugin interfaces
+- packages/core-common: Contains the common type definitions for developing TPB plugin interfaces
+- packages/core-frontend: Contains the common type definitions for developing frontend TPB plugin interfaces
+- packages/core-backend: Contains the common type definitions for developing backend TPB plugin interfaces
 - packages/runtime: Objects required to run a backstage frontend
 - packages/runtime-backend: Objects required to run a backstage backend
 - plugins/\*: Any officially supported Backstage plugin
 
 ## Getting started
 
-To run the most basic version of TPB, simply run this repository as you would a freshly
-created Backstage app:
-
-```sh
-$ yarn install
-$ yarn tsc
-$ yarn dev
-```
-
-This should open up a backstage instance running on port 7007/3000 (backend/frontend)
-with only the [software catalog](https://backstage.io/docs/features/software-catalog/)
-enabled.
+Read the [Onboarding Document](./ONBOARDING.md).
 
 ## Extracting TPB Plugins
 
@@ -50,11 +41,19 @@ If the plugin already exists in TPB. You still need make sure the plugin runs pr
 
 ## Surfaces
 
-Our surfaces consists of a few distinct groups of functionalities we can individually add to our plugins. In this section we show an example of each of the currently available surfaces in our project.
+To integrate Backstage plugins within TPB, we define the concept of Surface. Our surfaces consists of a few distinct groups of functionalities we can individually add to our plugins.
+
+There are two types of plugins that you might want to write: either frontend or backend plugins.
+
+In the following sections, we show examples of each of the currently available surfaces in our project for the different types of plugins.
+
+## Frontend Plugins
+
+To create a frontend plugin, you need to add the `@tpb/core-frontend` package to your `peerDependencies` section. If you are writing an external plugin (that is not part of our monorepo), you might need to add it to your `devDependencies` section too.
 
 ### SidebarItemSurface
 
-You can add your plugin to the main side bar in order to have access to it from TPB. Navigate to `Plugin.ts` and add a SidebarItemSurface to your plugin. First you will need to import the SidebarItemSurface library `import { SidebarItemSurface } from '@tpb/core';`, eg:
+You can add your plugin to the main side bar in order to have access to it from TPB. Navigate to `Plugin.ts` and add a SidebarItemSurface to your plugin. First you will need to import the SidebarItemSurface library `import { SidebarItemSurface } from '@tpb/core-frontend';`, eg:
 
 ```
 context.applyTo(SidebarItemSurface, sidebar =>
@@ -86,7 +85,7 @@ surfaces.applyTo(LoginSurface, surface => {
 Similar as the LoginSurface, the ApiSurface should look something like:
 
 ```
-import { ApiSurface } from '@tpb/core';
+import { ApiSurface } from '@tpb/core-frontend';
 ...
 
 surfaces.applyTo(ApiSurface, surface => {
@@ -115,10 +114,140 @@ surfaces.applyTo(ApiSurface, surface => {
   });
 ```
 
+### AppRouteSurface
+
+```
+import { AppRouteSurface } from '@tpb/core-frontend';
+
+...
+
+export const AppLiveViewPlugin: AppPluginInterface = () => context => {
+  context.applyTo(AppRouteSurface, surface => {
+    surface.add(<Route path="/app-live-view" element={<AppLiveViewPage />} />);
+  });
+};
+```
+
+### AppComponentSurface
+
+```
+import { AppComponentSurface } from '@tpb/core-frontend';
+
+...
+
+export const LoginPlugin: AppPluginInterface = () => {
+  return context => {
+    context.applyWithDependency(
+      AppComponentSurface,
+      LoginSurface,
+      (appComponentSurface, loginSurface) => {
+        if (loginSurface.hasProviders()) {
+          appComponentSurface.add('SignInPage', props => {
+            return (
+              <SignInPageWrapper
+                onSignInSuccess={props.onSignInSuccess}
+                loginSurface={loginSurface}
+              />
+            );
+          });
+        }
+      },
+    );
+  };
+};
+
+
+```
+
+### ThemeSurface
+
+```
+import { ThemeSurface } from '@tpb/core-frontend';
+
+...
+
+const BackstageLight: AppTheme = {
+  id: 'backstage-light',
+  title: 'Light',
+  variant: 'light',
+  Provider: ({ children }) => (
+    <ThemeProvider theme={lightTheme}>
+      <CssBaseline>{children}</CssBaseline>
+    </ThemeProvider>
+  ),
+};
+
+const BackstageDark: AppTheme = {
+  id: 'backstage-dark',
+  title: 'Dark',
+  variant: 'dark',
+  Provider: ({ children }) => (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline>{children}</CssBaseline>
+    </ThemeProvider>
+  ),
+};
+
+export const ThemePlugin: AppPluginInterface = () => {
+  return context => {
+    context.applyTo(ThemeSurface, surface => {
+      surface.addTheme(BackstageLight);
+      surface.addTheme(BackstageDark);
+      surface.setRootBuilder(children => (
+        <Root sidebar={context.findSurface(SidebarItemSurface)}>
+          {children}
+        </Root>
+      ));
+    });
+  };
+};
+
+```
+
+### SettingsTabsSurface
+
+```
+import React from 'react';
+import {
+  AppPluginInterface,
+  SettingsTabsSurface,
+} from '@tpb/core-frontend';
+import { SettingsLayout } from '@backstage/plugin-user-settings';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(SettingsTabsSurface, tabs =>
+    tabs.add(
+      <SettingsLayout.Route path="/hello-world" title="Hello World Tab">
+        <div>Hello World Settings Tab Content</div>
+      </SettingsLayout.Route>,
+    ),
+  );
+};
+```
+
+### BannerSurface
+
+```
+import React from 'react';
+import { BannerSurface } from '@tpb/core-frontend';
+
+export const HelloWorldPlugin: AppPluginInterface = () => context => {
+  context.applyTo(BannerSurface, banners => {
+    banners.add(
+        <div>Hello World Banner</div>
+    );
+  });
+};
+```
+
+## Backend Plugins
+
+To create a backend plugin, you need to add the `@tpb/core-backend` package to your `peerDependencies` section. If you are writing an external plugin (that is not part of our monorepo), you might need to add it to your `devDependencies` section too.
+
 ### BackendCatalogSurface
 
 ```
-import { BackendCatalogSurface } from '@tpb/core';
+import { BackendCatalogSurface } from '@tpb/core-backend';
 
 ...
 
@@ -148,6 +277,16 @@ export const MicrosoftGraphOrgReaderProcessorPlugin: BackendPluginInterface =
     );
   };
 ```
+
+### BackendPluginSurface
+
+```
+
+```
+
+## Plugin Surfaces
+
+Any plugin can create its own kind of surface to be used by other plugins. This section describes those that are available.
 
 ### MicrosoftGraphOrgReaderProcessorTransformersSurface
 
@@ -187,7 +326,6 @@ export const MicrosoftGraphOrgReaderProcessorPlugin: BackendPluginInterface =
 
 ```
 import { SignInProviderSurface } from '@tpb/plugin-auth-backend';
-
 ...
 
 export const OidcAuthBackendPlugin: BackendPluginInterface = () => store => {
@@ -255,138 +393,6 @@ export const LdapTransformersPlugin: BackendPluginInterface =
       });
     });
   };
-```
-
-### BackendPluginSurface
-
-```
-
-```
-
-### AppRouteSurface
-
-```
-import { AppRouteSurface } from '@tpb/core';
-
-...
-
-export const AppLiveViewPlugin: AppPluginInterface = () => context => {
-  context.applyTo(AppRouteSurface, surface => {
-    surface.add(<Route path="/app-live-view" element={<AppLiveViewPage />} />);
-  });
-};
-```
-
-### AppComponentSurface
-
-```
-import { AppComponentSurface } from '@tpb/core';
-
-...
-
-export const LoginPlugin: AppPluginInterface = () => {
-  return context => {
-    context.applyWithDependency(
-      AppComponentSurface,
-      LoginSurface,
-      (appComponentSurface, loginSurface) => {
-        if (loginSurface.hasProviders()) {
-          appComponentSurface.add('SignInPage', props => {
-            return (
-              <SignInPageWrapper
-                onSignInSuccess={props.onSignInSuccess}
-                loginSurface={loginSurface}
-              />
-            );
-          });
-        }
-      },
-    );
-  };
-};
-
-
-```
-
-### ThemeSurface
-
-```
-import { ThemeSurface } from '@tpb/core';
-
-...
-
-const BackstageLight: AppTheme = {
-  id: 'backstage-light',
-  title: 'Light',
-  variant: 'light',
-  Provider: ({ children }) => (
-    <ThemeProvider theme={lightTheme}>
-      <CssBaseline>{children}</CssBaseline>
-    </ThemeProvider>
-  ),
-};
-
-const BackstageDark: AppTheme = {
-  id: 'backstage-dark',
-  title: 'Dark',
-  variant: 'dark',
-  Provider: ({ children }) => (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline>{children}</CssBaseline>
-    </ThemeProvider>
-  ),
-};
-
-export const ThemePlugin: AppPluginInterface = () => {
-  return context => {
-    context.applyTo(ThemeSurface, surface => {
-      surface.addTheme(BackstageLight);
-      surface.addTheme(BackstageDark);
-      surface.setRootBuilder(children => (
-        <Root sidebar={context.findSurface(SidebarItemSurface)}>
-          {children}
-        </Root>
-      ));
-    });
-  };
-};
-
-```
-
-### SettingsTabsSurface
-
-```
-import React from 'react';
-import {
-  AppPluginInterface,
-  SettingsTabsSurface,
-} from '@tpb/core';
-import { SettingsLayout } from '@backstage/plugin-user-settings';
-
-export const HelloWorldPlugin: AppPluginInterface = () => context => {
-  context.applyTo(SettingsTabsSurface, tabs =>
-    tabs.add(
-      <SettingsLayout.Route path="/hello-world" title="Hello World Tab">
-        <div>Hello World Settings Tab Content</div>
-      </SettingsLayout.Route>,
-    ),
-  );
-};
-```
-
-### BannerSurface
-
-```
-import React from 'react';
-import { BannerSurface } from '@tpb/core';
-
-export const HelloWorldPlugin: AppPluginInterface = () => context => {
-  context.applyTo(BannerSurface, banners => {
-    banners.add(
-        <div>Hello World Banner</div>
-    );
-  });
-};
 ```
 
 ### EntityPageSurface
