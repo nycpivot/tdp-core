@@ -21,10 +21,8 @@
   },
   "dependencies": {
     "@backstage/core-components": "^0.13.0",
-    "@backstage/core-plugin-api": "^1.5.1",
-    "@backstage/plugin-user-settings": "^0.7.2",
     "@backstage/integration-react": "^1.1.12",
-    "@material-ui/icons": "^4.11.2"
+    "@backstage/core-plugin-api": "^1.5.1"
   },
   "peerDependencies": {
     "@tpb/core-frontend": "*"
