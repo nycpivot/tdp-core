@@ -24,7 +24,7 @@
     "@backstage/core-plugin-api": "^1.5.1"
   },
   "peerDependencies": {
-    "@tpb/core-frontend": "^0.0.1-alpha.1",
+    "@tpb/core-frontend": "*",
     "react": "^17.0.2"
   },
   "devDependencies": {

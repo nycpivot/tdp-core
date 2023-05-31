@@ -27,7 +27,7 @@
     "express": "^4.17.3"
   },
   "peerDependencies": {
-    "@tpb/core-backend": "^0.0.1-alpha.1"
+    "@tpb/core-backend": "*"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.3"

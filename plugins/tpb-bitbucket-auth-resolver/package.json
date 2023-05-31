@@ -26,8 +26,8 @@
     "@backstage/plugin-auth-node": "^0.2.13"
   },
   "peerDependencies": {
-    "@tpb/core-backend": "^0.0.1-alpha.1",
-    "@tpb/plugin-auth-backend": "^0.0.1-alpha.2"
+    "@tpb/core-backend": "*",
+    "@tpb/plugin-auth-backend": "*"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6"

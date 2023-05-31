@@ -25,7 +25,7 @@
     "@backstage/plugin-catalog-backend-module-azure": "^0.1.15"
   },
   "peerDependencies": {
-    "@tpb/core-backend": "^0.0.1-alpha.1"
+    "@tpb/core-backend": "*"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",

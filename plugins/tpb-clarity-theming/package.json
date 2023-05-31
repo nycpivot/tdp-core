@@ -35,8 +35,8 @@
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0",
     "react-router-dom": "6.0.0-beta.0",
-    "@tpb/core-frontend": "^0.0",
-    "@tpb/feature-flags": "^0.0"
+    "@tpb/core-frontend": "*",
+    "@tpb/feature-flags": "*"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.3"

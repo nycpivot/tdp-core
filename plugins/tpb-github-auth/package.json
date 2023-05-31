@@ -38,8 +38,8 @@
     "react-router": "6.0.0-beta.0"
   },
   "peerDependencies": {
-    "@tpb/core-frontend": "^0.0.1-alpha.1",
-    "@tpb/plugin-login": "^0.0.1-alpha.2",
+    "@tpb/core-frontend": "*",
+    "@tpb/plugin-login": "*",
     "react": "^17.0.2"
   },
   "devDependencies": {

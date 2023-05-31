@@ -23,9 +23,9 @@
     "postpack": "backstage-cli package postpack"
   },
   "peerDependencies": {
-    "@tpb/core-common": "^0.0",
-    "@tpb/core-frontend": "^0.0",
-    "@tpb/core-backend": "^0.0"
+    "@tpb/core-common": "*",
+    "@tpb/core-frontend": "*",
+    "@tpb/core-backend": "*"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
