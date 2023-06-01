@@ -24,7 +24,6 @@ import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import { SecurityAnalysisIcon } from "@tpb/plugin-security-analysis-frontend";
 import { SupplyChainIcon } from "@tpb/plugin-supply-chain";
-import { AppLiveViewPlugin as AppLiveViewSettings } from "@tpb/plugin-app-live-view";
 
 export type RootClassKey = 'root' | 'content' | 'contentSm';
 import { ClarityHeader } from '../Header/Header';
