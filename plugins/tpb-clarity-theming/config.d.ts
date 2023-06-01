@@ -41,5 +41,38 @@ export interface Config {
        */
       linkText?: string;
     };
+
+    customize?: {
+      features?: {
+        helloWorld?: {
+          /**
+           * Show or hide the sidebar entry. Default: true
+           * @visibility frontend
+           */
+          showInSidebar?: boolean;
+        };
+        supplyChain?: {
+          /**
+           * Show or hide the sidebar entry. Default: true
+           * @visibility frontend
+           */
+          showInSidebar?: boolean;
+        };
+        securityAnalysis?: {
+          /**
+           * Show or hide the sidebar entry. Default: true
+           * @visibility frontend
+           */
+          showInSidebar?: boolean;
+        };
+        appLiveView?: {
+          /**
+           * Show or hide the sidebar entry. Default: true
+           * @visibility frontend
+           */
+          showInSidebar?: boolean;
+        };
+      };
+    };
   };
 }
