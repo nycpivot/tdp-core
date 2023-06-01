@@ -8052,32 +8052,34 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
 
-"@tpb/core-frontend@0.0.2-main.103":
-  version "0.0.2-main.103"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core-frontend/-/@tpb/core-frontend-0.0.2-main.103.tgz#813758d5f10697bbe30c74d0840474634a0faf3d"
-  integrity sha512-Mmuq8BZEEQB32P12Vk9CpJc2fVwNGN6i2KE9kzkHeDedB0xLad7ey+gVrNNiQHsBkabYECVDH/ymSe9HZRTlAA==
-  dependencies:
-    "@backstage/core-plugin-api" "^1.5.0"
-
-"@tpb/core@^0.0.2-main.102", "@tpb/core@^0.0.2-main.76":
-  version "0.0.2-main.106"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.106.tgz#eb63f4fa012e918987dc94a8ae5f80ff9eb34eea"
-  integrity sha512-LCc4UDD/RjXmpiGjp2LrmQIAoOIPl2HfwsNKCS/ahk/n0ra6vb3F/jbIyvI8xiPMhOOG8h5qGcuL09nr+jGSvg==
+"@tpb/core-backend@^0.0.2-main.133":
+  version "0.0.2-main.135"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core-backend/-/@tpb/core-backend-0.0.2-main.135.tgz#c2f2a615b22645db1281555fed63d6b102a240c2"
+  integrity sha512-ONDgLeC5He+NsnzKwvL64X21vQrkW1tR+Rk7EqDMGgUZdZSt+xAFFWxv7HLZpaOE1/wsW56FXlvCANIr1Yk+cA==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
     "@backstage/backend-tasks" "^0.5.1"
     "@backstage/config" "^1.0.7"
-    "@backstage/core-app-api" "^1.7.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/plugin-auth-node" "^0.2.10"
+    "@backstage/plugin-auth-node" "^0.2.13"
     "@backstage/plugin-catalog-backend" "^1.9.0"
     "@backstage/plugin-permission-common" "^0.7.5"
-    "@backstage/theme" "^0.2.19"
-    "@types/express" "*"
-    "@types/uuid" "^9.0.1"
     express "^4.18.2"
-    uuid "^9.0.0"
     winston "^3.8.2"
+
+"@tpb/core-common@^0.0.2-main.133":
+  version "0.0.2-main.135"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core-common/-/@tpb/core-common-0.0.2-main.135.tgz#7aa58a620f0cf48e7f54327c44bd3f64753dd50a"
+  integrity sha512-3Ov9pnDLfaeLdWnGGf/P1j/Yp/QpUPz+2Fa9auz+hBXYifC7m1bpFSBvAURyTMCwszpPAg3O+SiGJrC2pHXRDA==
+  dependencies:
+    uuid "^9.0.0"
+
+"@tpb/core-frontend@^0.0.2-main.133":
+  version "0.0.2-main.135"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core-frontend/-/@tpb/core-frontend-0.0.2-main.135.tgz#c6e871db16333be45bd520604c89b1d1caf8679c"
+  integrity sha512-GDWrdxGCtTl+YN0vndC2crqbWZ0i/6V2Tvfl6AqfYfxi6mwcLQpdyL81SC42qmO+KCpSk2/27fHVP9TRSVwObQ==
+  dependencies:
+    "@backstage/core-app-api" "^1.7.0"
+    "@backstage/core-plugin-api" "^1.5.1"
 
 "@tpb/core@^0.0.2-main.103":
   version "0.0.2-main.120"
@@ -8138,6 +8140,26 @@
     uuid "^9.0.0"
     winston "^3.2.1"
 
+"@tpb/core@^0.0.2-main.76":
+  version "0.0.2-main.106"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.106.tgz#eb63f4fa012e918987dc94a8ae5f80ff9eb34eea"
+  integrity sha512-LCc4UDD/RjXmpiGjp2LrmQIAoOIPl2HfwsNKCS/ahk/n0ra6vb3F/jbIyvI8xiPMhOOG8h5qGcuL09nr+jGSvg==
+  dependencies:
+    "@backstage/backend-common" "^0.18.4"
+    "@backstage/backend-tasks" "^0.5.1"
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-app-api" "^1.7.0"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/plugin-auth-node" "^0.2.10"
+    "@backstage/plugin-catalog-backend" "^1.9.0"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@backstage/theme" "^0.2.19"
+    "@types/express" "*"
+    "@types/uuid" "^9.0.1"
+    express "^4.18.2"
+    uuid "^9.0.0"
+    winston "^3.8.2"
+
 "@tpb/core@^0.0.2-main.83":
   version "0.0.2-main.108"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.108.tgz#cc320fed6cac4e7b8aff58f618be0b91de99bfbc"
@@ -8157,6 +8179,13 @@
     express "^4.18.2"
     uuid "^9.0.0"
     winston "^3.8.2"
+
+"@tpb/feature-flags@^0.0.2-main.133":
+  version "0.0.2-main.135"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/feature-flags/-/@tpb/feature-flags-0.0.2-main.135.tgz#e330542cba13a4bf50abae87009df712d28cd705"
+  integrity sha512-1YWpDlFv8xjgPFUvLc/zsyxfGu5BWnp330Axa6xXVRBxRSMJwRRBckHFVbzGHL1i7qlQiawek7eQPBibaMe7Pw==
+  dependencies:
+    "@backstage/core-plugin-api" "^1.5.1"
 
 "@tpb/k8s-custom-apis-backend@^0.1.6":
   version "0.1.6"
@@ -8223,10 +8252,10 @@
     "@backstage/plugin-catalog-react" "^1.5.0"
     "@backstage/theme" "^0.2.19"
 
-"@tpb/plugin-app-accelerator-backend@^0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-accelerator-backend/-/@tpb/plugin-app-accelerator-backend-0.0.1-alpha.2.tgz#35ba856ab6fdfd013c9af1441454fe900f2d32ff"
-  integrity sha512-r8aYJ3jMUxZTcm4J/0I58N54whvMYSFF8amGecgFaBTAb+SAyPiswr7LOUWdaFZc0g41I58Cqv03/QieXNzBDg==
+"@tpb/plugin-app-accelerator-backend@^0.0.1-alpha.5":
+  version "0.0.1-alpha.5"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-accelerator-backend/-/@tpb/plugin-app-accelerator-backend-0.0.1-alpha.5.tgz#a779b25aef714683eef0d745b61b4c39af940fdc"
+  integrity sha512-HDcJwVRjblS1nHTSwlJ3p4l3xx5onlV4uq+lLOFCf5+8K1U4batkSSCXpwcI4kJXqKhP2/RPIJi6ZNcGVptGlw==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
     "@backstage/catalog-client" "^1.4.1"
@@ -8237,7 +8266,8 @@
     "@backstage/plugin-catalog-backend" "^1.9.0"
     "@backstage/plugin-scaffolder-backend" "1.13.0"
     "@backstage/types" "^1.0.2"
-    "@tpb/core" "^0.0.2-main.105"
+    "@tpb/core-backend" "^0.0.2-main.133"
+    "@tpb/core-common" "^0.0.2-main.133"
     "@types/node-fetch" "^2.6.3"
     "@types/uuid" "^9.0.1"
     cross-fetch "^3.1.5"
@@ -8250,10 +8280,10 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@tpb/plugin-app-accelerator-scaffolder@^0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-accelerator-scaffolder/-/@tpb/plugin-app-accelerator-scaffolder-0.0.1-alpha.2.tgz#dbf0f19b0cd2459fe5f90dbf142456f170aa18d4"
-  integrity sha512-FYVoUQbXVb3zgcQEVps/pSnnaoGXcUfayBpjssqvPmUTBle7YQT7d9F7dV4OIqD7oGkmFsIhingYYEDl1ruMdA==
+"@tpb/plugin-app-accelerator-scaffolder@^0.0.1-alpha.3":
+  version "0.0.1-alpha.3"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-accelerator-scaffolder/-/@tpb/plugin-app-accelerator-scaffolder-0.0.1-alpha.3.tgz#8bcc22a05634af319dab81f05cda8450a5f6a74f"
+  integrity sha512-szwJvCZ94mgpzpnnY4dWNDSBP5z03ki6Est+kT7QhDdn/b9YQO0x+utTUK+vfZxo80DmdHcSHxL1uLf515Z3qg==
   dependencies:
     "@backstage/plugin-scaffolder-common" "^1.2.7"
     "@backstage/types" "^1.0.2"
@@ -8332,16 +8362,17 @@
     "@tpb/core" "^0.0.2-main.85"
     "@tpb/plugin-login" "^0.0.2-main.85"
 
-"@tpb/plugin-git-providers-backend@^0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-git-providers-backend/-/@tpb/plugin-git-providers-backend-0.0.1-alpha.2.tgz#913e1ce9871e522b8427149e280397070b7006f3"
-  integrity sha512-tCc9t1G8Gq9UobZrHA8OHOF7uSxux5gnfhdKnGsEsXXR4Hdyr5OGo0RddzvZz4Ruh5nxN17OhAK5mRVq+4bi9Q==
+"@tpb/plugin-git-providers-backend@^0.0.1-alpha.5":
+  version "0.0.1-alpha.5"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-git-providers-backend/-/@tpb/plugin-git-providers-backend-0.0.1-alpha.5.tgz#e9827f737381f797a1baee086dc238f63d98df10"
+  integrity sha512-Edtw0NGihWTOCrhwpT9l9p7z05pPCS40b1C1w/MJ4klrFhSGPEHxT51s4ei4jlvR5ojXgK39Gm+zVRwXwmvRAA==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
     "@backstage/cli" "0.22.6"
     "@backstage/config" "^1.0.7"
     "@changesets/cli" "^2.25.0"
-    "@tpb/core" "^0.0.2-main.105"
+    "@tpb/core-backend" "^0.0.2-main.133"
+    "@tpb/core-common" "^0.0.2-main.133"
     "@types/express" "^4.17.13"
     express "^4.17.13"
     express-promise-router "^4.1.1"
@@ -8409,10 +8440,10 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@tpb/plugin-pendo-analytics@^1.0.5-beta.5":
-  version "1.0.5-beta.5"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-pendo-analytics/-/@tpb/plugin-pendo-analytics-1.0.5-beta.5.tgz#cfe6e369146fb6230eaf88c7d3829bcf1053733e"
-  integrity sha512-hsY4M3KWCXpKRtOuoKm59/6RRHwW/nWjqFrYtDPYI8tbM7m+dbvjJ7W/z9QG5lile0lDfxKhToYkBHJ/3vLUMQ==
+"@tpb/plugin-pendo-analytics@^1.0.6-build.0":
+  version "1.0.6-build.0"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-pendo-analytics/-/@tpb/plugin-pendo-analytics-1.0.6-build.0.tgz#1eb5551d6ed22bd55faf657142e8a6b215d171b1"
+  integrity sha512-zTDwEGnZPDxsaQWYZ6Q0ur6HSTY0R9xA9erUavPNLhA6Mm/+iaTPRcffGM4cIw+wmMWak29NKEx7eY+16/IIOQ==
   dependencies:
     "@backstage/core-components" "^0.13.0"
     "@backstage/core-plugin-api" "^1.5.0"
@@ -8422,8 +8453,9 @@
     "@material-ui/core" "^4.12.4"
     "@material-ui/icons" "^4.11.3"
     "@material-ui/lab" "^4.0.0-alpha.60"
-    "@tpb/core" "^0.0.2-main.102"
-    "@tpb/core-frontend" "0.0.2-main.103"
+    "@tpb/core-common" "^0.0.2-main.133"
+    "@tpb/core-frontend" "^0.0.2-main.133"
+    "@tpb/feature-flags" "^0.0.2-main.133"
     "@types/crypto-js" "^4.1.1"
     axios "^1.3.4"
     crypto-js "^4.1.1"
@@ -10373,7 +10405,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@material-ui/core" "^4.12.4"
     "@material-ui/icons" "^4.11.3"
     "@tpb/plugin-api-scoring" "^1.0.2"
-    "@tpb/plugin-app-accelerator-scaffolder" "^0.0.1-alpha.2"
+    "@tpb/plugin-app-accelerator-scaffolder" "^0.0.1-alpha.3"
     "@tpb/plugin-app-live-view" "^0.1.18"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-azure-auth" "^0.0.1-alpha.2"
@@ -10388,7 +10420,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-oidc-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-okta-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-onelogin-auth" "^0.0.1-alpha.2"
-    "@tpb/plugin-pendo-analytics" "^1.0.5-beta.5"
+    "@tpb/plugin-pendo-analytics" "^1.0.6-build.0"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-security-analysis-frontend" "^1.0.0-build.7"
