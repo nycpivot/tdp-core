@@ -8422,15 +8422,16 @@
     "@tpb/core" "^0.0.2-main.61"
     "@tpb/plugin-login" "^0.0.2-main.61"
 
-"@tpb/plugin-pendo-analytics-backend@^0.0.1-alpha.1":
-  version "0.0.1-alpha.1"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-pendo-analytics-backend/-/@tpb/plugin-pendo-analytics-backend-0.0.1-alpha.1.tgz#f4b0176548a5b080e30ae02b8201ae1792c66e26"
-  integrity sha512-3PJ7yV1mA/LP2xCnisF6lX7XAUIx9PSH+wtPTP3IDTh0DmvfwP9//Mlqn5XWx1+KxYeJNAP6YlDew4SYzIvIYQ==
+"@tpb/plugin-pendo-analytics-backend@^1.0.6-build.0":
+  version "1.0.6-build.0"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-pendo-analytics-backend/-/@tpb/plugin-pendo-analytics-backend-1.0.6-build.0.tgz#1a51036530d66948f28355f748fc693fc38bf9e6"
+  integrity sha512-z03pkj8fkcaX46O7gPxaV0GLRue7ZCvI5aDz7xh9vYCTKuIZiqgq+ZGv2Gn07aC6IyWM8gPH1o7mS34Y8S+RBA==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
     "@backstage/backend-test-utils" "^0.1.36"
     "@backstage/config" "^1.0.6"
-    "@tpb/core" "^0.0.2-main.76"
+    "@tpb/core-backend" "^0.0.2-main.133"
+    "@tpb/core-common" "^0.0.2-main.133"
     "@types/express" "*"
     express "^4.18.2"
     express-promise-router "^4.1.0"
