@@ -260,3 +260,9 @@ kubernetes:
 #    appLiveView:
 #      configured: true
 #      showInSidebar: true
+#    appLiveView:
+#      enabled: true
+#      showInSidebar: true
+#    appAccelerator:
+#      enabled: true
+#      showInSidebar: true

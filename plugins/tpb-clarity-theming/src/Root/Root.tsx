@@ -97,7 +97,7 @@ const Root = ({ sidebar, classes, children }: PropsWithChildren<IRoot>) => {
           <ToggleFeature feature="customize.features.docs.showInSidebar">
             <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
           </ToggleFeature>
-          <ToggleFeature feature="customize.features.scaffolder.showInSidebar">
+          <ToggleFeature feature="customize.features.appAccelerator.showInSidebar">
             <SidebarItem icon={AddCircleOutline} to="create" text="Create" />
           </ToggleFeature>
           <ToggleFeature feature="customize.features.appLiveView.showInSidebar">
