@@ -1,10 +1,10 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, oneloginAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const oneLoginAuthProviderKey = 'onelogin';
 
-export const OneLoginAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const OneLoginAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'onelogin-auth-provider',
     title: 'OneLogin',

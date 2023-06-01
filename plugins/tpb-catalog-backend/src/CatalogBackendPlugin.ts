@@ -3,7 +3,7 @@ import {
   BackendPluginInterface,
   BackendPluginSurface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { Router } from 'express';
 

@@ -5,7 +5,7 @@ import {
   TpbPluginInterface,
   SurfaceStoreInterface,
   SurfaceStore,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { BackendRunner } from './BackendRunner';
 import { plugin as catalogBackendPlugin } from '@tpb/plugin-catalog-backend';
 import { plugin as techdocsBackendPlugin } from '@tpb/plugin-techdocs-backend';

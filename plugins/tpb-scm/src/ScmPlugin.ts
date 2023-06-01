@@ -1,4 +1,4 @@
-import { ApiSurface, AppPluginInterface } from '@tpb/core';
+import { ApiSurface, AppPluginInterface } from '@tpb/core-frontend';
 import {
   ScmAuth,
   ScmIntegrationsApi,

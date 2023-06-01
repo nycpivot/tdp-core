@@ -1,4 +1,4 @@
-import { ApiSurface, BackendPluginInterface } from '@tpb/core';
+import { ApiSurface, AppPluginInterface } from '@tpb/core-frontend';
 import {
   ApiRef,
   BackstageIdentityApi,
@@ -28,7 +28,7 @@ export const auth0AuthApiRef: ApiRef<
   id: 'esback.auth.auth0',
 });
 
-export const Auth0Plugin: BackendPluginInterface = () => surfaces => {
+export const Auth0Plugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'auth0-auth-provider',
     title: 'Auth0',

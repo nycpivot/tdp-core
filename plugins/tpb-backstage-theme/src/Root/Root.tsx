@@ -33,7 +33,7 @@ import {
   useSidebarOpenState,
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
-import { SidebarItemSurface } from '@tpb/core';
+import { SidebarItemSurface } from '@tpb/core-frontend';
 
 const useSidebarLogoStyles = makeStyles({
   root: {

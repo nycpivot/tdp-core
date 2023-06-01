@@ -12,8 +12,8 @@ import { BackstageTheme } from '@backstage/theme';
 import './styles.css';
 import { Banner } from '../Header/Banner';
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
-import { SidebarItemSurface } from '@tpb/core';
-import { ToggleFeature } from '@tpb/core-frontend';
+import { SidebarItemSurface } from '@tpb/core-frontend';
+import { ToggleFeature } from '@tpb/feature-flags';
 import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
 
 export type RootClassKey = 'root' | 'content' | 'contentSm';

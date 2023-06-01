@@ -5,7 +5,7 @@ import {
   BackendPluginInterface,
   BackendPluginSurface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 
 const createPlugin = () => {
   return async ({

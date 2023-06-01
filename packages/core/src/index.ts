@@ -1,4 +1,3 @@
-export * from './api';
-export * from './surfaces';
-export * from './types';
-export type { PluginEnvironment } from './PluginEnvironment';
+export * from '@tpb/core-common';
+export * from '@tpb/core-frontend';
+export * from '@tpb/core-backend';

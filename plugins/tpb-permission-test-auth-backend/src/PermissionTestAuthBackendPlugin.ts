@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import { AuthResolverContext, providers } from '@backstage/plugin-auth-backend';
 import { BackstageSignInResult } from '@backstage/plugin-auth-node';
 import { SignInProviderSurface } from '@tpb/plugin-auth-backend';

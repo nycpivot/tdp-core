@@ -22,13 +22,14 @@
   },
   "dependencies": {
     "@backstage/plugin-permission-common": "^0.7.5",
-    "@backstage/plugin-permission-node": "^0.7.7",
-    "@tpb/core": "^0.0.1-alpha.3",
-    "@tpb/plugin-permission-backend": "^0.0.1-alpha.1"
+    "@backstage/plugin-permission-node": "^0.7.7"
+  },
+  "peerDependencies": {
+    "@tpb/core-backend": "*",
+    "@tpb/plugin-permission-backend": "*"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.6",
-    "msw": "^1.2.1"
+    "@backstage/cli": "^0.22.6"
   },
   "files": [
     "dist"

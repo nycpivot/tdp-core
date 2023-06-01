@@ -4,8 +4,8 @@ import {
   AppRouteSurface,
   RoutableConfig,
   SidebarItemSurface,
-} from '@tpb/core';
-import { ToggleFeature, ToggleRoute } from '@tpb/core-frontend';
+} from '@tpb/core-frontend';
+import { ToggleFeature, ToggleRoute } from '@tpb/feature-flags';
 import { SidebarItem } from '@backstage/core-components';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import {

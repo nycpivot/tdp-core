@@ -2,7 +2,7 @@ import {
   BackendPluginInterface,
   BackendPluginSurface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 
 import { CatalogClient } from '@backstage/catalog-client';
 import { Router } from 'express';

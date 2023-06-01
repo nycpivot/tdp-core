@@ -20,7 +20,7 @@ import {
   SurfaceStoreInterface,
   PluginEnvironment,
   BackendPluginSurface,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { LoggerOptionsSurface } from '@tpb/tpb-custom-logger';
 
 function makeCreateEnv(config: Config) {

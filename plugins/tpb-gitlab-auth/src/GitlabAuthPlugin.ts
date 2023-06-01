@@ -1,9 +1,9 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, gitlabAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const gitlabAuthProviderKey = 'gitlab';
-export const GitlabAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const GitlabAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'gitlab-auth-provider',
     title: 'GitLab',

@@ -1,9 +1,9 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { ConfigApi, githubAuthApiRef } from '@backstage/core-plugin-api';
 import { customizeAuthProviderConfig, LoginSurface } from '@tpb/plugin-login';
 
 export const githubAuthProviderKey = 'github';
-export const GithubAuthPlugin: BackendPluginInterface = () => surfaces => {
+export const GithubAuthPlugin: AppPluginInterface = () => surfaces => {
   const defaultConfig = {
     id: 'github-auth-provider',
     title: 'GitHub',

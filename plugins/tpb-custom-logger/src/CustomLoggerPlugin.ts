@@ -1,4 +1,4 @@
-import { BackendPluginInterface } from '@tpb/core';
+import { BackendPluginInterface } from '@tpb/core-backend';
 import { LoggerOptionsSurface } from './LoggerOptionsSurface';
 import { CustomLoggerOptions } from './CustomLoggerOptions';
 

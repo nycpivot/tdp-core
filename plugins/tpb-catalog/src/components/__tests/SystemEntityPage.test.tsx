@@ -48,7 +48,7 @@ describe('System Page', () => {
     );
 
     await renderTestEntityPage(testEntity, surface);
-    userEvent.click(screen.getByText(/new tab/i));
+    await userEvent.click(screen.getByText(/new tab/i));
 
     expect(
       await screen.findByText(/i am a new system tab/i),

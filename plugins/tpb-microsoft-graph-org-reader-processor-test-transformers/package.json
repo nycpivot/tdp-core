@@ -22,19 +22,14 @@
   "dependencies": {
     "@backstage/catalog-model": "^1.3.0",
     "@backstage/core-components": "^0.13.0",
-    "@backstage/plugin-catalog-backend-module-msgraph": "^0.5.3",
-    "@tpb/plugin-microsoft-graph-org-reader-processor": "^0.0.1-alpha.2",
-    "@tpb/core": "^0.0.1-alpha.3"
+    "@backstage/plugin-catalog-backend-module-msgraph": "^0.5.3"
+  },
+  "peerDependencies": {
+    "@tpb/core-backend": "*",
+    "@tpb/plugin-microsoft-graph-org-reader-processor": "*"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.6",
-    "@backstage/core-app-api": "^1.7.0",
-    "@backstage/dev-utils": "^1.0.14",
-    "@backstage/test-utils": "^1.3.0",
-    "@types/jest": "*",
-    "@types/node": "^18.16.5",
-    "cross-fetch": "^3.1.5",
-    "msw": "^1.2.1"
+    "@backstage/cli": "^0.22.6"
   },
   "files": [
     "dist"

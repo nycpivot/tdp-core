@@ -3,7 +3,7 @@ import {
   AppPluginInterface,
   SidebarItemSurface,
   ThemeSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { AppTheme } from '@backstage/core-plugin-api';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';

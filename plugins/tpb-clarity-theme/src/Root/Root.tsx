@@ -23,8 +23,8 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
-import { SidebarItemSurface } from '@tpb/core';
-import { ToggleFeature } from '@tpb/core-frontend';
+import { SidebarItemSurface } from '@tpb/core-frontend';
+import { ToggleFeature } from '@tpb/feature-flags';
 import { ClaritySidebarPage } from '../Sidebar/SidebarPage';
 import { ClaritySidebar } from '../Sidebar/Sidebar';
 import { BackstageTheme } from '@backstage/theme';

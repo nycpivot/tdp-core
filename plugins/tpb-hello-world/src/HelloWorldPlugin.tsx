@@ -7,7 +7,7 @@ import {
   SidebarItemSurface,
   SettingsTabsSurface,
   BannerSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { SettingsLayout } from '@backstage/plugin-user-settings';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import { HelloWorld } from './HelloWorld';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppComponentSurface, AppPluginInterface } from '@tpb/core';
+import { AppComponentSurface, AppPluginInterface } from '@tpb/core-frontend';
 import { LoginSurface } from './LoginSurface';
 import { SignInPageWrapper } from './SignInPageWrapper';
 

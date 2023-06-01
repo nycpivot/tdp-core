@@ -22,10 +22,12 @@
   "dependencies": {
     "@backstage/catalog-model": "^1.3",
     "@backstage/errors": "^1.1.5",
-    "@tpb/core": "^0.0.1-alpha.2",
-    "@tpb/plugin-auth-backend": "^0.0.1-alpha.2",
-    "@backstage/plugin-auth-backend": "^0.18.2",
-    "@backstage/plugin-auth-node": "^0.2.13"
+    "@backstage/plugin-auth-node": "^0.2.13",
+    "@backstage/plugin-auth-backend": "^0.18.2"
+  },
+  "peerDependencies": {
+    "@tpb/core-backend": "*",
+    "@tpb/plugin-auth-backend": "*"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6"

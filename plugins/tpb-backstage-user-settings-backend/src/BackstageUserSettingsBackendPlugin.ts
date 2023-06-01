@@ -2,7 +2,7 @@ import {
   BackendPluginInterface,
   BackendPluginSurface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { Router } from 'express';
 import { createRouter } from '@backstage/plugin-user-settings-backend';
 

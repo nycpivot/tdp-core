@@ -2,7 +2,7 @@ import {
   BackendCatalogSurface,
   BackendPluginInterface,
   PluginEnvironment,
-} from '@tpb/core';
+} from '@tpb/core-backend';
 import { MicrosoftGraphOrgReaderProcessor } from '@backstage/plugin-catalog-backend-module-msgraph';
 import { MicrosoftGraphOrgReaderProcessorTransformersSurface } from './MicrosoftGraphOrgReaderProcessorTransformersSurface';
 

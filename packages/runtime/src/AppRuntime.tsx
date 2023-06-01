@@ -6,7 +6,7 @@ import {
   SurfaceStore,
   ThemeSurface,
   ApiSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { plugin as scmPlugin } from '@tpb/plugin-scm';
 import { plugin as catalogPlugin } from '@tpb/plugin-catalog';
 import { plugin as techdocsPlugin } from '@tpb/plugin-techdocs';

@@ -4,7 +4,7 @@ import {
   AppRouteSurface,
   SidebarItemSurface,
   TpbPluginInterface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import { AppRuntime } from './AppRuntime';
 import {
   ApiRef,

@@ -2,7 +2,7 @@ import {
   AppPluginInterface,
   SidebarItemSurface,
   ThemeSurface,
-} from '@tpb/core';
+} from '@tpb/core-frontend';
 import React from 'react';
 import { ClarityDark } from './ClarityDark';
 import { ClarityLight } from './ClarityLight';
