@@ -8140,26 +8140,6 @@
     uuid "^9.0.0"
     winston "^3.2.1"
 
-"@tpb/core@^0.0.2-main.76":
-  version "0.0.2-main.106"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.106.tgz#eb63f4fa012e918987dc94a8ae5f80ff9eb34eea"
-  integrity sha512-LCc4UDD/RjXmpiGjp2LrmQIAoOIPl2HfwsNKCS/ahk/n0ra6vb3F/jbIyvI8xiPMhOOG8h5qGcuL09nr+jGSvg==
-  dependencies:
-    "@backstage/backend-common" "^0.18.4"
-    "@backstage/backend-tasks" "^0.5.1"
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-app-api" "^1.7.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/plugin-auth-node" "^0.2.10"
-    "@backstage/plugin-catalog-backend" "^1.9.0"
-    "@backstage/plugin-permission-common" "^0.7.5"
-    "@backstage/theme" "^0.2.19"
-    "@types/express" "*"
-    "@types/uuid" "^9.0.1"
-    express "^4.18.2"
-    uuid "^9.0.0"
-    winston "^3.8.2"
-
 "@tpb/core@^0.0.2-main.83":
   version "0.0.2-main.108"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.108.tgz#cc320fed6cac4e7b8aff58f618be0b91de99bfbc"
