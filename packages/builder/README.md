@@ -106,7 +106,18 @@ catalog:
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
   rules:
-    - allow: [Component, Domain, System, API, Group, User, Resource, Location, Template]
+    - allow:
+        [
+          Component,
+          Domain,
+          System,
+          API,
+          Group,
+          User,
+          Resource,
+          Location,
+          Template,
+        ]
 ```
 
 We will also need a Gitlab token to be stored in an environment variable called `GITLAB_TOKEN`.

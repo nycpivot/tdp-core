@@ -82,7 +82,18 @@ scaffolder:
 
 catalog:
   rules:
-    - allow: [Component, Domain, System, API, Group, User, Resource, Location, Template]
+    - allow:
+        [
+          Component,
+          Domain,
+          System,
+          API,
+          Group,
+          User,
+          Resource,
+          Location,
+          Template,
+        ]
 
 kubernetes:
   customResources:
