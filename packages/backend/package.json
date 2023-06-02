@@ -52,7 +52,7 @@
     "@tpb/plugin-permission-backend": "^0.0.1-alpha.1",
     "@tpb/plugin-permission-test-auth-backend": "^0.0.1-alpha.1",
     "@tpb/plugin-vmware-cloud-services-auth-backend": "^0.0.1-alpha.1",
-    "@tpb/plugin-pendo-analytics-backend": "^0.0.1-alpha.1",
+    "@tpb/plugin-pendo-analytics-backend": "^1.0.6-build.0",
     "@tpb/plugin-backstage-user-settings-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-permission-test-policy": "^0.0.1-alpha.1",
     "@tpb/runtime-backend": "^0.0.1-alpha.3",
