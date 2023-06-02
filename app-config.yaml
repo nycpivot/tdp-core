@@ -242,3 +242,6 @@ kubernetes:
 #    settings:
 #      enabled: true
 #      showInSidebar: true
+#    appLiveView:
+#      configured: true
+#      showInSidebar: true
