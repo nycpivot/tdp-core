@@ -8164,26 +8164,6 @@
     uuid "^9.0.0"
     winston "^3.8.2"
 
-"@tpb/core@^0.0.2-main.105":
-  version "0.0.2-main.105"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.105.tgz#6ff92ea02c3e8b3cd700fdff022a4b29a6356a7c"
-  integrity sha512-/cNkr/mAcKygdlw24e7JnECFxVudaAABsIGkm07a08wlhUoEjlLBdaWG/JzIjFuJX5hx5vmjcaRoHyAzijK9AA==
-  dependencies:
-    "@backstage/backend-common" "^0.18.4"
-    "@backstage/backend-tasks" "^0.5.1"
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-app-api" "^1.7.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/plugin-auth-node" "^0.2.13"
-    "@backstage/plugin-catalog-backend" "^1.9.0"
-    "@backstage/plugin-permission-common" "^0.7.5"
-    "@backstage/theme" "^0.2.19"
-    "@types/express" "*"
-    "@types/uuid" "^9.0.1"
-    express "^4.18.2"
-    uuid "^9.0.0"
-    winston "^3.8.2"
-
 "@tpb/core@^0.0.2-main.129":
   version "0.0.2-main.137"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.137.tgz#0c07c3e8b36d865a5e3681211af272cefb651350"
@@ -8308,18 +8288,19 @@
     react-use "^17.4.0"
     uuid "^9.0.0"
 
-"@tpb/plugin-api-auto-registration-backend@1.0.0":
-  version "1.0.0"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-api-auto-registration-backend/-/@tpb/plugin-api-auto-registration-backend-1.0.0.tgz#581eb3beeabe453e407e27c2ce37972c85a698c5"
-  integrity sha512-R8y5oGacTRCLVy+7rO8pdpYvApOIjk60P7ZQelxftpwL9msuAdbY0te+szTenp9rkXGACGIf3YwQxcFBIKXTJA==
+"@tpb/plugin-api-auto-registration-backend@^1.0.1":
+  version "1.0.1"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-api-auto-registration-backend/-/@tpb/plugin-api-auto-registration-backend-1.0.1.tgz#0b1a4ab5ecebd659f088a8dc6a13517abea06a2e"
+  integrity sha512-W5N5Z06hpvmNtlP03CfYtHDF11itBsGzTlOkIdcvg/by+ETyUje1lnIAAEMu7Btmj1IPnx3I6ngcvc/ZlsllGw==
   dependencies:
-    "@tpb/core" "^0.0.2-main.105"
+    "@tpb/core-backend" "^0.0.2-main.133"
+    "@tpb/core-common" "^0.0.2-main.133"
     body-parser "^1.20.0"
 
-"@tpb/plugin-api-scoring@^1.0.2":
-  version "1.0.2"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-api-scoring/-/@tpb/plugin-api-scoring-1.0.2.tgz#c9cf2de8ea56524fd892ec2243e16387731965b9"
-  integrity sha512-Kp0vRoD9gOBmH/7pZB9GT7AgeLTogTXdW0bHtliAlyME8F1iag4XLy6+vSzHovAvTQp1855/KmYwaq+KRCyHaA==
+"@tpb/plugin-api-scoring@^1.0.3":
+  version "1.0.3"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-api-scoring/-/@tpb/plugin-api-scoring-1.0.3.tgz#00312388ca44cf70959fbd13549d4cc176df4501"
+  integrity sha512-QkhF2FsvIZfqDBlD96ZDBI3YjRzB5aE0evARxlViQrX0w3HOZipslTSgJe/qjD5LL5ajPlD38+JCskqTP/5NCw==
   dependencies:
     "@backstage/catalog-model" "^1.3.0"
     "@backstage/core-components" "^0.13.0"
@@ -8488,10 +8469,10 @@
     winston "^3.8.2"
     yn "^4.0.0"
 
-"@tpb/plugin-gitlab-loblaw@^0.0.20":
-  version "0.0.20"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.20.tgz#28b70faa423089a94ba4f29346560162ab370727"
-  integrity sha512-WAKANmtfLajGRGIt6ewhvqeGvJMfOaYIVXyCpiXlfH8BJrmfasJYB9E8295uHO1/G1aYTUuYT5+Ok4suYNXA4A==
+"@tpb/plugin-gitlab-loblaw@^0.0.21":
+  version "0.0.21"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-gitlab-loblaw/-/@tpb/plugin-gitlab-loblaw-0.0.21.tgz#49fc473a2af21bca9d75ae19363c3db7a9a4b63f"
+  integrity sha512-AHtP4PWHRcjPYP8CikmloExq8xm84ChV2wC6f8w8sJdyPsZJumeoTNvIZwowND+wNhx0oMUHDHCUI68d0o/zeQ==
   dependencies:
     "@backstage/plugin-catalog" "^1.10.0"
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
@@ -10523,7 +10504,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/cli" "^0.22.6"
     "@material-ui/core" "^4.12.4"
     "@material-ui/icons" "^4.11.3"
-    "@tpb/plugin-api-scoring" "^1.0.2"
+    "@tpb/plugin-api-scoring" "^1.0.3"
     "@tpb/plugin-app-accelerator-scaffolder" "^0.0.1-alpha.3"
     "@tpb/plugin-app-live-view" "^0.1.21"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
@@ -10533,7 +10514,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-clarity-theming" "^0.0.1-alpha.2"
     "@tpb/plugin-github-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-gitlab-auth" "^0.0.1-alpha.2"
-    "@tpb/plugin-gitlab-loblaw" "^0.0.20"
+    "@tpb/plugin-gitlab-loblaw" "^0.0.21"
     "@tpb/plugin-google-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-guest-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-oidc-auth" "^0.0.1-alpha.2"

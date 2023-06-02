@@ -49,7 +49,30 @@ In the following sections, we show examples of each of the currently available s
 
 ## Frontend Plugins
 
-To create a frontend plugin, you need to add the `@tpb/core-frontend` package to your `peerDependencies` section. If you are writing an external plugin (that is not part of our monorepo), you might need to add it to your `devDependencies` section too.
+To create an internal frontend plugin, you need to add the `@tpb/core-frontend` package to your `peerDependencies` section. If you are writing an external plugin (that is not part of our monorepo), you might need to add `@tpb/core-common` and `@tpb/core-frontend` to your `devDependencies` section too.
+
+- Example for internal plugin interface:
+
+```json
+"peerDependencies": {
+  ...,
+  "@tpb/core-frontend": "*"
+},
+```
+
+- Example for external plugin interface:
+
+```json
+"peerDependencies": {
+  ...,
+  "@tpb/core-frontend": "*"
+},
+"devDependencies": {
+  ...,
+  "@tpb/core-common": "^0.0.2-main.133",
+  "@tpb/core-frontend": "^0.0.2-main.133"
+}
+```
 
 ### SidebarItemSurface
 
@@ -242,7 +265,26 @@ export const HelloWorldPlugin: AppPluginInterface = () => context => {
 
 ## Backend Plugins
 
-To create a backend plugin, you need to add the `@tpb/core-backend` package to your `peerDependencies` section. If you are writing an external plugin (that is not part of our monorepo), you might need to add it to your `devDependencies` section too.
+To create an internal backend plugin, you need to add the `@tpb/core-backend` package to your `peerDependencies` section. If you are writing an external plugin (that is not part of our monorepo), you will need to add `@tpb/core-common` and `@tpb/core-backend` to your `dependencies` section too.
+
+- Example for internal plugin interface:
+
+```json
+"peerDependencies": {
+  ...,
+  "@tpb/core-backend": "*"
+},
+```
+
+- Example for external plugin interface:
+
+```json
+"dependencies": {
+  ...,
+  "@tpb/core-common": "^0.0.2-main.133",
+  "@tpb/core-backend": "^0.0.2-main.133"
+}
+```
 
 ### BackendCatalogSurface
 

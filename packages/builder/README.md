@@ -37,7 +37,7 @@ app:
   plugins:
     - name: '@tpb/plugin-hello-world'
     - name: '@tpb/plugin-gitlab-loblaw'
-      version: '^0.0.18'
+      version: '^0.0.21'
 backend:
   plugins:
     - name: '@tpb/plugin-hello-world-backend'
