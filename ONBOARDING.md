@@ -326,5 +326,5 @@ make create-pipeline name=esback-123
 4. Once you're done with your pipeline, you can delete it with this command:
 
 ```shell
-make descroy-pipeline name=esback-123
+make destroy-pipeline name=esback-123
 ```
