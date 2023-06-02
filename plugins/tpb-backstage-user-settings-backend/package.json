@@ -23,7 +23,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/plugin-user-settings-backend": "^0.1.9",
+    "@backstage/plugin-user-settings-backend": "^0.1.8",
     "express": "^4.17.3"
   },
   "peerDependencies": {

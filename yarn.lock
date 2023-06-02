@@ -4320,7 +4320,7 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-user-settings-backend@^0.1.9":
+"@backstage/plugin-user-settings-backend@^0.1.8":
   version "0.1.9"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-user-settings-backend/-/plugin-user-settings-backend-0.1.9.tgz#16b50c1b9607d735e3f88102b0cfa42b9a446f1f"
   integrity sha512-Oe4Bjrl7cpKL6EHJJbXs8mYhik7tHLv2qF2YOGmfnGBqavviPY+RYr1a/iuVKyoQC8hazFyTqH/cpepMAs2I7Q==
