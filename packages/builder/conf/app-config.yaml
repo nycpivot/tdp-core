@@ -1,5 +1,5 @@
 app:
-  title: TPB Dev Instance
+  title: Tanzu Developer Portal
   baseUrl: http://localhost:3000
 
 organization:

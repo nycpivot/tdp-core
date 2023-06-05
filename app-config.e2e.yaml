@@ -2,7 +2,7 @@
 # used for acceptance testing. It is expected that this instance will be run with
 # docker compose
 app:
-  title: TPB Test Instance
+  title: Tanzu Developer Portal
   baseUrl: ${BACKSTAGE_BASE_URL}
 
 organization:
