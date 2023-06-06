@@ -60,6 +60,9 @@ backend:
     port: 7007
   csp:
     connect-src: ["'self'", 'http:', 'https:']
+    img-src: ["'self'", 'https:', 'data:']
+    script-src: ["'self'", "'unsafe-eval'", "'unsafe-inline'", 'cdn.pendo.io']
+    style-src: ["'self'", 'https:', "'unsafe-inline'"]
     upgrade-insecure-requests: false
   cors:
     origin: http://localhost:3000
@@ -103,7 +106,18 @@ catalog:
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow:
+        [
+          Component,
+          Domain,
+          System,
+          API,
+          Group,
+          User,
+          Resource,
+          Location,
+          Template,
+        ]
 ```
 
 We will also need a Gitlab token to be stored in an environment variable called `GITLAB_TOKEN`.
