@@ -22,9 +22,9 @@
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@backstage/core-components": "^0.13.0",
-    "@backstage/plugin-catalog": "^1.8.0",
-    "@backstage/plugin-user-settings": "^0.7.0",
-    "@backstage/theme": "^0.2.17",
+    "@backstage/plugin-catalog": "^1.10.0",
+    "@backstage/plugin-user-settings": "^0.7.2",
+    "@backstage/theme": "^0.2.19",
     "@backstage/core-plugin-api": "^1.5.1",
     "@backstage/dev-utils": "^1.0.14",
     "clsx": "^1.1.1",

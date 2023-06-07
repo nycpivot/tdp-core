@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@backstage/core-components": "^0.13.0",
-    "@backstage/integration-react": "^1.1.10",
+    "@backstage/integration-react": "^1.1.12",
     "@backstage/core-plugin-api": "^1.5.1"
   },
   "peerDependencies": {
