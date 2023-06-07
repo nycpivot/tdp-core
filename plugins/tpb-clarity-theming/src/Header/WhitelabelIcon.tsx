@@ -6,7 +6,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { BackstageTheme } from '@backstage/theme';
-import { useNavigate } from 'react-router-dom';
 
 export type WhitelabelIconClassKey = 'root' | 'img';
 
@@ -16,6 +15,7 @@ export interface WhitelabelIconProps
     WhitelabelIconClassKey
   > {
   base64PNG: string;
+  navigateHome: () => void;
   alt?: string;
 }
 
@@ -36,24 +36,20 @@ const styles: StyleRulesCallback<
   },
 });
 
-const WhitelabelIcon = (props: WhitelabelIconProps) => {
-  const navigate = useNavigate();
-  const navigateHome = () => navigate('/');
-  return (
-    <span
-      role="button"
-      tabIndex={0}
-      onClick={navigateHome}
-      onKeyDown={navigateHome}
-      className={props.classes?.root}
-    >
-      <img
-        src={`data:image/png;base64,${props.base64PNG}`}
-        alt={props?.alt ? props?.alt : 'whitelabel logo'}
-      />
-    </span>
-  );
-};
+const WhitelabelIcon = (props: WhitelabelIconProps) => (
+  <span
+    role="button"
+    tabIndex={0}
+    onClick={props.navigateHome}
+    onKeyDown={props.navigateHome}
+    className={props.classes?.root}
+  >
+    <img
+      src={`data:image/png;base64,${props.base64PNG}`}
+      alt={props?.alt ? props?.alt : 'whitelabel logo'}
+    />
+  </span>
+);
 
 export default withStyles<WhitelabelIconClassKey>(
   styles as StyleRulesCallback<Theme, {}, WhitelabelIconClassKey>,
