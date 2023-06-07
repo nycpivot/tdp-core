@@ -1,9 +1,0 @@
-/**
- * Last resort. Please attempt to address as many styling issues as possible using [global theme
- * overrides](https://material-ui.com/customization/components/#global-theme-override).
- *
- * See ../theme/Overrides.
- */
-
-@import '@cds/core/styles/module.tokens.css';
-@import '@cds/city/css/bundles/default.css';
