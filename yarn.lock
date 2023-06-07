@@ -2356,7 +2356,7 @@
     winston "^3.2.1"
     winston-transport "^4.5.0"
 
-"@backstage/backend-common@^0.18.2", "@backstage/backend-common@^0.18.3", "@backstage/backend-common@^0.18.4", "@backstage/backend-common@^0.18.5":
+"@backstage/backend-common@^0.18.3", "@backstage/backend-common@^0.18.4", "@backstage/backend-common@^0.18.5":
   version "0.18.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/backend-common/-/backend-common-0.18.4.tgz#10f467d729e065f600539b423e242740ead1ac20"
   integrity sha512-NywzQUya6MuvtFfzALOTvPfy0D8BX0iXH+K75auNtk2m3tRHCttDqagso9+6cKpapq7/HyydlVwdyADMcGnTgQ==
@@ -2519,7 +2519,7 @@
     "@backstage/errors" "^1.1.5"
     cross-fetch "^3.1.5"
 
-"@backstage/catalog-model@^1.1.3", "@backstage/catalog-model@^1.1.5", "@backstage/catalog-model@^1.2.1", "@backstage/catalog-model@^1.3", "@backstage/catalog-model@^1.3.0":
+"@backstage/catalog-model@^1.1.5", "@backstage/catalog-model@^1.2.1", "@backstage/catalog-model@^1.3", "@backstage/catalog-model@^1.3.0":
   version "1.3.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/catalog-model/-/catalog-model-1.3.0.tgz#3d926b4e9d3d871f37e88295788cdce3b4ec17d3"
   integrity sha512-QFoLho/SvzNepFHDUBL58fdcktAtshQQQ1FABpDbnBR954iQ7MGQlSPP+2uSrQ5wGpZylIjpFnsH3NB/k06i6g==
@@ -2834,7 +2834,7 @@
     zen-observable "^0.10.0"
     zod "^3.21.4"
 
-"@backstage/core-app-api@^1.5.0", "@backstage/core-app-api@^1.7.0":
+"@backstage/core-app-api@^1.7.0":
   version "1.7.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-app-api/-/core-app-api-1.7.0.tgz#5a50fd95568a9f751f79f1234ee40e8aea004e1e"
   integrity sha512-LutecBkyjN5eHQuSWO1mHKUk3/rVXgn6gVCiB5PjbDNIhvvJCvMwisXlz4YkL+8Y6+epuER+q3SleKpiT6u5kA==
@@ -2851,7 +2851,7 @@
     zen-observable "^0.10.0"
     zod "^3.21.4"
 
-"@backstage/core-components@^0.12.3", "@backstage/core-components@^0.12.4", "@backstage/core-components@^0.12.5":
+"@backstage/core-components@^0.12.3", "@backstage/core-components@^0.12.5":
   version "0.12.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-components/-/core-components-0.12.5.tgz#ea9e5d04845fb031e0f4fb4b764497ee722ad128"
   integrity sha512-77BBOmJPeyKqKFDZeX5/NUENiklG0+DJMyoyM9fFlzB4wv6Lsx2V6hFbgE6PIsQ2T5EWorzq+BvkTyMXRrU/Pg==
@@ -3033,7 +3033,7 @@
     zen-observable "^0.8.15"
     zod "^3.11.6"
 
-"@backstage/core-plugin-api@1.5.1", "@backstage/core-plugin-api@^1.0.0", "@backstage/core-plugin-api@^1.0.2", "@backstage/core-plugin-api@^1.0.3", "@backstage/core-plugin-api@^1.3.0", "@backstage/core-plugin-api@^1.4.0", "@backstage/core-plugin-api@^1.5.0", "@backstage/core-plugin-api@^1.5.1":
+"@backstage/core-plugin-api@1.5.1", "@backstage/core-plugin-api@^1.0.0", "@backstage/core-plugin-api@^1.0.2", "@backstage/core-plugin-api@^1.0.3", "@backstage/core-plugin-api@^1.3.0", "@backstage/core-plugin-api@^1.5.0", "@backstage/core-plugin-api@^1.5.1":
   version "1.5.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-plugin-api/-/core-plugin-api-1.5.1.tgz#c295f14d38321c116378af6a9cebf84d83bb8d39"
   integrity sha512-egGEhKYMAFyjw9LZU6zeJ2rDUgcgXGWjBoSUXok6+b3Ya7jDjNVWzhOWyQ/6gSmFG3c/W5+hnF4UmPjIkyYmiw==
@@ -3158,7 +3158,7 @@
     lodash "^4.17.21"
     luxon "^3.0.0"
 
-"@backstage/plugin-api-docs@^0.9.0", "@backstage/plugin-api-docs@^0.9.2":
+"@backstage/plugin-api-docs@^0.9.2":
   version "0.9.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-api-docs/-/plugin-api-docs-0.9.2.tgz#e3b95d2ac277ea3df4ca0940bf6b975ca14b5d75"
   integrity sha512-W7V25gOOlYW0ht2tknE85ssV7v+TME0D+nihft78JHQJjfCROFUYJzbfJ+xZUEIzdX2lENdVk6K6ZQ4yJZ+g3g==
@@ -3461,7 +3461,7 @@
     "@backstage/plugin-permission-common" "^0.7.5"
     "@backstage/plugin-search-common" "^1.2.3"
 
-"@backstage/plugin-catalog-graph@^0.2.28", "@backstage/plugin-catalog-graph@^0.2.29":
+"@backstage/plugin-catalog-graph@^0.2.29":
   version "0.2.29"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog-graph/-/plugin-catalog-graph-0.2.29.tgz#2f9a6e81d45b625f7917df375bd2613d0570f2e8"
   integrity sha512-bR043/PcA67h7e9duONQ5VwOLnSl8tQHHprlAwnDWa7C7KSpTkYYAXIve20+YCIOVhSiDjqTz3II/0djAFZzng==
@@ -3482,7 +3482,7 @@
     qs "^6.9.4"
     react-use "^17.2.4"
 
-"@backstage/plugin-catalog-import@^0.9.6", "@backstage/plugin-catalog-import@^0.9.7":
+"@backstage/plugin-catalog-import@^0.9.7":
   version "0.9.7"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog-import/-/plugin-catalog-import-0.9.7.tgz#b50bed48a6cca4f2429e8f04e0bb2b02417e4ffe"
   integrity sha512-KV/bQbyV8wkbL9PeAp27GhuoFWXjHqFsUZZFgpA29/HEd4f3zDNFGOtA1HrKQiYwXsfU1cObaqlh0EajwIRZrg==
@@ -3581,7 +3581,7 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
-"@backstage/plugin-catalog@^1.10.0", "@backstage/plugin-catalog@^1.8.0":
+"@backstage/plugin-catalog@^1.10.0":
   version "1.10.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-catalog/-/plugin-catalog-1.10.0.tgz#208fd1a2de7993a4d001bf0a0c5011a5e9ddc7cc"
   integrity sha512-AATMGOs7YaB11je6Zi+gwhSzb947ritex1eSCePwhb+i5vTfDu5RGicv239AW+qoqcpCpROKSOqc1pUruu8GZA==
@@ -3615,24 +3615,6 @@
   integrity sha512-+AnqspnhcACW6ZxHDO62JIMYUy2fWwuBI7zCnkAzQ28njvKGJ3CgckIsVi1+L0JYBbXMbFM3arUjVhugfDAVOg==
   dependencies:
     "@backstage/backend-plugin-api" "^0.5.1"
-
-"@backstage/plugin-github-actions@^0.5.15":
-  version "0.5.17"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-github-actions/-/plugin-github-actions-0.5.17.tgz#e0770d7e69d917be051a9026a7c476da679a8fed"
-  integrity sha512-vlCiChg7+qnN7npFnD+DiR3y9pjMOx1hGvHz7V5dw1vdvn2vQfcQKmxn0H12SCt9qB16ibRTIUbMUXfFC2HJBw==
-  dependencies:
-    "@backstage/catalog-model" "^1.3.0"
-    "@backstage/core-components" "^0.13.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/integration" "^1.4.4"
-    "@backstage/plugin-catalog-react" "^1.5.0"
-    "@backstage/theme" "^0.2.19"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.61"
-    "@octokit/rest" "^19.0.3"
-    luxon "^3.0.0"
-    react-use "^17.2.4"
 
 "@backstage/plugin-kubernetes-backend@^0.10.0":
   version "0.10.0"
@@ -3708,14 +3690,6 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-kubernetes-common@^0.4.2":
-  version "0.4.4"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.4.4.tgz#5c77e326a9d7cd8eefb75ae060c8dd122a2b25e4"
-  integrity sha512-T8alpH7jcT+4PRzgQEg1kDvkqF7jWa5u68GJzdGrpVCb/AyQqv6Z3zKAcG6l89mfVlXoFdU3sTOPsNrs+ar/Rw==
-  dependencies:
-    "@backstage/catalog-model" "^1.1.3"
-    "@kubernetes/client-node" "0.17.0"
-
 "@backstage/plugin-kubernetes-common@^0.5.1":
   version "0.5.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.5.1.tgz#0d3d6eebde640e124bd46ae000290274d0c3923d"
@@ -3733,7 +3707,7 @@
     "@backstage/plugin-permission-common" "^0.7.5"
     "@kubernetes/client-node" "0.18.1"
 
-"@backstage/plugin-kubernetes@^0.7.2", "@backstage/plugin-kubernetes@^0.7.7":
+"@backstage/plugin-kubernetes@^0.7.7":
   version "0.7.9"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes/-/plugin-kubernetes-0.7.9.tgz#2a8d424ef5c1c8ec234c59e3355a1e136f90ae76"
   integrity sha512-/iBXJxMQuKx8KIZerAkfHWWGk3nmlAm9NOyjrzJ/cdn3UK+g66A3S1Vy1FDFKLB8rizh7aliF4WNLCBcosNHpg==
@@ -3781,7 +3755,7 @@
     luxon "^3.0.0"
     react-use "^17.2.4"
 
-"@backstage/plugin-org@^0.6.5", "@backstage/plugin-org@^0.6.7":
+"@backstage/plugin-org@^0.6.7":
   version "0.6.7"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-org/-/plugin-org-0.6.7.tgz#82ccbdb8de2f09c706d5fd610b2d47787fdad30e"
   integrity sha512-HIj8wOPxhDtiDdM7Qb2OyIJqwY6Bfmu/GH7Qq4roHgwqYIt29hvpxevm92+NG1QQYR/aZ5aYPUH/UHAtqy3i3g==
@@ -3821,7 +3795,7 @@
     yn "^4.0.0"
     zod "^3.21.4"
 
-"@backstage/plugin-permission-common@^0.7.4", "@backstage/plugin-permission-common@^0.7.5":
+"@backstage/plugin-permission-common@^0.7.5":
   version "0.7.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-permission-common/-/plugin-permission-common-0.7.5.tgz#6403446a98a665f813e2b550d9e47c9059566dcc"
   integrity sha512-7kltlP+p79tiyOgxao90+yme6HtWtxY6lIl3lksYD2XMb19FFcJaxtYmx3DPlDzecaVAoUK8gQG9NrGtbQJeTQ==
@@ -3850,7 +3824,7 @@
     zod "^3.21.4"
     zod-to-json-schema "^3.20.4"
 
-"@backstage/plugin-permission-react@^0.4.11", "@backstage/plugin-permission-react@^0.4.12":
+"@backstage/plugin-permission-react@^0.4.12":
   version "0.4.12"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.12.tgz#e8e5a10fb7ff193031ab8a299fcde85d056e7d19"
   integrity sha512-//12gUQ19rbNoa7xAEUZ7q4R/RQDcVcwZN6RoHZaicW1pf3VWKeNjEUzIst8ThjdYFt7xRAbMbGixmGC/utsoQ==
@@ -4012,7 +3986,7 @@
     zod "^3.21.4"
     zod-to-json-schema "^3.20.4"
 
-"@backstage/plugin-scaffolder@^1.11.0", "@backstage/plugin-scaffolder@^1.13.0":
+"@backstage/plugin-scaffolder@^1.13.0":
   version "1.13.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-scaffolder/-/plugin-scaffolder-1.13.0.tgz#f21b07962d2f42610c1854fb627122445cea0317"
   integrity sha512-9lYUUMlbEscPWxsGHqS+1SbRIUsYZL4veQWvTOciN9UNc5seFe1EAJo0GTOGpFba23i2guvsYStJefRA0cxNNA==
@@ -4272,7 +4246,7 @@
     react-helmet "6.1.0"
     react-use "^17.2.4"
 
-"@backstage/plugin-techdocs@^1.5.0", "@backstage/plugin-techdocs@^1.6.1":
+"@backstage/plugin-techdocs@^1.6.1":
   version "1.6.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-techdocs/-/plugin-techdocs-1.6.1.tgz#2c552386a8bd163dd40b241c8179ff1c921bba3b"
   integrity sha512-Ha8U2/BGb225iREBDJAEPDgvHqhyzrz3fpDvIK7qkm2esSGgdVBxB9TaQT1sxHIUu7KghxqtaZ0dJrGjpHKIkA==
@@ -5915,34 +5889,6 @@
     ajv-formats-draft2019 "^1.6.1"
     tslib "^2.4.0"
 
-"@kubernetes/client-node@0.17.0":
-  version "0.17.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes/client-node/-/client-node-0.17.0.tgz#cbf69ff6c8a311c1461275169612ac46db00fe3f"
-  integrity sha512-oKQfRf7RPpJIF2Ft92g6jefbW3Mddf6IzcfpBNDWrAy66LmyAWds6fQTMsdutGPuXV6KD29u6RfM3rdzddGMIA==
-  dependencies:
-    "@types/js-yaml" "^4.0.1"
-    "@types/node" "^10.12.0"
-    "@types/request" "^2.47.1"
-    "@types/stream-buffers" "^3.0.3"
-    "@types/tar" "^4.0.3"
-    "@types/underscore" "^1.8.9"
-    "@types/ws" "^6.0.1"
-    byline "^5.0.0"
-    execa "5.0.0"
-    isomorphic-ws "^4.0.1"
-    js-yaml "^4.1.0"
-    jsonpath-plus "^0.19.0"
-    openid-client "^5.1.6"
-    request "^2.88.0"
-    rfc4648 "^1.3.0"
-    shelljs "^0.8.5"
-    stream-buffers "^3.0.2"
-    tar "^6.1.11"
-    tmp-promise "^3.0.2"
-    tslib "^1.9.3"
-    underscore "^1.9.1"
-    ws "^7.3.1"
-
 "@kubernetes/client-node@0.18.0":
   version "0.18.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@kubernetes/client-node/-/client-node-0.18.0.tgz#b1002f3c19fb7509ce521ea78f500589f8e3e047"
@@ -6246,7 +6192,7 @@
     react-double-scrollbar "0.0.15"
     uuid "^3.4.0"
 
-"@material-ui/core@^4.12.2", "@material-ui/core@^4.12.4", "@material-ui/core@^4.9.13":
+"@material-ui/core@^4.12.2", "@material-ui/core@^4.12.4":
   version "4.12.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
   integrity sha512-tr7xekNlM9LjA6pagJmL8QCgZXaubWUwkJnoYcMKd4gw/t4XiyvnTkjdGrUVicyB2BsdaAv1tvow45bPM4sSwQ==
@@ -8144,49 +8090,10 @@
     "@backstage/core-app-api" "^1.7.0"
     "@backstage/core-plugin-api" "^1.5.1"
 
-"@tpb/core@^0.0.2-main.103":
-  version "0.0.2-main.120"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.120.tgz#546986df31f1bd7d9a5175263ad11505f7586726"
-  integrity sha512-7yPJsA6rnWOlGGZia9STj0BZqt3xGwagFx6BEqL+5EW15aAM8gNsZYhCDYAlZ7HGoQADLjHkTS4lj9Oce19TcA==
-  dependencies:
-    "@backstage/backend-common" "^0.18.4"
-    "@backstage/backend-tasks" "^0.5.1"
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-app-api" "^1.7.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/plugin-auth-node" "^0.2.13"
-    "@backstage/plugin-catalog-backend" "^1.9.0"
-    "@backstage/plugin-permission-common" "^0.7.5"
-    "@backstage/theme" "^0.2.19"
-    "@types/express" "*"
-    "@types/uuid" "^9.0.1"
-    express "^4.18.2"
-    uuid "^9.0.0"
-    winston "^3.8.2"
-
 "@tpb/core@^0.0.2-main.129":
   version "0.0.2-main.137"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.137.tgz#0c07c3e8b36d865a5e3681211af272cefb651350"
   integrity sha512-k4VaaAtDN3qsjk48+g5J9XsxuvjXN1dTEKN3q8juiVD5upfPlrV/+8XiBQxNf3rqiDpmlIugaSods6z2eWq8hQ==
-
-"@tpb/core@^0.0.2-main.61", "@tpb/core@^0.0.2-main.85":
-  version "0.0.2-main.85"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.85.tgz#01e21c44a58880e19b1fcb27cfe285d1ed96d863"
-  integrity sha512-FqHGb3CKFG4bEUSoOEMRdbkV/jctVituzm79mCOi+SjtBWjmROOz0tu9Ya3BYIOUoWm6xv97zuyqcAqSb0N/5w==
-  dependencies:
-    "@backstage/backend-common" "^0.18.2"
-    "@backstage/backend-tasks" "^0.5.0"
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-app-api" "^1.5.0"
-    "@backstage/core-plugin-api" "^1.5.0"
-    "@backstage/plugin-catalog-backend" "^1.9.0"
-    "@backstage/plugin-permission-common" "^0.7.4"
-    "@backstage/theme" "^0.2.18"
-    "@types/express" "*"
-    "@types/uuid" "^8.3.4"
-    express "^4.17.1"
-    uuid "^9.0.0"
-    winston "^3.2.1"
 
 "@tpb/core@^0.0.2-main.83":
   version "0.0.2-main.108"
@@ -8378,37 +8285,6 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
-"@tpb/plugin-app-live-view@^0.1.12":
-  version "0.1.18"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.18.tgz#dbce3d7cc060030a12cbe4c8193b15d10a433448"
-  integrity sha512-StV/tV/Zl+yVEMrpp5MgowJ6J38vdEj+7RJPmVGk6sGwGNtQQM1uQw8PRAEcTGOsYp5+OkdpUCWx73siLbNE3A==
-  dependencies:
-    "@backstage/config" "^1.0.6"
-    "@backstage/core-components" "^0.13.0"
-    "@backstage/core-plugin-api" "^1.3.0"
-    "@backstage/plugin-kubernetes" "^0.7.2"
-    "@backstage/plugin-kubernetes-common" "^0.4.2"
-    "@backstage/theme" "^0.2.16"
-    "@material-table/core" "^3.2.5"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.57"
-    "@tap/shared-components" "1.0.6-beta.1"
-    "@tpb/core" "^0.0.2-main.103"
-    "@tpb/kubernetes-orm" "^0.1.5"
-    "@types/jest-when" "^3.5.2"
-    axios "^0.24.0"
-    eslint "^8.16.0"
-    file-saver "^2.0.5"
-    fs-extra "^10.0.0"
-    glob "^7.2.0"
-    http-status-codes "^2.1.4"
-    lodash "^4.17.21"
-    moment "^2.29.4"
-    react-use "^17.2.4"
-    recharts "^2.1.6"
-    uuid "^8.3.2"
-
 "@tpb/plugin-app-live-view@^0.1.21":
   version "0.1.21"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.21.tgz#0160df93222a171e779582ee8a36c42d50bddd97"
@@ -8441,15 +8317,44 @@
     recharts "^2.6.2"
     uuid "^9.0.0"
 
-"@tpb/plugin-auth0-auth@^0.0.2-main.61":
-  version "0.0.2-main.85"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-auth0-auth/-/@tpb/plugin-auth0-auth-0.0.2-main.85.tgz#868045f6a1a7607bda9219bbd693538bd4498a6e"
-  integrity sha512-2VsZqghAHnumiibDLOWlInaMxJp2GE0sWfj/J0UsIfFs/ldcFFFFbkbFEaUrndTKD6O+wFIE4Cj5plZLm8EE7Q==
+"@tpb/plugin-app-live-view@^0.1.22":
+  version "0.1.23"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.23.tgz#ba938ee5fe11b35e02bf3f31c9bd84d0dc2ff242"
+  integrity sha512-Bs5eFo3+iT1kUQakEzV7ISvdb9g4HTpR0oZCUgo+EmG5konY2pjobV8XUMBW5JACFOHs/MiWcgllrRY3ojL9dQ==
   dependencies:
-    "@backstage/core-app-api" "^1.5.0"
-    "@backstage/core-plugin-api" "^1.5.0"
-    "@tpb/core" "^0.0.2-main.85"
-    "@tpb/plugin-login" "^0.0.2-main.85"
+    "@backstage/config" "^1.0.7"
+    "@backstage/core-components" "^0.13.0"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/plugin-kubernetes" "^0.8.0"
+    "@backstage/plugin-kubernetes-common" "^0.6.2"
+    "@backstage/theme" "^0.2.19"
+    "@material-table/core" "^3.2.5"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    "@tap/shared-components" "1.0.6-beta.1"
+    "@tpb/feature-flags" "0.0.2-main.133"
+    "@tpb/kubernetes-orm" "^0.1.6"
+    "@types/jest-when" "^3.5.2"
+    axios "^1.4.0"
+    eslint "^8.39.0"
+    file-saver "^2.0.5"
+    fs-extra "^11.1.1"
+    glob "^10.2.6"
+    http-status-codes "^2.2.0"
+    lodash "^4.17.21"
+    moment "^2.29.4"
+    react-use "^17.2.4"
+    recharts "^2.6.2"
+    uuid "^9.0.0"
+
+"@tpb/plugin-auth0-auth@^0.0.2-main.140":
+  version "0.0.2-main.143"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-auth0-auth/-/@tpb/plugin-auth0-auth-0.0.2-main.143.tgz#c592a7a4238375e9c96367b78a3d5b50216b4b31"
+  integrity sha512-04P0lnKr+kTE9Esj+xsIkmpJALTlK7ue2VXMLBwdziaE/IDDXWPjA+wH1KShcySw7fz3NwuHf17NbRiXBngIZw==
+  dependencies:
+    "@backstage/core-app-api" "^1.7.0"
+    "@backstage/core-plugin-api" "^1.5.1"
 
 "@tpb/plugin-git-providers-backend@^0.0.1-alpha.5":
   version "0.0.1-alpha.5"
@@ -8478,38 +8383,13 @@
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
     "@material-ui/core" "^4.12.4"
 
-"@tpb/plugin-login@^0.0.2-main.61", "@tpb/plugin-login@^0.0.2-main.85":
-  version "0.0.2-main.85"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-login/-/@tpb/plugin-login-0.0.2-main.85.tgz#1574b412e0f3108e8440f756f78ec97e9bb0891c"
-  integrity sha512-nRIWQA/dV2sxlPFj31efLAOKarF8woyvsR/5GjflM4Djq7h3SiHMKPDOeUVA7ouH8LZxNce8uSmsItSglKRUKA==
+"@tpb/plugin-oidc-auth@0.0.2-main.140":
+  version "0.0.2-main.140"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-oidc-auth/-/@tpb/plugin-oidc-auth-0.0.2-main.140.tgz#c967c5569380d562ecee29999482a52ec71140eb"
+  integrity sha512-PQVRptfoMF5+wRcjuNJWHrM2WAxF0yZjh+p1Xd+MZE5XB+GigDFGwBrja8BRPtvVZ+Xrs6jigFPs+hKUXemQLg==
   dependencies:
-    "@backstage/catalog-model" "^1.2.1"
-    "@backstage/core-components" "^0.12.4"
-    "@backstage/core-plugin-api" "^1.5.0"
-    "@backstage/plugin-api-docs" "^0.9.0"
-    "@backstage/plugin-catalog" "^1.8.0"
-    "@backstage/plugin-catalog-common" "^1.0.12"
-    "@backstage/plugin-catalog-graph" "^0.2.28"
-    "@backstage/plugin-catalog-import" "^0.9.6"
-    "@backstage/plugin-github-actions" "^0.5.15"
-    "@backstage/plugin-org" "^0.6.5"
-    "@backstage/plugin-permission-react" "^0.4.11"
-    "@backstage/plugin-scaffolder" "^1.11.0"
-    "@backstage/plugin-techdocs" "^1.5.0"
-    "@material-ui/core" "^4.9.13"
-    "@material-ui/icons" "^4.11.2"
-    "@tpb/core" "^0.0.2-main.85"
-    react-router "6.0.0-beta.0"
-
-"@tpb/plugin-oidc-auth@0.0.2-main.61":
-  version "0.0.2-main.61"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-oidc-auth/-/@tpb/plugin-oidc-auth-0.0.2-main.61.tgz#92d1f7e3fef6e91f2406c235b1dffa00da0978b9"
-  integrity sha512-/MRBiyqsO6xhnlK9HfkzR2QadU7dejoIXpZQD/Je9QHbVuZEpEIc+k2ApV/RE0RAEfutZsG2UBlQHtVIRNlQTQ==
-  dependencies:
-    "@backstage/core-app-api" "^1.5.0"
-    "@backstage/core-plugin-api" "^1.4.0"
-    "@tpb/core" "^0.0.2-main.61"
-    "@tpb/plugin-login" "^0.0.2-main.61"
+    "@backstage/core-app-api" "^1.7.0"
+    "@backstage/core-plugin-api" "^1.5.1"
 
 "@tpb/plugin-pendo-analytics-backend@^1.0.6-build.0":
   version "1.0.6-build.0"
@@ -8635,18 +8515,18 @@
     uuid "^8.3.2"
     xml-formatter "^3.3.2"
 
-"@tpb/rrv@^0.1.2-alpha.9":
-  version "0.1.2-alpha.9"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.9.tgz#84b1620b4eff024cf6afe1bbd2e800c93aefc58b"
-  integrity sha512-VB0RbCKSduXLOIuVZFotW6mQKCI0KYNkx9VNMrQ03VVAnbfJ/+HVPPHjN5DnMQnU3HDXoDaqH2vqgBkCSYUrXw==
+"@tpb/rrv@^0.1.2-alpha.10":
+  version "0.1.2-alpha.10"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.10.tgz#214d25051d84b7b9eb7f0bf2e27b7f9828f113ac"
+  integrity sha512-00CVa6DAyznwCbtYTuIGCj9wO3gK6dFVNS+FO3+/rEaENpz9G9IAxI7465keS4Jk+MOuCVBcqZmSrTW77j5Qgg==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
     "@backstage/core-app-api" "^1.4.0"
     "@backstage/core-components" "^0.12.3"
     "@backstage/core-plugin-api" "^1.3.0"
     "@backstage/plugin-catalog-react" "^1.2.4"
-    "@backstage/plugin-kubernetes" "^0.7.7"
-    "@backstage/plugin-kubernetes-common" "^0.5.1"
+    "@backstage/plugin-kubernetes" "^0.8.0"
+    "@backstage/plugin-kubernetes-common" "^0.6.2"
     "@backstage/theme" "^0.2.16"
     "@date-io/core" "^1.3.13"
     "@date-io/moment" "1.x"
@@ -8660,31 +8540,29 @@
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "^4.0.0-alpha.60"
     "@material-ui/pickers" "^3.3.10"
-    "@tpb/kubernetes-orm" "^0.1.5"
-    "@tpb/plugin-app-live-view" "^0.1.12"
-    "@tpb/plugin-auth0-auth" "^0.0.2-main.61"
-    "@tpb/plugin-oidc-auth" "0.0.2-main.61"
-    "@tpb/tap-components" "0.1.2"
+    "@tpb/kubernetes-orm" "^0.1.6"
+    "@tpb/plugin-app-live-view" "^0.1.22"
+    "@tpb/plugin-auth0-auth" "^0.0.2-main.140"
+    "@tpb/plugin-oidc-auth" "0.0.2-main.140"
+    "@tpb/tap-components" "0.1.4"
     http-status-codes "^2.1.4"
     js-yaml "^4.1.0"
     kubernetes-models "^3.0.0"
     lodash "^4.17.21"
     moment "^2.29.4"
     moment-timezone "^0.5.34"
-    react "^17.0.2"
     react-dom "^17.0.2"
     react-router "6.0.0-beta.0"
-    react-router-dom "6.0.0-beta.0"
     react-use "^16.1.0"
     uuid "^8.3.2"
 
-"@tpb/tap-components@0.1.2":
-  version "0.1.2"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/tap-components/-/@tpb/tap-components-0.1.2.tgz#b972c1860a7c8fff4cca82e9c1ba723c9833367f"
-  integrity sha512-jbCT84uz/6UstPYQvtBoJL4htWBfMEBazGXnMR9tY9BGU9YAhzE1Ne7iI6ZiPI7lByAvdv8B/A2F4WaA8g+A+w==
+"@tpb/tap-components@0.1.4":
+  version "0.1.4"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/tap-components/-/@tpb/tap-components-0.1.4.tgz#e545f98865f64809ea6f615103fea0474a3a84a2"
+  integrity sha512-insqH/ra+BrYbvRgC36YC83144Qqt+bQfm+8B/9kJSYCfnhGudT3zPaPrcvcTMB5oPyO8UVy+0J5CA7sFRLlVA==
   dependencies:
-    clsx "^1.1.1"
-    ring-buffer-ts "^1.0.3"
+    clsx "^1.2.1"
+    ring-buffer-ts "^1.2.0"
 
 "@trendyol-js/openstack-swift-sdk@^0.0.6":
   version "0.0.6"
@@ -9660,11 +9538,6 @@
   version "0.0.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz#b6725d5f4af24ace33b36fafd295136e75509f43"
   integrity sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==
-
-"@types/uuid@^8.3.4":
-  version "8.3.4"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/uuid/-/uuid-8.3.4.tgz#bd86a43617df0594787d38b735f55c805becf1bc"
-  integrity sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==
 
 "@types/uuid@^9.0.1":
   version "9.0.1"
@@ -10912,13 +10785,6 @@ axios@^0.21.1:
   dependencies:
     follow-redirects "^1.14.0"
 
-axios@^0.24.0:
-  version "0.24.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
-  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
-  dependencies:
-    follow-redirects "^1.14.4"
-
 axios@^0.27.2:
   version "0.27.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
@@ -11996,7 +11862,7 @@ clone@^1.0.2:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
-clsx@^1.0.2, clsx@^1.0.4, clsx@^1.1.1:
+clsx@^1.0.2, clsx@^1.0.4, clsx@^1.1.1, clsx@^1.2.1:
   version "1.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
@@ -14321,15 +14187,15 @@ eslint-webpack-plugin@^3.1.1:
     normalize-path "^3.0.0"
     schema-utils "^4.0.0"
 
-eslint@^8.16.0, eslint@^8.6.0:
-  version "8.38.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/eslint/-/eslint-8.38.0.tgz#a62c6f36e548a5574dd35728ac3c6209bd1e2f1a"
-  integrity sha512-pIdsD2jwlUGf/U38Jv97t8lq6HpaU/G9NKbYmpWpZGw3LdTNhZLbJePqxOXGB5+JEKfOPU/XLxYxFh03nr1KTg==
+eslint@^8.39.0:
+  version "8.39.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/eslint/-/eslint-8.39.0.tgz#7fd20a295ef92d43809e914b70c39fd5a23cf3f1"
+  integrity sha512-mwiok6cy7KTW7rBpo05k6+p4YVZByLNjAZ/ACB9DRCu4YDRwjXI01tWHp6KAUWelsBetTxKK/2sHB0vdS8Z2Og==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.4.0"
     "@eslint/eslintrc" "^2.0.2"
-    "@eslint/js" "8.38.0"
+    "@eslint/js" "8.39.0"
     "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
@@ -14339,7 +14205,7 @@ eslint@^8.16.0, eslint@^8.6.0:
     debug "^4.3.2"
     doctrine "^3.0.0"
     escape-string-regexp "^4.0.0"
-    eslint-scope "^7.1.1"
+    eslint-scope "^7.2.0"
     eslint-visitor-keys "^3.4.0"
     espree "^9.5.1"
     esquery "^1.4.2"
@@ -14367,15 +14233,15 @@ eslint@^8.16.0, eslint@^8.6.0:
     strip-json-comments "^3.1.0"
     text-table "^0.2.0"
 
-eslint@^8.39.0:
-  version "8.39.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/eslint/-/eslint-8.39.0.tgz#7fd20a295ef92d43809e914b70c39fd5a23cf3f1"
-  integrity sha512-mwiok6cy7KTW7rBpo05k6+p4YVZByLNjAZ/ACB9DRCu4YDRwjXI01tWHp6KAUWelsBetTxKK/2sHB0vdS8Z2Og==
+eslint@^8.6.0:
+  version "8.38.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/eslint/-/eslint-8.38.0.tgz#a62c6f36e548a5574dd35728ac3c6209bd1e2f1a"
+  integrity sha512-pIdsD2jwlUGf/U38Jv97t8lq6HpaU/G9NKbYmpWpZGw3LdTNhZLbJePqxOXGB5+JEKfOPU/XLxYxFh03nr1KTg==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.4.0"
     "@eslint/eslintrc" "^2.0.2"
-    "@eslint/js" "8.39.0"
+    "@eslint/js" "8.38.0"
     "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
@@ -14385,7 +14251,7 @@ eslint@^8.39.0:
     debug "^4.3.2"
     doctrine "^3.0.0"
     escape-string-regexp "^4.0.0"
-    eslint-scope "^7.2.0"
+    eslint-scope "^7.1.1"
     eslint-visitor-keys "^3.4.0"
     espree "^9.5.1"
     esquery "^1.4.2"
@@ -15024,7 +14890,7 @@ fn.name@1.x.x:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.4, follow-redirects@^1.14.9, follow-redirects@^1.15.0:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.9, follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -20934,7 +20800,7 @@ openid-client@^4.1.1:
     object-hash "^2.0.1"
     oidc-token-hash "^5.0.1"
 
-openid-client@^5.1.6, openid-client@^5.2.1, openid-client@^5.3.0:
+openid-client@^5.2.1, openid-client@^5.3.0:
   version "5.4.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/openid-client/-/openid-client-5.4.0.tgz#77f1cda14e2911446f16ea3f455fc7c405103eac"
   integrity sha512-hgJa2aQKcM2hn3eyVtN12tEA45ECjTJPXCgUh5YzTzy9qwapCvmDTVPWOcWVL0d34zeQoQ/hbG9lJhl3AYxJlQ==
@@ -23167,21 +23033,6 @@ recharts-scale@^0.4.4:
   dependencies:
     decimal.js-light "^2.4.1"
 
-recharts@^2.1.6:
-  version "2.5.0"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/recharts/-/recharts-2.5.0.tgz#34452852509099502690f9d2a72bde1d4cd65648"
-  integrity sha512-0EQYz3iA18r1Uq8VqGZ4dABW52AKBnio37kJgnztIqprELJXpOEsa0SzkqU1vjAhpCXCv52Dx1hiL9119xsqsQ==
-  dependencies:
-    classnames "^2.2.5"
-    eventemitter3 "^4.0.1"
-    lodash "^4.17.19"
-    react-is "^16.10.2"
-    react-resize-detector "^8.0.4"
-    react-smooth "^2.0.2"
-    recharts-scale "^0.4.4"
-    reduce-css-calc "^2.1.8"
-    victory-vendor "^36.6.8"
-
 recharts@^2.1.9, recharts@^2.6.2:
   version "2.6.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/recharts/-/recharts-2.6.2.tgz#f26dc7954ab9df8e49a50aa36ed9c7177bd0a0a5"
@@ -23644,7 +23495,7 @@ rimraf@^4.4.1:
   dependencies:
     glob "^9.2.0"
 
-ring-buffer-ts@^1.0.3:
+ring-buffer-ts@^1.0.3, ring-buffer-ts@^1.2.0:
   version "1.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/ring-buffer-ts/-/ring-buffer-ts-1.2.0.tgz#8bbbfd82ad2e218d7447056f47e5eda7547b9b2f"
   integrity sha512-dkGqA7YHZgXp1dWwcNIsmt+4EgHK1RmY9sp7eqHLLfTkhYhQQ4agAwqgED7hJakELMaXkBgZ5568vqaI3/wV6Q==
