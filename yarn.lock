@@ -8494,10 +8494,10 @@
     react-use "^17.2.4"
     recharts "^2.1.9"
 
-"@tpb/plugin-supply-chain@1.0.6-build.4":
-  version "1.0.6-build.4"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-build.4.tgz#0bd752268fd13fd4683e215b65d66dc05663ed44"
-  integrity sha512-pIbbipDbpzw93LwqzHE6SM4okyOse9FUHT2Rc7gPHTBHQAwEjRHrMXCQQ4ODDcoPjMvsPOkp7++dL63YvX6HuA==
+"@tpb/plugin-supply-chain@1.0.6-build.5":
+  version "1.0.6-build.5"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-supply-chain/-/@tpb/plugin-supply-chain-1.0.6-build.5.tgz#eec53a732cc21d3844070d009b8792b54424e923"
+  integrity sha512-BIKZwVGVkAJHsVxCys3oELa0TrrJsnyPLsUrLRPn8Cw2IHqyTAk19eMggXvVcHZzIHydV+I2Yrvt6QL3WdEUHA==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
     "@backstage/core-components" "^0.13.0"
@@ -10425,7 +10425,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-security-analysis-frontend" "^1.0.0-build.7"
-    "@tpb/plugin-supply-chain" "1.0.6-build.4"
+    "@tpb/plugin-supply-chain" "1.0.6-build.5"
     "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
     "@tpb/runtime" "^0.0.1-alpha.3"
     history "^5.0.0"
