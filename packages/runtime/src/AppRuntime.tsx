@@ -27,9 +27,9 @@ export class AppRuntime {
   constructor(plugins: TpbPluginInterface[] = []) {
     this._surfaces = new SurfaceStore();
     this.configureApiSurface();
+    searchPlugin()(this._surfaces);
     catalogPlugin()(this._surfaces);
     techdocsPlugin()(this._surfaces);
-    searchPlugin()(this._surfaces);
     apiDocsPlugin()(this._surfaces);
     loginPlugin()(this._surfaces);
     scmPlugin()(this._surfaces);

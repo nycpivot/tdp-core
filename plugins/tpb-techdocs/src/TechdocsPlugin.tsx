@@ -48,7 +48,7 @@ export const TechdocsPlugin: AppPluginInterface<RoutableConfig> = config => {
     });
 
     context.applyTo(SidebarItemSurface, sidebar =>
-      sidebar.addMainItem(
+      sidebar.addTopItem(
         <ToggleFeature feature="customize.features.docs.showInSidebar">
           <SidebarItem icon={LibraryBooks} to={path} text={label} />
         </ToggleFeature>,
