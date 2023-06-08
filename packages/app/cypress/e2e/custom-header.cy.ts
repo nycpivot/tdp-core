@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { Authentication } from '../support/authentication';
 
 // As defined in https://gitlab.eng.vmware.com/esback/core/-/blob/main/plugins/tpb-clarity-theming/src/Header/Banner.tsx
