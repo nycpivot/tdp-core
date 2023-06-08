@@ -1,5 +1,5 @@
 app:
-  title: Tanzu Developer Portal
+  title: TPB Dev Instance
   baseUrl: http://localhost:3000
 
 organization:
@@ -238,8 +238,11 @@ kubernetes:
           skipTLSVerify: true
 # Use the properties below to customize the visible features.
 # By default, features are visible if not set.
-#customize:
-#  features:
+customize:
+  features:
+    appLiveView:
+      enabled: false
+      showInSidebar: false
 #    catalog:
 #      enabled: true
 #      showInSidebar: true
@@ -264,9 +267,6 @@ kubernetes:
 #      enabled: true
 #      showInSidebar: true
 #    helloWorld:
-#      enabled: true
-#      showInSidebar: true
-#    appLiveView:
 #      enabled: true
 #      showInSidebar: true
 #    appAccelerator:
