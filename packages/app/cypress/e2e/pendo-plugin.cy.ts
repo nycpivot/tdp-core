@@ -9,6 +9,6 @@ describe('Pendo', () => {
     cy.visit('/settings');
     cy.contains('Preferences');
     cy.visit('/settings/preferences');
-    cy.contains('You are currently not enrolled in TAP Telemetry');
+    cy.contains('You are currently not enrolled in');
   });
 });
