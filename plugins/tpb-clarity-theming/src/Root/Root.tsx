@@ -97,16 +97,24 @@ const Root = ({ sidebar, classes, children }: PropsWithChildren<IRoot>) => {
           <ToggleFeature feature="customize.features.docs.showInSidebar">
             <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
           </ToggleFeature>
-          <SidebarItem icon={AddCircleOutline} to="create" text="Create" />
+          <ToggleFeature feature="customize.features.scaffolder.showInSidebar">
+            <SidebarItem icon={AddCircleOutline} to="create" text="Create" />
+          </ToggleFeature>
           <ToggleFeature feature="customize.features.appLiveView.showInSidebar">
             <SidebarItem icon={AccountTreeIcon} to="app-live-view" text="App Live View" />
           </ToggleFeature>
           <ToggleFeature feature="customize.features.apiDocs.showInSidebar">
             <SidebarItem icon={Extension} to="api-docs" text="APIs" />
           </ToggleFeature>
-          <SidebarItem icon={SupplyChainIcon} to="supply-chain" text="Supply Chain" />
-          <SidebarItem icon={SecurityAnalysisIcon} to="security-analysis" text="Security Analysis" />
-          <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />
+          <ToggleFeature feature="customize.features.supplyChain.showInSidebar">
+            <SidebarItem icon={SupplyChainIcon} to="supply-chain" text="Supply Chain" />
+          </ToggleFeature>
+          <ToggleFeature feature="customize.features.securityAnalysis.showInSidebar">
+            <SidebarItem icon={SecurityAnalysisIcon} to="security-analysis" text="Security Analysis" />
+          </ToggleFeature>
+          <ToggleFeature feature="customize.features.helloWorld.showInSidebar">
+            <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />
+          </ToggleFeature>
           <ToggleFeature feature="customize.features.settings.showInSidebar">
             <SidebarSettings />
           </ToggleFeature>
