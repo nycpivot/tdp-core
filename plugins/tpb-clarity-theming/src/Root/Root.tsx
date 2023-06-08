@@ -15,15 +15,6 @@ import { configApiRef, useApi } from '@backstage/core-plugin-api';
 import { SidebarItemSurface } from '@tpb/core-frontend';
 import { ToggleFeature } from '@tpb/feature-flags';
 import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
-import { SidebarItem } from '@backstage/core-components';
-import Extension from '@material-ui/icons/Extension';
-import HomeIcon from '@material-ui/icons/Home';
-import AlarmIcon from '@material-ui/icons/Alarm';
-import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
-import LibraryBooks from '@material-ui/icons/LibraryBooks';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import { SecurityAnalysisIcon } from "@tpb/plugin-security-analysis-frontend";
-import { SupplyChainIcon } from "@tpb/plugin-supply-chain";
 
 export type RootClassKey = 'root' | 'content' | 'contentSm';
 import { ClarityHeader } from '../Header/Header';
@@ -90,31 +81,7 @@ const Root = ({ sidebar, classes, children }: PropsWithChildren<IRoot>) => {
       <ClaritySidebarPage>
         <ClaritySidebar>
           {...sidebar.topItems}
-          {/*{...sidebar.mainItems}*/}
-          <ToggleFeature feature="customize.features.catalog.showInSidebar">
-            <SidebarItem icon={HomeIcon} to="catalog" text="Home"/>
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.docs.showInSidebar">
-            <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.appAccelerator.showInSidebar">
-            <SidebarItem icon={AddCircleOutline} to="create" text="Create" />
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.appLiveView.showInSidebar">
-            <SidebarItem icon={AccountTreeIcon} to="app-live-view" text="App Live View" />
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.apiDocs.showInSidebar">
-            <SidebarItem icon={Extension} to="api-docs" text="APIs" />
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.supplyChain.showInSidebar">
-            <SidebarItem icon={SupplyChainIcon} to="supply-chain" text="Supply Chain" />
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.securityAnalysis.showInSidebar">
-            <SidebarItem icon={SecurityAnalysisIcon} to="security-analysis" text="Security Analysis" />
-          </ToggleFeature>
-          <ToggleFeature feature="customize.features.helloWorld.showInSidebar">
-            <SidebarItem icon={AlarmIcon} to="hello-world" text="Hello" />
-          </ToggleFeature>
+          {...sidebar.mainItems}
           <ToggleFeature feature="customize.features.settings.showInSidebar">
             <SidebarSettings />
           </ToggleFeature>

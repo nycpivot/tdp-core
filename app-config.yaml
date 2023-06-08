@@ -257,8 +257,14 @@ kubernetes:
 #    settings:
 #      enabled: true
 #      showInSidebar: true
-#    appLiveView:
-#      configured: true
+#    securityAnalysis:
+#      enabled: true
+#      showInSidebar: true
+#    supplyChain:
+#      enabled: true
+#      showInSidebar: true
+#    helloWorld:
+#      enabled: true
 #      showInSidebar: true
 #    appLiveView:
 #      enabled: true
