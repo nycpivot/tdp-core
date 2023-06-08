@@ -14668,10 +14668,10 @@ fast-text-encoding@^1.0.0, fast-text-encoding@^1.0.3:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fast-text-encoding/-/fast-text-encoding-1.0.6.tgz#0aa25f7f638222e3396d72bf936afcf1d42d6867"
   integrity sha512-VhXlQgj9ioXCqGstD37E/HBeqEGV/qOD/kmbVG8h5xKBYvM1L3lR1Zn4555cQ8GkYbJa8aJSipLPndE1k6zK2w==
 
-fast-xml-parser@4.1.2:
-  version "4.1.2"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fast-xml-parser/-/fast-xml-parser-4.1.2.tgz#5a98c18238d28a57bbdfa9fe4cda01211fff8f4a"
-  integrity sha512-CDYeykkle1LiA/uqQyNwYpFbyF6Axec6YapmpUP+/RHWIoR1zKjocdvNaTsxCxZzQ6v9MLXaSYm9Qq0thv0DHg==
+fast-xml-parser@4.1.2, fast-xml-parser@^4.2.4:
+  version "4.2.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/fast-xml-parser/-/fast-xml-parser-4.2.4.tgz#6e846ede1e56ad9e5ef07d8720809edf0ed07e9b"
+  integrity sha512-fbfMDvgBNIdDJLdLOwacjFAPYt67tr31H9ZhWSm45CDAxvd0I6WTlSOUo7K2P/K5sA5JgMKG64PI3DMcaFdWpQ==
   dependencies:
     strnum "^1.0.5"
 
