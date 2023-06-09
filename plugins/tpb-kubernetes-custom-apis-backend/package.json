@@ -26,7 +26,7 @@
   "dependencies": {
     "@backstage/catalog-client": "^1.4.1",
     "express": "^4.18.2",
-    "@tpb/k8s-custom-apis-backend": "^0.1.6"
+    "@tpb/k8s-custom-apis-backend": "^0.1.7"
   },
   "peerDependencies": {
     "@tpb/core-backend": "*"

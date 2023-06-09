@@ -20,7 +20,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@tpb/rrv": "^0.1.2-alpha.10",
+    "@tpb/rrv": "^0.1.2-alpha.11",
     "@backstage/plugin-catalog": "^1.10.0"
   },
   "peerDependencies": {

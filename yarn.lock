@@ -3284,7 +3284,7 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-auth-node@^0.2.12", "@backstage/plugin-auth-node@^0.2.13":
+"@backstage/plugin-auth-node@^0.2.13":
   version "0.2.13"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.13.tgz#b46c266222bb51d62c37a323ce615a1f496a98df"
   integrity sha512-vMLm14UB9f5yddas6bHtt9yoQxiOiHBctk9RMyqFMIgf8U47t/ZBc2MsN1s3x453tN7rNQmHLlLY/nnSZudFTg==
@@ -3688,41 +3688,6 @@
     winston "^3.2.1"
     yn "^4.0.0"
 
-"@backstage/plugin-kubernetes-backend@^0.9.4":
-  version "0.9.4"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.9.4.tgz#c9ae886e94b14e574e84e3bed48a2299112a491b"
-  integrity sha512-rNMAZ0/z2fsRYos5u+AYrN/slu/A58i1VPO5GQz0nNZxVJgASnCci1lgpr5sjNX2NKEp/y956OBV5PMpcWXKDA==
-  dependencies:
-    "@azure/identity" "^2.0.4"
-    "@backstage/backend-common" "^0.18.3"
-    "@backstage/catalog-client" "^1.4.0"
-    "@backstage/catalog-model" "^1.2.1"
-    "@backstage/config" "^1.0.7"
-    "@backstage/errors" "^1.1.5"
-    "@backstage/plugin-auth-node" "^0.2.12"
-    "@backstage/plugin-kubernetes-common" "^0.6.1"
-    "@google-cloud/container" "^4.0.0"
-    "@jest-mock/express" "^2.0.1"
-    "@kubernetes/client-node" "0.18.1"
-    "@types/express" "^4.17.6"
-    "@types/luxon" "^3.0.0"
-    aws-sdk "^2.840.0"
-    aws4 "^1.11.0"
-    compression "^1.7.4"
-    cors "^2.8.5"
-    express "^4.17.1"
-    express-promise-router "^4.1.0"
-    fs-extra "10.1.0"
-    helmet "^6.0.0"
-    http-proxy-middleware "^2.0.6"
-    lodash "^4.17.21"
-    luxon "^3.0.0"
-    morgan "^1.10.0"
-    node-fetch "^2.6.7"
-    stream-buffers "^3.0.2"
-    winston "^3.2.1"
-    yn "^4.0.0"
-
 "@backstage/plugin-kubernetes-common@^0.5.1":
   version "0.5.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.5.1.tgz#0d3d6eebde640e124bd46ae000290274d0c3923d"
@@ -3859,6 +3824,23 @@
     "@backstage/config" "^1.0.7"
     "@backstage/errors" "^1.1.5"
     "@backstage/plugin-auth-node" "^0.2.13"
+    "@backstage/plugin-permission-common" "^0.7.5"
+    "@types/express" "^4.17.6"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    zod "^3.21.4"
+    zod-to-json-schema "^3.20.4"
+
+"@backstage/plugin-permission-node@^0.7.8":
+  version "0.7.8"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-permission-node/-/plugin-permission-node-0.7.8.tgz#6ae9be89b21f4f84429fc1eab1684202b9ad62fc"
+  integrity sha512-Ugw0F3kYaLvxCIyqSNxywQ9dKghZ5fZZJudXKgM3o1pB07jOj4/QVnAKBm8A9DCv2rN3E/07Ij2nNhF+xkC+Pg==
+  dependencies:
+    "@backstage/backend-common" "^0.18.5"
+    "@backstage/backend-plugin-api" "^0.5.2"
+    "@backstage/config" "^1.0.7"
+    "@backstage/errors" "^1.1.5"
+    "@backstage/plugin-auth-node" "^0.2.14"
     "@backstage/plugin-permission-common" "^0.7.5"
     "@types/express" "^4.17.6"
     express "^4.17.1"
@@ -8405,11 +8387,6 @@
     "@backstage/core-app-api" "^1.7.0"
     "@backstage/core-plugin-api" "^1.5.1"
 
-"@tpb/core@^0.0.2-main.129":
-  version "0.0.2-main.137"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/core/-/@tpb/core-0.0.2-main.137.tgz#0c07c3e8b36d865a5e3681211af272cefb651350"
-  integrity sha512-k4VaaAtDN3qsjk48+g5J9XsxuvjXN1dTEKN3q8juiVD5upfPlrV/+8XiBQxNf3rqiDpmlIugaSods6z2eWq8hQ==
-
 "@tpb/feature-flags@0.0.2-main.133":
   version "0.0.2-main.133"
   resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/feature-flags/-/@tpb/feature-flags-0.0.2-main.133.tgz#d3fb3c859a2dc4303fa014e08b7153604b2722bb"
@@ -8424,15 +8401,16 @@
   dependencies:
     "@backstage/core-plugin-api" "^1.5.1"
 
-"@tpb/k8s-custom-apis-backend@^0.1.6":
-  version "0.1.6"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/k8s-custom-apis-backend/-/@tpb/k8s-custom-apis-backend-0.1.6.tgz#610f2367ac2efb9ae261bc67d40daee0c79dc7d4"
-  integrity sha512-x4m0SNHploqGYJiMeoGrw5PprNvTCgvASYYcKKySfbDVhBcDIzpgqwkIXl7XSvck6ZSsPQnlEERPDQ79D1IExA==
+"@tpb/k8s-custom-apis-backend@^0.1.7":
+  version "0.1.7"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/k8s-custom-apis-backend/-/@tpb/k8s-custom-apis-backend-0.1.7.tgz#ec0bab29ae8a80b82c838f071af87cc02df5ccd5"
+  integrity sha512-1xwTLdgfSsAX/UUIE4UVpI30p0wO46/HJxdaP4Gj+7ZKXtS+/bp8XiFCizG2cs9DzNfYWjv4Q6oOKJlzX03pUw==
   dependencies:
     "@backstage/backend-common" "^0.18.4"
     "@backstage/catalog-client" "^1.4.1"
     "@backstage/config" "^1.0.7"
-    "@backstage/plugin-kubernetes-backend" "^0.9.4"
+    "@backstage/plugin-kubernetes-backend" "^0.10.0"
+    "@backstage/plugin-permission-node" "^0.7.8"
     "@google-cloud/container" "^4.11.0"
     "@kubernetes/client-node" "^0.18.1"
     "@types/aws4" "^1.11.2"
@@ -8445,7 +8423,6 @@
     http-status-codes "^2.2.0"
     uuid "^9.0.0"
     winston "^3.8.2"
-    yn "^5.0.0"
 
 "@tpb/kubernetes-orm@^0.1.6", "@tpb/kubernetes-orm@~0.1.6":
   version "0.1.6"
@@ -8558,42 +8535,10 @@
     yaml "^2.0.0"
     zen-observable "^0.10.0"
 
-"@tpb/plugin-app-live-view@^0.1.21":
-  version "0.1.21"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.21.tgz#0160df93222a171e779582ee8a36c42d50bddd97"
-  integrity sha512-3m6fvOz0DEm5FQGTxJU3rFioIclkcQmbyF+hYlyLOeWynd71x+U2w7UGfPizDdBoB8MPJe0IST5VImA06AZJEw==
-  dependencies:
-    "@backstage/config" "^1.0.7"
-    "@backstage/core-components" "^0.13.0"
-    "@backstage/core-plugin-api" "^1.5.1"
-    "@backstage/plugin-kubernetes" "^0.8.0"
-    "@backstage/plugin-kubernetes-common" "^0.6.2"
-    "@backstage/theme" "^0.2.19"
-    "@material-table/core" "^3.2.5"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.57"
-    "@tap/shared-components" "1.0.6-beta.1"
-    "@tpb/core" "^0.0.2-main.129"
-    "@tpb/feature-flags" "0.0.2-main.133"
-    "@tpb/kubernetes-orm" "^0.1.6"
-    "@types/jest-when" "^3.5.2"
-    axios "^1.4.0"
-    eslint "^8.39.0"
-    file-saver "^2.0.5"
-    fs-extra "^11.1.1"
-    glob "^10.2.6"
-    http-status-codes "^2.2.0"
-    lodash "^4.17.21"
-    moment "^2.29.4"
-    react-use "^17.2.4"
-    recharts "^2.6.2"
-    uuid "^9.0.0"
-
-"@tpb/plugin-app-live-view@^0.1.22":
-  version "0.1.23"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.23.tgz#ba938ee5fe11b35e02bf3f31c9bd84d0dc2ff242"
-  integrity sha512-Bs5eFo3+iT1kUQakEzV7ISvdb9g4HTpR0oZCUgo+EmG5konY2pjobV8XUMBW5JACFOHs/MiWcgllrRY3ojL9dQ==
+"@tpb/plugin-app-live-view@^0.1.25":
+  version "0.1.25"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-app-live-view/-/@tpb/plugin-app-live-view-0.1.25.tgz#57fabd4e2700d0a493c078f8b65081860493369a"
+  integrity sha512-nr6VT+xbUlYDmsbUKDjQKI9Q7xPDpuWx4EUnxPejK1Oc6cdBlrhbKspoVaz616Gw+T/u/D5V9WpwfSFkybjXxw==
   dependencies:
     "@backstage/config" "^1.0.7"
     "@backstage/core-components" "^0.13.0"
@@ -8613,7 +8558,6 @@
     eslint "^8.39.0"
     file-saver "^2.0.5"
     fs-extra "^11.1.1"
-    glob "^10.2.6"
     http-status-codes "^2.2.0"
     lodash "^4.17.21"
     moment "^2.29.4"
@@ -8818,10 +8762,10 @@
     uuid "^8.3.2"
     xml-formatter "^3.3.2"
 
-"@tpb/rrv@^0.1.2-alpha.10":
-  version "0.1.2-alpha.10"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.10.tgz#214d25051d84b7b9eb7f0bf2e27b7f9828f113ac"
-  integrity sha512-00CVa6DAyznwCbtYTuIGCj9wO3gK6dFVNS+FO3+/rEaENpz9G9IAxI7465keS4Jk+MOuCVBcqZmSrTW77j5Qgg==
+"@tpb/rrv@^0.1.2-alpha.11":
+  version "0.1.2-alpha.11"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.11.tgz#23fd751207d1e9cc3768d792396d388653e15249"
+  integrity sha512-cMsktNvLSgIoG4vXTwvHoup2U8GQqd327lY0XEtxe0DKIWsZbg/wIrlS2aEkMSxUlkdrOa7M8mZSoRvhsuzNQQ==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
     "@backstage/core-app-api" "^1.4.0"
@@ -8844,7 +8788,7 @@
     "@material-ui/lab" "^4.0.0-alpha.60"
     "@material-ui/pickers" "^3.3.10"
     "@tpb/kubernetes-orm" "^0.1.6"
-    "@tpb/plugin-app-live-view" "^0.1.22"
+    "@tpb/plugin-app-live-view" "^0.1.25"
     "@tpb/plugin-auth0-auth" "^0.0.2-main.140"
     "@tpb/plugin-oidc-auth" "0.0.2-main.140"
     "@tpb/tap-components" "0.1.4"
@@ -10691,7 +10635,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@material-ui/icons" "^4.11.3"
     "@tpb/plugin-api-scoring" "^1.0.3"
     "@tpb/plugin-app-accelerator-scaffolder" "^0.0.1-alpha.7"
-    "@tpb/plugin-app-live-view" "^0.1.21"
+    "@tpb/plugin-app-live-view" "^0.1.25"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-azure-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-bitbucket-auth" "^0.0.1-alpha.2"
@@ -15775,17 +15719,6 @@ glob@^10.2.2, glob@^10.2.4:
     minipass "^5.0.0 || ^6.0.2"
     path-scurry "^1.7.0"
 
-glob@^10.2.6:
-  version "10.2.6"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/glob/-/glob-10.2.6.tgz#1e27edbb3bbac055cb97113e27a066c100a4e5e1"
-  integrity sha512-U/rnDpXJGF414QQQZv5uVsabTVxMSwzS5CH0p3DRCIV6ownl4f7PzGnkGmvlum2wB+9RlJWJZ6ACU1INnBqiPA==
-  dependencies:
-    foreground-child "^3.1.0"
-    jackspeak "^2.0.3"
-    minimatch "^9.0.1"
-    minipass "^5.0.0 || ^6.0.2"
-    path-scurry "^1.7.0"
-
 glob@^7.0.0, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
   version "7.2.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/glob/-/glob-7.2.3.tgz#b8df0fb802bbfa8e89bd1d938b4e16578ed44f2b"
@@ -19936,13 +19869,6 @@ minimatch@^9.0.0:
   version "9.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/minimatch/-/minimatch-9.0.0.tgz#bfc8e88a1c40ffd40c172ddac3decb8451503b56"
   integrity sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==
-  dependencies:
-    brace-expansion "^2.0.1"
-
-minimatch@^9.0.1:
-  version "9.0.1"
-  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/minimatch/-/minimatch-9.0.1.tgz#8a555f541cf976c622daf078bb28f29fb927c253"
-  integrity sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w==
   dependencies:
     brace-expansion "^2.0.1"
 
