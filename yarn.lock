@@ -8739,10 +8739,10 @@
     react-use "^17.4.0"
     uuid "^9.0.0"
 
-"@tpb/plugin-security-analysis-frontend@^1.0.0":
-  version "1.0.0"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-security-analysis-frontend/-/@tpb/plugin-security-analysis-frontend-1.0.0.tgz#085c487d04bcc0ada00812acc318ae2a4e03cddf"
-  integrity sha512-3bIN7mMba1q3gPDv0unKgk+0ncSSnPKtqHzP2DYmP3rC+YUNWlY/9Vnyd1681XF9RNPfs4FcdAqNbu9DCJ4J6g==
+"@tpb/plugin-security-analysis-frontend@^1.0.1":
+  version "1.0.1"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-security-analysis-frontend/-/@tpb/plugin-security-analysis-frontend-1.0.1.tgz#bb706d721ca9ad57562639ff62faeede67a3f052"
+  integrity sha512-aqaSZLSFM5k8rF2JEZA97ec8z8PesoAx6kfiHQ2XUU/dmnsQUSXzrhmnJHkz7KmsKacs3V/qkEvTopVtzI7Jhg==
   dependencies:
     "@backstage/catalog-model" "~1.3.0"
     "@backstage/core-app-api" "~1.7.0"
@@ -10707,7 +10707,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-pendo-analytics" "^1.0.6-build.1"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
-    "@tpb/plugin-security-analysis-frontend" "^1.0.0"
+    "@tpb/plugin-security-analysis-frontend" "^1.0.1"
     "@tpb/plugin-supply-chain" "1.0.6-build.5"
     "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
     "@tpb/runtime" "^0.0.1-alpha.3"
