@@ -25,11 +25,11 @@ describe('AppRuntime', () => {
   });
 
   it('should add default plugins (catalog, techdocs, api) to provided plugin list', () => {
-    const fakePlugin: TpbPluginInterface = (context) => {
+    const fakePlugin: TpbPluginInterface = context => {
       context.applyTo(SidebarItemSurface, surface => {
-        surface.addTopItem(<>Fake Item</>)
-      }
-    )};
+        surface.addTopItem(<>Fake Item</>);
+      });
+    };
 
     const runtime = new AppRuntime([fakePlugin]);
     expect(
