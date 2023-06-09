@@ -241,7 +241,7 @@ kubernetes:
 customize:
   features:
     appLiveView:
-      enabled: false
+      configured: true
       showInSidebar: false
 #    catalog:
 #      enabled: true

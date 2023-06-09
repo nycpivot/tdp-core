@@ -20,20 +20,30 @@ describe('AppRuntime', () => {
 
     const sidebarItemSurface = runtime.surfaces.findSurface(SidebarItemSurface);
     const routeSurface = runtime.surfaces.findSurface(AppRouteSurface);
-    expect(sidebarItemSurface.mainItems).toHaveLength(3);
+    expect(sidebarItemSurface.topItems).toHaveLength(3);
     expect(routeSurface.nonDefaultRoutes).toHaveLength(8);
   });
 
   it('should add default plugins (catalog, techdocs, api) to provided plugin list', () => {
-    const fakePlugin: TpbPluginInterface = context =>
-      context.applyTo(SidebarItemSurface, surface =>
-        surface.addMainItem(<>Fake Item</>),
-      );
+    const fakePlugin: TpbPluginInterface = (context) => {
+      context.applyTo(SidebarItemSurface, surface => {
+        surface.addTopItem(<>Fake Item</>)
+      }
+    )};
 
     const runtime = new AppRuntime([fakePlugin]);
     expect(
+<<<<<<< Updated upstream
+<<<<<<< HEAD
       runtime.surfaces.findSurface(SidebarItemSurface).mainItems,
+=======
+      runtime.surfaces.findSurface(SidebarItemSurface).topItems,
+>>>>>>> 966703bf ([ESBACK-328] fix for AppRuntime test.)
     ).toHaveLength(4);
+=======
+      runtime.surfaces.findSurface(SidebarItemSurface).topItems,
+    ).toHaveLength(3);
+>>>>>>> Stashed changes
   });
 
   describe('api surface', () => {
