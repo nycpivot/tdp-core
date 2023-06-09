@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@backstage/catalog-client": "^1.4.1",
+    "@backstage/backend-common": "^0.18.4",
+    "@backstage/plugin-permission-node": "^0.7.8",
     "express": "^4.18.2",
     "@tpb/k8s-custom-apis-backend": "^0.1.7"
   },
