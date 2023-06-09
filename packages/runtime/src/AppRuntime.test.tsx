@@ -33,17 +33,8 @@ describe('AppRuntime', () => {
 
     const runtime = new AppRuntime([fakePlugin]);
     expect(
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-      runtime.surfaces.findSurface(SidebarItemSurface).mainItems,
-=======
       runtime.surfaces.findSurface(SidebarItemSurface).topItems,
->>>>>>> 966703bf ([ESBACK-328] fix for AppRuntime test.)
     ).toHaveLength(4);
-=======
-      runtime.surfaces.findSurface(SidebarItemSurface).topItems,
-    ).toHaveLength(3);
->>>>>>> Stashed changes
   });
 
   describe('api surface', () => {
