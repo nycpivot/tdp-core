@@ -27,6 +27,7 @@
     "tsc:full": "tsc --skipLibCheck false --incremental false",
     "untar-bundle": "tar xzf packages/backend/dist/bundle.tar.gz --directory dist",
     "prepare-app": "rm -rf dist && mkdir dist && yarn untar-bundle && yarn set-permissions",
+    {{!-- TODO(ESBACK-385): Figure out correct permissions for produced artifacts --}}
     "set-permissions": "chmod -R +x dist && chmod -R 777 packages/app/dist"
   },
   "workspaces": {
