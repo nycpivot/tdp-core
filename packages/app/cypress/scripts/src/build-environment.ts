@@ -33,10 +33,10 @@ async function buildEnvironment(serverType: ServerType) {
         AZURE_CLIENT_SECRET: await vault.readE2ESecret('azure_client_secret'),
         GITLAB_TOKEN: await vault.readGitlabSecret('fixtures_token'),
         BITBUCKET_CLIENT_ID: await vault.readBitbucketSecret(
-          'svc_tpb_client_id',
+          'svc_tpb_loopback_client_id',
         ),
         BITBUCKET_CLIENT_SECRET: await vault.readBitbucketSecret(
-          'svc_tpb_client_secret',
+          'svc_tpb_loopback_client_secret',
         ),
         BITBUCKET_HOST: process.env.BITBUCKET_HOST || 'bitbucket:7990',
         LDAP_ENDPOINT: process.env.LDAP_ENDPOINT || 'ldap://openldap:1389',
@@ -61,9 +61,11 @@ async function buildEnvironment(serverType: ServerType) {
           'svc_tpb_client_secret',
         ),
         AUTH0_DOMAIN: await vault.readAuth0Secret('svc_tpb_domain'),
-        GITHUB_APP_CLIENT_ID: await vault.readGithubSecret('svc_tpb_client_id'),
+        GITHUB_APP_CLIENT_ID: await vault.readGithubSecret(
+          'svc_tpb_loopback_client_id',
+        ),
         GITHUB_APP_CLIENT_SECRET: await vault.readGithubSecret(
-          'svc_tpb_client_secret',
+          'svc_tpb_loopback_client_secret',
         ),
         AWS_ACCESS_KEY_ID: await vault.readE2ESecret('aws_access_key_id'),
         AWS_SECRET_ACCESS_KEY: await vault.readE2ESecret(
@@ -85,7 +87,7 @@ async function buildEnvironment(serverType: ServerType) {
         CYPRESS_BITBUCKET_CATALOG_PREFIX:
           process.env.BITBUCKET_CATALOG_PREFIX || 'bitbucket:7990',
         CYPRESS_BITBUCKET_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
-          'bitbucket_svc_tpb_refresh_token',
+          'bitbucket_loopback_svc_tpb_refresh_token',
         ),
         CYPRESS_AUTH0_SVC_TPB_REFRESH_TOKEN: await vault.readE2ESecret(
           'auth0_svc_tpb_refresh_token',
