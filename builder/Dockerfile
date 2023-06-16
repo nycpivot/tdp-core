@@ -8,38 +8,37 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     yarn config set python /usr/bin/python3
 
-COPY packages/builder /builder
+COPY ./builder-source /builder
 
 # Install forever & verdaccio in a separate folder to avoid issues when purging node_modules
 RUN mkdir /registry
-COPY packages/builder/conf/verdaccio/package.pack.json /registry/package.json
-COPY packages/builder/conf/verdaccio/online_config.yaml /registry
-COPY packages/builder/conf/verdaccio/offline_config.yaml /registry
-COPY packages/builder/conf/verdaccio/start_offline.sh /registry
-COPY packages/builder/conf/verdaccio/stop_offline.sh /registry
+COPY ./verdaccio/package.pack.json /registry/package.json
+COPY ./verdaccio/online_config.yaml /registry
+COPY ./verdaccio/offline_config.yaml /registry
+COPY ./verdaccio/start_offline.sh /registry
+COPY ./verdaccio/stop_offline.sh /registry
 RUN yarn --cwd registry install
 
 # Specify that we will use Verdaccio as our registry
-RUN echo 'registry "http://localhost:4873"' > /builder/.yarnrc
+COPY ./builder-verdaccio-yarnrc /builder/.yarnrc
 
 # Install the builder dependencies using verdaccio to populate the registry's storage
-COPY packages/builder/conf/verdaccio/setup.sh /setup_verdaccio.sh
+COPY ./verdaccio/setup.sh /setup_verdaccio.sh
 RUN /setup_verdaccio.sh && \
     rm setup_verdaccio.sh /registry/online_config.yaml
-
-# Set up verdaccio
 
 # Embed verdaccio in the builder folder
 RUN cp -r registry /builder/registry
 
 # Add preinstall & postinstall scripts
-COPY packages/builder/package.json /builder/package.original.json
+COPY ./builder-source/package.json /builder/package.original.json
 RUN jq \
     --arg preinstall 'yarn --cwd registry start' \
     --arg start 'yarn --cwd portal start-portal' \
     '. * {"scripts": {preinstall: $preinstall}} * {"scripts": {start: $start}}' \
     <builder/package.original.json \
-    >builder/package.json
+    >builder/package.json && \
+    rm /builder/package.original.json
 
 
 ##################################################################################
@@ -52,3 +51,6 @@ COPY --from=installer builder /builder
 ### What's left (at least) ?
 # - generate a yarn.lock file for the builder (eventually move it outside packages)
 # - trimming the generated portal if possible
+# - maybe inline setup_verdaccio.sh
+#   - it is only run within this dockerfile
+#   - what belongs in a script as opposed to inlining?

@@ -16,9 +16,9 @@
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
     "portal": "webpack --config portal.config.ts",
-    "builder:install": "yarn install --registry http://localhost:4873",
+    "builder:install": "yarn install",
     "portal:generate": "yarn portal --env registry=verdaccio --env app_config=${TPB_APP_CONFIG} --env tpb_config=${TPB_CONFIG}",
-    "portal:install": "yarn --cwd portal install --registry http://localhost:4873 --network-timeout 600000",
+    "portal:install": "yarn --cwd portal install --network-timeout 600000",
     "portal:tsc": "yarn --cwd portal tsc",
     "portal:build": "yarn --cwd portal build",
     "portal:prepare-app": "yarn --cwd portal prepare-app",
@@ -28,14 +28,10 @@
     "set-app-config": "echo $APP_CONFIG_STRING | base64 -d > $TPB_APP_CONFIG"
   },
   "dependencies": {
-    "@tpb/plugin-clarity-theming": "^0.0.2-main.144",
-    "@tpb/runtime": "^0.0.2-main.144",
-    "@tpb/runtime-backend": "^0.0.2-main.144",
     "handlebars": "^4.7.7",
     "yaml": "^2.2.2"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.7",
     "@types/node": "^18.16.5",
     "@types/webpack": "^5.28.1",
     "copy-webpack-plugin": "^11.0.0",
