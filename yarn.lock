@@ -8762,10 +8762,10 @@
     uuid "^8.3.2"
     xml-formatter "^3.3.2"
 
-"@tpb/rrv@^0.1.2-alpha.11":
-  version "0.1.2-alpha.11"
-  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.11.tgz#23fd751207d1e9cc3768d792396d388653e15249"
-  integrity sha512-cMsktNvLSgIoG4vXTwvHoup2U8GQqd327lY0XEtxe0DKIWsZbg/wIrlS2aEkMSxUlkdrOa7M8mZSoRvhsuzNQQ==
+"@tpb/rrv@^0.1.2-alpha.12":
+  version "0.1.2-alpha.12"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/rrv/-/@tpb/rrv-0.1.2-alpha.12.tgz#011cf18f70b0fb4b6f4ece6ef900043558cffbbc"
+  integrity sha512-s3gTrZk6nbcxtUxEpB95LoLInAH3K5ogX+QDd3um2l6GO69tjHGxJUPIDkq9HlYxOt+jhxIKB99WyOFAu+cjuA==
   dependencies:
     "@backstage/catalog-model" "^1.1.5"
     "@backstage/core-app-api" "^1.4.0"
