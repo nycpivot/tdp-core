@@ -26,9 +26,12 @@ import '@tpb/plugin-clarity-theming/style/clarity.css';
 
 new AppRuntime([
   themePlugin(),
+  appAcceleratorPlugin(),
+  appLiveViewPlugin(),
+  supplyChainPlugin(),
+  securityAnalysisPlugin(),
   gitlabPlugin(),
   rrvPlugin(),
-  appLiveViewPlugin(),
   oktaAuthPlugin(),
   oidcAuthPlugin(),
   azureAuthPlugin(),
@@ -41,9 +44,6 @@ new AppRuntime([
   guestAuthPlugin(),
   permissionTestAuthPlugin(),
   vmwareCloudServicesAuthPlugin(),
-  appAcceleratorPlugin(),
   pendoPlugin(),
   scoringPlugin(),
-  supplyChainPlugin(),
-  securityAnalysisPlugin(),
 ]).render();

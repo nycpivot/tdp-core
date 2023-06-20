@@ -238,8 +238,11 @@ kubernetes:
           skipTLSVerify: true
 # Use the properties below to customize the visible features.
 # By default, features are visible if not set.
-#customize:
-#  features:
+customize:
+  features:
+    appLiveView:
+      configured: true
+      showInSidebar: false
 #    catalog:
 #      enabled: true
 #      showInSidebar: true
@@ -257,6 +260,15 @@ kubernetes:
 #    settings:
 #      enabled: true
 #      showInSidebar: true
-#    appLiveView:
-#      configured: true
+#    securityAnalysis:
+#      enabled: true
+#      showInSidebar: true
+#    supplyChain:
+#      enabled: true
+#      showInSidebar: true
+#    helloWorld:
+#      enabled: true
+#      showInSidebar: true
+#    appAccelerator:
+#      enabled: true
 #      showInSidebar: true

@@ -1,7 +1,7 @@
 app:
   plugins:
-    - name: '@tpb/plugin-rrv'
     - name: '@tpb/plugin-app-live-view'
+    - name: '@tpb/plugin-rrv'
     - name: '@tpb/plugin-azure-auth'
     - name: '@tpb/plugin-gitlab-auth'
     - name: '@tpb/plugin-google-auth'

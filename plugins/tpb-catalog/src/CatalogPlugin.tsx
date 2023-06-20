@@ -112,7 +112,7 @@ export const CatalogPlugin: AppPluginInterface<
     );
 
     context.applyTo(SidebarItemSurface, sidebar =>
-      sidebar.addMainItem(
+      sidebar.addTopItem(
         <ToggleFeature feature="customize.features.catalog.showInSidebar">
           <SidebarItem icon={HomeIcon} to={path} text={label} />
         </ToggleFeature>,
