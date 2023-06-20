@@ -2,7 +2,7 @@ SHELL = /bin/bash
 username ?= $(shell whoami)
 concourse_endpoint ?= "https://runway-ci-sfo.eng.vmware.com"
 VAULT_ADDR ?= "https://runway-vault-sfo.eng.vmware.com"
-CYPRESS_baseUrl ?= "http://localhost:3000"
+CYPRESS_baseUrl ?= "http://127.0.0.1:3000"
 
 .PHONY: help
 help: ## # Display this help.
@@ -56,28 +56,28 @@ else
 endif
 
 e2e-environment: image login-to-vault  ## # Build a whole docker environment where you can run the docker-local e2e tests.
-	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
+	BACKSTAGE_BASE_URL=http://127.0.0.1:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress start-containers
 
 docker-docker-e2e: image login-to-vault	## # Build a whole docker environment and run the e2e tests in a docker container like the pipeline.
 	VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress docker-tests
 
 docker-local-e2e: login-to-vault ## # Run the e2e tests against an e2e environment built with make e2e-environment.
-	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress local-tests
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://127.0.0.1:7007 $(MAKE) -C packages/app/cypress local-tests
 
 dev-e2e: login-to-vault	## # Run the e2e tests against the development environment launched with make start.
-	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress local-tests
+	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://127.0.0.1:3000 $(MAKE) -C packages/app/cypress local-tests
 
 docker-local-specific-test: login-to-vault	## # Run a specific e2e test built with make e2e-environment. Provide the test name with the test variable.
-	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress specific-test test=$(test)
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://127.0.0.1:7007 $(MAKE) -C packages/app/cypress specific-test test=$(test)
 
 dev-specific-test: login-to-vault ## # Run a specific e2e test against the development environment launched with make start. Provide the test name with the test variable.
-	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress specific-test test=$(test)
+	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://127.0.0.1:3000 $(MAKE) -C packages/app/cypress specific-test test=$(test)
 
 open-docker-local-e2e: login-to-vault ## # Open Cypress UI against an e2e environment built with make e2e-environment.
-	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:7007 $(MAKE) -C packages/app/cypress open-cypress-local
+	BITBUCKET_CATALOG_PREFIX="bitbucket:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://127.0.0.1:7007 $(MAKE) -C packages/app/cypress open-cypress-local
 
 open-dev-e2e: login-to-vault ## # Open Cypress UI against the development environment launched with make start.
-	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://localhost:3000 $(MAKE) -C packages/app/cypress open-cypress-local
+	BITBUCKET_CATALOG_PREFIX="localhost:7990" VAULT_ADDR=$(VAULT_ADDR) CYPRESS_baseUrl=http://127.0.0.1:3000 $(MAKE) -C packages/app/cypress open-cypress-local
 
 create-pipeline:	## # Create a Concourse pipeline for your current branch. Provide the name of the pipeline with the name variable.
 	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
@@ -119,7 +119,7 @@ stop-ldap-server: # Stop the ldap server docker container.
 	$(MAKE) -C packages/app/cypress stop-ldap-server
 
 start-tpb-server: login-to-vault # Start the tpb docker container.
-	BACKSTAGE_BASE_URL=http://localhost:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress tpb
+	BACKSTAGE_BASE_URL=http://127.0.0.1:7007 VAULT_ADDR=$(VAULT_ADDR) $(MAKE) -C packages/app/cypress tpb
 
 stop-tpb-server: # Stop the tpb docker container
 	$(MAKE) -C packages/app/cypress stop-tpb
