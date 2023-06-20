@@ -58,7 +58,7 @@ backend:
     - name: '@tpb/plugin-permission-test-auth-backend'
     - name: '@tpb/plugin-vmware-cloud-services-auth-backend'
     - name: '@tpb/plugin-pendo-analytics-backend'
-    #    - name: '@tpb/plugin-backstage-user-settings-backend'
+    - name: '@tpb/plugin-backstage-user-settings-backend'
     #    - name: '@tpb/plugin-permission-test-policy'
     - name: '@tpb/plugin-api-auto-registration-backend'
     - name: '@tpb/tpb-custom-logger'
