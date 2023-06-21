@@ -1,3 +1,6 @@
+# This manifest seeds the builder image's verdaccio cache with whatever images
+# you put in here. It need not be the same as the default list of packages that
+# running the builder produces.
 app:
   plugins:
     - name: '@tpb/plugin-app-live-view'
@@ -16,7 +19,6 @@ app:
     - name: '@tpb/plugin-api-scoring'
     - name: '@tpb/plugin-app-accelerator-scaffolder'
     - name: '@tpb/plugin-pendo-analytics'
-    #    - name: '@tpb/plugin-permission-test-auth'
     - name: '@tpb/plugin-security-analysis-frontend'
     - name: '@tpb/plugin-supply-chain'
     - name: '@tpb/plugin-vmware-cloud-services-auth'
@@ -59,7 +61,6 @@ backend:
     - name: '@tpb/plugin-vmware-cloud-services-auth-backend'
     - name: '@tpb/plugin-pendo-analytics-backend'
     - name: '@tpb/plugin-backstage-user-settings-backend'
-    #    - name: '@tpb/plugin-permission-test-policy'
     - name: '@tpb/plugin-api-auto-registration-backend'
     - name: '@tpb/tpb-custom-logger'
     - name: '@tpb/plugin-hello-world-backend'
