@@ -1,0 +1,6 @@
+# Configuration that is used when running verdaccio in the buildpack context.
+storage: ./storage
+packages:
+  '**':
+    access: $all
+log: { type: stdout, format: pretty, level: http }

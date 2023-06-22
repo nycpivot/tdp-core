@@ -6,13 +6,14 @@ describe('Portal Bundle Builder', () => {
     const env: EnvironmentProperties = {
       app_config: 'app-config.yaml',
       output_folder: 'output',
-      tpb_config: 'conf/tpb-config.yaml',
+      tpb_config: 'conf/default-manifest.yaml',
     };
 
     const bundle = buildPortalBundle(env, file => file);
 
     expect(bundle.outputFolder).toEqual(env.output_folder);
     expect(bundle.appConfig).toEqual(env.app_config);
+    expect(bundle.buildAppConfig).toEqual('conf/app-config.yaml');
     expect(bundle.bundleFolder).toEqual('bundle');
   });
 
@@ -27,6 +28,7 @@ describe('Portal Bundle Builder', () => {
 
     expect(bundle.outputFolder).toEqual('portal');
     expect(bundle.appConfig).toEqual('conf/app-config.yaml');
+    expect(bundle.buildAppConfig).toEqual('conf/app-config.yaml');
     expect(bundle.bundleFolder).toEqual('bundle');
   });
 });

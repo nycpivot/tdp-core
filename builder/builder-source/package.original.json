@@ -1,0 +1,45 @@
+{
+  "name": "builder",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": "16"
+  },
+  "backstage": {
+    "role": "node-library"
+  },
+  "scripts": {
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "portal": "webpack --config portal.config.ts",
+    "builder:install": "yarn install",
+    "portal:generate": "yarn portal --env registry=verdaccio --env app_config=${TPB_APP_CONFIG} --env tpb_config=${TPB_CONFIG}",
+    "portal:install": "yarn --cwd portal install --network-timeout 600000",
+    "portal:tsc": "yarn --cwd portal tsc",
+    "portal:build": "yarn --cwd portal build",
+    "portal:prepare-app": "yarn --cwd portal prepare-app",
+    "portal:prepare-pack": "yarn builder:install && yarn portal:generate && yarn portal:install",
+    "portal:pack": "yarn portal:prepare-pack && yarn portal:tsc && yarn portal:build && yarn portal:prepare-app",
+    "set-tpb-config": "echo $TPB_CONFIG_STRING | base64 -d > $TPB_CONFIG",
+    "set-app-config": "echo $APP_CONFIG_STRING | base64 -d > $TPB_APP_CONFIG"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "yaml": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.5",
+    "@types/webpack": "^5.28.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "generate-file-webpack-plugin": "^1.0.1",
+    "remove-files-webpack-plugin": "~1.5.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
