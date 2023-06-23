@@ -59,6 +59,7 @@
     "@tpb/runtime-backend": "^0.0.1-alpha.3",
     "@tpb/plugin-api-auto-registration-backend": "^1.0.1",
     "@tpb/tpb-custom-logger": "^0.0.1-alpha.1",
+    "@tpb/plugin-backstage-sonarqube-backend": "0.0.1-alpha.0",
     "app": "link:../app",
     "better-sqlite3": "^8.3.0",
     "dockerode": "^3.3.5",

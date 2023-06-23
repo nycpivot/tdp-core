@@ -23,6 +23,7 @@ import { plugin as supplyChainPlugin } from '@tpb/plugin-supply-chain';
 import { plugin as securityAnalysisPlugin } from '@tpb/plugin-security-analysis-frontend';
 import { plugin as techInsightsPlugin } from '@tpb/plugin-techinsights';
 import { plugin as githubActionsPlugin } from '@tpb/plugin-github-actions';
+import { plugin as backstageSonarqubePlugin } from '@tpb/plugin-backstage-sonarqube';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -50,4 +51,5 @@ new AppRuntime([
   scoringPlugin(),
   techInsightsPlugin(),
   githubActionsPlugin(),
+  backstageSonarqubePlugin(),
 ]).render();

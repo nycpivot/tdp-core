@@ -34,6 +34,19 @@ spec:
   providesApis: [example-grpc-api]
   consumesApis: [example-openapi-api]
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-sonarqube
+  description: An example for Sonarqube integration.
+  annotations:
+    sonarqube.org/project-key: esback-core
+spec:
+  type: website
+  owner: guests
+  lifecycle: experimental
+  system: examples
+---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
 apiVersion: backstage.io/v1alpha1
 kind: API
