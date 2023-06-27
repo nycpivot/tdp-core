@@ -94,7 +94,7 @@ jobs:
       - set_pipeline: self
         file: rendered/pipeline.yml
         var_files:
-          - #@ data.values.varsFile
+          -  #@ data.values.varsFile
       #@ if/end getattr(data.values, "setMRCheck", False):
       - set_pipeline: mr-check
         file: pipeline-repo/ci/mr-check.yml
