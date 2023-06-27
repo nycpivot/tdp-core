@@ -31,14 +31,16 @@
     "cypress:cluster": "cypress run --browser chrome --config baseUrl=$CYPRESS_baseUrl --env mocked=$CYPRESS_MOCKED"
   },
   "dependencies": {
-    "react": "^16.14.0 | ^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router": "6.0.0-beta.0",
-    "react-router-dom": "6.0.0-beta.0",
     "@backstage/plugin-catalog": "^1.11.2",
     "@backstage/plugin-tech-insights": "^0.3.11",
     "@tpb/core-frontend": "^0.0.2-main.158",
     "@tpb/plugin-catalog": "^0.0.2-main.157"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "6.0.0-beta.0",
+    "react-router-dom": "6.0.0-beta.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.6",
