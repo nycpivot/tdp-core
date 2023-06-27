@@ -55,6 +55,7 @@
     "@tpb/plugin-pendo-analytics-backend": "^1.0.6-build.0",
     "@tpb/plugin-backstage-user-settings-backend": "^0.0.1-alpha.2",
     "@tpb/plugin-permission-test-policy": "^0.0.1-alpha.1",
+    "@tpb/plugin-techinsights-backend": "^0.0.1-alpha.3",
     "@tpb/runtime-backend": "^0.0.1-alpha.3",
     "@tpb/plugin-api-auto-registration-backend": "^1.0.1",
     "@tpb/tpb-custom-logger": "^0.0.1-alpha.1",
