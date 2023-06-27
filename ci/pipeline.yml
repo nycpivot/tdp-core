@@ -92,7 +92,7 @@ jobs:
         params:
           VALUES_FILE: #@ data.values.valuesFile
       - set_pipeline: self
-        file: pipeline-repo/ci/pipeline.yml
+        file: rendered/pipeline.yml
         var_files:
           - #@ data.values.varsFile
       #@ if/end getattr(data.values, "setMRCheck", False):
