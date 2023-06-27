@@ -176,6 +176,7 @@ jobs:
             params: { format: oci }
             passed: [build]
             trigger: true
+          - get: pipeline-repo
       - task: test
         privileged: true
         file: pipeline-repo/ci/integration-tests.yml
