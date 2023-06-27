@@ -1,0 +1,1 @@
+export { TechInsightsFrontendPlugin } from './TechInsightsFrontendPlugin';
