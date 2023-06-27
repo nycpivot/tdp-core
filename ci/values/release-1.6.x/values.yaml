@@ -1,0 +1,4 @@
+---
+setMRCheck: false
+valuesFile: pipeline-repo/ci/values/release-1.6.x/values.yaml
+varsFile: pipeline-repo/ci/values/release-1.6.x/vars.yaml
