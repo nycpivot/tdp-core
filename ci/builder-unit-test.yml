@@ -1,0 +1,30 @@
+---
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
+    tag: 16-alpine3.17
+inputs:
+  - name: code
+run:
+  dir: code
+  path: ash
+  args:
+    - -exc
+    - |
+      ci/scripts/setup_alpine
+      yarn global add verdaccio
+      cd builder/verdaccio
+      verdaccio --config online_config.yaml &
+      apk add curl
+      curl --connect-timeout 5 \
+        --max-time 10 \
+        --retry 5 \
+        --retry-delay 0 \
+        --retry-max-time 40 \
+        --retry-all-errors \
+        http://localhost:4873/-/ping
+      cd ../builder-source
+      ../../ci/scripts/yarn_install
+      CI=true yarn test

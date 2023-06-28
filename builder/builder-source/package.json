@@ -24,14 +24,17 @@
     "portal:prepare-app": "yarn --cwd portal prepare-app",
     "portal:prepare-pack": "yarn builder:install && yarn portal:generate && yarn portal:install",
     "portal:pack": "yarn portal:prepare-pack && yarn portal:tsc && yarn portal:build && yarn portal:prepare-app",
+    "prettier:check": "prettier --check .",
     "set-tpb-config": "echo $TPB_CONFIG_STRING | base64 -d > $TPB_CONFIG",
-    "set-app-config": "echo $APP_CONFIG_STRING | base64 -d > $TPB_APP_CONFIG"
+    "set-app-config": "echo $APP_CONFIG_STRING | base64 -d > $TPB_APP_CONFIG",
+    "tsc": "tsc"
   },
   "dependencies": {
     "handlebars": "^4.7.7",
     "yaml": "^2.2.2"
   },
   "devDependencies": {
+    "@backstage/cli": "^0.22.6",
     "@types/node": "^18.16.5",
     "@types/webpack": "^5.28.1",
     "copy-webpack-plugin": "^11.0.0",
@@ -40,6 +43,18 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "webpack": "^5.82.1",
-    "webpack-cli": "^5.1.1"
+    "webpack-cli": "^5.1.1",
+    "prettier": "^2.8.8",
+    "@spotify/prettier-config": "^14.1.6"
+  },
+  "prettier": "@spotify/prettier-config",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   }
 }
