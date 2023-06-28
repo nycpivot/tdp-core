@@ -8,19 +8,21 @@ const error_svg_path =
 
 describe('TechInsights v0.3.11 in TPB v1.6.0', () => {
   beforeEach(() => {
-    Authentication.guestLogin();
+    Authentication.logInAsCatalogAdmin();
     cy.visit('/catalog');
   });
 
   it('displays the TechInsights tab on an entity details', () => {
     cy.contains('Catalog');
-    cy.get('td[value="yelb-db"]').should('be.visible').children('a').click();
-    cy.get('button[data-testid="header-tab-5"]')
-      .should('be.visible')
-      .contains('TechInsights')
-      .click();
 
-    cy.contains('Customized title for the scorecard').should('be.visible');
+    cy.contains('Custom Entity Provider Entity');
+    cy.get('td[value="custom-entity-provider-entity"]')
+      .should('be.visible')
+      .children('a')
+      .click();
+    cy.get('button').contains('TechInsights').click();
+
+    cy.contains('TechInsights Scorecard.').should('be.visible');
     cy.contains('Group Owner Check').should('be.visible');
     cy.contains('TechDocs Check').should('be.visible');
     cy.contains('Title Check').should('be.visible');
