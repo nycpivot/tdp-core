@@ -86,6 +86,7 @@ jobs:
           - get: esback-core
             trigger: true
           - get: pipeline-repo
+            trigger: true
           - get: ytt
       - task: render-template
         file: pipeline-repo/ci/render-pipeline-template.yml
