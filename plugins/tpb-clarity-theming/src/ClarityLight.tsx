@@ -55,12 +55,12 @@ const theme = createTheme({
    */
   // `status` defines the color of the `Status` component
   status: {
-    ok: 'var(--cds-alias-status-success)', // hsl(93, 80%, 28%)
-    warning: 'var(--cds-alias-status-warning)', // hsl(40, 100%, 59%)
-    error: 'var(--cds-alias-status-danger)', // hsl(9, 100%, 44%)
-    running: 'var(--cds-alias-status-info)', // hsl(198, 100%, 34%)
-    pending: 'var(--cds-alias-status-alt)', // hsl(283, 80%, 36%)
-    aborted: 'var(--cds-alias-status-neutral)', // hsl(198, 14%, 36%)
+    ok: 'hsl(93, 80%, 28%)',
+    warning: 'hsl(40, 100%, 59%)',
+    error: 'hsl(9, 100%, 44%)',
+    running: 'hsl(198, 100%, 34%)',
+    pending: 'hsl(283, 80%, 36%)',
+    aborted: 'hsl(198, 14%, 36%)',
   },
   border: '#E8E8E8',
   textContrast: TAP_UI_KIT_LIGHT_PALETTE.inputValue,
