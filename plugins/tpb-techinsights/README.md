@@ -4,7 +4,7 @@
 
 This plugin provides the UI for the `@tpb/plugin-techinsights-backend` plugin wrapper which allows display of the results of the checks that stem from the rules and the logic defined in the backend.
 
-Without any user intervention this plugin wrapper creates a tab inside the Entity Details page that displays the `EntityTechInsightsScorecardContent` component with the results of running the fact-retrievers [already provided](https://github.com/backstage/backstage/tree/master/plugins/tech-insights-backend#included-factretrievers) by TechInsights:
+This code wraps the TechInsights plugin that, by default, includes a scorecard that showcases the results of the following 3 fact checkers [already provided](https://github.com/backstage/backstage/tree/master/plugins/tech-insights-backend#included-factretrievers) by TechInsights:
 
 - entityOwnershipFactRetriever
 - entityMetadataFactRetriever
