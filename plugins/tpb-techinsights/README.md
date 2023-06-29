@@ -10,7 +10,7 @@ This code wraps the TechInsights plugin that, by default, includes a scorecard t
 - entityMetadataFactRetriever
 - techdocsFactRetriever
 
-The end result looks similar to this
+Used in conjunction with the [Backend wrapper](../tpb-techinsights-backend/) it brings TechInsight's default functionalities into TPB. The end result looks similar to this:
 
 ![TechInsights Entity Scorecard](./docs/techinsights-scorecard.png)
 
