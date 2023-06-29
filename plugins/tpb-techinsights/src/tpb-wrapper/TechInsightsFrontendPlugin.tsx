@@ -13,7 +13,7 @@ export const TechInsightsFrontendPlugin: AppPluginInterface = () => context => {
         <EntityLayout.Route path="/techinsights" title="TechInsights">
           <EntityTechInsightsScorecardContent
             title="TechInsights Scorecard."
-            description="TechInsights Scorecard with checks."
+            description="TechInsight's default fact-checkers"
           />
         </EntityLayout.Route>,
       );
