@@ -88,6 +88,16 @@ jobs:
             input_mapping:
               code: gitlab-mr
             file: gitlab-mr/ci/unit-test.yml
+          - task: builder-lint
+            attempts: 2
+            input_mapping:
+              code: gitlab-mr
+            file: gitlab-mr/ci/builder-lint.yml
+          - task: builder-test
+            attempts: 2
+            input_mapping:
+              code: gitlab-mr
+            file: gitlab-mr/ci/builder-unit-test.yml
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: bump

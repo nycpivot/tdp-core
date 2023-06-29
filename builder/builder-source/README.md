@@ -271,3 +271,14 @@ And that's it.
 After running `yarn` and `yarn dev` in the portal folder, you will be able to modify your plugin code and refresh the browser to see your changes applied.
 
 The same technique can be used for backend plugins too.
+
+## Running builder unit tests
+
+Run verdaccio:
+
+```
+cd builder/verdaccio
+./start_online.sh
+```
+
+In another terminal window, you will be able to run `yarn install && yarn test`

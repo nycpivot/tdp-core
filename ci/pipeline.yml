@@ -98,6 +98,12 @@ jobs:
           - task: test
             attempts: 3
             file: code/ci/unit-test.yml
+          - task: builder-lint
+            attempts: 3
+            file: code/ci/builder-lint.yml
+          - task: builder-test
+            attempts: 3
+            file: code/ci/builder-unit-test.yml
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: bump
