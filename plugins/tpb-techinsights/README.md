@@ -20,6 +20,10 @@ This wrapper uses the concept of [Surfaces](https://gitlab.eng.vmware.com/esback
 
 What follows is a technical explanation of how this wrapping is done using the Surfaces APIs.
 
+### Creating a plugin boilerplate
+
+...
+
 ### Defining an AppPluginInterface
 
 In order for TPB to pick up the plugin we need to create a definition of type `AppPluginInterface` which is defined by the `@tpb/core-frontend` package.
@@ -30,7 +34,7 @@ A barebones definition of a plugin may look like the following:
 ```
 export const PluginDefinition: AppPluginInterface = () => context: SurfaceStoreInterface => {
   context.apply(
-    surfaceToUse
+    SurfaceToUseConstructor
     (surfaceToUse) => {
       surfaceToUse.add(element)
     },
@@ -39,9 +43,10 @@ export const PluginDefinition: AppPluginInterface = () => context: SurfaceStoreI
 
 ```
 
-where `context` is of type `SurfaceStoreInterface`, `surfaceToUse` is any subtype of `SurfaceConstructor` and the passed function is called a `SurfaceModifier` which is where you can interact with the surfaces and add different stuff to it. In the above example we are using the method `add` to pass an `element` which is a `ReactElement`.
+where `context` is of type `SurfaceStoreInterface`, `SurfaceToUseConstructor` is any subtype of `SurfaceConstructor` and the passed function is called a `SurfaceModifier` which is where you can interact with the surfaces instances and add different stuff to them.
+In the above example we are using the method `add` to pass an `element` which is a `ReactElement`.
 
-There are scenarios in which more surfaces need to be manipulated in order to integrate the plugin —such as this wrapper— and for those use cases the `SurfaceStoreInterface` exposes the method `applyWithDependency` in which it is possible to pass several `SurfaceConstructor` dependencie which will be then made available to the `SurfaceModifier` function as parameters.
+There are scenarios in which more surfaces need to be manipulated in order to integrate the plugin —such as this wrapper— and for those use cases the `SurfaceStoreInterface` exposes the method `applyWithDependency` in which it is possible to pass several `SurfaceConstructor` dependencies which will be then made available to the `SurfaceModifier` function as parameters.
 
 Now let's take a look at how we can use all of the things that we've just described above to wrap the techinsights plugin into TPB.
 
@@ -88,41 +93,15 @@ After figuring out our surfaces, the last paramater that `applyWithDependency` r
 
 We then pass a ReactElement to this `addTab` function. The element is an `EntityLayout.Route` (obtained from `@backstage/plugin-catalog`) with a nested `EntityTechInsightsScorecardContent` provided by TechInsights.
 
-The ability to pass a `ReactElement` directly is quite powerful as it allows us to pass arbitrary react components to create advanced UIs.
+### Build and publish the package.
 
-### Registering the AppPluginInterface
+Now the only thing left to do with the wrapper is to package and publish it.
+So run `yarn install` to install all dependencies, then run `yarn tsc` to verify that the typescript code compiles properly, then finally run `yarn build` to package it all.
 
-We now have a fully-compliant TPB plugin wrapper definition. What do we do with it?
+Once all the above commands have been executed succesfully you should publish the package to any compatible registry by using `npm publish --registry="<<YOUR REGISTRY URL>"
 
-The first step is to publish the package. Instructions on how to do this can be found at the [TPB Documentation](https://gitlab.eng.vmware.com/esback/core/-/blob/main/README.md#packaging-and-publishing)
+And that's it. You now have a published TPB wrapper.
 
-Once the package is published all we need to do now is to register it in our application.
-In order to do that we first need to declare the package as a dependency in the [app package.json](../../packages/app/package.json):
+### Integrate the package into your ESBACK instance
 
-```
-...
-  "dependencies": {
-    ...
-    "@tpb/plugin-techinsights": "^0.0.1-alpha.1",
-    ...
-  },
-  ...
-```
-
-And then register it into the [app runtime](../../packages/app/src/index.tsx):
-
-```
-import { AppRuntime } from '@tpb/runtime';
-import { plugin as techInsightsPlugin } from '@tpb/plugin-techinsights';
-
-import '@tpb/plugin-clarity-theming/style/clarity.css';
-
-new AppRuntime([
-  ...
-  techInsightsPlugin(),
-  ...
-]).render();
-```
-
-And that's it.
-Your plugin wrapper is now in use by TPB.
+TBD.
