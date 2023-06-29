@@ -1,10 +1,8 @@
-# TPB - TechInsights
+# Tanzu Portarl Builder (TPB) - TechInsights FrontEnd Wrapper
 
 ## Introduction and OOTB features
 
-This plugin provides the UI for the `@tpb/plugin-techinsights-backend` plugin wrapper which allows display of the results of the checks that stem from the rules and the logic defined in the backend.
-
-This code wraps the TechInsights plugin that, by default, includes a scorecard that showcases the results of the following 3 fact checkers [already provided](https://github.com/backstage/backstage/tree/master/plugins/tech-insights-backend#included-factretrievers) by TechInsights:
+This code is a thin-wrapper for the [TechInsights frontend plugin](https://github.com/backstage/backstage/tree/master/plugins/tech-insights) that, by default, includes a scorecard that showcases the results of the following 3 fact checkers [already provided](https://github.com/backstage/backstage/tree/master/plugins/tech-insights-backend#included-factretrievers) by TechInsights:
 
 - entityOwnershipFactRetriever
 - entityMetadataFactRetriever
@@ -14,15 +12,17 @@ Used in conjunction with the [Backend wrapper](../tpb-techinsights-backend/) it 
 
 ![TechInsights Entity Scorecard](./docs/techinsights-scorecard.png)
 
+Please note that this code is a _wrapper_ for an already existing Backstage plugin. If you want to create a Backstage plugin from scratch you will need to follow the official [Backstage plugins documentation](https://backstage.io/docs/plugins/create-a-plugin) and _then_ write the TPB thin-wrapper for it.
+
 ## Plugin Wrapper Overview
 
 This wrapper uses the concept of [Surfaces](https://gitlab.eng.vmware.com/esback/core#frontend-plugins) to incorporate the TechInsights plugin into TPB.
 
 What follows is a technical explanation of how this wrapping is done using the Surfaces APIs.
 
-### Creating a plugin boilerplate
+### Creating a plugin-wrapper boilerplate
 
-...
+The plugin wrappers all live currently under the [plugins folder](../). Each plugin lives in its own folder (usually prefixed with `tpb-` to indicate that this is a TPB wrapper)
 
 ### Defining an AppPluginInterface
 
