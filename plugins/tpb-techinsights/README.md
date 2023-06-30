@@ -2,7 +2,7 @@
 
 ## Introduction and OOTB features
 
-This code is a thin-wrapper for the [TechInsights frontend plugin](https://github.com/backstage/backstage/tree/master/plugins/tech-insights) that, by default, includes a scorecard that showcases the results of the following 3 fact checkers [already provided](https://github.com/backstage/backstage/tree/master/plugins/tech-insights-backend#included-factretrievers) by TechInsights:
+This code is a thin-wrapper for the [TechInsights FrontEnd plugin](https://github.com/backstage/backstage/tree/master/plugins/tech-insights) that, by default, includes a scorecard that showcases the results of the following 3 fact checkers [already provided](https://github.com/backstage/backstage/tree/master/plugins/tech-insights-backend#included-factretrievers) by TechInsights:
 
 - entityOwnershipFactRetriever
 - entityMetadataFactRetriever
@@ -29,12 +29,12 @@ In order for TPB to pick up the plugin we need to create a definition of type `A
 
 This definition is a high-order-function that returns a function that takes in as parameter the `SurfaceStoreInterface`; this `SurfaceStoreInterface` will be then used to _apply_ the dependencies to the specified surfaces.
 
-A barebones definition of a plugin may look like the following:
+A barebones definition of a TPB wrapper plugin may look like the following:
 
 ```
 export const PluginDefinition: AppPluginInterface = () => context: SurfaceStoreInterface => {
   context.apply(
-    SurfaceToUseConstructor
+    SurfaceToUse
     (surfaceToUse) => {
       surfaceToUse.add(element)
     },
@@ -43,7 +43,7 @@ export const PluginDefinition: AppPluginInterface = () => context: SurfaceStoreI
 
 ```
 
-where `context` is of type `SurfaceStoreInterface`; `SurfaceToUseConstructor` is any subtype of `TpbSurface`, and the passed function is called a `SurfaceModifier` which is where you can interact with the surfaces instances and add different stuff to them.
+where `context` is of type `SurfaceStoreInterface`; `SurfaceToUse` is any subtype of `TpbSurface`, and the passed function is called a `SurfaceModifier` which is where you can interact with the surfaces instances and add different stuff to them.
 In the above example we are calling the method `add` to pass an `element` which is a `ReactElement`.
 
 There are scenarios in which more surfaces need to be manipulated in order to integrate the plugin —such as this wrapper— and for those use cases the `SurfaceStoreInterface` exposes the method `applyWithDependency` in which it is possible to pass several `SurfaceConstructor` dependencies which will be then made available to the `SurfaceModifier` function as parameters.
@@ -117,7 +117,7 @@ First, remember to verify the version defined in the [package.json](./package.js
 Once all the above commands have been executed succesfully you should publish the package to any compatible registry by using `npm publish --registry="<<YOUR REGISTRY URL>"`.
 Please refer to the [TPB Plugins documentation](../README.md) for considerations about the registries used to publish our packages.
 
-And that's it. You now have a published TPB wrapper.
+And that's it. You now have a published TPB wrapper for TechInsight's FrontEnd plugin.
 
 ## Integrate the package into your TPB instance
 
