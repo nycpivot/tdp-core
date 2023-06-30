@@ -21,7 +21,7 @@ const ttlTwoWeeks = { timeToLive: { weeks: 2 } };
 
 const createPlugin = () => {
   return async (env: PluginEnvironment): Promise<Router> => {
-    const builder = await buildTechInsightsContext({
+    const context = await buildTechInsightsContext({
       logger: env.logger,
       config: env.config,
       database: env.database,
@@ -110,7 +110,7 @@ const createPlugin = () => {
     });
 
     return await createRouter({
-      ...builder,
+      ...context,
       logger: env.logger,
       config: env.config,
     });
@@ -119,8 +119,8 @@ const createPlugin = () => {
 
 export const TechInsightsBackendPlugin: BackendPluginInterface =
   () => surfaces =>
-    surfaces.applyTo(BackendPluginSurface, surface => {
-      surface.addPlugin({
+    surfaces.applyTo(BackendPluginSurface, backendPluginSurface => {
+      backendPluginSurface.addPlugin({
         name: 'tech-insights',
         pluginFn: createPlugin(),
       });
