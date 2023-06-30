@@ -1,10 +1,11 @@
 import path from 'path';
 import CopyPlugin from 'copy-webpack-plugin';
-import createFile from 'generate-file-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
 import { buildPortalBundle } from './src/PortalBundleBuilder';
 import { FilePath } from './src/FileUtils';
 import { EnvironmentProperties } from './src/EnvironmentProperties';
+
+const createFile = require('generate-file-webpack-plugin');
 
 export default (env: EnvironmentProperties) => {
   const bundle = buildPortalBundle(env, resolvePath);
