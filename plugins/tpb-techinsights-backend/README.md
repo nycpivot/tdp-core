@@ -1,4 +1,4 @@
-# TPB - TechInsights Backend
+# Tanzu Portarl Builder (TPB) - TechInsights FrontEnd Wrapper
 
 ## Introduction and OOTB Features
 
