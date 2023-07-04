@@ -87,7 +87,7 @@ export const TechInsightsFrontendPlugin: AppPluginInterface =
 
 Let's analyze it:
 
-`TechInsightsFrontenPlugin` is the main exportable part —the `AppPluginInterface` definition; it returns a function that receives a parameter we called `context` which is a `SurfaceStoreInterface`.
+`TechInsightsFrontendPlugin` is the main exportable part —the `AppPluginInterface` definition; it returns a function that receives a parameter we called `context` which is a `SurfaceStoreInterface`.
 
 Then the function `applyWithDependency` is invoked from the `context` with two TPB Surfaces: `AppRouteSurface` and `EntityPageSurface`.
 
@@ -103,7 +103,6 @@ The final part of creating our TPB plugin wrapper is exporting it. We do that in
 
 ```
 export { TechInsightsFrontendPlugin as plugin } from './tpb-wrapper';
-
 ```
 
 We _strongly_ suggest exporting your `AppPluginInterface` aliased as `plugin`, just like shown above, to keep your wrapper consistent with the pattern used in other existing TPB wrappers.
