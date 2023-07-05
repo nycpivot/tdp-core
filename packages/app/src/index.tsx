@@ -22,6 +22,7 @@ import { plugin as scoringPlugin } from '@tpb/plugin-api-scoring';
 import { plugin as supplyChainPlugin } from '@tpb/plugin-supply-chain';
 import { plugin as securityAnalysisPlugin } from '@tpb/plugin-security-analysis-frontend';
 import { plugin as techInsightsPlugin } from '@tpb/plugin-techinsights';
+import { plugin as githubActionsPlugin } from '@tpb/plugin-github-actions';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -48,4 +49,5 @@ new AppRuntime([
   pendoPlugin(),
   scoringPlugin(),
   techInsightsPlugin(),
+  githubActionsPlugin(),
 ]).render();

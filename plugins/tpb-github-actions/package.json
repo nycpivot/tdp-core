@@ -1,0 +1,52 @@
+{
+  "name": "@tpb/plugin-github-actions",
+  "version": "0.0.1-alpha.1",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.esm.js",
+    "types": "dist/index.d.ts"
+  },
+  "backstage": {
+    "role": "frontend-plugin"
+  },
+  "resolutions": {
+    "react": "^17",
+    "@types/react": "^17",
+    "@types/react-dom": "^17"
+  },
+  "scripts": {
+    "start": "backstage-cli package start",
+    "build": "backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --browser chrome",
+    "cypress:ci": "HEADLESS=true cypress run",
+    "cypress:cluster": "cypress run --browser chrome --config baseUrl=$CYPRESS_baseUrl --env mocked=$CYPRESS_MOCKED"
+  },
+  "peerDependencies": {
+    "react": "^16.14.0 | ^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "6.0.0-beta.0",
+    "react-router-dom": "6.0.0-beta.0"
+  },
+  "dependencies": {
+    "@backstage/core-components": "^0.13.0",
+    "@backstage/core-plugin-api": "^1.5.0",
+    "@backstage/plugin-catalog": "^1.11.2",
+    "@backstage/plugin-github-actions": "^0.6.0",
+    "@tpb/core-frontend": "^0.0.2-main.158",
+    "@tpb/plugin-catalog": "^0.0.2-main.157"
+  },
+  "devDependencies": {},
+  "files": [
+    "dist"
+  ],
+  "description": "Github Actions plugin wrapper"
+}
