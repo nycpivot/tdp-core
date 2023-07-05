@@ -28,7 +28,7 @@ function CustomizableHomePage() {
   return (
     <>
       <CustomHomepageGrid config={defaultConfig}>
-        <HomePageCompanyLogo logo={<img src={logo} />} />
+        <HomePageCompanyLogo logo={<img src={logo} alt="logo" />} />
         <HomePageSearchBar />
         <HomePageStarredEntities />
       </CustomHomepageGrid>
