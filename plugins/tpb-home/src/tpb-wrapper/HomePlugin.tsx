@@ -24,7 +24,7 @@ export const HomePlugin: AppPluginInterface =
 
     // Add sidebar entry
     context.applyTo(SidebarItemSurface, (sidebar: SidebarItemSurface) => {
-      sidebar.addTopItem(
+      sidebar.addMainItem(
         <SidebarItem icon={HomeIcon} to="home" text="Home page" />,
       );
     });
