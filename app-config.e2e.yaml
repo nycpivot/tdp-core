@@ -288,6 +288,11 @@ proxy:
     changeOrigin: true
     pathRewrite:
       '^/api/proxy/accelerators': '/api/accelerators'
+  '/snyk':
+    target: https://api.snyk.io
+    headers:
+      User-Agent: tech-services/backstage-plugin/1.0
+      Authorization: token ${SNYK_TOKEN}
 
 auth:
   session:

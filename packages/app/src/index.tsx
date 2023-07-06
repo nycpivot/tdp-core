@@ -25,6 +25,7 @@ import { plugin as techInsightsPlugin } from '@tpb/plugin-techinsights';
 import { plugin as githubActionsPlugin } from '@tpb/plugin-github-actions';
 import { plugin as backstageSonarqubePlugin } from '@tpb/plugin-backstage-sonarqube';
 import { plugin as homePlugin } from '@tpb/plugin-home';
+import { plugin as snykPlugin } from '@tpb/plugin-snyk';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -54,4 +55,5 @@ new AppRuntime([
   githubActionsPlugin(),
   backstageSonarqubePlugin(),
   homePlugin(),
+  snykPlugin(),
 ]).render();
