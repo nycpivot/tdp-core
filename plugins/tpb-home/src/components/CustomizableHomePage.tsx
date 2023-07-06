@@ -10,6 +10,7 @@ import {
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
 import QuickLinkIcon from './QuickLinkIcon';
+import { HomePageWelcomeMessage } from './HomePageWelcomeMessage';
 
 interface QuickLink {
   url: string;
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: 'auto',
   },
   container: {
-    margin: theme.spacing(5, 0),
+    margin: theme.spacing(2, 0),
     display: 'flex',
     justifyContent: 'center',
   },
@@ -57,11 +58,18 @@ function CustomizableHomePage() {
 
   const defaultConfig = [
     {
-      component: 'HomePageCompanyLogo',
+      component: 'CompanyLogo',
       x: 0,
       y: 0,
       width: 12,
-      height: 12,
+      height: 8,
+    },
+    {
+      component: 'HomePageWelcomeMessage',
+      x: 0,
+      y: 13,
+      width: 12,
+      height: 4,
     },
     // {
     //   component: 'HomePageSearchBar',
@@ -73,14 +81,14 @@ function CustomizableHomePage() {
     {
       component: 'HomePageStarredEntities',
       x: 0,
-      y: 19,
+      y: 14,
       width: 6,
       height: 12,
     },
     {
       component: 'HomePageToolkit',
       x: 7,
-      y: 19,
+      y: 14,
       width: 6,
       height: 12,
     },
@@ -95,6 +103,7 @@ function CustomizableHomePage() {
             <img src={logoSrc} alt="Company Logo" className={classes.logo} />
           }
         />
+        <HomePageWelcomeMessage />
         {/* <HomePageSearchBar /> */}
         <HomePageStarredEntities />
         <HomePageToolkit title="Quick Links" tools={parsedLinks} />
