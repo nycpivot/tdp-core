@@ -7,7 +7,7 @@ import {
   SurfaceStoreInterface,
 } from '@tpb/core-frontend';
 import { Route } from 'react-router';
-import CustomizableHomePage from '../home/CustomizableHomePage';
+import CustomizableHomePage from '../components/CustomizableHomePage';
 import { SidebarItem } from '@backstage/core-components';
 import HomeIcon from '@material-ui/icons/Home';
 

@@ -10,10 +10,14 @@ export interface Config {
     features?: {
       home?: {
         /**
-         * base64 encodes SVG image.
+         * base64 encoded SVG image.
          * @visibility frontend
          */
         logo?: string;
+        /**
+         * @visibility frontend
+         */
+        welcomeMessage?: string;
         /**
          * @visibility frontend
          */
@@ -27,6 +31,7 @@ export interface Config {
            */
           label: string;
           /**
+           * base64 encoded SVG image.
            * @visibility frontend
            */
           icon?: string;
