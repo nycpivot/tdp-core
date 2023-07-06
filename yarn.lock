@@ -11203,6 +11203,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-security-analysis-frontend" "^1.0.1"
+    "@tpb/plugin-snyk" "^0.0.1-alpha.1"
     "@tpb/plugin-supply-chain" "1.0.6-build.5"
     "@tpb/plugin-techinsights" "^0.0.1-alpha.1"
     "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
