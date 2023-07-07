@@ -4529,6 +4529,49 @@
     qs "^6.9.4"
     react-use "^17.2.4"
 
+"@backstage/plugin-sonarqube-backend@^0.2.0":
+  version "0.2.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-sonarqube-backend/-/plugin-sonarqube-backend-0.2.0.tgz#2eeed06a9974d67e092ca043c231f355ba3001ff"
+  integrity sha512-qSgJKCxqhsQtCyPl4293CJ+ciNS1nTF7/UTTtkd03j5vDJfUkfqCqSFHetZ4C656phScBmM+aX4thCwd4MECXg==
+  dependencies:
+    "@backstage/backend-common" "^0.19.0"
+    "@backstage/config" "^1.0.8"
+    "@backstage/errors" "^1.2.0"
+    "@types/express" "*"
+    express "^4.18.1"
+    express-promise-router "^4.1.0"
+    node-fetch "^2.6.7"
+    winston "^3.2.1"
+    yn "^5.0.0"
+
+"@backstage/plugin-sonarqube-react@^0.1.6":
+  version "0.1.6"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-sonarqube-react/-/plugin-sonarqube-react-0.1.6.tgz#b417eabc0a1c9ee93a74c77bbc58bf2e6a3987dc"
+  integrity sha512-JvwFT+dHDaEs4DAhC/IRGJkXX+C0VGiIrK0fPWyye9r0TKk44nXOHv82v/k6urzWVeByUYGuhUfGvkgszA/vgg==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.0"
+    "@backstage/core-plugin-api" "^1.5.2"
+
+"@backstage/plugin-sonarqube@^0.7.0":
+  version "0.7.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-sonarqube/-/plugin-sonarqube-0.7.0.tgz#d71d64ade638894dfd7fd887e4dedaa559425cb5"
+  integrity sha512-SKgAqB4QDUaC05au6mV5t0GrGqfntG+muMGa97suqTn/+HuZgLtN0d27SWk46cLBLThntIQL/NMQo4fSLfPh1A==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.0"
+    "@backstage/core-components" "^0.13.2"
+    "@backstage/core-plugin-api" "^1.5.2"
+    "@backstage/plugin-catalog-react" "^1.7.0"
+    "@backstage/plugin-sonarqube-react" "^0.1.6"
+    "@backstage/theme" "^0.4.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@material-ui/styles" "^4.10.0"
+    cross-fetch "^3.1.5"
+    luxon "^3.0.0"
+    rc-progress "3.4.1"
+    react-use "^17.2.4"
+
 "@backstage/plugin-tech-insights-backend-module-jsonfc@^0.1.30":
   version "0.1.30"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-tech-insights-backend-module-jsonfc/-/plugin-tech-insights-backend-module-jsonfc-0.1.30.tgz#b547a845d8ae156a46fd9f1bdbddcb49bf19a907"
@@ -11024,8 +11067,10 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-app-live-view" "^0.1.25"
     "@tpb/plugin-auth0-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-azure-auth" "^0.0.1-alpha.2"
+    "@tpb/plugin-backstage-sonarqube" "0.0.1-alpha.0"
     "@tpb/plugin-bitbucket-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-clarity-theming" "^0.0.1-alpha.2"
+    "@tpb/plugin-github-actions" "^0.0.1-alpha.1"
     "@tpb/plugin-github-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-gitlab-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-gitlab-loblaw" "^0.0.21"
@@ -15170,7 +15215,7 @@ express-session@^1.17.1:
     safe-buffer "5.2.1"
     uid-safe "~2.1.5"
 
-express@^4.17.1, express@^4.17.13, express@^4.17.17, express@^4.17.3, express@^4.18.2:
+express@^4.17.1, express@^4.17.13, express@^4.17.17, express@^4.17.3, express@^4.18.1, express@^4.18.2:
   version "4.18.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/express/-/express-4.18.2.tgz#3fabe08296e930c796c19e3c516979386ba9fd59"
   integrity sha512-5/PsL6iGPdfQ/lKM1UuielYgv3BUoJfz1aUwU9vHZ+J7gyvwdQXFEBIEIaxeGf0GIcreATNyBExtalisDbuMqQ==
