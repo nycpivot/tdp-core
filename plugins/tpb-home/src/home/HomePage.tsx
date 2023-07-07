@@ -99,9 +99,15 @@ function HomePage(props: HomePageProps) {
     },
   ];
 
+  const breakpoints = { xl: 12, lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
+
   return (
     <div className={classes.content}>
-      <CustomHomepageGrid config={defaultConfig} rowHeight={10}>
+      <CustomHomepageGrid
+        config={defaultConfig}
+        rowHeight={10}
+        breakpoints={breakpoints}
+      >
         <HomePageCompanyLogo
           className={classes.container}
           logo={
