@@ -9,16 +9,20 @@ import {
 // import { HomePageSearchBar } from '@backstage/plugin-search';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
-import QuickLinkIcon from './QuickLinkIcon';
-import { HomePageWelcomeMessage } from './HomePageWelcomeMessage';
+import QuickLinkIcon from '../components/QuickLinkIcon';
+import { HomePageWelcomeMessage } from '../components/HomePageWelcomeMessage';
+import { HomeSurface } from '../HomeSurface';
 
-interface QuickLink {
+export type HomePageProps = {
+  surface: HomeSurface;
+};
+
+type QuickLink = {
   url: string;
   label: string;
   icon?: string;
-}
+};
 
-// Fix for Clarity Theme messing everything.
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
     '& > :first-child': {
@@ -40,7 +44,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-function CustomizableHomePage() {
+function HomePage(props: HomePageProps) {
+  const { surface } = props;
   const classes = useStyles();
   const config = useApi(configApiRef);
   const logo = config.getOptionalString('customize.features.home.logo');
@@ -107,9 +112,10 @@ function CustomizableHomePage() {
         {/* <HomePageSearchBar /> */}
         <HomePageStarredEntities />
         <HomePageToolkit title="Quick Links" tools={parsedLinks} />
+        {surface.homeWidgets}
       </CustomHomepageGrid>
     </div>
   );
 }
 
-export default CustomizableHomePage;
+export default HomePage;
