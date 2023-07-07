@@ -52,7 +52,7 @@ There are scenarios in which more surfaces need to be manipulated in order to in
 
 ## `AppPluginInterface` for Home plugin
 
-Now let's take a look at how we can use all of the things that we've just described above to wrap the TechInsights plugin into TPB.
+Now let's take a look at how we can use all of the things that we've just described above to wrap the Home plugin into TPB.
 
 First, let's start by looking at our implementation of the `AppPluginInterface` definition. Don't worry if there are things you don't understand at first — we'll be going over them in detail below.
 
@@ -104,7 +104,7 @@ We will be using this `context` to obtain different surfaces and interacting wit
 In order to do this we invoke the function `applyWithDependency` from the `context` with two TPB Surfaces: `AppRouteSurface` (coming from `@tpb/core-frontend`) and `HomeSurface` (provided by us — more on this later on).
 
 At this point you may be wondering: How do we know which surfaces are needed?
-The answer is that it depends on the parts of the application that you want to modify. We see in the [Home plugin documentation](https://github.com/backstage/backstage/tree/master/plugins/home) that adding the home page requires adding a `Route` component that takes in `HomepageCompositionRoot` as `element` and allows nesting our custom home page within it. Since we need to add a route to the app the `AppRouteSurface` is required. `HomeSurface` is also required. This is a necessary step to provide our own surface and wire it.
+The answer is that it depends on the parts of the application that you want to modify. We see in the [Home plugin documentation](https://github.com/backstage/backstage/tree/master/plugins/home) that adding the home page requires adding a `Route` component that takes in `HomepageCompositionRoot` as `element` and allows nesting our custom home page within it. Since we need to add a route to the app, the `AppRouteSurface` is required. `HomeSurface` is also required; this is a necessary step to provide our own surface and wire it correctly.
 
 We also want the home page to appear in the sidebar, so in a different invocation to `context.applyTo` we require the `SidebarItemSurface` (provided by `@tpb/core-frontend`) so that we can add a `SidebarItem` (also provided by `@tpb/core-frontend`) to it.
 
@@ -114,11 +114,11 @@ For now just notice that we used the method `applyWithDependency` because we wil
 
 After figuring out our surfaces, the last parameter that `applyWithDependency` (or `applyTo`) receives is the `SurfaceModifier` function. This is where actual instances of the surfaces are provided to us in order to interact with them. In the example above we are obtaining the `appRouteSurface` instance and calling `add` on it with a `ReactElement` being passed as parameter to the function.
 This `ReactElement` consists of a `Route` element (obtained from `react-router` so don't forget to install it as a dependency) and nested within it we find the home plugin component: the `HomepageCompositionRoot`. This component is provided by Home plugin itself, so don't forget to install it: `yarn add '@backstage/plugin-home`.
-Nested within this `HomepageCompositionRoot` we will be adding our custom page and using an instance of our exposed `HomeSurface`, so let's take a look at how we can define that surface.
+Nested within this `HomepageCompositionRoot` we will be adding our custom page and using the `homeSurface` instance of our exposed `HomeSurface`, so let's take a look at how we can define that.
 
 ### Defining the `HomeSurface`:
 
-A surface is basically a class that represents different sections of a part of the application, and for each of those sections an array is exposed to the user so that `ReactElement`s may be pushed to it.
+A front-end surface is a class that represents different sections of a part of the application, and for each of those sections an array is exposed to the user so that `ReactElement`s may be pushed to it.
 
 For our `HomeSurface` we will be exposing two different sections:
 
@@ -184,7 +184,7 @@ context.applyWithDependency(
 
 As previously mentioned, we call `applyWithDependency` and provide the classes for the two surfaces we will be using: `AppRouteSurce` and `HomeSurface` (which is simply imported locally from this same proyect: `import { HomeSurface } from '../HomeSurface';`). This call will find the instances of these surfaces in the `SurfaceStore` and make them available to us in the `SurfaceModifierFunction`; it is in this function, nested within the `Route` component, where we will pass the `homeSurface` instance to a react component of our own called `HomePage` —we'll look at the definition of this component next.
 
-For now simply notice that this is all the wiring necessary for defining a custom surface: require the class when calling `applyWithDependency` and pass the obtained instance to your custom homepage.
+For now simply notice that this is all the wiring necessary for defining a custom surface: require the class when calling `applyWithDependency` and pass the obtained instance to your custom component, where you will, in turn, render whatever was added to the different sections of the surface.
 
 ### The `HomePage` component
 
@@ -410,9 +410,88 @@ The final part of creating our TPB plugin wrapper is exporting it. We do that in
 
 ```
 export { HomePlugin as plugin } from './tpb-wrapper';
+export * from './HomeSurface';
 ```
 
 We _strongly_ suggest exporting your `AppPluginInterface` aliased as `plugin`, just like shown above, to keep your wrapper consistent with the pattern used in other existing TPB wrappers.
+
+Finally, don't forget to export the surface as well.
+
+### Providing config values
+
+This plugin wrapper uses several values read from the config file' they must be specified in order to get the full functionaly described above.
+
+In order to expose this we need to define in the plugin folder a file that must be called `config.d.ts`. In it we should define the types of config values that the plugin will be reading and the visibility of these flags.
+
+It looks like this:
+
+```
+export interface Config {
+  customize?: {
+    features?: {
+      home?: {
+        /**
+         * base64 encoded SVG image.
+         * @visibility frontend
+         */
+        logo?: string;
+        /**
+         * @visibility frontend
+         */
+        welcomeMessage?: string;
+        /**
+         * @visibility frontend
+         */
+        quickLinks?: {
+          /**
+           * @visibility frontend
+           */
+          url: string;
+          /**
+           * @visibility frontend
+           */
+          label: string;
+          /**
+           * base64 encoded SVG image.
+           * @visibility frontend
+           */
+          icon?: string;
+        }[];
+      };
+    };
+  };
+}
+```
+
+Then we need to go to our plugin [`package.json`](./package.json) and add the following two sections:
+
+```
+...
+"configSchema": "config.d.ts"
+...
+"files": [
+    "config.d.ts",
+    "dist"
+  ],
+...
+```
+
+And with that our plugin may now read these config values. Then they must be specified in the `app-config.yaml` file used to build TPB. The result may look like this:
+
+```
+customize:
+  features:
+    home:
+      logo: # base64-encoded SVG image
+      welcomeMessage: Hello, dev!
+      quickLinks:
+        - url: https://google.com
+          label: google
+          icon: # base64-encoded SVG image
+        - url: https://google.com
+          label: google2
+          icon: # base64-encoded SVG image
+```
 
 ## Build and publish the package
 

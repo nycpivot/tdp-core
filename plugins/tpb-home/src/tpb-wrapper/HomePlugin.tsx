@@ -7,10 +7,10 @@ import {
   SurfaceStoreInterface,
 } from '@tpb/core-frontend';
 import { Route } from 'react-router';
-import customizableHomePage from '../home/CustomizableHomePage';
 import { SidebarItem } from '@backstage/core-components';
 import HomeIcon from '@material-ui/icons/Home';
 import { HomeSurface } from '../HomeSurface';
+import HomePage from '../home/HomePage';
 
 export const HomePlugin: AppPluginInterface =
   () => (context: SurfaceStoreInterface) => {
@@ -21,7 +21,7 @@ export const HomePlugin: AppPluginInterface =
       (appRouteSurface, homeSurface) => {
         appRouteSurface.add(
           <Route path="/home" element={<HomepageCompositionRoot />}>
-            {customizableHomePage(homeSurface)}
+            <HomePage surface={homeSurface} />
           </Route>,
         );
       },

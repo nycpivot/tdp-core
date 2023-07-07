@@ -1,10 +1,3 @@
-interface QuickLink {
-  url: string;
-  label: string;
-  // label: string;
-  // icon?: string;
-}
-
 export interface Config {
   customize?: {
     features?: {
