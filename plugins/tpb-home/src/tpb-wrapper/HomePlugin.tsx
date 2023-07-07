@@ -26,13 +26,6 @@ export const HomePlugin: AppPluginInterface =
         );
       },
     );
-    // context.applyTo(AppRouteSurface, (routes: AppRouteSurface) => {
-    //   routes.add(
-    //     <Route path="/home" element={<HomepageCompositionRoot />}>
-    //       <CustomizableHomePage />
-    //     </Route>,
-    //   );
-    // });
 
     // Add sidebar entry
     context.applyTo(SidebarItemSurface, (sidebar: SidebarItemSurface) => {

@@ -51,8 +51,8 @@ function HomePage(props: HomePageProps) {
   const logo = config.getOptionalString('customize.features.home.logo');
   const logoSrc = `data:image/svg+xml;base64,${logo}`;
 
-  const quickLinks = (config.get('customize.features.home.quickLinks') ||
-    []) as unknown as QuickLink[];
+  const quickLinks =
+    config.getOptional<QuickLink[]>('customize.features.home.quickLinks') || [];
   const parsedLinks: Tool[] = quickLinks.map(({ url, label, icon }) => {
     return {
       url,
@@ -76,24 +76,24 @@ function HomePage(props: HomePageProps) {
       width: 12,
       height: 4,
     },
-    // {
-    //   component: 'HomePageSearchBar',
-    //   x: 0,
-    //   y: 13,
-    //   width: 12,
-    //   height: 5,
-    // },
+    {
+      component: 'HomePageSearchBar',
+      x: 0,
+      y: 16,
+      width: 12,
+      height: 5,
+    },
     {
       component: 'HomePageStarredEntities',
       x: 0,
-      y: 14,
+      y: 18,
       width: 6,
       height: 12,
     },
     {
       component: 'HomePageToolkit',
       x: 7,
-      y: 14,
+      y: 18,
       width: 6,
       height: 12,
     },
@@ -112,8 +112,9 @@ function HomePage(props: HomePageProps) {
         {/* <HomePageSearchBar /> */}
         <HomePageStarredEntities />
         <HomePageToolkit title="Quick Links" tools={parsedLinks} />
-        {surface.homeWidgets}
+        {surface.widgets}
       </CustomHomepageGrid>
+      {surface.content}
     </div>
   );
 }
