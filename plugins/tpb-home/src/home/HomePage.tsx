@@ -42,6 +42,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
+  searchBarContainer: {
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: '50px !important',
+    boxShadow: theme.shadows[1],
+    padding: theme.spacing(0, 2),
+    borderStyle: 'none !important',
+  },
 }));
 
 function HomePage(props: HomePageProps) {
@@ -78,9 +85,9 @@ function HomePage(props: HomePageProps) {
     },
     {
       component: 'HomePageSearchBar',
-      x: 0,
+      x: 2,
       y: 16,
-      width: 12,
+      width: 8,
       height: 5,
     },
     {
@@ -115,7 +122,10 @@ function HomePage(props: HomePageProps) {
           }
         />
         <HomePageWelcomeMessage />
-        <HomePageSearchBar />
+        <HomePageSearchBar
+          className={classes.searchBarContainer}
+          placeholder="Search"
+        />
         <HomePageStarredEntities />
         <HomePageToolkit title="Quick Links" tools={parsedLinks} />
         {surface.widgets}
