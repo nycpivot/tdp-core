@@ -6,7 +6,7 @@ import {
   HomePageToolkit,
   Tool,
 } from '@backstage/plugin-home';
-// import { HomePageSearchBar } from '@backstage/plugin-search';
+import { HomePageSearchBar } from '@backstage/plugin-search';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
 import QuickLinkIcon from '../components/QuickLinkIcon';
@@ -115,7 +115,7 @@ function HomePage(props: HomePageProps) {
           }
         />
         <HomePageWelcomeMessage />
-        {/* <HomePageSearchBar /> */}
+        <HomePageSearchBar />
         <HomePageStarredEntities />
         <HomePageToolkit title="Quick Links" tools={parsedLinks} />
         {surface.widgets}
