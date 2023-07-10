@@ -20,7 +20,7 @@ export const SnykPlugin: AppPluginInterface
                     </EntitySwitch.Case>
                 </EntitySwitch>
             )
-            entityPageSurface.page.addTab(
+            entityPageSurface.servicePage.addTab(
                 <EntityLayout.Route path="/snyk" title="Security">
                     <EntitySnykContent/>
                 </EntityLayout.Route>

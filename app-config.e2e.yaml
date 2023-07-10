@@ -292,7 +292,7 @@ proxy:
     target: 'https://api.snyk.io'
     headers:
       User-Agent: tech-services/backstage-plugin/1.0
-      Authorization: ${SNYK_TOKEN}
+      Authorization: xxxxxxx
 
 auth:
   session:

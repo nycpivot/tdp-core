@@ -1,0 +1,65 @@
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "data": [
+    {
+      "type": "project",
+      "id": "34258b5b-8f96-4437-9a7b-bdd20efee447",
+      "meta": {
+        "cli_monitored_at": "2022-07-26T16:53:20.748Z"
+      },
+      "attributes": {
+        "name": "snyk-repo",
+        "type": "npm",
+        "target_file": "",
+        "target_reference": "",
+        "origin": "cli",
+        "created": "2022-07-26T16:53:20.755Z",
+        "status": "active",
+        "business_criticality": [],
+        "environment": [],
+        "lifecycle": [],
+        "tags": [],
+        "settings": {
+          "recurring_tests": {
+            "frequency": "daily"
+          },
+          "pull_requests": {
+            "fail_only_for_issues_with_fix": false
+          }
+        }
+      },
+      "relationships": {
+        "organization": {
+          "data": {
+            "type": "org",
+            "id": "883c2d65-1170-40d8-bf5c-bbba4a13eec1"
+          },
+          "links": {
+            "related": "/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1"
+          }
+        },
+        "target": {
+          "data": {
+            "type": "target",
+            "id": "a9911f8d-fde3-4f03-9b7f-800c04678cf2"
+          },
+          "links": {
+            "related": "/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/targets/a9911f8d-fde3-4f03-9b7f-800c04678cf2"
+          }
+        },
+        "importer": {
+          "data": {
+            "type": "user",
+            "id": "5ec21cd6-2763-46ba-9111-52c0720cded3"
+          },
+          "links": {
+            "related": "/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/users/5ec21cd6-2763-46ba-9111-52c0720cded3"
+          }
+        }
+      }
+    }
+  ],
+  "links": {}
+}
