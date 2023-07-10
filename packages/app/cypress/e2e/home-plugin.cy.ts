@@ -41,8 +41,8 @@ describe('Backstage Home plugin v0.5.3 in TPB v1.6.0', () => {
     cy.get('a[href="https://google.com"]')
       .contains('google')
       .should('be.visible');
-    cy.get('a[href="/catalog/default/component/gitlab-provider-component"]')
-      .contains('gitlab-provider-component')
+    cy.get('a[href="/catalog/default/component/gitlab-processor-component"]')
+      .contains('gitlab-processor-component')
       .should('be.visible');
   });
 });
