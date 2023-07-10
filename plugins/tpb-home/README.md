@@ -12,7 +12,7 @@ It also uses the `HomePageSearchBar` widget provided by `@backstage/plugin-searc
 Additionaly, we're defining a very simple `HomePageWelcomeMessage` widget.
 
 The end result looks like this:
-<< ADD IMAGE HERE>>
+![Home Page](./docs/home.png)
 
 ## Plugin Wrapper Overview
 

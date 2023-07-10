@@ -106,6 +106,7 @@ function HomePage(props: HomePageProps) {
     },
   ];
 
+  // Fix for `CustomHomePageGrid` bug — lacks `xl` value definition and crashes on big screens
   const breakpoints = { xl: 12, lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
   return (
