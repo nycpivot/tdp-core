@@ -43,6 +43,7 @@ export const PluginDefinition: AppPluginInterface = () => context: SurfaceStoreI
   );
 };
 
+
 ```
 
 where `context` is of type `SurfaceStoreInterface`; `SurfaceToUse` is any subtype of `TpbSurface`, and the passed function is called a `SurfaceModifier`, which is where you can interact with the surfaces instances and add different stuff to them.
