@@ -15,6 +15,7 @@
     "@tpb/plugin-app-live-view": "^0.1.25",
     "@tpb/plugin-auth0-auth": "^0.0.1-alpha.2",
     "@tpb/plugin-azure-auth": "^0.0.1-alpha.2",
+    "@tpb/plugin-backstage-jira": "^0.0.1-alpha.1",
     "@tpb/plugin-backstage-sonarqube": "0.0.1-alpha.0",
     "@tpb/plugin-backstage-grafana": "0.0.1-alpha.0",
     "@tpb/plugin-bitbucket-auth": "^0.0.1-alpha.2",

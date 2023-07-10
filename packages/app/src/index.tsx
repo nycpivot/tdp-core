@@ -29,6 +29,7 @@ import { plugin as snykPlugin } from '@tpb/plugin-snyk';
 import { plugin as stackOverflowPlugin } from '@tpb/plugin-stack-overflow';
 import { plugin as prometheusPlugin } from '@tpb/plugin-prometheus';
 import { plugin as backstageGrafanaPlugin } from '@tpb/plugin-backstage-grafana';
+import { plugin as backstageJiraPlugin } from '@tpb/plugin-backstage-jira';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -62,4 +63,5 @@ new AppRuntime([
   stackOverflowPlugin(),
   prometheusPlugin(),
   backstageGrafanaPlugin(),
+  backstageJiraPlugin(),
 ]).render();

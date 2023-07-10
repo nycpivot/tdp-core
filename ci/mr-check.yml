@@ -34,6 +34,7 @@ resources:
     source:
       uri: https://gitlab.eng.vmware.com/esback/core.git
       private_token: ((gitlab.core_token))
+      target_branch: community-plugins
   - name: mr-image
     type: registry-image
     icon: docker
@@ -215,6 +216,7 @@ jobs:
           okta_svc_tpb_refresh_token: ((e2e.okta_svc_tpb_refresh_token))
           vmware_cloud_services_client_id: ((e2e.vmware_cloud_services_client_id))
           vmware_cloud_services_organization_id: ((e2e.vmware_cloud_services_organization_id))
+          jira_token: ((e2e.jira_token))
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: mark-mr-success
