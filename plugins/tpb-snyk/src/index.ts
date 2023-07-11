@@ -1,1 +1,1 @@
-export {SnykPlugin as plugin} from './tpb-wrapper';
+export { SnykPlugin as plugin } from './tpb-wrapper';

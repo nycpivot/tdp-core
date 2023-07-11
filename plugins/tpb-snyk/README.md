@@ -3,6 +3,7 @@
 ## Introduction
 
 This code is a thin wrapper for the [Snyk Plugin](https://github.com/snyk-tech-services/backstage-plugin-snyk) which includes two main components:
+
 - SnykOverview: shows an overview of the vulnerabilities found by Snyk on the Overview tab of an entity
 - EntitySnykContent: adds a tab to the entity view showing all details related to the scan.
 
@@ -90,33 +91,33 @@ export const SnykPlugin: AppPluginInterface
 
 Let's analyze it:
 
-`SnykPlugin` is the main exportable part -the `AppPluginInterface` definition; it returns a function that receives a 
+`SnykPlugin` is the main exportable part -the `AppPluginInterface` definition; it returns a function that receives a
 parameter we called `context` which is a `SurfaceStoreInterface`.
 
-Then the function `applyWithDependency` is invoked from the `context` with two TPB Surfaces: `AppRouteSurface` and 
+Then the function `applyWithDependency` is invoked from the `context` with two TPB Surfaces: `AppRouteSurface` and
 `EntityPageSurface`.
 
-At this point you may be wondering: How do we know which surfaces are needed? The answer is that it depends on the 
-parts of the application that you want to modify. For Snyk we have two main components that make up the plugin 
-functionality: a `SnykOverview` component which is meant to appear on the overview tab of an entity, and a 
-`EntitySnykContent` component which adds a tab to the EntityPage. To achieve this we require the `EntityPageSurface` 
-which is the Surface that allows adding functionality to entities; we also require the AppRouteSurface because we 
+At this point you may be wondering: How do we know which surfaces are needed? The answer is that it depends on the
+parts of the application that you want to modify. For Snyk we have two main components that make up the plugin
+functionality: a `SnykOverview` component which is meant to appear on the overview tab of an entity, and a
+`EntitySnykContent` component which adds a tab to the EntityPage. To achieve this we require the `EntityPageSurface`
+which is the Surface that allows adding functionality to entities; we also require the AppRouteSurface because we
 are adding a new route to the application.
 
-A comprehensive list of the available surfaces can be found [here](../../README.md) —However, do note that as the 
-platform expands in features new surfaces will be made available and other plugins may also expose surfaces to use 
-(such as in this case, where we obtain the `EntityPageSurface` from the `@tpb/plugin-catalog` package — don't forget 
+A comprehensive list of the available surfaces can be found [here](../../README.md) —However, do note that as the
+platform expands in features new surfaces will be made available and other plugins may also expose surfaces to use
+(such as in this case, where we obtain the `EntityPageSurface` from the `@tpb/plugin-catalog` package — don't forget
 to install it as a dependency: `yarn add @tpb/plugin-catalog`).
 
-After figuring out our surfaces and installing the necessary dependencies for them, the last parameter that `applyWithDependency` 
-receives is the `SurfaceModifier` function. This is where actual instances of the surfaces are provided to us in 
-order to interact with them. In the example above we are using two of the available options of the `EntityPageSurface`. 
-First we are calling the `addOverviewContent` and passing a `ReactElement` to it. This element represents a card to 
+After figuring out our surfaces and installing the necessary dependencies for them, the last parameter that `applyWithDependency`
+receives is the `SurfaceModifier` function. This is where actual instances of the surfaces are provided to us in
+order to interact with them. In the example above we are using two of the available options of the `EntityPageSurface`.
+First we are calling the `addOverviewContent` and passing a `ReactElement` to it. This element represents a card to
 display on the overview tab of an entity and in this particular case is the `SnykOverview` wrapped in an `EntitySwitch`.
-Finally, we are obtaining the `servicePage` (there are other type of pages available such as `apiPage`, `groupPage`, `websitePage`, 
-etc.) and calling `addTab` on it with a `ReactElement` being passed as a parameter. This `ReactElement` consists of an 
-`EntityLayout.Route` (obtained from `@backstage/plugin-catalog` so don't forget to install it as a dependency) and nested 
-within it, we find the snyk component: `EntitySnykContent`. This component is provided by the Snyk plugin itself, so 
+Finally, we are obtaining the `servicePage` (there are other type of pages available such as `apiPage`, `groupPage`, `websitePage`,
+etc.) and calling `addTab` on it with a `ReactElement` being passed as a parameter. This `ReactElement` consists of an
+`EntityLayout.Route` (obtained from `@backstage/plugin-catalog` so don't forget to install it as a dependency) and nested
+within it, we find the snyk component: `EntitySnykContent`. This component is provided by the Snyk plugin itself, so
 don't forget to install it: `yarn add 'backstage-plugin-snyk'`.
 
 The final part of creating our TPB plugin wrapper is exporting it. We do that in our [package's main](./src/index.ts):
@@ -125,24 +126,24 @@ The final part of creating our TPB plugin wrapper is exporting it. We do that in
 export {SnykPlugin as plugin} from './tpb-wrapper';
 ```
 
-We _strongly_ suggest exporting your `AppPluginInterface` aliased as `plugin`, just like shown above, to keep your wrapper 
+We _strongly_ suggest exporting your `AppPluginInterface` aliased as `plugin`, just like shown above, to keep your wrapper
 consistent with the pattern used in other existing TPB wrappers.
 
 ## Build and publish the package
 
 Now the only thing left to do with the wrapper is to package and publish it.
 
-First, remember to verify the version defined in the [package.json](./package.json); then, from the folder of the plugin, 
-run `yarn install` to install all dependencies, then run `yarn tsc` to verify that the typescript code compiles properly, 
+First, remember to verify the version defined in the [package.json](./package.json); then, from the folder of the plugin,
+run `yarn install` to install all dependencies, then run `yarn tsc` to verify that the typescript code compiles properly,
 and finally run `yarn build` to package it all.
 
-Once all the above commands have been executed successfully, you should publish the package to any compatible registry by 
-using `npm publish --registry="<<YOUR REGISTRY URL>"`. Please refer to the [TPB Plugins documentation](../README.md) for 
+Once all the above commands have been executed successfully, you should publish the package to any compatible registry by
+using `npm publish --registry="<<YOUR REGISTRY URL>"`. Please refer to the [TPB Plugins documentation](../README.md) for
 considerations about the registries used to publish our packages.
 
 And that's it. You now have a published TPB wrapper for the Snyk plugin.
 
 ## Integrate the package into your TPB instance
 
-Refer to the [TPB Plugins main documentation](../README.md) for detailed instructions on how to integrate any published 
+Refer to the [TPB Plugins main documentation](../README.md) for detailed instructions on how to integrate any published
 TPB wrapper into your running instance.

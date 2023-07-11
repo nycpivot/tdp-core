@@ -1,1 +1,1 @@
-export {SnykPlugin} from './SnykPlugin'
+export { SnykPlugin } from './SnykPlugin';
