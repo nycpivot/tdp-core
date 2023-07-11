@@ -5,10 +5,6 @@ describe('Backstage Home plugin v0.5.3 in TPB v1.6.0', () => {
     localStorage.clear();
     Authentication.logInAsCatalogAdmin();
     cy.visit('/');
-
-    // Star an entity
-    cy.get('tr:nth-child(18) > td > div > button:nth-child(3)').click();
-    // Verify sidebar entry and go to it
     cy.get('a[aria-label="Home page"]').should('be.be.visible').click();
   });
 
