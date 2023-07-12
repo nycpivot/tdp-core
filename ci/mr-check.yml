@@ -84,10 +84,10 @@ jobs:
   - name: lint-and-test
     plan:
       - in_parallel:
-        - get: gitlab-mr
-          passed: [ mark-mr-running ]
-          trigger: true
-        - get: pipeline-repo
+          - get: gitlab-mr
+            passed: [mark-mr-running]
+            trigger: true
+          - get: pipeline-repo
       - in_parallel:
           - task: lint
             attempts: 2

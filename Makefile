@@ -81,7 +81,8 @@ open-dev-e2e: login-to-vault ## # Open Cypress UI against the development enviro
 
 create-pipeline:	## # Create a Concourse pipeline for your current branch. Provide the name of the pipeline with the name variable.
 	$(eval branch="$(shell git rev-parse --abbrev-ref HEAD)")
-	fly -t esback set-pipeline -p "$(name)" -c ci/pipeline.yml -v git_branch=$(branch) -v initial_version=0.0.0
+	ytt -f ci/pipeline.yml -f ci/values/main/values.yaml > ci/rendered-pipeline.yml
+	fly -t esback set-pipeline -p "$(name)" -c ci/rendered-pipeline.yml -v git_branch=$(branch) -v initial_version=0.0.0
 	fly -t esback unpause-pipeline -p "$(name)"
 
 destroy-pipeline: ## # Destroy a Concourse pipeline. Provide the name of the pipeline with the name variable.

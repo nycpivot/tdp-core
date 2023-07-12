@@ -26,7 +26,7 @@ resources:
     source:
       uri: https://gitlab.eng.vmware.com/esback/core.git
       fetch_tags: false
-      branch: ESBACK-398
+      branch: main
       username: ((gitlab.username))
       password: ((gitlab.core_token))
   - name: esback-core
