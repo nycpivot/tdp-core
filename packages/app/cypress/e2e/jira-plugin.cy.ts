@@ -6,20 +6,20 @@ describe('Jira plugin v2.4.8 in TDP v1.6.0', () => {
     cy.visit('/catalog');
   });
 
-  it('should render jira-overview-card', () => {
-    cy.get('table').find('[aria-label="Next Page"]').click({ force: true });
-    cy.contains('jira-overview-card');
+  it('should render jira-example', () => {
+    cy.get('input[placeholder=Filter]').type('jira-example');
+    cy.contains('jira-example');
   });
 
-  describe('the user navigates to jira-overview-card component', () => {
+  describe('the user navigates to jira-example component', () => {
     beforeEach(() => {
-      cy.get('table').find('[aria-label="Next Page"]').click({ force: true });
-      cy.get('a').contains('jira-overview-card').click({ force: true });
+      cy.get('input[placeholder=Filter]').type('jira-example');
+      cy.get('a').contains('jira-example').click({ force: true });
     });
 
     it('on overview tab', () => {
       cy.get('p').contains('component — website').should('exist');
-      cy.get('h1').contains('jira-overview-card').should('exist');
+      cy.get('h1').contains('jira-example').should('exist');
       cy.get('div').contains('About').should('exist');
     });
 

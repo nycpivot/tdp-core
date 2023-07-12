@@ -6,18 +6,20 @@ describe('Sonarqube plugin', () => {
     cy.visit('/catalog');
   });
 
-  it('should render example-sonarqube', () => {
-    cy.contains('example-sonarqube');
+  it('should render sonarqube-example', () => {
+    cy.get('input[placeholder=Filter]').type('sonarqube-example');
+    cy.contains('sonarqube-example');
   });
 
-  describe('the user navigates to example-sonarqube component', () => {
+  describe('the user navigates to sonarqube-example component', () => {
     beforeEach(() => {
-      cy.get('a').contains('example-sonarqube').click({ force: true });
+      cy.get('input[placeholder=Filter]').type('sonarqube-example');
+      cy.get('a').contains('sonarqube-example').click({ force: true });
     });
 
     it('on overview tab', () => {
       cy.get('p').contains('component — website').should('exist');
-      cy.get('h1').contains('example-sonarqube').should('exist');
+      cy.get('h1').contains('sonarqube-example').should('exist');
       cy.get('div').contains('About').should('exist');
     });
 
