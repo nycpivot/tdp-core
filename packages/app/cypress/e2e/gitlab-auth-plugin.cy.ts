@@ -8,6 +8,8 @@ describe('GitLab Auth Plugins', () => {
     });
     cy.contains('li', 'GitLab').find('button').click();
     cy.get('@popup').should('be.called');
-    cy.contains('Checking your browser before accessing gitlab.com.');
+    cy.contains(
+      'gitlab.com needs to review the security of your connection before proceeding.',
+    );
   });
 });
