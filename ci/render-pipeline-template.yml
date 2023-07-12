@@ -1,0 +1,20 @@
+---
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: harbor-repo.vmware.com/dockerhub-proxy-cache/amidos/dcind
+inputs:
+  - name: ytt
+  - name: pipeline-repo
+outputs:
+  - name: rendered
+run:
+  path: bash
+  args:
+    - -c
+    - |
+      chmod +x ytt/ytt-linux-amd64
+      ytt/ytt-linux-amd64 \
+        -f "${VALUES_FILE}" \
+        -f pipeline-repo/ci/pipeline.yml > rendered/pipeline.yml

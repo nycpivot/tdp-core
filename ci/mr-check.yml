@@ -19,6 +19,15 @@ resources:
       initial_version: ((initial_version))
       access_key_id: ((aws.deprecated_access_key))
       secret_access_key: ((aws.deprecated_access_secret))
+  - name: pipeline-repo
+    type: git
+    icon: gitlab
+    source:
+      uri: https://gitlab.eng.vmware.com/esback/core.git
+      fetch_tags: false
+      branch: main
+      username: ((gitlab.username))
+      password: ((gitlab.core_token))
   - name: gitlab-mr
     type: merge-request
     icon: git
@@ -74,30 +83,32 @@ jobs:
     on_error: *on_failure_notification
   - name: lint-and-test
     plan:
-      - get: gitlab-mr
-        passed: [mark-mr-running]
-        trigger: true
+      - in_parallel:
+          - get: gitlab-mr
+            passed: [mark-mr-running]
+            trigger: true
+          - get: pipeline-repo
       - in_parallel:
           - task: lint
             attempts: 2
             input_mapping:
               code: gitlab-mr
-            file: gitlab-mr/ci/lint.yml
+            file: pipeline-repo/ci/lint.yml
           - task: test
             attempts: 2
             input_mapping:
               code: gitlab-mr
-            file: gitlab-mr/ci/unit-test.yml
+            file: pipeline-repo/ci/unit-test.yml
           - task: builder-lint
             attempts: 2
             input_mapping:
               code: gitlab-mr
-            file: gitlab-mr/ci/builder-lint.yml
+            file: pipeline-repo/ci/builder-lint.yml
           - task: builder-test
             attempts: 2
             input_mapping:
               code: gitlab-mr
-            file: gitlab-mr/ci/builder-unit-test.yml
+            file: pipeline-repo/ci/builder-unit-test.yml
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: bump
@@ -113,6 +124,7 @@ jobs:
   - name: build
     plan:
       - in_parallel:
+          - get: pipeline-repo
           - do:
               - get: gitlab-mr
                 passed: [bump]
@@ -130,10 +142,10 @@ jobs:
       - task: yarn-build
         input_mapping:
           code: gitlab-mr
-        file: gitlab-mr/ci/yarn-build.yml
+        file: pipeline-repo/ci/yarn-build.yml
       - task: image-build
         privileged: true
-        file: gitlab-mr/ci/image-build.yml
+        file: pipeline-repo/ci/image-build.yml
       - put: mr-image
         params:
           image: image/image.tar
@@ -159,9 +171,10 @@ jobs:
             params: { format: oci }
             passed: [build]
             trigger: true
+          - get: pipeline-repo
       - task: test
         privileged: true
-        file: gitlab-mr/ci/integration-tests.yml
+        file: pipeline-repo/ci/integration-tests.yml
         input_mapping:
           code: gitlab-mr
           docker-image: mr-image
