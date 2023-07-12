@@ -4,6 +4,29 @@ describe('Snyk v2.0.0 in TPB v1.6.0', () => {
   beforeEach(() => {
     Authentication.logInAsCatalogAdmin();
     cy.visit('/catalog');
+    cy.intercept(
+        'GET',
+        'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/targets*',
+        {
+          fixture: '../fixtures/snyk/targets.json',
+        },
+    ).as('getTargets');
+
+    cy.intercept(
+        'GET',
+        'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/projects*',
+        {
+          fixture: '../fixtures/snyk/projects.json',
+        },
+    ).as('getProjects');
+
+    cy.intercept(
+        'GET',
+        'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/issues*',
+        {
+          fixture: '../fixtures/snyk/issues.json',
+        },
+    ).as('getIssues');
   });
   it('displays the Snyk Overview card on the Entity overview', () => {
     cy.contains('Catalog');
@@ -17,29 +40,7 @@ describe('Snyk v2.0.0 in TPB v1.6.0', () => {
       .children('a')
       .click();
 
-    cy.intercept(
-      'GET',
-      'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/targets*',
-      {
-        fixture: '../fixtures/snyk/targets.json',
-      },
-    ).as('getTargets');
 
-    cy.intercept(
-      'GET',
-      'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/projects*',
-      {
-        fixture: '../fixtures/snyk/projects.json',
-      },
-    ).as('getProjects');
-
-    cy.intercept(
-      'GET',
-      'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/issues*',
-      {
-        fixture: '../fixtures/snyk/issues.json',
-      },
-    ).as('getIssues');
 
     cy.wait('@getTargets');
     cy.wait('@getProjects');
@@ -63,30 +64,6 @@ describe('Snyk v2.0.0 in TPB v1.6.0', () => {
       .children('a')
       .click();
     cy.get('button').contains('Security').click();
-
-    cy.intercept(
-      'GET',
-      'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/targets*',
-      {
-        fixture: '../fixtures/snyk/targets.json',
-      },
-    ).as('getTargets');
-
-    cy.intercept(
-      'GET',
-      'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/projects*',
-      {
-        fixture: '../fixtures/snyk/projects.json',
-      },
-    ).as('getProjects');
-
-    cy.intercept(
-      'GET',
-      'api/proxy/snyk/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/issues*',
-      {
-        fixture: '../fixtures/snyk/issues.json',
-      },
-    ).as('getIssues');
 
     cy.intercept(
       'GET',
