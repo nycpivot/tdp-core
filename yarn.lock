@@ -4024,6 +4024,43 @@
     luxon "^3.0.0"
     react-use "^17.2.4"
 
+"@backstage/plugin-home-react@^0.1.0":
+  version "0.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-home-react/-/plugin-home-react-0.1.0.tgz#43140c47f65e973a4d3019f0ef8d7921b392b86a"
+  integrity sha512-ILlrnDMb8EO0q5cESCwemtW/GjsZpBfJ5NaCe8Ir9eFWZESvrsCymLh7v/ap1pN5nUa+sT5NsQtXcaRUaN1oHg==
+  dependencies:
+    "@backstage/core-components" "^0.13.2"
+    "@backstage/core-plugin-api" "^1.5.2"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@rjsf/utils" "5.7.3"
+
+"@backstage/plugin-home@^0.5.3":
+  version "0.5.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-home/-/plugin-home-0.5.3.tgz#3fa0dbe8394d3bd2dd0251c6ad6b60cbdaa2277d"
+  integrity sha512-t4CdQpmDbe5+x4p8YgaW9DcEsvb7GAPcss5/7EpduuXIuRESdeZkFl8i1bGa0TB4Aw9ey19VWIgJKr2J3jjgUg==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.0"
+    "@backstage/config" "^1.0.8"
+    "@backstage/core-components" "^0.13.2"
+    "@backstage/core-plugin-api" "^1.5.2"
+    "@backstage/plugin-catalog-react" "^1.7.0"
+    "@backstage/plugin-home-react" "^0.1.0"
+    "@backstage/theme" "^0.4.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@rjsf/core-v5" "npm:@rjsf/core@5.7.3"
+    "@rjsf/material-ui" "5.7.3"
+    "@rjsf/utils" "5.7.3"
+    "@rjsf/validator-ajv8" "5.7.3"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    lodash "^4.17.21"
+    react-grid-layout "^1.3.4"
+    react-resizable "^3.0.4"
+    react-use "^17.2.4"
+    zod "~3.21.4"
+
 "@backstage/plugin-kubernetes-backend@^0.10.0":
   version "0.10.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.10.0.tgz#4641ffa498394b748ab6fd157b60267aa381efb9"
@@ -8146,6 +8183,17 @@
     nanoid "^3.3.4"
     prop-types "^15.7.2"
 
+"@rjsf/core-v5@npm:@rjsf/core@5.7.3":
+  version "5.7.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/core/-/core-5.7.3.tgz#7d49b65a6f9bad5fa9773d25473f361f1b6a71de"
+  integrity sha512-GebhuCyNK8db+UT2COFmaLsCWjVsZwNXC8jubadqTji5rNCpuB1ywzp+vbqX0vnFPd8phVKbVfHNl2S86fUaIA==
+  dependencies:
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
+    markdown-to-jsx "^7.2.0"
+    nanoid "^3.3.6"
+    prop-types "^15.8.1"
+
 "@rjsf/core@^3.2.1":
   version "3.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/core/-/core-3.2.1.tgz#8a7b24c9a6f01f0ecb093fdfc777172c12b1b009"
@@ -8166,6 +8214,11 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/material-ui/-/material-ui-5.6.0.tgz#f547dfd17e24036ba1e495760d16cbce6d5da985"
   integrity sha512-e2YMo2XfgPaHuzh5A18Dw+k33n52Mr2AaGEAkrWPI83yar6i+XT4RZLUp1VwO9pm0PqahKBtyvTEyV+ewdLmWQ==
 
+"@rjsf/material-ui@5.7.3":
+  version "5.7.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/material-ui/-/material-ui-5.7.3.tgz#2f8c35d83f7d53c748804031c7f78c299ce98f00"
+  integrity sha512-PeaVjiBhw8N1PxGzcC03gE/eq3Kcu6p84i0EI80A0VFQ5Xbu2V2YI0Bc4imiXehbCn+AthMt6zzBZXKlbhu+Sw==
+
 "@rjsf/material-ui@^3.2.1":
   version "3.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/material-ui/-/material-ui-3.2.1.tgz#84fbf322485aee3a84101e189161f0687779ec8d"
@@ -8182,6 +8235,17 @@
     lodash-es "^4.17.15"
     react-is "^18.2.0"
 
+"@rjsf/utils@5.7.3":
+  version "5.7.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/utils/-/utils-5.7.3.tgz#715e14011d5740a1c3c60589ac6fa73710ac7f25"
+  integrity sha512-4bUJE4u1A7/wGupiOIKicm50QJ5iJ+C9Zq27EKnk7TeKKIr2MLdg3ljYSV7aKp2ZiGX6CFtXBX3RpaTjugpKAw==
+  dependencies:
+    json-schema-merge-allof "^0.8.1"
+    jsonpointer "^5.0.1"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
+    react-is "^18.2.0"
+
 "@rjsf/validator-ajv8@5.6.0":
   version "5.6.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/validator-ajv8/-/validator-ajv8-5.6.0.tgz#6e34c47f9ab0e2fa054bc525b3e22ef3f09bd503"
@@ -8191,6 +8255,16 @@
     ajv-formats "^2.1.1"
     lodash "^4.17.15"
     lodash-es "^4.17.15"
+
+"@rjsf/validator-ajv8@5.7.3":
+  version "5.7.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@rjsf/validator-ajv8/-/validator-ajv8-5.7.3.tgz#79f51382f1f57ac74f02090211afd7d0ddaecf11"
+  integrity sha512-/lU9Nyx7s/wMLkTyAgv2dMCKz9et183XohmV6YjHRP+slbxHorKObAYlbLezCYc85TSXGWhgHiyn5FWEP0SEXQ==
+  dependencies:
+    ajv "^8.12.0"
+    ajv-formats "^2.1.1"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
 
 "@rollup/plugin-commonjs@^23.0.0":
   version "23.0.7"
@@ -11196,6 +11270,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-gitlab-loblaw" "^0.0.21"
     "@tpb/plugin-google-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-guest-auth" "^0.0.1-alpha.2"
+    "@tpb/plugin-home" "0.0.1-alpha.1"
     "@tpb/plugin-oidc-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-okta-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-onelogin-auth" "^0.0.1-alpha.2"
@@ -19452,7 +19527,7 @@ lodash.isempty@^4.4.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash.isempty/-/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
   integrity sha512-oKMuF3xEeqDltrGMfDxAPGIVMSSRv8tbRSODbrs4KGsRRLEhrW8N8Rd4DRgB2+621hY8A8XwwrTVhXWpxFvMzg==
 
-lodash.isequal@^4.5.0:
+lodash.isequal@^4.0.0, lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
@@ -23408,7 +23483,7 @@ react-draggable@^2.2.3:
   dependencies:
     classnames "^2.2.5"
 
-react-draggable@^4.0.3:
+react-draggable@^4.0.0, react-draggable@^4.0.3:
   version "4.4.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-draggable/-/react-draggable-4.4.5.tgz#9e37fe7ce1a4cf843030f521a0a4cc41886d7e7c"
   integrity sha512-OMHzJdyJbYTZo4uQE393fHcqqPYsEtkjfMgvCHr6rejT+Ezn4OZbNyGH50vv+SunC1RMvwOTSWkEODQLzw1M9g==
@@ -23425,6 +23500,17 @@ react-fast-compare@^3.1.1:
   version "3.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-fast-compare/-/react-fast-compare-3.2.1.tgz#53933d9e14f364281d6cba24bfed7a4afb808b5f"
   integrity sha512-xTYf9zFim2pEif/Fw16dBiXpe0hoy5PxcD8+OwBnTtNLfIm3g6WxhKNurY+6OmdH1u6Ta/W/Vl6vjbYP1MFnDg==
+
+react-grid-layout@^1.3.4:
+  version "1.3.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-grid-layout/-/react-grid-layout-1.3.4.tgz#4fa819be24a1ba9268aa11b82d63afc4762a32ff"
+  integrity sha512-sB3rNhorW77HUdOjB4JkelZTdJGQKuXLl3gNg+BI8gJkTScspL1myfZzW/EM0dLEn+1eH+xW+wNqk0oIM9o7cw==
+  dependencies:
+    clsx "^1.1.1"
+    lodash.isequal "^4.0.0"
+    prop-types "^15.8.1"
+    react-draggable "^4.0.0"
+    react-resizable "^3.0.4"
 
 react-helmet@6.1.0, react-helmet@^6.1:
   version "6.1.0"
@@ -27867,7 +27953,7 @@ zod-to-json-schema@^3.20.4:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/zod-to-json-schema/-/zod-to-json-schema-3.20.4.tgz#155f687c5a059fdc0f1bb3ff32d6e9200036b6f4"
   integrity sha512-Un9+kInJ2Zt63n6Z7mLqBifzzPcOyX+b+Exuzf7L1+xqck9Q2EPByyTRduV3kmSPaXaRer1JCsucubpgL1fipg==
 
-zod@^3.11.6, zod@^3.21.4:
+zod@^3.11.6, zod@^3.21.4, zod@~3.21.4:
   version "3.21.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/zod/-/zod-3.21.4.tgz#10882231d992519f0a10b5dd58a38c9dabbb64db"
   integrity sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==
