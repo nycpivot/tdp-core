@@ -27,6 +27,7 @@ import { plugin as backstageSonarqubePlugin } from '@tpb/plugin-backstage-sonarq
 import { plugin as homePlugin } from '@tpb/plugin-home';
 import { plugin as snykPlugin } from '@tpb/plugin-snyk';
 import { plugin as stackOverflowPlugin } from '@tpb/plugin-stack-overflow';
+import { plugin as prometheusPlugin } from '@tpb/plugin-prometheus';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -58,4 +59,5 @@ new AppRuntime([
   homePlugin(),
   snykPlugin(),
   stackOverflowPlugin(),
+  prometheusPlugin(),
 ]).render();
