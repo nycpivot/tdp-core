@@ -293,6 +293,11 @@ proxy:
     headers:
       User-Agent: tech-services/backstage-plugin/1.0
       Authorization: xxxxxxx
+  '/grafana/api':
+    # May be a public or an internal DNS
+    target: https://test.grafana.net/
+    headers:
+      Authorization: 'Bearer xxxxx'
 
 auth:
   session:
@@ -358,6 +363,11 @@ permission:
 sonarqube:
   baseUrl: https://sonr-dev.vmware.com
   apiKey: squ_f5afa41f8fbd7547c0e07707bc8c166883dc6622
+
+grafana:
+  # Publicly accessible domain
+  domain: https://test.grafana.net/
+  unifiedAlerting: true
 
 customize:
   features:

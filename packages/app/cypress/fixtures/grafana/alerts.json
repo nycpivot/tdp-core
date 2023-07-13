@@ -1,0 +1,142 @@
+{
+  "GrafanaCloud": [
+    {
+      "name": "1m",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "5m",
+          "labels": {
+            "type": "http-requests"
+          },
+          "annotations": {
+            "summary": "Http request - Code 200"
+          },
+          "grafana_alert": {
+            "id": 3,
+            "orgId": 1,
+            "title": "Http monitoring",
+            "condition": "C",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "grafanacloud-prom",
+                "model": {
+                  "datasource": {
+                    "type": "prometheus",
+                    "uid": "grafanacloud-prom"
+                  },
+                  "editorMode": "builder",
+                  "expr": "prometheus_http_requests_total{code=\"200\"}",
+                  "hide": false,
+                  "instant": true,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "range": false,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": ["B"]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "A",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "reducer": "last",
+                  "refId": "B",
+                  "type": "reduce"
+                }
+              },
+              {
+                "refId": "C",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [0],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": ["C"]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "B",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "C",
+                  "type": "threshold"
+                }
+              }
+            ],
+            "updated": "2023-07-12T23:47:04Z",
+            "intervalSeconds": 60,
+            "version": 2,
+            "uid": "d1441749-6ac6-42ac-80ef-5ad9d7604151",
+            "namespace_uid": "e47e90db-6eea-4dfa-b49d-2f56f4622aed",
+            "namespace_id": 2,
+            "rule_group": "1m",
+            "no_data_state": "NoData",
+            "exec_err_state": "Error",
+            "is_paused": true
+          }
+        }
+      ]
+    }
+  ]
+}
