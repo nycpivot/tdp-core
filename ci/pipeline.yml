@@ -133,11 +133,7 @@ jobs:
         trigger: true
       - put: version
         params:
-          #@ if not getattr(data.values, 'semverSuffix', ''):
-          pre: ((git_branch))
-          #@ else:
-          build: #@ data.values.semverSuffix
-          #@ end
+          pre: #@ getattr(data.values, 'semverSuffix', '((git_branch))')
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: build
