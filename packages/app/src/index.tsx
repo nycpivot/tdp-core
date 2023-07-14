@@ -26,6 +26,7 @@ import { plugin as githubActionsPlugin } from '@tpb/plugin-github-actions';
 import { plugin as backstageSonarqubePlugin } from '@tpb/plugin-backstage-sonarqube';
 import { plugin as homePlugin } from '@tpb/plugin-home';
 import { plugin as snykPlugin } from '@tpb/plugin-snyk';
+import { plugin as stackOverflowPlugin } from '@tpb/plugin-stack-overflow';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -56,4 +57,5 @@ new AppRuntime([
   backstageSonarqubePlugin(),
   homePlugin(),
   snykPlugin(),
+  stackOverflowPlugin(),
 ]).render();
