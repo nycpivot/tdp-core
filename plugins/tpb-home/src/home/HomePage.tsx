@@ -68,6 +68,8 @@ function HomePage(props: HomePageProps) {
     };
   });
 
+  const widgetConfigs = surface.widgetConfigs;
+
   const defaultConfig = [
     {
       component: 'CompanyLogo',
@@ -104,6 +106,7 @@ function HomePage(props: HomePageProps) {
       width: 6,
       height: 12,
     },
+    ...widgetConfigs,
   ];
 
   // Fix for `CustomHomePageGrid` bug — lacks `xl` value definition and crashes on big screens
