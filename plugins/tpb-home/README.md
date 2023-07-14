@@ -120,32 +120,44 @@ Nested within this `HomepageCompositionRoot` we will be adding our custom page a
 
 A front-end surface is a class that represents different sections of a part of the application, and for each of those sections an array is exposed to the user so that `ReactElement`s may be pushed to it.
 
-For our `HomeSurface` we will be exposing two different sections:
+For our `HomeSurface` we will be exposing three different sections:
 
-- `widgets` for the widget-like components that are created using `createComponentExtension`, and
-- `content` for non-widget components.
+- `widgets` for the widget-like components that are created using `createComponentExtension`,
+- `content` for non-widget components,
+- `widgetConfigs` for the [LayoutConfiguration]() of each widget to be added.
 
 Putting together a basic surface class with these sections we end up with this:
 
 ```
+import { LayoutConfiguration } from '@backstage/plugin-home';
 import { ReactElement } from 'react';
 
 export class HomeSurface {
   public static readonly id = 'HomeSurface';
   private readonly _homeWidgets: ReactElement[];
   private readonly _homeContent: ReactElement[];
+  private readonly _widgetConfigs: LayoutConfiguration[];
 
   constructor() {
     this._homeWidgets = [];
     this._homeContent = [];
+    this._widgetConfigs = [];
   }
 
-  public addWidget(item: ReactElement) {
+  public addWidget(item: ReactElement, config?: LayoutConfiguration) {
     this._homeWidgets.push(item);
+
+    if (config) {
+      this._widgetConfigs.push(config);
+    }
   }
 
   public addContent(item: ReactElement) {
     this._homeContent.push(item);
+  }
+
+  public addWidgetConfig(config: LayoutConfiguration) {
+    this._widgetConfigs.push(config);
   }
 
   public get widgets(): ReactElement[] {
@@ -154,6 +166,10 @@ export class HomeSurface {
 
   public get content(): ReactElement[] {
     return this._homeContent;
+  }
+
+  public get widgetConfigs(): LayoutConfiguration[] {
+    return this._widgetConfigs;
   }
 }
 ```
@@ -237,6 +253,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
+  searchBarContainer: {
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: '50px !important',
+    boxShadow: theme.shadows[1],
+    padding: theme.spacing(0, 2),
+    borderStyle: 'none !important',
+  },
 }));
 
 function HomePage(props: HomePageProps) {
@@ -256,6 +279,7 @@ function HomePage(props: HomePageProps) {
     };
   });
 
+  const widgetConfigs = surface.widgetConfigs;
   const defaultConfig = [
     {
       component: 'CompanyLogo',
@@ -273,9 +297,9 @@ function HomePage(props: HomePageProps) {
     },
     {
       component: 'HomePageSearchBar',
-      x: 0,
+      x: 2,
       y: 16,
-      width: 12,
+      width: 8,
       height: 5,
     },
     {
@@ -292,8 +316,10 @@ function HomePage(props: HomePageProps) {
       width: 6,
       height: 12,
     },
+    ...widgetConfigs,
   ];
 
+  // Fix for `CustomHomePageGrid` bug — lacks `xl` value definition and crashes on big screens
   const breakpoints = { xl: 12, lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
   return (
@@ -310,7 +336,10 @@ function HomePage(props: HomePageProps) {
           }
         />
         <HomePageWelcomeMessage />
-        <HomePageSearchBar />
+        <HomePageSearchBar
+          className={classes.searchBarContainer}
+          placeholder="Search"
+        />
         <HomePageStarredEntities />
         <HomePageToolkit title="Quick Links" tools={parsedLinks} />
         {surface.widgets}
@@ -325,9 +354,54 @@ export default HomePage;
 
 This is a fairly common react function component: It takes in some props (our `homeSurface` instance), obtains some data read from the config file, does some styling, and then renders some JSX.
 
-Of special note here is the usage of the `CustomHomepageGrid` component provided by `@backstage/plugin-home`; this component must be used if we want our homepage to provide widgets and the add/remove functionality associated with them. It may take a parameter called `config` which defines which are the default widgets that should appear on the page. For more information about this config and some other options please refer to the [Home plugin documentation](https://github.com/backstage/backstage/tree/master/plugins/home#adding-default-layout).
+There are two things of special note here:
+The first one is the usage of the `CustomHomepageGrid` component provided by `@backstage/plugin-home`; this component must be used if we want our homepage to provide widgets and the add/remove functionality associated with them. It may take a parameter called `config` which defines which are the default widgets that should appear on the page. For more information about this config and some other options please refer to the [Home plugin documentation](https://github.com/backstage/backstage/tree/master/plugins/home#adding-default-layout).
 
-(The `breakpoints` parameter defines the number of columns that the grid will have at different breakpoints. This is needed due to what is most likely a bug with the grid's default breakpoint values that lack an `xxl` definition and thus may cause it to throw errors if used in really big viewports (`xl`).)
+The second one is the `defaultConfig` definition that will be passed to the `config` prop of the `CustomHomePageGrid`. Note that we are extending this config definition with all the configs passed to the `HomeSurface`'s `widgetConfigs`:
+
+```
+const widgetConfigs = surface.widgetConfigs;
+  const defaultConfig = [
+    {
+      component: 'CompanyLogo',
+      x: 0,
+      y: 0,
+      width: 12,
+      height: 8,
+    },
+    {
+      component: 'HomePageWelcomeMessage',
+      x: 0,
+      y: 13,
+      width: 12,
+      height: 4,
+    },
+    {
+      component: 'HomePageSearchBar',
+      x: 2,
+      y: 16,
+      width: 8,
+      height: 5,
+    },
+    {
+      component: 'HomePageStarredEntities',
+      x: 0,
+      y: 18,
+      width: 6,
+      height: 12,
+    },
+    {
+      component: 'HomePageToolkit',
+      x: 7,
+      y: 18,
+      width: 6,
+      height: 12,
+    },
+    ...widgetConfigs,
+  ];
+```
+
+(The `breakpoints` parameter defines the number of columns that the grid will have at different breakpoints. This is needed due to what is most likely a bug with the grid's default breakpoint values that lack an `xl` definition and thus may cause it to throw errors if used in really big viewports (`xl`).)
 
 Inside the `CustomHomePageGrid` we add the widget components we obtain from the home plugin, the search plugin, and, crucially, the widgets added to the `HomeSurface`:
 
