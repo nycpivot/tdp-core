@@ -25,6 +25,13 @@ export const StackOverflowPlugin: AppPluginInterface =
             pagesize: 5,
           }}
         />,
+        {
+          component: 'HomePageStackOverflowQuestions',
+          width: 6,
+          height: 12,
+          x: 0,
+          y: 30,
+        },
       );
     });
   };
