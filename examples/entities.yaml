@@ -114,7 +114,8 @@ metadata:
   description: Sample Prometheus service
   annotations:
     prometheus.io/alert: all
-    prometheus.io/rule: memUsage|component,node_memory_active_bytes|instance,sum by (instance) (node_cpu_seconds_total)
+    prometheus.io/rule: node_memory_active_bytes
+    prometheus.io/service-name: prometheus-test
 spec:
   type: service
   lifecycle: experimental

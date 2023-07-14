@@ -15,13 +15,17 @@ export const PrometheusPlugin: AppPluginInterface = () => context => {
     EntityPageSurface,
     (_, entityPageSurface) => {
       entityPageSurface.addOverviewContent(
-        <Grid item md={8}>
-          <EntityPrometheusAlertCard />
+        <Grid item md={6}>
+          <div id="prometheus-alert-overview">
+            <EntityPrometheusAlertCard />
+          </div>
         </Grid>,
       );
       entityPageSurface.addOverviewContent(
         <Grid item md={6}>
-          <EntityPrometheusGraphCard />
+          <div id="prometheus-graph-overview">
+            <EntityPrometheusGraphCard />
+          </div>
         </Grid>,
       );
       entityPageSurface.servicePage.addTab(
