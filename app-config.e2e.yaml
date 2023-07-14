@@ -372,3 +372,6 @@ customize:
   custom_name: 'My Custom TAP Portal'
   banners:
     text: TPB E2E Test Banner
+
+stackoverflow:
+  baseUrl: https://api.stackexchange.com/2.2
