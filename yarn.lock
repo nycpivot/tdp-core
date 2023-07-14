@@ -4705,6 +4705,27 @@
     rc-progress "3.4.1"
     react-use "^17.2.4"
 
+"@backstage/plugin-stack-overflow@^0.1.17":
+  version "0.1.17"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-stack-overflow/-/plugin-stack-overflow-0.1.17.tgz#d0251432de32f6b4a9b6da1e5170d5f3abdf9e99"
+  integrity sha512-nSAkfF2jy2S/pgt4DNrRFLxnNflswyW2xzVQ1V4Qb0UU5Bm3qF2Q0WMp8pWb2CjXRAyHMA56GV1dnOnaEvd3hA==
+  dependencies:
+    "@backstage/config" "^1.0.8"
+    "@backstage/core-components" "^0.13.2"
+    "@backstage/core-plugin-api" "^1.5.2"
+    "@backstage/plugin-home-react" "^0.1.0"
+    "@backstage/plugin-search-common" "^1.2.4"
+    "@backstage/plugin-search-react" "^1.6.2"
+    "@backstage/theme" "^0.4.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@testing-library/jest-dom" "^5.10.1"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    cross-fetch "^3.1.5"
+    lodash "^4.17.21"
+    qs "^6.9.4"
+    react-use "^17.2.4"
+
 "@backstage/plugin-tech-insights-backend-module-jsonfc@^0.1.30":
   version "0.1.30"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-tech-insights-backend-module-jsonfc/-/plugin-tech-insights-backend-module-jsonfc-0.1.30.tgz#b547a845d8ae156a46fd9f1bdbddcb49bf19a907"
@@ -11279,6 +11300,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-security-analysis-frontend" "^1.0.1"
     "@tpb/plugin-snyk" "^0.0.1-alpha.1"
+    "@tpb/plugin-stack-overflow" "0.0.1-alpha.3"
     "@tpb/plugin-supply-chain" "1.0.6-build.5"
     "@tpb/plugin-techinsights" "^0.0.1-alpha.1"
     "@tpb/plugin-vmware-cloud-services-auth" "^0.0.1-alpha.1"
