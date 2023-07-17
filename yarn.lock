@@ -7033,7 +7033,7 @@
     uuid "^9.0.0"
     zustand "^4.3.0"
 
-"@material-ui/core@^4.12.2", "@material-ui/core@^4.12.4", "@material-ui/core@~4.12.4":
+"@material-ui/core@^4.11.0", "@material-ui/core@^4.12.2", "@material-ui/core@^4.12.4", "@material-ui/core@~4.12.4":
   version "4.12.4"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
   integrity sha512-tr7xekNlM9LjA6pagJmL8QCgZXaubWUwkJnoYcMKd4gw/t4XiyvnTkjdGrUVicyB2BsdaAv1tvow45bPM4sSwQ==
@@ -7057,6 +7057,17 @@
   integrity sha512-IKHlyx6LDh8n19vzwH5RtHIOHl9Tu90aAAxcbWME6kp4dmvODM3UvOHJeMIDzUbd4muuJKHmlNoBN+mDY4XkBA==
   dependencies:
     "@babel/runtime" "^7.4.4"
+
+"@material-ui/lab@4.0.0-alpha.45":
+  version "4.0.0-alpha.45"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/lab/-/lab-4.0.0-alpha.45.tgz#6e1abbdd6e44b9ef7b3eff8ef892a3da5dc52f10"
+  integrity sha512-zT6kUU87SHsPukiu3tlWg8V6o0tGS38c1b/xst/kPqX6eLbfqrROyxhHn1A8ZtHmqga1AKQdv/1llQoG80Afww==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@material-ui/utils" "^4.7.1"
+    clsx "^1.0.4"
+    prop-types "^15.7.2"
+    react-is "^16.8.0"
 
 "@material-ui/lab@4.0.0-alpha.57":
   version "4.0.0-alpha.57"
@@ -7134,7 +7145,7 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/types/-/types-6.0.2.tgz#a6d384196c6e2e130eb2765b62d944c0b1ea1015"
   integrity sha512-/XUca4wUb9pWimLLdM1PE8KS8rTbDEGohSGkGtk3WST7lm23m+8RYv9uOmrvOg/VSsl4bMiOv4t2/LCb+RLbTg==
 
-"@material-ui/utils@^4.11.2", "@material-ui/utils@^4.11.3":
+"@material-ui/utils@^4.11.2", "@material-ui/utils@^4.11.3", "@material-ui/utils@^4.7.1":
   version "4.11.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@material-ui/utils/-/utils-4.11.3.tgz#232bd86c4ea81dab714f21edad70b7fdf0253942"
   integrity sha512-ZuQPV4rBK/V1j2dIkSSEcH5uT6AaHuKWFfotADHsC0wVL1NLd2WkFCm4ZZbX33iO4ydl6V0GPngKm8HZQ2oujg==
@@ -8286,6 +8297,28 @@
     ajv-formats "^2.1.1"
     lodash "^4.17.21"
     lodash-es "^4.17.21"
+
+"@roadiehq/backstage-plugin-prometheus@^2.4.9":
+  version "2.4.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@roadiehq/backstage-plugin-prometheus/-/backstage-plugin-prometheus-2.4.9.tgz#81fd7617ba667d8de93a87440e569a8641135a07"
+  integrity sha512-1sbXcvf7DO3M/9/ogfBT5NyS2epO9EqKcPxxv42XrcIxqBSj6vlD/Y+OeAwXUPVTpa4QXD3rvw7NslcnUFwR3w==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.0"
+    "@backstage/core-components" "^0.13.2"
+    "@backstage/core-plugin-api" "^1.5.2"
+    "@backstage/plugin-catalog-react" "^1.7.0"
+    "@backstage/theme" "^0.4.0"
+    "@material-ui/core" "^4.11.0"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.45"
+    "@types/recharts" "^1.8.14"
+    classnames "^2.2.6"
+    history "^5.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.1"
+    react-use "^17.2.4"
+    react-use-dimensions "^1.2.1"
+    recharts "^1.8.5"
 
 "@rollup/plugin-commonjs@^23.0.0":
   version "23.0.7"
@@ -9828,12 +9861,24 @@
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/d3-path/-/d3-path-3.0.0.tgz#939e3a784ae4f80b1fde8098b91af1776ff1312b"
   integrity sha512-0g/A+mZXgFkQxN3HniRDbXMN79K3CdTpLsevj+PXiTcb2hVyvkZUBg37StmgCQkaD84cUJ4uaDAWq7UJOQy2Tg==
 
+"@types/d3-path@^1":
+  version "1.0.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/d3-path/-/d3-path-1.0.9.tgz#73526b150d14cd96e701597cbf346cfd1fd4a58c"
+  integrity sha512-NaIeSIBiFgSC6IGUBjZWcscUJEq7vpVu7KthHN8eieTV9d9MqkSOZLH4chq1PmcKy06PNe3axLeKmRIyxJ+PZQ==
+
 "@types/d3-scale@^4.0.2":
   version "4.0.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/d3-scale/-/d3-scale-4.0.3.tgz#7a5780e934e52b6f63ad9c24b105e33dd58102b5"
   integrity sha512-PATBiMCpvHJSMtZAMEhc2WyL+hnzarKzI6wAHYjhsonjWJYGq5BXTzQjv4l8m2jO183/4wZ90rKvSeT7o72xNQ==
   dependencies:
     "@types/d3-time" "*"
+
+"@types/d3-shape@^1":
+  version "1.3.8"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/d3-shape/-/d3-shape-1.3.8.tgz#c3c15ec7436b4ce24e38de517586850f1fea8e89"
+  integrity sha512-gqfnMz6Fd5H6GOLYixOZP/xlrMtJms9BaS+6oWxTKHNqPGZ93BkWWupQSCYm6YHqx6h9wjRupuJb90bun6ZaYg==
+  dependencies:
+    "@types/d3-path" "^1"
 
 "@types/d3-shape@^3.1.0":
   version "3.1.1"
@@ -10380,6 +10425,14 @@
   integrity sha512-ImM6TmoF8bgOwvehGviEj3tRdRBbQujr1N+0ypaln/GWjaerOB26jb93vsRHmdMtvVQZQebOlqt2HROark87mQ==
   dependencies:
     "@types/node" "*"
+
+"@types/recharts@^1.8.14":
+  version "1.8.24"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@types/recharts/-/recharts-1.8.24.tgz#2eb3a857291e0aa216c83a3fea6acec113eab3ca"
+  integrity sha512-PGugStujgxjMOUUJuGIrw71MIhTtl/FeNzuWZVDTS7Kq8NdiQfMrlC6GXJIvlQcrsUIn9IcXbi6sZJjK+6kfLQ==
+  dependencies:
+    "@types/d3-shape" "^1"
+    "@types/react" "*"
 
 "@types/request@^2.47.1":
   version "2.48.8"
@@ -11297,6 +11350,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@tpb/plugin-onelogin-auth" "^0.0.1-alpha.2"
     "@tpb/plugin-pendo-analytics" "^1.0.6-build.1"
     "@tpb/plugin-permission-test-auth" "^0.0.1-alpha.1"
+    "@tpb/plugin-prometheus" "^0.0.1-alpha.1"
     "@tpb/plugin-rrv" "^0.0.1-alpha.2"
     "@tpb/plugin-security-analysis-frontend" "^1.0.1"
     "@tpb/plugin-snyk" "^0.0.1-alpha.1"
@@ -11855,6 +11909,11 @@ bail@^2.0.0:
   version "2.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/bail/-/bail-2.0.2.tgz#d26f5cd8fe5d6f832a31517b9f7c356040ba6d5d"
   integrity sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==
+
+balanced-match@^0.4.2:
+  version "0.4.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
+  integrity sha512-STw03mQKnGUYtoNjmowo4F2cRmIIxYEGiMsjjwla/u5P1lxadj/05WkNaFjNiKTgJkj8KiXbgAiRTmcQRwQNtg==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -13321,6 +13380,11 @@ core-js@^2.4.0, core-js@^2.5.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
+core-js@^3.4.2:
+  version "3.31.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/core-js/-/core-js-3.31.1.tgz#f2b0eea9be9da0def2c5fece71064a7e5d687653"
+  integrity sha512-2sKLtfq1eFST7l7v62zaqXacPc7uG8ZAya8ogijLhTtaKNcpzpB4TMoTw2Si+8GYKRwFPMMtUT0263QFWFfqyQ==
+
 core-js@^3.6.5:
   version "3.30.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/core-js/-/core-js-3.30.1.tgz#fc9c5adcc541d8e9fa3e381179433cbf795628ba"
@@ -13800,6 +13864,21 @@ cytoscape@^3.2.19, cytoscape@^3.20.0:
   dependencies:
     internmap "1 - 2"
 
+d3-array@^1.2.0:
+  version "1.2.4"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
+  integrity sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==
+
+d3-collection@1:
+  version "1.0.7"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-collection/-/d3-collection-1.0.7.tgz#349bd2aa9977db071091c13144d5e4f16b5b310e"
+  integrity sha512-ii0/r5f4sjKNTfh84Di+DpztYwqKhEyUlKoPrzUFfeSkWxjW49xU2QzO9qrPrNkpdI0XJkfzvmTu8V2Zylln6A==
+
+d3-color@1:
+  version "1.4.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-color/-/d3-color-1.4.1.tgz#c52002bf8846ada4424d55d97982fef26eb3bc8a"
+  integrity sha512-p2sTHSLCJI2QKunbGb7ocOh7DgTAn8IrLx21QRc/BSnodXM4sv6aLQlnfpvehFMLZEfBc6g9pH9SWQccFYfJ9Q==
+
 "d3-color@1 - 3":
   version "3.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-color/-/d3-color-3.1.0.tgz#395b2833dfac71507f12ac2f7af23bf819de24e2"
@@ -13823,10 +13902,22 @@ cytoscape@^3.2.19, cytoscape@^3.20.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-ease/-/d3-ease-3.0.1.tgz#9658ac38a2140d59d346160f1f6c30fda0bd12f4"
   integrity sha512-wR/XK3D3XcLIZwpbvQwQ5fK+8Ykds1ip7A2Txe0yxncXSdq1L9skcG7blcedkOX+ZcgxGAmLX1FrRGbADwzi0w==
 
+d3-format@1:
+  version "1.4.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-format/-/d3-format-1.4.5.tgz#374f2ba1320e3717eb74a9356c67daee17a7edb4"
+  integrity sha512-J0piedu6Z8iB6TbIGfZgDzfXxUFN3qQRMofy2oPdXzQibYGqPB/9iMcxr/TGalU+2RsyDO+U4f33id8tbnSRMQ==
+
 "d3-format@1 - 3":
   version "3.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-format/-/d3-format-3.1.0.tgz#9260e23a28ea5cb109e93b21a06e24e2ebd55641"
   integrity sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA==
+
+d3-interpolate@1, d3-interpolate@^1.3.0:
+  version "1.4.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-interpolate/-/d3-interpolate-1.4.0.tgz#526e79e2d80daa383f9e0c1c1c7dcc0f0583e987"
+  integrity sha512-V9znK0zc3jOPV4VD2zZn0sDhZU3WAE2bmlxdIwwQPPzPjvyLkd8B3JUVdS1IDUFDkWZ72c9qnv1GK2ZagTZ8EA==
+  dependencies:
+    d3-color "1"
 
 "d3-interpolate@1 - 3", "d3-interpolate@1.2.0 - 3", d3-interpolate@^3.0.1:
   version "3.0.1"
@@ -13835,10 +13926,27 @@ cytoscape@^3.2.19, cytoscape@^3.20.0:
   dependencies:
     d3-color "1 - 3"
 
+d3-path@1:
+  version "1.0.9"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-path/-/d3-path-1.0.9.tgz#48c050bb1fe8c262493a8caf5524e3e9591701cf"
+  integrity sha512-VLaYcn81dtHVTjEHd8B+pbe9yHWpXKZUC87PzoFmsFrJqgFwDe/qxfp5MlfsfM1V5E/iVt0MmEbWQ7FVIXh/bg==
+
 d3-path@^3.1.0:
   version "3.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-path/-/d3-path-3.1.0.tgz#22df939032fb5a71ae8b1800d61ddb7851c42526"
   integrity sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==
+
+d3-scale@^2.1.0:
+  version "2.2.2"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-scale/-/d3-scale-2.2.2.tgz#4e880e0b2745acaaddd3ede26a9e908a9e17b81f"
+  integrity sha512-LbeEvGgIb8UMcAa0EATLNX0lelKWGYDQiPdHj+gLblGVhGLyNbaCn3EvrJf0A3Y/uOOU5aD6MTh5ZFCdEwGiCw==
+  dependencies:
+    d3-array "^1.2.0"
+    d3-collection "1"
+    d3-format "1"
+    d3-interpolate "1"
+    d3-time "1"
+    d3-time-format "2"
 
 d3-scale@^4.0.2:
   version "4.0.2"
@@ -13856,6 +13964,13 @@ d3-scale@^4.0.2:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-selection/-/d3-selection-3.0.0.tgz#c25338207efa72cc5b9bd1458a1a41901f1e1b31"
   integrity sha512-fmTRWbNMmsmWq6xJV8D19U/gw/bwrHfNXxrIN+HfZgnzqTHp9jOmKMhsTUjXOJnZOdZY9Q28y4yebKzqDKlxlQ==
 
+d3-shape@^1.2.0:
+  version "1.3.7"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-shape/-/d3-shape-1.3.7.tgz#df63801be07bc986bc54f63789b4fe502992b5d7"
+  integrity sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==
+  dependencies:
+    d3-path "1"
+
 d3-shape@^3.0.0, d3-shape@^3.1.0:
   version "3.2.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-shape/-/d3-shape-3.2.0.tgz#a1a839cbd9ba45f28674c69d7f855bcf91dfc6a5"
@@ -13863,12 +13978,24 @@ d3-shape@^3.0.0, d3-shape@^3.1.0:
   dependencies:
     d3-path "^3.1.0"
 
+d3-time-format@2:
+  version "2.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-time-format/-/d3-time-format-2.3.0.tgz#107bdc028667788a8924ba040faf1fbccd5a7850"
+  integrity sha512-guv6b2H37s2Uq/GefleCDtbe0XZAuy7Wa49VGkPVPMfLL9qObgBST3lEHJBMUp8S7NdLQAGIvr2KXk8Hc98iKQ==
+  dependencies:
+    d3-time "1"
+
 "d3-time-format@2 - 4":
   version "4.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-time-format/-/d3-time-format-4.1.0.tgz#7ab5257a5041d11ecb4fe70a5c7d16a195bb408a"
   integrity sha512-dJxPBlzC7NugB2PDLwo9Q8JiTR3M3e4/XANkreKSUxF8vvXKqm1Yfq4Q5dl8budlunRVlUUaDUgFt7eA8D6NLg==
   dependencies:
     d3-time "1 - 3"
+
+d3-time@1:
+  version "1.1.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/d3-time/-/d3-time-1.1.0.tgz#b1e19d307dae9c900b7e5b25ffc5dcc249a8a0f1"
+  integrity sha512-Xh0isrZ5rPYYdqhAVk8VLnMEidhz5aP7htAADH6MfzgmmicPkTo8LhkLxci61/lCB7n7UmE3bN0leRt+qvkLxA==
 
 "d3-time@1 - 3", "d3-time@2.1.1 - 3", d3-time@^3.0.0:
   version "3.1.0"
@@ -19624,6 +19751,11 @@ lodash.startcase@^4.4.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash.startcase/-/lodash.startcase-4.4.0.tgz#9436e34ed26093ed7ffae1936144350915d9add8"
   integrity sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==
 
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
+
 lodash.transform@^4.6.0:
   version "4.6.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash.transform/-/lodash.transform-4.6.0.tgz#12306422f63324aed8483d3f38332b5f670547a0"
@@ -19644,7 +19776,7 @@ lodash.values@^4.3.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash.values/-/lodash.values-4.3.0.tgz#a3a6c2b0ebecc5c2cba1c17e6e620fe81b53d347"
   integrity sha512-r0RwvdCv8id9TUblb/O7rYPwVy6lerCbcawrfdo9iC/1t1wsNMJknO79WNBgwkH0hIeJ08jmvvESbFpNb4jH0Q==
 
-lodash@^4.15.0, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.7.0, lodash@~4.17.15:
+lodash@^4.15.0, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.7.0, lodash@~4.17.15, lodash@~4.17.4:
   version "4.17.21"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -19763,7 +19895,7 @@ lunr@^2.3.9:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/lunr/-/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
   integrity sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==
 
-luxon@^3.0.0, luxon@^3.2.1:
+luxon@^3.0.0, luxon@^3.0.1, luxon@^3.2.1:
   version "3.3.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/luxon/-/luxon-3.3.0.tgz#d73ab5b5d2b49a461c47cedbc7e73309b4805b48"
   integrity sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==
@@ -19940,6 +20072,11 @@ material-ui-popup-state@^1.9.3:
     "@material-ui/types" "^6.0.1"
     classnames "^2.2.6"
     prop-types "^15.7.2"
+
+math-expression-evaluator@^1.2.14:
+  version "1.4.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/math-expression-evaluator/-/math-expression-evaluator-1.4.0.tgz#3d66031117fbb7b9715ea6c9c68c2cd2eebd37e2"
+  integrity sha512-4vRUvPyxdO8cWULGTh9dZWL2tZK6LDBvj+OGHBER7poH9Qdt7kXEoj20wiz4lQUbUXQZFjPbe5mVDo9nutizCw==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -23043,7 +23180,7 @@ promzard@^1.0.0:
   dependencies:
     read "^2.0.0"
 
-prop-types@15.x, prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@15.x, prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -23294,6 +23431,13 @@ raf-schd@^4.0.2, raf-schd@^4.0.3:
   version "4.0.3"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
   integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
+
+raf@^3.4.0:
+  version "3.4.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
+  integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
+  dependencies:
+    performance-now "^2.1.0"
 
 railroad-diagrams@^1.0.0:
   version "1.0.0"
@@ -23574,7 +23718,7 @@ react-inspector@^6.0.1:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-inspector/-/react-inspector-6.0.1.tgz#1a37f0165d9df81ee804d63259eaaeabe841287d"
   integrity sha512-cxKSeFTf7jpSSVddm66sKdolG90qURAX3g1roTeaN6x0YEbtWc8JpmFN9+yIqLNH2uEkYerWLtJZIXRIFuBKrg==
 
-react-is@^16.10.2, react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.9.0:
+react-is@^16.10.2, react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.9.0:
   version "16.13.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -23652,6 +23796,16 @@ react-resizable@^3.0.4:
     prop-types "15.x"
     react-draggable "^4.0.3"
 
+react-resize-detector@^2.3.0:
+  version "2.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-resize-detector/-/react-resize-detector-2.3.0.tgz#57bad1ae26a28a62a2ddb678ba6ffdf8fa2b599c"
+  integrity sha512-oCAddEWWeFWYH5FAcHdBYcZjAw9fMzRUK9sWSx6WvSSOPVRxcHd5zTIGy/mOus+AhN/u6T4TMiWxvq79PywnJQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
+    prop-types "^15.6.0"
+    resize-observer-polyfill "^1.5.0"
+
 react-resize-detector@^8.0.4:
   version "8.1.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-resize-detector/-/react-resize-detector-8.1.0.tgz#1c7817db8bc886e2dbd3fbe3b26ea8e56be0524a"
@@ -23686,6 +23840,16 @@ react-side-effect@^2.1.0:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
   integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
+react-smooth@^1.0.5:
+  version "1.0.6"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-smooth/-/react-smooth-1.0.6.tgz#18b964f123f7bca099e078324338cd8739346d0a"
+  integrity sha512-B2vL4trGpNSMSOzFiAul9kFAsxTukL9Wyy9EXtkQy3GJr6sZqW9e1nShdVOJ3hRYamPZ94O17r3Q0bjSw3UYtg==
+  dependencies:
+    lodash "~4.17.4"
+    prop-types "^15.6.0"
+    raf "^3.4.0"
+    react-transition-group "^2.5.0"
+
 react-smooth@^2.0.2:
   version "2.0.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-smooth/-/react-smooth-2.0.2.tgz#0ef24213628cb13bf4305194a050e1db4302a3a1"
@@ -23719,7 +23883,7 @@ react-text-truncate@^0.19.0:
   dependencies:
     prop-types "^15.5.7"
 
-react-transition-group@2.9.0:
+react-transition-group@2.9.0, react-transition-group@^2.5.0:
   version "2.9.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
   integrity sha512-+HzNTCHpeQyl4MJ/bdE0u6XRMe9+XG/+aL4mCxVN4DnPBQ0/5bfHWPDuOZUzYdMj94daZaZdCCc1Dzt9R/xSSg==
@@ -23743,6 +23907,11 @@ react-universal-interface@^0.6.2:
   version "0.6.2"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
   integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
+
+react-use-dimensions@^1.2.1:
+  version "1.2.1"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/react-use-dimensions/-/react-use-dimensions-1.2.1.tgz#eb1561db7b06c393209d2bffa449931dd93f7870"
+  integrity sha512-XL+Rup9Hosxx3Ap9xpyQMbVwuUa4BSqiOjfBb2zDuGs4uv2FesFV+m8Z/huRx2BNptMd9ARPqFuSNA62zhCozg==
 
 react-use@^16.1.0:
   version "16.1.0"
@@ -23983,12 +24152,29 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-recharts-scale@^0.4.4:
+recharts-scale@^0.4.2, recharts-scale@^0.4.4:
   version "0.4.5"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/recharts-scale/-/recharts-scale-0.4.5.tgz#0969271f14e732e642fcc5bd4ab270d6e87dd1d9"
   integrity sha512-kivNFO+0OcUNu7jQquLXAxz1FIwZj8nrj+YkOKc5694NbjCvcT6aSZiIzNzd2Kul4o4rTto8QVR9lMNtxD4G1w==
   dependencies:
     decimal.js-light "^2.4.1"
+
+recharts@^1.8.5:
+  version "1.8.6"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/recharts/-/recharts-1.8.6.tgz#ba651a4610dbac936da5001f8cb556b36a170410"
+  integrity sha512-UlfSEOnZRAxxaH33Fc86yHEcqN+IRauPP31NfVvlGudtwVZEIb2RFI5b1J3npQo7XyoSnkUodg3Ha6EupkV+SQ==
+  dependencies:
+    classnames "^2.2.5"
+    core-js "^3.4.2"
+    d3-interpolate "^1.3.0"
+    d3-scale "^2.1.0"
+    d3-shape "^1.2.0"
+    lodash "^4.17.5"
+    prop-types "^15.6.0"
+    react-resize-detector "^2.3.0"
+    react-smooth "^1.0.5"
+    recharts-scale "^0.4.2"
+    reduce-css-calc "^1.3.0"
 
 recharts@^2.6.2, recharts@~2.6.2:
   version "2.6.2"
@@ -24046,6 +24232,15 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
+reduce-css-calc@^1.3.0:
+  version "1.3.0"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/reduce-css-calc/-/reduce-css-calc-1.3.0.tgz#747c914e049614a4c9cfbba629871ad1d2927716"
+  integrity sha512-0dVfwYVOlf/LBA2ec4OwQ6p3X9mYxn/wOl2xTcLwjnPYrkgEfPx3VI4eGCH3rQLlPISG5v9I9bkZosKsNRTRKA==
+  dependencies:
+    balanced-match "^0.4.2"
+    math-expression-evaluator "^1.2.14"
+    reduce-function-call "^1.0.1"
+
 reduce-css-calc@^2.1.8:
   version "2.1.8"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/reduce-css-calc/-/reduce-css-calc-2.1.8.tgz#7ef8761a28d614980dc0c982f772c93f7a99de03"
@@ -24053,6 +24248,13 @@ reduce-css-calc@^2.1.8:
   dependencies:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
+
+reduce-function-call@^1.0.1:
+  version "1.0.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/reduce-function-call/-/reduce-function-call-1.0.3.tgz#60350f7fb252c0a67eb10fd4694d16909971300f"
+  integrity sha512-Hl/tuV2VDgWgCSEeWMLwxLZqX7OK59eU1guxXsRKTAyeYimivsKdtcV4fu3r710tpG5GmDKDhQ0HSZLExnNmyQ==
+  dependencies:
+    balanced-match "^1.0.0"
 
 redux-immutable@^4.0.0:
   version "4.0.0"
@@ -24300,7 +24502,7 @@ reselect@^4.1.5:
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/reselect/-/reselect-4.1.8.tgz#3f5dc671ea168dccdeb3e141236f69f02eaec524"
   integrity sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==
 
-resize-observer-polyfill@^1.5.1:
+resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
   integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
