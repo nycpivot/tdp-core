@@ -50,33 +50,28 @@ Now let's take a look at how we can use all of the things that we've just descri
 First, let's start by looking at our actual implementation of the `AppPluginInterface` definition.
 
 ```
-import { EntitySwitch } from '@backstage/plugin-catalog';
 import {
   EntityGrafanaAlertsCard,
   EntityGrafanaDashboardsCard,
 } from '@k-phoen/backstage-plugin-grafana';
 import { Grid } from '@material-ui/core';
-import { AppPluginInterface, AppRouteSurface } from '@tpb/core-frontend';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { EntityPageSurface } from '@tpb/plugin-catalog';
 import React from 'react';
 
 export const BackstageGrafanaPlugin: AppPluginInterface = () => context => {
-  context.applyWithDependency(
-    AppRouteSurface,
-    EntityPageSurface,
-    (_, surface) => {
-      surface.addOverviewContent(
-        <Grid item md={7} xs={12}>
-          <EntityGrafanaAlertsCard />
-        </Grid>,
-      );
-      surface.addOverviewContent(
-        <Grid item md={7} xs={12}>
-          <EntityGrafanaDashboardsCard />
-        </Grid>,
-      );
-    },
-  );
+  context.applyTo(EntityPageSurface, surface => {
+    surface.addOverviewContent(
+      <Grid item md={7} xs={12}>
+        <EntityGrafanaAlertsCard />
+      </Grid>,
+    );
+    surface.addOverviewContent(
+      <Grid item md={7} xs={12}>
+        <EntityGrafanaDashboardsCard />
+      </Grid>,
+    );
+  });
 };
 
 
@@ -86,7 +81,7 @@ Let's analyze it:
 
 `BackstageGrafanaPlugin` is the main exportable part — the `AppPluginInterface` definition; it returns a function that receives a parameter we called `context` which is a `SurfaceStoreInterface`.
 
-Then the function `applyWithDependency` is invoked from the `context` with two TPB Surfaces: `AppRouteSurface` and `EntityPageSurface`.
+Then the function `applyTo` is invoked from the `context` with TPB Surface: `EntityPageSurface`.
 
 At this point you may be wondering: how do we know which surfaces are needed?
 The answer is that it depends on the parts of the application that you want to modify. For this particular scenario we see in the [Grafana Plugin for Backstage Documentation](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/README.md) that adding an `EntityGrafanaAlertsCard` and `EntityGrafanaDashboardsCard` requires modifying the `EntityPage` — specifically adding it to the Overview content. So we require the `EntityPageSurface` so that we can add stuff to it.
