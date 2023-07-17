@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppPluginInterface, AppRouteSurface } from '@tpb/core-frontend';
+import { AppPluginInterface } from '@tpb/core-frontend';
 import { EntityPageSurface } from '@tpb/plugin-catalog';
 import { EntityLayout } from '@backstage/plugin-catalog';
 import {
@@ -10,29 +10,25 @@ import {
 import { Grid } from '@material-ui/core';
 
 export const PrometheusPlugin: AppPluginInterface = () => context => {
-  context.applyWithDependency(
-    AppRouteSurface,
-    EntityPageSurface,
-    (_, entityPageSurface) => {
-      entityPageSurface.addOverviewContent(
-        <Grid item md={6}>
-          <div id="prometheus-alert-overview">
-            <EntityPrometheusAlertCard />
-          </div>
-        </Grid>,
-      );
-      entityPageSurface.addOverviewContent(
-        <Grid item md={6}>
-          <div id="prometheus-graph-overview">
-            <EntityPrometheusGraphCard />
-          </div>
-        </Grid>,
-      );
-      entityPageSurface.servicePage.addTab(
-        <EntityLayout.Route path="/prometheus" title="Prometheus">
-          <EntityPrometheusContent />
-        </EntityLayout.Route>,
-      );
-    },
-  );
+  context.applyTo(EntityPageSurface, entityPageSurface => {
+    entityPageSurface.addOverviewContent(
+      <Grid item md={6}>
+        <div id="prometheus-alert-overview">
+          <EntityPrometheusAlertCard />
+        </div>
+      </Grid>,
+    );
+    entityPageSurface.addOverviewContent(
+      <Grid item md={6}>
+        <div id="prometheus-graph-overview">
+          <EntityPrometheusGraphCard />
+        </div>
+      </Grid>,
+    );
+    entityPageSurface.servicePage.addTab(
+      <EntityLayout.Route path="/prometheus" title="Prometheus">
+        <EntityPrometheusContent />
+      </EntityLayout.Route>,
+    );
+  });
 };
