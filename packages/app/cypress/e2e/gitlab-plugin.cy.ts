@@ -10,8 +10,10 @@ describe('Gitlab plugin', () => {
     cy.contains(/contributors/i, { timeout: 10000 }).should('be.visible');
     cy.contains(/languages/i).should('be.visible');
     cy.contains(/merge requests statistics/i).should('be.visible');
-    cy.contains(/gitlab pipelines/i).should('be.visible');
-    cy.contains(/gitlab merge request/i).should('be.visible');
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
+    cy.contains("Gitlab Pipelines").scrollIntoView().should('be.visible');
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
+    cy.contains("Gitlab Merge Request").scrollIntoView().should('be.visible');
   });
 
   it('should display info in the Gitlab tab', () => {

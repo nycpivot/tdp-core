@@ -21,9 +21,9 @@ describe('GitHub Actions v0.6.0 in TPB v1.6.0', () => {
       .children('a')
       .click();
 
-    cy.get('button[data-testid="header-tab-6"]')
-      .should('be.visible')
+    cy.get('button[role="tab"]')
       .contains('GitHub Actions')
+      .should('be.visible')
       .click();
 
     cy.contains('Login Required').should('be.visible');

@@ -115,7 +115,7 @@ metadata:
   annotations:
     prometheus.io/alert: all
     prometheus.io/rule: node_memory_active_bytes
-    prometheus.io/service-name: prometheus-test
+    prometheus.io/service-name: prometheus-entity
 spec:
   type: service
   lifecycle: experimental
