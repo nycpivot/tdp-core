@@ -6,7 +6,9 @@ describe('Gitlab plugin', () => {
     cy.get('input[placeholder="Filter"]').type('simple');
     cy.contains(/simple-app/i).click();
   });
+
   it('should display overview', () => {
+    cy.contains(/contributors/i, { timeout: 10000 }).scrollIntoView();
     cy.contains(/contributors/i, { timeout: 10000 }).should('be.visible');
     cy.contains(/languages/i).scrollIntoView();
     cy.contains(/languages/i).should('be.visible');
@@ -20,6 +22,7 @@ describe('Gitlab plugin', () => {
 
   it('should display info in the Gitlab tab', () => {
     cy.contains('button', 'Gitlab').click();
+    cy.contains(/contributors/i, { timeout: 10000 }).scrollIntoView();
     cy.contains(/contributors/i, { timeout: 10000 }).should('be.visible');
     cy.contains(/languages/i).scrollIntoView();
     cy.contains(/languages/i).should('be.visible');
