@@ -44,6 +44,7 @@ describe('Snyk Plugin v2.0.0 in TPB v1.6.0', () => {
     cy.wait('@getProjects');
     cy.wait('@getIssues');
 
+    cy.contains('Vulnerabilities').scrollIntoView();
     cy.contains('Vulnerabilities').should('be.visible');
     cy.get('[data-test-id="CircularProgressbarWithChildren"]').should(
       'be.visible',

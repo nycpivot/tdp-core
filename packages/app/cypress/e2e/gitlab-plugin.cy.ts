@@ -8,7 +8,9 @@ describe('Gitlab plugin', () => {
   });
   it('should display overview', () => {
     cy.contains(/contributors/i, { timeout: 10000 }).should('be.visible');
+    cy.contains(/languages/i).scrollIntoView();
     cy.contains(/languages/i).should('be.visible');
+    cy.contains(/merge requests statistics/i).scrollIntoView();
     cy.contains(/merge requests statistics/i).should('be.visible');
     cy.contains(/gitlab pipelines/i).scrollIntoView();
     cy.contains(/gitlab pipelines/i).should('be.visible');
@@ -19,10 +21,15 @@ describe('Gitlab plugin', () => {
   it('should display info in the Gitlab tab', () => {
     cy.contains('button', 'Gitlab').click();
     cy.contains(/contributors/i, { timeout: 10000 }).should('be.visible');
+    cy.contains(/languages/i).scrollIntoView();
     cy.contains(/languages/i).should('be.visible');
+    cy.contains(/merge requests statistics/i).scrollIntoView();
     cy.contains(/merge requests statistics/i).should('be.visible');
+    cy.contains(/gitlab pipelines/i).scrollIntoView();
     cy.contains(/gitlab pipelines/i).should('be.visible');
+    cy.contains(/gitlab merge request/i).scrollIntoView();
     cy.contains(/gitlab merge request/i).should('be.visible');
+    cy.contains(/gitlab issues/i).scrollIntoView();
     cy.contains(/gitlab issues/i).should('be.visible');
   });
 });
