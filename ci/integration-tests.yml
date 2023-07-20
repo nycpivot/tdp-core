@@ -51,7 +51,6 @@ params:
   OKTA_AUDIENCE: ((okta_audience))
   VMWARE_CLOUD_SERVICES_CLIENT_ID: ((vmware_cloud_services_client_id))
   VMWARE_CLOUD_SERVICES_ORGANIZATION_ID: ((vmware_cloud_services_organization_id))
-  JIRA_TOKEN: ((jira_token))
 run:
   dir: code
   path: ci/scripts/integration_tests

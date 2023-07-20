@@ -221,7 +221,6 @@ jobs:
           okta_svc_tpb_refresh_token: ((e2e.okta_svc_tpb_refresh_token))
           vmware_cloud_services_client_id: ((e2e.vmware_cloud_services_client_id))
           vmware_cloud_services_organization_id: ((e2e.vmware_cloud_services_organization_id))
-          jira_token: ((e2e.jira_token))
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: publish

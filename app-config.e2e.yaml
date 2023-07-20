@@ -301,7 +301,7 @@ proxy:
   '/jira/api':
     target: https://jira.eng.vmware.com/
     headers:
-      Authorization: ${JIRA_TOKEN}
+      Authorization: xxxxx
       Accept: 'application/json'
       Content-Type: 'application/json'
       X-Atlassian-Token: 'no-check'

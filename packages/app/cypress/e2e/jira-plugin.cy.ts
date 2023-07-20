@@ -4,6 +4,29 @@ describe('Jira plugin v2.4.8 in TDP v1.6.0', () => {
   beforeEach(() => {
     Authentication.logInAsCatalogAdmin();
     cy.visit('/catalog');
+    cy.intercept('GET', 'api/proxy/jira/api/rest/api/latest/project/ESBACK', {
+      fixture: '../fixtures/jira/project.json',
+    }).as('getProject');
+
+    cy.intercept('POST', 'api/proxy/jira/api/rest/api/latest/search', {
+      fixture: '../fixtures/jira/search.json',
+    }).as('getSearch');
+
+    cy.intercept(
+      'GET',
+      'api/proxy/jira/api/rest/api/latest/project/ESBACK/statuses',
+      {
+        fixture: '../fixtures/jira/status.json',
+      },
+    ).as('getStatuses');
+
+    cy.intercept(
+      'GET',
+      'api/proxy/jira/api/activity?maxResults=25&streams=key+IS+ESBACK&os_authType=basic',
+      {
+        fixture: '../fixtures/jira/activity.html',
+      },
+    ).as('getActivityStream');
   });
 
   it('should render jira-example', () => {

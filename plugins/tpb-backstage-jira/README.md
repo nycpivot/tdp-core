@@ -129,7 +129,7 @@ proxy:
     target: JIRA_URL
     headers:
       Authorization:
-        $env: JIRA_TOKEN
+        $env: ${JIRA_TOKEN}
       Accept: 'application/json'
       Content-Type: 'application/json'
       X-Atlassian-Token: 'no-check'
