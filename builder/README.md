@@ -178,6 +178,58 @@ $ kubectl -n tap-gui get httpproxy tap-gui -o jsonpath={.spec.virtualhost.fqdn}
 
 visit that url in your browser and navigate to the supply chains plugin and find your workload!
 
+# Generating the yarn.lock template for the `builder/bundle`
+
+You can have the builder generate a yarn.lock suitable for the `builder/bundle`.
+But it's a pretty hacky process for the moment.
+
+First, you need to comment out some lines in the verdaccio setup script. Make
+sure not to commit these changes as we don't want them on a mainline branch.
+
+```diff
+diff --git a/builder/verdaccio/setup.sh b/builder/verdaccio/setup.sh
+index 4ba8a58b..b1f89964 100755
+--- a/builder/verdaccio/setup.sh
++++ b/builder/verdaccio/setup.sh
+@@ -25,5 +25,5 @@ export TPB_APP_CONFIG=conf/app-config.yaml
+ export TPB_CONFIG=conf/default-manifest.yaml
+ yarn --cwd builder portal:prepare-pack
+
+-rm -rf builder/portal
+-rm -rf builder/node_modules
++# rm -rf builder/portal
++# rm -rf builder/node_modules
+```
+
+That diff should get you the state you need. You can write those contents to a
+file called `patch` and run `git apply patch`.
+
+Next, you need to generate the builder image, but only the first stage of the
+build. Docker provides a command line argument for this `--target`
+
+```shell
+$ docker build . -t installer --target installer
+```
+
+It's up to you whether or not you use `--no-cache`.
+
+This will build the image, but only the first stage titled `installer`.
+
+From there you can run that docker image, as it's a debian based image to fetch
+the `yarn.lock` that has been produced.
+
+```shell
+$ docker --entrypoint bash -ti --rm -v $(realpath ./builder-source/bundle/):/bundle installer
+$ cd /builder/portal
+$ ls yarn.lock
+yarn.lock
+$ cp yarn.lock /bundle/yarn.lock
+```
+
+Will copy it to your local filesystem. From there you can use git to diff the
+two versions, restore the old one, or commit the new one. You could also save it
+to a different location if you don't trust git.
+
 # Troubleshooting when things don't work
 
 Unfortunately mstergianis isn't an expert on supply chains and is having trouble
