@@ -42,10 +42,8 @@ To feel some of this pain consider going through the Backstage [Plugin Developme
 
 ### Build a Backstage instance using the builder cli
 
-The builder cli is a tool for producing custom templated instances of Backstage.
-It can be found in our [tools repo](https://gitlab.eng.vmware.com/esback/tools/-/tree/main/), in the [bootstrap directory](https://gitlab.eng.vmware.com/esback/tools/-/tree/main/bootstrap).
-
-Follow the instructions for building a Backstage instance using the cli [here](https://gitlab.eng.vmware.com/esback/tools/-/blob/main/README.md#build-a-backstage-instance-using-the-builder-cli).
+The builder is a tool for producing custom templated instances of Backstage.
+It can be found in the [builder directory](./builder/README.md).
 
 ### Build a Backstage instance using Cloud Native Buildpacks
 
