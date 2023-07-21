@@ -8,6 +8,15 @@ resource_types:
     source:
       repository: harbor-repo.vmware.com/dockerhub-proxy-cache/cfcommunity/slack-notification-resource
       tag: latest
+  - name: registry-image-semver-enabled
+    type: registry-image
+    source:
+      repository: harbor-repo.vmware.com/dockerhub-proxy-cache/concourse/registry-image-resource
+      tag: 1.3.0
+  - name: counter-resource
+    type: docker-image
+    source:
+      repository: jinlee/counter-resource
 
 resources:
   - name: version
@@ -20,6 +29,13 @@ resources:
       initial_version: ((initial_version))
       access_key_id: ((aws.deprecated_access_key))
       secret_access_key: ((aws.deprecated_access_secret))
+  - name: configurator-image-build-counter
+    type: counter-resource
+    source:
+      bucket: esback.ci
+      key: build/esback/version/((git_branch))
+      aws_access_key_id: ((aws.deprecated_access_key))
+      aws_secret_access_key: ((aws.deprecated_access_secret))
   - name: pipeline-repo
     type: git
     icon: gitlab
@@ -46,6 +62,14 @@ resources:
       username: ((harbor.username))
       password: ((harbor.token))
       tag: #@ data.values.coreImageTag
+  - name: tpb-release-image
+    type: registry-image-semver-enabled
+    icon: docker
+    source:
+      repository: harbor-repo.vmware.com/esback/configurator
+      username: ((harbor.username))
+      password: ((harbor.token))
+      tag: ((git_branch))-latest
   #! Integration tests tools
   - name: ytt
     type: github-release
@@ -134,6 +158,43 @@ jobs:
       - put: version
         params:
           pre: #@ getattr(data.values, 'semverSuffix', '((git_branch))')
+    on_failure: *on_failure_notification
+    on_error: *on_failure_notification
+  - name: publish-tdp-configurator
+    plan:
+      - get: configurator-image-build-counter
+        params: { inc: yes }
+      - put: configurator-image-build-counter
+        params: { file: configurator-image-build-counter/count }
+      - in_parallel:
+          - get: pipeline-repo
+          - get: code
+            resource: esback-core
+            trigger: true
+      - task: yarn-build
+        file: pipeline-repo/ci/yarn-build.yml
+      - task: image-build
+        privileged: true
+        file: pipeline-repo/ci/configurator-image-build.yml
+      - task: make-a-file
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: harbor-repo.vmware.com/dockerhub-proxy-cache/library/node
+              tag: 16-alpine3.17
+          run:
+            path: sh
+            args:
+              - -exc
+              - ls -la; echo "((git_branch))-$(cat /tmp/build/put/configurator-image-build-counter/count)" > ./files/created_file
+          outputs:
+            - name: files
+      - put: tpb-release-image
+        params:
+          image: image/image.tar
+          additional_tags: ./files/created_file
     on_failure: *on_failure_notification
     on_error: *on_failure_notification
   - name: build
