@@ -9,7 +9,7 @@ describe('GitLab Auth Plugins', () => {
     cy.contains('li', 'GitLab').find('button').click();
     cy.get('@popup').should('be.called');
     cy.contains(
-      'gitlab.com needs to review the security of your connection before proceeding.',
+      /gitlab\.com needs to review the security of your connection before proceeding/i,
     );
   });
 });

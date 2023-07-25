@@ -1,0 +1,57 @@
+{
+  "name": "@tpb/plugin-snyk",
+  "version": "0.0.1-alpha.1",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.esm.js",
+    "types": "dist/index.d.ts"
+  },
+  "backstage": {
+    "role": "frontend-plugin"
+  },
+  "resolutions": {
+    "react": "^17",
+    "@types/react": "^17",
+    "@types/react-dom": "^17"
+  },
+  "scripts": {
+    "start": "backstage-cli package start",
+    "build": "backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --browser chrome",
+    "cypress:ci": "HEADLESS=true cypress run",
+    "cypress:cluster": "cypress run --browser chrome --config baseUrl=$CYPRESS_baseUrl --env mocked=$CYPRESS_MOCKED"
+  },
+  "dependencies": {
+    "@backstage/plugin-catalog": "^1.11.2",
+    "@material-ui/core": "^4.12.4",
+    "@tpb/core-frontend": "^0.0.2-main.158",
+    "@tpb/plugin-catalog": "^0.0.2-main.157",
+    "backstage-plugin-snyk": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "6.0.0-beta.0",
+    "react-router-dom": "6.0.0-beta.0"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.22.6",
+    "@types/react": "^16.14.0",
+    "@types/react-dom": "^16.9.16",
+    "eslint": "^8.16.0",
+    "typescript": "~4.6.4"
+  },
+  "files": [
+    "dist"
+  ],
+  "description": "Snyk plugin wrapper"
+}

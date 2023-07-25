@@ -1,0 +1,19 @@
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "data": [
+    {
+      "type": "target",
+      "id": "a9911f8d-fde3-4f03-9b7f-800c04678cf2",
+      "attributes": {
+        "isPrivate": false,
+        "origin": "cli",
+        "displayName": "vmware/snyk-repo",
+        "remoteUrl": "http://github.com/vmware/snyk-repo.git"
+      },
+      "relationships": {}
+    }
+  ],
+  "links": {}
+}

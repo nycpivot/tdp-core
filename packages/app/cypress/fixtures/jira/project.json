@@ -1,0 +1,331 @@
+{
+  "expand": "description,lead,url,projectKeys",
+  "self": "https://jira.eng.vmware.com/rest/api/latest/project/49514",
+  "id": "49514",
+  "key": "ESBACK",
+  "description": "",
+  "lead": {
+    "self": "https://jira.eng.vmware.com/rest/api/2/user?username=gborges",
+    "key": "gborges",
+    "name": "gborges",
+    "avatarUrls": {
+      "48x48": "https://jira.eng.vmware.com/secure/useravatar?ownerId=gborges&avatarId=55966",
+      "24x24": "https://jira.eng.vmware.com/secure/useravatar?size=small&ownerId=gborges&avatarId=55966",
+      "16x16": "https://jira.eng.vmware.com/secure/useravatar?size=xsmall&ownerId=gborges&avatarId=55966",
+      "32x32": "https://jira.eng.vmware.com/secure/useravatar?size=medium&ownerId=gborges&avatarId=55966"
+    },
+    "displayName": "Glenio D. Borges",
+    "active": true
+  },
+  "components": [
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/70583",
+      "id": "70583",
+      "name": "Backend runtime",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/71180",
+      "id": "71180",
+      "name": "Builder",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/75192",
+      "id": "75192",
+      "name": "Codebase",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/81099",
+      "id": "81099",
+      "name": "dev portal",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/70786",
+      "id": "70786",
+      "name": "Documentation",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/70582",
+      "id": "70582",
+      "name": "Foundation",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/70584",
+      "id": "70584",
+      "name": "Frontend runtime",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/71184",
+      "id": "71184",
+      "name": "Infrastructure",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/71089",
+      "id": "71089",
+      "name": "Packaging & Publishing",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/71185",
+      "id": "71185",
+      "name": "Plugins",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/78976",
+      "id": "78976",
+      "name": "Release process",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/81100",
+      "id": "81100",
+      "name": "Tanzu Dev Portal",
+      "isAssigneeTypeValid": false
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/component/80822",
+      "id": "80822",
+      "name": "TAP GUI Bundle",
+      "description": "TAP GUI Bundle of Kubernetes Resources",
+      "isAssigneeTypeValid": false
+    }
+  ],
+  "issueTypes": [
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/3",
+      "id": "3",
+      "description": "A task that needs to be done.",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=13328&avatarType=issuetype",
+      "name": "Task",
+      "subtask": false,
+      "avatarId": 13328
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/6",
+      "id": "6",
+      "description": "The sub-task of the issue",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=13326&avatarType=issuetype",
+      "name": "Sub-task",
+      "subtask": true,
+      "avatarId": 13326
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/8",
+      "id": "8",
+      "description": "Created by Jira Software - do not edit or delete. Issue type for a user story.",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=13325&avatarType=issuetype",
+      "name": "Story",
+      "subtask": false,
+      "avatarId": 13325
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/1",
+      "id": "1",
+      "description": "A problem which impairs or prevents the functions of the product.",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=13313&avatarType=issuetype",
+      "name": "Bug",
+      "subtask": false,
+      "avatarId": 13313
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/7",
+      "id": "7",
+      "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=25377&avatarType=issuetype",
+      "name": "Epic",
+      "subtask": false,
+      "avatarId": 25377
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/10216",
+      "id": "10216",
+      "description": "This Issue Type is used to create Zephyr Test within Jira.",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=19310&avatarType=issuetype",
+      "name": "Test",
+      "subtask": false,
+      "avatarId": 19310
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/10501",
+      "id": "10501",
+      "description": "",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=15311&avatarType=issuetype",
+      "name": "Initiative",
+      "subtask": false,
+      "avatarId": 15311
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/latest/issuetype/11601",
+      "id": "11601",
+      "description": "",
+      "iconUrl": "https://jira.eng.vmware.com/secure/viewavatar?size=xsmall&avatarId=13316&avatarType=issuetype",
+      "name": "Document",
+      "subtask": false,
+      "avatarId": 13316
+    }
+  ],
+  "assigneeType": "UNASSIGNED",
+  "versions": [
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/96002",
+      "id": "96002",
+      "description": "Proof of concept",
+      "name": "MS0 - Proof of Concept",
+      "archived": false,
+      "released": true,
+      "releaseDate": "2022-09-30",
+      "userReleaseDate": "30/Sep/22",
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/96003",
+      "id": "96003",
+      "description": "Prerelease",
+      "name": "MS1 - Prerelease",
+      "archived": false,
+      "released": false,
+      "startDate": "2022-10-01",
+      "releaseDate": "2023-01-31",
+      "overdue": true,
+      "userStartDate": "01/Oct/22",
+      "userReleaseDate": "31/Jan/23",
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/96553",
+      "id": "96553",
+      "description": "Prerelease, nominal 1.5.0 release date",
+      "name": "TAP 1.5.0",
+      "archived": false,
+      "released": false,
+      "startDate": "2023-02-01",
+      "releaseDate": "2023-04-11",
+      "overdue": true,
+      "userStartDate": "01/Feb/23",
+      "userReleaseDate": "11/Apr/23",
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/96909",
+      "id": "96909",
+      "description": "Initial customer-facing release, 1.6.0 code freeze",
+      "name": "TAP 1.6.0",
+      "archived": false,
+      "released": false,
+      "startDate": "2023-03-11",
+      "releaseDate": "2023-06-09",
+      "overdue": true,
+      "userStartDate": "11/Mar/23",
+      "userReleaseDate": "09/Jun/23",
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/100804",
+      "id": "100804",
+      "description": "TAP 1.7.0 code freeze",
+      "name": "TAP 1.7.0",
+      "archived": false,
+      "released": false,
+      "startDate": "2023-06-10",
+      "releaseDate": "2023-09-08",
+      "overdue": false,
+      "userStartDate": "10/Jun/23",
+      "userReleaseDate": "08/Sep/23",
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/103867",
+      "id": "103867",
+      "name": "TAP 1.8.0",
+      "archived": false,
+      "released": false,
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/107307",
+      "id": "107307",
+      "name": "TAP 1.6.1",
+      "archived": false,
+      "released": false,
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/108825",
+      "id": "108825",
+      "name": "TAP 1.7.0-M1",
+      "archived": false,
+      "released": false,
+      "startDate": "2023-07-28",
+      "userStartDate": "28/Jul/23",
+      "projectId": 49514
+    },
+    {
+      "self": "https://jira.eng.vmware.com/rest/api/2/version/108841",
+      "id": "108841",
+      "name": "Project infra",
+      "archived": false,
+      "released": false,
+      "projectId": 49514
+    }
+  ],
+  "name": "Tanzu Portal Builder",
+  "roles": {
+    "contractor": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10520",
+    "NOC Ticket Notification": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10987",
+    "Owner": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10220",
+    "Sprint Managers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10990",
+    "Product Owner": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10620",
+    "Viewer": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10222",
+    "Sprint Admins": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/11320",
+    "Users": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10000",
+    "atlassian-addons-project-access": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10420",
+    "Scrum Master": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10621",
+    "Project Manager": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10121",
+    "Testers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10123",
+    "Member": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10221",
+    "Regular user": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/11220",
+    "Engineering Bug Triage": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10994",
+    "Tempo Project Managers0": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/11420",
+    "Notified": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/11020",
+    "Service Desk Team": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10989",
+    "Deployment Engineers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10993",
+    "Product Manager": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10622",
+    "Project Watcher": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10320",
+    "CAB": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10995",
+    "SA Engineers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10992",
+    "Developer Leader": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10120",
+    "Test leader": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10122",
+    "vCloud Read Only Project Role": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10010",
+    "Notify for All Changes Group": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10988",
+    "Developers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10001",
+    "Project Watchers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10820",
+    "Administrators": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10002",
+    "Sprint Manager": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/11120",
+    "Support Contractor": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10991",
+    "Read Only": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10720",
+    "Tempo Project Managers": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10421",
+    "Engineering Leads": "https://jira.eng.vmware.com/rest/api/latest/project/49514/role/10986"
+  },
+  "avatarUrls": {
+    "48x48": "https://jira.eng.vmware.com/secure/projectavatar?pid=49514&avatarId=64811",
+    "24x24": "https://jira.eng.vmware.com/secure/projectavatar?size=small&pid=49514&avatarId=64811",
+    "16x16": "https://jira.eng.vmware.com/secure/projectavatar?size=xsmall&pid=49514&avatarId=64811",
+    "32x32": "https://jira.eng.vmware.com/secure/projectavatar?size=medium&pid=49514&avatarId=64811"
+  },
+  "projectCategory": {
+    "self": "https://jira.eng.vmware.com/rest/api/latest/projectCategory/12830",
+    "id": "12830",
+    "name": "Business-IT-Deploy-Auto",
+    "description": ""
+  },
+  "projectTypeKey": "software",
+  "archived": false
+}

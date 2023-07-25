@@ -24,6 +24,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: example-service
+  annotations:
+    github.com/project-slug: 'svctpb/example-github-actions'
 spec:
   type: service
   lifecycle: experimental
@@ -31,6 +33,59 @@ spec:
   system: examples
   providesApis: [example-grpc-api]
   consumesApis: [example-openapi-api]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sonarqube-example
+  description: An example for Sonarqube integration.
+  annotations:
+    sonarqube.org/project-key: esback-core
+spec:
+  type: website
+  owner: guests
+  lifecycle: experimental
+  system: examples
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jira-example
+  description: An example for Jira plugin integration.
+  annotations:
+    jira/project-key: ESBACK
+spec:
+  type: website
+  owner: guests
+  lifecycle: experimental
+  system: examples
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: snyk-test-service
+  description: Node Express Sample App
+  annotations:
+    snyk.io/org-id: 883c2d65-1170-40d8-bf5c-bbba4a13eec1
+    github.com/project-slug: vmware/snyk-repo
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: grafana-example
+  description: An example for Grafana integration.
+  annotations:
+    grafana/dashboard-selector: 'grafanacloud'
+    grafana/alert-label-selector: 'type=http-requests'
+spec:
+  type: website
+  owner: guests
+  lifecycle: experimental
+  system: examples
 ---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
 apiVersion: backstage.io/v1alpha1
@@ -78,3 +133,17 @@ spec:
           responses:
             '200':
               description: Successful response
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: prometheus-entity
+  description: Sample Prometheus service
+  annotations:
+    prometheus.io/alert: all
+    prometheus.io/rule: node_memory_active_bytes
+    prometheus.io/service-name: prometheus-entity
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests

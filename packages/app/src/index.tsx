@@ -21,6 +21,15 @@ import { plugin as pendoPlugin } from '@tpb/plugin-pendo-analytics';
 import { plugin as scoringPlugin } from '@tpb/plugin-api-scoring';
 import { plugin as supplyChainPlugin } from '@tpb/plugin-supply-chain';
 import { plugin as securityAnalysisPlugin } from '@tpb/plugin-security-analysis-frontend';
+import { plugin as techInsightsPlugin } from '@tpb/plugin-techinsights';
+import { plugin as githubActionsPlugin } from '@tpb/plugin-github-actions';
+import { plugin as backstageSonarqubePlugin } from '@tpb/plugin-backstage-sonarqube';
+import { plugin as homePlugin } from '@tpb/plugin-home';
+import { plugin as snykPlugin } from '@tpb/plugin-snyk';
+import { plugin as stackOverflowPlugin } from '@tpb/plugin-stack-overflow';
+import { plugin as prometheusPlugin } from '@tpb/plugin-prometheus';
+import { plugin as backstageGrafanaPlugin } from '@tpb/plugin-backstage-grafana';
+import { plugin as backstageJiraPlugin } from '@tpb/plugin-backstage-jira';
 
 import '@tpb/plugin-clarity-theming/style/clarity.css';
 
@@ -46,4 +55,13 @@ new AppRuntime([
   vmwareCloudServicesAuthPlugin(),
   pendoPlugin(),
   scoringPlugin(),
+  techInsightsPlugin(),
+  githubActionsPlugin(),
+  backstageSonarqubePlugin(),
+  homePlugin(),
+  snykPlugin(),
+  stackOverflowPlugin(),
+  prometheusPlugin(),
+  backstageGrafanaPlugin(),
+  backstageJiraPlugin(),
 ]).render();

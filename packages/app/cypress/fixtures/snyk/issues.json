@@ -1,0 +1,59 @@
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "self": "/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/issues?version=2023-06-19~experimental&scan_item.id=34258b5b-8f96-4437-9a7b-bdd20efee447&scan_item.type=project&limit=100",
+    "first": "/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/issues?limit=100&scan_item.id=34258b5b-8f96-4437-9a7b-bdd20efee447&scan_item.type=project&version=2023-06-19~experimental",
+    "next": "/rest/orgs/883c2d65-1170-40d8-bf5c-bbba4a13eec1/issues?limit=100&scan_item.id=34258b5b-8f96-4437-9a7b-bdd20efee447&scan_item.type=project&starting_after=eyJzIjoiIn0%3D&version=2023-06-19~experimental"
+  },
+  "data": [
+    {
+      "id": "iss03:34258b5b-8f96-4437-9a7b-bdd20efee447:SNYK-JS-DEBUG-3227433",
+      "type": "issue",
+      "attributes": {
+        "classes": [
+          {
+            "id": "CWE-1333",
+            "source": "CWE",
+            "type": "weakness"
+          }
+        ],
+        "created_at": "2023-01-09T21:10:29.982Z",
+        "effective_severity_level": "low",
+        "ignored": false,
+        "key": "SNYK-JS-DEBUG-3227433",
+        "problems": [
+          {
+            "id": "SNYK-JS-DEBUG-3227433",
+            "source": "snyk",
+            "type": "vulnerability"
+          },
+          {
+            "id": "CVE-2017-20165",
+            "source": "snyk",
+            "type": "vulnerability"
+          }
+        ],
+        "status": "resolved",
+        "title": "Regular Expression Denial of Service (ReDoS)",
+        "type": "package_vulnerability",
+        "updated_at": "2023-01-11T22:41:34.329Z"
+      },
+      "relationships": {
+        "organization": {
+          "data": {
+            "id": "883c2d65-1170-40d8-bf5c-bbba4a13eec1",
+            "type": "organization"
+          }
+        },
+        "scan_item": {
+          "data": {
+            "id": "34258b5b-8f96-4437-9a7b-bdd20efee447",
+            "type": "project"
+          }
+        }
+      }
+    }
+  ]
+}

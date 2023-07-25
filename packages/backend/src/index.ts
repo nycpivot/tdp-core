@@ -38,6 +38,8 @@ import { plugin as appAcceleratorBackendPlugin } from '@tpb/plugin-app-accelerat
 import { plugin as gitProvidersBackend } from '@tpb/plugin-git-providers-backend';
 import { plugin as autoRegistrationPlugin } from '@tpb/plugin-api-auto-registration-backend';
 import { plugin as customLoggerPlugin } from '@tpb/tpb-custom-logger';
+import { plugin as techInsightsBackendPlugin } from '@tpb/plugin-techinsights-backend';
+import { plugin as backstageSonarqubeBackendPlugin } from '@tpb/plugin-backstage-sonarqube-backend';
 
 new BackendRuntime([
   catalogTestEntityProviderPlugin(),
@@ -79,4 +81,6 @@ new BackendRuntime([
   gitProvidersBackend(),
   autoRegistrationPlugin(),
   customLoggerPlugin(),
+  techInsightsBackendPlugin(),
+  backstageSonarqubeBackendPlugin(),
 ]).start();

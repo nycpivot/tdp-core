@@ -1,0 +1,42 @@
+{
+  "name": "snyk-repo",
+  "id": "34258b5b-8f96-4437-9a7b-bdd20efee447",
+  "created": "2022-07-26T16:53:20.755Z",
+  "origin": "cli",
+  "type": "npm",
+  "readOnly": false,
+  "testFrequency": "daily",
+  "totalDependencies": 57,
+  "issueCountsBySeverity": {
+    "low": 0,
+    "high": 0,
+    "medium": 0,
+    "critical": 0
+  },
+  "remoteRepoUrl": "http://github.com/vmware/snyk-repo.git",
+  "imageTag": "1.0.0",
+  "hostname": "test-a01.vmware.com",
+  "lastTestedDate": "2023-07-10T15:38:18.903Z",
+  "browseUrl": "https://app.snyk.io/org/vmware/project/34258b5b-8f96-4437-9a7b-bdd20efee447",
+  "owner": null,
+  "importingUser": {
+    "id": "5ec21cd6-2763-46ba-9111-52c0720cded3",
+    "name": "VMware",
+    "username": "wmware",
+    "email": "test@vmware.com"
+  },
+  "isMonitored": true,
+  "tags": [],
+  "attributes": {
+    "criticality": [],
+    "lifecycle": [],
+    "environment": []
+  },
+  "remediation": {
+    "pin": {},
+    "patch": {},
+    "upgrade": {}
+  },
+  "branch": "main",
+  "targetReference": null
+}
