@@ -41,8 +41,7 @@ describe('Catalog Plugin', () => {
       cy.contains('github-integration-component');
     });
 
-    // eslint-disable-next-line
-    it.skip('should render the github enterprise catalog', () => {
+    it('should render the github enterprise catalog', () => {
       cy.contains('github-enterprise-integration-component');
     });
   });
