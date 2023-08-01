@@ -12469,7 +12469,7 @@ backoff@^2.5.0:
   dependencies:
     precond "0.2"
 
-backstage-plugin-snyk@^2.0.0:
+backstage-plugin-snyk@2.0.0:
   version "2.0.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/backstage-plugin-snyk/-/backstage-plugin-snyk-2.0.0.tgz#5af7f5cf3822f7438250cf952067bbd897724f5d"
   integrity sha512-UXnwaiCz/4N0VXcJxyNmHxUpIq0WqLTxQ7qmEFAFf2MCAHxV0pEWXLMaR+U8KbeAGST2/5fjcTXLOzU8M36Erw==
