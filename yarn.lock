@@ -3160,7 +3160,7 @@
     zen-observable "^0.10.0"
     zod "^3.21.4"
 
-"@backstage/core-app-api@^1.8.1":
+"@backstage/core-app-api@^1.8.1", "@backstage/core-app-api@^1.9.0":
   version "1.9.0"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/core-app-api/-/core-app-api-1.9.0.tgz#db850c30f6c7074d0105c4ffff3d7dd2e59d2e9c"
   integrity sha512-cQTCaLppw6LBvMYn7ZdqTuFIl1GQtKmcqaso+N/4m+b25gICI9NGPKT3iIyNrCkIPStd9WCfa8Qsiq07qaKVfA==
@@ -5053,6 +5053,29 @@
     qs "^6.9.4"
     react-use "^17.2.4"
 
+"@backstage/plugin-search@^1.3.2":
+  version "1.3.3"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-search/-/plugin-search-1.3.3.tgz#1837474eccfe1d1b8323aec04b3031718ffcea21"
+  integrity sha512-KAweGvfnm+C0NpfN/zHwRJQuyARvTaBpq9LfFJOHK07xITLKIRJqXt7GqA6npPIvdDx7YqNpIgJmxS0vWc6D4g==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.1"
+    "@backstage/config" "^1.0.8"
+    "@backstage/core-components" "^0.13.3"
+    "@backstage/core-plugin-api" "^1.5.3"
+    "@backstage/errors" "^1.2.1"
+    "@backstage/plugin-catalog-react" "^1.8.0"
+    "@backstage/plugin-search-common" "^1.2.5"
+    "@backstage/plugin-search-react" "^1.6.3"
+    "@backstage/theme" "^0.4.1"
+    "@backstage/types" "^1.1.0"
+    "@backstage/version-bridge" "^1.0.4"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    qs "^6.9.4"
+    react-use "^17.2.4"
+
 "@backstage/plugin-sonarqube-backend@^0.2.1":
   version "0.2.1"
   resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-sonarqube-backend/-/plugin-sonarqube-backend-0.2.1.tgz#ba4c84fd9279a185227a15b4a393df9fa821707e"
@@ -5361,6 +5384,25 @@
     "@backstage/plugin-catalog-react" "^1.5.0"
     "@backstage/theme" "^0.2.19"
     "@backstage/types" "^1.0.2"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    react-use "^17.2.4"
+    zen-observable "^0.10.0"
+
+"@backstage/plugin-user-settings@^0.7.4":
+  version "0.7.5"
+  resolved "https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm/@backstage/plugin-user-settings/-/plugin-user-settings-0.7.5.tgz#7fe5a1a4a93419f4d738723303dfe8d5262654a4"
+  integrity sha512-AmaUZ/8YWpRE+bew8hJU4syeHOqJhnITUo1vQF+wyPRVRw69C7g3YPeA0mDv0qBMP3mPrggtN3IzI9ESu7BaYw==
+  dependencies:
+    "@backstage/core-app-api" "^1.9.0"
+    "@backstage/core-components" "^0.13.3"
+    "@backstage/core-plugin-api" "^1.5.3"
+    "@backstage/errors" "^1.2.1"
+    "@backstage/plugin-catalog-react" "^1.8.0"
+    "@backstage/theme" "^0.4.1"
+    "@backstage/types" "^1.1.0"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.61"
@@ -9991,6 +10033,20 @@
     "@backstage/plugin-catalog" "^1.10.0"
     "@loblaw/backstage-plugin-gitlab" "^0.1.24"
     "@material-ui/core" "^4.12.4"
+
+"@tpb/plugin-home@0.0.1-alpha.2":
+  version "0.0.1-alpha.2"
+  resolved "https://artifactory.eng.vmware.com/artifactory/api/npm/tpb-npm-local/@tpb/plugin-home/-/@tpb/plugin-home-0.0.1-alpha.2.tgz#78dfdf77e89edc857fe5170f8fc867ac58f495a7"
+  integrity sha512-9jBPA1h0DGgEMlf66a/rUOxOnfhAWm1JB/+I5Su8OGIJeTqaMVZ5enawbl7zeMgqBd4oVpo4E9KTqCRmi2xO+A==
+  dependencies:
+    "@backstage/core-components" "^0.13.0"
+    "@backstage/core-plugin-api" "^1.5.1"
+    "@backstage/plugin-home" "^0.5.3"
+    "@backstage/plugin-home-react" "^0.1.0"
+    "@backstage/plugin-search" "^1.2.0"
+    "@backstage/plugin-user-settings" "^0.7.2"
+    "@material-ui/core" "^4.12.4"
+    "@material-ui/icons" "4.11.3"
 
 "@tpb/plugin-oidc-auth@0.0.2-main.140":
   version "0.0.2-main.140"
