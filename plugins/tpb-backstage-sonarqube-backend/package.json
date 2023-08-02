@@ -22,14 +22,14 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/plugin-sonarqube-backend": "^0.2.0",
+    "@backstage/plugin-sonarqube-backend": "^0.2.1",
     "express": "^4.17.3"
   },
   "peerDependencies": {
     "@tpb/core-backend": "*"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.3"
+    "@backstage/cli": "^0.22.8"
   },
   "files": [
     "dist"

@@ -20,8 +20,8 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/core-components": "^0.13.0",
-    "@backstage/core-plugin-api": "^1.5.1",
+    "@backstage/core-components": "^0.13.2",
+    "@backstage/core-plugin-api": "^1.5.2",
     "@k-phoen/backstage-plugin-grafana": "^0.1.22",
     "@backstage/plugin-catalog": "^1.11.2",
     "@tpb/core-common": "^0.0.2-main.133",
@@ -39,8 +39,8 @@
     "react-router": "6.0.0-beta.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.22.6",
-    "@backstage/core-app-api": "^1.4.0"
+    "@backstage/cli": "^0.22.8",
+    "@backstage/core-app-api": "^1.8.1"
   },
   "files": [
     "dist"
