@@ -33,7 +33,7 @@ resources:
     type: counter-resource
     source:
       bucket: esback.ci
-      key: build/esback/version/((git_branch))
+      key: build/esback/configurator-image-build-counter/((git_branch))
       aws_access_key_id: ((aws.deprecated_access_key))
       aws_secret_access_key: ((aws.deprecated_access_secret))
   - name: pipeline-repo
